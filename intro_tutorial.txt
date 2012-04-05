@@ -615,7 +615,12 @@ Now select **File>Export>Model Description Language (.mdl)**. Navigate to **/hom
 
 Annotating a Sequence of MDLs
 ------------------------------
-Navigate to the directory where you just exported your MDLs. Type **ls** and hit **Enter**. You should notice that there are two different files for each frame or iteration of the animation. There is also one very simple python script which will iterate over each of the files with MCell. When you have a large number of files to edit, like we have here, you will almost certainly want to automate the task. This either means using a scripting language (python, ruby, etc) or some command line tool like sed or awk. Unfortunately, this can be a little intimidating for people who have never done any scripting before.
+Navigate to the directory where you just exported your MDLs. Type **ls** and hit **Enter**. You should notice that there are two different files for each frame or iteration of the animation. There is also one very simple python_ script which will iterate over each of the files with MCell. When you have a large number of files to edit, like we have here, you will almost certainly want to automate the task. This either means using a scripting language (python, ruby_, etc) or some command line tool like sed_ or awk_. Unfortunately, this can be a little intimidating for people who have never done any scripting before.
+
+.. _python: http://www.python.org
+.. _ruby: http://www.ruby-lang.org/en/
+.. _sed: http://www.gnu.org/software/sed/manual/sed.html
+.. _awk: http://www.gnu.org/software/gawk/manual/gawk.html
 
 For this example, we can keep it fairly simple. All we need to do is add the same molecule definition to twenty files at line eleven (**DEFINE_MOLECULES { vol1 {DIFFUSION_CONSTANT_3D = 1E-6}}\n**). This can be accomplished by typing the following sed command at the terminal::
 
