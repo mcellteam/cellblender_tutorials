@@ -1,0 +1,649 @@
+=========================
+An Introduction to MCell
+=========================
+Overview
+-------------------------
+
+In order to quickly show what can be done with MCell, we'll begin by generating a simple model, and gradually add in more features. Our initial model will contain a cube that has diffusing surface and volume molecules that react with each other to create new molecules.
+
+Much of the theory will be skipped over, as it's available elsewhere_. For a more detailed explanation of any given topic, please see the `quick reference guide`_. 
+
+The completed project files for the tutorial can be downloaded here_ (NEED TO UPDATE). You will generate these same files simply by following along with the tutorial, but they are provided here in case you need them for any reason.
+
+.. _elsewhere: https://www.mcell.psc.edu/publications.html
+
+.. _quick reference guide: http://mcell.psc.edu/download/files/mcell3_qrg_092010.pdf
+
+.. _here: https://www.mcell.psc.edu/tutorials/mdl/main/tut_mdl1.tgz
+
+* `Software Needed`_
+* `Generate Mesh and Export MDL with Blender`_
+* `Run the Simulation`_
+* `Visualize the Mesh`_
+* `Annotate the MDL`_
+
+  * `Examining the MDL`_
+  * `Initialization Commands`_
+  * `Molecule Definitions`_
+  * Reactions_
+  * `Reaction Directionality`_
+  * `Release Sites`_
+  * `Reaction Data`_
+
+* `Run the simulation again`_
+* `Visualize the Molecules`_
+* `Customize Rendering Properties`_
+* `Graph the Reaction Data`_
+* `Modify the Mesh`_
+* `Surface Classes`_
+* `More Mesh Modifications`_
+* `Surface Classes and Reactions`_
+* `Variable Reaction Rates`_
+* `Checkpointing Overview`_
+
+  * `Basic Checkpointing`_
+  * `Checkpointing and Dynamic Meshes`_
+
+* `Optimizing Your Simulation`_
+
+  * `Adding Partitions`_
+  * `Target Only`_
+  * `Only Export What You Need`_
+
+Software Needed
+------------------------
+To use this tutorial, you'll want to have the following software installed:
+
+* MCell_ (registration required)
+* DReAMM_ (registration required)
+* Blender_
+* `Blender MDL export plugin`_
+* Text editor (gedit_, vim, emacs, etc.)
+* Graphing software (Grace_, gnuplot, etc.)
+
+.. _MCell: http://mcell.psc.edu/download.html
+.. _DReAMM: http://mcell.psc.edu/download.html
+.. _Blender: http://www.blender.org/download/get-blender/
+.. _Blender MDL export plugin: http://mcell.psc.edu/download/files/io_mesh_mdl.tgz
+.. _gedit: http://projects.gnome.org/gedit/
+.. _Grace: http://plasma-gate.weizmann.ac.il/Grace/
+
+This tutorial assumes you are using either some version of \*nix (e.g. Ubuntu_) or OSX as your operating system. It also requires that you have some basic familiarity with the command line. There are many tutorials online that explain the basics, like `this one`_.
+
+.. _Ubuntu: http://www.ubuntu.com/download
+.. _this one: http://www.tuxfiles.org/linuxhelp/linuxfiles.html
+
+Generate Mesh and Export MDL with Blender
+---------------------------------------------
+
+The majority of this tutorial can be easily accomplished by following along with the text. However, sections that rely heavily on a GUI (like this one), might be better understood by watching a `video tutorial`_ (NEED TO CREATE).
+
+.. _video tutorial: http://mcell.psc.edu
+
+You can skip to the next section (`Run the Simulation`_) if you have watched the previous video tutorial. Otherwise, follow along with the rest of the directions in this section. 
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/material_button.png
+
+Open up a terminal and start Blender. You should see a cube in the **3D View Window**. Hit the **Material** button in the **Properties Window**. 
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/plus_button.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/new_button.png
+
+Hit the **+** button and then the **New** button. 
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/top.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/sides_and_bottom.png
+
+Change the newly created material text field from **Material.001** to **top**. Left click **Material** in the list of materials. Change the text field from **Material** to **sides_and_bottom**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/face_select.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/right_click.png
+
+Move the cursor to the **3D View Window**. Hit **Tab** to change into **Edit Mode**. Hit **Ctrl-Tab** and select **Face**. Then **right click** on the top face to select it.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/assign.png
+
+Select the **top** material from the list of materials. Click **Assign**. Hit **Tab** to change back into **Object Mode**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/export_mdl.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/export_mdl_dir.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/export_mdl_button.png
+
+Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **tutorial.mdl** and hit **Export MDL**.
+
+Either leave Blender open or save and quit, as we'll need to modify this model later.
+
+Run the Simulation
+-------------------
+
+.. _tut_viz_data1.tgz: http://mcell.psc.edu/tutorials/mdl/main/tut_viz_data1.tgz
+
+Let's verify that this simple case works with MCell before adding in more details.
+
+At the command line, navigate to the appropriate directory (**/home/user/mcell_tutorial/**), type **mcell tutorial.mdl**, and hit **Enter**. MCell should output some information to the command line indicating that it ran successfully. Type **ls** and you should see that a directory called **tutorial_viz_data** has been created.
+
+Visualize the Mesh
+-------------------------
+
+As with the Blender section, this section requires extensive use of a GUI, so you may find it easier to follow along with this short `video tutorial`_ (NEED TO CREATE).
+
+.. _video tutorial: http://mcell.psc.edu
+
+You can skip to the next section (`Annotate the MDL`_) if you have watched the previous video tutorial. Otherwise, follow along with the rest of the directions in this section. 
+
+To start DReAMM, open a terminal, type **dreamm**, and hit **Enter**. 
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/import_select.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/ellipsis.png
+
+Hit **Import & Select** on the **Quick Controls** window. Click the ellipsis (**...**) on the **Import & Select Objects** window. 
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/enter_dir.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/load_dx.png
+
+Navigate to the directory where you ran the mdl. Double click on the **tutorial_viz_data** directory and then double click on **tutorial.dx**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/select_wireframes.png
+
+Select **World.Cube** in the **Import & Select Objects** window. Click **Apply Operation**, and the cube object should appear in the  **DReAMM Image Window**. 
+
+**Left click** in the **DReAMM Image Window** and hit **Ctrl-f** to center the cube.
+
+Leave DReAMM open as we'll return to it shortly.
+
+Annotate the MDL
+------------------
+Open **tutorial.mdl** with your favorite text editor (try gedit or kedit if you aren't sure what to use).
+
+- `Examining the MDL`_
+- `Initialization Commands`_
+- `Molecule Definitions`_
+- Reactions_
+- `Reaction Directionality`_
+- `Release Sites`_
+- `Reaction Data`_
+
+Examining the MDL
+------------------
+
+Before we start making changes, let's *briefly* look at what we have to start with::
+
+    iterations = 1
+    time_step = 1e-6
+    ITERATIONS = iterations
+    TIME_STEP = time_step
+
+    INCLUDE_FILE = "./tutorial_Cube.mdl"
+
+    INSTANTIATE World OBJECT {
+        Cube OBJECT Cube{}
+    }
+
+    VIZ_OUTPUT {
+        FILENAME = "tutorial"
+        MOLECULES {
+            NAME_LIST {ALL_MOLECULES}
+            ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}
+        }
+        MESHES {
+            NAME_LIST {ALL_MESHES}
+            ITERATION_NUMBERS {ALL_DATA @ [1]}
+        }
+    }
+
+The first four lines are some `Initialization Commands`_ that we'll cover in the next section.
+
+**INCLUDE_FILE** commands let you break up MDLs into multiple sections. In this particular instance, the vertices and faces that make up our **Cube** are being imported or *included*.
+
+You can't simply include meshes; you also have to **INSTANTIATE** them to have them exist and interact in our simulation. We'll see later that we can also instantiate other types of objects, like molecule `Release Sites`_.
+
+Lastly, the **VIZ_OUTPUT** block specifies what visualization data to export and at what time values. Right now, it is set to export everything. 
+
+Initialization Commands
+-------------------------
+At the beginning of the mdl, there are two variables **time_step** and **iterations**. These variables are applied to the initialization commands **TIME_STEP** and **ITERATIONS** respectively. As the names imply, these commands control how many **ITERATIONS** the simulation runs for, with each iteration lasting one **TIME_STEP** (units are seconds). 
+
+At the beginning of the mdl, change **iterations** from **1** to **1000** and **time_step** from **1e-6** to **5e-6**. This means that the simulation will run for 1000 iterations at a time step of **5e-6** seconds (total time: 1000*5e-6=5e-3 seconds).
+
+::
+
+    iterations = 1000
+    time_step = 5e-6
+    ITERATIONS = iterations
+    TIME_STEP = time_step
+
+Molecule Definitions
+----------------------
+Molecules need to be defined before they are used (as a release site or a reaction) in the MDL.
+
+After the **INCLUDE_FILE** command, add a **DEFINE_MOLECULES** section as show here::
+
+    DEFINE_MOLECULES {
+        vol1 {DIFFUSION_CONSTANT_3D = 1E-6}
+        vol2 {DIFFUSION_CONSTANT_3D = 1E-6}
+        surf1 {DIFFUSION_CONSTANT_2D = 1E-7}
+    }
+
+Molecules that use **DIFFUSION_CONSTANT_3D** command, like **vol1** and **vol2**, will be volume molecules, meaning that they will exist in solution. Molecules that use **DIFFUSION_CONSTANT_2D**, like **surf1**, will be surface molecules, meaning that they exist on a surface. The units of the value assigned to this command (**1E-6** and **1E-7** in this instance) are in cm\ :sup:`2`\ /s. 
+
+Reactions
+-----------
+Molecules that were defined in the previous section can be created and destroyed in a number of different ways using reactions. A reaction is defined in the following manner:
+
+**reactant(s) -> product(s) [rate]**
+
+This means that **reactant(s)** are converted into **product(s)** at a given **rate**.
+
+There must be one or more molecules on the left hand  **reactants** side. On the right hand **products** side, you must have zero (**NULL**) or more molecules. The units of the **rate** depend on the type of reaction. [s\ :sup:`-1`\ ] for unimolecular reactions and [M\ :sup:`-1`\ s\ :sup:`-1`\ ] for bimolecular reactions between two volume molecules or a volume molecule and a surface molecule.
+
+Reaction Directionality
+-------------------------
+
+Surface molecules have a **TOP** and a **BOTTOM**, so we need a way to differentiate between reactions that happen on one side versus the other. Commas (**,**), ticks (**'**), and semi-colons (**;**) serve this purpose. For detailed information on this reaction syntax, please refer to this pdf_. Let's look at a relatively simple example. First, add this code after the **DEFINE_MOLECULES** section::
+
+    DEFINE_REACTIONS {
+        vol1, + surf1' -> surf1' + vol2' [1E8]
+    }
+
+.. _pdf: http://mcell.psc.edu/download/files/MCell3_rxns_06_18_2007.pdf
+
+Read this next section carefully, as some people find this syntax confusing at first. If a volume molecule and a surface molecule have their orientations *opposed* (i.e. a tick and a comma), then the volume molecule interacts with the **BOTTOM** of the surface molecule. If a volume molecule and a surface molecule have their orientations *aligned* (i.e. two ticks *or* two commas), then the volume molecule interacts with the **TOP** of the surface molecule. 
+
+For this reaction, **vol1** and **surf1** are opposed (a comma and a tick), and **vol2** and **surf1** are aligned (two ticks). This means that **vol1** will react with the **BOTTOM** of **surf1**, creating **vol2** at the **TOP** of **surf1**. Since **vol1** is not on the products side, it is destroyed when it reacts with **surf1**. Conversely, **surf1** is on both the **reactant** and **product** side, so it will not be destroyed from the reaction.
+
+The directionality of these ticks and commas are relative, which means that we could flip the signs and get the same result, like this::
+
+    DEFINE_REACTIONS {
+        vol1' + surf1, -> surf1, + vol2, [1E8]
+    }
+
+Release Sites
+--------------
+Modify the **INSTANTIATE** section of the MDL so it looks like this::
+
+    INSTANTIATE World OBJECT {
+        Cube OBJECT Cube{}
+        vol1_rel RELEASE_SITE {
+            SHAPE = World.Cube
+            MOLECULE = vol1
+            NUMBER_TO_RELEASE = 2000
+        }
+        surf1_rel RELEASE_SITE {
+            SHAPE = World.Cube[top]
+            MOLECULE = surf1'
+            NUMBER_TO_RELEASE = 2000
+        }
+    }
+
+This adds in two release sites, one called **vol1_rel** and the other **surf1_rel**. Each release site can take a number of different commands. 
+
+The **SHAPE** of the release determines what object (or region of an object) that molecules are released onto or into. You can also use some predefined shapes, like **CUBIC** or **SPHERICAL**, but we won't cover that here.
+
+**MOLECULE** determines what molecule is released. If it is a surface molecule, an orientation is also specified This is similar to what's described in `Reaction Directionality`_, but it is not relative. A tick means that the **TOP** of the molecule is aligned with the **FRONT** of the surface, and a comma means that the **TOP** is aligned with the **BACK** of the surface.
+
+**NUMBER_TO_RELEASE** gives an absolute number of molecules to be released. Alternatively, one could define a **CONCENTRATION** or **DENSITY**.
+
+These two release sites together will release 1000 **vol1** molecules randomly throughout the inside of **World.Cube** and also 5000 **surf1** molecules randomly on the **top** surface region of **World.Cube**. Also, the **TOP** of **surf1** will be aligned with the **FRONT** of the surface.
+
+Reaction Data
+---------------
+At the end of the MDL, add the following::
+
+    REACTION_DATA_OUTPUT {
+        STEP=time_step
+        {COUNT[vol1,WORLD]}=> "./react_data/vol1.dat"
+        {COUNT[vol2,WORLD]}=> "./react_data/vol2.dat"
+    }
+
+The **STEP** command tells MCell how often it should write out reaction data.
+
+The brackets after the **COUNT** command tell MCell what molecule to count and where to count it. For instance the first **COUNT** statement tells it to count all of the **vol1** molecules in the **WORLD** (the entire simulation). Alternatively, you could specify that it only count those found in/on an object/region (e.g. **[vol1,World.Cube]**) 
+
+The file listed after the arrow symbol (**=>**) tells it where to save it. 
+
+Run the Simulation again
+-------------------------
+We've finished adding our changes. Let's rerun the simulation with MCell.
+
+As before, navigate to the appropriate directory, type **mcell tutorial.mdl**, and hit **Enter**. After it's finished running, type **ls** and you should see that a new directory called **react_data** has been created.
+
+Visualize the Molecules
+-------------------------------
+
+If you still have DReAMM open, hit the **Reimport** button and add the wireframe for **World.Cube** in the same way that you did in `Visualize the Mesh`_. If you closed DReAMM, simply follow all the steps in `Visualize the Mesh`_ again. When you are finished, you should have the centered cube in the middle of the **DReAMM Image Window**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/volume_molecules.png
+
+Select **Volume Molecules** in the **Import & Select Objects** window. Next, select **Add Filtered**. Click **Apply Operation**, and the volume molecules should appear in the  **DReAMM Image Window**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/surface_molecules.png
+
+Select **Surface Molecules** in the **Import & Select Objects** window. **Add Filtered** should still be selected. Click **Apply Operation**, and the surface molecules should appear in the **DReAMM Image Window**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/play.png
+
+Hit the Play button on the Sequencer and watch the molecules diffusing and reacting in the **DReAMM Image Window**.
+
+*Note:* The "up" axis is the Z-axis in Blender, but the Y-axis in DReAMM, meaning that the **top** surface region is pointing straight toward you. You will probably want to rotate it to get a better view. **Left click** in the **DReAMM Image Window** and hit **Ctrl-R**. Now **left click and drag** upward until the **top** region is facing up. 
+
+Customize Rendering Properties
+-------------------------------
+
+By default, every molecule just shows up as a white pixel. This might be fine if you only have one molecule in your simulation, but, for anything more complicated, you will probably want to be able to differentiate between them.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/set_rendering_prop.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/select_molecules.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/select_vol1.png
+
+Hit the **Set Rendering Prop.** button. Select **Molecules** and then **vol1.**
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/set_red.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/sphere_height_radius.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/apply_op_once.png
+
+Set the **(Front) Color** RGB values to **1,0,0** (for red). Change **Glyph** to **sphere(simple)**. Change **Height** and **Radius** to **0.02**. The hit the **Apply Operation Once** button. You should notice the change in the **DReAMM Image Window**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/select_vol2.png
+
+Select **vol2** and deselect **vol1**. Change  the RGB value of the **(Front) Color** to **0,1,0** (for green). Hit **Apply Operation Once**. *Note*: The specific colors and values don't matter as long as we can easily tell everything apart.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/set_cyan.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/arrow.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/apply_op_once.png
+
+Finally, we are going to add **surf1**, but we have a few more changes to make with this one since it is a surface molecule, and therefore has a directionality to it. First, select **surf1** and deselect **vol2**. Then change the RGB value to **0,1,1** (for cyan). Change the **Glyph** to **arrow(simple)**. Then, change the **Height** and **Radius** to **0.10** and **0.02** respectively. Finally, hit **Apply Operation Once**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/play.png
+
+Hit the Play button on the Sequencer and watch the molecules diffusing and reacting in the **DReAMM Image Window**.
+
+Graph the Reaction Data
+------------------------
+
+Change into the **react_data** directory (**cd react_data**) and type **ls**. You should see two files, **vol1.dat**, and **vol2.dat**. 
+
+Plot **vol1.dat** and **vol2.dat** with the graphing software of your choice. If you're using xmgrace, just type **xmgrace vol\*.dat**. There's nothing terribly interesting to see here. **vol1.dat** is decreasing and **vol2.dat** is increasing as expected. It is a quick way to verify that our simulation is working as expected.
+
+Modify the Mesh
+----------------
+
+In order to complete the next section (`Surface Classes`_), we first have to make a few simple changes to our Blender model. We'll pick up right where we left off in `Generate Mesh and Export MDL with Blender`_. Hit **z** to switch to a wireframe view. Hit **Shift-a** and select **Plane**. Hit **g** to "grab" the plane, **z** to constrain the movement to the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm.
+
+Hit the **New** button in the **Materials** section of the **Properties** window. 
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/new_mat_plane.png
+
+Change the newly created material text field from **Material** to **above**. Click **Assign**. 
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/mat_above.png
+
+Next, select **File>Export>Model Description Language (.mdl)**. Deselect **Instantiate & Viz** so that we only export the new meshes and don't override the changes in **tutorial.mdl**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **tutorial.mdl** and hit **Export MDL**.
+
+Surface Classes
+----------------
+Surface classes allow various properties to be applied to surfaces, which can affect molecules in several possible ways.
+
+After the first **INCLUDE** command, add this::
+
+    INCLUDE_FILE = "./tutorial_Plane.mdl"
+
+Before the **DEFINE_REACTIONS** block, add the following::
+
+    DEFINE_SURFACE_CLASSES {
+        absorb_vol2 {ABSORPTIVE = vol2}
+    }
+
+The command above creates a surface class called **absorb_vol2**. Since **vol2** is the value set to the **ABSORPTIVE** command, this means that any **vol2** molecules that touch a surface that has the **absorb_vol2** surface class will be destroyed.
+
+Now we actually have to apply the surface class to a surface region. After the **DEFINE_REACTIONS** block, add the following::
+
+    MODIFY_SURFACE_REGIONS {
+        Plane[above] {
+            SURFACE_CLASS = absorb_vol2
+        }   
+    }
+
+Finally, we need to instantiate our new **Plane** object, so add the following line before the **Cube** instantiation (i.e. before **Cube OBJECT Cube{}**)::
+
+        Plane OBJECT Plane{}
+
+That's all there is to it. The other two surface class commands are **REFLECTIVE** (the default state for surfaces) and **TRANSPARENT** (allows molecules to freely pass through). Feel free to try these out on your own.
+
+Save the file and run it with MCell (type **mcell tutorial.mdl** and hit **Enter** at the command line). Visualize the results with DReAMM just like was done in the `Visualize the Mesh`_ and `Visualize the Molecules`_ sections, except you should be sure to also add the new **Plane** object as a wireframe. See if you can notice the  **vol2** molecules being destroyed by the absorptive surface.
+
+More Mesh Modifications
+------------------------
+
+We're now picking up where we left off in `Modify the Mesh`_. In fact, the instructions will be very similar, aside from few minor changes. While still in **Object Mode**, hit **Shift-a**, select **Plane**, and **Enter** to confirm.  
+
+Hit the **New** button in the **Materials** section of the **Properties** window. 
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/new_mat_plane2.png
+
+Change the newly created material text field from **Material** to **inside**. Click **Assign**. 
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/mat_inside.png
+
+Next, select **File>Export>Model Description Language (.mdl)**. Deselect **Instantiate & Viz** to indicate that we *only* want to export the mesh object. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **tutorial.mdl** and hit **Export MDL**.
+
+Surface Classes and Reactions
+------------------------------
+In the `Surface Classes`_ section, we learned that surface classes can be used to give parts of meshes special properties. Surface classes can also be used to provide extra specificity over how reactions occur. 
+
+After the first **INCLUDE** command, add this::
+
+    INCLUDE_FILE = "./tutorial_Plane.mdl"
+
+Modify the **DEFINE_MOLECULES** section like this::
+
+    DEFINE_MOLECULES {
+        vol1 {DIFFUSION_CONSTANT_3D = 1E-6}
+        vol2 {DIFFUSION_CONSTANT_3D = 1E-6}
+        surf1 {DIFFUSION_CONSTANT_2D = 1E-7}
+        surf2 {DIFFUSION_CONSTANT_2D = 0}
+    }  
+
+Change the **DEFINE_SURFACE_CLASSES** block as follows::
+
+    DEFINE_SURFACE_CLASSES {
+        absorb_vol1 {ABSORPTIVE = vol1}
+        empty {}
+    }  
+
+This new surface class, **empty**, is the simplest case you can have for a surface class. By itself, it's not very useful, but we can use it in reactions. Modify the **DEFINE_REACTIONS** block as follows::
+
+    DEFINE_REACTIONS {
+        vol1, + surf1' -> surf1' + vol2' [1E8]
+        vol1, + surf2' @ empty' -> surf2' + vol2' [1E8]
+    }   
+
+The above change means that **vol1** will only react with the **BOTTOM** of **surf** at the **BACK** of the **empty** surface class. This means the reaction won't occur when the surface molecules diffuse away from surface regions that have this surface class applied (i.e. when it diffuses from **top** to **sides_and_bottom**). Lastly, change the **MODIFY_SURFACE_REGIONS** block like this::
+
+    MODIFY_SURFACE_REGIONS {
+        Plane[above] {
+            SURFACE_CLASS = absorb_vol1
+        }
+        Plane.001[inside] {
+            SURFACE_CLASS = empty
+        }
+    }
+
+Lastly, we need to instantiate our new **Plane.001** object and add in a release site for **surf2**, so modify the **INSTANTIATE** block like this::
+
+    INSTANTIATE World OBJECT {
+        Plane OBJECT Plane{}
+        Plane.001 OBJECT Plane.001{}
+        Cube OBJECT Cube{}
+        vol1_rel RELEASE_SITE {
+            SHAPE = World.Cube
+            MOLECULE = vol1
+            NUMBER_TO_RELEASE = 2000
+        }   
+        surf1_rel RELEASE_SITE {
+            SHAPE = World.Cube[top]
+            MOLECULE = surf1'
+            NUMBER_TO_RELEASE = 2000
+        }   
+        surf2_rel RELEASE_SITE {
+            SHAPE = World.Plane.001[inside]
+            MOLECULE = surf2;
+            NUMBER_TO_RELEASE = 2000
+        }   
+    }   
+
+Save the file and run it with MCell (type **mcell tutorial.mdl** and hit **Enter** at the command line). When you visualize the results with DReAMM, be sure to add in **Plane.001** as a wireframe and **surf2** as a surface molecule. You might also want to add in custom rendering properties for **surf2**. You should notice that there are **vol2** molecules being created inside the box, but only in the upper portion of it, despite the fact that the **surf2** molecules are facing both up *and* down. The reason for this is because the reaction is only taking place at the **BACK** of the **empty** surface class with the **BOTTOM** of **surf2**.
+
+Variable Reaction Rates
+-------------------------
+
+Create a new text file called **rxn_rate.txt**. Add the following text in the file::
+
+    0      0
+    5E-4   1E8
+
+The first column is the time (seconds), and the second column is the reaction rate at that time. The units for the reaction rate are the same as used earlier in the Reactions_ section. 
+
+The example shown above is a very simple case where the reaction only changes once. You could just as well have it change every time step, like this::
+
+    0      0
+    1E-6   1.0E5
+    2E-6   1.1E5
+    3E-6   1.2E5
+    ...
+
+Save the file and quit. In **tutorial.mdl**, go to the reaction section and change the rate to **"rxn_rate.txt"** (with quotations), like in the following::
+
+    DEFINE_REACTIONS {
+        vol1, + surf1' -> surf1' + vol2' ["rxn_rate.txt"]
+        vol1, + surf2' @ empty' -> surf2' + vol2' ["rxn_rate.txt"]
+    }   
+
+Save the file and run it with MCell (type **mcell tutorial.mdl** and hit **Enter** at the command line).
+
+Checkpointing Overview
+-----------------------
+Checkpointing allows you to stop a simulation at a specified iteration and resume it at some later point. This can be beneficial for several different reasons:
+
+* You are using any sort of multi-user system that you must share time with on with others
+* The computer you are using crashes or is shutdown unexpectedly
+* There are parameters you want to change partway through a simulation
+
+We'll cover how to set up checkpointing in the next two sections, starting with a simple case where we modify a couple parameters. Then we will follow this up with a more interesting case where we have a mesh changing shape over time and molecules that will react to it.
+
+  * `Basic Checkpointing`_
+  * `Checkpointing and Dynamic Meshes`_
+
+Basic Checkpointing
+--------------------
+Since our current MDL is starting to get a little complicated, we will start fresh with this next example. Create a file called **change_dc1.mdl**. Inside of it, add the following text::
+
+    CHECKPOINT_INFILE = "dc_chkpt"
+    CHECKPOINT_OUTFILE = "dc_chkpt"
+    CHECKPOINT_ITERATIONS = 100 
+    ITERATIONS = 200 
+    TIME_STEP = 1E-6
+
+    DEFINE_MOLECULES {
+        vol1 {DIFFUSION_CONSTANT_3D = 1E-7}
+    }   
+
+    INSTANTIATE World OBJECT {
+        vol1_rel RELEASE_SITE {
+            SHAPE = SPHERICAL
+            LOCATION = [0,0,0]
+            SITE_DIAMETER = 0.0 
+            MOLECULE = vol1
+            NUMBER_TO_RELEASE = 100 
+        }   
+    }   
+
+    VIZ_OUTPUT {
+        FILENAME = "change_dc"
+        MOLECULES {
+            NAME_LIST {ALL_MOLECULES}
+            ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}
+        }   
+    } 
+
+Save and quit. Now make a copy of this file called **change_dc2.mdl**. Then change the diffusion constant from **1E-7** to **1E-5**. Once again, save and quit. Now run the first mdl by typing **mcell change_dc1.mdl** at the command line. When it is finished, type **ls** and notice that a file called **dc_chkpt** was created. This file stores the information needed to recommence running the simulation. Let's finish it now by typing **mcell change_dc2.mdl**. Visualize the results with DReAMM. When you playback the animation, you will notice that the molecules start off moving rather slowly, and then speed up halfway through the simulation, coinciding with the change in diffusion constant.
+
+This is just a simple example of one parameter you can change. Here is a partial list of some other parameters that you could change:
+
+* **TIME_STEP**
+* reaction rates
+* **SURFACE_CLASS** properties (**ABSORPTIVE**, **TRANSPARENT**, **REFLECTIVE**)
+
+Checkpointing and Dynamic Meshes
+----------------------------------
+For this section, we will create a mesh in blender that shrinks and then grows. We will export this animation as a series of MDLs. Then we can annotate these files to release a volume molecule inside of the changing mesh.
+
+* `Creating the Animated Mesh in Blender`_
+* `Annotating a Sequence of MDLs`_
+
+Creating the Animated Mesh in Blender
+--------------------------------------
+Open Blender. The Cube object should already be selected. Hit **i** to bring up the **Insert Keyframe Menu** and select **Scaling**. Then click in the current frame marker and change it to **10**. Note: each frame in blender will count as one iteration in MCell. Hit **s** to scale, then **0.5** to make it half the size, and **Enter** to confirm. Then change the frame marker to **20**. Hit **s**, **2** to double the size, and **Enter** to confirm. Now select **File>Export>Model Description Language (.mdl)**. Navigate to **/home/user/mcell_tutorial/anim** and select **OK** when it prompts you to make a new directory. Change the file name to **scaling.mdl**. Select **Enable Animation** and **Iterate Script**. Change **End** from **10** to **20** and hit **Export MDL**.
+
+Annotating a Sequence of MDLs
+------------------------------
+Navigate to the directory where you just exported your MDLs. Type **ls** and hit **Enter**. You should notice that there are two different files for each frame or iteration of the animation. There is also one very simple python script which will iterate over each of the files with MCell. 
+
+::
+
+    sed -e "11aDEFINE_MOLECULES { vol1 {DIFFUSION_CONSTANT_3D = 1E-6}}\n" -i scaling_??.mdl
+
+NEED TO FINISH THIS SECTION
+
+Optimizing Your Simulation
+---------------------------
+
+These simplistic simulations should not be overly taxing on a relatively recent desktop machine. However, you may likely want to develop simulations which have many more molecules possibly on large dense mesh objects. There are a couple of strategies you can use to speed up your simulation (and/or to save disk space). The following three topics will address some of these issues:
+
+* `Adding Partitions`_
+* `Target Only`_
+* `Only Export What You Need`_
+
+Adding Partitions
+-------------------
+
+Partitions can speed up your simulation, but, if used improperly, they can actually slow your simulation down.
+
+...
+
+::
+
+    PARTITION_X = [ [-1.5 TO 1.5 STEP 0.01] ]
+    PARTITION_Y = [ [-1.5 TO 1.5 STEP 0.01] ]
+    PARTITION_Z = [ [-1.5 TO 1.5 STEP 0.01] ]
+
+NEED TO FINISH THIS SECTION
+
+Target Only
+-----------
+
+If you have a reaction between two molecules in which there are a lot of one molecule and very few of another, you might want to consider using the TARGET ONLY command.
+
+NEED TO FINISH THIS SECTION
+
+Only Export What You Need
+--------------------------
+
+Visualization data can be great if you are making a figure to accompany a paper, or you are trying to troubleshoot a problem in your simulation, but there's probably no need to export everything at all times (**ALL_DATA @ ALL_ITERATIONS**). You could either comment out the **VIZ_OUTPUT** section entirely when you don't need it or only export what you need. This can speed up your simulation and save you disk space.
+
+NEED TO FINISH THIS SECTION
+
+.. #target-notes::
+.. #index:: Blender 
