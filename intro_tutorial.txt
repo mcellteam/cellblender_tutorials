@@ -595,15 +595,43 @@ For this section, we will create a mesh in blender that shrinks and then grows. 
 
 Creating the Animated Mesh in Blender
 --------------------------------------
-Open Blender. The Cube object should already be selected. Hit **i** to bring up the **Insert Keyframe Menu** and select **Scaling**. Then click in the current frame marker and change it to **10**. Note: each frame in blender will count as one iteration in MCell. Hit **s** to scale, then **0.5** to make it half the size, and **Enter** to confirm. Then change the frame marker to **20**. Hit **s**, **2** to double the size, and **Enter** to confirm. Now select **File>Export>Model Description Language (.mdl)**. Navigate to **/home/user/mcell_tutorial/anim** and select **OK** when it prompts you to make a new directory. Change the file name to **scaling.mdl**. Select **Enable Animation** and **Iterate Script**. Change **End** from **10** to **20** and hit **Export MDL**.
+Open Blender. The Cube object should already be selected. 
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/scale_keyframe.png
+
+Hit **i** to bring up the **Insert Keyframe Menu** and select **Scaling**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/frame_ten.png
+
+Then click in the current frame marker and change it to **10**. Note: each frame in blender will count as one iteration in MCell. Hit **s** to scale, then **0.5** to make it half the size, and **Enter** to confirm.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/frame_twenty.png
+
+Then change the frame marker to **20**. Hit **s**, **2** to double the size, and **Enter** to confirm. 
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_animation.png
+
+Now select **File>Export>Model Description Language (.mdl)**. Navigate to **/home/user/mcell_tutorial/anim** and select **OK** when it prompts you to make a new directory. Change the file name to **scaling.mdl**. Select **Enable Animation** and **Iterate Script**. Change **End** from **10** to **20** and hit **Export MDL**.
 
 Annotating a Sequence of MDLs
 ------------------------------
-Navigate to the directory where you just exported your MDLs. Type **ls** and hit **Enter**. You should notice that there are two different files for each frame or iteration of the animation. There is also one very simple python script which will iterate over each of the files with MCell. 
+Navigate to the directory where you just exported your MDLs. Type **ls** and hit **Enter**. You should notice that there are two different files for each frame or iteration of the animation. There is also one very simple python script which will iterate over each of the files with MCell. When you have a large number of files to edit, like we have here, you will almost certainly want to automate the task. This either means using a scripting language (python, ruby, etc) or some command line tool like sed or awk. Unfortunately, this can be a little intimidating for people who have never done any scripting before.
 
-::
+For this example, we can keep it fairly simple. All we need to do is add the same molecule definition to twenty files at line eleven (**DEFINE_MOLECULES { vol1 {DIFFUSION_CONSTANT_3D = 1E-6}}\n**). This can be accomplished by typing the following sed command at the terminal::
 
     sed -e "11aDEFINE_MOLECULES { vol1 {DIFFUSION_CONSTANT_3D = 1E-6}}\n" -i scaling_??.mdl
+
+Now add the following text to the **INSTANTIATION** section of **scaling_01.mdl** after the **Cube** instantiation::
+
+    vol1_rel RELEASE_SITE {
+        SHAPE = World.Cube
+        LOCATION = [0,0,0]
+        SITE_DIAMETER = 0.0 
+        MOLECULE = vol1
+        NUMBER_TO_RELEASE = 100 
+    }  
+
+Now, at the command line type **python scaling.py**. After the simulation is done running, visualize the results with DReAMM. Add the **Cube** as a wireframe and **vol1** as a volume molecule.
 
 NEED TO FINISH THIS SECTION
 
