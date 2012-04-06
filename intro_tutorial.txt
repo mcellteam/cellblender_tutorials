@@ -30,7 +30,7 @@ The completed project files for the tutorial can be downloaded here_ (NEED TO UP
   * `Release Sites`_
   * `Reaction Data`_
 
-* `Run the simulation again`_
+* `Run the Simulation again`_
 * `Visualize the Molecules`_
 * `Customize Rendering Properties`_
 * `Graph the Reaction Data`_
@@ -605,11 +605,7 @@ Hit **i** to bring up the **Insert Keyframe Menu** and select **Scaling**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/frame_ten.png
 
-Then click in the current frame marker and change it to **10**. Note: each frame in blender will count as one iteration in MCell. Hit **s** to scale, then **0.5** to make it half the size, and **Enter** to confirm.
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/frame_twenty.png
-
-Then change the frame marker to **20**. Hit **s**, **2** to double the size, and **Enter** to confirm. 
+Then click in the current frame marker and change it to **10**. Note: each frame in blender will count as one iteration in MCell. Hit **s** to scale, then **2** to make it twice the size, and **Enter** to confirm. Once again, hit **i** to bring up the **Insert Keyframe Menu** and select **Scaling**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_animation.png
 
@@ -624,7 +620,7 @@ Navigate to the directory where you just exported your MDLs. Type **ls** and hit
 .. _sed: http://www.gnu.org/software/sed/manual/sed.html
 .. _awk: http://www.gnu.org/software/gawk/manual/gawk.html
 
-For this example, we can keep it fairly simple. All we need to do is add the same molecule definition to twenty files at line eleven (**DEFINE_MOLECULES { vol1 {DIFFUSION_CONSTANT_3D = 1E-6}}\n**). This can be accomplished by typing the following sed command at the terminal::
+For this example, we can keep it fairly simple. All we need to do is add the same molecule definition (**DEFINE_MOLECULES { vol1 {DIFFUSION_CONSTANT_3D = 1E-6}}**) to ten files at line eleven. This can be accomplished by typing the following sed command at the terminal::
 
     sed -e "11aDEFINE_MOLECULES { vol1 {DIFFUSION_CONSTANT_3D = 1E-6}}\n" -i scaling_??.mdl
 
@@ -638,14 +634,13 @@ Now add the following text to the **INSTANTIATION** section of **scaling_01.mdl*
         NUMBER_TO_RELEASE = 100 
     }  
 
-Now, at the command line type **python scaling.py**. After the simulation is done running, visualize the results with DReAMM. Add the **Cube** as a wireframe and **vol1** as a volume molecule.
+Now, at the command line type **python scaling.py**. After the simulation is done running, visualize the results with DReAMM. Add the **Cube** as a wireframe and **vol1** as a volume molecule. As in previous cases, the molecules stay within the box; the only difference now is that the box expands every iteration. For something more interesting and physiologically relevant, download this `expanding pore`_ example.
 
-NEED TO FINISH THIS SECTION
-
+.. _expanding pore: http://mcell.psc.edu/tutorials/mdl/expanding_pore.tgz
 
 Release Patterns
 -----------------
-Release patterns allow you to release molecules at specified time intervals. This can be useful if you need to simulate the effect of a synaptic vesicle releasing neurotransmitter. Create a file called **release_pattern.mdl** and add the following text to it::
+Release patterns allow you to release molecules at specified time intervals. One thing this can be useful for is simulating a synaptic vesicle releasing neurotransmitter. Create a file called **release_pattern.mdl** and add the following text to it::
 
     time_step = 1E-6 
     iterations = 1000 
@@ -697,7 +692,7 @@ Clamp Concentration
 --------------------
 Clamp concentration lets you maintain a constant concentration of a molecule at a surface. This is done by creating and destroying molecules at the surface. **CLAMP_CONC** is created and applied like other surface classes (e.g. **ABSORPTIVE**). We'll begin by making two meshes, one which will have the **CLAMP_CONC** applied and the other will prevent molecules from diffusing away from the surface.
 
-Start Blender. Hit **z** to switch to wireframe mode. With the **Cube** selected, hit **s**, **z**, **0.1**, and **Enter**. Hit **Shift-a**, select **Mesh>Plane**. Hit **s**, **0.9**, and **Enter**. Hit the **Material** button in the **Properties** window. Hit **New* and change the material name from **Material.001** to **clamp_sr**. Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **clamp_conc.mdl** and hit **Export MDL**.
+Start Blender. Hit **z** to switch to wireframe mode. With the **Cube** selected, hit **s**, **z**, **0.1**, and **Enter**. Hit **Shift-a**, select **Mesh>Plane**. Hit **s**, **0.9**, and **Enter**. Hit the **Material** button in the **Properties** window. Hit **New** and change the material name from **Material.001** to **clamp_sr**. Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **clamp_conc.mdl** and hit **Export MDL**.
 
 Now open **clamp_conc.mdl** and change **iterations** to **500**. Next, add in the following text after the **INCLUDE_FILE** commands::
 
