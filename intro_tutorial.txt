@@ -44,6 +44,8 @@ The completed project files for the tutorial can be downloaded here_ (NEED TO UP
   * `Basic Checkpointing`_
   * `Checkpointing and Dynamic Meshes`_
 
+* `Release Patterns`_
+* `Clamp Concentration`_
 * `Optimizing Your Simulation`_
 
   * `Adding Partitions`_
@@ -68,7 +70,7 @@ To use this tutorial, you'll want to have the following software installed:
 .. _gedit: http://projects.gnome.org/gedit/
 .. _Grace: http://plasma-gate.weizmann.ac.il/Grace/
 
-This tutorial assumes you are using either some version of \*nix (e.g. Ubuntu_) or OSX as your operating system. It also requires that you have some basic familiarity with the command line. There are many tutorials online that explain the basics, like `this one`_.
+This tutorial assumes you are using either some version of linux (e.g. Ubuntu_) or OSX as your operating system. It also requires that you have some basic familiarity with the command line. There are many tutorials online that explain the basics, like `this one`_.
 
 .. _Ubuntu: http://www.ubuntu.com/download
 .. _this one: http://www.tuxfiles.org/linuxhelp/linuxfiles.html
@@ -639,6 +641,88 @@ Now add the following text to the **INSTANTIATION** section of **scaling_01.mdl*
 Now, at the command line type **python scaling.py**. After the simulation is done running, visualize the results with DReAMM. Add the **Cube** as a wireframe and **vol1** as a volume molecule.
 
 NEED TO FINISH THIS SECTION
+
+
+Release Patterns
+-----------------
+Release patterns allow you to release molecules at specified time intervals. This can be useful if you need to simulate the effect of a synaptic vesicle releasing neurotransmitter. Create a file called **release_pattern.mdl** and add the following text to it::
+
+    time_step = 1E-6 
+    iterations = 1000 
+    ITERATIONS = iterations
+    TIME_STEP = time_step
+
+    DEFINE_RELEASE_PATTERN rel_pat1 {
+        DELAY = 50E-6
+        RELEASE_INTERVAL = 50E-6
+        TRAIN_DURATION = 200E-6
+        TRAIN_INTERVAL = 300E-6
+        NUMBER_OF_TRAINS = 3
+    } 
+
+    DEFINE_MOLECULES {
+        vol1 {DIFFUSION_CONSTANT_3D = 1E-6}
+    }
+
+    DEFINE_REACTIONS {
+        vol1 -> NULL [1E5]
+    }
+
+    INSTANTIATE World OBJECT {
+        vol1_rel RELEASE_SITE {
+            SHAPE = SPHERICAL
+            LOCATION = [0,0,0]
+            SITE_DIAMETER = 0.0
+            MOLECULE = vol1
+            NUMBER_TO_RELEASE = 100
+            RELEASE_PATTERN = rel_pat1
+        }
+    }
+
+    VIZ_OUTPUT {
+        FILENAME = "release_pattern"
+        MOLECULES {
+            NAME_LIST {ALL_MOLECULES}
+            ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}
+        }
+    }
+    REACTION_DATA_OUTPUT {
+        STEP=time_step
+        {COUNT[vol1,WORLD]}=> "./react_data/vol1.dat"
+    }
+
+A release pattern consists of one or more "trains." Each train can last for a certain period of time (**TRAIN_DURATION**), and an interval between trains can be set(**TRAIN_INTERVAL**). Within a given train, you can release molecules at specific intervals (**RELEASE_INTERVALS**). And lastly, the **DELAY** indicates when the first train will start. This may sound more confusing than it really is. Plotting the reaction data should help illustrate what's happening for this specific release pattern.
+
+Clamp Concentration
+--------------------
+Clamp concentration lets you maintain a constant concentration of a molecule at a surface. This is done by creating and destroying molecules at the surface. **CLAMP_CONC** is created and applied like other surface classes (e.g. **ABSORPTIVE**). We'll begin by making two meshes, one which will have the **CLAMP_CONC** applied and the other will prevent molecules from diffusing away from the surface.
+
+Start Blender. Hit **z** to switch to wireframe mode. With the **Cube** selected, hit **s**, **z**, **0.1**, and **Enter**. Hit **Shift-a**, select **Mesh>Plane**. Hit **s**, **0.9**, and **Enter**. Hit the **Material** button in the **Properties** window. Hit **New* and change the material name from **Material.001** to **clamp_sr**. Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **clamp_conc.mdl** and hit **Export MDL**.
+
+Now open **clamp_conc.mdl** and change **iterations** to **500**. Next, add in the following text after the **INCLUDE_FILE** commands::
+
+    DEFINE_MOLECULES {
+        vol1 {DIFFUSION_CONSTANT_3D = 1E-6}
+    }
+
+    DEFINE_SURFACE_CLASSES {
+        clamp_sc {CLAMP_CONC vol1 = 0.00001}
+    }  
+
+    MODIFY_SURFACE_REGIONS {
+        Plane[clamp_sr] {
+            SURFACE_CLASS = clamp_sc
+        }
+    }
+
+Finaly, add the following text to the end of the file::
+
+    REACTION_DATA_OUTPUT {
+        STEP=time_step
+        {COUNT[vol1,WORLD]}=> "./react_data/vol1.dat"
+    }
+
+
 
 Optimizing Your Simulation
 ---------------------------
