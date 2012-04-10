@@ -736,17 +736,45 @@ These simplistic simulations should not be overly taxing on a relatively recent 
 Adding Partitions
 -------------------
 
-Partitions can speed up your simulation, but, if used improperly, they can actually slow your simulation down.
+A full explanation of partitions is outside of the scope of this tutorial, but, essentially, when MCell is checking to see if a reaction occurs, partitions lower the number of potential partners it must check. For practical puprposes, partitions can greatly speed up your simulation, but, if used improperly, they can actually slow it down. Begin by creating the following file::
 
-...
+    ITERATIONS = 1000
+    TIME_STEP = 5e-6
 
-::
+    PARTITION_X = [ [-1.0 TO 1.0 STEP 0.20] ]
+    PARTITION_Y = [ [-1.0 TO 1.0 STEP 0.20] ]
+    PARTITION_Z = [ [-1.0 TO 1.0 STEP 0.20] ]
 
-    PARTITION_X = [ [-1.5 TO 1.5 STEP 0.01] ]
-    PARTITION_Y = [ [-1.5 TO 1.5 STEP 0.01] ]
-    PARTITION_Z = [ [-1.5 TO 1.5 STEP 0.01] ]
+    INCLUDE_FILE = "./tutorial_Cube.mdl"
 
-NEED TO FINISH THIS SECTION
+    DEFINE_MOLECULES {
+        vol1 {DIFFUSION_CONSTANT_3D = 1E-6}
+        vol2 {DIFFUSION_CONSTANT_3D = 1E-6}
+        vol3 {DIFFUSION_CONSTANT_3D = 1E-6}
+    }
+
+    DEFINE_REACTIONS {
+        vol1 + vol2 -> vol1 + vol3 [1E7]
+        vol1 + vol3 -> vol2 + vol3 [1E6]
+    }
+
+    INSTANTIATE World OBJECT {
+        Cube OBJECT Cube{}
+        vol1_rel RELEASE_SITE {
+            SHAPE = World.Cube
+            MOLECULE = vol1
+            NUMBER_TO_RELEASE = 2000
+        }
+        vol2_rel RELEASE_SITE {
+            SHAPE = World.Cube
+            MOLECULE = vol2
+            NUMBER_TO_RELEASE = 2000
+        }
+    }
+
+The only new thing in this MDL is that it contains the **PARTITION** commands. Each of these three commands creates planes along the axis specified. The intersection of these planes create subvolumes. The distance of these subvolumes should generally not be smaller in length than the mean diffusion distance of the faster molecules in your simulation.
+
+Run this MDL, and take note of the **Total wall clock time** reported by MCell. Then remove (or comment out) the partitions and run it again. The actual speed improvement will depend on the machine running it, but for the machine this example was tested on, it resulted in a speed increase of almost six times.
 
 Target Only
 -----------
@@ -758,9 +786,19 @@ NEED TO FINISH THIS SECTION
 Only Export What You Need
 --------------------------
 
-Visualization data can be great if you are making a figure to accompany a paper, or you are trying to troubleshoot a problem in your simulation, but there's probably no need to export everything at all times (**ALL_DATA @ ALL_ITERATIONS**). You could either comment out the **VIZ_OUTPUT** section entirely when you don't need it or only export what you need. This can speed up your simulation and save you disk space.
+Visualization data can be great if you are making a figure to accompany a paper, or you are trying to troubleshoot a problem in your simulation, but there's probably no need to export everything at all times (**ALL_DATA @ ALL_ITERATIONS**). You could either comment out the **VIZ_OUTPUT** section entirely when you don't need it or only export what you need. This can speed up your simulation and save you disk space. The following **VIZ_OUPUT** sections illustrates how to selectively export visualization data::
 
-NEED TO FINISH THIS SECTION
+    VIZ_OUTPUT {
+        FILENAME = "selective"
+        MOLECULES {
+            NAME_LIST {vol1}
+            ITERATION_NUMBERS {ALL_DATA @ [[100 TO 200 STEP 10]]}
+        }   
+    }   
+
+The line **NAME_LIST {vol1}** indicates that we will only be exporting the molecule named **vol1**. The following line indicates that we will export it from iterations 100 to 200 at every 10 steps (i.e. 100, 110, ... 190, 200). The **MESHES** section was also omitted entirely. 
+
+These are just examples of what you can do, and the actual list of molecules, meshes, and iterations that you export will depend entirely on your own needs for your specific simulation.
 
 Analyzing Your Data
 --------------------
@@ -803,12 +841,12 @@ Create a file called **hist.py** and copy the following text into it::
 
     mol_pos_file = "./diff_viz_data/frame_data/iteration_1000/vol1.positions.dat"
     data = np.genfromtxt(mol_pos_file)   # open molecule positions as 2d array
-    data = data[:, 0]                      # create array from 1st column (X pos)
+    data = data[:, 0]                    # create array from 1st column (X pos)
     print('The min is: %.3f' % np.min(data))
     print('The max is: %.3f' % np.max(data))
     print('The mean is: %.3f' % np.mean(data))
     print('The standard deviation is: %.3f' % np.std(data))
-    plt.hist(data, 100)                   # create a histogram with 100 bins
+    plt.hist(data, 100)                  # create a histogram with 100 bins
     plt.xlabel('Distance (Microns)')     # add an x-axis label
     plt.ylabel('Molecules')              # add an y-axis label
     plt.show()                           # plot the data
