@@ -52,6 +52,8 @@ The completed project files for the tutorial can be downloaded here_ (NEED TO UP
   * `Target Only`_
   * `Only Export What You Need`_
 
+* `Analyzing Your Data`_
+
 Software Needed
 ------------------------
 To use this tutorial, you'll want to have the following software installed:
@@ -60,14 +62,17 @@ To use this tutorial, you'll want to have the following software installed:
 * DReAMM_ (registration required)
 * Blender_
 * `Blender MDL export plugin`_
-* Text editor (gedit_, vim, emacs, etc.)
-* Graphing software (Grace_, gnuplot, etc.)
+* Text editor (gedit_, vim_, emacs_, etc.)
+* Graphing software (matplotlib_, Grace_, gnuplot, etc.)
 
 .. _MCell: http://mcell.psc.edu/download.html
 .. _DReAMM: http://mcell.psc.edu/download.html
 .. _Blender: http://www.blender.org/download/get-blender/
 .. _Blender MDL export plugin: http://mcell.psc.edu/download/files/io_mesh_mdl.tgz
 .. _gedit: http://projects.gnome.org/gedit/
+.. _vim: http://www.vim.org/
+.. _emacs: http://www.gnu.org/software/emacs/
+.. _matplotlib: http://matplotlib.sourceforge.net/
 .. _Grace: http://plasma-gate.weizmann.ac.il/Grace/
 
 This tutorial assumes you are using either some version of linux (e.g. Ubuntu_) or OSX as your operating system. It also requires that you have some basic familiarity with the command line. There are many tutorials online that explain the basics, like `this one`_.
@@ -545,8 +550,8 @@ Checkpointing allows you to stop a simulation at a specified iteration and resum
 
 We'll cover how to set up checkpointing in the next two sections, starting with a simple case where we modify a couple parameters. Then we will follow this up with a more interesting case where we have a mesh changing shape over time and molecules that will react to it.
 
-  * `Basic Checkpointing`_
-  * `Checkpointing and Dynamic Meshes`_
+* `Basic Checkpointing`_
+* `Checkpointing and Dynamic Meshes`_
 
 Basic Checkpointing
 --------------------
@@ -756,6 +761,66 @@ Only Export What You Need
 Visualization data can be great if you are making a figure to accompany a paper, or you are trying to troubleshoot a problem in your simulation, but there's probably no need to export everything at all times (**ALL_DATA @ ALL_ITERATIONS**). You could either comment out the **VIZ_OUTPUT** section entirely when you don't need it or only export what you need. This can speed up your simulation and save you disk space.
 
 NEED TO FINISH THIS SECTION
+
+Analyzing Your Data
+--------------------
+
+There are many tools available for plotting and analyzing data. We will make use of python along with numpy and matplotlib. Using these tools, we will generate a histogram of molecule locations relative to the origin, and also find such things as the mean, min, and max. First, however, we need the mdl. Create a mdl called **diff.mdl**, and insert the following text into it::
+
+    TIME_STEP = 1.0e-6
+    ITERATIONS = 1000
+                     
+    DEFINE_MOLECULES {
+        vol1 {DIFFUSION_CONSTANT_3D = 1e-7}
+    }
+
+    INSTANTIATE world OBJECT { 
+        vol1_rel SPHERICAL_RELEASE_SITE {
+            LOCATION = [0,0,0] 
+            MOLECULE = vol1 
+            NUMBER_TO_RELEASE = 5000
+            SITE_DIAMETER = 0.0 
+        }   
+    }
+
+    VIZ_OUTPUT {
+        VIZ_MOLECULE_FORMAT = ASCII
+        FILENAME = "diff" 
+        MOLECULES { 
+            NAME_LIST {ALL_MOLECULES}
+            ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}  
+        }   
+    } 
+
+This is very similar to MDLs you have run in the past with the exception of the line **VIZ_MOLECULE_FORMAT = ASCII**. Normally, "viz_data" molecule locations are stored in a binary file to make them smaller, but this command will cause them to be created in a human-readable, ASCII format.
+
+Run this mdl by typing **mcell diff.mdl**. It will create a visualization directory called **diff_viz_data**.
+
+Create a file called **hist.py** and copy the following text into it::
+
+    import numpy as np
+    import matplotlib.pyplot as plt 
+
+    mol_pos_file = "./diff_viz_data/frame_data/iteration_1000/vol1.positions.dat"
+    data = np.genfromtxt(mol_pos_file)   # open molecule positions as 2d array
+    data = data[:, 0]                      # create array from 1st column (X pos)
+    print('The min is: %.3f' % np.min(data))
+    print('The max is: %.3f' % np.max(data))
+    print('The mean is: %.3f' % np.mean(data))
+    print('The standard deviation is: %.3f' % np.std(data))
+    plt.hist(data, 100)                   # create a histogram with 100 bins
+    plt.xlabel('Distance (Microns)')     # add an x-axis label
+    plt.ylabel('Molecules')              # add an y-axis label
+    plt.show()                           # plot the data
+
+Although the comments explain what is happening, let's break it down as simply as possible. The file **vol1.positions.dat** contains the positions of each vol1 molecule at an iteration specified by the directory (e.g. **iteration_1000**). Every line of the file contains three numbers each separated by a space. These numbers represent the x, y, and z locations. Here are what the first few lines of **vol.positions.dat** in the **iteration_1000** directory look like::
+
+    -0.258572 0.15827 -0.0314231 
+    0.0452288 -0.0677351 0.037688 
+    -0.0572103 0.0192047 -0.0370933 
+    0.0644877 0.230798 -0.0415339 
+
+We are loading **vol1.positions.dat** into a two dimensional array called **data**. We then "slice" the first column which contains all the X locations. We then print the min, max, mean, and standard deviation to the command line. Lastly, we create the histogram with labels and plot (or show) it.
 
 .. #target-notes::
 .. #index:: Blender 
