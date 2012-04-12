@@ -4,7 +4,7 @@ An Introduction to MCell
 Overview
 -------------------------
 
-In order to quickly show what can be done with MCell, we'll begin by generating a simple model, and gradually add in more features. Our initial model will contain a cube that has diffusing surface and volume molecules that react with each other to create new molecules.
+In order to quickly show what can be done with MCell, we'll begin by generating a simple model and gradually add in more features. Our initial model will contain a cube that has diffusing surface and volume molecules that react with each other to create new molecules. Later, we'll add more complex reactions and surface properties. At that point, we'll begin to move on to some more advanced topics, like optimizing a simulation and analyzing data.
 
 Much of the theory will be skipped over, as it's available elsewhere_. For a more detailed explanation of any given topic, please see the `quick reference guide`_. 
 
@@ -44,6 +44,9 @@ The completed project files for the tutorial can be downloaded here_ (NEED TO UP
   * `Basic Checkpointing`_
   * `Checkpointing and Dynamic Meshes`_
 
+    * `Creating the Animated Mesh in Blender`_
+    * `Annotating a Sequence of MDLs`_
+
 * `Release Patterns`_
 * `Clamp Concentration`_
 * `Optimizing Your Simulation`_
@@ -62,8 +65,8 @@ To use this tutorial, you'll want to have the following software installed:
 * DReAMM_ (registration required)
 * Blender_
 * `Blender MDL export plugin`_
-* Text editor (gedit_, vim_, emacs_, etc.)
-* Graphing software (matplotlib_, Grace_, gnuplot, etc.)
+* A text editor (gedit_, vim_, emacs_, etc.)
+* Some graphing and analysis software (matplotlib_ (with python_ and numpy_), Grace_, gnuplot, etc.)
 
 .. _MCell: http://mcell.psc.edu/download.html
 .. _DReAMM: http://mcell.psc.edu/download.html
@@ -73,9 +76,11 @@ To use this tutorial, you'll want to have the following software installed:
 .. _vim: http://www.vim.org/
 .. _emacs: http://www.gnu.org/software/emacs/
 .. _matplotlib: http://matplotlib.sourceforge.net/
+.. _python: http://www.python.org
+.. _numpy: http://numpy.scipy.org/
 .. _Grace: http://plasma-gate.weizmann.ac.il/Grace/
 
-This tutorial assumes you are using either some version of linux (e.g. Ubuntu_) or OSX as your operating system. It also requires that you have some basic familiarity with the command line. There are many tutorials online that explain the basics, like `this one`_.
+This tutorial assumes you are using either some version of linux (e.g. Ubuntu_) or OSX as your operating system. It also requires that you have some basic familiarity with the command line. There are many tutorials online that explain the basics, like `this one`_. Although no previous knowledge of Blender, DReAMM, or python is required, the goal of this tutorial is not to teach these topics. There are already many good resources available to learn about these subjects.
 
 .. _Ubuntu: http://www.ubuntu.com/download
 .. _this one: http://www.tuxfiles.org/linuxhelp/linuxfiles.html
@@ -89,37 +94,39 @@ The majority of this tutorial can be easily accomplished by following along with
 
 You can skip to the next section (`Run the Simulation`_) if you have watched the previous video tutorial. Otherwise, follow along with the rest of the directions in this section. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/material_button.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/cube.png
 
-Open up a terminal and start Blender. You should see a cube in the **3D View Window**. Hit the **Material** button in the **Properties Window**. 
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/material_button.png
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/plus_button.png
+Open up a terminal and type **blender**. You should see a cube in the **3D View Window**. Hit the **Material** button in the **Properties Window**. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/new_button.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/plus_button.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/new_button.png
 
 Hit the **+** button and then the **New** button. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/top.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/top.png
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/sides_and_bottom.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/sides_and_bottom.png
 
 Change the newly created material text field from **Material.001** to **top**. Left click **Material** in the list of materials. Change the text field from **Material** to **sides_and_bottom**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/face_select.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/face_select.png
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/right_click.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/right_click.png
 
 Move the cursor to the **3D View Window**. Hit **Tab** to change into **Edit Mode**. Hit **Ctrl-Tab** and select **Face**. Then **right click** on the top face to select it.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/assign.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/assign.png
 
 Select the **top** material from the list of materials. Click **Assign**. Hit **Tab** to change back into **Object Mode**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/export_mdl.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_mdl.png
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/export_mdl_dir.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_mdl_dir.png
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/export_mdl_button.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_mdl_button.png
 
 Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **tutorial.mdl** and hit **Export MDL**.
 
@@ -238,7 +245,7 @@ After the **INCLUDE_FILE** command, add a **DEFINE_MOLECULES** section as show h
         surf1 {DIFFUSION_CONSTANT_2D = 1E-7}
     }
 
-Molecules that use **DIFFUSION_CONSTANT_3D** command, like **vol1** and **vol2**, will be volume molecules, meaning that they will exist in solution. Molecules that use **DIFFUSION_CONSTANT_2D**, like **surf1**, will be surface molecules, meaning that they exist on a surface. The units of the value assigned to this command (**1E-6** and **1E-7** in this instance) are in cm\ :sup:`2`\ /s. 
+Molecules that use **DIFFUSION_CONSTANT_3D** command, like **vol1** and **vol2**, will be volume molecules, meaning that they will exist in solution. Molecules that use **DIFFUSION_CONSTANT_2D**, like **surf1**, will be surface molecules, meaning that they exist on a surface. The units of the values assigned to this command (**1E-6** and **1E-7** in this instance) are in cm\ :sup:`2`\ /s. 
 
 Reactions
 -----------
@@ -389,13 +396,13 @@ Modify the Mesh
 
 In order to complete the next section (`Surface Classes`_), we first have to make a few simple changes to our Blender model. We'll pick up right where we left off in `Generate Mesh and Export MDL with Blender`_. Hit **z** to switch to a wireframe view. Hit **Shift-a** and select **Plane**. Hit **g** to "grab" the plane, **z** to constrain the movement to the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm.
 
-Hit the **New** button in the **Materials** section of the **Properties** window. 
-
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/new_mat_plane.png
 
-Change the newly created material text field from **Material** to **above**. Click **Assign**. 
+Hit the **New** button in the **Materials** section of the **Properties** window. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/mat_above.png
+
+Change the newly created material text field from **Material** to **above**. Click **Assign**. 
 
 Next, select **File>Export>Model Description Language (.mdl)**. Deselect **Instantiate & Viz** so that we only export the new meshes and don't override the changes in **tutorial.mdl**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **tutorial.mdl** and hit **Export MDL**.
 
@@ -442,7 +449,7 @@ Hit the **New** button in the **Materials** section of the **Properties** window
 
 Change the newly created material text field from **Material** to **inside**. Click **Assign**. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/mat_inside.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/mat_inside.png
 
 Next, select **File>Export>Model Description Language (.mdl)**. Deselect **Instantiate & Viz** to indicate that we *only* want to export the mesh object. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **tutorial.mdl** and hit **Export MDL**.
 
