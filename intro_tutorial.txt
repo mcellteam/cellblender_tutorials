@@ -89,9 +89,17 @@ This tutorial assumes you are using either some version of linux (e.g. Ubuntu_) 
 Generate Mesh and Export MDL with Blender
 ---------------------------------------------
 
-The majority of this tutorial can be easily accomplished by following along with the text. However, sections that rely heavily on a GUI (like this one), might be better understood by watching a `video tutorial`_ (NEED TO CREATE).
+The majority of this tutorial can be easily accomplished by following along with the text. However, sections that rely heavily on a GUI (like this one), might be better understood by watching a `video tutorial`_.
 
-.. _video tutorial: http://mcell.psc.edu
+.. _video tutorial: http://mcell.psc.edu/tutorials/videos/main/blender_pt1.mp4
+
+.. raw:: html
+
+    <video id="my_video_1" class="video-js vjs-default-skin" controls
+      preload="auto" width="560" height="350" 
+      data-setup='{"example_option":true}'>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/blender_pt1.ogg" type='video/ogg'/>
+    </video>
 
 You can skip to the next section (`Run the Simulation`_) if you have watched the previous video tutorial. Otherwise, follow along with the rest of the directions in this section. 
 
@@ -145,9 +153,17 @@ At the command line, navigate to the appropriate directory (**/home/user/mcell_t
 Visualize the Mesh
 -------------------------
 
-As with the Blender section, this section requires extensive use of a GUI, so you may find it easier to follow along with this short `video tutorial`_ (NEED TO CREATE).
+As with the Blender section, this section requires extensive use of a GUI, so you may find it easier to follow along with this `second video tutorial`_.
 
-.. _video tutorial: http://mcell.psc.edu
+.. _second video tutorial: http://mcell.psc.edu/tutorials/videos/main/dreamm_pt1.mp4
+
+.. raw:: html
+
+    <video id="my_video_1" class="video-js vjs-default-skin" controls
+      preload="auto" width="560" height="350" 
+      data-setup='{"example_option":true}'>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/dreamm_pt1.ogg" type='video/ogg'/>
+    </video>
 
 You can skip to the next section (`Annotate the MDL`_) if you have watched the previous video tutorial. Otherwise, follow along with the rest of the directions in this section. 
 
@@ -332,6 +348,20 @@ As before, navigate to the appropriate directory, type **mcell tutorial.mdl**, a
 Visualize the Molecules
 -------------------------------
 
+Visualize the molecules with DReAMM in this `third video tutorial`_.
+
+.. _third video tutorial: http://mcell.psc.edu/tutorials/videos/main/dreamm_rendering.mp4
+
+.. raw:: html
+
+    <video id="my_video_1" class="video-js vjs-default-skin" controls
+      preload="auto" width="560" height="350" 
+      data-setup='{"example_option":true}'>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/dreamm_pt2.ogg" type='video/ogg'/>
+    </video>
+
+Skip to the next section (`Customize Rendering Properties`_) if you just watched the video tutorial.
+
 If you still have DReAMM open, hit the **Reimport** button and add the wireframe for **World.Cube** in the same way that you did in `Visualize the Mesh`_. If you closed DReAMM, simply follow all the steps in `Visualize the Mesh`_ again. When you are finished, you should have the centered cube in the middle of the **DReAMM Image Window**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/volume_molecules.png
@@ -350,6 +380,20 @@ Hit the Play button on the Sequencer and watch the molecules diffusing and react
 
 Customize Rendering Properties
 -------------------------------
+
+Learn how to customize rendering properties with DReAMM in this `fourth video tutorial`_.
+
+.. _fourth video tutorial: http://mcell.psc.edu/tutorials/videos/main/dreamm_rendering.mp4
+
+.. raw:: html
+
+    <video id="my_video_1" class="video-js vjs-default-skin" controls
+      preload="auto" width="560" height="350" 
+      data-setup='{"example_option":true}'>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/dreamm_rendering.ogg" type='video/ogg'/>
+    </video>
+
+Skip to the next section (`Graph the Reaction Data`_) if you just watched the video tutorial.
 
 By default, every molecule just shows up as a white pixel. This might be fine if you only have one molecule in your simulation, but, for anything more complicated, you will probably want to be able to differentiate between them.
 
@@ -811,7 +855,7 @@ These are just examples of what you can do, and the actual list of molecules, me
 Analyzing Your Data
 --------------------
 
-There are many tools available for plotting and analyzing data. We will make use of python along with numpy and matplotlib. Using these tools, we will generate a histogram of molecule locations relative to the origin, and also find such things as the mean, min, and max. First, however, we need the mdl. Create a mdl called **diff.mdl**, and insert the following text into it::
+There are many tools available for plotting and analyzing data. We will make use of python along with numpy and matplotlib. Using these tools, we will generate a histogram of molecule locations relative to the origin, and also find such things as the mean, min, and max. First, however, we need the mdl. Create an mdl called **diff.mdl**, and insert the following text into it::
 
     TIME_STEP = 1.0e-6
     ITERATIONS = 1000
