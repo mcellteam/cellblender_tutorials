@@ -89,9 +89,7 @@ This tutorial assumes you are using either some version of linux (e.g. Ubuntu_) 
 Generate Mesh and Export MDL with Blender
 ---------------------------------------------
 
-The majority of this tutorial can be easily accomplished by following along with the text. However, sections that rely heavily on a GUI (like this one), might be better understood by watching a `video tutorial`_.
-
-.. _video tutorial: http://mcell.psc.edu/tutorials/videos/main/blender_pt1.mp4
+The majority of this tutorial can be easily accomplished by following along with the text. However, sections that rely heavily on a GUI (like this one), might be better understood by watching a video tutorial.
 
 .. raw:: html
 
@@ -153,9 +151,7 @@ At the command line, navigate to the appropriate directory (**/home/user/mcell_t
 Visualize the Mesh
 -------------------------
 
-As with the Blender section, this section requires extensive use of a GUI, so you may find it easier to follow along with this `second video tutorial`_.
-
-.. _second video tutorial: http://mcell.psc.edu/tutorials/videos/main/dreamm_pt1.mp4
+As with the Blender section, this section requires extensive use of a GUI, so you may find it easier to follow along with this video tutorial.
 
 .. raw:: html
 
@@ -348,9 +344,7 @@ As before, navigate to the appropriate directory, type **mcell tutorial.mdl**, a
 Visualize the Molecules
 -------------------------------
 
-Visualize the molecules with DReAMM in this `third video tutorial`_.
-
-.. _third video tutorial: http://mcell.psc.edu/tutorials/videos/main/dreamm_rendering.mp4
+Visualize molecules with DReAMM in this third video tutorial.
 
 .. raw:: html
 
@@ -381,9 +375,7 @@ Hit the Play button on the Sequencer and watch the molecules diffusing and react
 Customize Rendering Properties
 -------------------------------
 
-Learn how to customize rendering properties with DReAMM in this `fourth video tutorial`_.
-
-.. _fourth video tutorial: http://mcell.psc.edu/tutorials/videos/main/dreamm_rendering.mp4
+Learn how to customize rendering properties with DReAMM in this fourth video tutorial.
 
 .. raw:: html
 
