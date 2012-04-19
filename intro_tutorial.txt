@@ -787,7 +787,7 @@ Now open **clamp_conc.mdl** and change **iterations** to **500**. Next, add in t
     }
 
     DEFINE_SURFACE_CLASSES {
-        clamp_sc {CLAMP_CONC vol1 = 0.00001}
+        clamp_sc {CLAMP_CONC vol1 = 1E-5}
     }  
 
     MODIFY_SURFACE_REGIONS {
@@ -800,10 +800,12 @@ Finaly, add the following text to the end of the file::
 
     REACTION_DATA_OUTPUT {
         STEP=time_step
-        {COUNT[vol1,WORLD]}=> "./react_data/vol1.dat"
+        {COUNT[vol1,World.Plane,ESTIMATE_CONC]}=> "./react_data/vol1.dat"
     }
 
+Save and run the mdl by typing **mcell clamp_conc.mdl**. The only new commands here are **CLAMP_CONC** and **ESTIMATE_CONC**. **CLAMP_CONC** is applied like any other surface class, except that the molarity of a certain molecule is specified. **ESTIMATE_CONC** is used in a count statement after an object or region, and (unsurprisingly) estimates the concentration at that location. *Note:* The units for these two commands are different; **CLAMP_CONC** is M and **ESTIMATE_CONC** is uM.
 
+In this example, we clamp the concentration of **vol1** at a molarity of **1E-5** M. When you plot the results, you'll notice that the concentration of molecules increases for a period of time and then reaches a steady state near 10 uM, which is what we would expect given what we asked for in the **CLAMP_CONC** command. 
 
 Optimizing Your Simulation
 ---------------------------
