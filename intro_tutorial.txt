@@ -94,7 +94,7 @@ The majority of this tutorial can be easily accomplished by following along with
 .. raw:: html
 
     <video id="my_video_1" class="video-js vjs-default-skin" controls
-      preload="auto" width="560" height="350" 
+      preload="metadata" width="840" height="525" 
       data-setup='{"example_option":true}'>
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/blender_pt1.ogg" type='video/ogg'/>
     </video>
@@ -156,7 +156,7 @@ As with the Blender section, this section requires extensive use of a GUI, so yo
 .. raw:: html
 
     <video id="my_video_1" class="video-js vjs-default-skin" controls
-      preload="auto" width="560" height="350" 
+      preload="metadata" width="840" height="525" 
       data-setup='{"example_option":true}'>
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/dreamm_pt1.ogg" type='video/ogg'/>
     </video>
@@ -229,9 +229,9 @@ The first four lines are some `Initialization Commands`_ that we'll cover in the
 
 **INCLUDE_FILE** commands let you break up MDLs into multiple sections. In this particular instance, the vertices and faces that make up our **Cube** are being imported or *included*.
 
-You can't simply include meshes; you also have to **INSTANTIATE** them to have them exist and interact in our simulation. We'll see later that we can also instantiate other types of objects, like molecule `Release Sites`_.
+You can't simply include meshes; you also have to **INSTANTIATE** them to make them exist and interact in the simulation. We'll see later that we can also instantiate other types of objects, like molecule `Release Sites`_.
 
-Lastly, the **VIZ_OUTPUT** block specifies what visualization data to export and at what time values. Right now, it is set to export everything. 
+Lastly, the **VIZ_OUTPUT** section specifies what visualization data to export and at what time values. Right now, it is set to export everything. 
 
 Initialization Commands
 -------------------------
@@ -344,12 +344,12 @@ As before, navigate to the appropriate directory, type **mcell tutorial.mdl**, a
 Visualize the Molecules
 -------------------------------
 
-Visualize molecules with DReAMM in this third video tutorial.
+Visualize molecules with DReAMM in this video tutorial.
 
 .. raw:: html
 
     <video id="my_video_1" class="video-js vjs-default-skin" controls
-      preload="auto" width="560" height="350" 
+      preload="metadata" width="840" height="525" 
       data-setup='{"example_option":true}'>
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/dreamm_pt2.ogg" type='video/ogg'/>
     </video>
@@ -375,12 +375,12 @@ Hit the Play button on the Sequencer and watch the molecules diffusing and react
 Customize Rendering Properties
 -------------------------------
 
-Learn how to customize rendering properties with DReAMM in this fourth video tutorial.
+Learn how to customize rendering properties with DReAMM in this video tutorial.
 
 .. raw:: html
 
     <video id="my_video_1" class="video-js vjs-default-skin" controls
-      preload="auto" width="560" height="350" 
+      preload="metadata" width="840" height="525" 
       data-setup='{"example_option":true}'>
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/dreamm_rendering.ogg" type='video/ogg'/>
     </video>
@@ -431,6 +431,18 @@ Plot **vol1.dat** and **vol2.dat** with the graphing software of your choice. If
 Modify the Mesh
 ----------------
 
+Watch the following video tutorial or follow along with the instructions below.
+
+.. raw:: html
+
+    <video id="my_video_1" class="video-js vjs-default-skin" controls
+      preload="metadata" width="840" height="525" 
+      data-setup='{"example_option":true}'>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/export_above.ogg" type='video/ogg'/>
+    </video>
+
+If you watched the previous video tutorial, you can skip ahead to `Surface Classes`_.
+
 In order to complete the next section (`Surface Classes`_), we first have to make a few simple changes to our Blender model. We'll pick up right where we left off in `Generate Mesh and Export MDL with Blender`_. Hit **z** to switch to a wireframe view. Hit **Shift-a** and select **Plane**. Hit **g** to "grab" the plane, **z** to constrain the movement to the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/new_mat_plane.png
@@ -451,7 +463,7 @@ After the first **INCLUDE** command, add this::
 
     INCLUDE_FILE = "./tutorial_Plane.mdl"
 
-Before the **DEFINE_REACTIONS** block, add the following::
+Before the **DEFINE_REACTIONS** section, add the following::
 
     DEFINE_SURFACE_CLASSES {
         absorb_vol2 {ABSORPTIVE = vol2}
@@ -459,7 +471,7 @@ Before the **DEFINE_REACTIONS** block, add the following::
 
 The command above creates a surface class called **absorb_vol2**. Since **vol2** is the value set to the **ABSORPTIVE** command, this means that any **vol2** molecules that touch a surface that has the **absorb_vol2** surface class will be destroyed.
 
-Now we actually have to apply the surface class to a surface region. After the **DEFINE_REACTIONS** block, add the following::
+Now we actually have to apply the surface class to a surface region. After the **DEFINE_REACTIONS** section, add the following::
 
     MODIFY_SURFACE_REGIONS {
         Plane[above] {
@@ -478,7 +490,19 @@ Save the file and run it with MCell (type **mcell tutorial.mdl** and hit **Enter
 More Mesh Modifications
 ------------------------
 
-We're now picking up where we left off in `Modify the Mesh`_. In fact, the instructions will be very similar, aside from few minor changes. While still in **Object Mode**, hit **Shift-a**, select **Plane**, and **Enter** to confirm.  
+Watch the following video tutorial or follow along with the instructions below.
+
+.. raw:: html
+
+    <video id="my_video_1" class="video-js vjs-default-skin" controls
+      preload="metadata" width="840" height="525" 
+      data-setup='{"example_option":true}'>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/export_inside.ogg" type='video/ogg'/>
+    </video>
+
+If you watched the previous video tutorial, you can skip ahead to `Surface Classes and Reactions`_.
+
+We need to make a few more changes to our Blender model to complete the next section (`Surface Classes and Reactions`_). We're picking up where we left off in `Modify the Mesh`_. In fact, the instructions will be very similar, aside from few minor changes. While still in **Object Mode**, hit **Shift-a**, select **Plane**, and **Enter** to confirm.  
 
 Hit the **New** button in the **Materials** section of the **Properties** window. 
 
@@ -488,7 +512,7 @@ Change the newly created material text field from **Material** to **inside**. Cl
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/mat_inside.png
 
-Next, select **File>Export>Model Description Language (.mdl)**. Deselect **Instantiate & Viz** to indicate that we *only* want to export the mesh object. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **tutorial.mdl** and hit **Export MDL**.
+Next, select **File>Export>Model Description Language (.mdl)**. *Deselect* **Instantiate & Viz** to indicate that we *only* want to export the mesh object. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **tutorial.mdl** and hit **Export MDL**.
 
 Surface Classes and Reactions
 ------------------------------
@@ -507,21 +531,21 @@ Modify the **DEFINE_MOLECULES** section like this::
         surf2 {DIFFUSION_CONSTANT_2D = 0}
     }  
 
-Change the **DEFINE_SURFACE_CLASSES** block as follows::
+Change the **DEFINE_SURFACE_CLASSES** section as follows::
 
     DEFINE_SURFACE_CLASSES {
         absorb_vol1 {ABSORPTIVE = vol1}
         empty {}
     }  
 
-This new surface class, **empty**, is the simplest case you can have for a surface class. By itself, it's not very useful, but we can use it in reactions. Modify the **DEFINE_REACTIONS** block as follows::
+This new surface class, **empty**, is the simplest case you can have for a surface class. By itself, it's not very useful, but we can use it in reactions. Modify the **DEFINE_REACTIONS** section as follows::
 
     DEFINE_REACTIONS {
         vol1, + surf1' -> surf1' + vol2' [1E8]
         vol1, + surf2' @ empty' -> surf2' + vol2' [1E8]
     }   
 
-The above change means that **vol1** will only react with the **BOTTOM** of **surf** at the **BACK** of the **empty** surface class. This means the reaction won't occur when the surface molecules diffuse away from surface regions that have this surface class applied (i.e. when it diffuses from **top** to **sides_and_bottom**). Lastly, change the **MODIFY_SURFACE_REGIONS** block like this::
+The above change means that **vol1** will only react with the **BOTTOM** of **surf** at the **BACK** of the **empty** surface class. This means the reaction won't occur when the surface molecules diffuse away from surface regions that have this surface class applied (i.e. when it diffuses from **top** to **sides_and_bottom**). Lastly, change the **MODIFY_SURFACE_REGIONS** section like this::
 
     MODIFY_SURFACE_REGIONS {
         Plane[above] {
@@ -532,7 +556,7 @@ The above change means that **vol1** will only react with the **BOTTOM** of **su
         }
     }
 
-Lastly, we need to instantiate our new **Plane.001** object and add in a release site for **surf2**, so modify the **INSTANTIATE** block like this::
+Lastly, we need to instantiate our new **Plane.001** object and add in a release site for **surf2**, so modify the **INSTANTIATE** section like this::
 
     INSTANTIATE World OBJECT {
         Plane OBJECT Plane{}
@@ -646,6 +670,19 @@ For this section, we will create a mesh in blender that shrinks and then grows. 
 
 Creating the Animated Mesh in Blender
 --------------------------------------
+
+Watch the following video tutorial or follow along with the instructions below.
+
+.. raw:: html
+
+    <video id="my_video_1" class="video-js vjs-default-skin" controls
+      preload="metadata" width="840" height="525" 
+      data-setup='{"example_option":true}'>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/anim.ogg" type='video/ogg'/>
+    </video>
+
+If you watched the previous video tutorial, you can skip ahead to `Annotating a Sequence of MDLs`_.
+
 Open Blender. The Cube object should already be selected. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/scale_keyframe.png
@@ -658,7 +695,7 @@ Then click in the current frame marker and change it to **10**. Note: each frame
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_animation.png
 
-Now select **File>Export>Model Description Language (.mdl)**. Navigate to **/home/user/mcell_tutorial/anim** and select **OK** when it prompts you to make a new directory. Change the file name to **scaling.mdl**. Select **Enable Animation** and **Iterate Script**. Change **End** from **10** to **20** and hit **Export MDL**.
+Now select **File>Export>Model Description Language (.mdl)**. Navigate to **/home/user/mcell_tutorial/anim** and select **OK** when it prompts you to make a new directory. Change the file name to **scaling.mdl**. Select **Enable Animation** and **Iterate Script**. Hit **Export MDL**.
 
 Annotating a Sequence of MDLs
 ------------------------------
