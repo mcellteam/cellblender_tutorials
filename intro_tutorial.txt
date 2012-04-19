@@ -860,9 +860,40 @@ Run this MDL, and take note of the **Total wall clock time** reported by MCell. 
 Target Only
 -----------
 
-If you have a reaction between two molecules in which there are a lot of one molecule and very few of another, you might want to consider using the TARGET ONLY command.
+If you have a reaction between two molecules in which there are many of one molecule and very few of another, you might want to consider using the **TARGET_ONLY** command. Normally, a diffusing molecule will check to see if there are any potential molecules to react with. However, a molecule that is marked as **TARGET_ONLY** can only be the target of a reaction, and will not search for partners to react with. Copy the following example into a file called **target_only.mdl**::
 
-NEED TO FINISH THIS SECTION
+    iterations = 500
+    time_step = 5e-6
+    ITERATIONS = iterations
+    TIME_STEP = time_step
+
+    INCLUDE_FILE = "./tutorial_Cube.mdl"
+
+    DEFINE_MOLECULES {
+        vol1 {DIFFUSION_CONSTANT_3D = 1E-6}
+        vol2 {DIFFUSION_CONSTANT_3D = 1E-6 TARGET_ONLY}
+        vol3 {DIFFUSION_CONSTANT_3D = 1E-6}
+    }
+
+    DEFINE_REACTIONS {
+        vol1 + vol2 -> vol1 + vol3 [1E8]
+    }
+
+    INSTANTIATE World OBJECT {
+        Cube OBJECT Cube{}
+        vol1_rel RELEASE_SITE {
+            SHAPE = World.Cube
+            MOLECULE = vol1
+            NUMBER_TO_RELEASE = 100
+        }
+        vol2_rel RELEASE_SITE {
+            SHAPE = World.Cube
+            MOLECULE = vol2
+            NUMBER_TO_RELEASE = 10000
+        }
+    }
+
+In this case, **vol2** is marked as being **TARGET_ONLY** in the **DEFINE_MOLECULES** section. From the **DEFINE_REACTIONS** section, we can see that **vol1** reacts with **vol2** to create **vol3** and reproduce **vol1**. Without the **TARGET_ONLY** command, every **vol2** molecule would have to check to see if there were **vol1** molecules to react with and vice versa. With this command, *only* **vol1** must search for reaction partners. Given that there are 100 **vol1** and 10000 **vol2**, this second method is much more efficient.
 
 Only Export What You Need
 --------------------------
