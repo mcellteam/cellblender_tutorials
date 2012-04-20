@@ -38,12 +38,12 @@ The completed project files for the tutorial can be downloaded here_ (NEED TO UP
 * `Surface Classes`_
 * `More Mesh Modifications`_
 * `Surface Classes and Reactions`_
+* `Variable Reaction Rates`_
+* `Surface Classes and Surface Molecules`_
 
   * `Surface Boundaries - Creating the Mesh`_
   * `Surface Boundaries - Modifying the MDL`_
 
-* `Variable Reaction Rates`_
-* `Surface Classes and Surface Molecules`_
 * `Checkpointing Overview`_
 
   * `Basic Checkpointing`_
