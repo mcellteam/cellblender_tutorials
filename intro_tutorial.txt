@@ -429,9 +429,22 @@ Hit the Play button on the Sequencer and watch the molecules diffusing and react
 Graph the Reaction Data
 ------------------------
 
-Change into the **react_data** directory (**cd react_data**) and type **ls**. You should see two files, **vol1.dat**, and **vol2.dat**. 
+Change into the **react_data** directory (**cd react_data**) and type **ls**. You should see two files, **vol1.dat**, and **vol2.dat**.
 
-Plot **vol1.dat** and **vol2.dat** with the graphing software of your choice. If you're using xmgrace, just type **xmgrace vol\*.dat**. There's nothing terribly interesting to see here. **vol1.dat** is decreasing and **vol2.dat** is increasing as expected. It is a quick way to verify that our simulation is working as expected.
+Plot **vol1.dat** and **vol2.dat** with the graphing software of your choice. For something as simple as this, xmgrace or gnuplot will suffice. Although we don't need all the power (and complexity) of numpy and matplotlib right now, we'll introduce it here anyways, since we will be using it for some more advanced tasks later. First create a file called **plot.py** and put the following text into it::
+
+    #!/usr/bin/env python
+
+    import numpy as np
+    import matplotlib.pyplot as plt 
+
+    x1 = np.genfromtxt("vol1.dat",dtype = float)[:,0]
+    y1 = np.genfromtxt("vol1.dat",dtype = float)[:,1]
+    x2 = np.genfromtxt("vol2.dat",dtype = float)[:,0]
+    y2 = np.genfromtxt("vol2.dat",dtype = float)[:,1]
+    plot(x,y)
+
+Run the file by typing **python plot.py**. You should notice that **vol1.dat** is decreasing and **vol2.dat** is increasing as expected. This can be a quick way to verify that our simulation is working as expected.
 
 Modify the Mesh
 ----------------
@@ -1054,6 +1067,8 @@ This is very similar to MDLs you have run in the past with the exception of the 
 Run this mdl by typing **mcell diff.mdl**. It will create a visualization directory called **diff_viz_data**.
 
 Create a file called **hist.py** and copy the following text into it::
+
+    #!/usr/bin/env python
 
     import numpy as np
     import matplotlib.pyplot as plt 
