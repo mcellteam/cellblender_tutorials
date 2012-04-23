@@ -34,15 +34,22 @@ The completed project files for the tutorial can be downloaded here_ (NEED TO UP
 * `Visualize the Molecules`_
 * `Customize Rendering Properties`_
 * `Graph the Reaction Data`_
-* `Modify the Mesh`_
 * `Surface Classes`_
-* `More Mesh Modifications`_
+
+    * `Modify the Mesh`_
+    * `Modify the MDL`_
+
+* `Surface Classes and Reactions`_
+
+  * `More Mesh Modifications`_
+  * `More MDL Modifications`_
+
 * `Surface Classes and Reactions`_
 * `Variable Reaction Rates`_
 * `Surface Classes and Surface Molecules`_
 
-  * `Surface Boundaries - Creating the Mesh`_
-  * `Surface Boundaries - Modifying the MDL`_
+  * `Creating the Mesh`_
+  * `Modifying the MDL`_
 
 * `Checkpointing Overview`_
 
@@ -140,7 +147,7 @@ Select the **top** material from the list of materials. Click **Assign**. Hit **
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_mdl_button.png
 
-Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **tutorial.mdl** and hit **Export MDL**.
+Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/intro** where **user** is your user name) and select **OK** when it prompts you to make a new directory. In the text field below the directory, type **intro.mdl** and hit **Export MDL**.
 
 Either leave Blender open or save and quit, as we'll need to modify this model later.
 
@@ -151,7 +158,7 @@ Run the Simulation
 
 Let's verify that this simple case works with MCell before adding in more details.
 
-At the command line, navigate to the appropriate directory (**/home/user/mcell_tutorial/**), type **mcell tutorial.mdl**, and hit **Enter**. MCell should output some information to the command line indicating that it ran successfully. Type **ls** and you should see that a directory called **tutorial_viz_data** has been created.
+At the command line, navigate to the appropriate directory (**/home/user/mcell_tutorial/intro**), type **mcell intro.mdl**, and hit **Enter**. MCell should output some information to the command line indicating that it ran successfully. Type **ls** and you should see that a directory called **intro_viz_data** has been created.
 
 Visualize the Mesh
 =============================================
@@ -192,7 +199,7 @@ Leave DReAMM open as we'll return to it shortly.
 
 Annotate the MDL
 =============================================
-Open **tutorial.mdl** with your favorite text editor (try gedit or kedit if you aren't sure what to use).
+Open **intro.mdl** with your favorite text editor (try gedit or kedit if you aren't sure what to use).
 
 - `Examining the MDL`_
 - `Initialization Commands`_
@@ -212,7 +219,7 @@ Before we start making changes, let's *briefly* look at what we have to start wi
     ITERATIONS = iterations
     TIME_STEP = time_step
 
-    INCLUDE_FILE = "./tutorial_Cube.mdl"
+    INCLUDE_FILE = "./intro_Cube.mdl"
 
     INSTANTIATE World OBJECT {
         Cube OBJECT Cube{}
@@ -298,7 +305,7 @@ The directionality of these ticks and commas are relative, which means that we c
 
 Release Sites
 ---------------------------------------------
-Modify the **INSTANTIATE** section of the MDL so it looks like this::
+*Modify* the **INSTANTIATE** section of the MDL so it looks like this::
 
     INSTANTIATE World OBJECT {
         Cube OBJECT Cube{}
@@ -314,7 +321,9 @@ Modify the **INSTANTIATE** section of the MDL so it looks like this::
         }
     }
 
-This adds in two release sites, one called **vol1_rel** and the other **surf1_rel**. Each release site can take a number of different commands. 
+*Note*: Don't just add this section in or you will have two **INSTANTIATE** sections.
+
+This section creates two release sites, one called **vol1_rel** and the other **surf1_rel**. Each release site can take a number of different commands. 
 
 The **SHAPE** of the release determines what object (or region of an object) that molecules are released onto or into. You can also use some predefined shapes, like **CUBIC** or **SPHERICAL**, but we won't cover that here.
 
@@ -344,7 +353,7 @@ Run the Simulation again
 =============================================
 We've finished adding our changes. Let's rerun the simulation with MCell.
 
-As before, navigate to the appropriate directory, type **mcell tutorial.mdl**, and hit **Enter**. After it's finished running, type **ls** and you should see that a new directory called **react_data** has been created.
+As before, navigate to the appropriate directory, type **mcell intro.mdl**, and hit **Enter**. After it's finished running, type **ls** and you should see that a new directory called **react_data** has been created.
 
 Visualize the Molecules
 =============================================
@@ -438,16 +447,23 @@ Plot **vol1.dat** and **vol2.dat** with the graphing software of your choice. Fo
     import numpy as np
     import matplotlib.pyplot as plt 
 
-    x1 = np.genfromtxt("vol1.dat",dtype = float)[:,0]
-    y1 = np.genfromtxt("vol1.dat",dtype = float)[:,1]
-    x2 = np.genfromtxt("vol2.dat",dtype = float)[:,0]
-    y2 = np.genfromtxt("vol2.dat",dtype = float)[:,1]
-    plot(x,y)
+    x1 = np.genfromtxt("./react_data/vol1.dat",dtype = float)[:,0]
+    y1 = np.genfromtxt("./react_data/vol1.dat",dtype = float)[:,1]
+    x2 = np.genfromtxt("./react_data/vol2.dat",dtype = float)[:,0]
+    y2 = np.genfromtxt("./react_data/vol2.dat",dtype = float)[:,1]
+    plt.plot(x1,y1)
+    plt.plot(x2,y2)
+    plt.show()
 
 Run the file by typing **python plot.py**. You should notice that **vol1.dat** is decreasing and **vol2.dat** is increasing as expected. This can be a quick way to verify that our simulation is working as expected.
 
-Modify the Mesh
+Surface Classes
 =============================================
+
+Surface classes allow various properties to be applied to surfaces, which can affect molecules in several possible ways. Begin by creating a copy of the **intro** directory, by typing the following command at the terminal: **cp -fr /home/user/mcell_tutorial/intro /home/user/mcell_tutorial/surf_class** (don't forget to replace **user** with your actual user name).
+
+Modify the Mesh
+---------------------------------------------
 
 Watch the following video tutorial or follow along with the instructions below.
 
@@ -471,15 +487,14 @@ Hit the **New** button in the **Materials** section of the **Properties** window
 
 Change the newly created material text field from **Material** to **above**. Click **Assign**. 
 
-Next, select **File>Export>Model Description Language (.mdl)**. Deselect **Instantiate & Viz** so that we only export the new meshes and don't override the changes in **tutorial.mdl**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **tutorial.mdl** and hit **Export MDL**.
+Next, select **File>Export>Model Description Language (.mdl)**. Deselect **Instantiate & Viz** so that we only export the new meshes and don't override the changes in **intro.mdl**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial/surf_class**). In the text field below the directory, type **intro.mdl** and hit **Export MDL**.
 
-Surface Classes
-=============================================
-Surface classes allow various properties to be applied to surfaces, which can affect molecules in several possible ways.
+Modify the MDL
+---------------------------------------------
 
-After the first **INCLUDE** command, add this::
+Open **intro.mdl** in the new **surf_class** directory. After the first **INCLUDE** command, add this::
 
-    INCLUDE_FILE = "./tutorial_Plane.mdl"
+    INCLUDE_FILE = "./intro_Plane.mdl"
 
 Before the **DEFINE_REACTIONS** section, add the following::
 
@@ -503,10 +518,14 @@ Finally, we need to instantiate our new **Plane** object, so add the following l
 
 That's all there is to it. The other two surface class commands are **REFLECTIVE** (the default state for surfaces) and **TRANSPARENT** (allows molecules to freely pass through). Feel free to try these out on your own.
 
-Save the file and run it with MCell (type **mcell tutorial.mdl** and hit **Enter** at the command line). Visualize the results with DReAMM just like was done in the `Visualize the Mesh`_ and `Visualize the Molecules`_ sections, except you should be sure to also add the new **Plane** object as a wireframe. See if you can notice the  **vol2** molecules being destroyed by the absorptive surface.
+Save the file and run it with MCell (type **mcell intro.mdl** and hit **Enter** at the command line). Visualize the results with DReAMM just like was done in the `Visualize the Mesh`_ and `Visualize the Molecules`_ sections, except you should be sure to also add the new **Plane** object as a wireframe. See if you can notice the  **vol2** molecules being destroyed by the absorptive surface.
+
+Surface Classes and Reactions
+=============================================
+In the `Surface Classes`_ section, we learned that surface classes can be used to give parts of meshes special properties. Surface classes can also be used to provide extra specificity over how reactions occur. Begin by creating a copy of the **surf_class** directory, by typing the following command at the terminal: **cp -fr /home/user/mcell_tutorial/surf_class /home/user/mcell_tutorial/surf_class_rxns** (don't forget to replace **user** with your actual user name).
 
 More Mesh Modifications
-=============================================
+---------------------------------------------
 
 Watch the following video tutorial or follow along with the instructions below.
 
@@ -530,15 +549,14 @@ Change the newly created material text field from **Material** to **inside**. Cl
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/mat_inside.png
 
-Next, select **File>Export>Model Description Language (.mdl)**. *Deselect* **Instantiate & Viz** to indicate that we *only* want to export the mesh object. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **tutorial.mdl** and hit **Export MDL**.
+Next, select **File>Export>Model Description Language (.mdl)**. *Deselect* **Instantiate & Viz** to indicate that we *only* want to export the mesh object. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial/surf_class_rxns**). In the text field below the directory, type **intro.mdl** and hit **Export MDL**.
 
-Surface Classes and Reactions
-=============================================
-In the `Surface Classes`_ section, we learned that surface classes can be used to give parts of meshes special properties. Surface classes can also be used to provide extra specificity over how reactions occur. 
+More MDL Modifications
+---------------------------------------------
 
-After the first **INCLUDE** command, add this::
+Open **intro.mdl** in the new **surf_class_rxns** directory. After the first **INCLUDE** command, add this::
 
-    INCLUDE_FILE = "./tutorial_Plane.mdl"
+    INCLUDE_FILE = "./intro_Plane.001.mdl"
 
 Modify the **DEFINE_MOLECULES** section like this::
 
@@ -580,7 +598,7 @@ Lastly, we need to instantiate our new **Plane.001** object and add in a release
         Plane OBJECT Plane{}
         Plane.001 OBJECT Plane.001{}
         Cube OBJECT Cube{}
-        vol1_rel RELEASE_SITE {
+        vol1_rel RELEASE_SITE intro{
             SHAPE = World.Cube
             MOLECULE = vol1
             NUMBER_TO_RELEASE = 2000
@@ -597,12 +615,12 @@ Lastly, we need to instantiate our new **Plane.001** object and add in a release
         }   
     }   
 
-Save the file and run it with MCell (type **mcell tutorial.mdl** and hit **Enter** at the command line). When you visualize the results with DReAMM, be sure to add in **Plane.001** as a wireframe and **surf2** as a surface molecule. You might also want to add in custom rendering properties for **surf2**. You should notice that there are **vol2** molecules being created inside the box, but only in the upper portion of it, despite the fact that the **surf2** molecules are facing both up *and* down. The reason for this is because the reaction is only taking place at the **BACK** of the **empty** surface class with the **BOTTOM** of **surf2**.
+Save the file and run it with MCell (type **mcell intro.mdl** and hit **Enter** at the command line). When you visualize the results with DReAMM, be sure to add in **Plane.001** as a wireframe and **surf2** as a surface molecule. You might also want to add in custom rendering properties for **surf2**. You should notice that there are **vol2** molecules being created inside the box, but only in the upper portion of it, despite the fact that the **surf2** molecules are facing both up *and* down. The reason for this is because the reaction is only taking place at the **BACK** of the **empty** surface class with the **BOTTOM** of **surf2**.
 
 Variable Reaction Rates
 =============================================
 
-Create a new text file called **rxn_rate.txt**. Add the following text in the file::
+Begin by creating a copy of the **surf_class_rxns** directory, by typing the following command at the terminal: **cp -fr /home/user/mcell_tutorial/surf_class_rxns /home/user/mcell_tutorial/var_rxn_rate** (don't forget to replace **user** with your actual user name). In the new **var_rxn_rate** directory, create a new text file called **rxn_rate.txt**. Add the following text in the file::
 
     0      0
     5E-4   1E8
@@ -617,14 +635,14 @@ The example shown above is a very simple case where the reaction only changes on
     3E-6   1.2E5
     ...
 
-Save the file and quit. In **tutorial.mdl**, go to the reaction section and change the rate to **"rxn_rate.txt"** (with quotations), like in the following::
+Save the file and quit. In **intro.mdl**, go to the reaction section and change the rate to **"rxn_rate.txt"** (with quotations), like in the following::
 
     DEFINE_REACTIONS {
         vol1, + surf1' -> surf1' + vol2' ["rxn_rate.txt"]
         vol1, + surf2' @ empty' -> surf2' + vol2' ["rxn_rate.txt"]
     }   
 
-Save the file and run it with MCell (type **mcell tutorial.mdl** and hit **Enter** at the command line).
+Save the file and run it with MCell (type **mcell intro.mdl** and hit **Enter** at the command line).
 
 Surface Classes and Surface Molecules
 =============================================
@@ -633,10 +651,10 @@ We have already discussed surface classes at length, but we haven't touched on h
 
 Since our current MDL is beginning to get a little complicated, we will start fresh with this next example. First, we need to create the mesh and export the MDL. Then, we will modify the MDL.
 
-* `Surface Boundaries - Creating the Mesh`_
-* `Surface Boundaries - Modifying the MDL`_
+* `Creating the Mesh`_
+* `Modifying the MDL`_
 
-Surface Boundaries - Creating the Mesh
+Creating the Mesh
 ---------------------------------------------
 
 Let's look at an example. First we need to create the model in Blender. To do this, either watch the following video tutorial or follow along with the instructions below.
@@ -671,19 +689,17 @@ Move your cursor to the **3D View* window and hit **Tab** to switch into **Edit 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_mdl.png
 
-Now select **File>Export>Model Description Language (.mdl)**. Navigate to **/home/user/mcell_tutorial/**. Change the file name to **sc_sm.mdl** and hit **Export MDL**.
+Now select **File>Export>Model Description Language (.mdl)**. Navigate to **/home/user/mcell_tutorial/sc_sm**. Change the file name to **sc_sm.mdl** and hit **Export MDL**.
 
-Surface Boundaries - Modifying the MDL
+Modifying the MDL
 ---------------------------------------------
 
-Next, add the following text after the **INCLUDE_FILE** command::
+Modify the first two lines like this::
 
     iterations = 1000
     time_step = 1e-5
-    ITERATIONS = iterations
-    TIME_STEP = time_step
 
-    INCLUDE_FILE = "./sc_sm_Cube.mdl"
+Next, add the following text after the **INCLUDE_FILE** command::
 
     DEFINE_MOLECULES {
         surf1 {DIFFUSION_CONSTANT_2D = 1E-7}
@@ -703,6 +719,8 @@ Next, add the following text after the **INCLUDE_FILE** command::
         }   
     }
 
+Modify the **INSTANTIATE** section like this::
+
     INSTANTIATE World OBJECT {
         Cube OBJECT Cube{SCALE = [0.1,0.1,0.1]}
         surf1_top_rel RELEASE_SITE {
@@ -712,17 +730,7 @@ Next, add the following text after the **INCLUDE_FILE** command::
         }   
     }
 
-    VIZ_OUTPUT {
-        FILENAME = "sc_sm"
-        MOLECULES {
-            NAME_LIST {ALL_MOLECULES}
-            ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}
-        }   
-        MESHES {
-            NAME_LIST {ALL_MESHES}
-            ITERATION_NUMBERS {ALL_DATA @ [1]}
-        }   
-    }
+
 
 In this example, we have two surface classes, **absorb** and **reflect**. **absorb** is applied to **top** and **reflect** is applied to **bottom**. **surf1** molecules are released all over the **Cube**, not just one surface region. The effect of the **absorb** class is that all the **surf1** molecules are destroyed when they hit the boundary between the **top** and **middle** region. The effect of the **reflect** class is that molecules cannot pass the boundary between the **bottom** and the **middle** region. Therefore, all the **surf1** molecules that start inside of the **bottom** region never escape and the **surf1** molecules starting in the **middle** and **top** region will ultimately be destroyed.
 
@@ -741,7 +749,7 @@ We'll cover how to set up checkpointing in the next two sections, starting with 
 
 Basic Checkpointing
 ---------------------------------------------
-Create a file called **change_dc1.mdl**. Inside of it, add the following text::
+inside of **/home/user/mcell_tutorial**, create a directory called **change_dc**. Inside that directory, create a file called **change_dc1.mdl**. Add the following text to that file::
 
     CHECKPOINT_INFILE = "dc_chkpt"
     CHECKPOINT_OUTFILE = "dc_chkpt"
@@ -813,7 +821,7 @@ Then click in the current frame marker and change it to **10**. Note: each frame
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_animation.png
 
-Now select **File>Export>Model Description Language (.mdl)**. Navigate to **/home/user/mcell_tutorial/anim** and select **OK** when it prompts you to make a new directory. Change the file name to **scaling.mdl**. Select **Enable Animation** and **Iterate Script**. Hit **Export MDL**.
+Now select **File>Export>Model Description Language (.mdl)**. Navigate to **/home/user/mcell_tutorial/scaling** and select **OK** when it prompts you to make a new directory. Change the file name to **scaling.mdl**. Select **Enable Animation** and **Iterate Script**. Hit **Export MDL**.
 
 Annotating a Sequence of MDLs
 +++++++++++++++++++++++++++++++++++++++++++++
@@ -844,7 +852,7 @@ Now, at the command line type **python scaling.py**. After the simulation is don
 
 Release Patterns
 =============================================
-Release patterns allow you to release molecules at specified time intervals. One thing this can be useful for is simulating a synaptic vesicle releasing neurotransmitter. Create a file called **release_pattern.mdl** and add the following text to it::
+Release patterns allow you to release molecules at specified time intervals. One thing this can be useful for is simulating a synaptic vesicle releasing neurotransmitter. First, create a directory called **release_pattern** in the main tutorial directory. Inside the new directory, create a file called **release_pattern.mdl** and add the following text to it::
 
     time_step = 1E-6 
     iterations = 1000 
@@ -896,7 +904,7 @@ Clamp Concentration
 =============================================
 Clamp concentration lets you maintain a constant concentration of a molecule at a surface. This is done by creating and destroying molecules at the surface. **CLAMP_CONC** is created and applied like other surface classes (e.g. **ABSORPTIVE**). We'll begin by making two meshes, one which will have the **CLAMP_CONC** applied and the other will prevent molecules from diffusing away from the surface.
 
-Start Blender. Hit **z** to switch to wireframe mode. With the **Cube** selected, hit **s**, **z**, **0.1**, and **Enter**. Hit **Shift-a**, select **Mesh>Plane**. Hit **s**, **0.9**, and **Enter**. Hit the **Material** button in the **Properties** window. Hit **New** and change the material name from **Material.001** to **clamp_sr**. Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial**). In the text field below the directory, type **clamp_conc.mdl** and hit **Export MDL**.
+Start Blender. Hit **z** to switch to wireframe mode. With the **Cube** selected, hit **s**, **z**, **0.1**, and **Enter**. Hit **Shift-a**, select **Mesh>Plane**. Hit **s**, **0.9**, and **Enter**. Hit the **Material** button in the **Properties** window. Hit **New** and change the material name from **Material.001** to **clamp_sr**. Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial/clamp_conc**). In the text field below the directory, type **clamp_conc.mdl** and hit **Export MDL**.
 
 Now open **clamp_conc.mdl** and change **iterations** to **500**. Next, add in the following text after the **INCLUDE_FILE** commands::
 
@@ -937,7 +945,7 @@ These simplistic simulations should not be overly taxing on a relatively recent 
 Adding Partitions
 ---------------------------------------------
 
-A full explanation of partitions is outside of the scope of this tutorial, but, essentially, when MCell is checking to see if a reaction occurs, partitions lower the number of potential partners it must check. For practical puprposes, partitions can greatly speed up your simulation, but, if used improperly, they can actually slow it down. Begin by creating the following file::
+A full explanation of partitions is outside of the scope of this tutorial, but, essentially, when MCell is checking to see if a reaction occurs, partitions lower the number of potential partners it must check. For practical puprposes, partitions can greatly speed up your simulation, but, if used improperly, they can actually slow it down. Begin by creating a directory called **partitions** inside the main tutorial directory. Inside the **partitions** directory, create a file called **partitions.mdl** with the following text::
 
     ITERATIONS = 1000
     TIME_STEP = 5e-6
@@ -946,7 +954,7 @@ A full explanation of partitions is outside of the scope of this tutorial, but, 
     PARTITION_Y = [ [-1.0 TO 1.0 STEP 0.20] ]
     PARTITION_Z = [ [-1.0 TO 1.0 STEP 0.20] ]
 
-    INCLUDE_FILE = "./tutorial_Cube.mdl"
+    INCLUDE_FILE = "./partitions_Cube.mdl"
 
     DEFINE_MOLECULES {
         vol1 {DIFFUSION_CONSTANT_3D = 1E-6}
@@ -960,7 +968,7 @@ A full explanation of partitions is outside of the scope of this tutorial, but, 
     }
 
     INSTANTIATE World OBJECT {
-        Cube OBJECT Cube{}
+        Cube BOX {CORNERS = [-1.0,-1.0,-1.0],[1.0,1.0,1.0]}
         vol1_rel RELEASE_SITE {
             SHAPE = World.Cube
             MOLECULE = vol1
@@ -973,21 +981,21 @@ A full explanation of partitions is outside of the scope of this tutorial, but, 
         }
     }
 
-The only new thing in this MDL is that it contains the **PARTITION** commands. Each of these three commands creates planes along the axis specified. The intersection of these planes create subvolumes. The distance of these subvolumes should generally not be smaller in length than the mean diffusion distance of the faster molecules in your simulation.
+The new thing of interest in this MDL is the **PARTITION** commands. Each of these three commands creates planes along the axis specified. The intersection of these planes create subvolumes. The distance of these subvolumes should generally not be smaller in length than the mean diffusion distance of the faster molecules in your simulation.
 
 Run this MDL, and take note of the **Total wall clock time** reported by MCell. Then remove (or comment out) the partitions and run it again. The actual speed improvement will depend on the machine running it, but for the machine this example was tested on, it resulted in a speed increase of almost six times.
+
+Although unrelated to partitions, note that instead of creating a **Cube** object with Blender, we simply used MCell's built in command (**BOX**) for creating one.
 
 Target Only
 ---------------------------------------------
 
-If you have a reaction between two molecules in which there are many of one molecule and very few of another, you might want to consider using the **TARGET_ONLY** command. Normally, a diffusing molecule will check to see if there are any potential molecules to react with. However, a molecule that is marked as **TARGET_ONLY** can only be the target of a reaction, and will not search for partners to react with. Copy the following example into a file called **target_only.mdl**::
+If you have a reaction between two molecules in which there are many of one molecule and very few of another, you might want to consider using the **TARGET_ONLY** command. Normally, a diffusing molecule will check to see if there are any potential molecules to react with. However, a molecule that is marked as **TARGET_ONLY** can only be the target of a reaction, and will not search for partners to react with. Create a directory called **target_only**. In that new directory, copy the following text into a file called **target_only.mdl**::
 
     iterations = 500
     time_step = 5e-6
     ITERATIONS = iterations
     TIME_STEP = time_step
-
-    INCLUDE_FILE = "./tutorial_Cube.mdl"
 
     DEFINE_MOLECULES {
         vol1 {DIFFUSION_CONSTANT_3D = 1E-6}
@@ -1000,7 +1008,7 @@ If you have a reaction between two molecules in which there are many of one mole
     }
 
     INSTANTIATE World OBJECT {
-        Cube OBJECT Cube{}
+        Cube BOX {CORNERS = [-1.0,-1.0,-1.0],[1.0,1.0,1.0]}
         vol1_rel RELEASE_SITE {
             SHAPE = World.Cube
             MOLECULE = vol1
@@ -1035,7 +1043,7 @@ These are just examples of what you can do, and the actual list of molecules, me
 Analyzing Your Data
 =============================================
 
-There are many tools available for plotting and analyzing data. We will make use of python along with numpy and matplotlib. Using these tools, we will generate a histogram of molecule locations relative to the origin, and also find such things as the mean, min, and max. First, however, we need the mdl. Create an mdl called **diff.mdl**, and insert the following text into it::
+There are many tools available for plotting and analyzing data. We will make use of python along with numpy and matplotlib. Using these tools, we will generate a histogram of molecule locations relative to the origin, and also find such things as the mean, min, and max. First, however, we need the mdl. In the main tutorial directory, create a new directory called **hist**. Inside that directory, create an mdl called **hist.mdl**, and insert the following text into it::
 
     TIME_STEP = 1.0e-6
     ITERATIONS = 1000
@@ -1055,7 +1063,7 @@ There are many tools available for plotting and analyzing data. We will make use
 
     VIZ_OUTPUT {
         VIZ_MOLECULE_FORMAT = ASCII
-        FILENAME = "diff" 
+        FILENAME = "hist" 
         MOLECULES { 
             NAME_LIST {ALL_MOLECULES}
             ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}  
@@ -1064,7 +1072,7 @@ There are many tools available for plotting and analyzing data. We will make use
 
 This is very similar to MDLs you have run in the past with the exception of the line **VIZ_MOLECULE_FORMAT = ASCII**. Normally, "viz_data" molecule locations are stored in a binary file to make them smaller, but this command will cause them to be created in a human-readable, ASCII format.
 
-Run this mdl by typing **mcell diff.mdl**. It will create a visualization directory called **diff_viz_data**.
+Run this mdl by typing **mcell hist.mdl**. It will create a visualization directory called **hist_viz_data**.
 
 Create a file called **hist.py** and copy the following text into it::
 
@@ -1073,7 +1081,7 @@ Create a file called **hist.py** and copy the following text into it::
     import numpy as np
     import matplotlib.pyplot as plt 
 
-    mol_pos_file = "./diff_viz_data/frame_data/iteration_1000/vol1.positions.dat"
+    mol_pos_file = "./hist_viz_data/frame_data/iteration_1000/vol1.positions.dat"
     data = np.genfromtxt(mol_pos_file)   # open molecule positions as 2d array
     data = data[:, 0]                    # create array from 1st column (X pos)
     print('The min is: %.3f' % np.min(data))
@@ -1094,20 +1102,20 @@ Although the comments explain what is happening, let's break it down as simply a
 
 We are loading **vol1.positions.dat** into a two dimensional array called **data**. We then "slice" the first column which contains all the X locations. We then print the min, max, mean, and standard deviation to the command line. Lastly, we create the histogram with labels and plot (or show) it.
 
+Run the file now by typing **python hist.py**.
+
 Running Multiple Seed Values
 =============================================
 
 In MCell, diffusion (amongst other things) happen stochastically. However, the results are replicable as long as one provides the same seed value. Given this stochastic nature, you can expect the data generated from a simulation to look noisy, especially if the number of reacting molecules is small. We can overcome this problem by running many different simulations, each with a different seed value, and then averaging the results of all the simulations.
 
-We'll begin by creating the following MDL called **seed.mdl**::
+We'll begin by creating a directory called **seed**. Inside it, create an MDL called **seed.mdl** with this text::
 
     iterations = 1000 
     time_step = 5e-6 
     ITERATIONS = iterations
     TIME_STEP = time_step
 
-    INCLUDE_FILE = "./tutorial_Cube.mdl"
-    
     DEFINE_MOLECULES {
         vol1 {DIFFUSION_CONSTANT_3D = 1E-6}
         vol2 {DIFFUSION_CONSTANT_3D = 1E-6}
@@ -1120,7 +1128,7 @@ We'll begin by creating the following MDL called **seed.mdl**::
     }   
 
     INSTANTIATE World OBJECT {
-        Cube OBJECT Cube{SCALE = [0.1,0.1,0.1]}
+        Cube BOX {CORNERS = [-0.1,-0.1,-0.1],[0.1,0.1,0.1]}
         vol1_rel RELEASE_SITE {
             SHAPE = World.Cube
             MOLECULE = vol1
@@ -1154,6 +1162,8 @@ Next, create the following python script called **seed.py**::
         os.system("mcell -seed %i ./seed.mdl" % i)
 
 This file is similar to the **scaling.py** file that we created in the checkpointing section. This will run MCell twenty different times, each time incrementing the seed value by one. Save and run this file. You should now have sixty files in the **react_data** directory (20 for each molecule). Now we will begin the process of averaging these results. Create a python script called **avg_seeds.py** with the following text in it::
+
+    #!/usr/bin/env python
 
     import numpy as np
     import matplotlib.pyplot as plt 
