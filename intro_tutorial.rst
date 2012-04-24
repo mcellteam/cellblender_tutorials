@@ -116,7 +116,11 @@ You can skip to the next section (`Run the Simulation`_) if you have watched the
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/material_button.png
 
-Open up a terminal and type **blender**. You should see a cube in the **3D View Window**. Hit the **Material** button in the **Properties Window**. 
+Open up a terminal and enter the command::
+
+    blender
+
+You should see a cube in the **3D View Window**. Hit the **Material** button in the **Properties Window**. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/plus_button.png
 
@@ -146,9 +150,11 @@ Select the **top** material from the list of materials. Click **Assign**. Hit **
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_mdl_button.png
 
-Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/intro** where **user** is your user name) and select **OK** when it prompts you to make a new directory. In the text field below the directory, type **intro.mdl** and hit **Export MDL**.
+Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/intro** where **user** is your user name) and select **OK** when it prompts you to make a new directory. In the text field below the directory, type::
 
-Either leave Blender open or save and quit, as we'll need to modify this model later.
+    intro.mdl
+
+and hit **Export MDL**. Either leave Blender open or save and quit, as we'll need to modify this model later.
 
 Run the Simulation
 =============================================
@@ -157,7 +163,15 @@ Run the Simulation
 
 Let's verify that this simple case works with MCell before adding in more details.
 
-At the command line, navigate to the appropriate directory (**/home/user/mcell_tutorial/intro**), type **mcell intro.mdl**, and hit **Enter**. MCell should output some information to the command line indicating that it ran successfully. Type **ls** and you should see that a directory called **intro_viz_data** has been created.
+At the command line, navigate to the appropriate directory (**/home/user/mcell_tutorial/intro**), and enter the command:: 
+
+    mcell intro.mdl
+
+MCell should output some information to the command line indicating that it ran successfully. Enter the command:: 
+    
+    ls
+
+and you should see that a directory called **intro_viz_data** has been created.
 
 Visualize the Mesh
 =============================================
@@ -174,7 +188,9 @@ As with the Blender section, this section requires extensive use of a GUI, so yo
 
 You can skip to the next section (`Annotate the MDL`_) if you have watched the previous video tutorial. Otherwise, follow along with the rest of the directions in this section. 
 
-To start DReAMM, open a terminal, type **dreamm**, and hit **Enter**. 
+To start DReAMM, open a terminal, enter the command::
+    
+    dreamm
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/import_select.png
 
@@ -353,7 +369,15 @@ Run the Simulation again
 =============================================
 We've finished adding our changes. Let's rerun the simulation with MCell.
 
-As before, navigate to the appropriate directory, type **mcell intro.mdl**, and hit **Enter**. After it's finished running, type **ls** and you should see that a new directory called **react_data** has been created.
+As before, navigate to the appropriate directory, enter the command:: 
+
+    mcell intro.mdl
+
+After it's finished running, enter the command::
+    
+    ls 
+
+and you should see that a new directory called **react_data** has been created.
 
 Visualize the Molecules
 =============================================
@@ -438,7 +462,11 @@ Hit the Play button on the Sequencer and watch the molecules diffusing and react
 Graph the Reaction Data
 =============================================
 
-Change into the **react_data** directory (**cd react_data**) and type **ls**. You should see two files, **vol1.dat**, and **vol2.dat**.
+Change into the **react_data** directory (**cd react_data**) and enter the command::
+
+    ls
+
+You should see two files, **vol1.dat**, and **vol2.dat**.
 
 Plot **vol1.dat** and **vol2.dat** with the graphing software of your choice. For something as simple as this, xmgrace or gnuplot will suffice. Although we don't need all the power (and complexity) of numpy and matplotlib right now, we'll introduce it here anyways, since we will be using it for some more advanced tasks later. First create a file called **plot.py** and put the following text into it::
 
@@ -455,14 +483,22 @@ Plot **vol1.dat** and **vol2.dat** with the graphing software of your choice. Fo
     plt.plot(x2,y2)
     plt.show()
 
-Run the file by typing **python plot.py**. You should notice that **vol1.dat** is decreasing and **vol2.dat** is increasing as expected. This can be a quick way to verify that our simulation is working as expected.
+Run the file by entering the command::
+
+    python plot.py.
+
+You should notice that **vol1.dat** is decreasing and **vol2.dat** is increasing as expected. This can be a quick way to verify that our simulation is working as expected.
 
 Surface Classes and Volume Molecules
 =============================================
 
 Surface classes allow various properties (e.g. **ABSORPTIVE**, **TRANSPARENT**) to be applied to surfaces, which can affect specified molecules. 
 
-Begin by creating a copy of the **intro** directory, by typing the following command at the terminal: **cp -fr /home/user/mcell_tutorial/intro /home/user/mcell_tutorial/surf_class** (don't forget to replace **user** with your actual user name).
+Begin by creating a copy of the **intro** directory, by typing the following command at the terminal::
+
+    cp -fr /home/user/mcell_tutorial/intro /home/user/mcell_tutorial/surf_class
+
+Don't forget to replace **user** with your actual user name.
 
 Modify the Mesh
 ---------------------------------------------
@@ -489,7 +525,11 @@ Hit the **New** button in the **Materials** section of the **Properties** window
 
 Change the newly created material text field from **Material** to **above**. Click **Assign**. 
 
-Next, select **File>Export>Model Description Language (.mdl)**. Deselect **Instantiate & Viz** so that we only export the new meshes and don't override the changes in **intro.mdl**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial/surf_class**). In the text field below the directory, type **intro.mdl** and hit **Export MDL**.
+Next, select **File>Export>Model Description Language (.mdl)**. Deselect **Instantiate & Viz** so that we only export the new meshes and don't override the changes in **intro.mdl**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial/surf_class**). In the text field below the directory, type::
+
+    intro.mdl
+
+and hit **Export MDL**.
 
 Modify the MDL
 ---------------------------------------------
@@ -520,7 +560,11 @@ Finally, we need to instantiate our new **Plane** object, so add the following l
 
 That's all there is to it. The other two surface class commands are **REFLECTIVE** (the default state for surfaces) and **TRANSPARENT** (allows molecules to freely pass through). Feel free to try these out on your own.
 
-Save the file and run it with MCell (type **mcell intro.mdl** and hit **Enter** at the command line). Visualize the results with DReAMM just like was done in the `Visualize the Mesh`_ and `Visualize the Molecules`_ sections, except you should be sure to also add the new **Plane** object as a wireframe. See if you can notice the  **vol2** molecules being destroyed by the absorptive surface.
+Save the file and run it with MCell by entering the command::
+
+    mcell intro.mdl
+
+Visualize the results with DReAMM just like was done in the `Visualize the Mesh`_ and `Visualize the Molecules`_ sections, except you should be sure to also add the new **Plane** object as a wireframe. See if you can notice the **vol2** molecules being destroyed by the absorptive surface.
 
 Surface Classes and Reactions
 =============================================
@@ -551,7 +595,11 @@ Change the newly created material text field from **Material** to **inside**. Cl
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/mat_inside.png
 
-Next, select **File>Export>Model Description Language (.mdl)**. *Deselect* **Instantiate & Viz** to indicate that we *only* want to export the mesh object. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial/surf_class_rxns**). In the text field below the directory, type **intro.mdl** and hit **Export MDL**.
+Next, select **File>Export>Model Description Language (.mdl)**. *Deselect* **Instantiate & Viz** to indicate that we *only* want to export the mesh object. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial/surf_class_rxns**). In the text field below the directory, type::
+
+    intro.mdl
+
+and hit **Export MDL**.
 
 More MDL Modifications
 ---------------------------------------------
@@ -617,7 +665,11 @@ Lastly, we need to instantiate our new **Plane.001** object and add in a release
         }   
     }   
 
-Save the file and run it with MCell (type **mcell intro.mdl** and hit **Enter** at the command line). When you visualize the results with DReAMM, be sure to add in **Plane.001** as a wireframe and **surf2** as a surface molecule. You might also want to add in custom rendering properties for **surf2**. You should notice that there are **vol2** molecules being created inside the box, but only in the upper portion of it, despite the fact that the **surf2** molecules are facing both up *and* down. The reason for this is because the reaction is only taking place at the **BACK** of the **empty** surface class with the **BOTTOM** of **surf2**.
+Save the file and run it with MCell by enterting the command::
+
+    mcell intro.mdl
+
+When you visualize the results with DReAMM, be sure to add in **Plane.001** as a wireframe and **surf2** as a surface molecule. You might also want to add in custom rendering properties for **surf2**. You should notice that there are **vol2** molecules being created inside the box, but only in the upper portion of it, despite the fact that the **surf2** molecules are facing both up *and* down. The reason for this is because the reaction is only taking place at the **BACK** of the **empty** surface class with the **BOTTOM** of **surf2**.
 
 Variable Reaction Rates
 =============================================
@@ -644,7 +696,9 @@ Save the file and quit. In **intro.mdl**, go to the reaction section and change 
         vol1, + surf2' @ empty' -> surf2' + vol2' ["rxn_rate.txt"]
     }   
 
-Save the file and run it with MCell (type **mcell intro.mdl** and hit **Enter** at the command line).
+Save the file and run it with MCell by entering the command:: 
+
+    mcell intro.mdl
 
 Surface Classes and Surface Molecules
 =============================================
@@ -781,7 +835,23 @@ inside of **/home/user/mcell_tutorial**, create a directory called **change_dc**
         }   
     } 
 
-Save and quit. Now make a copy of this file called **change_dc2.mdl**. Then change the diffusion constant from **1E-7** to **1E-5** in the second mdl. Once again, save and quit. Now run the first mdl by typing **mcell change_dc1.mdl** at the command line. When it is finished, type **ls** and notice that a file called **dc_chkpt** was created. This file stores the information needed to recommence running the simulation. Let's finish it now by typing **mcell change_dc2.mdl**. Visualize the results with DReAMM. When you playback the animation, you will notice that the molecules start off moving rather slowly, and then speed up halfway through the simulation, coinciding with the change in diffusion constant.
+Save and quit. Now make a copy of this file called **change_dc2.mdl** by entering the command::
+
+    cp change_dc1.mdl change_dc2.mdl
+
+Then change the diffusion constant from **1E-7** to **1E-5** in the second mdl. Once again, save and quit. Now run the first mdl by entering the command::
+
+    mcell change_dc1.mdl
+
+When it is finished running, enter the command::
+
+    ls
+
+Notice that a file called **dc_chkpt** was created. This file stores the information needed to recommence running the simulation. Let's finish it now by entering teh command::
+
+    mcell change_dc2.mdl
+
+Visualize the results with DReAMM. When you playback the animation, you will notice that the molecules start off moving rather slowly, and then speed up halfway through the simulation, coinciding with the change in diffusion constant.
 
 This is just a simple example of one parameter you can change. Here is a partial list of some other parameters that you could change:
 
@@ -848,7 +918,11 @@ Now add the following text to the **INSTANTIATION** section of **scaling_01.mdl*
         NUMBER_TO_RELEASE = 100 
     }  
 
-Now, at the command line type **python scaling.py**. After the simulation is done running, visualize the results with DReAMM. Add the **Cube** as a wireframe and **vol1** as a volume molecule. As in previous cases, the molecules stay within the box; the only difference now is that the box expands every iteration. For something more interesting and physiologically relevant, download this `expanding pore`_ example.
+Now, at the command line enter the command::
+    
+    python scaling.py
+
+After the simulation is done running, visualize the results with DReAMM. Add the **Cube** as a wireframe and **vol1** as a volume molecule. As in previous cases, the molecules stay within the box; the only difference now is that the box expands every iteration. For something more interesting and physiologically relevant, download this `expanding pore`_ example.
 
 .. _expanding pore: http://mcell.psc.edu/tutorials/mdl/expanding_pore.tgz
 
@@ -906,7 +980,11 @@ Clamp Concentration
 =============================================
 Clamp concentration lets you maintain a constant concentration of a molecule at a surface. This is done by creating and destroying molecules at the surface. **CLAMP_CONC** is created and applied like other surface classes (e.g. **ABSORPTIVE**). We'll begin by making two meshes, one which will have the **CLAMP_CONC** applied and the other will prevent molecules from diffusing away from the surface.
 
-Start Blender. Hit **z** to switch to wireframe mode. With the **Cube** selected, hit **s**, **z**, **0.1**, and **Enter**. Hit **Shift-a**, select **Mesh>Plane**. Hit **s**, **0.9**, and **Enter**. Hit the **Material** button in the **Properties** window. Hit **New** and change the material name from **Material.001** to **clamp_sr**. Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial/clamp_conc**). In the text field below the directory, type **clamp_conc.mdl** and hit **Export MDL**.
+Start Blender. Hit **z** to switch to wireframe mode. With the **Cube** selected, hit **s**, **z**, **0.1**, and **Enter**. Hit **Shift-a**, select **Mesh>Plane**. Hit **s**, **0.9**, and **Enter**. Hit the **Material** button in the **Properties** window. Hit **New** and change the material name from **Material.001** to **clamp_sr**. Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the directory where you want to create your file (e.g. **/home/user/mcell_tutorial/clamp_conc**). In the text field below the directory, type::
+
+    clamp_conc.mdl
+
+and hit **Export MDL**.
 
 Now open **clamp_conc.mdl** and change **iterations** to **500**. Next, add in the following text after the **INCLUDE_FILE** commands::
 
