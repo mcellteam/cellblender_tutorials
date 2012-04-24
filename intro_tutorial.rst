@@ -8,13 +8,13 @@ In order to quickly show what can be done with MCell, we'll begin by generating 
 
 Much of the theory will be skipped over, as it's available elsewhere_. For a more detailed explanation of any given topic, please see the `quick reference guide`_. 
 
-The completed project files for the tutorial can be downloaded here_ (NEED TO UPDATE). You will generate these same files simply by following along with the tutorial, but they are provided here in case you need them for any reason.
+The completed project files for the tutorial can be downloaded here_. You will generate these same files simply by following along with the tutorial, but they are provided here in case you need them for any reason.
 
 .. _elsewhere: https://www.mcell.psc.edu/publications.html
 
 .. _quick reference guide: http://mcell.psc.edu/download/files/mcell3_qrg_092010.pdf
 
-.. _here: https://www.mcell.psc.edu/tutorials/mdl/main/tut_mdl1.tgz
+.. _here: https://www.mcell.psc.edu/tutorials/mdl/main/mcell_tutorial.tgz
 
 * `Software Needed`_
 * `Generate Mesh and Export MDL with Blender`_
@@ -36,8 +36,8 @@ The completed project files for the tutorial can be downloaded here_ (NEED TO UP
 * `Graph the Reaction Data`_
 * `Surface Classes`_
 
-    * `Modify the Mesh`_
-    * `Modify the MDL`_
+  * `Modify the Mesh`_
+  * `Modify the MDL`_
 
 * `Surface Classes and Reactions`_
 
@@ -241,7 +241,7 @@ The first four lines are some `Initialization Commands`_ that we'll cover in the
 
 **INCLUDE_FILE** commands let you break up MDLs into multiple sections. In this particular instance, the vertices and faces that make up our **Cube** are being imported or *included*.
 
-You can't simply include meshes; you also have to **INSTANTIATE** them to make them exist and interact in the simulation. We'll see later that we can also instantiate other types of objects, like molecule `Release Sites`_.
+In addition to simply *including* meshes, you also have to **INSTANTIATE** meshes to make them exist and interact in the simulation. We'll see later that we can also instantiate other types of objects, like molecule `Release Sites`_.
 
 Lastly, the **VIZ_OUTPUT** section specifies what visualization data to export and at what time values. Right now, it is set to export everything. 
 
@@ -262,7 +262,7 @@ Molecule Definitions
 ---------------------------------------------
 Molecules need to be defined before they are used (as a release site or a reaction) in the MDL.
 
-After the **INCLUDE_FILE** command, add a **DEFINE_MOLECULES** section as show here::
+After the **INCLUDE_FILE** command, add a **DEFINE_MOLECULES** section as shown here::
 
     DEFINE_MOLECULES {
         vol1 {DIFFUSION_CONSTANT_3D = 1E-6}
@@ -305,6 +305,7 @@ The directionality of these ticks and commas are relative, which means that we c
 
 Release Sites
 ---------------------------------------------
+
 *Modify* the **INSTANTIATE** section of the MDL so it looks like this::
 
     INSTANTIATE World OBJECT {
@@ -779,7 +780,7 @@ inside of **/home/user/mcell_tutorial**, create a directory called **change_dc**
         }   
     } 
 
-Save and quit. Now make a copy of this file called **change_dc2.mdl**. Then change the diffusion constant from **1E-7** to **1E-5**. Once again, save and quit. Now run the first mdl by typing **mcell change_dc1.mdl** at the command line. When it is finished, type **ls** and notice that a file called **dc_chkpt** was created. This file stores the information needed to recommence running the simulation. Let's finish it now by typing **mcell change_dc2.mdl**. Visualize the results with DReAMM. When you playback the animation, you will notice that the molecules start off moving rather slowly, and then speed up halfway through the simulation, coinciding with the change in diffusion constant.
+Save and quit. Now make a copy of this file called **change_dc2.mdl**. Then change the diffusion constant from **1E-7** to **1E-5** in the second mdl. Once again, save and quit. Now run the first mdl by typing **mcell change_dc1.mdl** at the command line. When it is finished, type **ls** and notice that a file called **dc_chkpt** was created. This file stores the information needed to recommence running the simulation. Let's finish it now by typing **mcell change_dc2.mdl**. Visualize the results with DReAMM. When you playback the animation, you will notice that the molecules start off moving rather slowly, and then speed up halfway through the simulation, coinciding with the change in diffusion constant.
 
 This is just a simple example of one parameter you can change. Here is a partial list of some other parameters that you could change:
 
@@ -789,7 +790,7 @@ This is just a simple example of one parameter you can change. Here is a partial
 
 Checkpointing and Dynamic Meshes
 ---------------------------------------------
-For this section, we will create a mesh in blender that shrinks and then grows. We will export this animation as a series of MDLs. Then we can annotate these files to release a volume molecule inside of the changing mesh.
+For this section, we will create a mesh in blender that grows every time step. We will export this animation as a series of MDLs. Then we can annotate these files to release a volume molecule inside of the changing mesh.
 
 * `Creating the Animated Mesh in Blender`_
 * `Annotating a Sequence of MDLs`_
