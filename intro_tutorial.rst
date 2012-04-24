@@ -34,7 +34,7 @@ The completed project files for the tutorial can be downloaded here_. You will g
 * `Visualize the Molecules`_
 * `Customize Rendering Properties`_
 * `Graph the Reaction Data`_
-* `Surface Classes`_
+* `Surface Classes and Volume Molecules`_
 
   * `Modify the Mesh`_
   * `Modify the MDL`_
@@ -44,7 +44,6 @@ The completed project files for the tutorial can be downloaded here_. You will g
   * `More Mesh Modifications`_
   * `More MDL Modifications`_
 
-* `Surface Classes and Reactions`_
 * `Variable Reaction Rates`_
 * `Surface Classes and Surface Molecules`_
 
@@ -458,10 +457,12 @@ Plot **vol1.dat** and **vol2.dat** with the graphing software of your choice. Fo
 
 Run the file by typing **python plot.py**. You should notice that **vol1.dat** is decreasing and **vol2.dat** is increasing as expected. This can be a quick way to verify that our simulation is working as expected.
 
-Surface Classes
+Surface Classes and Volume Molecules
 =============================================
 
-Surface classes allow various properties to be applied to surfaces, which can affect molecules in several possible ways. Begin by creating a copy of the **intro** directory, by typing the following command at the terminal: **cp -fr /home/user/mcell_tutorial/intro /home/user/mcell_tutorial/surf_class** (don't forget to replace **user** with your actual user name).
+Surface classes allow various properties (e.g. **ABSORPTIVE**, **TRANSPARENT**) to be applied to surfaces, which can affect specified molecules. 
+
+Begin by creating a copy of the **intro** directory, by typing the following command at the terminal: **cp -fr /home/user/mcell_tutorial/intro /home/user/mcell_tutorial/surf_class** (don't forget to replace **user** with your actual user name).
 
 Modify the Mesh
 ---------------------------------------------
@@ -476,9 +477,9 @@ Watch the following video tutorial or follow along with the instructions below.
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/export_above.ogg" type='video/ogg'/>
     </video>
 
-If you watched the previous video tutorial, you can skip ahead to `Surface Classes`_.
+If you watched the previous video tutorial, you can skip ahead to `Surface Classes and Volume Molecules`_.
 
-In order to complete the next section (`Surface Classes`_), we first have to make a few simple changes to our Blender model. We'll pick up right where we left off in `Generate Mesh and Export MDL with Blender`_. Hit **z** to switch to a wireframe view. Hit **Shift-a** and select **Plane**. Hit **g** to "grab" the plane, **z** to constrain the movement to the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm.
+In order to complete the next section (`Surface Classes and Volume Molecules`_), we first have to make a few simple changes to our Blender model. We'll pick up right where we left off in `Generate Mesh and Export MDL with Blender`_. Hit **z** to switch to a wireframe view. Hit **Shift-a** and select **Plane**. Hit **g** to "grab" the plane, **z** to constrain the movement to the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/new_mat_plane.png
 
@@ -523,7 +524,7 @@ Save the file and run it with MCell (type **mcell intro.mdl** and hit **Enter** 
 
 Surface Classes and Reactions
 =============================================
-In the `Surface Classes`_ section, we learned that surface classes can be used to give parts of meshes special properties. Surface classes can also be used to provide extra specificity over how reactions occur. Begin by creating a copy of the **surf_class** directory, by typing the following command at the terminal: **cp -fr /home/user/mcell_tutorial/surf_class /home/user/mcell_tutorial/surf_class_rxns** (don't forget to replace **user** with your actual user name).
+In the `Surface Classes and Volume Molecules`_ section, we learned that surface classes can be used to give parts of meshes special properties. Surface classes can also be used to provide extra specificity over how reactions occur. Begin by creating a copy of the **surf_class** directory, by typing the following command at the terminal: **cp -fr /home/user/mcell_tutorial/surf_class /home/user/mcell_tutorial/surf_class_rxns** (don't forget to replace **user** with your actual user name).
 
 More Mesh Modifications
 ---------------------------------------------
