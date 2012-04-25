@@ -1,3 +1,5 @@
+.. _surf_class_surf_mol:
+
 *********************************************
 Surface Classes and Surface Molecules
 *********************************************
@@ -8,6 +10,8 @@ Since our current MDL is beginning to get a little complicated, we will start fr
 
 * `Creating the Mesh`_
 * `Modifying the MDL`_
+
+.. _surf_class_sm_mesh:
 
 Creating the Mesh
 ---------------------------------------------
@@ -45,6 +49,8 @@ Move your cursor to the **3D View* window and hit **Tab** to switch into **Edit 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_mdl.png
 
 Now select **File>Export>Model Description Language (.mdl)**. Navigate to **/home/user/mcell_tutorial/sc_sm**. Change the file name to **sc_sm.mdl** and hit **Export MDL**.
+
+.. _surf_class_sm_mdl:
 
 Modifying the MDL
 ---------------------------------------------
@@ -88,5 +94,4 @@ Modify the **INSTANTIATE** section like this::
 
 
 In this example, we have two surface classes, **absorb** and **reflect**. **absorb** is applied to **top** and **reflect** is applied to **bottom**. **surf1** molecules are released all over the **Cube**, not just one surface region. The effect of the **absorb** class is that all the **surf1** molecules are destroyed when they hit the boundary between the **top** and **middle** region. The effect of the **reflect** class is that molecules cannot pass the boundary between the **bottom** and the **middle** region. Therefore, all the **surf1** molecules that start inside of the **bottom** region never escape and the **surf1** molecules starting in the **middle** and **top** region will ultimately be destroyed.
-
 

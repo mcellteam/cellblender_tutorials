@@ -1,3 +1,5 @@
+.. _checkpointing:
+
 *********************************************
 Checkpointing Overview
 *********************************************
@@ -12,6 +14,8 @@ We'll cover how to set up checkpointing in the next two sections, starting with 
 
 * `Basic Checkpointing`_
 * `Checkpointing and Dynamic Meshes`_
+
+.. _basic_checkpointing:
 
 Basic Checkpointing
 ---------------------------------------------
@@ -69,12 +73,16 @@ This is just a simple example of one parameter you can change. Here is a partial
 * reaction rates
 * **SURFACE_CLASS** properties (**ABSORPTIVE**, **TRANSPARENT**, **REFLECTIVE**)
 
+.. _dynamic_mesh:
+
 Checkpointing and Dynamic Meshes
 ---------------------------------------------
 For this section, we will create a mesh in blender that grows every time step. We will export this animation as a series of MDLs. Then we can annotate these files to release a volume molecule inside of the changing mesh.
 
 * `Creating the Animated Mesh in Blender`_
 * `Annotating a Sequence of MDLs`_
+
+.. _dynamic_mesh_blender:
 
 Creating the Animated Mesh in Blender
 +++++++++++++++++++++++++++++++++++++++++++++
@@ -104,6 +112,8 @@ Then click in the current frame marker and change it to **10**. Note: each frame
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_animation.png
 
 Now select **File>Export>Model Description Language (.mdl)**. Navigate to **/home/user/mcell_tutorial/scaling** and select **OK** when it prompts you to make a new directory. Change the file name to **scaling.mdl**. Select **Enable Animation** and **Iterate Script**. Hit **Export MDL**.
+
+.. _dynamic_mesh_mdl:
 
 Annotating a Sequence of MDLs
 +++++++++++++++++++++++++++++++++++++++++++++

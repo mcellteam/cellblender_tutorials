@@ -1,3 +1,5 @@
+.. _optimize:
+
 *********************************************
 Optimizing Your Simulation
 *********************************************
@@ -7,6 +9,8 @@ These simplistic simulations should not be overly taxing on a relatively recent 
 * `Adding Partitions`_
 * `Target Only`_
 * `Only Export What You Need`_
+
+.. _adding_partitions:
 
 Adding Partitions
 ---------------------------------------------
@@ -53,6 +57,8 @@ Run this MDL, and take note of the **Total wall clock time** reported by MCell. 
 
 Although unrelated to partitions, note that instead of creating a **Cube** object with Blender, we simply used MCell's built in command (**BOX**) for creating one.
 
+.. _target_only:
+
 Target Only
 ---------------------------------------------
 
@@ -88,6 +94,8 @@ If you have a reaction between two molecules in which there are many of one mole
     }
 
 In this case, **vol2** is marked as being **TARGET_ONLY** in the **DEFINE_MOLECULES** section. From the **DEFINE_REACTIONS** section, we can see that **vol1** reacts with **vol2** to create **vol3** and reproduce **vol1**. Without the **TARGET_ONLY** command, every **vol2** molecule would have to check to see if there were **vol1** molecules to react with and vice versa. With this command, *only* **vol1** must search for reaction partners. Given that there are 100 **vol1** and 10000 **vol2**, this second method is much more efficient.
+
+.. _only_export_needed:
 
 Only Export What You Need
 ---------------------------------------------

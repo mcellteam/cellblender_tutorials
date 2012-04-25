@@ -1,8 +1,12 @@
+.. _examine_output:
+
 *********************************************
 Examining the Output
 *********************************************
 
 In this section, we will run MCell on the MDL that we annotated in the previous section. This will generate visualization and reaction data (i.e. molecule counts), which we will then examine using DReAMM and some plotting software. 
+
+.. _run_sim_again:
 
 Run the Simulation again
 =============================================
@@ -52,6 +56,8 @@ Hit the Play button on the Sequencer and watch the molecules diffusing and react
 
 *Note:* The "up" axis is the Z-axis in Blender, but the Y-axis in DReAMM, meaning that the **top** surface region is pointing straight toward you. You will probably want to rotate it to get a better view. **Left click** in the **DReAMM Image Window** and hit **Ctrl-R**. Now **left click and drag** upward until the **top** region is facing up. 
 
+.. _custom_rendering:
+
 Customize Rendering Properties
 =============================================
 
@@ -100,6 +106,8 @@ Finally, we are going to add **surf1**, but we have a few more changes to make w
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/play.png
 
 Hit the Play button on the Sequencer and watch the molecules diffusing and reacting in the **DReAMM Image Window**.
+
+.. _graph_rxn_data:
 
 Graph the Reaction Data
 =============================================

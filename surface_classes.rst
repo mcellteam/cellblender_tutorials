@@ -1,6 +1,10 @@
+.. _surface_classes:
+
 *********************************************
 Introduction to Surface Classes
 *********************************************
+
+.. _surf_class_vol_mol:
 
 Surface Classes and Volume Molecules
 =============================================
@@ -12,6 +16,8 @@ Begin by creating a copy of the **intro** directory, by typing the following com
     cp -fr /home/user/mcell_tutorial/intro /home/user/mcell_tutorial/surf_class
 
 Don't forget to replace **user** with your actual user name.
+
+.. _surf_class_vm_mod_mesh:
 
 Modify the Mesh
 ---------------------------------------------
@@ -43,6 +49,8 @@ Next, select **File>Export>Model Description Language (.mdl)**. Deselect **Insta
     intro.mdl
 
 and hit **Export MDL**.
+
+.. _surf_class_vm_mod_mdl:
 
 Modify the MDL
 ---------------------------------------------
@@ -79,9 +87,13 @@ Save the file and run it with MCell by entering the command::
 
 Visualize the results with DReAMM just like was done in the :ref:`visualize_mesh` and :ref:`visualize_molecules` sections, except you should be sure to also add the new **Plane** object as a wireframe. See if you can notice the **vol2** molecules being destroyed by the absorptive surface.
 
+.. _surf_class_rxns:
+
 Surface Classes and Reactions
 =============================================
 In the `Surface Classes and Volume Molecules`_ section, we learned that surface classes can be used to give parts of meshes special properties. Surface classes can also be used to provide extra specificity over how reactions occur. Begin by creating a copy of the **surf_class** directory, by typing the following command at the terminal: **cp -fr /home/user/mcell_tutorial/surf_class /home/user/mcell_tutorial/surf_class_rxns** (don't forget to replace **user** with your actual user name).
+
+.. _surf_class_rxns_mod_mesh:
 
 More Mesh Modifications
 ---------------------------------------------
@@ -113,6 +125,8 @@ Next, select **File>Export>Model Description Language (.mdl)**. *Deselect* **Ins
     intro.mdl
 
 and hit **Export MDL**.
+
+.. _surf_class_rxns_mod_mdl:
 
 More MDL Modifications
 ---------------------------------------------

@@ -14,6 +14,8 @@ Open **intro.mdl** with your favorite text editor (try gedit or kedit if you are
 - `Release Sites`_
 - `Reaction Data`_
 
+.. _examine_mdl:
+
 Examining the MDL
 ---------------------------------------------
 
@@ -50,6 +52,8 @@ In addition to simply *including* meshes, you also have to **INSTANTIATE** meshe
 
 Lastly, the **VIZ_OUTPUT** section specifies what visualization data to export and at what time values. Right now, it is set to export everything. 
 
+.. _init_commands:
+
 Initialization Commands
 ---------------------------------------------
 At the beginning of the mdl, there are two variables **time_step** and **iterations**. These variables are applied to the initialization commands **TIME_STEP** and **ITERATIONS** respectively. As the names imply, these commands control how many **ITERATIONS** the simulation runs for, with each iteration lasting one **TIME_STEP** (units are seconds). 
@@ -62,6 +66,8 @@ At the beginning of the mdl, change **iterations** from **1** to **1000** and **
     time_step = 5e-6
     ITERATIONS = iterations
     TIME_STEP = time_step
+
+.. _molec_def:
 
 Molecule Definitions
 ---------------------------------------------
@@ -89,6 +95,8 @@ This means that **reactant(s)** are converted into **product(s)** at a given **r
 
 There must be one or more molecules on the left hand  **reactants** side. On the right hand **products** side, you must have zero (**NULL**) or more molecules. The units of the **rate** depend on the type of reaction. [s\ :sup:`-1`\ ] for unimolecular reactions and [M\ :sup:`-1`\ s\ :sup:`-1`\ ] for bimolecular reactions between two volume molecules or a volume molecule and a surface molecule.
 
+.. _rxn_dir:
+
 Reaction Directionality
 ---------------------------------------------
 
@@ -109,6 +117,8 @@ The directionality of these ticks and commas are relative, which means that we c
     DEFINE_REACTIONS {
         vol1' + surf1, -> surf1, + vol2, [1E8]
     }
+
+.. _rel_sites:
 
 Release Sites
 ---------------------------------------------
@@ -140,6 +150,8 @@ The **SHAPE** of the release determines what object (or region of an object) tha
 **NUMBER_TO_RELEASE** gives an absolute number of molecules to be released. Alternatively, one could define a **CONCENTRATION** or **DENSITY**.
 
 These two release sites together will release 1000 **vol1** molecules randomly throughout the inside of **World.Cube** and also 5000 **surf1** molecules randomly on the **top** surface region of **World.Cube**. Also, the **TOP** of **surf1** will be aligned with the **FRONT** of the surface.
+
+.. _rxn_data:
 
 Reaction Data
 ---------------------------------------------

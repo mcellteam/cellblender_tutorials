@@ -1,3 +1,5 @@
+.. _analyze:
+
 *********************************************
 Analyzing Your Data
 *********************************************
@@ -31,7 +33,11 @@ There are many tools available for plotting and analyzing data. We will make use
 
 This is very similar to MDLs you have run in the past with the exception of the line **VIZ_MOLECULE_FORMAT = ASCII**. Normally, "viz_data" molecule locations are stored in a binary file to make them smaller, but this command will cause them to be created in a human-readable, ASCII format.
 
-Run this mdl by typing **mcell hist.mdl**. It will create a visualization directory called **hist_viz_data**.
+Run this mdl by entering the command::
+
+    mcell hist.mdl
+
+It will create a visualization directory called **hist_viz_data**.
 
 Create a file called **hist.py** and copy the following text into it::
 
@@ -61,5 +67,7 @@ Although the comments explain what is happening, let's break it down as simply a
 
 We are loading **vol1.positions.dat** into a two dimensional array called **data**. We then "slice" the first column which contains all the X locations. We then print the min, max, mean, and standard deviation to the command line. Lastly, we create the histogram with labels and plot (or show) it.
 
-Run the file now by typing **python hist.py**.
+Run the file now by typing::
+
+    python hist.py
 

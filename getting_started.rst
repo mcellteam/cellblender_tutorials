@@ -1,3 +1,5 @@
+.. _getting_started:
+
 *********************************************
 Getting Started
 *********************************************
@@ -64,6 +66,8 @@ Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the 
     intro.mdl
 
 and hit **Export MDL**. Either leave Blender open or save and quit, as we'll need to modify this model later.
+
+.. _run_sim:
 
 Run the Simulation
 =============================================
