@@ -7,7 +7,7 @@ Begin by creating a copy of the **surf_class_rxns** directory, by typing the fol
     0      0
     5E-4   1E8
 
-The first column is the time (seconds), and the second column is the reaction rate at that time. The units for the reaction rate are the same as used earlier in the Reactions_ section. 
+The first column is the time (seconds), and the second column is the reaction rate at that time. The units for the reaction rate are the same as used earlier in the :ref:`reactions` section. 
 
 The example shown above is a very simple case where the reaction only changes once. You could just as well have it change every time step, like this::
 

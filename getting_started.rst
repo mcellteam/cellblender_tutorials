@@ -4,6 +4,8 @@ Getting Started
 
 For this first example, we'll export the default mesh from Blender into the MDL format which MCell can parse. We will then run this MDL with MCell to generate visualization data.
 
+.. _gen_mesh:
+
 Generate Mesh and Export MDL with Blender
 =============================================
 
@@ -80,6 +82,8 @@ MCell should output some information to the command line indicating that it ran 
 
 and you should see that a directory called **intro_viz_data** has been created.
 
+.. _visualize_mesh:
+
 Visualize the Mesh
 =============================================
 
@@ -93,7 +97,7 @@ As with the Blender section, this section requires extensive use of a GUI, so yo
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/dreamm_pt1.ogg" type='video/ogg'/>
     </video>
 
-You can skip to the next section (`Annotate the MDL`_) if you have watched the previous video tutorial. Otherwise, follow along with the rest of the directions in this section. 
+You can skip to the next section (:ref:`annotate`) if you have watched the previous video tutorial. Otherwise, follow along with the rest of the directions in this section. 
 
 To start DReAMM, open a terminal, enter the command::
     

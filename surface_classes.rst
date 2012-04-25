@@ -28,7 +28,7 @@ Watch the following video tutorial or follow along with the instructions below.
 
 If you watched the previous video tutorial, you can skip ahead to `Surface Classes and Volume Molecules`_.
 
-In order to complete the next section (`Surface Classes and Volume Molecules`_), we first have to make a few simple changes to our Blender model. We'll pick up right where we left off in `Generate Mesh and Export MDL with Blender`_. Hit **z** to switch to a wireframe view. Hit **Shift-a** and select **Plane**. Hit **g** to "grab" the plane, **z** to constrain the movement to the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm.
+In order to complete the next section (`Surface Classes and Volume Molecules`_), we first have to make a few simple changes to our Blender model. We'll pick up right where we left off in :ref:`gen_mesh`. Hit **z** to switch to a wireframe view. Hit **Shift-a** and select **Plane**. Hit **g** to "grab" the plane, **z** to constrain the movement to the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/new_mat_plane.png
 
@@ -77,7 +77,7 @@ Save the file and run it with MCell by entering the command::
 
     mcell intro.mdl
 
-Visualize the results with DReAMM just like was done in the `Visualize the Mesh`_ and `Visualize the Molecules`_ sections, except you should be sure to also add the new **Plane** object as a wireframe. See if you can notice the **vol2** molecules being destroyed by the absorptive surface.
+Visualize the results with DReAMM just like was done in the :ref:`visualize_mesh` and :ref:`visualize_molecules` sections, except you should be sure to also add the new **Plane** object as a wireframe. See if you can notice the **vol2** molecules being destroyed by the absorptive surface.
 
 Surface Classes and Reactions
 =============================================

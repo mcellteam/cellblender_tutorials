@@ -19,6 +19,8 @@ After it's finished running, enter the command::
 
 and you should see that a new directory called **react_data** has been created.
 
+.. _visualize_molecules:
+
 Visualize the Molecules
 =============================================
 
@@ -34,7 +36,7 @@ Visualize molecules with DReAMM in this video tutorial.
 
 Skip to the next section (`Customize Rendering Properties`_) if you just watched the video tutorial.
 
-If you still have DReAMM open, hit the **Reimport** button and add the wireframe for **World.Cube** in the same way that you did in `Visualize the Mesh`_. If you closed DReAMM, simply follow all the steps in `Visualize the Mesh`_ again. When you are finished, you should have the centered cube in the middle of the **DReAMM Image Window**.
+If you still have DReAMM open, hit the **Reimport** button and add the wireframe for **World.Cube** in the same way that you did in :ref:`visualize_mesh`. If you closed DReAMM, simply follow all the steps in :ref:`visualize_mesh` again. When you are finished, you should have the centered cube in the middle of the **DReAMM Image Window**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/volume_molecules.png
 

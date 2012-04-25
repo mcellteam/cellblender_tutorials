@@ -1,3 +1,5 @@
+.. _annotate:
+
 *********************************************
 Annotate the MDL
 *********************************************
@@ -74,6 +76,8 @@ After the **INCLUDE_FILE** command, add a **DEFINE_MOLECULES** section as shown 
     }
 
 Molecules that use **DIFFUSION_CONSTANT_3D** command, like **vol1** and **vol2**, will be volume molecules, meaning that they will exist in solution. Molecules that use **DIFFUSION_CONSTANT_2D**, like **surf1**, will be surface molecules, meaning that they exist on a surface. The units of the values assigned to this command (**1E-6** and **1E-7** in this instance) are in cm\ :sup:`2`\ /s. 
+
+.. _reactions:
 
 Reactions
 ---------------------------------------------
