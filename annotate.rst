@@ -46,17 +46,19 @@ Before we start making changes, let's *briefly* look at what we have to start wi
 
 The first four lines are some `Initialization Commands`_ that we'll cover in the next section.
 
-**INCLUDE_FILE** commands let you break up MDLs into multiple sections. In this particular instance, the vertices and faces that make up our **Cube** are being imported or *included*.
+:index:`\ <single:INCLUDE_FILE>` **INCLUDE_FILE** commands let you break up MDLs into multiple sections. In this particular instance, the vertices and faces that make up our **Cube** are being imported or *included*.
 
-In addition to simply *including* meshes, you also have to **INSTANTIATE** meshes to make them exist and interact in the simulation. We'll see later that we can also instantiate other types of objects, like molecule `Release Sites`_.
+In addition to simply *including* meshes, you also have to :index:`\ <single:INSTANTIATE>` **INSTANTIATE** meshes to make them exist and interact in the simulation. We'll see later that we can also instantiate other types of objects, like molecule `Release Sites`_.
 
-Lastly, the **VIZ_OUTPUT** section specifies what visualization data to export and at what time values. Right now, it is set to export everything. 
+Lastly, the :index:`\ <single:VIZ_OUTPUT>` **VIZ_OUTPUT** section specifies what visualization data to export and at what time values. Right now, it is set to export everything. 
 
 .. _init_commands:
 
 Initialization Commands
 ---------------------------------------------
-At the beginning of the mdl, there are two variables **time_step** and **iterations**. These variables are applied to the initialization commands **TIME_STEP** and **ITERATIONS** respectively. As the names imply, these commands control how many **ITERATIONS** the simulation runs for, with each iteration lasting one **TIME_STEP** (units are seconds). 
+:index:`\ <single:TIME_STEP>`
+:index:`\ <single:ITERATIONS>`
+At the beginning of the mdl, there are two variables **time_step** and **iterations**. These variables are applied to the initialization commands  **TIME_STEP** and **ITERATIONS** respectively. As the names imply, these commands control how many **ITERATIONS** the simulation runs for, with each iteration lasting one **TIME_STEP** (units are seconds). 
 
 At the beginning of the mdl, change **iterations** from **1** to **1000** and **time_step** from **1e-6** to **5e-6**. This means that the simulation will run for 1000 iterations at a time step of **5e-6** seconds (total time: 1000*5e-6=5e-3 seconds).
 
@@ -73,6 +75,7 @@ Molecule Definitions
 ---------------------------------------------
 Molecules need to be defined before they are used (as a release site or a reaction) in the MDL.
 
+:index:`\ <single:DEFINE_MOLECULES>`
 After the **INCLUDE_FILE** command, add a **DEFINE_MOLECULES** section as shown here::
 
     DEFINE_MOLECULES {
@@ -81,6 +84,8 @@ After the **INCLUDE_FILE** command, add a **DEFINE_MOLECULES** section as shown 
         surf1 {DIFFUSION_CONSTANT_2D = 1E-7}
     }
 
+:index:`\ <single:DIFFUSION_CONSTANT_3D>`
+:index:`\ <single:DIFFUSION_CONSTANT_2D>`
 Molecules that use **DIFFUSION_CONSTANT_3D** command, like **vol1** and **vol2**, will be volume molecules, meaning that they will exist in solution. Molecules that use **DIFFUSION_CONSTANT_2D**, like **surf1**, will be surface molecules, meaning that they exist on a surface. The units of the values assigned to this command (**1E-6** and **1E-7** in this instance) are in cm\ :sup:`2`\ /s. 
 
 .. _reactions:
@@ -93,14 +98,15 @@ Molecules that were defined in the previous section can be created and destroyed
 
 This means that **reactant(s)** are converted into **product(s)** at a given **rate**.
 
-There must be one or more molecules on the left hand  **reactants** side. On the right hand **products** side, you must have zero (**NULL**) or more molecules. The units of the **rate** depend on the type of reaction. [s\ :sup:`-1`\ ] for unimolecular reactions and [M\ :sup:`-1`\ s\ :sup:`-1`\ ] for bimolecular reactions between two volume molecules or a volume molecule and a surface molecule.
+There must be one or more molecules on the left hand  **reactants** side. On the right hand **products** side, you must have zero (`\ <single:NULL>` **NULL**) or more molecules. The units of the **rate** depend on the type of reaction. [s\ :sup:`-1`\ ] for unimolecular reactions and [M\ :sup:`-1`\ s\ :sup:`-1`\ ] for bimolecular reactions between two volume molecules or a volume molecule and a surface molecule.
 
 .. _rxn_dir:
 
 Reaction Directionality
 ---------------------------------------------
 
-Surface molecules have a **TOP** and a **BOTTOM**, so we need a way to differentiate between reactions that happen on one side versus the other. Commas (**,**), ticks (**'**), and semi-colons (**;**) serve this purpose. For detailed information on this reaction syntax, please refer to this pdf_. Let's look at a relatively simple example. First, add this code after the **DEFINE_MOLECULES** section::
+:index:`\ <single:DEFINE_REACTIONS>`
+Surface molecules have a `\ <single:TOP>` **TOP** and a `\ <single:BOTTOM>` **BOTTOM**, so we need a way to differentiate between reactions that happen on one side versus the other. Commas (**,**), ticks (**'**), and semi-colons (**;**) serve this purpose. For detailed information on this reaction syntax, please refer to this pdf_. Let's look at a relatively simple example. First, add this code after the **DEFINE_MOLECULES** section::
 
     DEFINE_REACTIONS {
         vol1, + surf1' -> surf1' + vol2' [1E8]
@@ -119,6 +125,9 @@ The directionality of these ticks and commas are relative, which means that we c
     }
 
 .. _rel_sites:
+
+.. index::
+   single: RELEASE_SITES
 
 Release Sites
 ---------------------------------------------
@@ -152,6 +161,9 @@ The **SHAPE** of the release determines what object (or region of an object) tha
 These two release sites together will release 1000 **vol1** molecules randomly throughout the inside of **World.Cube** and also 5000 **surf1** molecules randomly on the **top** surface region of **World.Cube**. Also, the **TOP** of **surf1** will be aligned with the **FRONT** of the surface.
 
 .. _rxn_data:
+
+.. index::
+   single: REACTION_DATA_OUTPUT
 
 Reaction Data
 ---------------------------------------------

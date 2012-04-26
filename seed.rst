@@ -47,7 +47,7 @@ We'll begin by creating a directory called **seed**. Inside it, create an MDL ca
         {COUNT[vol3,WORLD]}=> "./react_data/vol3." & seed & ".dat"
     }
 
-All the syntax should be familiar except for the line **sprintf(seed,"%04g",SEED)**. This assigns the value of the **SEED** to the variable **seed**. The **%04g** formats it so that there are four leading zeros.
+All the syntax should be familiar except for the line :index:`\ <single:SEED>` **sprintf(seed,"%04g",SEED)**. This assigns the value of the **SEED** to the variable **seed**. The **%04g** formats it so that there are four leading zeros.
 
 Next, create the following python script called **seed.py**::
 
