@@ -63,29 +63,30 @@ This file is similar to the **scaling.py** file that we created in the checkpoin
     #!/usr/bin/env python
 
     import numpy as np
-    import matplotlib.pyplot as plt 
+    import matplotlib.pyplot as plt
     import os
 
     mol_counts = None
-    files = os.listdir('react_data')   #build a list of reaction data file names
-    files.sort()                       #sort that list alphabetically
+    files = os.listdir('react_data')   # build a list of reaction data file names
+    files.sort()                       # sort that list alphabetically
 
-    for f in files:                    #iterate over the list of file names
+    for f in files:                    # iterate over the list of file names
         if f.startswith('vol1'):
             rxn_data = np.genfromtxt("./react_data/%s" % f, dtype=int)
-            rxn_data = rxn_data[:, 1]  #take the second column
-            plt.plot(rxn_data, '0.5')  #plot the results as a gray line
+            rxn_data = rxn_data[:, 1]  # take the second column
+            plt.plot(rxn_data, '0.5')  # plot the results as a gray line
             if mol_counts is None:
                 mol_counts = rxn_data
             else:
-                #built up 2d array of molecule counts (one col/seed)
+                # built up 2d array of molecule counts (one col/seed)
                 mol_counts = np.column_stack((mol_counts, rxn_data))
         else:
             pass
 
-    mol_counts = mol_counts.mean(axis=1)  #take the mean of the rows
-    plt.plot(mol_counts, 'r')             #plot the results as a red line
-    plt.show()                            #show the plot
+    mol_counts = mol_counts.mean(axis=1)  # take the mean of the rows
+    plt.plot(mol_counts, 'r')             # plot the results as a red line
+    plt.show()                            # show the plot
+
 
 This script will load (and plot) each of the twenty **vol1.####.dat** files into a two dimensional array, take the mean of the rows, and plot the results.
 
