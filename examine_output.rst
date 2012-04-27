@@ -28,7 +28,7 @@ and you should see that a new directory called **react_data** has been created.
 Visualize the Molecules
 =============================================
 
-Visualize molecules with DReAMM in this video tutorial.
+Visualize molecules with CellBlender in this video tutorial.
 
 .. raw:: html
 
@@ -40,28 +40,14 @@ Visualize molecules with DReAMM in this video tutorial.
 
 Skip to the next section (`Customize Rendering Properties`_) if you just watched the video tutorial.
 
-If you still have DReAMM open, hit the **Reimport** button and add the wireframe for **World.Cube** in the same way that you did in :ref:`visualize_mesh`. If you closed DReAMM, simply follow all the steps in :ref:`visualize_mesh` again. When you are finished, you should have the centered cube in the middle of the **DReAMM Image Window**.
+Begin by opening Blender.. Then click the **Scene** button. Assuming that you have CellBlender installed and enabled, there should be a number of extra panels available at the bottom of the window. Select the **Visualize Simulation Results** panel, and click the **Set Molecule Viz Directory** button. Navigate to `/home/user/mcell_tutorial/intro/viz_data/` and click **Read Molecule Files**. You should now see a number of red molecules populating the surface of the **Cube**. Drag the green bar on the timeline back and forth to scrub through the simulation.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/volume_molecules.png
+.. _custom_glyphs:
 
-Select **Volume Molecules** in the **Import & Select Objects** window. Next, select **Add Filtered**. Click **Apply Operation**, and the volume molecules should appear in the  **DReAMM Image Window**.
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/surface_molecules.png
-
-Select **Surface Molecules** in the **Import & Select Objects** window. **Add Filtered** should still be selected. Click **Apply Operation**, and the surface molecules should appear in the **DReAMM Image Window**.
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/play.png
-
-Hit the Play button on the Sequencer and watch the molecules diffusing and reacting in the **DReAMM Image Window**.
-
-*Note:* The "up" axis is the Z-axis in Blender, but the Y-axis in DReAMM, meaning that the **top** surface region is pointing straight toward you. You will probably want to rotate it to get a better view. **Left click** in the **DReAMM Image Window** and hit **Ctrl-R**. Now **left click and drag** upward until the **top** region is facing up. 
-
-.. _custom_rendering:
-
-Customize Rendering Properties
+Customize Molecule Glyphs
 =============================================
 
-Learn how to customize rendering properties with DReAMM in this video tutorial.
+Learn how to use custom glyphs for molecules using CellBlender in this video tutorial.
 
 .. raw:: html
 
@@ -73,39 +59,11 @@ Learn how to customize rendering properties with DReAMM in this video tutorial.
 
 Skip to the next section (`Graph the Reaction Data`_) if you just watched the video tutorial.
 
-By default, every molecule just shows up as a white pixel. This might be fine if you only have one molecule in your simulation, but, for anything more complicated, you will probably want to be able to differentiate between them.
+By default, every molecule just shows up as a red sphere. This might be fine if you only have one molecule in your simulation, but, for anything more complicated, you will probably want to be able to differentiate between them. Also, you might one to be able to tell the orientation of surface molecule, which we can do by using an asymmetrical glyph.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/set_rendering_prop.png
+Expand **molecules** in the **Outliner** by clicking the small **+** sign beside it. This expands to reveal **mol_surf1**, **mol_vol1**, and **mol_vol2**. These correspond to the molecules we created in our simulation: **surf1**, **vol1**, and **vol2**. If you click the plus beside each of these, you will see **mol_surf1_shape**, **mol_vol1_shape**, and **mol_vol2_shape**. These are the actual glyph objects that get mapped onto the molecule locations.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/select_molecules.png
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/select_vol1.png
-
-Hit the **Set Rendering Prop.** button. Select **Molecules** and then **vol1.**
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/set_red.png
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/sphere_height_radius.png
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/apply_op_once.png
-
-Set the **(Front) Color** RGB values to **1,0,0** (for red). Change **Glyph** to **sphere(simple)**. Change **Height** and **Radius** to **0.02**. The hit the **Apply Operation Once** button. You should notice the change in the **DReAMM Image Window**.
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/select_vol2.png
-
-Select **vol2** and deselect **vol1**. Change  the RGB value of the **(Front) Color** to **0,1,0** (for green). Hit **Apply Operation Once**. *Note*: The specific colors and values don't matter as long as we can easily tell everything apart.
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/set_cyan.png
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/arrow.png
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/pt2/apply_op_once.png
-
-Finally, we are going to add **surf1**, but we have a few more changes to make with this one since it is a surface molecule, and therefore has a directionality to it. First, select **surf1** and deselect **vol2**. Then change the RGB value to **0,1,1** (for cyan). Change the **Glyph** to **arrow(simple)**. Then, change the **Height** and **Radius** to **0.10** and **0.02** respectively. Finally, hit **Apply Operation Once**.
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/dreamm/play.png
-
-Hit the Play button on the Sequencer and watch the molecules diffusing and reacting in the **DReAMM Image Window**.
+Select **mol_surf1_shape** in the **Outliner**. Then click the **Material** button and navigate down to **Molecule Shape**. The shape should be set to **Cone** in the **Molecule Shape** drop down box. Click **Set Molecule Shape** to apply the selection. All of the **surf1** molecule glyphs should now be changed to cones.
 
 .. _graph_rxn_data:
 
