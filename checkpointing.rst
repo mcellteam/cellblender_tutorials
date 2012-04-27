@@ -67,7 +67,7 @@ Notice that a file called **dc_chkpt** was created. This file stores the informa
 
     mcell change_dc2.mdl
 
-Visualize the results with DReAMM. When you playback the animation, you will notice that the molecules start off moving rather slowly, and then speed up halfway through the simulation, coinciding with the change in diffusion constant.
+Visualize the results with CellBlender. When you playback the animation, you will notice that the molecules start off moving rather slowly, and then speed up halfway through the simulation, coinciding with the change in diffusion constant.
 
 This is just a simple example of one parameter you can change. Here is a partial list of some other parameters that you could change:
 
@@ -144,7 +144,7 @@ Now, at the command line enter the command::
     
     python scaling.py
 
-After the simulation is done running, visualize the results with DReAMM. Add the **Cube** as a wireframe and **vol1** as a volume molecule. As in previous cases, the molecules stay within the box; the only difference now is that the box expands every iteration. For something more interesting and physiologically relevant, download this `expanding pore`_ example.
+After the simulation is done running, visualize the results with CellBlender. As in previous cases, the molecules stay within the box; the only difference now is that the box expands every iteration. For something more interesting and physiologically relevant, download this `expanding pore`_ example.
 
 .. _expanding pore: http://mcell.psc.edu/tutorials/mdl/expanding_pore.tgz
 

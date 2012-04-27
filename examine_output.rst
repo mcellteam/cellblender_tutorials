@@ -4,7 +4,7 @@
 Examining the Output
 *********************************************
 
-In this section, we will run MCell on the MDL that we annotated in the previous section. This will generate visualization and reaction data (i.e. molecule counts), which we will then examine using DReAMM and some plotting software. 
+In this section, we will run MCell on the MDL that we annotated in the previous section. This will generate visualization and reaction data (i.e. molecule counts), which we will then examine using CellBlender and some plotting software. 
 
 .. _run_sim_again:
 

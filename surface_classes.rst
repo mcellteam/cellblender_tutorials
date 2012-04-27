@@ -85,7 +85,7 @@ Save the file and run it with MCell by entering the command::
 
     mcell intro.mdl
 
-Visualize the results with DReAMM just like was done in the :ref:`visualize_mesh` and :ref:`visualize_molecules` sections, except you should be sure to also add the new **Plane** object as a wireframe. See if you can notice the **vol2** molecules being destroyed by the absorptive surface.
+Visualize the results with CellBlender just like was done in the :ref:`visualize_molecules` section. See if you can notice the **vol2** molecules being destroyed by the absorptive surface.
 
 .. _surf_class_rxns:
 
@@ -196,5 +196,5 @@ Save the file and run it with MCell by enterting the command::
 
     mcell intro.mdl
 
-When you visualize the results with DReAMM, be sure to add in **Plane.001** as a wireframe and **surf2** as a surface molecule. You might also want to add in custom rendering properties for **surf2**. You should notice that there are **vol2** molecules being created inside the box, but only in the upper portion of it, despite the fact that the **surf2** molecules are facing both up *and* down. The reason for this is because the reaction is only taking place at the **BACK** of the **empty** surface class with the **BOTTOM** of **surf2**.
+When you visualize the results with CellBlender, want to add in custom rendering properties for **surf2**. You should notice that there are **vol2** molecules being created inside the box, but only in the upper portion of it, despite the fact that the **surf2** molecules are facing both up *and* down. The reason for this is because the reaction is only taking place at the **BACK** of the **empty** surface class with the **BOTTOM** of **surf2**.
 
