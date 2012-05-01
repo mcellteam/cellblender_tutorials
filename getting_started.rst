@@ -21,7 +21,7 @@ The majority of this tutorial can be easily accomplished by following along with
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/blender_pt1.ogg" type='video/ogg'/>
     </video>
 
-You can skip to the next section (`Run the Simulation`_) if you have watched the previous video tutorial. Otherwise, follow along with the rest of the directions in this section. 
+You can skip to the next section (:ref:`run_sim`) if you have watched the previous video tutorial. Otherwise, follow along with the rest of the directions in this section. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/cube.png
 

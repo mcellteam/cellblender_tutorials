@@ -6,13 +6,7 @@ Annotate the MDL
 
 Open **intro.mdl** with your favorite text editor (try gedit or kedit if you aren't sure what to use).
 
-- `Examining the MDL`_
-- `Initialization Commands`_
-- `Molecule Definitions`_
-- Reactions_
-- `Reaction Directionality`_
-- `Release Sites`_
-- `Reaction Data`_
+.. contents:: :local:
 
 .. _examine_mdl:
 
@@ -44,11 +38,11 @@ Before we start making changes, let's *briefly* look at what we have to start wi
         }
     }
 
-The first four lines are some `Initialization Commands`_ that we'll cover in the next section.
+The first four lines are some :ref:`init_commands` that we'll cover in the next section.
 
 :index:`\ <single:INCLUDE_FILE>` **INCLUDE_FILE** commands let you break up MDLs into multiple sections. In this particular instance, the vertices and faces that make up our **Cube** are being imported or *included*.
 
-In addition to simply *including* meshes, you also have to :index:`\ <single:INSTANTIATE>` **INSTANTIATE** meshes to make them exist and interact in the simulation. We'll see later that we can also instantiate other types of objects, like molecule `Release Sites`_.
+In addition to simply *including* meshes, you also have to :index:`\ <single:INSTANTIATE>` **INSTANTIATE** meshes to make them exist and interact in the simulation. We'll see later that we can also instantiate other types of objects, like molecule :ref:`rel_sites`.
 
 Lastly, the :index:`\ <single:VIZ_OUTPUT>` **VIZ_OUTPUT** section specifies what visualization data to export and at what time values. Right now, it is set to export everything. 
 
@@ -124,10 +118,10 @@ The directionality of these ticks and commas are relative, which means that we c
         vol1' + surf1, -> surf1, + vol2, [1E8]
     }
 
-.. _rel_sites:
-
 .. index::
    single: RELEASE_SITES
+
+.. _rel_sites:
 
 Release Sites
 ---------------------------------------------
@@ -154,16 +148,17 @@ This section creates two release sites, one called **vol1_rel** and the other **
 
 The **SHAPE** of the release determines what object (or region of an object) that molecules are released onto or into. You can also use some predefined shapes, like **CUBIC** or **SPHERICAL**, but we won't cover that here.
 
-**MOLECULE** determines what molecule is released. If it is a surface molecule, an orientation is also specified This is similar to what's described in `Reaction Directionality`_, but it is not relative. A tick means that the **TOP** of the molecule is aligned with the **FRONT** of the surface, and a comma means that the **TOP** is aligned with the **BACK** of the surface.
+**MOLECULE** determines what molecule is released. If it is a surface molecule, an orientation is also specified This is similar to what's described in :ref:`rxn_dir`, but it is not relative. A tick means that the **TOP** of the molecule is aligned with the **FRONT** of the surface, and a comma means that the **TOP** is aligned with the **BACK** of the surface.
 
 **NUMBER_TO_RELEASE** gives an absolute number of molecules to be released. Alternatively, one could define a **CONCENTRATION** or **DENSITY**.
 
 These two release sites together will release 1000 **vol1** molecules randomly throughout the inside of **World.Cube** and also 5000 **surf1** molecules randomly on the **top** surface region of **World.Cube**. Also, the **TOP** of **surf1** will be aligned with the **FRONT** of the surface.
 
-.. _rxn_data:
 
 .. index::
    single: REACTION_DATA_OUTPUT
+
+.. _rxn_data:
 
 Reaction Data
 ---------------------------------------------

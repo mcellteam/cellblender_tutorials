@@ -32,9 +32,9 @@ Watch the following video tutorial or follow along with the instructions below.
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/export_above.ogg" type='video/ogg'/>
     </video>
 
-If you watched the previous video tutorial, you can skip ahead to `Surface Classes and Volume Molecules`_.
+If you watched the previous video tutorial, you can skip ahead to :ref:`surf_class_vm_mod_mdl`.
 
-In order to complete the next section (`Surface Classes and Volume Molecules`_), we first have to make a few simple changes to our Blender model. We'll pick up right where we left off in :ref:`gen_mesh`. Hit **z** to switch to a wireframe view. Hit **Shift-a** and select **Plane**. Hit **g** to "grab" the plane, **z** to constrain the movement to the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm.
+In order to complete the next section (:ref:`surf_class_vm_mod_mdl`), we first have to make a few simple changes to our Blender model. We'll pick up right where we left off in :ref:`gen_mesh`. Hit **z** to switch to a wireframe view. Hit **Shift-a** and select **Plane**. Hit **g** to "grab" the plane, **z** to constrain the movement to the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/new_mat_plane.png
 
@@ -91,9 +91,9 @@ Visualize the results with CellBlender just like was done in the :ref:`visualize
 
 Surface Classes and Reactions
 =============================================
-In the `Surface Classes and Volume Molecules`_ section, we learned that surface classes can be used to give parts of meshes special properties. Surface classes can also be used to provide extra specificity over how reactions occur. Begin by creating a copy of the **surf_class** directory, by typing the following command at the terminal: **cp -fr /home/user/mcell_tutorial/surf_class /home/user/mcell_tutorial/surf_class_rxns** (don't forget to replace **user** with your actual user name).
+In the :ref:`surf_class_vol_mol` section, we learned that surface classes can be used to give parts of meshes special properties. Surface classes can also be used to provide extra specificity over how reactions occur. Begin by creating a copy of the **surf_class** directory, by typing the following command at the terminal: **cp -fr /home/user/mcell_tutorial/surf_class /home/user/mcell_tutorial/surf_class_rxns** (don't forget to replace **user** with your actual user name).
 
-.. _surf_class_rxns_mod_mesh:
+.. _surf_class_rxns_mesh:
 
 More Mesh Modifications
 ---------------------------------------------
@@ -108,9 +108,9 @@ Watch the following video tutorial or follow along with the instructions below.
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/export_inside.ogg" type='video/ogg'/>
     </video>
 
-If you watched the previous video tutorial, you can skip ahead to `Surface Classes and Reactions`_.
+If you watched the previous video tutorial, you can skip ahead to :ref:`surf_class_rxns_mdl`.
 
-We need to make a few more changes to our Blender model to complete the next section (`Surface Classes and Reactions`_). We're picking up where we left off in `Modify the Mesh`_. In fact, the instructions will be very similar, aside from few minor changes. While still in **Object Mode**, hit **Shift-a**, select **Plane**, and **Enter** to confirm.  
+We need to make a few more changes to our Blender model to complete the next section (:ref:`surf_class_rxn_mod_mdl`). We're picking up where we left off in :ref:`surf_class_vm_mod_mesh`. In fact, the instructions will be very similar, aside from few minor changes. While still in **Object Mode**, hit **Shift-a**, select **Plane**, and **Enter** to confirm.  
 
 Hit the **New** button in the **Materials** section of the **Properties** window. 
 
@@ -126,7 +126,7 @@ Next, select **File>Export>Model Description Language (.mdl)**. *Deselect* **Ins
 
 and hit **Export MDL**.
 
-.. _surf_class_rxns_mod_mdl:
+.. _surf_class_rxns_mdl:
 
 More MDL Modifications
 ---------------------------------------------

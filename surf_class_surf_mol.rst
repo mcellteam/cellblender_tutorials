@@ -8,8 +8,7 @@ We have already discussed surface classes at length, but we haven't touched on h
 
 Since our current MDL is beginning to get a little complicated, we will start fresh with this next example. First, we need to create the mesh and export the MDL. Then, we will modify the MDL.
 
-* `Creating the Mesh`_
-* `Modifying the MDL`_
+.. contents:: :local:
 
 .. _surf_class_sm_mesh:
 

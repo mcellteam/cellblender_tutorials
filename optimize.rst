@@ -6,9 +6,7 @@ Optimizing Your Simulation
 
 These simplistic simulations should not be overly taxing on a relatively recent desktop machine. However, you may likely want to develop simulations which have many more molecules possibly on large dense mesh objects. There are a couple of strategies you can use to speed up your simulation (and/or to save disk space). The following three topics will address some of these issues:
 
-* `Adding Partitions`_
-* `Target Only`_
-* `Only Export What You Need`_
+.. contents:: :local:
 
 .. _adding_partitions:
 

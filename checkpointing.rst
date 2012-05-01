@@ -12,8 +12,7 @@ Checkpointing allows you to stop a simulation at a specified iteration and resum
 
 We'll cover how to set up checkpointing in the next two sections, starting with a simple case where we modify a couple parameters. Then we will follow this up with a more interesting case where we have a mesh changing shape over time and molecules that will react to it.
 
-* `Basic Checkpointing`_
-* `Checkpointing and Dynamic Meshes`_
+.. contents:: :local:
 
 .. _basic_checkpointing:
 
@@ -99,7 +98,7 @@ Watch the following video tutorial or follow along with the instructions below.
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/anim.ogg" type='video/ogg'/>
     </video>
 
-If you watched the previous video tutorial, you can skip ahead to `Annotating a Sequence of MDLs`_.
+If you watched the previous video tutorial, you can skip ahead to :ref:`dynamic_mesh`.
 
 Open Blender. The Cube object should already be selected. 
 
