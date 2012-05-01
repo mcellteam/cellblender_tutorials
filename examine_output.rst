@@ -38,7 +38,7 @@ Visualize molecules with CellBlender in this video tutorial.
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/dreamm_pt2.ogg" type='video/ogg'/>
     </video>
 
-Skip to the next section (`Customize Rendering Properties`_) if you just watched the video tutorial.
+Skip to the next section (:ref:`custom_glyphs`) if you just watched the video tutorial.
 
 Begin by opening Blender.. Then click the **Scene** button. Assuming that you have CellBlender installed and enabled, there should be a number of extra panels available at the bottom of the window. Select the **Visualize Simulation Results** panel, and click the **Set Molecule Viz Directory** button. Navigate to `/home/user/mcell_tutorial/intro/viz_data/` and click **Read Molecule Files**. You should now see a number of red molecules populating the surface of the **Cube**. Drag the green bar on the timeline back and forth to scrub through the simulation.
 

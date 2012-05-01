@@ -40,7 +40,47 @@ Before we start making changes, let's *briefly* look at what we have to start wi
 
 The first four lines are some :ref:`init_commands` that we'll cover in the next section.
 
-:index:`\ <single:INCLUDE_FILE>` **INCLUDE_FILE** commands let you break up MDLs into multiple sections. In this particular instance, the vertices and faces that make up our **Cube** are being imported or *included*.
+:index:`\ <single:INCLUDE_FILE>` **INCLUDE_FILE** commands let you break up MDLs into multiple sections. In this particular instance, the vertices and faces that make up our **Cube** are being imported or *included* as shown here::
+
+    Cube POLYGON_LIST {
+        VERTEX_LIST {
+            [ 1.000000, 1.000000, -1.000000 ]
+            [ 1.000000, -1.000000, -1.000000 ]
+            [ -1.000000, -1.000000, -1.000000 ]
+            [ -1.000000, 1.000000, -1.000000 ]
+            [ 1.000000, 0.999999, 1.000000 ]
+            [ 0.999999, -1.000001, 1.000000 ]
+            [ -1.000000, -1.000000, 1.000000 ]
+            [ -1.000000, 1.000000, 1.000000 ]
+        }   
+        ELEMENT_CONNECTIONS {
+            [ 0, 1, 2 ] 
+            [ 0, 2, 3 ] 
+            [ 4, 7, 6 ] 
+            [ 4, 6, 5 ] 
+            [ 0, 4, 5 ] 
+            [ 0, 5, 1 ] 
+            [ 1, 5, 6 ] 
+            [ 1, 6, 2 ] 
+            [ 2, 6, 7 ] 
+            [ 2, 7, 3 ] 
+            [ 4, 0, 3 ] 
+            [ 4, 3, 7 ] 
+        }   
+        DEFINE_SURFACE_REGIONS {
+            top{
+                ELEMENT_LIST = [2, 3]
+                VIZ_VALUE = 1 
+            }   
+            sides_and_bottom{
+                ELEMENT_LIST = [0, 1, 4, 5, 6, 7, 8, 9, 10, 11] 
+                VIZ_VALUE = 0 
+            }   
+
+        }   
+    }
+
+Mesh objects made in Blender become a **POLYGON_LIST** object in MCell. A **POLYGON_LIST** object consists of two to three sections in MCell: a **VERTEX_LIST**, an **ELEMENT_CONNECTIONS** list, and a **DEFINE_SURFACE_REGIONS** section. A **VERTEX_LIST** is exactly what it sounds like, a list of vertices. The **ELEMENT_CONNECTIONS** list defines the faces of the triangles. Each number in the list is an index to a single vertex defined in the **VERTEX_LIST**. Each set of three numbers (e.g. **[ 0, 1, 2 ]**) tells which vertices are connected together to form a single face. **DEFINE_SURFACE_REGIONS** is optional, unless you want to specify specify surface regions. Each number in the **ELEMENT_LIST** is an index to a triangle in **ELEMENT_CONNECTIONS**.
 
 In addition to simply *including* meshes, you also have to :index:`\ <single:INSTANTIATE>` **INSTANTIATE** meshes to make them exist and interact in the simulation. We'll see later that we can also instantiate other types of objects, like molecule :ref:`rel_sites`.
 
