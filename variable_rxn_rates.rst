@@ -4,7 +4,11 @@
 Variable Reaction Rates
 *********************************************
 
-Begin by creating a copy of the **surf_class_rxns** directory, by typing the following command at the terminal: **cp -fr /home/user/mcell_tutorial/surf_class_rxns /home/user/mcell_tutorial/var_rxn_rate** (don't forget to replace **user** with your actual user name). In the new **var_rxn_rate** directory, create a new text file called **rxn_rate.txt**. Add the following text in the file::
+Begin by creating a copy of the **surf_class_rxns** directory, by typing the following command at the terminal::
+
+    cp -fr /home/user/mcell_tutorial/surf_class_rxns /home/user/mcell_tutorial/var_rxn_rate
+
+Don't forget to replace **user** with your actual user name. In the new **var_rxn_rate** directory, create a new text file called **rxn_rate.txt**. Add the following text in the file::
 
     0      0
     5E-4   1E8
