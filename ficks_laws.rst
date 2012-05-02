@@ -10,16 +10,29 @@ Our goal in this tutorial is to evaluate Fick’s 1st and 2nd Laws using simulat
 
 where D is the diffusion coefficient used for the particles in the simulation. We begin by designing the 3-D geometry as illustrated below:
 
-**Question #1:**
-
 Using the above geometry, we wish to introduce diffusing particles such that:
 
 #. There will be a concentration gradient along the x-axis only.
 #. After some elapsed time, the system will reach a steady state with an unchanging concentration gradient along the x-axis (e.g., a 10-fold difference along the length of the cylinder).
 
-How can we do so? Hint: consider using MCell’s concentration clamp command. Set up your simulation and then visualize it with DReAMM to make sure your conditions are correct.
+To do so, we will use the concentration clamp command, which was used previously in the :ref:`clamp` section. But first we need to make the mesh.
 
-**Questions #2 – 5:**
+Creating the Mesh
+---------------------------------------------
+
+Either watch the video tutorial shown here or follow along with the text and illustrations that follow.
+
+If you have watched the movie, please skip ahead to :ref:`fick_annotate`. 
+
+Otherwise, beging by starting Blender. Create a cylinder by hitting **Shift-a**, and selecting **Mesh>Cylinder**. Hit **s**, **0.2**, and **Enter** to confirm. This will be the main cylinder through which the molecules diffuse. Create three surface regions, **left**, **right**, and **middle**. Enter **Edit Mode** by hitting **Tab**. Select the left end of the cylinder by hitting **b**, **left click and drag** around the left end of the cylinder. Select **left** from the list of surface regions and select **Assign**. Do the same thing with the right end of the cylinder, except select and assign the **right** surface region.
+
+We now need to create a series of shorter cylinder that sit inside of this longer one. Hit **Shift-a** and once again select **Mesh>Cylinder**. Hit **s**, **0.199**, and **Enter**. Next, hit **s**, **x**, **0.125**, and **Enter**. Next hit the **Object Modifiers** button, and from the **Add Modifier** drop-down box, select **Array**. Change **Count** to **40**. Change the third entry field under **Relative Offset** to **1.005**.
+
+Next, we need to create a series of filled circles that lie between each of these cylinders. Create a cylinder by hitting **Shift-a**, and selecting **Mesh>Plane**. Hit **s**, **0.199**, and **Enter**. Add an array modifier to this object like you did previously with the same exact settings (i.e. a **Count** of **40** and a **Relative Offset** of **1.005**. 
+
+Export the MDL, by selecting **File>Export>Model Description Language (.mdl)**.
+
+**Questions #2 - 5:**
 
 As the concentration gradient is evolving along x, we wish to determine the rate of change in concentration (dC/dt) at each time point for the central sampling volume composed of the two subvolumes numbered 20 and 21. To see this clearly, you will probably want to run a series of simulations using different random number seeds, so you can average your results. You can do this using the provided psc-dx tools (makeMCellscript, analyzeMCelldata) to set up your simulations and analyze your output. Along with the data you’ll need for Questions 2 – 4 below, make sure that you output counts for molecules in subvolumes 1 and 40 (Question #5). Using MCell’s reaction data output, determination of the time course of dC/dt can be done in three ways.
 
