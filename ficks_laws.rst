@@ -32,6 +32,23 @@ Next, we need to create a series of filled circles that lie between each of thes
 
 Export the MDL, by selecting **File>Export>Model Description Language (.mdl)**.
 
+.. _fick_annotate: 
+
+Annotating the Mesh
+---------------------------------------------
+
+    DEFINE_MOLECULES {
+            vm {DIFFUSION_CONSTANT_3D = dc} 
+    }
+
+    DEFINE_SURFACE_CLASSES {
+            transp {TRANSPARENT = vm }
+            clamp {CLAMP_CONC vm, = 1E-6}
+            absorb {ABSORPTIVE = vm} 
+    }
+
+
+
 **Questions #2 - 5:**
 
 As the concentration gradient is evolving along x, we wish to determine the rate of change in concentration (dC/dt) at each time point for the central sampling volume composed of the two subvolumes numbered 20 and 21. To see this clearly, you will probably want to run a series of simulations using different random number seeds, so you can average your results. You can do this using the provided psc-dx tools (makeMCellscript, analyzeMCelldata) to set up your simulations and analyze your output. Along with the data you’ll need for Questions 2 – 4 below, make sure that you output counts for molecules in subvolumes 1 and 40 (Question #5). Using MCell’s reaction data output, determination of the time course of dC/dt can be done in three ways.
