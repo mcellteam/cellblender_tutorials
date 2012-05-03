@@ -182,28 +182,46 @@ Exercise #3 - Irreverisble Unimolecular Reaction
 
 Steady State 
 =====================================================
-Start Blender. Load the **irrev_uni_steady_state.blend** file in the **irrev_uni_steady_state** directory.
+Start Blender. Load the **irrev_uni_steady_state.blend** file in the **irrev_uni_steady_state** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
 
-We will now simulate an irreversible unimolecular reaction A :math:`\rightarrow` B with rate constant k1. Molecules of A are initially distributed at random within a reflective box. The simulation is run under steady state conditions. How? Predict the expected reaction rate. Run the simulation and plot the reaction data results for the number and concentration of B molecules as a function of time. What is the expected form of these results? Fit your results for the production of B and compare the obtained reaction rate to the expected value. Increase the initial concentration of A, rerun the simulation and again fit the results.
+Next create a file callled **main.rxn_output.mdl** and paste this text into it::
+
+    REACTION_DATA_OUTPUT {
+       OUTPUT_BUFFER_SIZE = 1000  
+
+       STEP = dt * 1 
+
+       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
+       {COUNT [B, WORLD]} => "./reaction_data/B.dat"
+       {COUNT [B, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_B.dat"
+    }
+
+We will now simulate an irreversible unimolecular reaction A :math:`\rightarrow` B with rate constant k1. Molecules of A are initially distributed at random within a reflective box. The simulation is run under steady state conditions. 
+
+Run the simulation by typing the following command::
+
+    mcell main.geometry.mdl
+
+Next, plot the reaction data results for the number and concentration of B molecules as a function of time. Fit your results for the production of B and compare the obtained reaction rate to the expected value. Increase the initial concentration of A, rerun the simulation and again fit the results.
 
 Non-Steady State 
 =====================================================
-Start Blender. Load the **irrev_uni_nonsteady_state.blend** file in the **irrev_uni_nonsteady_state** directory.
+Start Blender. Load the **irrev_uni_nonsteady_state.blend** file in the **irrev_uni_nonsteady_state** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
 
-Next we will simulate the irreversible reaction A :math:`\rightarrow` B under non-steady-state conditions. Run the simulation and plot the reaction data results for the number and concentration of A and B molecules as a function of time. What is the expected form of these results? What is the time of an e-fold reduction of A? Fit your results for the decay of A and compare the obtained value of k1 to the input value.
+Next we will simulate the irreversible reaction A :math:`\rightarrow` B under non-steady-state conditions. Run the simulation and plot the reaction data results for the number and concentration of A and B molecules as a function of time. Fit your results for the decay of A and compare the obtained value of k1 to the input value.
 
 Exercise #4 - Reverisble Unimolecular Reaction
 -----------------------------------------------------
 
 Non-Equilibrium 
 =====================================================
-Start Blender. Load the **rev_uni_nonequil.blend** file in the **rev_uni_nonequil** directory.
+Start Blender. Load the **rev_uni_nonequil.blend** file in the **rev_uni_nonequil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
 
-Here we simulate the reversible reaction A :math:`\leftrightarrow` B with rate constants k1 and k2 starting from non-equilibrium initial conditions (only A present at time 0). Run the simulation and plot the results for A and B. Run an XPPAUT simulation using the same reaction and parameter values. Export the results for A and B and plot together with the results from the MCell simulation. Fit the MCell results for production of B. What is the value of the fitted parameter, and what is its relationship to the values of k1 and k2?
+Here we simulate the reversible reaction A :math:`\leftrightarrow` B with rate constants k1 and k2 starting from non-equilibrium initial conditions (only A present at time 0). Run the simulation and plot the results for A and B. Plot the results from the simulation. Fit the MCell results for production of B. 
 
 Equilibrium 
 =====================================================
-Start Blender. Load the **rev_uni_equil.blend** file in the **rev_uni_equil** directory.
+Start Blender. Load the **rev_uni_equil.blend** file in the **rev_uni_equil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
 
 Now we simulate the reversible reaction A :math:`\leftrightarrow` B starting from equilibrium conditions, i.e., under conditions where the average fractional amounts of A and B will remain constant. How is this done? Use the statistics utility program to obtain the variance for the number of B molecules. Rerun the simulation while varying the fractional amounts of A and B. In each case determine the variance for B, and plot the resulting values as a function of fractional amount of B. What is the form of the resulting curve?
 
@@ -212,13 +230,13 @@ Exercise #5 - Irreverisble Bimolecular Reaction
 
 Steady State 
 =====================================================
-Start Blender. Load the **irrev_uni_steadystate.blend** file in the **irrev_uni_steadystate** directory.
+Start Blender. Load the **irrev_uni_steadystate.blend** file in the **irrev_uni_steadystate** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
 
 Simulate an irreversible bimolecular reaction A + R :math:`\rightarrow` AR with rate constant k1. Molecules of A and R are initially distributed at random within a reflective box. The simulation is run under steady state conditions. How? Predict the expected reaction rate. Run the simulation and plot the reaction data results for the number and concentration of AR molecules as a function of time. What is the expected form of these results? Fit your results for the production of AR and compare the obtained reaction rate to the expected value. Increase the initial concentration of A and/or R, rerun the simulation and again fit the results. How does the obtained rate now compare to the expected rate?
 
 Non-Steady State 
 =====================================================
-Start Blender. Load the **irrev_uni_nonsteadystate.blend** file in the **irrev_uni_nonsteadystate** directory.
+Start Blender. Load the **irrev_uni_nonsteadystate.blend** file in the **irrev_uni_nonsteadystate** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
 
 Simulate the irreversible reaction A + R :math:`\rightarrow` AR under non-steady-state conditions. Run the simulation and plot the reaction data results for the number and concentration of A, R, and AR molecules as a function of time.
 
@@ -227,12 +245,12 @@ Exercise #6 - Reverisble Bimolecular Reaction
 
 Non-Equilibrium 
 =====================================================
-Start Blender. Load the **rev_bimol_nonequil.blend** file in the **rev_bimol_nonequil** directory.
+Start Blender. Load the **rev_bimol_nonequil.blend** file in the **rev_bimol_nonequil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
 
-Simulate the reversible bimolecular reaction A + R :math:`\leftrightarrow` AR with rate constants k1 and k2 starting from non-equilibrium initial conditions (only A and R present at time 0). Run the simulation and plot the results for A, R, and AR. Run an XPPAUT simulation using the same reaction and parameter values. Export the results and plot together with the results from the MCell simulation. Fit the MCell results for production of AR. What is the value of the fitted parameter?
+Simulate the reversible bimolecular reaction A + R :math:`\leftrightarrow` AR with rate constants k1 and k2 starting from non-equilibrium initial conditions (only A and R present at time 0). Run the simulation and plot the results for A, R, and AR. Fit the MCell results for production of AR.
 
 Equilibrium 
 =====================================================
-Start Blender. Load the **rev_bimol_equil.blend** file in the **rev_bimol_equil** directory.
+Start Blender. Load the **rev_bimol_equil.blend** file in the **rev_bimol_equil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
 
 Simulate the reversible reaction A + R :math:`\leftrightarrow` AR starting from equilibrium conditions, i.e., under conditions where the average fractional amounts of A, R, and AR will remain constant. How is this done? Use the statistics utility program to obtain the variance for the number of AR molecules. Rerun the simulation while varying the fractional amounts of A, R, and AR. In each case determine the variance for AR, and plot the resulting values as a function of fractional amount of AR. What is the form of the resulting curve?
