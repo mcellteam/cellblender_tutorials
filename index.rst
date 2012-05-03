@@ -36,6 +36,8 @@ The completed project files for the tutorial can be downloaded here_. You will g
    optimize
    analyze
    seed
+   ficks_laws
+   irrev_rev_uni_bi
 
 Indices and tables
 ==================

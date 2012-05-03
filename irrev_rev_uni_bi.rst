@@ -290,7 +290,7 @@ Next we will simulate the irreversible reaction A :math:`\rightarrow` B under no
 Start Blender. Load the **irrev_uni_nonsteady_state.blend** file in the **irrev_uni_nonsteady_state** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_uni/nonsteady_state** and select **Set Project Directory**. Set the **Project Base** to **irrev_uni_nonsteady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
 
-Open main.geometry.mdl and add in the following text at the top of the mdl::
+Open **irrev_uni_nonsteady.main.mdl** and add in the following text at the top of the mdl::
 
     box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
     Na = 6.022e23 /* Avogadro's number, molecules per mole */
@@ -306,6 +306,7 @@ Open main.geometry.mdl and add in the following text at the top of the mdl::
 
 
 Next create a file callled **main.rxn_output.mdl** and copy this text into it::
+
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
 
