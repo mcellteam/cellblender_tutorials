@@ -194,9 +194,7 @@ Next, create a filed called **sampling_box.rxn_output.mdl** like this::
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
-
        STEP = 1e-6 
-
        {COUNT [vol1, WORLD]} => "./reaction_data/vol1.dat"
        {COUNT [vol1, Scene.sampling_box]} => "./reaction_data/vol1_sampled.dat"
     }
@@ -259,9 +257,7 @@ Next create a file callled **irrev_uni_steady.rxn_output.mdl** and copy this tex
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
-
        STEP = 1e-5 
-
        {COUNT [A, WORLD]} => "./reaction_data/A.dat"
        {COUNT [B, WORLD]} => "./reaction_data/B.dat"
        {COUNT [B, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_B.dat"
@@ -311,9 +307,7 @@ Next create a file callled **irrev_uni_nonsteady.rxn_output.mdl** and copy this 
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
-
        STEP = 1e-5
-
        {COUNT [A, WORLD]} => "./reaction_data/A.dat"
        {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
        {COUNT [B, WORLD]} => "./reaction_data/B.dat"
@@ -390,9 +384,7 @@ Next, create a file callled **rev_uni_nonequil.rxn_output.mdl** and copy this te
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
-
        STEP = 1e-5
-
        {COUNT [A, WORLD]} => "./reaction_data/A.dat"
        {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
        {COUNT [B, WORLD]} => "./reaction_data/B.dat"
@@ -449,9 +441,7 @@ Next, create a file callled **rev_uni_nonequil.rxn_output.mdl** and copy this te
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
-
        STEP = 1e-5
-
        {COUNT [A, WORLD]} => "./reaction_data/A.dat"
        {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
        {COUNT [B, WORLD]} => "./reaction_data/B.dat"
@@ -503,9 +493,7 @@ Next, create a file callled **irrev_bi_steady.rxn_output.mdl** and copy this tex
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
-
        STEP = 1e-5
-
        {COUNT [A, WORLD]} => "./reaction_data/A.dat"
        {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
        {COUNT [R, WORLD]} => "./reaction_data/R.dat"
@@ -556,9 +544,7 @@ Next, create a file callled **irrev_bi_nonsteady.rxn_output.mdl** and copy this 
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
-
        STEP = 1e-5
-
        {COUNT [A, WORLD]} => "./reaction_data/A.dat"
        {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
        {COUNT [R, WORLD]} => "./reaction_data/R.dat"
@@ -566,7 +552,6 @@ Next, create a file callled **irrev_bi_nonsteady.rxn_output.mdl** and copy this 
        {COUNT [AR, WORLD]} => "./reaction_data/AR.dat"
        {COUNT [AR, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_AR.dat"
     }
-
 
 Run the simulation by typing the following command::
 
@@ -595,7 +580,6 @@ Open **rev_bi_nonequil.main.mdl** and add in the following text at the top of th
     PARTITION_X = [-partition, partition]
     PARTITION_Y = [-partition, partition]
     PARTITION_Z = [-partition, partition]
-
   
 Now, create a file called **rev_bi_nonequil.viz_output.mdl** with the following text::
 
@@ -612,9 +596,7 @@ Next, create a file callled **rev_bi_nonequil.rxn_output.mdl** and copy this tex
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
-
        STEP = 1e-5
-
        {COUNT [A, WORLD]} => "./reaction_data/A.dat"
        {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
        {COUNT [R, WORLD]} => "./reaction_data/R.dat"
@@ -660,6 +642,28 @@ Open **rev_bi_equil.main.mdl** and add in the following text at the top of the m
     PARTITION_Y = [[-partition TO partition STEP step]]
     PARTITION_Z = [[-partition TO partition STEP step]]
 
+Modify the **INSTANTIATE** section, so that it looks like this::
+
+    INSTANTIATE Scene OBJECT {
+       box OBJECT box {}
+       A_release RELEASE_SITE {
+          SHAPE = Scene.box[all]
+          MOLECULE = A 
+          CONCENTRATION = concentration_of_A
+       }   
+       R_release RELEASE_SITE {
+          SHAPE = Scene.box[all]
+          MOLECULE = R 
+          CONCENTRATION = concentration_of_R
+       }   
+       AR_release RELEASE_SITE {
+          SHAPE = Scene.box[all]
+          MOLECULE = AR
+          CONCENTRATION = concentration_of_AR
+       }   
+    }
+
+
 Now, create a file called **rev_bi_equil.viz_output.mdl** with the following text::
 
     VIZ_OUTPUT {
@@ -675,9 +679,7 @@ Next, create a file callled **rev_bi_equil.rxn_output.mdl** and copy this text i
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
-
        STEP = 1e-5
-
        {COUNT [A, WORLD]} => "./reaction_data/A.dat"
        {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
        {COUNT [R, WORLD]} => "./reaction_data/R.dat"
