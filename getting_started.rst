@@ -31,29 +31,29 @@ Open up a terminal and enter the command::
 
     blender
 
-You should see a cube in the **3D View Window**. Hit the **Material** button in the **Properties Window**. 
+You should see a cube in the **3D View Editor**. Hit the **Object** button in the **Properties Editor**. Scroll to the bottom of the Editor.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/plus_button.png
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/new_button.png
 
-Hit the **+** button and then the **New** button. 
+Expand the **Define Surface Regions** panel. Hit the **+** button and **New Region** should appear in the list of regions. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/top.png
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/sides_and_bottom.png
 
-Change the newly created material text field from **Material.001** to **top**. Left click **Material** in the list of materials. Change the text field from **Material** to **sides_and_bottom**.
+Change the text field which reads **New Region** to **top**. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/face_select.png
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/right_click.png
 
-Move the cursor to the **3D View Window**. Hit **Tab** to change into **Edit Mode**. Hit **Ctrl-Tab** and select **Face**. Then **right click** on the top face to select it.
+Move the cursor to the **3D View Editor**. Hit **Tab** to change into **Edit Mode**. Hit **Ctrl-Tab** and select **Face**. Then **right click** on the top face to select it.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/assign.png
 
-Select the **top** material from the list of materials. Click **Assign**. Hit **Tab** to change back into **Object Mode**.
+Select the **top** surface region from the list of surface regions. Click **Assign**. Hit **Tab** to change back into **Object Mode**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_mdl.png
 
@@ -61,11 +61,15 @@ Select the **top** material from the list of materials. Click **Assign**. Hit **
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_mdl_button.png
 
-Next, select **File>Export>Model Description Language (.mdl)**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/intro** where **user** is your user name) and select **OK** when it prompts you to make a new directory. In the text field below the directory, type::
+Hit the **Scene** button in the **Properties Editor**. 
 
-    intro.mdl
+Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/intro** where **user** is your user name) and hit **OK** when it prompts you to make a new directory. Then select **Set Project Directory**. Set the **Project Base** to **intro**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
-and hit **Export MDL**. Either leave Blender open or save and quit, as we'll need to modify this model later.
+Expand the **Model Objects** panel. With the **Cube** object still selected, hit the **+** button.
+
+Expand the **Define Molecules** panel and hit the **+** button three times. This will create three instance of **New Molecule** in the list of molecules. Left click on the first instance of **New Molecule**. Change the **Molecule Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the **Diffusion Constant** to **1e-6**. Repeat this process for the next molecule in the list, but call this one **vol2**. Finally, change the third entry **Molecule Name** of the first one to **vol1**, and the **Diffusion Constant** to **1e-6**. the **Molecule Type** to  the second to **vol2**, and the third to **surf1**
+
+Either leave Blender open or save and quit, as we'll need to modify this model later.
 
 .. _run_sim:
 
