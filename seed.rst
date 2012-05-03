@@ -49,14 +49,16 @@ We'll begin by creating a directory called **seed**. Inside it, create an MDL ca
 
 All the syntax should be familiar except for the line :index:`\ <single:SEED>` **sprintf(seed,"%04g",SEED)**. This assigns the value of the **SEED** to the variable **seed**. The **%04g** formats it so that there are four leading zeros.
 
-Next, create the following python script called **seed.py**::
+Next, create the following python script called **run_seeds.py**::
 
     #!/usr/bin/env python
 
     import os
 
+    mdl = input('What mdl do you want to run?\n')
+
     for i in range(1, 21):
-        os.system("mcell -seed %i ./seed.mdl" % i)
+        os.system("mcell -seed %i %s" % (i, mdl))
 
 This file is similar to the **scaling.py** file that we created in the checkpointing section. This will run MCell twenty different times, each time incrementing the seed value by one. Save and run this file. You should now have sixty files in the **react_data** directory (20 for each molecule). Now we will begin the process of averaging these results. Create a python script called **avg_seeds.py** with the following text in it::
 
@@ -90,3 +92,14 @@ This file is similar to the **scaling.py** file that we created in the checkpoin
 
 This script will load (and plot) each of the twenty **vol1.####.dat** files into a two dimensional array, take the mean of the rows, and plot the results.
 
+Run the first script by typing the following commands::
+
+    python run_seeds.py
+
+When prompted, enter::
+
+    seed.mdl
+
+Finally, run the second script by typing::
+
+    python avg_seeds.py
