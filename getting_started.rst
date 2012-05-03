@@ -67,7 +67,9 @@ Under **CellBlender Project Settings**, select **Export CellBlender Project**. N
 
 Expand the **Model Objects** panel. With the **Cube** object still selected, hit the **+** button.
 
-Expand the **Define Molecules** panel and hit the **+** button three times. This will create three instance of **New Molecule** in the list of molecules. Left click on the first instance of **New Molecule**. Change the **Molecule Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the **Diffusion Constant** to **1e-6**. Repeat this process for the next molecule in the list, but call this one **vol2**. Finally, change the third entry **Molecule Name** of the first one to **vol1**, and the **Diffusion Constant** to **1e-6**. the **Molecule Type** to  the second to **vol2**, and the third to **surf1**
+Expand the **Define Molecules** panel and hit the **+** button three times. This will create three instance of **New Molecule** in the list of molecules. Left click on the first instance of **New Molecule**. Change the **Molecule Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the **Diffusion Constant** to **1e-6**. Repeat this process for the next molecule in the list, but call this one **vol2**. Finally, change the third entry **Molecule Name** of the first one to **vol1**, and the **Diffusion Constant** to **1e-6**.
+
+Expand the **Define Reaction** panel and hit the **+** button. Change **Reactants** to **vol1' + surf1,**. Change **Products** to **surf1, + vol2,**. Change **Forward Rate** to **1e8**.
 
 Either leave Blender open or save and quit, as we'll need to modify this model later.
 
