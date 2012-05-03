@@ -8,7 +8,7 @@ Download the blend files used for these tutorials here_. You will still have to 
 
 .. _project files: https://www.mcell.psc.edu/tutorials/mdl/main/irrev_rev_uni_bi_blend.tgz
 
-Exercise #1 - Diffusion Through Concentric Shells
+Diffusion Through Concentric Shells
 =====================================================
 
 In this example, volume molecules will diffuse through **TRANSPARENT** concentric spherical shells, and we will do some analysis on the results.
@@ -150,7 +150,7 @@ Now we need to plot the ratio of variance to the mean for the number of molecule
 
     #need to finish this
 
-Exercise #2 - Sampling Box
+Sampling Box
 =====================================================
 
 In this example, volume molecules will diffuse around inside of two boxes, one nested very closely inside of the other. Afterwards, we will do some analysis on the results.
@@ -231,11 +231,12 @@ Run the file by entering the following command::
 
 This script will give you the mean and variance for the number of molecules in each box. Decrease the size of the inner box relative to the outer box and rerun the simulation. Do this repeatedly and note how the mean and variance values change. 
 
-Exercise #3 - Irreverisble Unimolecular Reaction
+Irreverisble Unimolecular Reaction
 =====================================================
 
 Steady State 
 -----------------------------------------------------
+
 We will now simulate an irreversible unimolecular reaction A :math:`\rightarrow` B with rate constant k1. Molecules of A are initially distributed at random within a reflective box. The simulation is run under steady state conditions. 
 
 Start Blender. Load the **irrev_uni/steady_state/irrev_uni_steady.blend** file. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_uni/steady_state** and select **Set Project Directory**. Set the **Project Base** to **irrev_uni_steady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
@@ -285,6 +286,7 @@ Next, plot the reaction data results for the number and concentration of B molec
 
 Non-Steady State 
 -----------------------------------------------------
+
 Next we will simulate the irreversible reaction A :math:`\rightarrow` B under non-steady-state conditions. 
 
 Start Blender. Load the **irrev_uni_nonsteady_state.blend** file in the **irrev_uni_nonsteady_state** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_uni/nonsteady_state** and select **Set Project Directory**. Set the **Project Base** to **irrev_uni_nonsteady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
@@ -292,6 +294,7 @@ Start Blender. Load the **irrev_uni_nonsteady_state.blend** file in the **irrev_
 
 Open **irrev_uni_nonsteady.main.mdl** and add in the following text at the top of the mdl::
 
+    box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and B molecules */
     box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
     Na = 6.022e23 /* Avogadro's number, molecules per mole */
 
@@ -304,13 +307,12 @@ Open **irrev_uni_nonsteady.main.mdl** and add in the following text at the top o
     PARTITION_Y = [-partition, partition]
     PARTITION_Z = [-partition, partition]
 
-
-Next create a file callled **main.rxn_output.mdl** and copy this text into it::
+Next create a file callled **irrev_uni_nonsteady.rxn_output.mdl** and copy this text into it::
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
 
-       STEP = dt * 1
+       STEP = 1e-5
 
        {COUNT [A, WORLD]} => "./reaction_data/A.dat"
        {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
@@ -318,7 +320,7 @@ Next create a file callled **main.rxn_output.mdl** and copy this text into it::
        {COUNT [B, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_B.dat"
     }
 
-Lastly, create a file called **main.viz_output.mdl** with the following text::
+Lastly, create a file called **irrev_uni_nonsteady.viz_output.mdl** with the following text::
 
     VIZ_OUTPUT {
         MODE = ASCII
@@ -335,15 +337,67 @@ Run the simulation by typing the following command::
 
 Plot the reaction data results for the number and concentration of A and B molecules as a function of time. Fit your results for the decay of A and compare the obtained value of k1 to the input value.
 
-Exercise #4 - Reverisble Unimolecular Reaction
+Reverisble Unimolecular Reaction
 =====================================================
 
 Non-Equilibrium 
 -----------------------------------------------------
+
 Here we will simulate the reversible reaction A :math:`\leftrightarrow` B with rate constants k1 and k2 starting from non-equilibrium initial conditions (only A present at time 0).
 
 Start Blender. Load the **rev_uni_nonequil.blend** file in the **rev_uni/nonequil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **rev_uni/nonequil** and select **Set Project Directory**. Set the **Project Base** to **rev_uni_nonequil**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
+Open **rev_uni_nonequil.main.mdl** and add in the following text at the top of the mdl::
+
+    fractional_concentration_of_A = 0.1
+    fractional_concentration_of_B = 1.0 - fractional_concentration_of_A
+    total_concentration = 1e-5 /* moles per liter; summed concentrations of A and B */
+    k1_plus_k2 = 100 /* per second, sum of rate constants for conversion of A to B and B to A */
+    k1 = fractional_concentration_of_B * k1_plus_k2  /* per second, rate constant for conversion of A to B */
+    k2 = k1_plus_k2 - k1 /* per second, rate constant for conversion of B to A */
+    concentration_of_A = fractional_concentration_of_A * total_concentration /* moles per liter, concentration of molecule A in the box */
+    concentration_of_B = total_concentration - concentration_of_A /* moles per liter, concentration of molecule A in the box */
+    box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and B molecules */
+    box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
+    Na = 6.022e23 /* Avogadro's number, molecules per mole */
+    side_length = box_volume^(1/3)
+    half_length = side_length/2.0
+    partition = half_length*0.999
+
+    PARTITION_X = [-partition, partition]
+    PARTITION_Y = [-partition, partition]
+    PARTITION_Z = [-partition, partition]
+
+Modify **rev_uni_nonequil.reactions.mdl** like this::
+
+    DEFINE_REACTIONS {
+       A -> B [k1]
+       B -> A [k2]
+    }
+
+Now, create a file called **rev_uni_nonequil.viz_output.mdl** with the following text::
+
+    VIZ_OUTPUT {
+       MODE = ASCII
+       FILENAME = "./viz_data/rev_uni_nonequil"
+       MOLECULES {
+          NAME_LIST {ALL_MOLECULES}
+          ITERATION_NUMBERS {ALL_DATA @ [[0 TO 100000 STEP 1000]]}
+       }
+    }
+
+Next, create a file callled **rev_uni_nonequil.rxn_output.mdl** and copy this text into it::
+
+    REACTION_DATA_OUTPUT {
+       OUTPUT_BUFFER_SIZE = 1000  
+
+       STEP = 1e-5
+
+       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
+       {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
+       {COUNT [B, WORLD]} => "./reaction_data/B.dat"
+       {COUNT [B, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_B.dat"
+    }
 
 Run the simulation by typing the following command::
 
@@ -353,9 +407,56 @@ Plot the results from the simulation. Fit the MCell results for production of B.
 
 Equilibrium 
 -----------------------------------------------------
+
 Now we will simulate the reversible reaction A :math:`\leftrightarrow` B starting from equilibrium conditions, i.e., under conditions where the average fractional amounts of A and B will remain constant. 
 
 Start Blender. Load the **rev_uni_equil.blend** file in the **rev_uni/equil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **rev_uni/equil** and select **Set Project Directory**. Set the **Project Base** to **rev_uni_equil**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+
+
+Open **rev_uni_equil.main.mdl** and add in the following text at the top of the mdl::
+
+    fractional_concentration_of_A = 0.1
+    fractional_concentration_of_B = 1.0 - fractional_concentration_of_A
+    total_concentration = 1e-5 /* moles per liter; summed concentrations of A and B */
+    k1_plus_k2 = 100 /* per second, sum of rate constants for conversion of A to B and B to A */
+    k1 = fractional_concentration_of_B * k1_plus_k2  /* per second, rate constant for conversion of A to B */
+    k2 = k1_plus_k2 - k1 /* per second, rate constant for conversion of B to A */
+    concentration_of_A = fractional_concentration_of_A * total_concentration /* moles per liter, concentration of molecule A in the box */
+    concentration_of_B = total_concentration - concentration_of_A /* moles per liter, concentration of molecule A in the box */
+    box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and B molecules */
+    box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
+    Na = 6.022e23 /* Avogadro's number, molecules per mole */
+    side_length = box_volume^(1/3)
+    half_length = side_length/2.0
+    partition = half_length*0.999
+
+    PARTITION_X = [-partition, partition]
+    PARTITION_Y = [-partition, partition]
+    PARTITION_Z = [-partition, partition]
+
+Now, create a file called **rev_uni_nonequil.viz_output.mdl** with the following text::
+
+    VIZ_OUTPUT {
+       MODE = ASCII
+       FILENAME = "./viz_data/rev_uni_nonequil"
+       MOLECULES {
+          NAME_LIST {ALL_MOLECULES}
+          ITERATION_NUMBERS {ALL_DATA @ [[0 TO 100000 STEP 1000]]}
+       }
+    }
+
+Next, create a file callled **rev_uni_nonequil.rxn_output.mdl** and copy this text into it::
+
+    REACTION_DATA_OUTPUT {
+       OUTPUT_BUFFER_SIZE = 1000  
+
+       STEP = 1e-5
+
+       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
+       {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
+       {COUNT [B, WORLD]} => "./reaction_data/B.dat"
+       {COUNT [B, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_B.dat"
+    }
 
 Run the simulation by typing the following command::
 
@@ -363,14 +464,55 @@ Run the simulation by typing the following command::
 
 Use the statistics utility program to obtain the variance for the number of B molecules. Rerun the simulation while varying the fractional amounts of A and B. In each case determine the variance for B, and plot the resulting values as a function of fractional amount of B.
 
-Exercise #5 - Irreverisble Bimolecular Reaction
+Irreverisble Bimolecular Reaction
 =====================================================
 
 Steady State 
 -----------------------------------------------------
+
 We will now simulate an irreversible bimolecular reaction A + R :math:`\rightarrow` AR with rate constant k1. Molecules of A and R are initially distributed at random within a reflective box. The simulation is run under steady state conditions.
 
-Start Blender. Load the **irrev_bi_steadystate.blend** file in the **irrev_bi_steadystate** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_bi/steady** and select **Set Project Directory**. Set the **Project Base** to **irrev_bi_steady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+Start Blender. Load the **irrev_bi_steady.blend** file in the **irrev_bi_steady** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_bi/steady** and select **Set Project Directory**. Set the **Project Base** to **irrev_bi_steady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+
+Open **irrev_bi_steady.main.mdl** and add in the following text at the top of the mdl::
+    
+    box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and B molecules */
+    diffusion_coefficient = 1e-6 /* cm^2 per second, diffusion coefficient used for molecules of A and R */
+    box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
+    Na = 6.022e23 /* Avogadro's number, molecules per mole */
+    side_length = box_volume^(1/3)
+    half_length = side_length/2.0
+    partition = half_length*0.999
+
+    PARTITION_X = [-partition, partition]
+    PARTITION_Y = [-partition, partition]
+    PARTITION_Z = [-partition, partition]
+
+Now, create a file called **irrev_bi_steady.viz_output.mdl** with the following text::
+
+    VIZ_OUTPUT {
+       MODE = ASCII
+       FILENAME = "./viz_data/irrev_bi_steady"
+       MOLECULES {
+          NAME_LIST {ALL_MOLECULES}
+          ITERATION_NUMBERS {ALL_DATA @ [[0 TO 5000 STEP 100]]}
+       }
+    }
+
+Next, create a file callled **irrev_bi_steady.rxn_output.mdl** and copy this text into it::
+
+    REACTION_DATA_OUTPUT {
+       OUTPUT_BUFFER_SIZE = 1000  
+
+       STEP = 1e-5
+
+       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
+       {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
+       {COUNT [R, WORLD]} => "./reaction_data/R.dat"
+       {COUNT [R, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_R.dat"
+       {COUNT [AR, WORLD]} => "./reaction_data/AR.dat"
+       {COUNT [AR, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_AR.dat"
+    }
 
 Run the simulation by typing the following command::
 
@@ -380,9 +522,51 @@ Plot the reaction data results for the number and concentration of AR molecules 
 
 Non-Steady State 
 -----------------------------------------------------
+
 Now, we'll simulate the irreversible reaction A + R :math:`\rightarrow` AR under non-steady-state conditions.
 
-Start Blender. Load the **irrev_bi_nonsteadystate.blend** file in the **irrev_bi_nonsteadystate** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_bi/nonsteady** and select **Set Project Directory**. Set the **Project Base** to **irrev_bi_nonsteady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+Start Blender. Load the **irrev_bi_nonsteady.blend** file in the **irrev_bi_nonsteady** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_bi/nonsteady** and select **Set Project Directory**. Set the **Project Base** to **irrev_bi_nonsteady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+
+Open **irrev_bi_nonsteady.main.mdl** and add in the following text at the top of the mdl::
+    
+    box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and B molecules */
+    diffusion_coefficient = 1e-6 /* cm^2 per second, diffusion coefficient used for molecules of A and R */
+    box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
+    Na = 6.022e23 /* Avogadro's number, molecules per mole */
+    side_length = box_volume^(1/3)
+    half_length = side_length/2.0
+    partition = half_length*0.999
+
+    PARTITION_X = [-partition, partition]
+    PARTITION_Y = [-partition, partition]
+    PARTITION_Z = [-partition, partition]
+
+Now, create a file called **irrev_bi_nonsteady.viz_output.mdl** with the following text::
+
+    VIZ_OUTPUT {
+       MODE = ASCII
+       FILENAME = "./viz_data/irrev_bi_nonsteady"
+       MOLECULES {
+          NAME_LIST {ALL_MOLECULES}
+          ITERATION_NUMBERS {ALL_DATA @ [[0 TO 5000 STEP 100]]}
+       }
+    }
+
+Next, create a file callled **irrev_bi_nonsteady.rxn_output.mdl** and copy this text into it::
+
+    REACTION_DATA_OUTPUT {
+       OUTPUT_BUFFER_SIZE = 1000  
+
+       STEP = 1e-5
+
+       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
+       {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
+       {COUNT [R, WORLD]} => "./reaction_data/R.dat"
+       {COUNT [R, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_R.dat"
+       {COUNT [AR, WORLD]} => "./reaction_data/AR.dat"
+       {COUNT [AR, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_AR.dat"
+    }
+
 
 Run the simulation by typing the following command::
 
@@ -390,15 +574,54 @@ Run the simulation by typing the following command::
 
 Plot the reaction data results for the number and concentration of A, R, and AR molecules as a function of time.
 
-Exercise #6 - Reverisble Bimolecular Reaction
+Reverisble Bimolecular Reaction
 =====================================================
 
 Non-Equilibrium 
 -----------------------------------------------------
+
 Next, we will simulate the reversible bimolecular reaction A + R :math:`\leftrightarrow` AR with rate constants k1 and k2 starting from non-equilibrium initial conditions (only A and R present at time 0).
 
 Start Blender. Load the **rev_bimol_nonequil.blend** file in the **rev_bimol_nonequil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **rev_bi/nonequil** and select **Set Project Directory**. Set the **Project Base** to **rev_bi_nonequil**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
+Open **rev_bi_nonequil.main.mdl** and add in the following text at the top of the mdl::
+    box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and R molecules */
+    box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
+    Na = 6.022e23 /* Avogadro's number, molecules per mole */
+    side_length = box_volume^(1/3)
+    half_length = side_length/2.0
+    partition = half_length*0.999
+
+    PARTITION_X = [-partition, partition]
+    PARTITION_Y = [-partition, partition]
+    PARTITION_Z = [-partition, partition]
+
+  
+Now, create a file called **rev_bi_nonequil.viz_output.mdl** with the following text::
+
+    VIZ_OUTPUT {
+       MODE = ASCII
+       FILENAME = "./viz_data/irrev_bi_nonequil"
+       MOLECULES {
+          NAME_LIST {ALL_MOLECULES}
+          ITERATION_NUMBERS {ALL_DATA @ [[0 TO 5000 STEP 100]]}
+       }
+    }
+
+Next, create a file callled **rev_bi_nonequil.rxn_output.mdl** and copy this text into it::
+
+    REACTION_DATA_OUTPUT {
+       OUTPUT_BUFFER_SIZE = 1000  
+
+       STEP = 1e-5
+
+       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
+       {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
+       {COUNT [R, WORLD]} => "./reaction_data/R.dat"
+       {COUNT [R, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_R.dat"
+       {COUNT [AR, WORLD]} => "./reaction_data/AR.dat"
+       {COUNT [AR, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_AR.dat"
+    }
 
 Run the simulation by typing the following command::
 
@@ -408,9 +631,60 @@ Plot the results for A, R, and AR. Fit the MCell results for production of AR.
 
 Equilibrium 
 -----------------------------------------------------
+
 We will simulate the reversible reaction A + R :math:`\leftrightarrow` AR starting from equilibrium conditions, i.e., under conditions where the average fractional amounts of A, R, and AR will remain constant. 
 
 Start Blender. Load the **rev_bimol_equil.blend** file in the **rev_bimol_equil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **rev_bi/nonequil** and select **Set Project Directory**. Set the **Project Base** to **rev_bi_nonequil**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+
+Open **rev_bi_equil.main.mdl** and add in the following text at the top of the mdl::
+
+    k1 = 1e8 /* liters per mole per second, rate constant for binding of A to R */
+    k2 = 1e4 /* per second, rate constant for unbinding */
+    KD = k2/k1
+    total_concentration = 1e-5 /* moles per liter; summed concentrations of R and AR */
+    concentration_of_A = 9.0 * KD /* moles per liter, concentration of molecule A in the box */
+    fractional_concentration_of_AR = concentration_of_A/(concentration_of_A + KD) 
+    fractional_concentration_of_R = 1.0 - fractional_concentration_of_AR
+    concentration_of_AR = total_concentration * fractional_concentration_of_AR /* moles per liter, concentration of molecule R in the box */
+    concentration_of_R = total_concentration * fractional_concentration_of_R /* moles per liter, concentration of molecule R in the box */
+    box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and R molecules */
+    diffusion_coefficient = 1e-6 /* cm^2 per second, diffusion coefficient used for molecules of A and R */
+    box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
+    Na = 6.022e23 /* Avogadro's number, molecules per mole */
+    side_length = box_volume^(1/3)
+    half_length = side_length/2.0
+    partition = half_length*0.999
+    step = 0.055
+
+    PARTITION_X = [[-partition TO partition STEP step]]
+    PARTITION_Y = [[-partition TO partition STEP step]]
+    PARTITION_Z = [[-partition TO partition STEP step]]
+
+Now, create a file called **rev_bi_equil.viz_output.mdl** with the following text::
+
+    VIZ_OUTPUT {
+       MODE = ASCII
+       FILENAME = "./viz_data/irrev_bi_nonsteady"
+       MOLECULES {
+          NAME_LIST {ALL_MOLECULES}
+          ITERATION_NUMBERS {ALL_DATA @ [[0 TO 20000 STEP 100]]}
+       }
+    }
+
+Next, create a file callled **rev_bi_equil.rxn_output.mdl** and copy this text into it::
+
+    REACTION_DATA_OUTPUT {
+       OUTPUT_BUFFER_SIZE = 1000  
+
+       STEP = 1e-5
+
+       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
+       {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
+       {COUNT [R, WORLD]} => "./reaction_data/R.dat"
+       {COUNT [R, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_R.dat"
+       {COUNT [AR, WORLD]} => "./reaction_data/AR.dat"
+       {COUNT [AR, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_AR.dat"
+    }
 
 Run the simulation by typing the following command::
 
