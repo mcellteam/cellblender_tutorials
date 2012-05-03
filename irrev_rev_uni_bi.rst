@@ -163,6 +163,19 @@ Start Blender. Load the **sampling_box/sampling_box.blend** file in the main pro
 Annotating the MDL
 -----------------------------------------------------
 
+Add the following to the beginning of **sampling_box.main.mdl**::
+
+    box_volume = 0.05 /* cubic microns, volume of the box used to contain the A molecules */
+    sampling_box_volume = 0.99*box_volume
+    side_length = box_volume^(1/3)
+    half_length = side_length/2.0
+    sampling_side_length = sampling_box_volume^(1/3)
+    sampling_half_length = sampling_side_length/2.0
+
+    PARTITION_X = [[-1.001*half_length TO 1.001*half_length STEP 0.04]]
+    PARTITION_Y = [[-1.001*half_length TO 1.001*half_length STEP 0.04]]
+    PARTITION_Z = [[-1.001*half_length TO 1.001*half_length STEP 0.04]]
+
 Create a file called **sampling_box.surface_classes.mdl** and paste the following text into it::
 
     DEFINE_SURFACE_CLASS transp {
@@ -184,8 +197,8 @@ Next, create a filed called **sampling_box.rxn_output.mdl** like this::
 
        STEP = 1e-6 
 
-       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
-       {COUNT [A, world.sampling_box]} => "./reaction_data/A_sampled.dat"
+       {COUNT [vol1, WORLD]} => "./reaction_data/vol1.dat"
+       {COUNT [vol1, Scene.sampling_box]} => "./reaction_data/vol1_sampled.dat"
     }
 
 Lastly, create a file called **sampling_box.viz_output.mdl** with the following text::
@@ -225,9 +238,9 @@ Steady State
 -----------------------------------------------------
 We will now simulate an irreversible unimolecular reaction A :math:`\rightarrow` B with rate constant k1. Molecules of A are initially distributed at random within a reflective box. The simulation is run under steady state conditions. 
 
-Start Blender. Load the **irrev_uni_steady.blend** file in the **irrev_uni/steady_state** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_uni/steady_state** and select **Set Project Directory**. Set the **Project Base** to **irrev_uni_steady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+Start Blender. Load the **irrev_uni/steady_state/irrev_uni_steady.blend** file. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_uni/steady_state** and select **Set Project Directory**. Set the **Project Base** to **irrev_uni_steady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
-Add the following text to the beginning of **irrev_uni_steady.rxn_output.mdl**::
+Add the following text to the beginning of **irrev_uni_steady.main.mdl**::
 
     box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and B molecules */
     box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
@@ -274,7 +287,8 @@ Non-Steady State
 -----------------------------------------------------
 Next we will simulate the irreversible reaction A :math:`\rightarrow` B under non-steady-state conditions. 
 
-Start Blender. Load the **irrev_uni_nonsteady_state.blend** file in the **irrev_uni_nonsteady_state** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
+Start Blender. Load the **irrev_uni_nonsteady_state.blend** file in the **irrev_uni_nonsteady_state** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_uni/nonsteady_state** and select **Set Project Directory**. Set the **Project Base** to **irrev_uni_nonsteady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+
 
 Open main.geometry.mdl and add in the following text at the top of the mdl::
 
@@ -325,9 +339,10 @@ Exercise #4 - Reverisble Unimolecular Reaction
 
 Non-Equilibrium 
 -----------------------------------------------------
-Start Blender. Load the **rev_uni_nonequil.blend** file in the **rev_uni/nonequil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
+Here we will simulate the reversible reaction A :math:`\leftrightarrow` B with rate constants k1 and k2 starting from non-equilibrium initial conditions (only A present at time 0).
 
-Here we simulate the reversible reaction A :math:`\leftrightarrow` B with rate constants k1 and k2 starting from non-equilibrium initial conditions (only A present at time 0).
+Start Blender. Load the **rev_uni_nonequil.blend** file in the **rev_uni/nonequil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **rev_uni/nonequil** and select **Set Project Directory**. Set the **Project Base** to **rev_uni_nonequil**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+
 
 Run the simulation by typing the following command::
 
@@ -337,13 +352,13 @@ Plot the results from the simulation. Fit the MCell results for production of B.
 
 Equilibrium 
 -----------------------------------------------------
-Start Blender. Load the **rev_uni_equil.blend** file in the **rev_uni/equil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
+Now we will simulate the reversible reaction A :math:`\leftrightarrow` B starting from equilibrium conditions, i.e., under conditions where the average fractional amounts of A and B will remain constant. 
 
-Now we simulate the reversible reaction A :math:`\leftrightarrow` B starting from equilibrium conditions, i.e., under conditions where the average fractional amounts of A and B will remain constant. 
+Start Blender. Load the **rev_uni_equil.blend** file in the **rev_uni/equil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **rev_uni/equil** and select **Set Project Directory**. Set the **Project Base** to **rev_uni_equil**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
 Run the simulation by typing the following command::
 
-    mcell rev_uni_nonequil.main.mdl
+    mcell rev_uni_equil.main.mdl
 
 Use the statistics utility program to obtain the variance for the number of B molecules. Rerun the simulation while varying the fractional amounts of A and B. In each case determine the variance for B, and plot the resulting values as a function of fractional amount of B.
 
@@ -352,9 +367,9 @@ Exercise #5 - Irreverisble Bimolecular Reaction
 
 Steady State 
 -----------------------------------------------------
-Start Blender. Load the **irrev_bi_steadystate.blend** file in the **irrev_bi_steadystate** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
+We will now simulate an irreversible bimolecular reaction A + R :math:`\rightarrow` AR with rate constant k1. Molecules of A and R are initially distributed at random within a reflective box. The simulation is run under steady state conditions.
 
-Simulate an irreversible bimolecular reaction A + R :math:`\rightarrow` AR with rate constant k1. Molecules of A and R are initially distributed at random within a reflective box. The simulation is run under steady state conditions.
+Start Blender. Load the **irrev_bi_steadystate.blend** file in the **irrev_bi_steadystate** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_bi/steady** and select **Set Project Directory**. Set the **Project Base** to **irrev_bi_steady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
 Run the simulation by typing the following command::
 
@@ -364,9 +379,9 @@ Plot the reaction data results for the number and concentration of AR molecules 
 
 Non-Steady State 
 -----------------------------------------------------
-Start Blender. Load the **irrev_bi_nonsteadystate.blend** file in the **irrev_bi_nonsteadystate** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
+Now, we'll simulate the irreversible reaction A + R :math:`\rightarrow` AR under non-steady-state conditions.
 
-Simulate the irreversible reaction A + R :math:`\rightarrow` AR under non-steady-state conditions.
+Start Blender. Load the **irrev_bi_nonsteadystate.blend** file in the **irrev_bi_nonsteadystate** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_bi/nonsteady** and select **Set Project Directory**. Set the **Project Base** to **irrev_bi_nonsteady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
 Run the simulation by typing the following command::
 
@@ -379,9 +394,10 @@ Exercise #6 - Reverisble Bimolecular Reaction
 
 Non-Equilibrium 
 -----------------------------------------------------
-Start Blender. Load the **rev_bimol_nonequil.blend** file in the **rev_bimol_nonequil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
+Next, we will simulate the reversible bimolecular reaction A + R :math:`\leftrightarrow` AR with rate constants k1 and k2 starting from non-equilibrium initial conditions (only A and R present at time 0).
 
-Simulate the reversible bimolecular reaction A + R :math:`\leftrightarrow` AR with rate constants k1 and k2 starting from non-equilibrium initial conditions (only A and R present at time 0).
+Start Blender. Load the **rev_bimol_nonequil.blend** file in the **rev_bimol_nonequil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **rev_bi/nonequil** and select **Set Project Directory**. Set the **Project Base** to **rev_bi_nonequil**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+
 
 Run the simulation by typing the following command::
 
@@ -391,9 +407,9 @@ Plot the results for A, R, and AR. Fit the MCell results for production of AR.
 
 Equilibrium 
 -----------------------------------------------------
-Start Blender. Load the **rev_bimol_equil.blend** file in the **rev_bimol_equil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**.
+We will simulate the reversible reaction A + R :math:`\leftrightarrow` AR starting from equilibrium conditions, i.e., under conditions where the average fractional amounts of A, R, and AR will remain constant. 
 
-Simulate the reversible reaction A + R :math:`\leftrightarrow` AR starting from equilibrium conditions, i.e., under conditions where the average fractional amounts of A, R, and AR will remain constant. 
+Start Blender. Load the **rev_bimol_equil.blend** file in the **rev_bimol_equil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **rev_bi/nonequil** and select **Set Project Directory**. Set the **Project Base** to **rev_bi_nonequil**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
 Run the simulation by typing the following command::
 
