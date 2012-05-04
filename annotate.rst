@@ -4,17 +4,12 @@
 Examining and Annotating the MDL
 *********************************************
 
-At the command line, type::
-
-    ls
-
-You should notice that we have created four new files: **intro.main.mdl**, **intro.geometry.mdl**, **intro.molecules.mdl**, and **intro.reactions.mdl**. We will take a look at all of these in turn.
-
 .. contents:: :local:
+
 
 .. _examine_mdl:
 
-Examining the MDL
+Examining the Main MDL
 ---------------------------------------------
 
 To start out with, open **intro.main.mdl** with your favorite text editor (try gedit or kedit if you aren't sure what to use)::
@@ -245,7 +240,7 @@ Now, create a file called **intro.viz_output.mdl**::
 
     REACTION_DATA_OUTPUT
     {
-        STEP=time_step
+        STEP=1e-6
         {COUNT[vol1,WORLD]}=> "./react_data/vol1.dat"
         {COUNT[vol2,WORLD]}=> "./react_data/vol2.dat"
     }
@@ -256,3 +251,19 @@ The brackets after the **COUNT** command tell MCell what molecule to count and w
 
 The file listed after the arrow symbol (**=>**) tells it where to save it. 
 
+.. _run_sim:
+
+Run the Simulation
+---------------------------------------------
+
+At the command line, navigate to the appropriate directory (``cd /home/user/mcell_tutorial/intro`` where **user** is your user name), and enter the command:: 
+
+    mcell intro.mdl
+
+MCell should output some information to the command line indicating that it ran successfully.
+
+At the command line, type::
+
+    ls
+
+You should notice that we have created four new files: **intro.main.mdl**, **intro.geometry.mdl**, **intro.molecules.mdl**, and **intro.reactions.mdl**. We will take a look at all of these in turn.

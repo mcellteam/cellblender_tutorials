@@ -22,20 +22,12 @@ Let's look at an example. First we need to create the model in Blender. To do th
     <video id="my_video_1" class="video-js vjs-default-skin" controls
       preload="metadata" width="840" height="525" 
       data-setup='{"example_option":true}'>
-      <source src="http://www.mcell.psc.edu/tutorials/videos/main/sc_sm.ogg" type='video/ogg'/>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/sc_sm_new.ogg" type='video/ogg'/>
     </video>
 
 Start Blender. Hit the **Object** button in the **Properties Editor**. Scroll to the bottom of the Editor.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/plus_button.png
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/new_button.png
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/two_new_mats.png
-
 Hit **+** twice so that you have two new surface regions. 
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/renamed_mats.png
 
 Click on the first one and change its name in the text field to **top**. Next, click on the second entry and change its name to **bottom**.
 
@@ -44,8 +36,6 @@ Click on the first one and change its name in the text field to **top**. Next, c
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/right_click.png
 
 Move your cursor to the **3D View* window and hit **Tab** to switch into **Edit Mode**.  Hit **Ctrl-T** to triangulate the faces. Then hit **Ctrl-Tab** and select **Face**. Right click on the top faces, select the **top** surface region, and click **Assign**. Next move your mouse back to the **3D View** window and hold the middle mouse button down and drag upward so that the bottom face is shown. Right click on the bottom faces, select **bottom** from the list of materials, and click **Assign**.
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_mdl.png
 
 Expand the **Model Initialization** panel. Change **Simulation Iterations** to **1000**. Change **Simulation Time Step** to **1e-5**.
 
