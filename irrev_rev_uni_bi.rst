@@ -25,12 +25,29 @@ diffuse through a series of **TRANSPARENT** concentric shells.
 Exporting the Blend
 -----------------------------------------------------
 
-Start Blender. Load the **spherical_shells/spherical_shells.blend** file in the main project directory. You should see a set of concentric, transparent spherical shells. Several CellBlender properties have already been applied. We will now export these mdls and create a molecule release site centered within the shells. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **spherical_shells** and select **Set Project Directory**. Set the **Project Base** to **spherical_shells**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+Start Blender. Load the **spherical_shells/spherical_shells.blend** file 
+in the main project directory which contains the already prepared
+model geometry. Normally, you would have to create the geometry yourself. 
+You should see a set of concentric, transparent spherical shells. Several 
+CellBlender properties have already been applied. We will now export this 
+geometry as MDL and create a molecule release site in the center of the 
+shells. Under **CellBlender Project Settings**, select 
+**Export CellBlender Project**. Navigate to **spherical_shells** and 
+select **Set Project Directory**. Set the **Project Base** to 
+**spherical_shells**. Then hit **Export CellBlender Project**, navigate to 
+same directory as before, and hit **Export MCell MDL**.  You have now
+exported your project as MDL.
+
 
 Annotating the MDL
 -----------------------------------------------------
 
-We will now modify our MDLs, so that we count the molecules as they pass through the shells. Add the following variables at the beginning of your **spherical_shells.main.mdl**::
+We will now add additional MDL commands to the files exported by CellBlender 
+that is needed to count the molecules as they pass through the spherical
+shells. Since in this case we would also like to output the molecular 
+concentrations in addition to raw counts we first compute the volume 
+(in cubic microns) of each shell. This, add the following variables at 
+the beginning of your **spherical_shells.main.mdl**::
 
     vol_1 = 0.00415274 /* cubic microns */
     vol_2 = 0.0140155
@@ -55,12 +72,19 @@ We will now modify our MDLs, so that we count the molecules as they pass through
     PARTITION_Y = [[-0.501 TO 0.501 STEP 0.04]]
     PARTITION_Z = [[-0.501 TO 0.501 STEP 0.04]]
 
-Create a file called **spherical_shells.surface_classes.mdl** with the following text::
+
+Since meshes (including our concentric shells) are by default reflective to
+all diffusion molecules we need to make them transparent via a surface
+class. Thus, create a file called **spherical_shells.surface_classes.mdl** 
+with the following content::
 
     DEFINE_SURFACE_CLASS transp {
         TRANSPARENT = vol1
     }
 
+Next, we use the **MODIFY_SURFACE_REGIONS** modifier to apply this surface
+class to all concentric shells. This method allows you to modify surface
+meshes without ever needing to touch the (often large) mesh files themselves.
 Create a file called **spherical_shells.mod_surf_regions.mdl** with the following text::
 
     MODIFY_SURFACE_REGIONS {
@@ -93,7 +117,9 @@ Create a file called **spherical_shells.mod_surf_regions.mdl** with the followin
             }
     }
 
-Next, create a file called **spherical_shells.rxn_output.mdl** and enter the following text into it::
+Finally, we need to define a **REACTION_DATA_OUTPUT** block to measure the
+molecular concentration in each shell. To do so, create a file called 
+**spherical_shells.rxn_output.mdl** and enter the following text into it::
 
     sprintf(seed,"%03g", SEED)
 
@@ -109,15 +135,15 @@ Next, create a file called **spherical_shells.rxn_output.mdl** and enter the fol
         {COUNT [vol1, World.Sphere_7] - COUNT [vol1, World.Sphere_6]} => "./react_data/shell_6."&seed&".dat"
         {COUNT [vol1, World.Sphere_8] - COUNT [vol1, World.Sphere_7]} => "./react_data/shell_7."&seed&".dat"
         {COUNT [vol1, World.Sphere_9] - COUNT [vol1, World.Sphere_8]} => "./react_data/shell_8."&seed&".dat"
-        {COUNT [vol1, World.Sphere_1]/vol_1} => "./react_data/conc_inner_sphere."&seed&"..dat"
-        {(COUNT [vol1, World.Sphere_2] - COUNT [vol1, World.Sphere_1])/shell_vol_1} => "./react_data/conc_shell_1.dat"
-        {(COUNT [vol1, World.Sphere_3] - COUNT [vol1, World.Sphere_2])/shell_vol_2} => "./react_data/conc_shell_2.dat"
-        {(COUNT [vol1, World.Sphere_4] - COUNT [vol1, World.Sphere_3])/shell_vol_3} => "./react_data/conc_shell_3.dat"
-        {(COUNT [vol1, World.Sphere_5] - COUNT [vol1, World.Sphere_4])/shell_vol_4} => "./react_data/conc_shell_4.dat"
-        {(COUNT [vol1, World.Sphere_6] - COUNT [vol1, World.Sphere_5])/shell_vol_5} => "./react_data/conc_shell_5.dat"
-        {(COUNT [vol1, World.Sphere_7] - COUNT [vol1, World.Sphere_6])/shell_vol_6} => "./react_data/conc_shell_6.dat"
-        {(COUNT [vol1, World.Sphere_8] - COUNT [vol1, World.Sphere_7])/shell_vol_7} => "./react_data/conc_shell_7.dat"
-        {(COUNT [vol1, World.Sphere_9] - COUNT [vol1, World.Sphere_8])/shell_vol_8} => "./react_data/conc_shell_8.dat"
+        {COUNT [vol1, World.Sphere_1]/vol_1} => "./react_data/conc_inner_sphere."&seed&".dat"
+        {(COUNT [vol1, World.Sphere_2] - COUNT [vol1, World.Sphere_1])/shell_vol_1} => "./react_data/conc_shell_1."&seed&".dat"
+        {(COUNT [vol1, World.Sphere_3] - COUNT [vol1, World.Sphere_2])/shell_vol_2} => "./react_data/conc_shell_2."&seed&".dat"
+        {(COUNT [vol1, World.Sphere_4] - COUNT [vol1, World.Sphere_3])/shell_vol_3} => "./react_data/conc_shell_3."&seed&".dat"
+        {(COUNT [vol1, World.Sphere_5] - COUNT [vol1, World.Sphere_4])/shell_vol_4} => "./react_data/conc_shell_4."&seed&".dat"
+        {(COUNT [vol1, World.Sphere_6] - COUNT [vol1, World.Sphere_5])/shell_vol_5} => "./react_data/conc_shell_5."&seed&".dat"
+        {(COUNT [vol1, World.Sphere_7] - COUNT [vol1, World.Sphere_6])/shell_vol_6} => "./react_data/conc_shell_6."&seed&".dat"
+        {(COUNT [vol1, World.Sphere_8] - COUNT [vol1, World.Sphere_7])/shell_vol_7} => "./react_data/conc_shell_7."&seed&".dat"
+        {(COUNT [vol1, World.Sphere_9] - COUNT [vol1, World.Sphere_8])/shell_vol_8} => "./react_data/conc_shell_8."&seed&".dat"
     }
 
 Lastly, create a file called **spherical_shells.viz_output.mdl** with the following text::
