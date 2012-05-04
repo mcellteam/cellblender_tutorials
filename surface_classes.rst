@@ -29,7 +29,7 @@ Watch the following video tutorial or follow along with the instructions below.
     <video id="my_video_1" class="video-js vjs-default-skin" controls
       preload="metadata" width="840" height="525" 
       data-setup='{"example_option":true}'>
-      <source src="http://www.mcell.psc.edu/tutorials/videos/main/export_above.ogg" type='video/ogg'/>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/surf_reg_above.ogg" type='video/ogg'/>
     </video>
 
 If you watched the previous video tutorial, you can skip ahead to :ref:`surf_class_vm_mod_mdl`.
@@ -114,7 +114,7 @@ Watch the following video tutorial or follow along with the instructions below.
     <video id="my_video_1" class="video-js vjs-default-skin" controls
       preload="metadata" width="840" height="525" 
       data-setup='{"example_option":true}'>
-      <source src="http://www.mcell.psc.edu/tutorials/videos/main/export_inside.ogg" type='video/ogg'/>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/surf_reg_inside.ogg" type='video/ogg'/>
     </video>
 
 If you watched the previous video tutorial, you can skip ahead to :ref:`surf_class_rxns_mdl`.

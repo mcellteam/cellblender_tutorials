@@ -22,7 +22,7 @@ Let's look at an example. First we need to create the model in Blender. To do th
     <video id="my_video_1" class="video-js vjs-default-skin" controls
       preload="metadata" width="840" height="525" 
       data-setup='{"example_option":true}'>
-      <source src="http://www.mcell.psc.edu/tutorials/videos/main/sc_sm.ogg" type='video/ogg'/>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/sc_sm_new.ogg" type='video/ogg'/>
     </video>
 
 Start Blender. Hit the **Object** button in the **Properties Editor**. Scroll to the bottom of the Editor.

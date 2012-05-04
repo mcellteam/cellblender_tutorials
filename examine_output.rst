@@ -18,7 +18,7 @@ Visualize molecules with CellBlender in this video tutorial.
     <video id="my_video_1" class="video-js vjs-default-skin" controls
       preload="metadata" width="840" height="525" 
       data-setup='{"example_option":true}'>
-      <source src="http://www.mcell.psc.edu/tutorials/videos/main/dreamm_pt2.ogg" type='video/ogg'/>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/viz_data.ogg" type='video/ogg'/>
     </video>
 
 Skip to the next section (:ref:`custom_glyphs`) if you just watched the video tutorial.
