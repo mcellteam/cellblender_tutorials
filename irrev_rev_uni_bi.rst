@@ -175,8 +175,10 @@ When prompted, enter::
 
     spherical_shells.main.mdl
 
-Next, we can use the *avg_seeds.py* script to read the reaction output
-for each of the shells and plot the data as well as the average. To
+First, load your model into CellBlender and check that the simulation
+proceeded as expected. Next, we can use the *avg_seeds.py* script to 
+read the reaction output for each of the shells and plot the data as 
+well as the average. To
 do so, open the script file in a text editor and enter the beginning
 of the output files you would like to process, e.g. *shell_1*.
 Then, run the command::
@@ -225,36 +227,52 @@ new set of simulations to confirm your expectation.
 Sampling Box
 =====================================================
 
-In this example, volume molecules will diffuse around inside of two boxes, one nested very closely inside of the other. Afterwards, we will do some analysis on the results.
+In this tutorial we will examine the correlation of average number of
+molecules and their fluctuations. To do so, we will use a fixed size
+box which is reflective to all molecules and which contains and a smaller 
+transparent box. Molecules will freely diffuse within the two boxes but
+can not leave the larger one. Initially, the smaller box will be nested
+very closely (almost indistinguishably so in CellBlender) within the larger 
+box and we will then decrease its size stepwise to examine the fluctuations 
+in molecule numbers.
 
 Exporting the Blend
 -----------------------------------------------------
 
-Start Blender. Load the **sampling_box/sampling_box.blend** file in the main project directory. You should see two boxes, one nested very closely inside of another. Several CellBlender properties have already been applied. We will now export these mdls and make a few small modifications. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **sampling_boxes** and select **Set Project Directory**. Set the **Project Base** to **sampling_boxes**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+Start Blender. Load the **sampling_box/sampling_box.blend** file in the main 
+project directory. You should see two boxes, one nested very closely inside 
+of another. Several CellBlender properties have already been applied. We will now export these mdls and make a few small modifications. Under 
+**CellBlender Project Settings**, select **Export CellBlender Project**. 
+Navigate to **sampling_boxes** and select **Set Project Directory**. Set the 
+**Project Base** to **sampling_boxes**. 
+Then hit **Export CellBlender Project**, 
+navigate to same directory as before, and hit **Export MCell MDL**.
 
 Annotating the MDL
 -----------------------------------------------------
 
 Add the following to the beginning of **sampling_box.main.mdl**::
 
-    box_volume = 0.05 /* cubic microns, volume of the box used to contain the A molecules */
-    sampling_box_volume = 0.99*box_volume
+    box_volume = 0.05 // cubic microns, volume of the large box 
+                      // used to contain the A molecules 
     side_length = box_volume^(1/3)
     half_length = side_length/2.0
-    sampling_side_length = sampling_box_volume^(1/3)
-    sampling_half_length = sampling_side_length/2.0
 
     PARTITION_X = [[-1.001*half_length TO 1.001*half_length STEP 0.04]]
     PARTITION_Y = [[-1.001*half_length TO 1.001*half_length STEP 0.04]]
     PARTITION_Z = [[-1.001*half_length TO 1.001*half_length STEP 0.04]]
 
-Create a file called **sampling_box.surface_classes.mdl** and paste the following text into it::
+Next, we create a surface class that will be used to render the inner
+box transparent to *vol1* molecules. Create a file called 
+**sampling_box.surface_classes.mdl** and paste the following text into it::
 
     DEFINE_SURFACE_CLASS transp {
        TRANSPARENT = vol1
     }
 
-Create a file called **sampling_box.mod_surf_regions.mdl** with the following text::
+We can apply this surface class to the sampling box via a 
+**MODIFY_SURFACE_REGIONS** block. Create a file called 
+**sampling_box.mod_surf_regions.mdl** with the following text::
 
     MODIFY_SURFACE_REGIONS {
             sampling_box[all] {
@@ -262,16 +280,19 @@ Create a file called **sampling_box.mod_surf_regions.mdl** with the following te
             }
     }
 
-Next, create a filed called **sampling_box.rxn_output.mdl** like this::
+Next, let's output the counts of volume molecules in the large and
+sampling boxes. To do so create a file called 
+**sampling_box.rxn_output.mdl** like this::
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
        STEP = 1e-6 
-       {COUNT [vol1, WORLD]} => "./reaction_data/vol1.dat"
-       {COUNT [vol1, Scene.sampling_box]} => "./reaction_data/vol1_sampled.dat"
+       {COUNT [vol1, WORLD]} => "./react_data/vol1.dat"
+       {COUNT [vol1, Scene.sampling_box]} => "./react_data/vol1_sampled.dat"
     }
 
-Lastly, create a file called **sampling_box.viz_output.mdl** with the following text::
+Lastly, we output visualization data for display in CellBlender. Thus,
+create a file called **sampling_box.viz_output.mdl** with the following text::
 
     VIZ_OUTPUT {
         MODE = ASCII
@@ -287,21 +308,59 @@ Run the Simulation and Analyze the Results
 
 Run the simulation by typing the following command::
 
-    mcell main.geometry.mdl
+    mcell sampling_box.main.mdl
 
-Create a file called **mean_and_var.py** and copy the following text into it::
+As usual, always look at your simulation first in CellBlender to make
+sure everything went as expected. Then, create a file called 
+**mean_and_var.py** and copy the following text into it::
 
     #!/usr/bin/env python
 
-    #need to finish this
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import os
+
+    largeBoxName= "vol1.dat"      # beginning of filenames to average
+    samplingBoxName = "vol1_sampled.dat"
+
+    # parse counts in large box, analyze, and print
+    largeData = np.genfromtxt("./react_data/%s" % largeBoxName, dtype=float)
+    largeDataCount = largeData[:, 1]
+    largeDataMean = largeDataCount.mean()
+    largeDataStd = largeDataCount.std()
+
+    plt.plot(largeDataCount, 'k')
+    print("Molecule count in large box: mean %f    std %f   CV %f" %
+          (largeDataMean, largeDataStd, largeDataStd/largeDataMean))
+
+    # parse counts in large box, analyze, and print
+    samplingData = np.genfromtxt("./react_data/%s" % samplingBoxName, dtype=float)
+    samplingDataCount = samplingData[:, 1]
+    samplingDataMean = samplingDataCount.mean()
+    samplingDataStd = samplingDataCount.std()
+
+    plt.plot(samplingDataCount, 'b')
+    print("Molecule count in sampling box: mean %f    std %f   CV %f" %
+          (samplingDataMean, samplingDataStd, samplingDataStd/samplingDataMean))
+
+    # show the plot
+    plt.show()
 
 Run the file by entering the following command::
 
     python mean_and_var.py
 
-This script will give you the mean and variance for the number of molecules in each box. Decrease the size of the inner box relative to the outer box and rerun the simulation. Do this repeatedly and note how the mean and variance values change. 
+This script will give you the mean, standard deviation and coefficient
+of variation (CV) for the number of molecules in each box. It will also
+plot the molecule count as a function of time. Now, decrease the size of 
+the inner box relative to the outer box in CellBlender, export the new
+geometry (make sure to do this in a different directory or move the
+previous files out of the way) and rerun the simulation. 
+Do this repeatedly and note how the mean, standard deviation and
+CV values change. 
 
-Irreverisble Unimolecular Reaction
+
+Irreversible Unimolecular Reaction
 =====================================================
 
 Steady State 
