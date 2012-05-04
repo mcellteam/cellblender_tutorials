@@ -53,9 +53,12 @@ Next, create the following python script called **run_seeds.py**::
 
     #!/usr/bin/env python
 
-    import os
-
-    mdl = input('What mdl do you want to run?\n')
+    import os, sys
+    
+    if len(sys.argv) >= 2:
+        mdl = sys.argv[1]
+    else:
+        mdl = raw_input('What mdl do you want to run?\n')
 
     for i in range(1, 21):
         os.system("mcell -seed %i %s" % (i, mdl))
@@ -68,13 +71,16 @@ This file is similar to the **scaling.py** file that we created in the checkpoin
     import matplotlib.pyplot as plt
     import os
 
+    startOfFileToAverage = "vol1"      # beginning of filenames to average
+                                       # over
+
     mol_counts = None
     files = os.listdir('react_data')   # build a list of reaction data file names
     files.sort()                       # sort that list alphabetically
 
     for f in files:                    # iterate over the list of file names
-        if f.startswith('vol1'):
-            rxn_data = np.genfromtxt("./react_data/%s" % f, dtype=int)
+        if f.startswith(startOfFileToAverage):
+            rxn_data = np.genfromtxt("./react_data/%s" % f, dtype=float)
             rxn_data = rxn_data[:, 1]  # take the second column
             plt.plot(rxn_data, '0.5')  # plot the results as a gray line
             if mol_counts is None:
