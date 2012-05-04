@@ -36,6 +36,9 @@ You should see a cube in the **3D View Editor**. Hit the **Object** button in th
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_region.png
 
 
+Define a Surface Region
+---------------------------------------------
+
 Expand the **Define Surface Regions** panel. Hit the **+** button and **New Region** should appear in the list of regions. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/top.png
@@ -62,6 +65,9 @@ Hit the **Scene** button in the **Properties Editor**.
 
 Expand the **Model Objects** panel. With the **Cube** object still selected, hit the **+** button.
 
+Set Simulation Parameters
+---------------------------------------------
+
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/model_init.png
 
 Expand the **Model Initialization** panel. Change **Simulation Iterations** to **1000**. Change **Simulation Time Step** to **5e-6**.
@@ -82,6 +88,9 @@ Expand the **Molecule Release/Placement** panel and hit the **+** button twice, 
 
 Now select the second release site. Change **Site Name** to **surf1_rel**. Change **Molecule** to **surf1'**. Change **Release Shape** to **Object/Region**. Change **Object/Region** to **Cube[top]**. Change **Quantity to Release** to **2000**.
 
+Export MDLs
+---------------------------------------------
+
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/export.png
 
 Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/intro** where **user** is your user name) and hit **OK** when it prompts you to make a new directory. Then select **Set Project Directory**. Set the **Project Base** to **intro**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
@@ -90,13 +99,3 @@ Either leave Blender open or save and quit, as we'll need to modify this model l
 
 .. _run_sim:
 
-Run the Simulation
-=============================================
-
-.. _tut_viz_data1.tgz: http://mcell.psc.edu/tutorials/mdl/main/tut_viz_data1.tgz
-
-At the command line, navigate to the appropriate directory (``cd /home/user/mcell_tutorial/intro`` where **user** is your user name), and enter the command:: 
-
-    mcell intro.mdl
-
-MCell should output some information to the command line indicating that it ran successfully.
