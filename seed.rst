@@ -80,7 +80,7 @@ This file is similar to the **scaling.py** file that we created in the checkpoin
 
     for f in files:                    # iterate over the list of file names
         if f.startswith(startOfFileToAverage):
-            rxn_data = np.genfromtxt("./react_data/%s" % f, dtype=int)
+            rxn_data = np.genfromtxt("./react_data/%s" % f, dtype=float)
             rxn_data = rxn_data[:, 1]  # take the second column
             plt.plot(rxn_data, '0.5')  # plot the results as a gray line
             if mol_counts is None:
