@@ -8,13 +8,11 @@ To use this tutorial, you'll want to have the following software installed:
 * MCell_ (registration required)
 * CellBlender (Blender plugin)
 * `Blender 2.62`_
-* `Blender MDL export plugin`_
 * A text editor (gedit_, vim_, emacs_, etc.)
 * Some graphing and analysis software (matplotlib_ (with python_ and numpy_), Grace_, gnuplot, etc.)
 
 .. _MCell: http://mcell.psc.edu/download.html
 .. _Blender 2.62: http://www.blender.org/download/get-blender/
-.. _Blender MDL export plugin: http://mcell.psc.edu/download/files/io_mesh_mdl.tgz
 .. _gedit: http://projects.gnome.org/gedit/
 .. _vim: http://www.vim.org/
 .. _emacs: http://www.gnu.org/software/emacs/
