@@ -363,12 +363,32 @@ CV values change.
 Irreversible Unimolecular Reaction
 =====================================================
 
+In this section you will run a number of fairly simple unimolecular
+reaction examples and confirm that the results obtained using MCell
+simulations meet our expectation. At the same time your will learn
+about simple reaction kinetics.
+
+
 Steady State 
 -----------------------------------------------------
 
-We will now simulate an irreversible unimolecular reaction A :math:`\rightarrow` B with rate constant k1. Molecules of A are initially distributed at random within a reflective box. The simulation is run under steady state conditions. 
+We will now simulate an irreversible unimolecular reaction A 
+:math:`\rightarrow` B with rate constant k1 under steady state conditions
+(how can this be achieved in an MCell simulation?). Molecules of A are 
+initially distributed at random within a reflective box. The simulation is 
+run under steady state conditions. 
 
-Start Blender. Load the **irrev_uni/steady_state/irrev_uni_steady.blend** file. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_uni/steady_state** and select **Set Project Directory**. Set the **Project Base** to **irrev_uni_steady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+Start Blender. Load the **irrev_uni/steady_state/irrev_uni_steady.blend** 
+file. Several CellBlender properties have already been applied. We will 
+now export these mdls. Under **CellBlender Project Settings**, select 
+**Export CellBlender Project**. Navigate to **irrev_uni/steady_state** and 
+select **Set Project Directory**. Set the **Project Base** to 
+**irrev_uni_steady**. Then hit **Export CellBlender Project**, navigate to 
+same directory as before, and hit **Export MCell MDL**.
+
+Since we have defined molecules and reactions in CellBlender (take a look) 
+there will be corresponding MDL files. Take a look at them and understand
+what is happening.
 
 Add the following text to the beginning of **irrev_uni_steady.main.mdl**::
 
@@ -384,14 +404,16 @@ Add the following text to the beginning of **irrev_uni_steady.main.mdl**::
     PARTITION_Y = [-partition, partition]
     PARTITION_Z = [-partition, partition]
 
-Next create a file callled **irrev_uni_steady.rxn_output.mdl** and copy this text into it::
+Again we need to define reaction and visualization output statement blocks
+as MDL. Thus, create a file callled **irrev_uni_steady.rxn_output.mdl** and 
+copy this text into it::
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
        STEP = 1e-5 
-       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
-       {COUNT [B, WORLD]} => "./reaction_data/B.dat"
-       {COUNT [B, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_B.dat"
+       {COUNT [A, WORLD]} => "./react_data/A.dat"
+       {COUNT [B, WORLD]} => "./react_data/B.dat"
+       {COUNT [B, WORLD]/Na/box_volume_liters} => "./react_data/conc_B.dat"
     }
 
 Lastly, create a file called **irrev_uni_steady.viz_output.mdl** with the following text::
@@ -409,7 +431,43 @@ Run the simulation by typing the following command::
 
     mcell irrev_uni_steady.main.mdl
 
-Next, plot the reaction data results for the number and concentration of B molecules as a function of time. Fit your results for the production of B and compare the obtained reaction rate to the expected value. Increase the initial concentration of A, rerun the simulation and again fit the results.
+Next, plot the reaction data results for the number and concentration of B 
+molecules as a function of time. Fit your results for the production of B 
+and compare the obtained reaction rate to the expected value. Increase the 
+initial concentration of A, rerun the simulation and again fit the results. 
+Do the results match your expectations? You can use the following python
+script for your fitting::
+
+    #!/usr/bin/env python
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import os
+
+    dataName = "conc_B.dat" 
+
+    # parse counts of B
+    data = np.genfromtxt("./react_data/%s" %dataName, dtype=float)
+    dataX = data[:, 0]   # time values
+    dataY = data[:, 1]   # concentration
+
+    # plot the raw data
+    plt.plot(dataX, dataY, 'k', label="Raw Data")
+
+    # do a linear fit to the data and determine the slope and
+    # intersection with the y-axis
+    A = np.vstack([dataX, np.ones(len(dataX))]).T
+    m, c = np.linalg.lstsq(A, dataY)[0]
+
+    # plot the fit
+    plt.plot(dataX, m*dataX + c, label="Fitted Graph")
+
+    # print results
+    print("Linear Fitting Results (y = m*x +c): m = %e   c = %e" % (m,c))
+
+    # show the plot
+    plt.legend()
+    plt.show()
 
 Non-Steady State 
 -----------------------------------------------------
