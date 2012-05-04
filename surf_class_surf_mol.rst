@@ -25,7 +25,7 @@ Let's look at an example. First we need to create the model in Blender. To do th
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/sc_sm.ogg" type='video/ogg'/>
     </video>
 
-Start Blender. Hit the **Material** button in the **Properties** window. 
+Start Blender. Hit the **Object** button in the **Properties Editor**. Scroll to the bottom of the Editor.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/plus_button.png
 
@@ -33,42 +33,41 @@ Start Blender. Hit the **Material** button in the **Properties** window.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/two_new_mats.png
 
-Hit **New**, **+**, and then repeat these two steps again, so that you have two new materials (and three total). 
+Hit **+** twice so that you have two new surface regions. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/renamed_mats.png
 
-Click on the top one (**Material**) and change its name in the text field to **middle**. Change **Material.001** to **top** and change **Material.002** to **bottom**.
+Click on the first one and change its name in the text field to **top**. Next, click on the second entry and change its name to **bottom**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/face_select.png
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/right_click.png
 
-Move your cursor to the **3D View* window and hit **Tab** to switch into **Edit Mode**. Then hit **Ctrl-Tab** and select **Face**. Right click on the top face, select the **top** material, and click **Assign**. Next move your mouse back to the **3D View** window and hold the middle mouse button down and drag upward so that the bottom face is shown. Right click on the bottom face, select **bottom** from the list of materials, and click **Assign**.
+Move your cursor to the **3D View* window and hit **Tab** to switch into **Edit Mode**.  Hit **Ctrl-T** to triangulate the faces. Then hit **Ctrl-Tab** and select **Face**. Right click on the top faces, select the **top** surface region, and click **Assign**. Next move your mouse back to the **3D View** window and hold the middle mouse button down and drag upward so that the bottom face is shown. Right click on the bottom faces, select **bottom** from the list of materials, and click **Assign**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/export_mdl.png
 
-Now select **File>Export>Model Description Language (.mdl)**. Navigate to **/home/user/mcell_tutorial/sc_sm**. Change the file name to **sc_sm.mdl** and hit **Export MDL**.
+Expand the **Model Initialization** panel. Change **Simulation Iterations** to **1000**. Change **Simulation Time Step** to **1e-5**.
+
+Expand the **Define Molecules** panel and hit the **+** button. Change the **Molecule Name** to **surf1**, the **Molecule Type** to **Surface Molecule**, and the **Diffusion Constant** to **1e-7**. Repeat this process for the next molecule in the list, but call this one **vol2**. Finally, change the third entry **Molecule Name** of the first one to **surf1**, and the **Diffusion Constant** to **1e-7**.
+
+Expand the **Molecule Release/Placement** panel and hit the **+** button. Change **Site Name** to **surf1_rel**. Change **Molecule** to **surf1'**. Change **Release Shape** to **Object/Region**. Change **Object/Region** to **Cube**. Change **Quantity to Release** to **1000**.
+
+Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/sc_sm** where **user** is your user name) and hit **OK** when it prompts you to make a new directory. Then select **Set Project Directory**. Set the **Project Base** to **sc_sm**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
 .. _surf_class_sm_mdl:
 
 Modifying the MDL
 ---------------------------------------------
 
-Modify the first two lines like this::
-
-    iterations = 1000
-    time_step = 1e-5
-
-Next, add the following text after the **INCLUDE_FILE** command::
-
-    DEFINE_MOLECULES {
-        surf1 {DIFFUSION_CONSTANT_2D = 1E-7}
-    }
+Create a file called sc_sm.surface_classes.mdl::
 
     DEFINE_SURFACE_CLASSES {
         absorb {ABSORPTIVE = surf1}
         reflect {REFLECTIVE = surf1}
     }  
+
+Create a file called sc_sm.mod_surf_regions.mdl::
 
     MODIFY_SURFACE_REGIONS {
         Cube[top] {
@@ -78,19 +77,6 @@ Next, add the following text after the **INCLUDE_FILE** command::
             SURFACE_CLASS = reflect
         }   
     }
-
-Modify the **INSTANTIATE** section like this::
-
-    INSTANTIATE World OBJECT {
-        Cube OBJECT Cube{SCALE = [0.1,0.1,0.1]}
-        surf1_top_rel RELEASE_SITE {
-            SHAPE = World.Cube
-            MOLECULE = surf1'
-            NUMBER_TO_RELEASE = 1000
-        }   
-    }
-
-
 
 In this example, we have two surface classes, **absorb** and **reflect**. **absorb** is applied to **top** and **reflect** is applied to **bottom**. **surf1** molecules are released all over the **Cube**, not just one surface region. The effect of the **absorb** class is that all the **surf1** molecules are destroyed when they hit the boundary between the **top** and **middle** region. The effect of the **reflect** class is that molecules cannot pass the boundary between the **bottom** and the **middle** region. Therefore, all the **surf1** molecules that start inside of the **bottom** region never escape and the **surf1** molecules starting in the **middle** and **top** region will ultimately be destroyed.
 
