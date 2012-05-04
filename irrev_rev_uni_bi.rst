@@ -3,15 +3,9 @@
 *****************************************************
 
 Download the blend files used for these tutorials here_. You will still 
-have to export and modify the mdls created. Alternatively, you can download 
-the completed `project files`_, which contains the blends and fully annotated
-mdls. Whichever one you choose to use, extract the archive, which will create
-a directory called **irrev_rev_uni_bi_blend** or **irrev_rev_uni_bi_complete**
-.
+have to export and modify the mdls created.
 
-.. _here: https://www.mcell.psc.edu/tutorials/mdl/main/irrev_rev_uni_bi_blend.tgz
-
-.. _project files: https://www.mcell.psc.edu/tutorials/mdl/main/irrev_rev_uni_bi_blend.tgz
+.. _here: https://www.mcell.psc.edu/download/files/irrev_rev_uni_bi.tgz
 
 Diffusion Through Concentric Shells
 =====================================================
