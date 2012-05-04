@@ -6,23 +6,6 @@ Visualize and Plot the Output
 
 In this section, we will run MCell on the MDL that we annotated in the previous section. This will generate visualization and reaction data (i.e. molecule counts), which we will then examine using CellBlender and some plotting software. 
 
-.. _run_sim_again:
-
-Run the Simulation again
-=============================================
-
-We've finished adding our changes. Let's rerun the simulation with MCell.
-
-As before, navigate to the appropriate directory, enter the command:: 
-
-    mcell intro.mdl
-
-After it's finished running, enter the command::
-    
-    ls 
-
-and you should see that a new directory called **react_data** has been created.
-
 .. _visualize_molecules:
 
 Visualize the Molecules
