@@ -41,7 +41,7 @@ Learn how to use custom glyphs for molecules using CellBlender in this video tut
     <video id="my_video_1" class="video-js vjs-default-skin" controls
       preload="metadata" width="840" height="525" 
       data-setup='{"example_option":true}'>
-      <source src="http://www.mcell.psc.edu/tutorials/videos/main/dreamm_rendering.ogg" type='video/ogg'/>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/custom_glyphs.ogg" type='video/ogg'/>
     </video>
 
 Skip to the next section (`Graph the Reaction Data`_) if you just watched the video tutorial.

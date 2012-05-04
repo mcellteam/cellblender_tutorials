@@ -18,7 +18,7 @@ The majority of this tutorial can be easily accomplished by following along with
     <video id="my_video_1" class="video-js vjs-default-skin" controls
       preload="metadata" width="840" height="525" 
       data-setup='{"example_option":true}'>
-      <source src="http://www.mcell.psc.edu/tutorials/videos/main/blender_pt1.ogg" type='video/ogg'/>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/getting_started.ogg" type='video/ogg'/>
     </video>
 
 You can skip to the next section (:ref:`run_sim`) if you have watched the previous video tutorial. Otherwise, follow along with the rest of the directions in this section. 
