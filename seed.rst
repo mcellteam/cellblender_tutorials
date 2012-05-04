@@ -55,7 +55,7 @@ Next, create the following python script called **run_seeds.py**::
 
     import os
 
-    mdl = input('What mdl do you want to run?\n')
+    mdl = raw_input('What mdl do you want to run?\n')
 
     for i in range(1, 21):
         os.system("mcell -seed %i %s" % (i, mdl))
