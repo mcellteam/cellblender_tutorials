@@ -175,15 +175,26 @@ When prompted, enter::
 
     spherical_shells.main.mdl
 
-After the simulation finishes running, enter this command::
+Next, we can use the *avg_seeds.py* script to read the reaction output
+for each of the shells and plot the data as well as the average. To
+do so, open the script file in a text editor and enter the beginning
+of the output files you would like to process, e.g. *shell_1*.
+Then, run the command::
 
     python avg_seeds.py
 
-Now we need to plot the ratio of variance to the mean for the number of molecules in each shell. Create a file called **var_to_mean.py** and copy the following text into it::
+It is very instructive to plot the ratio of the variance to the mean
+number of molecules in each shell. To do so, create a file called 
+**var_to_mean.py** and copy the following text into it::
 
     #!/usr/bin/env python
 
     #need to finish this
+
+Observe the fluctuations in the ratio. What would you expect to see
+if you increase the number of MCell seeds to average over. Run a 
+new set of simulations to confirm your expectation.
+
 
 Sampling Box
 =====================================================
