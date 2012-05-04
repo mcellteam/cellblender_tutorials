@@ -49,7 +49,7 @@ Change the text field which reads **New Region** to **top**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/right_click.png
 
-Move the cursor to the **3D View Editor**. Hit **Tab** to change into **Edit Mode**. Hit **Ctrl-Tab** and select **Face**. Then **right click** on the top face to select it.
+Move the cursor to the **3D View Editor**. Hit **Tab** to change into **Edit Mode**. Hit **Ctrl-T** to triangulate the faces. Then, hit **Ctrl-Tab** and select **Face**. Then while **holding Shift**, **right click** on the two top faces to select them.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/assign.png
 
@@ -63,11 +63,19 @@ Select the **top** surface region from the list of surface regions. Click **Assi
 
 Hit the **Scene** button in the **Properties Editor**. 
 
-Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/intro** where **user** is your user name) and hit **OK** when it prompts you to make a new directory. Then select **Set Project Directory**. Set the **Project Base** to **intro**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
-
 Expand the **Model Objects** panel. With the **Cube** object still selected, hit the **+** button.
 
-Expand the **Define Molecules** panel and hit the **+** button three times. This will create three instance of **New Molecule** in the list of molecules. Left click on the first instance of **New Molecule**. Change the **Molecule Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the **Diffusion Constant** to **1e-6**. Repeat this process for the next molecule in the list, but call this one **vol2**. Finally, change the third entry **Molecule Name** of the first one to **vol1**, and the **Diffusion Constant** to **1e-6**. the **Molecule Type** to  the second to **vol2**, and the third to **surf1**
+Expand the **Model Initialization** panel. Change **Simulation Iterations** to **1000**. Change **Simulation Time Step** to **1e-6**.
+
+Expand the **Define Molecules** panel and hit the **+** button three times. This will create three instance of **New Molecule** in the list of molecules. Left click on the first instance of **New Molecule**. Change the **Molecule Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the **Diffusion Constant** to **1e-6**. Repeat this process for the next molecule in the list, but call this one **vol2**. Finally, change the third entry **Molecule Name** of the first one to **vol1**, and the **Diffusion Constant** to **1e-6**.
+
+Expand the **Define Reaction** panel and hit the **+** button. Change **Reactants** to **vol1' + surf1,**. Change **Products** to **surf1, + vol2,**. Change **Forward Rate** to **1e8**.
+
+Expand the **Molecule Release/Placement** panel and hit the **+** button twice, which will create two instances of **New Release Site**. Select the first instance, and change **Site Name** to **vol1_rel**. Change **Molecule** to **vol1**. Change **Release Shape** to **Object/Region**. Change **Object/Region** to **Cube**. Change **Quantity to Release** to **2000**.
+
+Now select the second release site. Change **Site Name** to **surf1_rel**. Change **Molecule** to **surf1'**. Change **Release Shape** to **Object/Region**. Change **Object/Region** to **Cube[top]**. Change **Quantity to Release** to **2000**.
+
+Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/intro** where **user** is your user name) and hit **OK** when it prompts you to make a new directory. Then select **Set Project Directory**. Set the **Project Base** to **intro**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
 Either leave Blender open or save and quit, as we'll need to modify this model later.
 

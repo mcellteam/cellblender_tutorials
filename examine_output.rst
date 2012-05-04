@@ -1,7 +1,7 @@
 .. _examine_output:
 
 *********************************************
-Examining the Output
+Visualize and Plot the Output
 *********************************************
 
 In this section, we will run MCell on the MDL that we annotated in the previous section. This will generate visualization and reaction data (i.e. molecule counts), which we will then examine using CellBlender and some plotting software. 
@@ -40,7 +40,7 @@ Visualize molecules with CellBlender in this video tutorial.
 
 Skip to the next section (:ref:`custom_glyphs`) if you just watched the video tutorial.
 
-Begin by opening Blender.. Then click the **Scene** button. Assuming that you have CellBlender installed and enabled, there should be a number of extra panels available at the bottom of the window. Select the **Visualize Simulation Results** panel, and click the **Set Molecule Viz Directory** button. Navigate to `/home/user/mcell_tutorial/intro/viz_data/` and click **Read Molecule Files**. You should now see a number of red molecules populating the surface of the **Cube**. Drag the green bar on the timeline back and forth to scrub through the simulation.
+Begin by opening Blender. Then click the **Scene** button. Assuming that you have CellBlender installed and enabled, there should be a number of extra panels available at the bottom of the window. Select the **Visualize Simulation Results** panel, and click the **Set Molecule Viz Directory** button. Navigate to `/home/user/mcell_tutorial/intro/viz_data/` and click **Read Molecule Files**. You should now see a number of red molecules populating the surface of the **Cube**. Drag the green bar on the timeline back and forth to scrub through the simulation.
 
 .. _custom_glyphs:
 
@@ -59,7 +59,7 @@ Learn how to use custom glyphs for molecules using CellBlender in this video tut
 
 Skip to the next section (`Graph the Reaction Data`_) if you just watched the video tutorial.
 
-By default, every molecule just shows up as a red sphere. This might be fine if you only have one molecule in your simulation, but, for anything more complicated, you will probably want to be able to differentiate between them. Also, you might one to be able to tell the orientation of surface molecule, which we can do by using an asymmetrical glyph.
+By default, every molecule just shows up as a sphere. This might be fine for volume molecules, but you might one to be able to tell the orientation of your surface molecules, which we can do by using an asymmetrical glyph.
 
 Expand **molecules** in the **Outliner** by clicking the small **+** sign beside it. This expands to reveal **mol_surf1**, **mol_vol1**, and **mol_vol2**. These correspond to the molecules we created in our simulation: **surf1**, **vol1**, and **vol2**. If you click the plus beside each of these, you will see **mol_surf1_shape**, **mol_vol1_shape**, and **mol_vol2_shape**. These are the actual glyph objects that get mapped onto the molecule locations.
 

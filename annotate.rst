@@ -1,10 +1,14 @@
 .. _annotate:
 
 *********************************************
-Annotate the MDL
+Examining and Annotating the MDL
 *********************************************
 
-Open **intro.mdl** with your favorite text editor (try gedit or kedit if you aren't sure what to use).
+At the command line, type::
+
+    ls
+
+You should notice that we have created four new files: **intro.main.mdl**, **intro.geometry.mdl**, **intro.molecules.mdl**, and **intro.reactions.mdl**. We will take a look at all of these in turn.
 
 .. contents:: :local:
 
@@ -13,78 +17,41 @@ Open **intro.mdl** with your favorite text editor (try gedit or kedit if you are
 Examining the MDL
 ---------------------------------------------
 
-Before we start making changes, let's *briefly* look at what we have to start with::
+To start out with, open **intro.main.mdl** with your favorite text editor (try gedit or kedit if you aren't sure what to use)::
 
-    iterations = 1
-    time_step = 1e-6
-    ITERATIONS = iterations
-    TIME_STEP = time_step
+    ITERATIONS = 1000
+    TIME_STEP = 1e-06
 
-    INCLUDE_FILE = "./intro_Cube.mdl"
+    INCLUDE_FILE = "intro.molecules.mdl"
 
-    INSTANTIATE World OBJECT {
-        Cube OBJECT Cube{}
+    INCLUDE_FILE = "intro.reactions.mdl"
+
+    INCLUDE_FILE = "intro.geometry.mdl"
+
+    INSTANTIATE Scene OBJECT
+    {
+      Cube OBJECT Cube {}
+      vol1_rel RELEASE_SITE
+      {
+       SHAPE = Scene.Cube
+       MOLECULE = vol1
+       NUMBER_TO_RELEASE = 2000
+       RELEASE_PROBABILITY = 1
+      }
+      surf1_rel RELEASE_SITE
+      {
+       SHAPE = Scene.Cube[top]
+       MOLECULE = surf1'
+       NUMBER_TO_RELEASE = 2000
+       RELEASE_PROBABILITY = 1
+      }
     }
 
-    VIZ_OUTPUT {
-        FILENAME = "tutorial"
-        MOLECULES {
-            NAME_LIST {ALL_MOLECULES}
-            ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}
-        }
-        MESHES {
-            NAME_LIST {ALL_MESHES}
-            ITERATION_NUMBERS {ALL_DATA @ [1]}
-        }
-    }
+The first two lines are :ref:`init_commands` that we'll cover in the next section.
 
-The first four lines are some :ref:`init_commands` that we'll cover in the next section.
+:index:`\ <single:INCLUDE_FILE>` **INCLUDE_FILE** commands let you break up MDLs into multiple sections. **intro.molecules.mdl** contains molecule definitions, **intro.reactions.mdl** contains reaction definitions, and **intro.geometry.mdl** contains the the vertices and faces that make up our **Cube**.
 
-:index:`\ <single:INCLUDE_FILE>` **INCLUDE_FILE** commands let you break up MDLs into multiple sections. In this particular instance, the vertices and faces that make up our **Cube** are being imported or *included* as shown here::
-
-    Cube POLYGON_LIST {
-        VERTEX_LIST {
-            [ 1.000000, 1.000000, -1.000000 ]
-            [ 1.000000, -1.000000, -1.000000 ]
-            [ -1.000000, -1.000000, -1.000000 ]
-            [ -1.000000, 1.000000, -1.000000 ]
-            [ 1.000000, 0.999999, 1.000000 ]
-            [ 0.999999, -1.000001, 1.000000 ]
-            [ -1.000000, -1.000000, 1.000000 ]
-            [ -1.000000, 1.000000, 1.000000 ]
-        }   
-        ELEMENT_CONNECTIONS {
-            [ 0, 1, 2 ] 
-            [ 0, 2, 3 ] 
-            [ 4, 7, 6 ] 
-            [ 4, 6, 5 ] 
-            [ 0, 4, 5 ] 
-            [ 0, 5, 1 ] 
-            [ 1, 5, 6 ] 
-            [ 1, 6, 2 ] 
-            [ 2, 6, 7 ] 
-            [ 2, 7, 3 ] 
-            [ 4, 0, 3 ] 
-            [ 4, 3, 7 ] 
-        }   
-        DEFINE_SURFACE_REGIONS {
-            top{
-                ELEMENT_LIST = [2, 3]
-                VIZ_VALUE = 1 
-            }   
-            sides_and_bottom{
-                ELEMENT_LIST = [0, 1, 4, 5, 6, 7, 8, 9, 10, 11] 
-                VIZ_VALUE = 0 
-            }   
-
-        }   
-    }
-
-Mesh objects made in Blender become a **POLYGON_LIST** object in MCell. A **POLYGON_LIST** object consists of two to three sections in MCell: a **VERTEX_LIST**, an **ELEMENT_CONNECTIONS** list, and a **DEFINE_SURFACE_REGIONS** section. A **VERTEX_LIST** is exactly what it sounds like, a list of vertices. The **ELEMENT_CONNECTIONS** list defines the faces of the triangles. Each number in the list is an index to a single vertex defined in the **VERTEX_LIST**. Each set of three numbers (e.g. **[ 0, 1, 2 ]**) tells which vertices are connected together to form a single face. **DEFINE_SURFACE_REGIONS** is optional, unless you want to specify specify surface regions. Each number in the **ELEMENT_LIST** is an index to a triangle in **ELEMENT_CONNECTIONS**.
-
-In addition to simply *including* meshes, you also have to :index:`\ <single:INSTANTIATE>` **INSTANTIATE** meshes to make them exist and interact in the simulation. We'll see later that we can also instantiate other types of objects, like molecule :ref:`rel_sites`.
-
-Lastly, the :index:`\ <single:VIZ_OUTPUT>` **VIZ_OUTPUT** section specifies what visualization data to export and at what time values. Right now, it is set to export everything. 
+In addition to simply *including* meshes, you also have to :index:`\ <single:INSTANTIATE>` **INSTANTIATE** meshes to make them exist and interact in the simulation. Later, we'll talk about instantiating other types of objects, like molecule :ref:`rel_sites`.
 
 .. _init_commands:
 
@@ -92,30 +59,79 @@ Initialization Commands
 ---------------------------------------------
 :index:`\ <single:TIME_STEP>`
 :index:`\ <single:ITERATIONS>`
-At the beginning of the mdl, there are two variables **time_step** and **iterations**. These variables are applied to the initialization commands  **TIME_STEP** and **ITERATIONS** respectively. As the names imply, these commands control how many **ITERATIONS** the simulation runs for, with each iteration lasting one **TIME_STEP** (units are seconds). 
+At the beginning of the file are the initialization commands, **TIME_STEP** and **ITERATIONS**. As the names imply, these commands control how many **ITERATIONS** the simulation runs for, with each iteration lasting one **TIME_STEP** (units are seconds). 
 
-At the beginning of the mdl, change **iterations** from **1** to **1000** and **time_step** from **1e-6** to **5e-6**. This means that the simulation will run for 1000 iterations at a time step of **5e-6** seconds (total time: 1000*5e-6=5e-3 seconds).
-
-::
-
-    iterations = 1000
-    time_step = 5e-6
-    ITERATIONS = iterations
-    TIME_STEP = time_step
+Notice that **ITERATIONSu** is set to **1000** and **TIME_STEP** to **5e-6**. This means that the simulation will run for 1000 iterations at a time step of **5e-6** seconds (total time: 1000*5e-6=5e-3 seconds).
 
 .. _molec_def:
 
+Geometry Files
+---------------------------------------------
+
+Let's take a closer look at **intro.geometry.mdl**::
+
+    Cube POLYGON_LIST
+    {
+      VERTEX_LIST
+      {
+        [ 1, 0.999999940395355, -1 ]
+        [ 1, -1, -1 ]
+        [ -1.00000011920929, -0.999999821186066, -1 ]
+        [ -0.999999642372131, 1.00000035762787, -1 ]
+        [ 1.00000047683716, 0.999999463558197, 1 ]
+        [ 0.999999344348907, -1.00000059604645, 1 ]
+        [ -1.00000035762787, -0.999999642372131, 1 ]
+        [ -0.999999940395355, 1, 1 ]
+      }
+      ELEMENT_CONNECTIONS
+      {
+        [ 4, 0, 3 ]
+        [ 4, 3, 7 ]
+        [ 2, 6, 7 ]
+        [ 2, 7, 3 ]
+        [ 1, 5, 2 ]
+        [ 5, 6, 2 ]
+        [ 0, 4, 1 ]
+        [ 4, 5, 1 ]
+        [ 4, 7, 5 ]
+        [ 7, 6, 5 ]
+        [ 0, 1, 2 ]
+        [ 0, 2, 3 ]
+      }
+      DEFINE_SURFACE_REGIONS
+      {
+        top
+        {
+          ELEMENT_LIST = [1, 8, 9]
+        }
+      }
+    }
+
+Mesh objects made in Blender become a **POLYGON_LIST** object in MCell. A **POLYGON_LIST** object consists of two to three sections in MCell: a **VERTEX_LIST**, an **ELEMENT_CONNECTIONS** list, and a **DEFINE_SURFACE_REGIONS** section. A **VERTEX_LIST** is exactly what it sounds like, a list of vertices. The **ELEMENT_CONNECTIONS** list defines the faces of the triangles. Each number in the list is an index to a single vertex defined in the **VERTEX_LIST**. Each set of three numbers (e.g. **[ 0, 1, 2 ]**) tells which vertices are connected together to form a single face. **DEFINE_SURFACE_REGIONS** is optional, unless you want to specify specify surface regions. Each number in the **ELEMENT_LIST** is an index to a triangle in **ELEMENT_CONNECTIONS**.
+
 Molecule Definitions
 ---------------------------------------------
+
 Molecules need to be defined before they are used (as a release site or a reaction) in the MDL.
 
 :index:`\ <single:DEFINE_MOLECULES>`
-After the **INCLUDE_FILE** command, add a **DEFINE_MOLECULES** section as shown here::
 
-    DEFINE_MOLECULES {
-        vol1 {DIFFUSION_CONSTANT_3D = 1E-6}
-        vol2 {DIFFUSION_CONSTANT_3D = 1E-6}
-        surf1 {DIFFUSION_CONSTANT_2D = 1E-7}
+Open the **intro.molecules.mdl** file, and you'll see the following::
+
+    DEFINE_MOLECULES
+    {
+      vol1
+      {
+        DIFFUSION_CONSTANT_3D = 1e-06
+      }
+      vol2
+      {
+        DIFFUSION_CONSTANT_3D = 1e-06
+      }
+      surf1
+      {
+        DIFFUSION_CONSTANT_2D = 1e-07
+      }
     }
 
 :index:`\ <single:DIFFUSION_CONSTANT_3D>`
@@ -140,10 +156,11 @@ Reaction Directionality
 ---------------------------------------------
 
 :index:`\ <single:DEFINE_REACTIONS>`
-Surface molecules have a `\ <single:TOP>` **TOP** and a `\ <single:BOTTOM>` **BOTTOM**, so we need a way to differentiate between reactions that happen on one side versus the other. Commas (**,**), ticks (**'**), and semi-colons (**;**) serve this purpose. For detailed information on this reaction syntax, please refer to this pdf_. Let's look at a relatively simple example. First, add this code after the **DEFINE_MOLECULES** section::
+Surface molecules have a `\ <single:TOP>` **TOP** and a `\ <single:BOTTOM>` **BOTTOM**, so we need a way to differentiate between reactions that happen on one side versus the other. Commas (**,**), ticks (**'**), and semi-colons (**;**) serve this purpose. For detailed information on this reaction syntax, please refer to this pdf_. Let's look at the relatively simple example we have created in **intro.reactions.mdl**::
 
-    DEFINE_REACTIONS {
-        vol1, + surf1' -> surf1' + vol2' [1E8]
+    DEFINE_REACTIONS
+    {
+      vol1' + surf1, -> surf1, + vol2, [1e+08]
     }
 
 .. _pdf: http://mcell.psc.edu/download/files/MCell3_rxns_06_18_2007.pdf
@@ -153,9 +170,10 @@ Read this next section carefully, as some people find this syntax confusing at f
 For this reaction, **vol1** and **surf1** are opposed (a comma and a tick), and **vol2** and **surf1** are aligned (two ticks). This means that **vol1** will react with the **BOTTOM** of **surf1**, creating **vol2** at the **TOP** of **surf1**. Since **vol1** is not on the products side, it is destroyed when it reacts with **surf1**. Conversely, **surf1** is on both the **reactant** and **product** side, so it will not be destroyed from the reaction.
 
 The directionality of these ticks and commas are relative, which means that we could flip the signs and get the same result, like this::
-
-    DEFINE_REACTIONS {
-        vol1' + surf1, -> surf1, + vol2, [1E8]
+    
+    DEFINE_REACTIONS
+    {
+      vol1, + surf1' -> surf1' + vol2' [1e+08]
     }
 
 .. index::
@@ -166,23 +184,26 @@ The directionality of these ticks and commas are relative, which means that we c
 Release Sites
 ---------------------------------------------
 
-*Modify* the **INSTANTIATE** section of the MDL so it looks like this::
+Let's examine the **INSTANTIATE** section of **intro.main.mdl** more closely::
 
-    INSTANTIATE World OBJECT {
-        Cube OBJECT Cube{}
-        vol1_rel RELEASE_SITE {
-            SHAPE = World.Cube
-            MOLECULE = vol1
-            NUMBER_TO_RELEASE = 2000
-        }
-        surf1_rel RELEASE_SITE {
-            SHAPE = World.Cube[top]
-            MOLECULE = surf1'
-            NUMBER_TO_RELEASE = 2000
-        }
+    INSTANTIATE Scene OBJECT
+    {
+      Cube OBJECT Cube {}
+      vol1_rel RELEASE_SITE
+      {
+       SHAPE = Scene.Cube
+       MOLECULE = vol1
+       NUMBER_TO_RELEASE = 2000
+       RELEASE_PROBABILITY = 1
+      }
+      surf1_rel RELEASE_SITE
+      {
+       SHAPE = Scene.Cube[top]
+       MOLECULE = surf1'
+       NUMBER_TO_RELEASE = 2000
+       RELEASE_PROBABILITY = 1
+      }
     }
-
-*Note*: Don't just add this section in or you will have two **INSTANTIATE** sections.
 
 This section creates two release sites, one called **vol1_rel** and the other **surf1_rel**. Each release site can take a number of different commands. 
 
@@ -200,12 +221,30 @@ These two release sites together will release 1000 **vol1** molecules randomly t
 
 .. _rxn_data:
 
+Visualization Data
+---------------------------------------------
+
+For these last two sections, we'll actually be hand editing some mdls. First, create a file called **intro.viz_output.mdl** with the following text in it::
+
+    VIZ_OUTPUT {
+        MODE = ASCII
+        FILENAME = "./viz_data/intro"
+        MOLECULES 
+        {
+            NAME_LIST {ALL_MOLECULES}
+            ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}
+        }   
+    }
+
+The :index:`\ <single:VIZ_OUTPUT>` **VIZ_OUTPUT** section specifies what visualization data to export and at what time values. Right now, it is set to export everything. 
+
 Reaction Data
 ---------------------------------------------
 
-At the end of the MDL, add the following::
+Now, create a file called **intro.viz_output.mdl**::
 
-    REACTION_DATA_OUTPUT {
+    REACTION_DATA_OUTPUT
+    {
         STEP=time_step
         {COUNT[vol1,WORLD]}=> "./react_data/vol1.dat"
         {COUNT[vol2,WORLD]}=> "./react_data/vol2.dat"
