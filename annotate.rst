@@ -240,7 +240,7 @@ Now, create a file called **intro.viz_output.mdl**::
 
     REACTION_DATA_OUTPUT
     {
-        STEP=time_step
+        STEP=1e-6
         {COUNT[vol1,WORLD]}=> "./react_data/vol1.dat"
         {COUNT[vol2,WORLD]}=> "./react_data/vol2.dat"
     }
