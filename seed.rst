@@ -71,12 +71,15 @@ This file is similar to the **scaling.py** file that we created in the checkpoin
     import matplotlib.pyplot as plt
     import os
 
+    startOfFileToAverage = "vol1"      # beginning of filenames to average
+                                       # over
+
     mol_counts = None
     files = os.listdir('react_data')   # build a list of reaction data file names
     files.sort()                       # sort that list alphabetically
 
     for f in files:                    # iterate over the list of file names
-        if f.startswith('vol1'):
+        if f.startswith(startOfFileToAverage):
             rxn_data = np.genfromtxt("./react_data/%s" % f, dtype=int)
             rxn_data = rxn_data[:, 1]  # take the second column
             plt.plot(rxn_data, '0.5')  # plot the results as a gray line
