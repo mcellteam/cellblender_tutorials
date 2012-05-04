@@ -189,10 +189,36 @@ number of molecules in each shell. To do so, create a file called
 
     #!/usr/bin/env python
 
-    #need to finish this
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import os
+
+    startOfFileToAverage = "shell_1"      # beginning of filenames to average
+                                      # over
+
+    mol_counts = None
+    files = os.listdir('react_data')   # build a list of reaction data file names
+    files.sort()                       # sort that list alphabetically
+
+    for f in files:                    # iterate over the list of file names
+        if f.startswith(startOfFileToAverage):
+            rxn_data = np.genfromtxt("./react_data/%s" % f, dtype=float)
+            rxn_data = rxn_data[:, 1]  # take the second column
+            if mol_counts is None:
+                mol_counts = rxn_data
+            else:
+                # built up 2d array of molecule counts (one col/seed)
+                mol_counts = np.column_stack((mol_counts, rxn_data))
+        else:
+            pass
+
+    mol_mean = mol_counts.mean(axis=1)  # take the mean of the rows
+    mol_var = mol_counts.var(axis=1)    # compute the variance of the rows
+    plt.plot(mol_mean/mol_var, 'g')     # plot ratio of mean and variance
+    plt.show()
 
 Observe the fluctuations in the ratio. What would you expect to see
-if you increase the number of MCell seeds to average over. Run a 
+if you increase the number of MCell seeds to average over? Run a 
 new set of simulations to confirm your expectation.
 
 
