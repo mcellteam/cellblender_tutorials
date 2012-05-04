@@ -2,7 +2,12 @@
 (Ir)reversible Unimolecular and Bimolecular Reactions
 *****************************************************
 
-Download the blend files used for these tutorials here_. You will still have to export and modify the mdls created. Alternatively, you can download the completed `project files`_, which contains the blends and fully annotated mdls. Whichever one you choose to use, extract the archive, which will create a directory called **irrev_rev_uni_bi_blend** or **irrev_rev_uni_bi_complete**.
+Download the blend files used for these tutorials here_. You will still 
+have to export and modify the mdls created. Alternatively, you can download 
+the completed `project files`_, which contains the blends and fully annotated
+mdls. Whichever one you choose to use, extract the archive, which will create
+a directory called **irrev_rev_uni_bi_blend** or **irrev_rev_uni_bi_complete**
+.
 
 .. _here: https://www.mcell.psc.edu/tutorials/mdl/main/irrev_rev_uni_bi_blend.tgz
 
@@ -11,7 +16,11 @@ Download the blend files used for these tutorials here_. You will still have to 
 Diffusion Through Concentric Shells
 =====================================================
 
-In this example, volume molecules will diffuse through **TRANSPARENT** concentric spherical shells, and we will do some analysis on the results.
+In the previous exercise we had verified the agreement of our 
+MCell simulations and the solution to Fick's 2nd law. Here, we will
+further examine the noise properties of the counted molecules as they
+diffuse through a series of **TRANSPARENT** concentric shells.
+
 
 Exporting the Blend
 -----------------------------------------------------
