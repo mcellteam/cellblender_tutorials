@@ -40,7 +40,11 @@ Visualize molecules with CellBlender in this video tutorial.
 
 Skip to the next section (:ref:`custom_glyphs`) if you just watched the video tutorial.
 
-Begin by opening Blender. Then click the **Scene** button. Assuming that you have CellBlender installed and enabled, there should be a number of extra panels available at the bottom of the window. Select the **Visualize Simulation Results** panel, and click the **Set Molecule Viz Directory** button. Navigate to `/home/user/mcell_tutorial/intro/viz_data/` and click **Read Molecule Files**. You should now see a number of red molecules populating the surface of the **Cube**. Drag the green bar on the timeline back and forth to scrub through the simulation.
+Begin by opening Blender. Then click the **Scene** button. Select the **Visualize Simulation Results** panel, and click the **Set Molecule Viz Directory** button. Navigate to `/home/user/mcell_tutorial/intro/viz_data/` and click **Read Molecule Files**. You should now see a number of molecules populating the surface of the **Cube**. 
+
+Let's change the Cube to a wireframe view so we can see inside of it. Click the **Object** button on the **Properties Editor**. Under the **Display** panel, change **Type** to **Wire**.
+
+Drag the green bar on the timeline back and forth to scrub through the simulation. You can see the molecules diffusion in and on surface of the cube, and new molecules being created outside the cube.
 
 .. _custom_glyphs:
 
@@ -63,7 +67,7 @@ By default, every molecule just shows up as a sphere. This might be fine for vol
 
 Expand **molecules** in the **Outliner** by clicking the small **+** sign beside it. This expands to reveal **mol_surf1**, **mol_vol1**, and **mol_vol2**. These correspond to the molecules we created in our simulation: **surf1**, **vol1**, and **vol2**. If you click the plus beside each of these, you will see **mol_surf1_shape**, **mol_vol1_shape**, and **mol_vol2_shape**. These are the actual glyph objects that get mapped onto the molecule locations.
 
-Select **mol_surf1_shape** in the **Outliner**. Then click the **Material** button and navigate down to **Molecule Shape**. The shape should be set to **Cone** in the **Molecule Shape** drop down box. Click **Set Molecule Shape** to apply the selection. All of the **surf1** molecule glyphs should now be changed to cones.
+Select **mol_surf1_shape** in the **Outliner**. Then click the **Material** button and navigate down to **Molecule Shape**. The shape should be set to **Cone** in the **Molecule Shape** drop down box. Click **Set Molecule Shape** to apply the selection. All of the **surf1** molecule glyphs should now be changed to cones. You may want to zoom in to get a better view of them.
 
 .. _graph_rxn_data:
 
