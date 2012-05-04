@@ -436,7 +436,7 @@ molecules as a function of time. Fit your results for the production of B
 and compare the obtained reaction rate to the expected value. Increase the 
 initial concentration of A, rerun the simulation and again fit the results. 
 Do the results match your expectations? You can use the following python
-script for your fitting::
+script for your fitting (pick any name you like)::
 
     #!/usr/bin/env python
 
@@ -472,9 +472,20 @@ script for your fitting::
 Non-Steady State 
 -----------------------------------------------------
 
-Next we will simulate the irreversible reaction A :math:`\rightarrow` B under non-steady-state conditions. 
+Now that we have examined the steady state case let's look
+at the non-steady state case, i.e., the irreversible reaction 
+A :math:`\rightarrow` B under non-steady-state conditions. The
+steps we'll follow are similar to the previous example so we
+will go through them quickly.
 
-Start Blender. Load the **irrev_uni_nonsteady_state.blend** file in the **irrev_uni_nonsteady_state** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_uni/nonsteady_state** and select **Set Project Directory**. Set the **Project Base** to **irrev_uni_nonsteady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+Start Blender. Load the **irrev_uni_nonsteady_state.blend** file in the 
+**irrev_uni_nonsteady_state** directory. Several CellBlender properties have 
+already been applied. We will now export these mdls. Under 
+**CellBlender Project Settings**, select **Export CellBlender Project**. 
+Navigate to **irrev_uni/nonsteady_state** and select 
+**Set Project Directory**. Set the **Project Base** to 
+**irrev_uni_nonsteady**. Then hit **Export CellBlender Project**, navigate 
+to same directory as before, and hit **Export MCell MDL**.
 
 
 Open **irrev_uni_nonsteady.main.mdl** and add in the following text at the top of the mdl::
@@ -498,9 +509,9 @@ Next create a file callled **irrev_uni_nonsteady.rxn_output.mdl** and copy this 
        OUTPUT_BUFFER_SIZE = 1000  
        STEP = 1e-5
        {COUNT [A, WORLD]} => "./reaction_data/A.dat"
-       {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
+       {COUNT [A, WORLD]/Na/box_volume_liters} => "./react_data/conc_A.dat"
        {COUNT [B, WORLD]} => "./reaction_data/B.dat"
-       {COUNT [B, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_B.dat"
+       {COUNT [B, WORLD]/Na/box_volume_liters} => "./react_data/conc_B.dat"
     }
 
 Lastly, create a file called **irrev_uni_nonsteady.viz_output.mdl** with the following text::
@@ -518,7 +529,52 @@ Run the simulation by typing the following command::
 
     mcell irrev_uni_steady.main.mdl
 
-Plot the reaction data results for the number and concentration of A and B molecules as a function of time. Fit your results for the decay of A and compare the obtained value of k1 to the input value.
+Plot the reaction data results for the number and concentration of A and B 
+molecules as a function of time. To plot the data, you can use the very handy *gnuplot* tool. Start gnuplot by typing into your terminal::
+
+        % gnuplot
+
+Then plot the data for A and B by typing::
+
+        gnuplot> plot "react_data/conc_A.dat", "react_data/conc_B.dat" 
+
+
+Next, fit your results for the decay of A (what functional dependence do 
+you expect?) and compare the obtained value of k1 to the input value. 
+The following script does this - do you understand what is happening?::
+
+    #!/usr/bin/env python
+
+    import numpy as np
+    import math
+    import matplotlib.pyplot as plt
+    import os
+
+    dataName = "conc_A.dat"
+
+    # parse counts of B
+    data = np.genfromtxt("./react_data/%s" %dataName, dtype=float)
+    dataX = data[:, 0]   # time values
+    dataY = np.log(data[:, 1])   # concentration
+
+    # plot the raw data
+    plt.plot(dataX, dataY, 'k', label="Raw Data")
+
+    # do a linear fit to the data and determine the slope and
+    # intersection with the y-axis
+    A = np.vstack([dataX, np.ones(len(dataX))]).T
+    m, c = np.linalg.lstsq(A, dataY)[0]
+
+    # plot the fit
+    plt.plot(dataX, m*dataX + c, label="Fitted Graph")
+
+    # print results
+    print("Linear Fitting Results (y = m*x +c): m = %e   c = %e" % (m,c))
+
+    # show the plot
+    plt.legend()
+    plt.show()
+
 
 Reverisble Unimolecular Reaction
 =====================================================
