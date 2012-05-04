@@ -36,15 +36,11 @@ If you watched the previous video tutorial, you can skip ahead to :ref:`surf_cla
 
 In order to complete the next section (:ref:`surf_class_vm_mod_mdl`), we first have to make a few simple changes to our Blender model. We'll pick up right where we left off in :ref:`gen_mesh`. Hit **z** to switch to a wireframe view. Hit **Shift-a** and select **Plane**. Hit **g** to "grab" the plane, **z** to constrain the movement to the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/new_mat_plane.png
-
 Hit the **Object** button on the **Properties** Editor. Under the **Surface Regions** panel, hit **+**. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/mat_above.png
+Change the default name to **above**. Change into **Edit Mode** by hitting **Tab** in the **3D View Window**. With the faces selected, hit **Ctrl-t** to triangulate them. Then, click **Assign** under **Define Surface Regions**.
 
-Change the default name to **above**. Change into **Edit Mode** by hitting **Tab** in the **3D View Window**. With the faces selected, click **Assign**.
-
-Under **Define Surface Classes**, select **Include Surface Classes** and **Include Modify Surface Regions**.
+Hit the **Scene** button on the **Properties** Editor. Under the **Model Objects** panel, hit **+**. Under **Define Surface Classes**, select **Include Surface Classes** and **Include Modify Surface Regions**.
 
 Hit the **Scene** button in the **Properties** Editor. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/sc** where **user** is your user name) and hit **OK** when it prompts you to make a new directory. Then select **Set Project Directory**. Set the **Project Base** to **sc**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
@@ -52,6 +48,28 @@ Hit the **Scene** button in the **Properties** Editor. Under **CellBlender Proje
 
 Modify the MDL
 ---------------------------------------------
+
+Create a file called **sc.rxn_output.mdl** and copy this into it::
+
+    REACTION_DATA_OUTPUT
+    {
+        STEP=1e-6
+        {COUNT[vol1,WORLD]}=> "./react_data/vol1.dat"
+        {COUNT[vol2,WORLD]}=> "./react_data/vol2.dat"
+    }
+
+
+Create a file called **sc.viz_output.mdl** and copy this into it::
+
+    VIZ_OUTPUT {
+        MODE = ASCII
+        FILENAME = "./viz_data/viz_output"
+        MOLECULES 
+        {
+            NAME_LIST {ALL_MOLECULES}
+            ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}
+        }   
+    }
 
 Create a file called **sc.surface_classes.mdl** and enter the following text into it ::
 
@@ -105,15 +123,13 @@ We need to make a few more changes to our Blender model to complete the next sec
 
 Hit the **Object** button on the **Properties** Editor. Under the **Surface Regions** panel, hit **+**. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/new_mat_plane2.png
-
 Change the newly created surface region text field from **New Region** to **inside**. Change into **Edit Mode** by hitting **Tab**. Click **Assign**. 
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/mat_inside.png
 
 Expand the **Define Molecules** panel and hit the **+** button. Left click **New Molecule**. Change the **Molecule Name** to **surf2**, the **Molecule Type** to **Surface Molecule**, and the **Diffusion Constant** to **0**.
 
 Expand the **Define Reaction** panel and hit the **+** button. Change **Reactants** to **vol1, + surf2' @ empty'**. Change **Products** to **surf2' + vol2'**. Change **Forward Rate** to **1e8**.
+
+Under the **Molecule Release/Placement** panel and hit the **+** button. Select **New Release Site** from the list, and change **Site Name** to **surf2_rel**. Change **Molecule** to **surf2;**. Change **Release Shape** to **Object/Region**. Change **Object/Region** to **Plane.001[inside]**. Change **Quantity to Release** to **2000**.
 
 Hit the **Scene** button in the **Properties** Editor. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/sc_rxn** where **user** is your user name) and hit **OK** when it prompts you to make a new directory. Then select **Set Project Directory**. Set the **Project Base** to **sc_rxn**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
