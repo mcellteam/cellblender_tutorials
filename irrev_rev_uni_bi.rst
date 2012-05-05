@@ -362,6 +362,7 @@ reaction examples and confirm that the results obtained using MCell
 simulations meet our expectation. At the same time your will learn
 about simple reaction kinetics.
 
+.. _irrev_steady_state:
 
 Steady State 
 -----------------------------------------------------
@@ -737,6 +738,8 @@ Run the simulation by typing the following command::
     mcell rev_uni_equil.main.mdl
 
 As usual, load your simulation into CellBlender and make sure all is well.
+
+
 Use the python script below (why not try to write your own) to obtain the 
 variance for the number of B molecules. Rerun the simulation while varying 
 the fractional amounts of A and B. In each case determine the variance for 
@@ -760,12 +763,27 @@ B, and plot the resulting values as a function of fractional amount of B.::
 Irreversible Bimolecular Reaction
 =====================================================
 
+The next few example examine the second type of elementary reactions
+next to uni-molecular reactions - bimolecular reactions. 
+
 Steady State 
 -----------------------------------------------------
 
-We will now simulate an irreversible bimolecular reaction A + R :math:`\rightarrow` AR with rate constant k1. Molecules of A and R are initially distributed at random within a reflective box. The simulation is run under steady state conditions.
+First, we will simulate an irreversible bimolecular reaction 
+A + R :math:`\rightarrow` AR with rate constant k1. Molecules of A and R 
+are initially distributed at random within a reflective box. 
+The simulation is run under steady state conditions (How can this be
+achieved?).
 
-Start Blender. Load the **irrev_bi_steady.blend** file in the **irrev_bi_steady** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_bi/steady** and select **Set Project Directory**. Set the **Project Base** to **irrev_bi_steady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+Let's start again with using CellBlender to generate our model 
+geometry and basic settings. Start Blender. Load the 
+**irrev_bi_steady.blend** file in the **irrev_bi_steady** directory. 
+Several CellBlender properties have already been applied. We will now export 
+these mdls. Under **CellBlender Project Settings**, select 
+**Export CellBlender Project**. Navigate to **irrev_bi/steady** and select 
+**Set Project Directory**. Set the **Project Base** to **irrev_bi_steady**. 
+Then hit **Export CellBlender Project**, navigate to same directory as 
+before, and hit **Export MCell MDL**.
 
 Open **irrev_bi_steady.main.mdl** and add in the following text at the top of the mdl::
     
@@ -781,7 +799,9 @@ Open **irrev_bi_steady.main.mdl** and add in the following text at the top of th
     PARTITION_Y = [-partition, partition]
     PARTITION_Z = [-partition, partition]
 
-Now, create a file called **irrev_bi_steady.viz_output.mdl** with the following text::
+Again, take a few minutes to understand the meaning of the above MDL.
+Now, create a file called **irrev_bi_steady.viz_output.mdl** with the 
+following text::
 
     VIZ_OUTPUT {
        MODE = ASCII
@@ -792,31 +812,56 @@ Now, create a file called **irrev_bi_steady.viz_output.mdl** with the following 
        }
     }
 
-Next, create a file callled **irrev_bi_steady.rxn_output.mdl** and copy this text into it::
+Next, create a file called **irrev_bi_steady.rxn_output.mdl** that
+describes the kind of reaction data output we'd like to output
+and copy this text into it::
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
        STEP = 1e-5
-       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
-       {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
-       {COUNT [R, WORLD]} => "./reaction_data/R.dat"
-       {COUNT [R, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_R.dat"
-       {COUNT [AR, WORLD]} => "./reaction_data/AR.dat"
-       {COUNT [AR, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_AR.dat"
+       {COUNT [A, WORLD]} => "./react_data/A.dat"
+       {COUNT [A, WORLD]/Na/box_volume_liters} => "./react_data/conc_A.dat"
+       {COUNT [R, WORLD]} => "./react_data/R.dat"
+       {COUNT [R, WORLD]/Na/box_volume_liters} => "./react_data/conc_R.dat"
+       {COUNT [AR, WORLD]} => "./react_data/AR.dat"
+       {COUNT [AR, WORLD]/Na/box_volume_liters} => "./react_data/conc_AR.dat"
     }
 
 Run the simulation by typing the following command::
 
     mcell irrev_bi_steady.main.mdl
 
-Plot the reaction data results for the number and concentration of AR molecules as a function of time. Fit your results for the production of AR and compare the obtained reaction rate to the expected value. Increase the initial concentration of A and/or R, rerun the simulation and again fit the results. How does the obtained rate now compare to the expected rate?
+As usual, fire up CellBlender and check your simulation.
+
+
+Plot the reaction data results for the number and concentration of AR 
+molecules as a function of time (you can use gnuplot as described
+above). Fit your results for the production of 
+AR and compare the obtained reaction rate to the expected value (you
+can use the script provided above__) . Increase 
+the initial concentration of A and/or R, rerun the simulation and again fit 
+the results. How does the obtained rate now compare to the expected rate?
+
+__ irrev_steady_state_
+
 
 Non-Steady State 
 -----------------------------------------------------
 
-Now, we'll simulate the irreversible reaction A + R :math:`\rightarrow` AR under non-steady-state conditions.
+Now, we'll simulate the irreversible reaction A + R :math:`\rightarrow` AR 
+under non-steady-state conditions and see what happens. Instead of
+going through all the steps listed below you could also directly edit the 
+input files for the *steady state* example above. By now, this should 
+be straightforward for you to do.
 
-Start Blender. Load the **irrev_bi_nonsteady.blend** file in the **irrev_bi_nonsteady** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **irrev_bi/nonsteady** and select **Set Project Directory**. Set the **Project Base** to **irrev_bi_nonsteady**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+Start Blender to create the model geometry and basic project files. Load 
+the **irrev_bi_nonsteady.blend** file in the **irrev_bi_nonsteady** 
+directory. Several CellBlender properties have already been applied. We 
+will now export these mdls. Under **CellBlender Project Settings**, select 
+**Export CellBlender Project**. Navigate to **irrev_bi/nonsteady** and
+select **Set Project Directory**. Set the **Project Base** to 
+**irrev_bi_nonsteady**. Then hit **Export CellBlender Project**, navigate 
+to same directory as before, and hit **Export MCell MDL**.
 
 Open **irrev_bi_nonsteady.main.mdl** and add in the following text at the top of the mdl::
     
@@ -832,7 +877,8 @@ Open **irrev_bi_nonsteady.main.mdl** and add in the following text at the top of
     PARTITION_Y = [-partition, partition]
     PARTITION_Z = [-partition, partition]
 
-Now, create a file called **irrev_bi_nonsteady.viz_output.mdl** with the following text::
+Now, create a file called **irrev_bi_nonsteady.viz_output.mdl** with the 
+following text::
 
     VIZ_OUTPUT {
        MODE = ASCII
@@ -848,21 +894,26 @@ Next, create a file callled **irrev_bi_nonsteady.rxn_output.mdl** and copy this 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
        STEP = 1e-5
-       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
-       {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
-       {COUNT [R, WORLD]} => "./reaction_data/R.dat"
-       {COUNT [R, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_R.dat"
-       {COUNT [AR, WORLD]} => "./reaction_data/AR.dat"
-       {COUNT [AR, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_AR.dat"
+       {COUNT [A, WORLD]} => "./react_data/A.dat"
+       {COUNT [A, WORLD]/Na/box_volume_liters} => "./react_data/conc_A.dat"
+       {COUNT [R, WORLD]} => "./react_data/R.dat"
+       {COUNT [R, WORLD]/Na/box_volume_liters} => "./react_data/conc_R.dat"
+       {COUNT [AR, WORLD]} => "./react_data/AR.dat"
+       {COUNT [AR, WORLD]/Na/box_volume_liters} => "./react_data/conc_AR.dat"
     }
 
 Run the simulation by typing the following command::
 
     mcell irrev_bi_nonsteady.main.mdl
 
-Plot the reaction data results for the number and concentration of A, R, and AR molecules as a function of time.
+As usual, check your simulation output in CellBlender to confirm that
+the simulation did what you expected.
 
-Reverisble Bimolecular Reaction
+
+Plot the reaction data results for the number and concentration of A, R, and AR molecules as a function of time. You can use gnuplot for plotting.
+
+
+Reversible Bimolecular Reaction
 =====================================================
 
 Non-Equilibrium 
