@@ -590,7 +590,7 @@ Open **rev_uni_nonequil.main.mdl** and add in the following text at the top of t
 
     fractional_concentration_of_A = 0.1
     fractional_concentration_of_B = 1.0 - fractional_concentration_of_A
-    total_concentration = 1e-5 /* moles per liter; summed concentrations of A and B */
+    total_concentration = 1e-4 /* moles per liter; summed concentrations of A and B */
     k1_plus_k2 = 100 /* per second, sum of rate constants for conversion of A to B and B to A */
     k1 = fractional_concentration_of_B * k1_plus_k2  /* per second, rate constant for conversion of A to B */
     k2 = k1_plus_k2 - k1 /* per second, rate constant for conversion of B to A */
@@ -606,6 +606,14 @@ Open **rev_uni_nonequil.main.mdl** and add in the following text at the top of t
     PARTITION_X = [-partition, partition]
     PARTITION_Y = [-partition, partition]
     PARTITION_Z = [-partition, partition]
+
+
+Please make sure you understand what is happening here, especially the
+calculations at the top of the file. Then, in the *A_rel* release site, 
+replace the numerical value for the concentration with::
+
+    CONCENTRATION = concentration_of_A
+
 
 Modify **rev_uni_nonequil.reactions.mdl** like this::
 
@@ -652,16 +660,19 @@ of *k1* and *k2*.
 Equilibrium 
 -----------------------------------------------------
 
-Now we will simulate the reversible reaction A :math:`\leftrightarrow` B starting from equilibrium conditions, i.e., under conditions where the average fractional amounts of A and B will remain constant. 
+Now we will simulate the reversible reaction A :math:`\leftrightarrow` B 
+starting from equilibrium conditions, i.e., under conditions where the 
+average fractional amounts of A and B will remain constant (How can 
+this be achieved?).
 
 Start Blender. Load the **rev_uni_equil.blend** file in the **rev_uni/equil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **rev_uni/equil** and select **Set Project Directory**. Set the **Project Base** to **rev_uni_equil**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
-
-Open **rev_uni_equil.main.mdl** and add in the following text at the top of the mdl::
+Open **rev_uni_equil.main.mdl** and add in the following text at the top of 
+the mdl (note that this is the same we added in the non-equilibrium case)::
 
     fractional_concentration_of_A = 0.1
     fractional_concentration_of_B = 1.0 - fractional_concentration_of_A
-    total_concentration = 1e-5 /* moles per liter; summed concentrations of A and B */
+    total_concentration = 1e-4 /* moles per liter; summed concentrations of A and B */
     k1_plus_k2 = 100 /* per second, sum of rate constants for conversion of A to B and B to A */
     k1 = fractional_concentration_of_B * k1_plus_k2  /* per second, rate constant for conversion of A to B */
     k2 = k1_plus_k2 - k1 /* per second, rate constant for conversion of B to A */
@@ -678,7 +689,28 @@ Open **rev_uni_equil.main.mdl** and add in the following text at the top of the 
     PARTITION_Y = [-partition, partition]
     PARTITION_Z = [-partition, partition]
 
-Now, create a file called **rev_uni_nonequil.viz_output.mdl** with the following text::
+Again, please make sure you understand what is happening here, especially the
+calculations at the top of the file. Then, in the *A_rel* release site, 
+replace the numerical value for the concentration with::
+
+    CONCENTRATION = concentration_of_A
+
+
+Similarly, in the *B_rel* release site replace the numerical concentration
+value with::
+
+    CONCENTRATION = concentration_of_B
+
+
+Modify **rev_uni_equil.reactions.mdl** like this::
+
+    DEFINE_REACTIONS {
+       A -> B [k1]
+       B -> A [k2]
+    }
+
+
+Now, create a file called **rev_uni_equil.viz_output.mdl** with the following text::
 
     VIZ_OUTPUT {
        MODE = ASCII
@@ -689,24 +721,43 @@ Now, create a file called **rev_uni_nonequil.viz_output.mdl** with the following
        }
     }
 
-Next, create a file callled **rev_uni_nonequil.rxn_output.mdl** and copy this text into it::
+Next, create a file callled **rev_uni_equil.rxn_output.mdl** and copy this text into it::
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
        STEP = 1e-5
-       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
-       {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
-       {COUNT [B, WORLD]} => "./reaction_data/B.dat"
-       {COUNT [B, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_B.dat"
+       {COUNT [A, WORLD]} => "./react_data/A.dat"
+       {COUNT [A, WORLD]/Na/box_volume_liters} => "./react_data/conc_A.dat"
+       {COUNT [B, WORLD]} => "./react_data/B.dat"
+       {COUNT [B, WORLD]/Na/box_volume_liters} => "./react_data/conc_B.dat"
     }
 
 Run the simulation by typing the following command::
 
     mcell rev_uni_equil.main.mdl
 
-Use the statistics utility program to obtain the variance for the number of B molecules. Rerun the simulation while varying the fractional amounts of A and B. In each case determine the variance for B, and plot the resulting values as a function of fractional amount of B.
+As usual, load your simulation into CellBlender and make sure all is well.
+Use the python script below (why not try to write your own) to obtain the 
+variance for the number of B molecules. Rerun the simulation while varying 
+the fractional amounts of A and B. In each case determine the variance for 
+B, and plot the resulting values as a function of fractional amount of B.::
 
-Irreverisble Bimolecular Reaction
+    #!/usr/bin/env python
+
+    import numpy as np
+    import os
+
+    fileName = "B.dat"      # filename to compute variance of 
+
+    # parse counts in large box, analyze, and print
+    data = np.genfromtxt("./react_data/%s" % fileName, dtype=float)
+    dataCount = data[:, 1]
+    dataVar = dataCount.var()
+
+    print("variance %e" % dataVar)
+
+
+Irreversible Bimolecular Reaction
 =====================================================
 
 Steady State 
