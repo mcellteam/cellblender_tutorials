@@ -739,6 +739,7 @@ Run the simulation by typing the following command::
 
 As usual, load your simulation into CellBlender and make sure all is well.
 
+.. _variance_script:
 
 Use the python script below (why not try to write your own) to obtain the 
 variance for the number of B molecules. Rerun the simulation while varying 
@@ -916,14 +917,31 @@ Plot the reaction data results for the number and concentration of A, R, and AR 
 Reversible Bimolecular Reaction
 =====================================================
 
+This final example concludes our examination of simple reaction kinetics
+using MCell. Here, we will examine reversible bimolecular reaction both
+under non-equilibrium and equilibrium conditions. 
+
+
 Non-Equilibrium 
 -----------------------------------------------------
 
-Next, we will simulate the reversible bimolecular reaction A + R :math:`\leftrightarrow` AR with rate constants k1 and k2 starting from non-equilibrium initial conditions (only A and R present at time 0).
+First, we will focus on the non-equilibrium case and simulate the 
+reversible bimolecular reaction A + R :math:`\leftrightarrow` AR with rate 
+constants k1 and k2 starting from non-equilibrium initial conditions 
+(only A and R present at time 0).
 
-Start Blender. Load the **rev_bimol_nonequil.blend** file in the **rev_bimol_nonequil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **rev_bi/nonequil** and select **Set Project Directory**. Set the **Project Base** to **rev_bi_nonequil**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+To generate the model geometry and basic project files start Blender. Load 
+the **rev_bimol_nonequil.blend** file in the **rev_bimol_nonequil** 
+directory. Several CellBlender properties have already been applied. We will 
+now export these mdls. Under **CellBlender Project Settings**, select 
+**Export CellBlender Project**. Navigate to **rev_bi/nonequil** and 
+select **Set Project Directory**. Set the **Project Base** to 
+**rev_bi_nonequil**. Then hit **Export CellBlender Project**, navigate to 
+same directory as before, and hit **Export MCell MDL**.
 
-Open **rev_bi_nonequil.main.mdl** and add in the following text at the top of the mdl::
+Open **rev_bi_nonequil.main.mdl** and add in the following text at the 
+top of the mdl::
+
     box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and R molecules */
     box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
     Na = 6.022e23 /* Avogadro's number, molecules per mole */
@@ -934,8 +952,10 @@ Open **rev_bi_nonequil.main.mdl** and add in the following text at the top of th
     PARTITION_X = [-partition, partition]
     PARTITION_Y = [-partition, partition]
     PARTITION_Z = [-partition, partition]
-  
-Now, create a file called **rev_bi_nonequil.viz_output.mdl** with the following text::
+
+Make sure you examine the above MDL and understand what it means.
+Now, create a file called **rev_bi_nonequil.viz_output.mdl** with the 
+following text::
 
     VIZ_OUTPUT {
        MODE = ASCII
@@ -951,28 +971,46 @@ Next, create a file callled **rev_bi_nonequil.rxn_output.mdl** and copy this tex
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
        STEP = 1e-5
-       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
-       {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
-       {COUNT [R, WORLD]} => "./reaction_data/R.dat"
-       {COUNT [R, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_R.dat"
-       {COUNT [AR, WORLD]} => "./reaction_data/AR.dat"
-       {COUNT [AR, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_AR.dat"
+       {COUNT [A, WORLD]} => "./react_data/A.dat"
+       {COUNT [A, WORLD]/Na/box_volume_liters} => "./react_data/conc_A.dat"
+       {COUNT [R, WORLD]} => "./react_data/R.dat"
+       {COUNT [R, WORLD]/Na/box_volume_liters} => "./react_data/conc_R.dat"
+       {COUNT [AR, WORLD]} => "./react_data/AR.dat"
+       {COUNT [AR, WORLD]/Na/box_volume_liters} => "./react_data/conc_AR.dat"
     }
 
 Run the simulation by typing the following command::
 
     mcell rev_bi_nonequil.main.mdl
 
-Plot the results for A, R, and AR. Fit the MCell results for production of AR.
+As usual (don't forget) make sure to check your simulation output
+with CellBlender.
+
+Plot the results for A, R, and AR (e.g. using gnuplot). 
+
 
 Equilibrium 
 -----------------------------------------------------
 
-We will simulate the reversible reaction A + R :math:`\leftrightarrow` AR starting from equilibrium conditions, i.e., under conditions where the average fractional amounts of A, R, and AR will remain constant. 
+Last but not least, we will simulate the reversible reaction 
+A + R :math:`\leftrightarrow` AR starting from equilibrium conditions, 
+i.e., under conditions where the average fractional amounts of A, R, and 
+AR will remain constant. How is this done? Instead of creating all files
+from scratch you can also edit the files of the previous section (the
+non-equilibrium case).
 
-Start Blender. Load the **rev_bimol_equil.blend** file in the **rev_bimol_equil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **rev_bi/nonequil** and select **Set Project Directory**. Set the **Project Base** to **rev_bi_nonequil**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+As usual, we generate the geometry and basic project files by starting 
+Blender. Load the **rev_bimol_equil.blend** file in the 
+**rev_bimol_equil** directory. Several CellBlender properties have already 
+been applied. We will now export these mdls. Under 
+**CellBlender Project Settings**, select **Export CellBlender Project**. 
+Navigate to **rev_bi/nonequil** and select **Set Project Directory**. Set 
+the **Project Base** to **rev_bi_nonequil**. Then hit 
+**Export CellBlender Project**, navigate to same directory as before, 
+and hit **Export MCell MDL**.
 
-Open **rev_bi_equil.main.mdl** and add in the following text at the top of the mdl::
+Next, open **rev_bi_equil.main.mdl** and add in the following text at the 
+top of the mdl::
 
     k1 = 1e8 /* liters per mole per second, rate constant for binding of A to R */
     k2 = 1e4 /* per second, rate constant for unbinding */
@@ -996,7 +1034,9 @@ Open **rev_bi_equil.main.mdl** and add in the following text at the top of the m
     PARTITION_Y = [[-partition TO partition STEP step]]
     PARTITION_Z = [[-partition TO partition STEP step]]
 
-Modify the **INSTANTIATE** section, so that it looks like this::
+Carefully study the above MDL and make sure you understand what it
+does. Then, modify the **INSTANTIATE** section, so that it looks like 
+this::
 
     INSTANTIATE Scene OBJECT {
        box OBJECT box {}
@@ -1018,7 +1058,8 @@ Modify the **INSTANTIATE** section, so that it looks like this::
     }
 
 
-Now, create a file called **rev_bi_equil.viz_output.mdl** with the following text::
+Now, create a file called **rev_bi_equil.viz_output.mdl** with the 
+following text::
 
     VIZ_OUTPUT {
        MODE = ASCII
@@ -1029,21 +1070,30 @@ Now, create a file called **rev_bi_equil.viz_output.mdl** with the following tex
        }
     }
 
-Next, create a file callled **rev_bi_equil.rxn_output.mdl** and copy this text into it::
+Then, create a file callled **rev_bi_equil.rxn_output.mdl** for our 
+reaction data output and copy this text into it::
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
        STEP = 1e-5
-       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
-       {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
-       {COUNT [R, WORLD]} => "./reaction_data/R.dat"
-       {COUNT [R, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_R.dat"
-       {COUNT [AR, WORLD]} => "./reaction_data/AR.dat"
-       {COUNT [AR, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_AR.dat"
+       {COUNT [A, WORLD]} => "./react_data/A.dat"
+       {COUNT [A, WORLD]/Na/box_volume_liters} => "./react_data/conc_A.dat"
+       {COUNT [R, WORLD]} => "./react_data/R.dat"
+       {COUNT [R, WORLD]/Na/box_volume_liters} => "./react_data/conc_R.dat"
+       {COUNT [AR, WORLD]} => "./react_data/AR.dat"
+       {COUNT [AR, WORLD]/Na/box_volume_liters} => "./react_data/conc_AR.dat"
     }
 
 Run the simulation by typing the following command::
 
     mcell rev_bi_nonequil.main.mdl
 
-Use the statistics utility program to obtain the variance for the number of AR molecules. Rerun the simulation while varying the fractional amounts of A, R, and AR. In each case determine the variance for AR, and plot the resulting values as a function of fractional amount of AR. 
+As always, the first step after running a new simulation is to check the
+output visually in CellBlender.
+
+Use the variance script provided above__ to compute the variance for the 
+number of AR molecules. Rerun the simulation while varying the fractional 
+amounts of A, R, and AR. In each case determine the variance for AR, and 
+plot the resulting values as a function of fractional amount of AR. 
+
+__ variance_script_
