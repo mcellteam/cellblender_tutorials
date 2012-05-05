@@ -179,6 +179,7 @@ Then, run the command::
 
     python avg_seeds.py
 
+
 It is very instructive to plot the ratio of the variance to the mean
 number of molecules in each shell. To do so, create a file called 
 **var_to_mean.py** and copy the following text into it::
