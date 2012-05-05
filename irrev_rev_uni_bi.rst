@@ -570,13 +570,19 @@ The following script does this - do you understand what is happening?::
     plt.show()
 
 
-Reverisble Unimolecular Reaction
+Reversible Unimolecular Reaction
 =====================================================
+
+Continuing with our study of simple reaction kinetics using
+MCell we will not study reversible uni-molecular reactions,
+both under equilibrium conditions.
 
 Non-Equilibrium 
 -----------------------------------------------------
 
-Here we will simulate the reversible reaction A :math:`\leftrightarrow` B with rate constants k1 and k2 starting from non-equilibrium initial conditions (only A present at time 0).
+Here we will simulate the reversible reaction A :math:`\leftrightarrow` B 
+with rate constants k1 and k2 starting from non-equilibrium initial 
+conditions (only A present at time 0).
 
 Start Blender. Load the **rev_uni_nonequil.blend** file in the **rev_uni/nonequil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **rev_uni/nonequil** and select **Set Project Directory**. Set the **Project Base** to **rev_uni_nonequil**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
@@ -624,17 +630,24 @@ Next, create a file callled **rev_uni_nonequil.rxn_output.mdl** and copy this te
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
        STEP = 1e-5
-       {COUNT [A, WORLD]} => "./reaction_data/A.dat"
-       {COUNT [A, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_A.dat"
-       {COUNT [B, WORLD]} => "./reaction_data/B.dat"
-       {COUNT [B, WORLD]/Na/box_volume_liters} => "./reaction_data/conc_B.dat"
+       {COUNT [A, WORLD]} => "./react_data/A.dat"
+       {COUNT [A, WORLD]/Na/box_volume_liters} => "./react_data/conc_A.dat"
+       {COUNT [B, WORLD]} => "./react_data/B.dat"
+       {COUNT [B, WORLD]/Na/box_volume_liters} => "./react_data/conc_B.dat"
     }
 
 Run the simulation by typing the following command::
 
     mcell rev_uni_nonequil.main.mdl
 
-Plot the results from the simulation. Fit the MCell results for production of B. 
+Visualize your simulation in CellBlender and make sure all is well.
+By coloring A and B differently you can follow the production of
+B (and decay of A) as a function of time. 
+Plot the concentrations of A and B with gnuplot 
+as shown above. Write a python script to determine the asymptotic 
+concentrations of A and B. How is their ratio related to the one 
+of *k1* and *k2*.
+
 
 Equilibrium 
 -----------------------------------------------------
