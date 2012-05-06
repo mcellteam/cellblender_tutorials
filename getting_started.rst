@@ -59,14 +59,14 @@ Under the **Define Surface Regions** panel, click **Assign**. Hit **Tab** to cha
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/scene_button.png
 
+Set Simulation Parameters
+---------------------------------------------
+
 Hit the **Scene** button in the **Properties Editor**. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/model_objects.png
 
-Expand the **Model Objects** panel. With the **Cube** object still selected, hit the **+** button.
-
-Set Simulation Parameters
----------------------------------------------
+Expand the **Model Objects** panel. With the **Cube** object still selected, hit the **+** button. This will add **Cube** to the list of mesh objects to be exported and initialized.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/model_init.png
 
@@ -76,7 +76,7 @@ Expand the **Model Initialization** panel. Change **Simulation Iterations** to *
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_molecules.png
 
-Expand the **Define Molecules** panel and hit the **+** button three times. This will create three instances of **New Molecule** in the list of molecules. Left click on the first instance of **New Molecule**. Change the **Molecule Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the **Diffusion Constant** to **1e-6**. Repeat this process for the next molecule in the list, but call this one **vol2**. Finally, change the third entry **Molecule Name** of the first one to **surf1**, and the **Diffusion Constant** to **1e-7**.
+Expand the **Define Molecules** panel and hit the **+** button three times. This will create three instances of **New Molecule** in the list of molecules. Left click on the first instance of **New Molecule**. Change the **Molecule Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the **Diffusion Constant** to **1e-6**. Repeat this process for the next molecule in the list, but call this one **vol2**. Finally, change the third entry to **surf1** and the **Diffusion Constant** to **1e-7**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_reactions.png
 
