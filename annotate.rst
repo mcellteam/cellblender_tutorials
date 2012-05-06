@@ -143,7 +143,7 @@ Molecules that were defined in the previous section can be created and destroyed
 
 This means that **reactant(s)** are converted into **product(s)** at a given **rate**.
 
-There must be one or more molecules on the left hand  **reactants** side. On the right hand **products** side, you must have zero (`\ <single:NULL>` **NULL**) or more molecules. The units of the **rate** depend on the type of reaction. [s\ :sup:`-1`\ ] for unimolecular reactions and [M\ :sup:`-1`\ s\ :sup:`-1`\ ] for bimolecular reactions between two volume molecules or a volume molecule and a surface molecule.
+There must be one or more molecules on the left hand  **reactants** side. On the right hand **products** side, you must have zero (:index:`\ <single:NULL>` **NULL**) or more molecules. The units of the **rate** depend on the type of reaction. [s\ :sup:`-1`\ ] for unimolecular reactions and [M\ :sup:`-1`\ s\ :sup:`-1`\ ] for bimolecular reactions between two volume molecules or a volume molecule and a surface molecule.
 
 .. _rxn_dir:
 
@@ -151,7 +151,7 @@ Reaction Directionality
 ---------------------------------------------
 
 :index:`\ <single:DEFINE_REACTIONS>`
-Surface molecules have a `\ <single:TOP>` **TOP** and a `\ <single:BOTTOM>` **BOTTOM**, so we need a way to differentiate between reactions that happen on one side versus the other. Commas (**,**), ticks (**'**), and semi-colons (**;**) serve this purpose. For detailed information on this reaction syntax, please refer to this pdf_. Let's look at the relatively simple example we have created in **intro.reactions.mdl**::
+Surface molecules have a :index:`\ <single:TOP>` **TOP** and a :index:`\ <single:BOTTOM>` **BOTTOM**, so we need a way to differentiate between reactions that happen on one side versus the other. Commas (**,**), ticks (**'**), and semi-colons (**;**) serve this purpose. For detailed information on this reaction syntax, please refer to this pdf_. Let's look at the relatively simple example we have created in **intro.reactions.mdl**::
 
     DEFINE_REACTIONS
     {
