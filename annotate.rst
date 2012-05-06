@@ -56,7 +56,7 @@ Initialization Commands
 :index:`\ <single:ITERATIONS>`
 At the beginning of the file are the initialization commands, **TIME_STEP** and **ITERATIONS**. As the names imply, these commands control how many **ITERATIONS** the simulation runs for, with each iteration lasting one **TIME_STEP** (units are seconds). 
 
-Notice that **ITERATIONSu** is set to **1000** and **TIME_STEP** to **5e-6**. This means that the simulation will run for 1000 iterations at a time step of **5e-6** seconds (total time: 1000*5e-6=5e-3 seconds).
+Notice that **ITERATIONS** is set to **1000** and **TIME_STEP** to **5e-6**. This means that the simulation will run for 1000 iterations at a time step of **5e-6** seconds (total time: 1000*5e-6=5e-3 seconds).
 
 .. _molec_def:
 
