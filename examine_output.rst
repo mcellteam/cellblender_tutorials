@@ -84,7 +84,7 @@ Plot **vol1.dat** and **vol2.dat** with the graphing software of your choice. Fo
 
 Run the file by entering the command::
 
-    python plot.py.
+    python plot.py
 
 You should notice that **vol1.dat** is decreasing and **vol2.dat** is increasing as expected. This can be a quick way to verify that our simulation is working as expected.
 

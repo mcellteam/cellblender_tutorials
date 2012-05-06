@@ -11,12 +11,6 @@ Surface Classes and Volume Molecules
 
 Surface classes allow various properties (e.g. **ABSORPTIVE**, **TRANSPARENT**) to be applied to surfaces, which can affect specified molecules. 
 
-Begin by creating a copy of the **intro** directory, by typing the following command at the terminal::
-
-    cp -fr /home/user/mcell_tutorial/intro /home/user/mcell_tutorial/surf_class
-
-Don't forget to replace **user** with your actual user name.
-
 .. _surf_class_vm_mod_mesh:
 
 Modify the Mesh
@@ -92,7 +86,7 @@ That's all there is to it. The other two surface class commands are **REFLECTIVE
 
 Save the file and run it with MCell by entering the command::
 
-    mcell intro.mdl
+    mcell sc.main.mdl
 
 Visualize the results with CellBlender just like was done in the :ref:`visualize_molecules` section. See if you can notice the **vol2** molecules being destroyed by the absorptive surface.
 
@@ -165,6 +159,6 @@ The above change means that **vol1** will only react with the **BOTTOM** of **su
 
 Save the file and run it with MCell by enterting the command::
 
-    mcell intro.mdl
+    mcell sc_rxn.main.mdl
 
 When you visualize the results with CellBlender, want to add in custom rendering properties for **surf2**. You should notice that there are **vol2** molecules being created inside the box, but only in the upper portion of it, despite the fact that the **surf2** molecules are facing both up *and* down. The reason for this is because the reaction is only taking place at the **BACK** of the **empty** surface class with the **BOTTOM** of **surf2**.
