@@ -22,27 +22,30 @@ A full explanation of partitions is outside of the scope of this tutorial, but, 
     PARTITION_Y = [ [-1.0 TO 1.0 STEP 0.20] ]
     PARTITION_Z = [ [-1.0 TO 1.0 STEP 0.20] ]
 
-    INCLUDE_FILE = "./partitions_Cube.mdl"
-
-    DEFINE_MOLECULES {
+    DEFINE_MOLECULES 
+    {
         vol1 {DIFFUSION_CONSTANT_3D = 1E-6}
         vol2 {DIFFUSION_CONSTANT_3D = 1E-6}
         vol3 {DIFFUSION_CONSTANT_3D = 1E-6}
     }
 
-    DEFINE_REACTIONS {
+    DEFINE_REACTIONS 
+    {
         vol1 + vol2 -> vol1 + vol3 [1E7]
         vol1 + vol3 -> vol2 + vol3 [1E6]
     }
 
-    INSTANTIATE World OBJECT {
+    INSTANTIATE World OBJECT 
+    {
         Cube BOX {CORNERS = [-1.0,-1.0,-1.0],[1.0,1.0,1.0]}
-        vol1_rel RELEASE_SITE {
+        vol1_rel RELEASE_SITE 
+        {
             SHAPE = World.Cube
             MOLECULE = vol1
             NUMBER_TO_RELEASE = 2000
         }
-        vol2_rel RELEASE_SITE {
+        vol2_rel RELEASE_SITE 
+        {
             SHAPE = World.Cube
             MOLECULE = vol2
             NUMBER_TO_RELEASE = 2000
