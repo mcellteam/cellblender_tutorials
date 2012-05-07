@@ -6,11 +6,11 @@ Checkpointing Overview
 
 Checkpointing allows you to stop a simulation at a specified iteration and resume it at some later point. This can be beneficial for several different reasons:
 
-* You are using any sort of multi-user system that you must share time with on with others
+* You are using any sort of multi-user system that you must share time with others
 * The computer you are using crashes or is shutdown unexpectedly
 * There are parameters you want to change partway through a simulation
 
-We'll cover how to set up checkpointing in the next two sections, starting with a simple case where we modify a couple parameters. Then we will follow this up with a more interesting case where we have a mesh changing shape over time and molecules that will react to it.
+We'll cover how to set up checkpointing in the next two sections, starting with a simple case where we modify a couple parameters.
 
 .. contents:: :local:
 
@@ -26,12 +26,15 @@ inside of **/home/user/mcell_tutorial**, create a directory called **change_dc**
     ITERATIONS = 200 
     TIME_STEP = 1E-6
 
-    DEFINE_MOLECULES {
+    DEFINE_MOLECULES
+    {
         vol1 {DIFFUSION_CONSTANT_3D = 1E-7}
     }   
 
-    INSTANTIATE World OBJECT {
-        vol1_rel RELEASE_SITE {
+    INSTANTIATE World OBJECT
+    {
+        vol1_rel RELEASE_SITE 
+        {
             SHAPE = SPHERICAL
             LOCATION = [0,0,0]
             SITE_DIAMETER = 0.0 
@@ -40,9 +43,11 @@ inside of **/home/user/mcell_tutorial**, create a directory called **change_dc**
         }   
     }   
 
-    VIZ_OUTPUT {
+    VIZ_OUTPUT 
+    {
         FILENAME = "change_dc"
-        MOLECULES {
+        MOLECULES 
+        {
             NAME_LIST {ALL_MOLECULES}
             ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}
         }   
