@@ -23,7 +23,9 @@ The example shown above is a very simple case where the reaction only changes on
     3E-6   1.2E5
     ...
 
-Save the file and quit. In **sc_rxns.main.mdl**, go to the reaction section and change the rate to **"rxn_rate.txt"** (with quotations), like in the following::
+Save the file and quit.
+
+Open **sc_rxns.reactions.mdl**, go to the reaction section and change the rate to **"rxn_rate.txt"** (with quotations), like in the following::
 
     DEFINE_REACTIONS
     {
