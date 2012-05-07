@@ -257,13 +257,7 @@ Run the Simulation
 ---------------------------------------------
 
 At the command line, navigate to the appropriate directory (``cd /home/user/mcell_tutorial/intro`` where **user** is your user name), and enter the command:: 
-
-    mcell intro.mdl
+    mcell intro.main.mdl
 
 MCell should output some information to the command line indicating that it ran successfully.
 
-At the command line, type::
-
-    ls
-
-You should notice that we have created four new files: **intro.main.mdl**, **intro.geometry.mdl**, **intro.molecules.mdl**, and **intro.reactions.mdl**. We will take a look at all of these in turn.

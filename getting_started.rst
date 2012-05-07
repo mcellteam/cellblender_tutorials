@@ -98,3 +98,8 @@ Under **CellBlender Project Settings**, select **Export CellBlender Project**. N
 
 Either leave Blender open or save and quit, as we'll need to modify this model later.
 
+At the command line, type::
+
+    ls
+
+You should notice that we have created four new files: **intro.main.mdl**, **intro.geometry.mdl**, **intro.molecules.mdl**, and **intro.reactions.mdl**. We will take a look at all of these in turn.
