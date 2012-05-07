@@ -236,7 +236,7 @@ The :index:`\ <single:VIZ_OUTPUT>` **VIZ_OUTPUT** section specifies what visuali
 Reaction Data
 ---------------------------------------------
 
-Now, create a file called **intro.viz_output.mdl**::
+Now, create a file called **intro.rxn_output.mdl**::
 
     REACTION_DATA_OUTPUT
     {
