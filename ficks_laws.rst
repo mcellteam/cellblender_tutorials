@@ -31,12 +31,7 @@ But first let's create the mesh for the system.
 Creating the Mesh
 ---------------------------------------------
 
-Either watch the video tutorial shown here or follow along with the text 
-and illustrations that follow.
-
-If you have watched the movie, please skip ahead to :ref:`fick_annotate`. 
-
-Otherwise, begin by starting Blender. Create a cylinder by hitting 
+Begin by starting Blender. Create a cylinder by hitting 
 **Shift-a**, and selecting **Mesh>Cylinder**. Hit **s**, **0.2**, and 
 **Enter** to confirm. This will be the main cylinder through which the 
 molecules diffuse. Create two surface regions, **Left_end** and 
