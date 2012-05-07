@@ -87,6 +87,8 @@ Expand the **Molecule Release/Placement** panel and hit the **+** button twice, 
 
 Now select the second release site. Change **Site Name** to **surf1_rel**. Change **Molecule** to **surf1'**. Change **Release Shape** to **Object/Region**. Change **Object/Region** to **Cube[top]**. Change **Quantity to Release** to **2000**.
 
+Under **Reaction Output Settings**, enable **Include Reaction Output**. Then, under **Visualization Output Settings**, enable **Include Viz Output**.
+
 Export MDLs
 ---------------------------------------------
 
@@ -95,6 +97,4 @@ Export MDLs
 Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/intro** where **user** is your user name) and hit **OK** when it prompts you to make a new directory. Then select **Set Project Directory**. Set the **Project Base** to **intro**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
 Either leave Blender open or save and quit, as we'll need to modify this model later.
-
-.. _run_sim:
 
