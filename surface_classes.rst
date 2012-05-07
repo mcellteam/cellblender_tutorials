@@ -141,7 +141,7 @@ Open **sc_rxns.surface_classes.mdl** in the new **sc_rxns** directory. Change th
     {
         absorb_vol1 {ABSORPTIVE = vol1}
         empty {}
-    }  
+    }
 
 This new surface class, **empty**, is the simplest case you can have for a surface class. By itself, it's not very useful, but we can use it in reactions. Let's look at the **sc_rxns.reactions.mdl** file::
 
@@ -151,7 +151,7 @@ This new surface class, **empty**, is the simplest case you can have for a surfa
         vol1, + surf2' @ empty' -> surf2' + vol2' [1E8]
     }   
 
-The above change means that **vol1** will only react with the **BOTTOM** of **surf** at the **BACK** of the **empty** surface class. This means the reaction won't occur when the surface molecules diffuse away from surface regions that have this surface class applied (i.e. when it diffuses from **top** to **sides_and_bottom**). Lastly, change the **sc_rxns.mod_surf_regions.mdl** like this::
+The above change means that **vol1** will only react with the **BOTTOM** of **surf** at the **BACK** of the **empty** surface class. This means the reaction won't occur when the surface molecules diffuse away from surface regions that have this surface class applied (i.e. when it diffuses away from **top**). Lastly, change the **sc_rxns.mod_surf_regions.mdl** like this::
 
     MODIFY_SURFACE_REGIONS 
     {
