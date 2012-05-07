@@ -9,12 +9,15 @@ There are many tools available for plotting and analyzing data. We will make use
     TIME_STEP = 1.0e-6
     ITERATIONS = 1000
                      
-    DEFINE_MOLECULES {
+    DEFINE_MOLECULES 
+    {
         vol1 {DIFFUSION_CONSTANT_3D = 1e-7}
     }
 
-    INSTANTIATE world OBJECT { 
-        vol1_rel SPHERICAL_RELEASE_SITE {
+    INSTANTIATE world OBJECT 
+    { 
+        vol1_rel SPHERICAL_RELEASE_SITE 
+        {
             LOCATION = [0,0,0] 
             MOLECULE = vol1 
             NUMBER_TO_RELEASE = 5000
@@ -22,16 +25,16 @@ There are many tools available for plotting and analyzing data. We will make use
         }   
     }
 
-    VIZ_OUTPUT {
+    VIZ_OUTPUT 
+    {
         VIZ_MOLECULE_FORMAT = ASCII
         FILENAME = "hist" 
-        MOLECULES { 
+        MOLECULES 
+        { 
             NAME_LIST {ALL_MOLECULES}
             ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}  
         }   
     } 
-
-This is very similar to MDLs you have run in the past with the exception of the line **VIZ_MOLECULE_FORMAT = ASCII**. Normally, "viz_data" molecule locations are stored in a binary file to make them smaller, but this command will cause them to be created in a human-readable, ASCII format.
 
 Run this mdl by entering the command::
 
