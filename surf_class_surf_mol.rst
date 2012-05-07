@@ -52,18 +52,22 @@ Modifying the MDL
 
 Create a file called sc_sm.surface_classes.mdl::
 
-    DEFINE_SURFACE_CLASSES {
+    DEFINE_SURFACE_CLASSES 
+    {
         absorb {ABSORPTIVE = surf1}
         reflect {REFLECTIVE = surf1}
     }  
 
 Create a file called sc_sm.mod_surf_regions.mdl::
 
-    MODIFY_SURFACE_REGIONS {
-        Cube[top] {
+    MODIFY_SURFACE_REGIONS 
+    {
+        Cube[top]
+        {
             SURFACE_CLASS = absorb
         }   
-        Cube[bottom] {
+        Cube[bottom]
+        {
             SURFACE_CLASS = reflect
         }   
     }
