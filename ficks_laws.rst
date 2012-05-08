@@ -31,7 +31,9 @@ But first let's create the mesh for the system.
 Creating the Mesh
 ---------------------------------------------
 
-Either download the mesh here or follow along with the instructions that follow.
+Either download the `blend file`_ or follow along with the instructions that follow.
+
+.. _blend file: http://www.mcell.org/workshop2012/tutorials/blends/ficks_law/ficks_law.blend
 
 Begin by starting Blender. Hit **x**, and click **Delete** to delete the default Cube. Then, create a cylinder by hitting **Shift-a**, and selecting **Mesh>Cylinder**. Hit **s**, **Shift-z**, **0.2**, and **Enter** to confirm. Hit **r**, **x**, **90**, and **Enter**. This will be the main cylinder through which the molecules diffuse. 
 
