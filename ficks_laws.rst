@@ -41,11 +41,17 @@ Create two surface regions, **Left_end** and **Right_end**.
 
 Then, enter **Edit Mode** by hitting **Tab**. Hit **Ctrl-t** to triangulate the mesh. Next, select the left end of the cylinder by hitting **b**, **left click and drag** around the left end of the cylinder. Select **Left_end** from the list of surface regions and select **Assign**. Do the same with the right end of the cylinder, except select and assign the **Right_end** surface region. Switch back to **Object Mode** by hitting **Tab**.
 
-We now need to create a series of shorter sampling cylinders inside the long one. To do so, hit **Shift-a** and once again select **Mesh>Cylinder**. We will make these sampling cylinders slightly smaller than the main cylinder to avoid coincident meshes: Hit **s**, **Shift-z**, **0.199**, and **Enter**. Hit **r**, **x**, **90**, and **Enter**. Next, hit **s**, **x**, **0.0249**, and **Enter**. Hit **g**, **x**, and **-0.9749** to move it very close to the left end of the end of larger cylinder (they don't touch though). Be sure to triangulate this mesh in the same way we did with the larger cylinder. 
+We now need to create a series of shorter sampling cylinders inside the long one. To do so, hit **Shift-a** and once again select **Mesh>Cylinder**. We will make these sampling cylinders slightly smaller than the main cylinder to avoid coincident meshes: Hit **s**, **Shift-z**, **0.199**, and **Enter**. Hit **r**, **x**, **90**, and **Enter**. Next, hit **s**, **y**, **0.0249**, and **Enter**. Hit **y**, **x**, and **-0.9749** to move it very close to the left end of the end of larger cylinder (they don't touch though). 
 
-Now, we will use Blender's (very useful) array modifier to replicate this sampling cylinder 40 times. To do so, hit the **Object Modifiers** button, and from the **Add Modifier** drop-down box, select **Array**. Change **Count** to **40**. Change the first entry field under **Relative Offset** to **0.00** and the third to **1.005**. Once again, be sure to triangulate this mesh.
+Rename this smaller cylinder as from **Cylinder.001** to **C**. Be sure to triangulate this mesh in the same way we did with the larger cylinder.
 
-Finally, we will create a series of sampling planes in the form of of circular planes that lie between each of these cylinders. Create a cylinder by hitting **Shift-a**, and selecting **Mesh>Plane**. Hit **s**, **Shift-x**, **0.199**, and **Enter**. Hit **r**, **x**, **90**, and **Enter**. Hit **g**, **x**, and **-0.9749** to move it very close to the right side of our smaller cylinder. Again, we will replicate this plane by using an array modifier in exactly the same way as we did previously with the cylinders (same exact settings, i.e. a **Count** of **40** and a **Relative Offset** of **1.005**). 
+Now, we will use Blender's (very useful) array modifier to replicate this sampling cylinder 40 times. To do so, hit the **Object Modifiers** button, and from the **Add Modifier** drop-down box, select **Array**. Change **Count** to **40**. Change the first entry field under **Relative Offset** to **0.00** and the third to **-1.005**. 
+
+Now we need to make each cylinder a unique object. To do this, first hit the **Apply** button under the **Array** modifier. Then enter **Edit Mode**, hit **p**, and select **By loose parts** in the **Separate** menu. This will split each discontinuous mesh into a unique object. They wil be named C, C.001, C.002, etc. The last cylinder in the sequence should be named **C**. Rename it to **C.040**. This will make things cleaner when we want to count molecules in MCell later.
+
+Finally, we will create a series of sampling planes in the form of of circular planes that lie between each of these cylinders. Create a cylinder by hitting **Shift-a**, and selecting **Mesh>Plane**. Hit **s**, **Shift-x**, **0.199**, and **Enter**. Hit **r**, **x**, **90**, and **Enter**. Hit **g**, **y**, and **-0.9749** to move it very close to the right side of our smaller cylinder. Once again, be sure to triangulate this mesh. 
+
+Next, we will replicate this plane by using an array modifier in exactly the same way as we did previously with the cylinders (same exact settings, i.e. a **Count** of **40** and a **Relative Offset** of **-1.005**). Also separate the object **By loose parts** in the same way you did with the small cylinder.  Finally rename the final plane from **Plane** to **Plane.040**.
 
 Adding the Other Model Parameters
 ---------------------------------
@@ -144,21 +150,21 @@ that you will have to complete yourself. Create the file
            regions you created for this purposes when setting up the
            mesh in Blender */
 
-       C01[ALL] {
+       C.001[ALL] {
            SURFACE_CLASS = transp
        }
        
-       C02[ALL] {
+       C.002[ALL] {
            SURFACE_CLASS = transp
        }
 
        /* add statements for the remaining cylinders */
 
 
-       Plane01[ALL] {
+       Plane.001[ALL] {
            SURFACE_CLASS = transp
        }
-       Plane02[ALL] {
+       Plane.002[ALL] {
            SURFACE_CLASS = transp
        }
 
@@ -176,8 +182,8 @@ problems below. Create a file **ficks_law.rxn_output.mdl** and enter::
         STEP = 1*dt
         /* Hint: These are examples.  You will need to add more to determine dC/dt. */
         {COUNT[vm,Scene.Cylinder]}=>"./react_data/vm_Cylinder."&seed&".dat"
-        {COUNT[vm,Scene.C01]}=>"./react_data/vm_C01."&seed&".dat"
-        {COUNT[vm,Scene.Plane01,FRONT_CROSSINGS]}=>"./react_data/vm_Plane01_front."&seed&".dat"
+        {COUNT[vm,Scene.C.001]}=>"./react_data/vm_C01."&seed&".dat"
+        {COUNT[vm,Scene.Plane.001,FRONT_CROSSINGS]}=>"./react_data/vm_Plane01_front."&seed&".dat"
         /* more statements needed for Exercises 1 - 4 */
     }
 
