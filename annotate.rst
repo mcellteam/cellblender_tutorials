@@ -257,6 +257,7 @@ Run the Simulation
 ---------------------------------------------
 
 At the command line, navigate to the appropriate directory (``cd /home/user/mcell_tutorial/intro`` where **user** is your user name), and enter the command:: 
+
     mcell intro.main.mdl
 
 MCell should output some information to the command line indicating that it ran successfully.
