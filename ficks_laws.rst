@@ -49,9 +49,9 @@ Now, we will use Blender's (very useful) array modifier to replicate this sampli
 
 Now we need to make each cylinder a unique object. To do this, first hit the **Apply** button under the **Array** modifier. Then enter **Edit Mode**, hit **p**, and select **By loose parts** in the **Separate** menu. This will split each discontinuous mesh into a unique object. They wil be named C, C.001, C.002, etc. The last cylinder in the sequence should be named **C**. Rename it to **C.040**. This will make things cleaner when we want to count molecules in MCell later.
 
-Finally, we will create a series of sampling planes in the form of of circular planes that lie between each of these cylinders. Create a cylinder by hitting **Shift-a**, and selecting **Mesh>Plane**. Hit **s**, **0.199**, and **Enter**. Hit **r**, **x**, **90**, and **Enter**. Hit **g**, **y**, and **-0.95** to move it very close to the right side of our smaller cylinder. Once again, be sure to triangulate this mesh. 
+Finally, we will create a series of sampling planes in the form of of circular planes that lie between each of these cylinders. Create a cylinder by hitting **Shift-a**, and selecting **Mesh>Circle**. In the **Tool Shelf** (hit **t** to toggle it), hit **Fill** under **Add Circle**. Hit **s**, **0.199**, and **Enter**. Hit **r**, **x**, **90**, and **Enter**. Hit **g**, **y**, and **-0.95** to move it very close to the right side of our smaller cylinder. Once again, be sure to triangulate this mesh. 
 
-Next, we will replicate this plane by using an array modifier in exactly the same way as we did previously with the cylinders (same exact settings, i.e. a **Count** of **40** and a **Absolute Offset** of **-0.244814**). Also separate the object **By loose parts** in the same way you did with the small cylinder.  Finally rename the final plane from **Plane** to **Plane.040**.
+Next, we will replicate this plane by using an array modifier in exactly the same way as we did previously with the cylinders (similar settings, i.e. a **Count** of **39** and an **Absolute Offset** of **-0.251255**). Also separate the object **By loose parts** in the same way you did with the small cylinder.  Finally rename the final plane from **Circle** to **Circle.040**.
 
 Adding the Other Model Parameters
 ---------------------------------
@@ -161,10 +161,10 @@ that you will have to complete yourself. Create the file
        /* add statements for the remaining cylinders */
 
 
-       Plane.001[ALL] {
+       Circle.001[ALL] {
            SURFACE_CLASS = transp
        }
-       Plane.002[ALL] {
+       Circle.002[ALL] {
            SURFACE_CLASS = transp
        }
 
@@ -183,7 +183,7 @@ problems below. Create a file **ficks_law.rxn_output.mdl** and enter::
         /* Hint: These are examples.  You will need to add more to determine dC/dt. */
         {COUNT[vm,Scene.Cylinder]}=>"./react_data/vm_Cylinder."&seed&".dat"
         {COUNT[vm,Scene.C.001]}=>"./react_data/vm_C01."&seed&".dat"
-        {COUNT[vm,Scene.Plane.001,FRONT_CROSSINGS]}=>"./react_data/vm_Plane01_front."&seed&".dat"
+        {COUNT[vm,Scene.Circle.001,FRONT_CROSSINGS]}=>"./react_data/vm_Circle01_front."&seed&".dat"
         /* more statements needed for Exercises 1 - 4 */
     }
 
