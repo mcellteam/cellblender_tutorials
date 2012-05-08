@@ -35,19 +35,17 @@ Either download the `blend file`_ or follow along with the instructions that fol
 
 .. _blend file: http://www.mcell.org/workshop2012/tutorials/blends/ficks_law/ficks_law.blend
 
-Begin by starting Blender. Hit **x**, and click **Delete** to delete the default Cube. Then, create a cylinder by hitting **Shift-a**, and selecting **Mesh>Cylinder**. Hit **s**, **Shift-z**, **0.2**, and **Enter** to confirm. Hit **r**, **x**, **90**, and **Enter**. This will be the main cylinder through which the molecules diffuse. 
+Begin by starting Blender. Hit **x** and click **Delete** to delete the default Cube. Then, create a cylinder by hitting **Shift-a**, and selecting **Mesh>Cylinder**. Hit **s**, **Shift-z**, **0.2**, and **Enter** to confirm. Hit **r**, **x**, **90**, and **Enter** to rotate it 90 degrees around the x-axis. This will be the main cylinder through which the molecules diffuse. 
 
 Create two surface regions, **Left_end** and **Right_end**. 
 
 Then, enter **Edit Mode** by hitting **Tab**. Hit **Ctrl-t** to triangulate the mesh. Next, select the left end of the cylinder by hitting **b**, **left click and drag** around the left end of the cylinder. Select **Left_end** from the list of surface regions and select **Assign**. Do the same with the right end of the cylinder, except select and assign the **Right_end** surface region. Switch back to **Object Mode** by hitting **Tab**.
 
-We now need to create a series of shorter sampling cylinders inside the long one. To do so, hit **Shift-a** and once again select **Mesh>Cylinder**. We will make these sampling cylinders slightly smaller than the main cylinder to avoid coincident meshes: Hit **s**, **Shift-z**, **0.199**, and **Enter**. Hit **r**, **x**, **90**, and **Enter**. Next, hit **s**, **x**, **0.0249**, and **Enter**. Hit **g**, **x**, and **-0.9749**. Now, we will use Blenders (very useful) array modifier to replicate this sampling cylinder 40 times. To do so, hit the **Object Modifiers** button, and from the **Add Modifier** drop-down box, select **Array**. Change **Count** to **40**. Change the first entry field under **Relative Offset** to **0.00** and the third to **1.005**.
+We now need to create a series of shorter sampling cylinders inside the long one. To do so, hit **Shift-a** and once again select **Mesh>Cylinder**. We will make these sampling cylinders slightly smaller than the main cylinder to avoid coincident meshes: Hit **s**, **Shift-z**, **0.199**, and **Enter**. Hit **r**, **x**, **90**, and **Enter**. Next, hit **s**, **x**, **0.0249**, and **Enter**. Hit **g**, **x**, and **-0.9749** to move it very close to the left end of the end of larger cylinder (they don't touch though). Be sure to triangulate this mesh in the same way we did with the larger cylinder. 
 
-Finally, we will create a series of sampling planes in the form of of 
-circular planes that lie between each of these cylinders. Create a cylinder 
-by hitting **Shift-a**, and selecting **Mesh>Plane**. Hit **s**, **Shift-x**, **0.199**, 
-and **Enter**. Again, we will replicate this plane by using an array modifier in exactly the same way as we did previously with the cylinders (same exact 
-settings, i.e. a **Count** of **40** and a **Relative Offset** of **1.005**). 
+Now, we will use Blender's (very useful) array modifier to replicate this sampling cylinder 40 times. To do so, hit the **Object Modifiers** button, and from the **Add Modifier** drop-down box, select **Array**. Change **Count** to **40**. Change the first entry field under **Relative Offset** to **0.00** and the third to **1.005**. Once again, be sure to triangulate this mesh.
+
+Finally, we will create a series of sampling planes in the form of of circular planes that lie between each of these cylinders. Create a cylinder by hitting **Shift-a**, and selecting **Mesh>Plane**. Hit **s**, **Shift-x**, **0.199**, and **Enter**. Hit **r**, **x**, **90**, and **Enter**. Hit **g**, **x**, and **-0.9749** to move it very close to the right side of our smaller cylinder. Again, we will replicate this plane by using an array modifier in exactly the same way as we did previously with the cylinders (same exact settings, i.e. a **Count** of **40** and a **Relative Offset** of **1.005**). 
 
 Adding the Other Model Parameters
 ---------------------------------
