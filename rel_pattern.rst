@@ -44,7 +44,8 @@ Release patterns allow you to release molecules at specified time intervals. One
 
     VIZ_OUTPUT 
     {
-        FILENAME = "release_pattern"
+        MODE = ASCII
+        FILENAME = "./viz_data/release_pattern"
         MOLECULES 
         {
             NAME_LIST {ALL_MOLECULES}
@@ -61,5 +62,5 @@ A release pattern consists of one or more "trains." Each train can last for a ce
 
 Run the file by typing::
 
-    mcell release pattern.mdl
+    mcell release_pattern.mdl
 
