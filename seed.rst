@@ -6,7 +6,10 @@ Running Multiple Seed Values
 
 In MCell, diffusion (amongst other things) happen stochastically. However, the results are replicable as long as one provides the same seed value. Given this stochastic nature, you can expect the data generated from a simulation to look noisy, especially if the number of reacting molecules is small. We can overcome this problem by running many different simulations, each with a different seed value, and then averaging the results of all the simulations.
 
-We'll begin by creating a directory called **seed**. Inside it, create an MDL called **seed.mdl** with this text::
+We'll begin by creating a directory called **seed**. Inside it, create an MDL called **seed.mdl** with this text:
+
+.. code-block:: none
+    :emphasize-lines: 31,35-37
 
     iterations = 1000 
     time_step = 5e-6 
