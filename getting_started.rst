@@ -8,8 +8,8 @@ For this first example, we'll export the default mesh from Blender into the MDL 
 
 .. _gen_mesh:
 
-Generate Mesh and Export MDL with Blender
-=============================================
+Starting Blender
+---------------------------------------------
 
 The majority of this tutorial can be easily accomplished by following along with the text. However, sections that rely heavily on a GUI (like this one), might be better understood by watching a video tutorial.
 
@@ -29,14 +29,16 @@ Open up a terminal and enter the command::
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/cube.png
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/object_button.png
-
-You should see a cube in the **3D View Editor**. Hit the **Object** button in the **Properties Editor**. Scroll to the bottom of the Editor.
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_region.png
+You should see a cube in the **3D View Editor**.
 
 Define a Surface Region
 ---------------------------------------------
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/object_button.png
+
+Hit the **Object** button in the **Properties Editor**. Scroll to the bottom of the Editor.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_region.png
 
 Expand the **Define Surface Regions** panel. Hit the **+** button and **New Region** should appear in the list of regions. 
 
@@ -44,22 +46,27 @@ Expand the **Define Surface Regions** panel. Hit the **+** button and **New Regi
 
 Change the text field which reads **New Region** to **top**. 
 
+Assign a Surface Region
+---------------------------------------------
+
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/triangulate.png
+
+Move the cursor to the **3D View Editor**. Hit **Tab** to change into **Edit Mode**. Hit **Ctrl-t** to triangulate the faces. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/ctrl_tab.png
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/select_top.png
 
-Move the cursor to the **3D View Editor**. Hit **Tab** to change into **Edit Mode**. Hit **Ctrl-t** to triangulate the faces. Then, hit **Ctrl-Tab** and select **Face**. Then while **holding Shift**, **right click** on the two top faces to select them.
+Then, hit **Ctrl-Tab** and select **Face**. Then while **holding Shift**, **right click** on the two top faces to select them.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/assign.png
 
-Under the **Define Surface Regions** panel, click **Assign**. Hit **Tab** to change back into **Object Mode**.
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/scene_button.png
+Under the **Define Surface Regions** panel, click **Assign**. With the cursor over the **3D View Editor**, hit **Tab** to change back into **Object Mode**.
 
 Set Simulation Parameters
 ---------------------------------------------
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/scene_button.png
 
 Hit the **Scene** button in the **Properties Editor**. 
 
@@ -73,13 +80,15 @@ Expand the **Model Initialization** panel. Change **Simulation Iterations** to *
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_molecules.png
 
+Expand the **Define Molecules** panel and hit the **+** button three times. This will create three instances of **New Molecule** in the list of molecules.
+
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_molecules.png
 
-Expand the **Define Molecules** panel and hit the **+** button three times. This will create three instances of **New Molecule** in the list of molecules. Left click on the first instance of **New Molecule**. Change the **Molecule Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the **Diffusion Constant** to **1e-6**. Repeat this process for the next molecule in the list, but call this one **vol2**. Finally, change the third entry to **surf1** and the **Diffusion Constant** to **1e-7**.
+Left click on the first instance of **New Molecule**. Change the **Molecule Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the **Diffusion Constant** to **1e-6**. Repeat this process for the next molecule in the list, but call this one **vol2**. Finally, change the third entry to **surf1** and the **Diffusion Constant** to **1e-7**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_reactions.png
 
-Expand the **Define Reaction** panel and hit the **+** button. Change **Reactants** to **vol1' + surf1,**. Change **Products** to **surf1, + vol2,**. Change **Forward Rate** to **1e8**.
+Expand the **Define Reaction** panel and hit the **+** button. Change **Reactants** to **vol1' + surf1,**. Change **Products** to **surf1, + vol2,**. Be sure to use the commas and apostrophes show in these examples. The meaning of these symbols will be explained in the :ref:`rxn_dir` section. Change **Forward Rate** to **1e8**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/molecule_release.png
 
