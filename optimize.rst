@@ -13,7 +13,10 @@ These simplistic simulations should not be overly taxing on a relatively recent 
 Adding Partitions
 ---------------------------------------------
 
-A full explanation of partitions is outside of the scope of this tutorial, but, essentially, when MCell is checking to see if a reaction occurs, partitions lower the number of potential partners it must check. For practical puprposes, partitions can greatly speed up your simulation, but, if used improperly, they can actually slow it down. Begin by creating a directory called **partitions** inside the main tutorial directory. Inside the **partitions** directory, create a file called **partitions.mdl** with the following text::
+A full explanation of partitions is outside of the scope of this tutorial, but, essentially, when MCell is checking to see if a reaction occurs, partitions lower the number of potential partners it must check. For practical puprposes, partitions can greatly speed up your simulation, but, if used improperly, they can actually slow it down. Begin by creating a directory called **partitions** inside the main tutorial directory. Inside the **partitions** directory, create a file called **partitions.mdl** with the following text:
+
+.. code-block:: none
+    :emphasize-lines: 4-6
 
     ITERATIONS = 1000
     TIME_STEP = 5e-6
@@ -70,24 +73,29 @@ If you have a reaction between two molecules in which there are many of one mole
     ITERATIONS = iterations
     TIME_STEP = time_step
 
-    DEFINE_MOLECULES {
+    DEFINE_MOLECULES 
+    {
         vol1 {DIFFUSION_CONSTANT_3D = 1E-6}
         vol2 {DIFFUSION_CONSTANT_3D = 1E-6 TARGET_ONLY}
         vol3 {DIFFUSION_CONSTANT_3D = 1E-6}
     }
 
-    DEFINE_REACTIONS {
+    DEFINE_REACTIONS 
+    {
         vol1 + vol2 -> vol1 + vol3 [1E8]
     }
 
-    INSTANTIATE World OBJECT {
+    INSTANTIATE World OBJECT 
+    {
         Cube BOX {CORNERS = [-1.0,-1.0,-1.0],[1.0,1.0,1.0]}
-        vol1_rel RELEASE_SITE {
+        vol1_rel RELEASE_SITE 
+        {
             SHAPE = World.Cube
             MOLECULE = vol1
             NUMBER_TO_RELEASE = 100
         }
-        vol2_rel RELEASE_SITE {
+        vol2_rel RELEASE_SITE 
+        {
             SHAPE = World.Cube
             MOLECULE = vol2
             NUMBER_TO_RELEASE = 10000
@@ -103,9 +111,12 @@ Only Export What You Need
 
 Visualization data can be great if you are making a figure to accompany a paper, or you are trying to troubleshoot a problem in your simulation, but there's probably no need to export everything at all times (**ALL_DATA @ ALL_ITERATIONS**). You could either comment out the **VIZ_OUTPUT** section entirely when you don't need it or only export what you need. This can speed up your simulation and save you disk space. The following **VIZ_OUPUT** sections illustrates how to selectively export visualization data::
 
-    VIZ_OUTPUT {
+    VIZ_OUTPUT 
+    {
+        MODE = ASCII
         FILENAME = "selective"
-        MOLECULES {
+        MOLECULES 
+        {
             NAME_LIST {vol1}
             ITERATION_NUMBERS {ALL_DATA @ [[100 TO 200 STEP 10]]}
         }   
