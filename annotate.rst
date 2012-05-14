@@ -46,7 +46,7 @@ The first two lines are :ref:`init_commands` that we'll cover in the next sectio
 
 :index:`\ <single:INCLUDE_FILE>` **INCLUDE_FILE** commands let you break up MDLs into multiple sections. **intro.molecules.mdl** contains molecule definitions, **intro.reactions.mdl** contains reaction definitions, and **intro.geometry.mdl** contains the the vertices and faces that make up our **Cube**.
 
-In addition to simply *including* meshes, you also have to :index:`\ <single:INSTANTIATE>` **INSTANTIATE** meshes to make them exist and interact in the simulation. Later, we'll talk about instantiating other types of objects, like molecule :ref:`rel_sites`.
+In addition to simply *including* meshes, you also have to :index:`\ <single:INSTANTIATE>` **INSTANTIATE** meshes to make them exist and interact in the simulation. You can see we're also instantiating another type of object called a **RELEASE_SITE**, which we'll discuss later in the :ref:`rel_sites` section.
 
 .. _init_commands:
 
