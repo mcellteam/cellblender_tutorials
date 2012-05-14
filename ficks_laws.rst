@@ -28,6 +28,8 @@ command introduced previously.
 
 But first let's create the mesh for the system.
 
+.. _fick_create_mesh: 
+
 Creating the Mesh
 ---------------------------------------------
 
@@ -53,20 +55,14 @@ Finally, we will create a series of sampling planes in the form of of circular p
 
 Next, we will replicate this plane by using an array modifier in exactly the same way as we did previously with the cylinders (similar settings, i.e. a **Count** of **39** and an **Absolute Offset** of **-0.251255**). Also separate the object **By loose parts** in the same way you did with the small cylinder.  Finally rename the final plane from **Circle** to **Circle.040**.
 
+.. _fick_add_params: 
+
 Adding the Other Model Parameters
 ---------------------------------
 
-First, add a single volume molecule called *vm* via CellBlenders 
-**Define Molecules** tab. Then, in the **Define Surface Classes** tab
-check *Include Surface Classes* and *Include Modify Surface Regions* since
-we will use surface classes and modify surface regions; in the 
-**Reaction Output Settings** tab check *Include Reaction Output* and
-in **Visualization Output Settings** check *Include Viz Output*.
-Next, we need to tell CellBlender to export our model geometry. To do
-so hit the **+** sign in the **Model Objects** tab. You should remove the
-*Camera* and *Lamp* objects which we don't need to export by selecting
-them and the hitting the *-* sign.
+First, add a single volume molecule called **vm** via CellBlender's **Define Molecules** panel. Then, in the **Define Surface Classes** panel, check **Include Surface Classes** and **Include Modify Surface Regions** since we will use surface classes and modify surface regions; in the **Reaction Output Settings** panel check **Include Reaction Output** and in **Visualization Output Settings** check **Include Viz Output**. Next, we need to tell CellBlender to export our model geometry. To do so hit the **+** sign in the **Model Objects** panel, making sure that only the **Cube** is selected.
 
+.. _fick_export: 
 
 Exporting the Project
 ---------------------
@@ -228,6 +224,8 @@ to view the total number of molecules in the large cylinder.
 Once you're confident you have a model with a proper concentration
 gradient we can finally tackle our examination of Fick's law.
 
+.. _fick_gen_comments: 
+
 General Comments
 ----------------
 
@@ -252,6 +250,7 @@ dC/dt can be done in three ways which will explore now.
 **Note:** Once you have verified your simulation it may be useful to
 turn visualization output of to speed up your simulations.
 
+.. _fick_exercise1: 
 
 Exercise 1
 ----------
@@ -267,7 +266,9 @@ do the averaging, smoothing and differentiation. Examine the output and
 make sure you understand what is going on. You may need to increase the 
 number of seeds you average over if the data is too noisy. The script 
 allows you to plot different quantities by commenting/uncommenting certain 
-lines - take a look::
+lines - take a look:
+
+.. code-block:: python
 
     #!/usr/bin/env python
 
@@ -334,6 +335,8 @@ lines - take a look::
     plt.title("dC/dt in subvolumes 19 and 20")
     plt.show()                          
 
+.. _fick_exercise2: 
+
 Exercise 2
 -----------
 
@@ -345,6 +348,8 @@ plane 21. Use these results to compute the final net number of molecules in
 subvolumes 20 and 21 at each timestep, convert to concentration, and then 
 output the result. Again use the above python script to differentiate and 
 smooth, and compare your result to what you obtained for Exercise 1.
+
+.. _fick_exercise3: 
 
 Exercise 3
 -----------
@@ -364,6 +369,8 @@ averaging, smoothing and differentiating.
 When considering the methods used to compute :math:`dC/dt` in Exercises 
 1, 2 and 3 which final result do you expect to show the most noise? Why?
 Do you results reflect this.
+
+.. _fick_exercise4: 
 
 Exercise 4
 -----------
