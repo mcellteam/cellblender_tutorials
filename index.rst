@@ -11,7 +11,7 @@ In order to quickly show what can be done with MCell, we'll begin by generating 
 
 Much of the theory will be skipped over, as it's available elsewhere_. For a more detailed explanation of any given topic, please see the `quick reference guide`_. 
 
-The completed project files for the tutorial can be downloaded here_. You will generate these same files simply by following along with the tutorial, but they are provided here in case you need them for any reason.
+The completed project files for sections 1-13 can be downloaded here_. You will generate these same files simply by following along with the tutorial, but they are provided here in case you need them for any reason.
 
 .. _elsewhere: https://www.mcell.psc.edu/publications.html
 
@@ -37,7 +37,11 @@ The completed project files for the tutorial can be downloaded here_. You will g
    analyze
    seed
    ficks_laws
-   irrev_rev_uni_bi
+   irrev_rev_uni_bi 
+
+Please send any feedback concerning these tutorials to `jczech@psc.edu`_.
+
+.. _jczech@psc.edu: jczech@psc.edu
 
 Indices and tables
 ==================
