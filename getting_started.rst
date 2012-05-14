@@ -4,7 +4,7 @@
 Getting Started
 *********************************************
 
-For this first example, we'll export the default mesh from Blender into the MDL format which MCell can parse. We will then run this MDL with MCell to generate visualization data.
+For this first example, we'll use Blender and the CellBlender plugin to set some simulation parameters. We'll export this into the MDL format which MCell can parse. Then we will run these MDLs with MCell to generate visualization data, which will be used in the next section.
 
 .. _gen_mesh:
 
@@ -31,6 +31,8 @@ Open up a terminal and enter the command::
 
 You should see a cube in the **3D View Editor**.
 
+.. _define_region:
+
 Define a Surface Region
 ---------------------------------------------
 
@@ -45,6 +47,8 @@ Expand the **Define Surface Regions** panel. Hit the **+** button and **New Regi
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/top.png
 
 Change the text field which reads **New Region** to **top**. 
+
+.. _assign_region:
 
 Assign a Surface Region
 ---------------------------------------------
@@ -62,6 +66,8 @@ Then, hit **Ctrl-Tab** and select **Face**. Then while **holding Shift**, **righ
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/assign.png
 
 Under the **Define Surface Regions** panel, click **Assign**. With the cursor over the **3D View Editor**, hit **Tab** to change back into **Object Mode**.
+
+.. _set_parameters:
 
 Set Simulation Parameters
 ---------------------------------------------
@@ -97,6 +103,8 @@ Expand the **Molecule Release/Placement** panel and hit the **+** button twice, 
 Now select the second release site. Change **Site Name** to **surf1_rel**. Change **Molecule** to **surf1'**. Change **Release Shape** to **Object/Region**. Change **Object/Region** to **Cube[top]**. Change **Quantity to Release** to **2000**.
 
 Under **Reaction Output Settings**, enable **Include Reaction Output**. Then, under **Visualization Output Settings**, enable **Include Viz Output**.
+
+.. _export_mdls:
 
 Export MDLs
 ---------------------------------------------
