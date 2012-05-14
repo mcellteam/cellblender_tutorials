@@ -1,3 +1,5 @@
+.. _irrev_rev_uni_bi:
+
 *****************************************************
 (Ir)reversible Unimolecular and Bimolecular Reactions
 *****************************************************
@@ -7,6 +9,8 @@ have to export and modify the mdls created.
 
 .. _here: https://www.mcell.psc.edu/download/files/irrev_rev_uni_bi.tgz
 
+.. _conc_shells:
+
 Diffusion Through Concentric Shells
 =====================================================
 
@@ -15,8 +19,9 @@ MCell simulations and the solution to Fick's 2nd law. Here, we will
 further examine the noise properties of the counted molecules as they
 diffuse through a series of **TRANSPARENT** concentric shells.
 
+.. _conc_shells_export:
 
-Exporting the Blend
+Exporting the MDL
 -----------------------------------------------------
 
 Start Blender. Load the **spherical_shells/spherical_shells.blend** file 
@@ -32,6 +37,7 @@ select **Set Project Directory**. Set the **Project Base** to
 same directory as before, and hit **Export MCell MDL**.  You have now
 exported your project as MDL.
 
+.. _conc_shell_annotate:
 
 Annotating the MDL
 -----------------------------------------------------
@@ -72,7 +78,8 @@ all diffusion molecules we need to make them transparent via a surface
 class. Thus, create a file called **spherical_shells.surface_classes.mdl** 
 with the following content::
 
-    DEFINE_SURFACE_CLASS transp {
+    DEFINE_SURFACE_CLASS transp
+    {
         TRANSPARENT = vol1
     }
 
@@ -81,32 +88,42 @@ class to all concentric shells. This method allows you to modify surface
 meshes without ever needing to touch the (often large) mesh files themselves.
 Create a file called **spherical_shells.mod_surf_regions.mdl** with the following text::
 
-    MODIFY_SURFACE_REGIONS {
-            Sphere_1[all] {
+    MODIFY_SURFACE_REGIONS
+    {
+            Sphere_1[all]
+            {
                     SURFACE_CLASS = transp
             }
-            Sphere_2[all] {
+            Sphere_2[all]
+            {
                     SURFACE_CLASS = transp
             }
-            Sphere_3[all] {
+            Sphere_3[all]
+            {
                     SURFACE_CLASS = transp
             }
-            Sphere_4[all] {
+            Sphere_4[all] 
+            {
                     SURFACE_CLASS = transp
             }
-            Sphere_5[all] {
+            Sphere_5[all] 
+            {
                     SURFACE_CLASS = transp
             }
-            Sphere_6[all] {
+            Sphere_6[all] 
+            {
                     SURFACE_CLASS = transp
             }
-            Sphere_7[all] {
+            Sphere_7[all] 
+            {
                     SURFACE_CLASS = transp
             }
-            Sphere_8[all] {
+            Sphere_8[all] 
+            {
                     SURFACE_CLASS = transp
             }
-            Sphere_9[all] {
+            Sphere_9[all] 
+            {
                     SURFACE_CLASS = transp
             }
     }
@@ -117,7 +134,8 @@ molecular concentration in each shell. To do so, create a file called
 
     sprintf(seed,"%03g", SEED)
 
-    REACTION_DATA_OUTPUT {
+    REACTION_DATA_OUTPUT 
+    {
         OUTPUT_BUFFER_SIZE = 200
         STEP = 1e-6
         {COUNT [vol1, World.Sphere_1]} => "./react_data/inner_sphere."&seed&".dat"
@@ -142,10 +160,12 @@ molecular concentration in each shell. To do so, create a file called
 
 Lastly, create a file called **spherical_shells.viz_output.mdl** with the following text::
 
-    VIZ_OUTPUT {
+    VIZ_OUTPUT 
+    {
         MODE = ASCII
         FILENAME = "./viz_data/spherical_shells"
-        MOLECULES {
+        MOLECULES 
+        {
             NAME_LIST {ALL_MOLECULES}
             ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}
         }   
@@ -178,7 +198,6 @@ of the output files you would like to process, e.g. *shell_1*.
 Then, run the command::
 
     python avg_seeds.py
-
 
 It is very instructive to plot the ratio of the variance to the mean
 number of molecules in each shell. To do so, create a file called 
