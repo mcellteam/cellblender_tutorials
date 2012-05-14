@@ -25,7 +25,10 @@ The example shown above is a very simple case where the reaction only changes on
 
 Save the file and quit.
 
-Open **sc_rxns.reactions.mdl**, go to the reaction section and change the rate to **"rxn_rate.txt"** (with quotations), like in the following::
+Open **sc_rxns.reactions.mdl**, go to the reaction section and change the rate to **"rxn_rate.txt"** (with quotations), like in the following:
+
+.. code-block:: none
+    :emphasize-lines: 3,4
 
     DEFINE_REACTIONS
     {

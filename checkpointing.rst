@@ -18,7 +18,10 @@ We'll cover how to set up checkpointing in the next two sections, starting with 
 
 Creating the MDL
 ---------------------------------------------
-inside of **/home/user/mcell_tutorial**, create a directory called **change_dc**. Inside that directory, create a file called **change_dc1.mdl**. Add the following text to that file::
+Inside of **/home/user/mcell_tutorial**, create a directory called **change_dc**. Then within that directory, create a file called **change_dc1.mdl**. Add the following text to that file:
+
+.. code-block:: none
+    :emphasize-lines: 1-3
 
     CHECKPOINT_INFILE = "dc_chkpt"
     CHECKPOINT_OUTFILE = "dc_chkpt"
@@ -53,7 +56,7 @@ inside of **/home/user/mcell_tutorial**, create a directory called **change_dc**
         }   
     } 
 
-:index:`\ <single:CHECKPOINT_INFILE>` :index:`\ <single:CHECKPOINT_OUTFILE>` :index:`\ <single:CHECKPOINT_ITERATIONS>` There are three new commands in this file: **CHECKPOINT_INFILE**, **CHECKPOINT_OUTFILE**, and **CHECKPOINT_ITERATIONS**. As we mentioned earlier, checkpointing allows you to stop a simulation and resume it later. This is accomplished by means of a checkpoint file that is written (**CHECKPOINT_OUTFILE**) when the simulation is temporarily stopped and later read (**CHECKPOINT_INFILE**) when the simulation is resumed. The value assigned to these two commands is the name of the file that is written or read. In this case, they both have the same name, although that is not required. **CHECKPOINT_ITERATIONS** indicates at what iteration the simulation is temporarily stopped and the checkpoint file is created.
+:index:`\ <single:CHECKPOINT_INFILE>` :index:`\ <single:CHECKPOINT_OUTFILE>` :index:`\ <single:CHECKPOINT_ITERATIONS>` There are three new commands in this file (which have been highlighted): **CHECKPOINT_INFILE**, **CHECKPOINT_OUTFILE**, and **CHECKPOINT_ITERATIONS**. As we mentioned earlier, checkpointing allows you to stop a simulation and resume it later. This is accomplished by means of a checkpoint file that is written (**CHECKPOINT_OUTFILE**) when the simulation is temporarily stopped and later read (**CHECKPOINT_INFILE**) when the simulation is resumed. The value assigned to these two commands is the name of the file that is written or read. In this case, they both have the same name, although that is not required. **CHECKPOINT_ITERATIONS** indicates at what iteration the simulation is temporarily stopped and the checkpoint file is created.
 
 Now make a copy of **change_dc1.mdl** called **change_dc2.mdl** by entering the command::
 

@@ -39,14 +39,20 @@ Under **CellBlender Project Settings**, select **Export CellBlender Project**. N
 Annotating the MDL
 ---------------------------------------------
 
-Now create a file called **clamp_conc.surface_classes.mdl** with the following text::
+Now create a file called **clamp_conc.surface_classes.mdl** with the following text:
+
+.. code-block:: none
+    :emphasize-lines: 3
 
     DEFINE_SURFACE_CLASSES 
     {
         clamp_sc {CLAMP_CONC vol1 = 1E-5}
-    }  
+    }
 
-Now create a file called **clamp_conc.mod_surf_regions.mdl** with the following text::
+Now create a file called **clamp_conc.mod_surf_regions.mdl** with the following text:
+
+.. code-block:: none
+    :emphasize-lines: 5
 
     MODIFY_SURFACE_REGIONS 
     {
@@ -56,7 +62,10 @@ Now create a file called **clamp_conc.mod_surf_regions.mdl** with the following 
         }
     }
 
-Finally, create a file called **clamp_conc.rxn_output.mdl** with the following text::
+Finally, create a file called **clamp_conc.rxn_output.mdl** with the following text:
+
+.. code-block:: none
+    :emphasize-lines: 4
 
     REACTION_DATA_OUTPUT 
     {

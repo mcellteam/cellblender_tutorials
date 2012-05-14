@@ -4,7 +4,10 @@
 Release Patterns
 *********************************************
 
-Release patterns allow you to release molecules at specified time intervals. One thing this can be useful for is simulating a synaptic vesicle releasing neurotransmitter. First, create a directory called **release_pattern** in the main tutorial directory. Inside the new directory, create a file called **release_pattern.mdl** and add the following text to it::
+Release patterns allow you to release molecules at specified time intervals. One thing this can be useful for is simulating a synaptic vesicle releasing neurotransmitter. First, create a directory called **release_pattern** in the main tutorial directory. Inside the new directory, create a file called **release_pattern.mdl** and add the following text to it:
+
+.. code-block:: none
+    :emphasize-lines: 6-13, 28
 
     time_step = 1E-6 
     iterations = 1000 
