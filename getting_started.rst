@@ -42,11 +42,11 @@ Hit the **Object** button in the **Properties Editor**. Scroll to the bottom of 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_region.png
 
-Expand the **Define Surface Regions** panel. Hit the **+** button and **New Region** should appear in the list of regions. 
+Expand the **Define Surface Regions** panel. Hit the **+** button and **New Region** should appear in the list of regions, indicating that a new surface region was created.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/top.png
 
-Change the text field which reads **New Region** to **top**. 
+To rename the surface region, change the text field which reads **New Region** to **top**.
 
 .. _assign_region:
 
@@ -65,7 +65,7 @@ Then, hit **Ctrl-Tab** and select **Face**. Then while **holding Shift**, **righ
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/assign.png
 
-Under the **Define Surface Regions** panel, click **Assign**. With the cursor over the **3D View Editor**, hit **Tab** to change back into **Object Mode**.
+Under the **Define Surface Regions** panel, click **Assign**. These top two faces now have the **top** surface region applied to them. With the cursor over the **3D View Editor**, hit **Tab** to change back into **Object Mode**.
 
 .. _set_parameters:
 
@@ -82,25 +82,42 @@ Expand the **Model Objects** panel. With the **Cube** object still selected, hit
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/model_init.png
 
-Expand the **Model Initialization** panel. Change **Simulation Iterations** to **1000**. Change **Simulation Time Step** to **5e-6**.
+Expand the **Model Initialization** panel. Change **Simulation Iterations** to **1000**. Change **Simulation Time Step** to **5e-6**. The units are in seconds.
+
+Define Molecules
++++++++++++++++++++++++++++++++++++++++++++++
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_molecules.png
 
-Expand the **Define Molecules** panel and hit the **+** button three times. This will create three instances of **New Molecule** in the list of molecules.
+We will now define three new molecule species. Expand the **Define Molecules** panel and hit the **+** button three times. This will create three instances of **New Molecule** in the list of molecules.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_molecules.png
 
-Left click on the first instance of **New Molecule**. Change the **Molecule Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the **Diffusion Constant** to **1e-6**. Repeat this process for the next molecule in the list, but call this one **vol2**. Finally, change the third entry to **surf1** and the **Diffusion Constant** to **1e-7**.
+Left click on the first instance of **New Molecule**. Change the **Molecule Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the **Diffusion Constant** to **1e-6**. Repeat this process for the next molecule in the list, but call this one **vol2**. Now, change the third entry to **surf1**. The **Molecule Type** should be set to **Surface Molecule** and change the **Diffusion Constant** to **1e-7**.
+
+Define Reactions
++++++++++++++++++++++++++++++++++++++++++++++
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_reactions.png
 
-Expand the **Define Reaction** panel and hit the **+** button. Change **Reactants** to **vol1' + surf1,**. Change **Products** to **surf1, + vol2,**. Be sure to use the commas and apostrophes show in these examples. The meaning of these symbols will be explained in the :ref:`rxn_dir` section. Change **Forward Rate** to **1e8**.
+In order to have our molecules interact with one another, we first need to define some reactions. Expand the **Define Reaction** panel and hit the **+** button. Change **Reactants** to **vol1' + surf1,**. Change **Products** to **surf1, + vol2,**. Be sure to use the commas and apostrophes show in these examples. The meaning of these symbols will be explained in the :ref:`rxn_dir` section. Lastly, change **Forward Rate** to **1e8**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/molecule_release.png
+Create Release Sites
++++++++++++++++++++++++++++++++++++++++++++++
 
-Expand the **Molecule Release/Placement** panel and hit the **+** button twice, which will create two instances of **New Release Site**. Select the first instance, and change **Site Name** to **vol1_rel**. Change **Molecule** to **vol1**. Change **Release Shape** to **Object/Region**. Change **Object/Region** to **Cube**. Change **Quantity to Release** to **2000**.
+We have defined molecules and reactions, but we still need to release some molecules into our simulation.
 
-Now select the second release site. Change **Site Name** to **surf1_rel**. Change **Molecule** to **surf1'**. Change **Release Shape** to **Object/Region**. Change **Object/Region** to **Cube[top]**. Change **Quantity to Release** to **2000**.
+Expand the **Molecule Release/Placement** panel and hit the **+** button twice, which will create two instances of **New Release Site**. 
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/vol1_rel.png
+
+Select the first instance, and change **Site Name** to **vol1_rel**. Change **Molecule** to **vol1**. Change **Release Shape** to **Object/Region**. Change **Object/Region** to **Cube**. Change **Quantity to Release** to **2000**. This will release 2000 **vol1** molecules randomly throughout the interior of the **Cube** object.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/surf1_rel.png
+
+Now select the second release site. Change **Site Name** to **surf1_rel**. Change **Molecule** to **surf1'**. Change **Release Shape** to **Object/Region**. Change **Object/Region** to **Cube[top]**. Change **Quantity to Release** to **2000**. This will release **2000** molecules randonmly on the **top** surface region.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/rxn_viz_output.png
 
 Under **Reaction Output Settings**, enable **Include Reaction Output**. Then, under **Visualization Output Settings**, enable **Include Viz Output**.
 
@@ -109,9 +126,17 @@ Under **Reaction Output Settings**, enable **Include Reaction Output**. Then, un
 Export MDLs
 ---------------------------------------------
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/export.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_project_dir_pt1.png
 
-Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/intro** where **user** is your user name) and hit **OK** when it prompts you to make a new directory. Then select **Set Project Directory**. Set the **Project Base** to **intro**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_project_dir_pt2.png
+
+Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/intro** where **user** is your user name) and hit **OK** when it prompts you to make a new directory. Then select **Set Project Directory**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/project_base_prefix.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/export_mcell_mdl.png
+
+Set the **Project Base** to **intro**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
 Either leave Blender open or save and quit, as we'll need to modify this model later.
 
