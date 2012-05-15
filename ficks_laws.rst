@@ -214,8 +214,8 @@ cylinder remains constant (How would you determine if you reached
 steady state?). Start with 1000 iterations initially and see if
 this is enough. At this point it is **crucial** (as always really)
 to load your model into blender and make sure everything looks fine.
-You can use *gnuplot* for plotting: On the command line type *gnuplot*
-and the enter for example::
+You can use *gnuplot* for plotting: On the command line type ``gnuplot``
+and enter::
 
     gnuplot> plot "react_data/001_vm_Cylinder.dat"
 
