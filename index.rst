@@ -25,8 +25,8 @@ The completed project files for sections 1-13 can be downloaded here_. You will 
 
    software
    getting_started
-   annotate
-   examine_output
+   examine_annotate
+   visualize_plot
    surface_classes
    variable_rxn_rates
    surf_class_surf_mol
