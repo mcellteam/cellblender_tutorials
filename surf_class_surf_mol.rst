@@ -35,7 +35,7 @@ Click on the first one and change its name in the text field to **top**. Next, c
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/right_click.png
 
-Move your cursor to the **3D View* window and hit **Tab** to switch into **Edit Mode**.  Hit **Ctrl-T** to triangulate the faces. Then hit **Ctrl-Tab** and select **Face**. Right click on the top faces, select the **top** surface region, and click **Assign**. Next move your mouse back to the **3D View** window and hold the middle mouse button down and drag upward so that the bottom face is shown. Right click on the bottom faces, select **bottom** from the list of materials, and click **Assign**.
+Move your cursor to the **3D View** window and hit **Tab** to switch into **Edit Mode**.  Hit **Ctrl-T** to triangulate the faces. Then hit **Ctrl-Tab** and select **Face**. Right click on the top faces, select the **top** surface region, and click **Assign**. Next move your mouse back to the **3D View** window and hold the middle mouse button down and drag upward so that the bottom face is shown. Right click on the bottom faces, select **bottom** from the list of materials, and click **Assign**.
 
 Expand the **Model Initialization** panel. Change **Simulation Iterations** to **1000**. Change **Simulation Time Step** to **1e-5**.
 
@@ -43,7 +43,7 @@ Expand the **Define Molecules** panel and hit the **+** button. Change the **Mol
 
 Expand the **Molecule Release/Placement** panel and hit the **+** button. Change **Site Name** to **surf1_rel**. Change **Molecule** to **surf1'**. Change **Release Shape** to **Object/Region**. Change **Object/Region** to **Cube**. Change **Quantity to Release** to **1000**.
 
-Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/sc_sm** where **user** is your user name) and hit **OK** when it prompts you to make a new directory. Then select **Set Project Directory**. Set the **Project Base** to **sc_sm**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to the directory where we will export the files (``/home/user/mcell_tutorial/sc_sm`` where **user** is your user name) and hit **OK** when it prompts you to make a new directory. Then select **Set Project Directory**. Set the **Project Base** to **sc_sm**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
 .. _surf_class_sm_mdl:
 
