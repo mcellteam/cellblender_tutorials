@@ -12,7 +12,10 @@ Examining and Annotating the MDL
 Examining the Main MDL
 ---------------------------------------------
 
-To start out with, open **intro.main.mdl** with your favorite text editor (try gedit or kedit if you aren't sure what to use)::
+Let's take a look at **intro.main.mdl** with your favorite text editor (try gedit or kedit if you aren't sure what to use)
+
+.. code-block:: none
+    :linenos:
 
     ITERATIONS = 1000
     TIME_STEP = 1e-06
@@ -44,9 +47,9 @@ To start out with, open **intro.main.mdl** with your favorite text editor (try g
 
 The first two lines are :ref:`init_commands` that we'll cover in the next section.
 
-:index:`\ <single:INCLUDE_FILE>` **INCLUDE_FILE** commands let you break up MDLs into multiple sections. **intro.molecules.mdl** contains molecule definitions, **intro.reactions.mdl** contains reaction definitions, and **intro.geometry.mdl** contains the the vertices and faces that make up our **Cube**.
+:index:`\ <single:INCLUDE_FILE>` **INCLUDE_FILE** commands let you break up MDLs into multiple sections. Examples of this can be seen on lines 4-8. **intro.molecules.mdl** contains molecule definitions, **intro.reactions.mdl** contains reaction definitions, and **intro.geometry.mdl** contains the the vertices and faces that make up our **Cube**.
 
-In addition to simply *including* meshes, you also have to :index:`\ <single:INSTANTIATE>` **INSTANTIATE** meshes to make them exist and interact in the simulation. You can see we're also instantiating another type of object called a **RELEASE_SITE**, which we'll discuss later in the :ref:`rel_sites` section.
+In addition to simply *including* meshes, you also have to :index:`\ <single:INSTANTIATE>` **INSTANTIATE** meshes to make them exist and interact in the simulation, starting on line 10. You can see we're also instantiating another type of object called a **RELEASE_SITE**, which we'll discuss later in the :ref:`rel_sites` section.
 
 .. _init_commands:
 
@@ -102,7 +105,7 @@ Let's take a closer look at **intro.geometry.mdl**::
       }
     }
 
-Mesh objects made in Blender become a **POLYGON_LIST** object in MCell. A **POLYGON_LIST** object consists of two to three sections in MCell: a **VERTEX_LIST**, an **ELEMENT_CONNECTIONS** list, and a **DEFINE_SURFACE_REGIONS** section. A **VERTEX_LIST** is exactly what it sounds like, a list of vertices. The **ELEMENT_CONNECTIONS** list defines the faces of the triangles. Each number in the list is an index to a single vertex defined in the **VERTEX_LIST**. Each set of three numbers (e.g. **[ 0, 1, 2 ]**) tells which vertices are connected together to form a single face. **DEFINE_SURFACE_REGIONS** is optional, unless you want to specify specify surface regions. Each number in the **ELEMENT_LIST** is an index to a triangle in **ELEMENT_CONNECTIONS**.
+Mesh objects made in Blender become a **POLYGON_LIST** object in MCell. A **POLYGON_LIST** object consists of two to three sections in MCell: a **VERTEX_LIST**, an **ELEMENT_CONNECTIONS** list, and optionally a **DEFINE_SURFACE_REGIONS** section. A **VERTEX_LIST** is exactly what it sounds like, a list of vertices. The **ELEMENT_CONNECTIONS** list defines the faces of the triangles. Each number in the list is an index to a single vertex defined in the **VERTEX_LIST**. Each set of three numbers (e.g. **[ 0, 1, 2 ]**) tells which vertices are connected together to form a single face. **DEFINE_SURFACE_REGIONS** is optional, unless you want to specify specify surface regions. Each number in the **ELEMENT_LIST** is an index to a triangle in **ELEMENT_CONNECTIONS**.
 
 Molecule Definitions
 ---------------------------------------------
@@ -206,7 +209,7 @@ The **SHAPE** of the release determines what object (or region of an object) tha
 
 **MOLECULE** determines what molecule is released. If it is a surface molecule, an orientation is also specified This is similar to what's described in :ref:`rxn_dir`, but it is not relative. A tick means that the **TOP** of the molecule is aligned with the **FRONT** of the surface, and a comma means that the **TOP** is aligned with the **BACK** of the surface.
 
-**NUMBER_TO_RELEASE** gives an absolute number of molecules to be released. Alternatively, one could define a **CONCENTRATION** or **DENSITY**.
+**NUMBER_TO_RELEASE** gives an absolute number of molecules to be released. Alternatively, one could define a **CONCENTRATION** (for volume molecules) or **DENSITY** (for surface molecules).
 
 These two release sites together will release 1000 **vol1** molecules randomly throughout the inside of **World.Cube** and also 5000 **surf1** molecules randomly on the **top** surface region of **World.Cube**. Also, the **TOP** of **surf1** will be aligned with the **FRONT** of the surface.
 
@@ -231,7 +234,7 @@ For these last two sections, we'll actually be hand editing some mdls. First, cr
         }   
     }
 
-The :index:`\ <single:VIZ_OUTPUT>` **VIZ_OUTPUT** section specifies what visualization data to export and at what time values. Right now, it is set to export everything. 
+The :index:`\ <single:VIZ_OUTPUT>` **VIZ_OUTPUT** section specifies what visualization data to export and at what time values. Right now, it is set to export everything at all iterations. 
 
 Reaction Data
 ---------------------------------------------
