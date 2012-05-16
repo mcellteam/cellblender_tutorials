@@ -27,8 +27,8 @@ There are many tools available for plotting and analyzing data. We will make use
 
     VIZ_OUTPUT 
     {
-        VIZ_MOLECULE_FORMAT = ASCII
-        FILENAME = "hist" 
+        MODE = ASCII
+        FILENAME = "./viz_data/hist" 
         MOLECULES 
         { 
             NAME_LIST {ALL_MOLECULES}
@@ -47,11 +47,11 @@ Create a file called **hist.py** and copy the following text into it::
     #!/usr/bin/env python
 
     import numpy as np
-    import matplotlib.pyplot as plt 
+    import matplotlib.pyplot as plt
 
-    mol_pos_file = "./hist_viz_data/frame_data/iteration_1000/vol1.positions.dat"
+    mol_pos_file = "./viz_data/hist.ascii.1000.dat"
     data = np.genfromtxt(mol_pos_file)   # open molecule positions as 2d array
-    data = data[:, 0]                    # create array from 1st column (X pos)
+    data = data[:, 1]                    # create array from 1st column (X pos)
     print('The min is: %.3f' % np.min(data))
     print('The max is: %.3f' % np.max(data))
     print('The mean is: %.3f' % np.mean(data))
@@ -61,14 +61,14 @@ Create a file called **hist.py** and copy the following text into it::
     plt.ylabel('Molecules')              # add an y-axis label
     plt.show()                           # plot the data
 
-Although the comments explain what is happening, let's break it down as simply as possible. The file **vol1.positions.dat** contains the positions of each vol1 molecule at an iteration specified by the directory (e.g. **iteration_1000**). Every line of the file contains three numbers each separated by a space. These numbers represent the x, y, and z locations. Here are what the first few lines of **vol.positions.dat** in the **iteration_1000** directory look like::
+Although the comments explain what is happening, let's break it down as simply as possible. The file **hist.ascii.1000.dat** contains the positions of each vol1 molecule at an iteration specified by the directory (e.g. **iteration_1000**). Every line of the file contains the molecule name and six numbers each separated by a space. The first three numbers represent the x, y, and z locations. The final three numbers are irrlevent for our example here, but would represent a vertex normal if this was a surface molecule  Here are what the first few lines of **hist.ascii.1000.dat** in the **iteration_1000** directory look like::
 
-    -0.258572 0.15827 -0.0314231 
-    0.0452288 -0.0677351 0.037688 
-    -0.0572103 0.0192047 -0.0370933 
-    0.0644877 0.230798 -0.0415339 
+    vol1 -0.258572021 0.158270489 -0.0314231251 0 0 0
+    vol1 0.0452288224 -0.0677351003 0.0376879626 0 0 0
+    vol1 -0.057210324 0.0192047082 -0.0370933238 0 0 0
+    vol1 0.0644877278 0.230797784 -0.0415339173 0 0 0
 
-We are loading **vol1.positions.dat** into a two dimensional array called **data**. We then "slice" the first column which contains all the X locations. We then print the min, max, mean, and standard deviation to the command line. Lastly, we create the histogram with labels and plot (or show) it.
+We are loading **hist.ascii.1000.dat** into a two dimensional array called **data**. We then "slice" the second column which contains all the X locations. Next, we print the min, max, mean, and standard deviation to the command line. Lastly, we create the histogram with labels and plot (or show) it.
 
 Run the file now by typing::
 
