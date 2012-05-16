@@ -68,11 +68,11 @@ Exporting the Project
 ---------------------
 
 We will now export these mdls. Under **CellBlender Project Settings**, 
-set the **Project Base Name** to *ficks_law*. Then hit
+set the **Project Base Name** to **ficks_law**. Then hit
 **Export CellBlender Project**, select a directory to save your
 project to, and hit **Export MCell MDL**.
 
-Also, make sure to save your project as a *.blend* project file
+Also, make sure to save your project as a **.blend** project file
 via **File->Save As** and giving it a meaningful name.
 
 .. _fick_annotate: 
@@ -101,11 +101,11 @@ the following MDL commands (you will have to change the existing
     PARTITION_Z = [[-0.3 TO 0.3 STEP .05]]
 
 Make sure you understand what these variables and MDL commands mean. Can
-you guess why we introduce separate *iterations* and *dt* variables? Also,
+you guess why we introduce separate **iterations** and **dt** variables? Also,
 since we do not have any reactions in our model comment out the line
 which includes the reactions (**ficks_law.reactions.mdl**).
 Next, open the file **ficks_law.molecules.mdl** and change the diffusion 
-coefficient of our *vm* molecule to *dc*::
+coefficient of our **vm** molecule to **dc**::
 
     DEFINE_MOLECULES {
             vm {DIFFUSION_CONSTANT_3D = dc} 
@@ -132,7 +132,7 @@ template given below yourself::
 
 Now, we need to do some serious modifications to our existing geometry.
 Both the sampling cylinders and sampling planes need to be made 
-transparent to *vm* (why?). Also, we need to install the surface clamp
+transparent to **vm** (why?). Also, we need to install the surface clamp
 at the left end of the big cylinder and make sure molecules are absorbed
 at the right. Below is a template for a **MODIFY_SURFACE_REGIONS** block
 that you will have to complete yourself. Create the file 
@@ -214,7 +214,7 @@ cylinder remains constant (How would you determine if you reached
 steady state?). Start with 1000 iterations initially and see if
 this is enough. At this point it is **crucial** (as always really)
 to load your model into blender and make sure everything looks fine.
-You can use *gnuplot* for plotting: On the command line type ``gnuplot``
+You can use **gnuplot** for plotting: On the command line type ``gnuplot``
 and enter::
 
     gnuplot> plot "react_data/001_vm_Cylinder.dat"
@@ -230,7 +230,7 @@ General Comments
 ----------------
 
 As the concentration gradient is evolving along x, we wish to determine 
-the rate of change in concentration (dC/dt) at each time point for the 
+the rate of change in concentration (:math:`dC/dt`) at each time point for the 
 central sampling volume composed of the two subvolumes numbered 20 and 21. 
 To see this clearly, you will probably want to run a series of simulations 
 using different random number seeds, so you can average your results. 
@@ -356,13 +356,13 @@ Exercise 3
 
 Now we wish to calculate :math:`dC/dt` based on Fick’s 2nd Law (make sure 
 you understand how). For this we need to estimate the value of 
-:math:`d$^2$C/dx$^2$` across the sampling volume, i.e., across subvolumes 20 
+:math:`d^2C/dx^2` across the sampling volume, i.e., across subvolumes 20 
 and 21. Hence, you will need to determine :math:`dC/dx` at plane 19, as well 
 as dC/dx at plane 21, and then find the difference to obtain 
-:math:`d$^2$C/dx$^2$`. To do this you will need to determine the 
+:math:`d^2C/dx^2`. To do this you will need to determine the 
 concentration in subvolumes 19 and 22, as well as in subvolumes 20 and 21. 
-Finally multiply by the diffusion coefficient $D$.
-Once you have calculated :math:`d$^2$C/dx$^2$` using COUNT statements, you
+Finally multiply by the diffusion coefficient D.
+Once you have calculated :math:`d^2C/dx^2` using COUNT statements, you
 can output the result, and again use the python script from above for
 averaging, smoothing and differentiating. 
 
