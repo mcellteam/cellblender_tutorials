@@ -66,7 +66,10 @@ Although unrelated to partitions, note that instead of creating a **Cube** objec
 Target Only
 ---------------------------------------------
 
-If you have a reaction between two molecules in which there are many of one molecule and very few of another, you might want to consider using the **TARGET_ONLY** command. Normally, a diffusing molecule will check to see if there are any potential molecules to react with. However, a molecule that is marked as **TARGET_ONLY** can only be the target of a reaction, and will not search for partners to react with. Create a directory called **target_only**. In that new directory, copy the following text into a file called **target_only.mdl**::
+If you have a reaction between two molecules in which there are many of one molecule and very few of another, you might want to consider using the **TARGET_ONLY** command. Normally, a diffusing molecule will check to see if there are any potential molecules to react with. However, a molecule that is marked as **TARGET_ONLY** can only be the target of a reaction, and will not search for partners to react with. Create a directory called **target_only**. In that new directory, copy the following text into a file called **target_only.mdl**
+
+.. code-block:: none
+    :emphasize-lines: 9
 
     iterations = 500
     time_step = 5e-6
@@ -109,7 +112,10 @@ In this case, **vol2** is marked as being **TARGET_ONLY** in the **DEFINE_MOLECU
 Only Export What You Need
 ---------------------------------------------
 
-Visualization data can be great if you are making a figure to accompany a paper, or you are trying to troubleshoot a problem in your simulation, but there's probably no need to export everything at all times (**ALL_DATA @ ALL_ITERATIONS**). You could either comment out the **VIZ_OUTPUT** section entirely when you don't need it or only export what you need. This can speed up your simulation and save you disk space. The following **VIZ_OUPUT** sections illustrates how to selectively export visualization data::
+Visualization data can be great if you are making a figure to accompany a paper, or you are trying to troubleshoot a problem in your simulation, but there's probably no need to export everything at all times (**ALL_DATA @ ALL_ITERATIONS**). You could either comment out the **VIZ_OUTPUT** section entirely when you don't need it or only export what you need. This can speed up your simulation and save you disk space. The following **VIZ_OUPUT** sections illustrates how to selectively export visualization data.
+
+.. code-block:: none
+    :emphasize-lines: 7,8
 
     VIZ_OUTPUT 
     {
@@ -122,7 +128,7 @@ Visualization data can be great if you are making a figure to accompany a paper,
         }   
     }   
 
-The line **NAME_LIST {vol1}** indicates that we will only be exporting the molecule named **vol1**. The following line indicates that we will export it from iterations 100 to 200 at every 10 steps (i.e. 100, 110, ... 190, 200). The **MESHES** section was also omitted entirely. 
+The line **NAME_LIST {vol1}** indicates that we will only be exporting the molecule named **vol1**. The following line indicates that we will export it from iterations 100 to 200 at every 10 steps (i.e. 100, 110, ... 190, 200).
 
 These are just examples of what you can do, and the actual list of molecules, meshes, and iterations that you export will depend entirely on your own needs for your specific simulation.
 
