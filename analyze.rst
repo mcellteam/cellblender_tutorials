@@ -61,7 +61,7 @@ Create a file called **hist.py** and copy the following text into it::
     plt.ylabel('Molecules')              # add an y-axis label
     plt.show()                           # plot the data
 
-Although the comments explain what is happening, let's break it down as simply as possible. The file **hist.ascii.1000.dat** contains the positions of each vol1 molecule at an iteration specified by the directory (e.g. **iteration_1000**). Every line of the file contains the molecule name and six numbers each separated by a space. The first three numbers represent the x, y, and z locations. The final three numbers are irrlevent for our example here, but would represent a vertex normal if this was a surface molecule  Here are what the first few lines of **hist.ascii.1000.dat** in the **iteration_1000** directory look like::
+Although the comments explain what is happening, let's break it down as simply as possible. The file **hist.ascii.1000.dat** contains the positions of each vol1 molecule at an iteration specified by the directory (e.g. **iteration_1000**). Every line of the file contains the molecule name and six numbers each separated by a space. The first three numbers represent the x, y, and z locations. The final three numbers are irrelevant for our example here, but would represent a vertex normal if this was a surface molecule  Here are what the first few lines of **hist.ascii.1000.dat** in the **iteration_1000** directory look like::
 
     vol1 -0.258572021 0.158270489 -0.0314231251 0 0 0
     vol1 0.0452288224 -0.0677351003 0.0376879626 0 0 0
