@@ -106,11 +106,7 @@ This script will load (and plot) each of the twenty **vol1.####.dat** files into
 
 Run the first script by typing the following commands::
 
-    python run_seeds.py
-
-When prompted, enter::
-
-    seed.mdl
+    python run_seeds.py seed.mdl
 
 Finally, run the second script by typing::
 

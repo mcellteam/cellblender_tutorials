@@ -42,11 +42,11 @@ exported your project as MDL.
 Annotating the MDL
 -----------------------------------------------------
 
-We will now add additional MDL commands to the files exported by CellBlender 
-that is needed to count the molecules as they pass through the spherical
+We will now add additional MDL commands to the files exported by CellBlender.
+These commands will allow us to count the molecules as they pass through the spherical
 shells. Since in this case we would also like to output the molecular 
 concentrations in addition to raw counts we first compute the volume 
-(in cubic microns) of each shell. This, add the following variables at 
+(in cubic microns) of each shell. Add the following variables to 
 the beginning of your **spherical_shells.main.mdl**::
 
     vol_1 = 0.00415274 /* cubic microns */
@@ -73,6 +73,8 @@ the beginning of your **spherical_shells.main.mdl**::
     PARTITION_Z = [[-0.501 TO 0.501 STEP 0.04]]
 
 
+*Note*: You can find any of the shell volumes yourself by using the **Mesh Analysis** panel in CellBlender
+
 Since meshes (including our concentric shells) are by default reflective to
 all diffusion molecules we need to make them transparent via a surface
 class. Thus, create a file called **spherical_shells.surface_classes.mdl** 
@@ -83,8 +85,7 @@ with the following content::
         TRANSPARENT = vol1
     }
 
-Next, we use the **MODIFY_SURFACE_REGIONS** modifier to apply this surface
-class to all concentric shells. This method allows you to modify surface
+Next, we can apply this surface class to all concentric shells in the **MODIFY_SURFACE_REGIONS** section. This method allows you to modify surface
 meshes without ever needing to touch the (often large) mesh files themselves.
 Create a file called **spherical_shells.mod_surf_regions.mdl** with the following text::
 
@@ -183,13 +184,9 @@ Otherwise, create both of the scripts listed in :ref:`seed` right now.
 
 Run the first script by typing::
 
-    python run_seeds.py
+    python run_seeds.py spherical_shells.main.mdl
 
-When prompted, enter::
-
-    spherical_shells.main.mdl
-
-First, load your model into CellBlender and check that the simulation
+First, load your visualization data into CellBlender and check that the simulation
 proceeded as expected. Next, we can use the *avg_seeds.py* script to 
 read the reaction output for each of the shells and plot the data as 
 well as the average. To
@@ -280,7 +277,8 @@ Next, we create a surface class that will be used to render the inner
 box transparent to *vol1* molecules. Create a file called 
 **sampling_box.surface_classes.mdl** and paste the following text into it::
 
-    DEFINE_SURFACE_CLASS transp {
+    DEFINE_SURFACE_CLASS transp
+    {
        TRANSPARENT = vol1
     }
 
@@ -288,17 +286,20 @@ We can apply this surface class to the sampling box via a
 **MODIFY_SURFACE_REGIONS** block. Create a file called 
 **sampling_box.mod_surf_regions.mdl** with the following text::
 
-    MODIFY_SURFACE_REGIONS {
-            sampling_box[all] {
-                    SURFACE_CLASS = transp
-            }
+    MODIFY_SURFACE_REGIONS
+    {
+        sampling_box[all]
+        {
+                SURFACE_CLASS = transp
+        }
     }
 
 Next, let's output the counts of volume molecules in the large and
 sampling boxes. To do so create a file called 
 **sampling_box.rxn_output.mdl** like this::
 
-    REACTION_DATA_OUTPUT {
+    REACTION_DATA_OUTPUT
+    {
        OUTPUT_BUFFER_SIZE = 1000  
        STEP = 1e-6 
        {COUNT [vol1, WORLD]} => "./react_data/vol1.dat"
@@ -308,10 +309,12 @@ sampling boxes. To do so create a file called
 Lastly, we output visualization data for display in CellBlender. Thus,
 create a file called **sampling_box.viz_output.mdl** with the following text::
 
-    VIZ_OUTPUT {
+    VIZ_OUTPUT
+    {
         MODE = ASCII
         FILENAME = "./viz_data/sampling_box"
-        MOLECULES {
+        MOLECULES
+        {
             NAME_LIST {ALL_MOLECULES}
             ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}
         }   
