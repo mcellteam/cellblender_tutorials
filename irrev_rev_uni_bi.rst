@@ -7,7 +7,7 @@
 Download the blend files used for these tutorials here_. You will still 
 have to export and modify the mdls created.
 
-.. _here: https://www.mcell.psc.edu/download/files/irrev_rev_uni_bi.tgz
+.. _here: https://www.mcell.org/tutorials/downloads/irrev_rev_uni_bi.tgz
 
 .. _conc_shells:
 

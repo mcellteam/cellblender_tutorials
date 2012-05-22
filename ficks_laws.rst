@@ -35,7 +35,7 @@ Creating the Mesh
 
 Either download the `blend file`_ or follow along with the instructions that follow.
 
-.. _blend file: http://www.mcell.org/workshop2012/tutorials/blends/ficks_law/ficks_law.blend
+.. _blend file: https://www.mcell.org/tutorials/downloads/ficks_law.blend
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/big_cylinder.png
 
