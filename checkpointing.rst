@@ -87,3 +87,43 @@ This is just a simple example of one parameter you can change. Here is a partial
 * reaction rates
 * **SURFACE_CLASS** properties (**ABSORPTIVE**, **TRANSPARENT**, **REFLECTIVE**)
 
+Time Based Checkpointing
+---------------------------------------------
+
+Instead of checkpointing at a specific iteration, you can alternatively create a checkpoint at a set time. To do this, replace **CHECKPOINT_ITERATIONS** with **CHECKPOINT_REALTIME**. The value assigned to this is a series of numbers separated by colons. The units and formatting are illustrated below:
+
+* **days:hours:minutes:seconds**
+* **hours:minutes:seconds**
+* **minutes:seconds**
+* **seconds**
+
+For example, if you set **CHECKPOINT_REALTIME = 1:30**, then the simulation would create a checkpoint after running for 1 minute and 30 seconds. Or if you set **CHECKPOINT_ITERATIONS = 2:6:3:40**, then the simulation would create a checkpoint after running for 2 days, 6 hours, 3 minutes, and 40 seconds.
+
+If you want the simulation to automatically continue running after writing a checkpoint file, you have to put the keyword **NOEXIT** at the end of the **CHECKPOINT_REALTIME** command, like this: **CHECKPOINT_REALTIME = 1:30 NOEXIT**.
+
+You will know that a checkpoint file has been created, because MCell will report something like this while it is running::
+
+    MCell: time = 1098, writing to checkpoint file chkpt (periodic).
+
+Checkpointing with SIGUSR1 and SIGUSR2
+---------------------------------------------
+
+Sometimes, you need to end a simulation *right now*, but a lot of time can be wasted if you haven't checkpointed recently. To deal with this problem, pass the **SIGUSR1** or **SIGUSR2** flags to the **kill** command along with MCell's PID. If you use **SIGUSR1**, MCell will create a checkpoint and continue running. If you use **SIGUSR2**, MCell will create a checkpoint and end the simulation. You can use the **top** or **ps** commands to find MCell's PID. For example, if your MCell executable is called **mcell**, then type the following command while MCell is running::
+
+    ps -e | grep mcell
+
+This will output something similar to this::
+
+    7984 pts/4    00:00:10 mcell
+
+The first number listed, **7984**, is the PID. Next, enter the following command (using your own PID in place of **7984**)::
+
+    kill -SIGUSR1 7984
+
+This creates a checkpoint and keeps the simulation running. However, to create a checkpoint and *kill* the simulation, you would enter the following command::
+
+    kill -SIGUSR2 7984
+
+You will know that these worked if MCell reports something like this::
+
+    MCell: time = 1282, writing to checkpoint file chkpt (user signal detected).
