@@ -41,6 +41,7 @@ The completed project files for sections 1-13 can be downloaded here_. You will 
    ficks_laws
    irrev_rev_uni_bi
    rat
+   lotka_volterra
 
 Although no longer actively maintained, the `legacy DReAMM and MCell tutorials`_ are still available. 
 
