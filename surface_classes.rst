@@ -21,7 +21,7 @@ Watch the following video tutorial or follow along with the instructions below.
 .. raw:: html
 
     <video id="my_video_1" class="video-js vjs-default-skin" controls
-      preload="metadata" width="840" height="525" 
+      preload="metadata" width="960" height="540" 
       data-setup='{"example_option":true}'>
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/surf_reg_above.ogg" type='video/ogg'/>
     </video>
