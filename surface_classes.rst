@@ -44,7 +44,7 @@ Change into **Edit Mode** by hitting **Tab** in the **3D View Window**. With the
 
 Hit the **Scene** button on the **Properties** Editor. Under the **Model Objects** panel, hit **+**. Under **Define Surface Classes**, select **Include Surface Classes** and **Include Modify Surface Regions**.
 
-Hit the **Scene** button in the **Properties** Editor. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/sc** where **user** is your user name) and hit **OK** when it prompts you to make a new directory. Then select **Set Project Directory**. Set the **Project Base** to **sc**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to the directory where we will export the files (**/home/user/mcell_tutorial/sc** where **user** is your user name) and hit **OK** when it prompts you to make a new directory. Then select **Set Project Directory**. Set the **Project Base** to **sc**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
 
 .. _surf_class_vm_mod_mdl:
 
