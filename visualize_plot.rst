@@ -21,7 +21,7 @@ Visualize molecules with CellBlender in this video tutorial.
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/viz_data.ogg" type='video/ogg'/>
     </video>
 
-Skip to the next section (:ref:`custom_glyphs`) if you just watched the video tutorial.
+Skip to the :ref:`graph_rxn_data` section if you just watched the video tutorial.
 
 Begin by opening Blender. Then click the **Scene** button. 
 
@@ -43,16 +43,6 @@ Customize Molecule Glyphs
 =============================================
 
 Learn how to use custom glyphs for molecules using CellBlender in this video tutorial.
-
-.. raw:: html
-
-    <video id="my_video_1" class="video-js vjs-default-skin" controls
-      preload="metadata" width="840" height="525" 
-      data-setup='{"example_option":true}'>
-      <source src="http://www.mcell.psc.edu/tutorials/videos/main/custom_glyphs.ogg" type='video/ogg'/>
-    </video>
-
-Skip to the next section (`Graph the Reaction Data`_) if you just watched the video tutorial.
 
 By default, every molecule just shows up as a sphere. This might be fine for volume molecules, but you might one to be able to tell the orientation of your surface molecules, which we can do by using an asymmetrical glyph.
 
