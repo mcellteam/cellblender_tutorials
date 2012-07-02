@@ -16,7 +16,7 @@ Visualize molecules with CellBlender in this video tutorial.
 .. raw:: html
 
     <video id="my_video_1" class="video-js vjs-default-skin" controls
-      preload="metadata" width="840" height="525" 
+      preload="metadata" width="960" height="540" 
       data-setup='{"example_option":true}'>
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/viz_data.ogg" type='video/ogg'/>
     </video>
