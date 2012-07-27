@@ -26,6 +26,10 @@ Let's take a look at **intro.main.mdl** with your favorite text editor (try gedi
 
     INCLUDE_FILE = "intro.geometry.mdl"
 
+    INCLUDE_FILE = "intro.viz_output.mdl"
+
+    INCLUDE_FILE = "intro.rxn_output.mdl"
+
     INSTANTIATE Scene OBJECT
     {
       Cube OBJECT Cube {}
@@ -47,9 +51,9 @@ Let's take a look at **intro.main.mdl** with your favorite text editor (try gedi
 
 The first two lines are :ref:`init_commands` that we'll cover in the next section.
 
-:index:`\ <single:INCLUDE_FILE>` **INCLUDE_FILE** commands let you break up MDLs into multiple sections. Examples of this can be seen on lines 4-8. **intro.molecules.mdl** contains molecule definitions, **intro.reactions.mdl** contains reaction definitions, and **intro.geometry.mdl** contains the the vertices and faces that make up our **Cube**.
+:index:`\ <single:INCLUDE_FILE>` **INCLUDE_FILE** commands let you break up MDLs into multiple sections. Examples of this can be seen on lines 4-12. **intro.molecules.mdl** contains molecule definitions, **intro.reactions.mdl** contains reaction definitions, and **intro.geometry.mdl** contains the the vertices and faces that make up our **Cube**.
 
-In addition to simply *including* meshes, you also have to :index:`\ <single:INSTANTIATE>` **INSTANTIATE** meshes to make them exist and interact in the simulation, starting on line 10. You can see we're also instantiating another type of object called a **RELEASE_SITE**, which we'll discuss later in the :ref:`rel_sites` section.
+In addition to simply *including* meshes, you also have to :index:`\ <single:INSTANTIATE>` **INSTANTIATE** meshes to make them exist and interact in the simulation, starting on line 14. You can see we're also instantiating another type of object called a **RELEASE_SITE**, which we'll discuss later in the :ref:`rel_sites` section.
 
 .. _init_commands:
 
@@ -165,7 +169,7 @@ Surface molecules have a :index:`\ <single:TOP>` **TOP** and a :index:`\ <single
 
 Read this next section carefully, as some people find this syntax confusing at first. If a volume molecule and a surface molecule have their orientations *opposed* (i.e. a tick and a comma), then the volume molecule interacts with the **BOTTOM** of the surface molecule. If a volume molecule and a surface molecule have their orientations *aligned* (i.e. two ticks *or* two commas), then the volume molecule interacts with the **TOP** of the surface molecule. 
 
-For this reaction, **vol1** and **surf1** are opposed (a comma and a tick), and **vol2** and **surf1** are aligned (two ticks). This means that **vol1** will react with the **BOTTOM** of **surf1**, creating **vol2** at the **TOP** of **surf1**. Since **vol1** is not on the products side, it is destroyed when it reacts with **surf1**. Conversely, **surf1** is on both the **reactant** and **product** side, so it will not be destroyed from the reaction.
+For this reaction, **vol1** and **surf1** are opposed (a comma and a tick), and **vol2** and **surf1** are aligned (two commas). This means that **vol1** will react with the **BOTTOM** of **surf1**, creating **vol2** at the **TOP** of **surf1**. Since **vol1** is not on the products side, it is destroyed when it reacts with **surf1**. Conversely, **surf1** is on both the **reactant** and **product** side, so it will not be destroyed from the reaction.
 
 The directionality of these ticks and commas are relative, which means that we could flip the signs and get the same result, like this::
     
