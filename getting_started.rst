@@ -21,7 +21,7 @@ The majority of this tutorial can be easily accomplished by following along with
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/getting_started.ogg" type='video/ogg'/>
     </video>
 
-You can skip to the next section (:ref:`run_sim`) if you have watched the previous video tutorial. Otherwise, follow along with the rest of the directions in this section. 
+You can skip to the :ref:`annotate` section if you have watched the previous video tutorial. Otherwise, follow along with the rest of the directions in this section. 
 
 Open up a terminal and enter the command::
 
