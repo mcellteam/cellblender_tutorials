@@ -28,7 +28,7 @@ Watch the following video tutorial or follow along with the instructions below.
 
 If you watched the previous video tutorial, you can skip ahead to :ref:`surf_class_vm_mod_mdl`.
 
-In order to complete the next section (:ref:`surf_class_vm_mod_mdl`), we first have to make a few simple changes to our Blender model. We'll pick up right where we left off in :ref:`gen_mesh`. Hit **Shift-a** and select **Plane**. Hit **g** to "grab" the plane, **z** to constrain the movement to the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm.
+In order to complete the next section (:ref:`surf_class_vm_mod_mdl`), we first have to make a few simple changes to our Blender model. We'll pick up where we left off at the end of the :ref:`getting_started` section. Hit **Shift-a** and select **Plane**. Hit **g** to "grab" the plane, **z** to constrain the movement to the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/above.png
 
@@ -124,7 +124,7 @@ Watch the following video tutorial or follow along with the instructions below.
 
 If you watched the previous video tutorial, you can skip ahead to :ref:`surf_class_rxns_mdl`.
 
-We need to make a few more changes to our Blender model to complete the next section (:ref:`surf_class_rxns_mdl`). We're picking up where we left off in :ref:`surf_class_vm_mod_mesh`. In fact, the instructions will be very similar, aside from a few minor changes.
+We need to make a few more changes to our Blender model to complete the next section (:ref:`surf_class_rxns_mdl`). We're picking up where we left off at the end of :ref:`surf_class_vm_mod_mesh`. In fact, the instructions will be very similar, aside from a few minor changes.
 
 While still in **Object Mode**, hit **Shift-a**, select **Plane**, and **Enter** to confirm. Hit the **Object** button on the **Properties** Editor. Under the **Surface Regions** panel, hit **+**. 
 
@@ -198,4 +198,4 @@ Save the file and run it with MCell by enterting the command::
 
     mcell sc_rxn.main.mdl
 
-When you visualize the results with CellBlender, want to add in custom rendering properties for **surf2**. You should notice that there are **vol2** molecules being created inside the box, but only in the upper portion of it, despite the fact that the **surf2** molecules are facing both up *and* down. The reason for this is because the reaction is only taking place at the **BACK** of the **empty** surface class with the **BOTTOM** of **surf2**.
+Visualize the results with CellBlender like was done in the :ref:`visualize_molecules` section. You should notice that there are **vol2** molecules being created inside the box, but only in the upper portion of it, despite the fact that the **surf2** molecules are facing both up *and* down. The reason for this is because the reaction is only taking place at the **BACK** of the **empty** surface class with the **BOTTOM** of **surf2**.
