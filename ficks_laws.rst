@@ -33,13 +33,23 @@ But first let's create the mesh for the system.
 Creating the Mesh
 ---------------------------------------------
 
-Either download the `blend file`_ or follow along with the instructions that follow.
+If you would rather skip the mesh creation part, you can simply download the `blend file`_ and advance to the :ref:`fick_annotate` section. Otherwise you should watch the video or follow along with the instructions after the video.
+
+.. raw:: html
+
+    <video id="my_video_1" class="video-js vjs-default-skin" controls
+      preload="metadata" width="960" height="540" 
+      data-setup='{"example_option":true}'>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/ficks_laws.ogg" type='video/ogg'/>
+    </video>
 
 .. _blend file: https://www.mcell.org/tutorials/downloads/ficks_law.blend
 
+Begin by starting Blender. Hit **x** and click **Delete** to delete the default Cube. 
+
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/big_cylinder.png
 
-Begin by starting Blender. Hit **x** and click **Delete** to delete the default Cube. Then, create a cylinder by hitting **Shift-a**, and selecting **Mesh>Cylinder**. Hit **s**, **Shift-z**, **0.2**, and **Enter** to confirm. Hit **r**, **x**, **90**, and **Enter** to rotate it 90 degrees around the x-axis. This will be the main cylinder through which the molecules diffuse. You may want to zoom in to get a better view.
+Then, create a cylinder by hitting **Shift-a**, and selecting **Mesh>Cylinder**. Hit **s**, **Shift-z**, **0.2**, and **Enter** to confirm. Hit **r**, **x**, **90**, and **Enter** to rotate it 90 degrees around the x-axis. This will be the main cylinder through which the molecules diffuse. You may want to zoom in to get a better view.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/left_end_right_end.png
 
@@ -57,7 +67,7 @@ Rename this smaller cylinder from **Cylinder.001** to **C**. Be sure to triangul
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/array.png
 
-Now, we will use Blender's (very useful) **Array** modifier to replicate this sampling cylinder 40 times. To do so, hit the **Object Modifiers** button, and from the **Add Modifier** drop-down box, select **Array**. Change **Count** to **40**. Enable **Absolute Offset** and change the third field under **Absolute Offset** to **-2.01005**. 
+Now, we will use Blender's (very useful) **Array** modifier to replicate this sampling cylinder 40 times. To do so, hit the **Object Modifiers** button, and from the **Add Modifier** drop-down box, select **Array**. Change **Count** to **40**. Deselect **Relative Offset** and select **Constant Offset**. Then change the third field under **Constant Offset** to **-2.01005**. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/loose_parts.png
 
