@@ -28,7 +28,7 @@ immediately after the video.
     <video id="my_video_1" class="video-js vjs-default-skin" controls
       preload="metadata" width="960" height="540" 
       data-setup='{"example_option":true}'>
-      <source src="http://www.mcell.psc.edu/tutorials/videos/main/mapk_mesh.ogg" type='video/ogg'/>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/mapk.ogg" type='video/ogg'/>
     </video>
 
 .. _blend file: https://www.mcell.org/tutorials/downloads/mapk.blend
