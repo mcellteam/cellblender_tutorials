@@ -40,6 +40,7 @@ The completed project files for sections 1-13 can be downloaded here_. You will 
    seed
    ficks_laws
    irrev_rev_uni_bi
+   mapk
    rat
    lotka_volterra
 
