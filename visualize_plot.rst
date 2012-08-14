@@ -4,7 +4,9 @@
 Visualize and Plot the Output
 *********************************************
 
-At the end of the last section, we ran MCell on the MDL that we annotated. This generated visualization and reaction data (i.e. molecule counts), which we will now examine using CellBlender and some plotting software. 
+At the end of the last section, we ran MCell on the MDL that we annotated. This
+generated visualization and reaction data (i.e. molecule counts), which we will
+now examine using CellBlender and some plotting software. 
 
 .. _visualize_molecules:
 
@@ -21,7 +23,8 @@ Visualize molecules with CellBlender in this video tutorial.
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/viz_data.ogg" type='video/ogg'/>
     </video>
 
-Skip to the :ref:`graph_rxn_data` section if you just watched the video tutorial.
+Skip to the :ref:`graph_rxn_data` section if you just watched the video
+tutorial.
 
 Begin by opening Blender. Then click the **Scene** button. 
 
@@ -29,36 +32,57 @@ Begin by opening Blender. Then click the **Scene** button.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/read_molec_files.png
 
-Expand the **Visualize Simulation Results** panel, and click the **Set Molecule Viz Directory** button. Navigate to ``/home/user/mcell_tutorial/intro/viz_data/`` and click **Read Molecule Files**. You should now see a number of molecules populating the surface of the **Cube**. 
+Expand the **Visualize Simulation Results** panel, and click the **Set Molecule
+Viz Directory** button. Navigate to
+``/home/user/mcell_tutorial/intro/viz_data/`` and click **Read Molecule
+Files**. You should now see a number of molecules populating the surface of the
+**Cube**. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/wireframe.png
 
-Let's change the **Cube** to a wireframe view so we can see inside of it. Click the **Object** button on the **Properties Editor**. Under the **Display** panel, change **Type** to **Wire**.
+Let's change the **Cube** to a wireframe view so we can see inside of it. Click
+the **Object** button on the **Properties Editor**. Under the **Display**
+panel, change **Type** to **Wire**.
 
-Drag the green bar on the **Timeline Editor** back and forth to scrub through the simulation. You can see the molecules diffusion in and on surface of the cube, and new molecules being created outside the cube.
+Drag the green bar on the **Timeline Editor** back and forth to scrub through
+the simulation. You can see the molecules diffusion in and on surface of the
+cube, and new molecules being created outside the cube.
 
 .. _custom_glyphs:
 
 Customize Molecule Glyphs
 =============================================
 
-Learn how to use custom glyphs for molecules using CellBlender in this video tutorial.
+Learn how to use custom glyphs for molecules using CellBlender in this video
+tutorial.
 
-By default, every molecule just shows up as a sphere. This might be fine for volume molecules, but you might one to be able to tell the orientation of your surface molecules, which we can do by using an asymmetrical glyph.
+By default, every molecule just shows up as a sphere. This might be fine for
+volume molecules, but you might one to be able to tell the orientation of your
+surface molecules, which we can do by using an asymmetrical glyph.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/outliner1.png
 
-Expand **molecules** in the **Outliner** by clicking the small **+** sign beside it. This expands to reveal **mol_surf1**, **mol_vol1**, and **mol_vol2**. These correspond to the molecules we created in our simulation: **surf1**, **vol1**, and **vol2**. 
+Expand **molecules** in the **Outliner** by clicking the small **+** sign
+beside it. This expands to reveal **mol_surf1**, **mol_vol1**, and
+**mol_vol2**. These correspond to the molecules we created in our simulation:
+**surf1**, **vol1**, and **vol2**. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/outliner2.png
 
-If you click the plus beside each of these, you will see **mol_surf1_shape**, **mol_vol1_shape**, and **mol_vol2_shape**. These are the actual glyph objects that get mapped onto the molecule locations. Select **mol_surf1_shape** in the **Outliner**.
+If you click the plus beside each of these, you will see **mol_surf1_shape**,
+**mol_vol1_shape**, and **mol_vol2_shape**. These are the actual glyph objects
+that get mapped onto the molecule locations. Select **mol_surf1_shape** in the
+**Outliner**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/material.png
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_molecule_shape.png
 
-Then click the **Material** button and navigate down to **Molecule Shape**. The shape should be set to **Cone** in the **Molecule Shape** drop down box. Click **Set Molecule Shape** to apply the selection. All of the **surf1** molecule glyphs should now be changed to cones. You may want to zoom in to get a better view of them.
+Then click the **Material** button and navigate down to **Molecule Shape**. The
+shape should be set to **Cone** in the **Molecule Shape** drop down box. Click
+**Set Molecule Shape** to apply the selection. All of the **surf1** molecule
+glyphs should now be changed to cones. You may want to zoom in to get a better
+view of them.
 
 .. _graph_rxn_data:
 
@@ -75,7 +99,12 @@ and enter the command::
 
 You should see two files, **vol1.dat**, and **vol2.dat**.
 
-Plot **vol1.dat** and **vol2.dat** with the graphing software of your choice. For something as simple as this, xmgrace or gnuplot will suffice. Although we don't need all the power (and complexity) of numpy and matplotlib right now, we'll introduce it here anyways, since we will be using it for some more advanced tasks later. First create a file called **plot.py** and put the following text into it::
+Plot **vol1.dat** and **vol2.dat** with the graphing software of your choice.
+For something as simple as this, xmgrace or gnuplot will suffice. Although we
+don't need all the power (and complexity) of numpy and matplotlib right now,
+we'll introduce it here anyways, since we will be using it for some more
+advanced tasks later. First create a file called **plot.py** and put the
+following text into it::
 
     #!/usr/bin/env python
 
@@ -94,5 +123,7 @@ Run the file by entering the command::
 
     python plot.py
 
-You should notice that **vol1.dat** is decreasing and **vol2.dat** is increasing as expected. This can be a quick way to verify that our simulation is working as expected.
+You should notice that **vol1.dat** is decreasing and **vol2.dat** is
+increasing as expected. This can be a quick way to verify that our simulation
+is working as expected.
 

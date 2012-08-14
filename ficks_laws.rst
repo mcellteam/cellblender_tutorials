@@ -33,7 +33,9 @@ But first let's create the mesh for the system.
 Creating the Mesh
 ---------------------------------------------
 
-If you would rather skip the mesh creation part, you can simply download the `blend file`_ and advance to the :ref:`fick_annotate` section. Otherwise you should watch the video or follow along with the instructions after the video.
+If you would rather skip the mesh creation part, you can simply download the
+`blend file`_ and advance to the :ref:`fick_annotate` section. Otherwise you
+should watch the video or follow along with the instructions after the video.
 
 .. raw:: html
 
@@ -45,46 +47,83 @@ If you would rather skip the mesh creation part, you can simply download the `bl
 
 .. _blend file: https://www.mcell.org/tutorials/downloads/ficks_law.blend
 
-Begin by starting Blender. Hit **x** and click **Delete** to delete the default Cube. 
+Begin by starting Blender. Hit **x** and click **Delete** to delete the default
+Cube. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/big_cylinder.png
 
-Then, create a cylinder by hitting **Shift-a**, and selecting **Mesh>Cylinder**. Hit **s**, **Shift-z**, **0.2**, and **Enter** to confirm. Hit **r**, **x**, **90**, and **Enter** to rotate it 90 degrees around the x-axis. This will be the main cylinder through which the molecules diffuse. You may want to zoom in to get a better view.
+Then, create a cylinder by hitting **Shift-a**, and selecting
+**Mesh>Cylinder**. Hit **s**, **Shift-z**, **0.2**, and **Enter** to confirm.
+Hit **r**, **x**, **90**, and **Enter** to rotate it 90 degrees around the
+x-axis. This will be the main cylinder through which the molecules diffuse. You
+may want to zoom in to get a better view.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/left_end_right_end.png
 
-Create two surface regions, **Left_end** and **Right_end**. See :ref:`define_region` if you need help with this.
+Create two surface regions, **Left_end** and **Right_end**. See
+:ref:`define_region` if you need help with this.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/border_select.png
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/border_select2.png
 
-Then, enter **Edit Mode** by hitting **Tab**. Hit **Ctrl-t** to triangulate the mesh. Hit **z** to enter wireframe mode. Next, select the left end of the cylinder by hitting **b**, **left click and drag** around the left end of the cylinder. Select **Left_end** from the list of surface regions and select **Assign**. Hit **a** to deselect the mesh. Now, do the same with the right end of the cylinder, except select and assign the **Right_end** surface region. Switch back to **Object Mode** by hitting **Tab**.
+Then, enter **Edit Mode** by hitting **Tab**. Hit **Ctrl-t** to triangulate the
+mesh. Hit **z** to enter wireframe mode. Next, select the left end of the
+cylinder by hitting **b**, **left click and drag** around the left end of the
+cylinder. Select **Left_end** from the list of surface regions and select
+**Assign**. Hit **a** to deselect the mesh. Now, do the same with the right end
+of the cylinder, except select and assign the **Right_end** surface region.
+Switch back to **Object Mode** by hitting **Tab**.
 
-We now need to create a series of shorter sampling cylinders inside the long one. To do so, hit **Shift-a** and once again select **Mesh>Cylinder**. We will make these sampling cylinders slightly smaller than the main cylinder to avoid coincident meshes: Hit **s**, **Shift-z**, **0.199**, and **Enter**. Hit **r**, **x**, **90**, and **Enter**. Next, hit **s**, **y**, **0.024875**, and **Enter**. Hit **g**, **y**, and **-0.975** to move it very close to the left end of the end of larger cylinder (they don't touch though). 
+We now need to create a series of shorter sampling cylinders inside the long
+one. To do so, hit **Shift-a** and once again select **Mesh>Cylinder**. We will
+make these sampling cylinders slightly smaller than the main cylinder to avoid
+coincident meshes: Hit **s**, **Shift-z**, **0.199**, and **Enter**. Hit **r**,
+**x**, **90**, and **Enter**. Next, hit **s**, **y**, **0.024875**, and
+**Enter**. Hit **g**, **y**, and **-0.975** to move it very close to the left
+end of the end of larger cylinder (they don't touch though). 
 
-Rename this smaller cylinder from **Cylinder.001** to **C**. Be sure to triangulate this mesh in the same way we did with the larger cylinder.
+Rename this smaller cylinder from **Cylinder.001** to **C**. Be sure to
+triangulate this mesh in the same way we did with the larger cylinder.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/array.png
 
-Now, we will use Blender's (very useful) **Array** modifier to replicate this sampling cylinder 40 times. To do so, hit the **Object Modifiers** button, and from the **Add Modifier** drop-down box, select **Array**. Change **Count** to **40**. Deselect **Relative Offset** and select **Constant Offset**. Then change the third field under **Constant Offset** to **-2.01005**. 
+Now, we will use Blender's (very useful) **Array** modifier to replicate this
+sampling cylinder 40 times. To do so, hit the **Object Modifiers** button, and
+from the **Add Modifier** drop-down box, select **Array**. Change **Count** to
+**40**. Deselect **Relative Offset** and select **Constant Offset**. Then
+change the third field under **Constant Offset** to **-2.01005**. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/loose_parts.png
 
-Now we need to make each cylinder a unique object. To do this, first hit the **Apply** button under the **Array** modifier. Then enter **Edit Mode**, hit **p**, and select **By loose parts** in the **Separate** menu. This will split each discontinuous mesh into a unique object.
+Now we need to make each cylinder a unique object. To do this, first hit the
+**Apply** button under the **Array** modifier. Then enter **Edit Mode**, hit
+**p**, and select **By loose parts** in the **Separate** menu. This will split
+each discontinuous mesh into a unique object.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/c040.png
 
-They will be named **C**, **C.001**, **C.002**, etc. The last cylinder in the sequence should be named **C**. Rename it to **C.040**. This will make things cleaner when we want to count molecules in MCell later. Hit **Tab** to enter **Object Mode**.
+They will be named **C**, **C.001**, **C.002**, etc. The last cylinder in the
+sequence should be named **C**. Rename it to **C.040**. This will make things
+cleaner when we want to count molecules in MCell later. Hit **Tab** to enter
+**Object Mode**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/fill_circle.png
 
-Finally, we will create a series of circular sampling planes that lie between each of these cylinders. Create a circle by hitting **Shift-a**, and selecting **Mesh>Circle**. In the **Tool Shelf** (hit **t** to toggle it), hit **Fill** under **Add Circle**. Hit **s**, **0.199**, and **Enter**. Hit **r**, **x**, **90**, and **Enter**. Hit **g**, **y**, and **-0.95** to move it very close to the right side of our smaller cylinder. Once again, be sure to triangulate this mesh.
+Finally, we will create a series of circular sampling planes that lie between
+each of these cylinders. Create a circle by hitting **Shift-a**, and selecting
+**Mesh>Circle**. In the **Tool Shelf** (hit **t** to toggle it), hit **Fill**
+under **Add Circle**. Hit **s**, **0.199**, and **Enter**. Hit **r**, **x**,
+**90**, and **Enter**. Hit **g**, **y**, and **-0.95** to move it very close to
+the right side of our smaller cylinder. Once again, be sure to triangulate this
+mesh.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/circles.png
 
-Next, we will replicate this plane by using an **Array** modifier similar to what we did previously with the cylinders. Set **Count** to **39** and **Absolute Offset** to **-0.251255**. Also separate the object **By loose parts** in the same way you did with the small cylinder. 
-
+Next, we will replicate this plane by using an **Array** modifier similar to
+what we did previously with the cylinders. Set **Count** to **39** and
+**Absolute Offset** to **-0.251255**. Also separate the object **By loose
+parts** in the same way you did with the small cylinder. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/circle039.png
 
@@ -92,38 +131,47 @@ Rename the final plane from **Circle** to **Circle.039**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/ctrl_a.png
 
-We need every objects' origin to be centered at the origin. With every mesh object still selected, hit **Ctrl-a** and select **Location**. Then hit **Ctrl-a** again and select **Rotation**.
-
+We need every objects' origin to be centered at the origin. With every mesh
+object still selected, hit **Ctrl-a** and select **Location**. Then hit
+**Ctrl-a** again and select **Rotation**.
 
 .. _fick_add_params: 
 
 Adding the Other Model Parameters
 ---------------------------------
 
-First, add a single volume molecule called **vm** via CellBlender's **Define Molecules** panel and set it to be a **Volume Molecule**. Then, in the **Define Surface Classes** panel, check **Include Surface Classes** and **Include Modify Surface Regions** since we will use surface classes and modify surface regions; in the **Reaction Output Settings** panel check **Include Reaction Output** and in **Visualization Output Settings** check **Include Viz Output**. Next, we need to tell CellBlender to export our model geometry. To do so hit the **+** sign in the **Model Objects** panel, making sure that everything except the **Camera** and **Lamp** is selected.
+First, add a single volume molecule called **vm** via CellBlender's **Define
+Molecules** panel and set it to be a **Volume Molecule**. Then, in the **Define
+Surface Classes** panel, check **Include Surface Classes** and **Include Modify
+Surface Regions** since we will use surface classes and modify surface regions;
+in the **Reaction Output Settings** panel check **Include Reaction Output** and
+in **Visualization Output Settings** check **Include Viz Output**. Next, we
+need to tell CellBlender to export our model geometry. To do so hit the **+**
+sign in the **Model Objects** panel, making sure that everything except the
+**Camera** and **Lamp** is selected.
  
 .. _fick_export: 
 
 Exporting the Project
 ---------------------
 
-We will now export these mdls. Under **CellBlender Project Settings**, 
-set the **Project Base Name** to **ficks_law**. Then hit
-**Export CellBlender Project**, select a directory to save your
-project to (e.g. ``/home/user/mcell_tutorial/ficks_law/``), and hit **Export MCell MDL**.
+We will now export these mdls. Under **CellBlender Project Settings**, set the
+**Project Base Name** to **ficks_law**. Then hit **Export CellBlender
+Project**, select a directory to save your project to (e.g.
+``/home/user/mcell_tutorial/ficks_law/``), and hit **Export MCell MDL**.
 
-Also, make sure to save your project as a **.blend** project file
-via **File->Save As** and giving it a meaningful name.
+Also, make sure to save your project as a **.blend** project file via
+**File->Save As** and giving it a meaningful name.
 
 .. _fick_annotate: 
 
 Annotating the MDL
 ---------------------------------------------
 
-We will now edit several of the exported MDL files and also add new ones
-to set up our simulations. First at the top of **ficks_law.main.mdl** add
-the following MDL commands (you will have to change the existing 
-**ITERATION** and **TIME_STEP** statements)::
+We will now edit several of the exported MDL files and also add new ones to set
+up our simulations. First at the top of **ficks_law.main.mdl** add the
+following MDL commands (you will have to change the existing **ITERATION** and
+**TIME_STEP** statements)::
 
     iterations = 1 
     dt = 1e-06
@@ -140,12 +188,13 @@ the following MDL commands (you will have to change the existing
     PARTITION_Y = [[-0.3 TO 0.3 STEP .05]]
     PARTITION_Z = [[-0.3 TO 0.3 STEP .05]]
 
-You can get the value of **area** and **dx** by using the `Measure Panel`_ script. Make sure you understand what these variables and MDL commands mean. Can
-you guess why we introduce separate **iterations** and **dt** variables? Also,
-since we do not have any reactions in our model comment out the line
-which includes the reactions (**ficks_law.reactions.mdl**).
-Next, open the file **ficks_law.molecules.mdl** and change the diffusion 
-coefficient of our **vm** molecule to **dc**::
+You can get the value of **area** and **dx** by using the `Measure Panel`_
+script. Make sure you understand what these variables and MDL commands mean.
+Can you guess why we introduce separate **iterations** and **dt** variables?
+Also, since we do not have any reactions in our model comment out the line
+which includes the reactions (**ficks_law.reactions.mdl**).  Next, open the
+file **ficks_law.molecules.mdl** and change the diffusion coefficient of our
+**vm** molecule to **dc**::
 
     DEFINE_MOLECULES {
             vm {DIFFUSION_CONSTANT_3D = dc} 
@@ -153,13 +202,12 @@ coefficient of our **vm** molecule to **dc**::
 
 .. _Measure Panel: http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/3D_interaction/Panel_Measure
 
-So far so good. Now we have to think about how we can establish a
-concentration gradient between the left and right end of the big
-cylinder. As already hinted above, we can use MCell's surface clamp
-to clamp the left end of the cylinder at a certain value and make
-sure molecules get absorbed at the right end (why?). To this end,
-create the file **ficks_law.surface_classes.mdl** and enter a
-**DEFINE_SURFACE_CLASSES** block. You will have to complete the
+So far so good. Now we have to think about how we can establish a concentration
+gradient between the left and right end of the big cylinder. As already hinted
+above, we can use MCell's surface clamp to clamp the left end of the cylinder
+at a certain value and make sure molecules get absorbed at the right end
+(why?). To this end, create the file **ficks_law.surface_classes.mdl** and
+enter a **DEFINE_SURFACE_CLASSES** block. You will have to complete the
 template given below yourself::
 
     DEFINE_SURFACE_CLASSES {
@@ -171,12 +219,12 @@ template given below yourself::
         /* define a surface class absorptive to vm */
     }
 
-Now, we need to do some serious modifications to our existing geometry.
-Both the sampling cylinders and sampling planes need to be made 
-transparent to **vm** (why?). Also, we need to install the surface clamp
-at the left end of the big cylinder and make sure molecules are absorbed
-at the right. Below is a template for a **MODIFY_SURFACE_REGIONS** block
-that you will have to complete yourself (possibly with a script or a macro). Create the file 
+Now, we need to do some serious modifications to our existing geometry.  Both
+the sampling cylinders and sampling planes need to be made transparent to
+**vm** (why?). Also, we need to install the surface clamp at the left end of
+the big cylinder and make sure molecules are absorbed at the right. Below is a
+template for a **MODIFY_SURFACE_REGIONS** block that you will have to complete
+yourself (possibly with a script or a macro). Create the file
 **ficks_law.mod_surf_regions.mdl** and start editing::
 
     MODIFY_SURFACE_REGIONS {
@@ -209,9 +257,9 @@ that you will have to complete yourself (possibly with a script or a macro). Cre
     }
 
 
-Next, we will add a reaction data output block. Again, you will need
-to add additional statements to output the data needed to work on the
-problems below. Create a file **ficks_law.rxn_output.mdl** and enter::
+Next, we will add a reaction data output block. Again, you will need to add
+additional statements to output the data needed to work on the problems below.
+Create a file **ficks_law.rxn_output.mdl** and enter::
 
     sprintf(seed,"%03g", SEED)
 
@@ -225,9 +273,8 @@ problems below. Create a file **ficks_law.rxn_output.mdl** and enter::
     }
 
 Finally, we add a visualization data block so we can check our simulation
-visually in CellBlender. Luckily, nothing needs to be added here and
-you are good to go! Create the file **ficks_law.viz_output.mdl** and
-enter::
+visually in CellBlender. Luckily, nothing needs to be added here and you are
+good to go! Create the file **ficks_law.viz_output.mdl** and enter::
 
     VIZ_OUTPUT {
         MODE = ASCII
@@ -238,76 +285,73 @@ enter::
         }
     }
 
-This concludes our initial setup. Now let's run the simulation and
-see if everything checks out (the run will be quick since we are
-only simulating for a single iteration during the setup phase)::
+This concludes our initial setup. Now let's run the simulation and see if
+everything checks out (the run will be quick since we are only simulating for a
+single iteration during the setup phase)::
 
     mcell ficks_law.main.mdl
 
 
-Congratulations, if everything went well. If you encountered
-errors try to understand MCell's complaints and fix your errors.
+Congratulations, if everything went well. If you encountered errors try to
+understand MCell's complaints and fix your errors.
 
-Next, we need to figure out how long to simulate. We would like
-to reach a steady state where the concentration gradient in the
-cylinder remains constant (How would you determine if you reached
-steady state?). Start with 1000 iterations initially and see if
-this is enough. At this point it is **crucial** (as always really)
-to load your model into blender and make sure everything looks fine.
-You can use **gnuplot** for plotting: On the command line type ``gnuplot``
-and enter::
+Next, we need to figure out how long to simulate. We would like to reach a
+steady state where the concentration gradient in the cylinder remains constant
+(How would you determine if you reached steady state?). Start with 1000
+iterations initially and see if this is enough. At this point it is **crucial**
+(as always really) to load your model into blender and make sure everything
+looks fine.  You can use **gnuplot** for plotting: On the command line type
+``gnuplot`` and enter::
 
     gnuplot> plot "react_data/001_vm_Cylinder.dat"
 
 to view the total number of molecules in the large cylinder.
 
-Once you're confident you have a model with a proper concentration
-gradient we can finally tackle our examination of Fick's law.
+Once you're confident you have a model with a proper concentration gradient we
+can finally tackle our examination of Fick's law.
 
 .. _fick_gen_comments: 
 
 General Comments
 ----------------
 
-As the concentration gradient is evolving along x, we wish to determine 
-the rate of change in concentration (:math:`dC/dt`) at each time point for the 
-central sampling volume composed of the two subvolumes numbered 20 and 21. 
-To see this clearly, you will probably want to run a series of simulations 
-using different random number seeds, so you can average your results. 
+As the concentration gradient is evolving along x, we wish to determine the
+rate of change in concentration (:math:`dC/dt`) at each time point for the
+central sampling volume composed of the two subvolumes numbered 20 and 21.  To
+see this clearly, you will probably want to run a series of simulations using
+different random number seeds, so you can average your results. 
 
-If you have done the :ref:`seed` section, then you can use the script
-created there by copying the file **run_seeds.py** into your current 
-directory::                                                                    
+If you have done the :ref:`seed` section, then you can use the script created
+there by copying the file **run_seeds.py** into your current directory::
 
-    cp /home/user/mcell_tutorial/seed/run_seeds.py /home/user/mcell_tutorial/ficks_law/   
+    cp /home/user/mcell_tutorial/seed/run_seeds.py /home/user/mcell_tutorial/ficks_law/
 
 Otherwise, create the **run_seeds.py** now. 
         
-Along with the data you’ll need for Exercises 1 – 3 below, make sure that 
-you output counts for molecules in subvolumes 1 and 40 (Exercise 4). 
-Using MCell’s reaction data output, determination of the time course of 
-dC/dt can be done in three ways which will explore now.
+Along with the data you’ll need for Exercises 1 – 3 below, make sure that you
+output counts for molecules in subvolumes 1 and 40 (Exercise 4).  Using MCell’s
+reaction data output, determination of the time course of dC/dt can be done in
+three ways which will explore now.
 
-**Note:** Once you have verified your simulation it may be useful to
-turn visualization output off to speed up your simulations.
+**Note:** Once you have verified your simulation it may be useful to turn
+visualization output off to speed up your simulations.
 
 .. _fick_exercise1: 
 
 Exercise 1
 ----------
 
-The most direct method is simply to count the number of molecules in 
-subvolumes 20 and 21 at each timestep, convert the sum to concentration, 
-export the concentration values for each timestep, and then differentiate 
-to obtain the time course of :math:`\Delta C/ \Delta t \approx dC/dt`. 
+The most direct method is simply to count the number of molecules in subvolumes
+20 and 21 at each timestep, convert the sum to concentration, export the
+concentration values for each timestep, and then differentiate to obtain the
+time course of :math:`\Delta C/ \Delta t \approx dC/dt`. 
 
-Use MCell’s COUNT statements to output the concentration in
-subvolume 20 and 21 directly. Then use the below sample python script to 
-do the averaging, smoothing and differentiation. Examine the output and 
-make sure you understand what is going on. You may need to increase the 
-number of seeds you average over if the data is too noisy. The script 
-allows you to plot different quantities by commenting/uncommenting certain 
-lines - take a look:
+Use MCell’s COUNT statements to output the concentration in subvolume 20 and 21
+directly. Then use the below sample python script to do the averaging,
+smoothing and differentiation. Examine the output and make sure you understand
+what is going on. You may need to increase the number of seeds you average over
+if the data is too noisy. The script allows you to plot different quantities by
+commenting/uncommenting certain lines - take a look:
 
 .. code-block:: python
 
@@ -381,13 +425,13 @@ lines - take a look:
 Exercise 2
 -----------
 
-The next method is based on determination of the net fluxes into and out 
-of the combined subvolumes 20 and 21. Again using MCell’s **COUNT** statements 
-(Hint: specify **FRONT_CROSSINGS** and **BACK_CROSSINGS**), determine the net flux into 
-the space across plane 19, as well as the net flux out of the space across 
-plane 21. Use these results to compute the final net number of molecules in 
-subvolumes 20 and 21 at each timestep, convert to concentration, and then 
-output the result. Again use the above python script to differentiate and 
+The next method is based on determination of the net fluxes into and out of the
+combined subvolumes 20 and 21. Again using MCell’s **COUNT** statements (Hint:
+specify **FRONT_CROSSINGS** and **BACK_CROSSINGS**), determine the net flux
+into the space across plane 19, as well as the net flux out of the space across
+plane 21. Use these results to compute the final net number of molecules in
+subvolumes 20 and 21 at each timestep, convert to concentration, and then
+output the result. Again use the above python script to differentiate and
 smooth, and compare your result to what you obtained for Exercise 1.
 
 .. _fick_exercise3: 
@@ -395,29 +439,28 @@ smooth, and compare your result to what you obtained for Exercise 1.
 Exercise 3
 -----------
 
-Now we wish to calculate :math:`dC/dt` based on Fick’s 2nd Law (make sure 
-you understand how). For this we need to estimate the value of 
-:math:`d^2C/dx^2` across the sampling volume, i.e., across subvolumes 20 
-and 21. Hence, you will need to determine :math:`dC/dx` at plane 19, as well 
-as dC/dx at plane 21, and then find the difference to obtain 
-:math:`d^2C/dx^2`. To do this you will need to determine the 
-concentration in subvolumes 19 and 22, as well as in subvolumes 20 and 21. 
-Finally multiply by the diffusion coefficient D.
-Once you have calculated :math:`d^2C/dx^2` using COUNT statements, you
-can output the result, and again use the python script from above for
-averaging, smoothing and differentiating. 
+Now we wish to calculate :math:`dC/dt` based on Fick’s 2nd Law (make sure you
+understand how). For this we need to estimate the value of :math:`d^2C/dx^2`
+across the sampling volume, i.e., across subvolumes 20 and 21. Hence, you will
+need to determine :math:`dC/dx` at plane 19, as well as dC/dx at plane 21, and
+then find the difference to obtain :math:`d^2C/dx^2`. To do this you will need
+to determine the concentration in subvolumes 19 and 22, as well as in
+subvolumes 20 and 21.  Finally multiply by the diffusion coefficient D.  Once
+you have calculated :math:`d^2C/dx^2` using COUNT statements, you can output
+the result, and again use the python script from above for averaging, smoothing
+and differentiating. 
 
-When considering the methods used to compute :math:`dC/dt` in Exercises 
-1, 2 and 3 which final result do you expect to show the most noise? Why?
-Do you results reflect this.
+When considering the methods used to compute :math:`dC/dt` in Exercises 1, 2
+and 3 which final result do you expect to show the most noise? Why?  Do you
+results reflect this.
 
 .. _fick_exercise4: 
 
 Exercise 4
 -----------
 
-Finally, plot the ratio of variance to mean number of molecules for 
-subvolumes 1, 20, 21, and 40. What do you observe and why? 
+Finally, plot the ratio of variance to mean number of molecules for subvolumes
+1, 20, 21, and 40. What do you observe and why? 
 
 You can use the following python script to do the analysis::
 
@@ -450,5 +493,4 @@ You can use the following python script to do the analysis::
     mol_var = mol_counts.var(axis=1)    # compute the variance of the rows
     plt.plot(mol_mean/mol_var, 'g')     # plot ratio of mean and variance
     plt.show()
-
 

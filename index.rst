@@ -7,11 +7,20 @@
 Introduction to MCell
 =====================
 
-In order to quickly show what can be done with MCell, we'll begin by generating a simple model and gradually add in more features. Our initial model will contain a cube that has diffusing surface and volume molecules that react with each other to create new molecules. Later, we'll add more complex reactions and surface properties. At that point, we'll begin to move on to some more advanced topics, like optimizing a simulation and analyzing data.
+In order to quickly show what can be done with MCell, we'll begin by generating
+a simple model and gradually add in more features. Our initial model will
+contain a cube that has diffusing surface and volume molecules that react with
+each other to create new molecules. Later, we'll add more complex reactions and
+surface properties. At that point, we'll begin to move on to some more advanced
+topics, like optimizing a simulation and analyzing data.
 
-Much of the theory will be skipped over, as it's available elsewhere_. For a more detailed explanation of any given topic, please see the quick reference guide (pdf_, html_). 
+Much of the theory will be skipped over, as it's available elsewhere_. For a
+more detailed explanation of any given topic, please see the quick reference
+guide (pdf_, html_). 
 
-The completed project files for sections 1-13 can be downloaded here_. You will generate these same files simply by following along with these tutorials, but they are provided here in case you need them for any reason.
+The completed project files for sections 1-13 can be downloaded here_. You will
+generate these same files simply by following along with these tutorials, but
+they are provided here in case you need them for any reason.
 
 .. _elsewhere: https://www.mcell.psc.edu/publications.html
 
@@ -44,7 +53,8 @@ The completed project files for sections 1-13 can be downloaded here_. You will 
    rat
    lotka_volterra
 
-Although no longer actively maintained, the `legacy DReAMM and MCell tutorials`_ are still available. 
+Although no longer actively maintained, the `legacy DReAMM and MCell
+tutorials`_ are still available. 
 
 .. _legacy DReAMM and MCell tutorials: http://mcell.org/tutorials_old/tlist.htm
 

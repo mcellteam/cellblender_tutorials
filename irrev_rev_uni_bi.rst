@@ -43,11 +43,11 @@ Annotating the MDL
 -----------------------------------------------------
 
 We will now add additional MDL commands to the files exported by CellBlender.
-These commands will allow us to count the molecules as they pass through the spherical
-shells. Since in this case we would also like to output the molecular 
-concentrations in addition to raw counts we first compute the volume 
-(in cubic microns) of each shell. Add the following variables to 
-the beginning of your **spherical_shells.main.mdl**::
+These commands will allow us to count the molecules as they pass through the
+spherical shells. Since in this case we would also like to output the molecular
+concentrations in addition to raw counts we first compute the volume (in cubic
+microns) of each shell. Add the following variables to the beginning of your
+**spherical_shells.main.mdl**::
 
     vol_1 = 0.00415274 /* cubic microns */
     vol_2 = 0.0140155
@@ -73,7 +73,8 @@ the beginning of your **spherical_shells.main.mdl**::
     PARTITION_Z = [[-0.501 TO 0.501 STEP 0.04]]
 
 
-*Note*: You can find any of the shell volumes yourself by using the **Mesh Analysis** panel in CellBlender
+*Note*: You can find any of the shell volumes yourself by using the **Mesh
+Analysis** panel in CellBlender
 
 Since meshes (including our concentric shells) are by default reflective to
 all diffusion molecules we need to make them transparent via a surface
@@ -85,9 +86,11 @@ with the following content::
         TRANSPARENT = vol1
     }
 
-Next, we can apply this surface class to all concentric shells in the **MODIFY_SURFACE_REGIONS** section. This method allows you to modify surface
+Next, we can apply this surface class to all concentric shells in the
+**MODIFY_SURFACE_REGIONS** section. This method allows you to modify surface
 meshes without ever needing to touch the (often large) mesh files themselves.
-Create a file called **spherical_shells.mod_surf_regions.mdl** with the following text::
+Create a file called **spherical_shells.mod_surf_regions.mdl** with the
+following text::
 
     MODIFY_SURFACE_REGIONS
     {
@@ -159,7 +162,8 @@ molecular concentration in each shell. To do so, create a file called
         {(COUNT [vol1, World.Sphere_9] - COUNT [vol1, World.Sphere_8])/shell_vol_8} => "./react_data/conc_shell_8."&seed&".dat"
     }
 
-Lastly, create a file called **spherical_shells.viz_output.mdl** with the following text::
+Lastly, create a file called **spherical_shells.viz_output.mdl** with the
+following text::
 
     VIZ_OUTPUT 
     {
@@ -175,7 +179,9 @@ Lastly, create a file called **spherical_shells.viz_output.mdl** with the follow
 Run the Simulation and Analyze the Results
 -----------------------------------------------------
 
-If you have done the :ref:`seed` section, then copy the file **run_seeds.py** and **avg_seeds.py** that was created in that section by typing the following commands::
+If you have done the :ref:`seed` section, then copy the file **run_seeds.py**
+and **avg_seeds.py** that was created in that section by typing the following
+commands::
 
     cp /home/user/mcell_tutorial/seed/run_seeds.py /home/user/irrev_rev_uni_bi/spherical_shells/
     cp /home/user/mcell_tutorial/seed/avg_seeds.py /home/user/irrev_rev_uni_bi/spherical_shells/
@@ -186,13 +192,12 @@ Run the first script by typing::
 
     python run_seeds.py spherical_shells.main.mdl
 
-First, load your visualization data into CellBlender and check that the simulation
-proceeded as expected. Next, we can use the *avg_seeds.py* script to 
-read the reaction output for each of the shells and plot the data as 
-well as the average. To
-do so, open the script file in a text editor and enter the beginning
-of the output files you would like to process, e.g. *shell_1*.
-Then, run the command::
+First, load your visualization data into CellBlender and check that the
+simulation proceeded as expected. Next, we can use the *avg_seeds.py* script to
+read the reaction output for each of the shells and plot the data as well as
+the average. To do so, open the script file in a text editor and enter the
+beginning of the output files you would like to process, e.g. *shell_1*.  Then,
+run the command::
 
     python avg_seeds.py
 
@@ -250,13 +255,13 @@ in molecule numbers.
 Exporting the Blend
 -----------------------------------------------------
 
-Start Blender. Load the **sampling_box/sampling_box.blend** file in the main 
-project directory. You should see two boxes, one nested very closely inside 
-of another. Several CellBlender properties have already been applied. We will now export these mdls and make a few small modifications. Under 
-**CellBlender Project Settings**, select **Export CellBlender Project**. 
-Navigate to **sampling_boxes** and select **Set Project Directory**. Set the 
-**Project Base** to **sampling_boxes**. 
-Then hit **Export CellBlender Project**, 
+Start Blender. Load the **sampling_box/sampling_box.blend** file in the main
+project directory. You should see two boxes, one nested very closely inside of
+another. Several CellBlender properties have already been applied. We will now
+export these mdls and make a few small modifications. Under **CellBlender
+Project Settings**, select **Export CellBlender Project**.  Navigate to
+**sampling_boxes** and select **Set Project Directory**. Set the **Project
+Base** to **sampling_boxes**.  Then hit **Export CellBlender Project**,
 navigate to same directory as before, and hit **Export MCell MDL**.
 
 Annotating the MDL
@@ -434,7 +439,8 @@ copy this text into it::
        {COUNT [B, WORLD]/Na/box_volume_liters} => "./react_data/conc_B.dat"
     }
 
-Lastly, create a file called **irrev_uni_steady.viz_output.mdl** with the following text::
+Lastly, create a file called **irrev_uni_steady.viz_output.mdl** with the
+following text::
 
     VIZ_OUTPUT {
         MODE = ASCII
@@ -505,8 +511,8 @@ Navigate to **irrev_uni/nonsteady_state** and select
 **irrev_uni_nonsteady**. Then hit **Export CellBlender Project**, navigate 
 to same directory as before, and hit **Export MCell MDL**.
 
-
-Open **irrev_uni_nonsteady.main.mdl** and add in the following text at the top of the mdl::
+Open **irrev_uni_nonsteady.main.mdl** and add in the following text at the top
+of the mdl::
 
     box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and B molecules */
     box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
@@ -521,7 +527,8 @@ Open **irrev_uni_nonsteady.main.mdl** and add in the following text at the top o
     PARTITION_Y = [-partition, partition]
     PARTITION_Z = [-partition, partition]
 
-Next create a file callled **irrev_uni_nonsteady.rxn_output.mdl** and copy this text into it::
+Next create a file callled **irrev_uni_nonsteady.rxn_output.mdl** and copy this
+text into it::
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
@@ -532,7 +539,8 @@ Next create a file callled **irrev_uni_nonsteady.rxn_output.mdl** and copy this 
        {COUNT [B, WORLD]/Na/box_volume_liters} => "./react_data/conc_B.dat"
     }
 
-Lastly, create a file called **irrev_uni_nonsteady.viz_output.mdl** with the following text::
+Lastly, create a file called **irrev_uni_nonsteady.viz_output.mdl** with the
+following text::
 
     VIZ_OUTPUT {
         MODE = ASCII
@@ -547,8 +555,9 @@ Run the simulation by typing the following command::
 
     mcell irrev_uni_steady.main.mdl
 
-Plot the reaction data results for the number and concentration of A and B 
-molecules as a function of time. To plot the data, you can use the very handy *gnuplot* tool. Start gnuplot by typing into your terminal::
+Plot the reaction data results for the number and concentration of A and B
+molecules as a function of time. To plot the data, you can use the very handy
+*gnuplot* tool. Start gnuplot by typing into your terminal::
 
         % gnuplot
 
@@ -608,9 +617,16 @@ Here we will simulate the reversible reaction A :math:`\leftrightarrow` B
 with rate constants k1 and k2 starting from non-equilibrium initial 
 conditions (only A present at time 0).
 
-Start Blender. Load the **rev_uni_nonequil.blend** file in the **rev_uni/nonequil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **rev_uni/nonequil** and select **Set Project Directory**. Set the **Project Base** to **rev_uni_nonequil**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+Start Blender. Load the **rev_uni_nonequil.blend** file in the
+**rev_uni/nonequil** directory. Several CellBlender properties have already
+been applied. We will now export these mdls. Under **CellBlender Project
+Settings**, select **Export CellBlender Project**. Navigate to
+**rev_uni/nonequil** and select **Set Project Directory**. Set the **Project
+Base** to **rev_uni_nonequil**. Then hit **Export CellBlender Project**,
+navigate to same directory as before, and hit **Export MCell MDL**.
 
-Open **rev_uni_nonequil.main.mdl** and add in the following text at the top of the mdl::
+Open **rev_uni_nonequil.main.mdl** and add in the following text at the top of
+the mdl::
 
     fractional_concentration_of_A = 0.1
     fractional_concentration_of_B = 1.0 - fractional_concentration_of_A
@@ -633,8 +649,8 @@ Open **rev_uni_nonequil.main.mdl** and add in the following text at the top of t
 
 
 Please make sure you understand what is happening here, especially the
-calculations at the top of the file. Then, in the *A_rel* release site, 
-replace the numerical value for the concentration with::
+calculations at the top of the file. Then, in the *A_rel* release site, replace
+the numerical value for the concentration with::
 
     CONCENTRATION = concentration_of_A
 
@@ -646,7 +662,8 @@ Modify **rev_uni_nonequil.reactions.mdl** like this::
        B -> A [k2]
     }
 
-Now, create a file called **rev_uni_nonequil.viz_output.mdl** with the following text::
+Now, create a file called **rev_uni_nonequil.viz_output.mdl** with the
+following text::
 
     VIZ_OUTPUT {
        MODE = ASCII
@@ -657,7 +674,8 @@ Now, create a file called **rev_uni_nonequil.viz_output.mdl** with the following
        }
     }
 
-Next, create a file callled **rev_uni_nonequil.rxn_output.mdl** and copy this text into it::
+Next, create a file callled **rev_uni_nonequil.rxn_output.mdl** and copy this
+text into it::
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
@@ -672,24 +690,27 @@ Run the simulation by typing the following command::
 
     mcell rev_uni_nonequil.main.mdl
 
-Visualize your simulation in CellBlender and make sure all is well.
-By coloring A and B differently you can follow the production of
-B (and decay of A) as a function of time. 
-Plot the concentrations of A and B with gnuplot 
-as shown above. Write a python script to determine the asymptotic 
-concentrations of A and B. How is their ratio related to the one 
-of *k1* and *k2*.
+Visualize your simulation in CellBlender and make sure all is well.  By
+coloring A and B differently you can follow the production of B (and decay of
+A) as a function of time.  Plot the concentrations of A and B with gnuplot as
+shown above. Write a python script to determine the asymptotic concentrations
+of A and B. How is their ratio related to the one of *k1* and *k2*.
 
 
 Equilibrium 
 -----------------------------------------------------
 
-Now we will simulate the reversible reaction A :math:`\leftrightarrow` B 
-starting from equilibrium conditions, i.e., under conditions where the 
-average fractional amounts of A and B will remain constant (How can 
-this be achieved?).
+Now we will simulate the reversible reaction A :math:`\leftrightarrow` B
+starting from equilibrium conditions, i.e., under conditions where the average
+fractional amounts of A and B will remain constant (How can this be achieved?).
 
-Start Blender. Load the **rev_uni_equil.blend** file in the **rev_uni/equil** directory. Several CellBlender properties have already been applied. We will now export these mdls. Under **CellBlender Project Settings**, select **Export CellBlender Project**. Navigate to **rev_uni/equil** and select **Set Project Directory**. Set the **Project Base** to **rev_uni_equil**. Then hit **Export CellBlender Project**, navigate to same directory as before, and hit **Export MCell MDL**.
+Start Blender. Load the **rev_uni_equil.blend** file in the **rev_uni/equil**
+directory. Several CellBlender properties have already been applied. We will
+now export these mdls. Under **CellBlender Project Settings**, select **Export
+CellBlender Project**. Navigate to **rev_uni/equil** and select **Set Project
+Directory**. Set the **Project Base** to **rev_uni_equil**. Then hit **Export
+CellBlender Project**, navigate to same directory as before, and hit **Export
+MCell MDL**.
 
 Open **rev_uni_equil.main.mdl** and add in the following text at the top of 
 the mdl (note that this is the same we added in the non-equilibrium case)::
@@ -734,7 +755,8 @@ Modify **rev_uni_equil.reactions.mdl** like this::
     }
 
 
-Now, create a file called **rev_uni_equil.viz_output.mdl** with the following text::
+Now, create a file called **rev_uni_equil.viz_output.mdl** with the following
+text::
 
     VIZ_OUTPUT {
        MODE = ASCII
@@ -745,7 +767,8 @@ Now, create a file called **rev_uni_equil.viz_output.mdl** with the following te
        }
     }
 
-Next, create a file callled **rev_uni_equil.rxn_output.mdl** and copy this text into it::
+Next, create a file callled **rev_uni_equil.rxn_output.mdl** and copy this text
+into it::
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
@@ -809,7 +832,8 @@ these mdls. Under **CellBlender Project Settings**, select
 Then hit **Export CellBlender Project**, navigate to same directory as 
 before, and hit **Export MCell MDL**.
 
-Open **irrev_bi_steady.main.mdl** and add in the following text at the top of the mdl::
+Open **irrev_bi_steady.main.mdl** and add in the following text at the top of
+the mdl::
     
     box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and B molecules */
     diffusion_coefficient = 1e-6 /* cm^2 per second, diffusion coefficient used for molecules of A and R */
@@ -887,7 +911,8 @@ select **Set Project Directory**. Set the **Project Base** to
 **irrev_bi_nonsteady**. Then hit **Export CellBlender Project**, navigate 
 to same directory as before, and hit **Export MCell MDL**.
 
-Open **irrev_bi_nonsteady.main.mdl** and add in the following text at the top of the mdl::
+Open **irrev_bi_nonsteady.main.mdl** and add in the following text at the top
+of the mdl::
     
     box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and B molecules */
     diffusion_coefficient = 1e-6 /* cm^2 per second, diffusion coefficient used for molecules of A and R */
@@ -913,7 +938,8 @@ following text::
        }
     }
 
-Next, create a file callled **irrev_bi_nonsteady.rxn_output.mdl** and copy this text into it::
+Next, create a file callled **irrev_bi_nonsteady.rxn_output.mdl** and copy this
+text into it::
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
@@ -934,7 +960,8 @@ As usual, check your simulation output in CellBlender to confirm that
 the simulation did what you expected.
 
 
-Plot the reaction data results for the number and concentration of A, R, and AR molecules as a function of time. You can use gnuplot for plotting.
+Plot the reaction data results for the number and concentration of A, R, and AR
+molecules as a function of time. You can use gnuplot for plotting.
 
 
 Reversible Bimolecular Reaction
@@ -989,7 +1016,8 @@ following text::
        }
     }
 
-Next, create a file callled **rev_bi_nonequil.rxn_output.mdl** and copy this text into it::
+Next, create a file callled **rev_bi_nonequil.rxn_output.mdl** and copy this
+text into it::
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  

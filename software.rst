@@ -3,6 +3,7 @@
 ************************
 Software Needed
 ************************
+
 To use these tutorials, you'll want to have the following software installed:
 
 * MCell_ (registration required, `installation instructions`_)
@@ -23,7 +24,13 @@ To use these tutorials, you'll want to have the following software installed:
 .. _numpy: http://numpy.scipy.org/
 .. _Grace: http://plasma-gate.weizmann.ac.il/Grace/
 
-These tutorials assume you are using either some version of linux (e.g. Ubuntu_) or OSX as your operating system. It also requires that you have some basic familiarity with the command line. There are many tutorials online that explain the basics, like `this one`_. Although no previous knowledge of Blender or python is required, the goal of these tutorials is not to teach these topics. There are already many good resources available to learn about these subjects (e.g. `python tutorials`_ and `blender tutorials`_).
+These tutorials assume you are using either some version of linux (e.g.
+Ubuntu_) or OSX as your operating system. It also requires that you have some
+basic familiarity with the command line. There are many tutorials online that
+explain the basics, like `this one`_. Although no previous knowledge of Blender
+or python is required, the goal of these tutorials is not to teach these
+topics. There are already many good resources available to learn about these
+subjects (e.g. `python tutorials`_ and `blender tutorials`_).
 
 .. _Ubuntu: http://www.ubuntu.com/download
 .. _this one: http://www.tuxfiles.org/linuxhelp/linuxfiles.html

@@ -4,7 +4,11 @@
 Release Patterns
 *********************************************
 
-Release patterns allow you to release molecules at specified time intervals. One thing this can be useful for is simulating a synaptic vesicle releasing neurotransmitter. First, create a directory called **release_pattern** in the main tutorial directory. Inside the new directory, create a file called **release_pattern.mdl** and add the following text to it:
+Release patterns allow you to release molecules at specified time intervals.
+One thing this can be useful for is simulating a synaptic vesicle releasing
+neurotransmitter. First, create a directory called **release_pattern** in the
+main tutorial directory. Inside the new directory, create a file called
+**release_pattern.mdl** and add the following text to it:
 
 .. code-block:: none
     :emphasize-lines: 6-13, 28
@@ -61,7 +65,13 @@ Release patterns allow you to release molecules at specified time intervals. One
         {COUNT[vol1,WORLD]}=> "./react_data/vol1.dat"
     }
 
-A release pattern consists of one or more "trains." Each train can last for a certain period of time (**TRAIN_DURATION**), and an interval between trains can be set(**TRAIN_INTERVAL**). Within a given train, you can release molecules at specific intervals (**RELEASE_INTERVALS**). And lastly, the **DELAY** indicates when the first train will start. This may sound more confusing than it really is. Plotting the reaction data should help illustrate what's happening for this specific release pattern.
+A release pattern consists of one or more "trains." Each train can last for a
+certain period of time (**TRAIN_DURATION**), and an interval between trains can
+be set(**TRAIN_INTERVAL**). Within a given train, you can release molecules at
+specific intervals (**RELEASE_INTERVALS**). And lastly, the **DELAY** indicates
+when the first train will start. This may sound more confusing than it really
+is. Plotting the reaction data should help illustrate what's happening for this
+specific release pattern.
 
 Run the file by typing::
 

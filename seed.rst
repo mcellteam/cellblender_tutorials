@@ -4,9 +4,15 @@
 Running Multiple Seed Values
 *********************************************
 
-In MCell, diffusion (amongst other things) happen stochastically. However, the results are replicable as long as one provides the same seed value. Given this stochastic nature, you can expect the data generated from a simulation to look noisy, especially if the number of reacting molecules is small. We can overcome this problem by running many different simulations, each with a different seed value, and then averaging the results of all the simulations.
+In MCell, diffusion (amongst other things) happen stochastically. However, the
+results are replicable as long as one provides the same seed value. Given this
+stochastic nature, you can expect the data generated from a simulation to look
+noisy, especially if the number of reacting molecules is small. We can overcome
+this problem by running many different simulations, each with a different seed
+value, and then averaging the results of all the simulations.
 
-We'll begin by creating a directory called **seed**. Inside it, create an MDL called **seed.mdl** with this text:
+We'll begin by creating a directory called **seed**. Inside it, create an MDL
+called **seed.mdl** with this text:
 
 .. code-block:: none
     :emphasize-lines: 31,35-37
@@ -53,7 +59,10 @@ We'll begin by creating a directory called **seed**. Inside it, create an MDL ca
 .. index::
     single: SEED
 
-All the syntax should be familiar except for the line **sprintf(seed,"%04g",SEED)**. This assigns the value of the **SEED** to the variable **seed**. The **%04g** formats it so that there are four leading zeros.
+All the syntax should be familiar except for the line
+**sprintf(seed,"%04g",SEED)**. This assigns the value of the **SEED** to the
+variable **seed**. The **%04g** formats it so that there are four leading
+zeros.
 
 Next, create the following python script called **run_seeds.py**::
 
@@ -69,7 +78,12 @@ Next, create the following python script called **run_seeds.py**::
     for i in range(1, 21):
         os.system("mcell -seed %i %s" % (i, mdl))
 
-This file is similar to the **scaling.py** file that we created in the checkpointing section. This will run MCell twenty different times, each time incrementing the seed value by one. Save and run this file. You should now have sixty files in the **react_data** directory (20 for each molecule). Now we will begin the process of averaging these results. Create a python script called **avg_seeds.py** with the following text in it::
+This file is similar to the **scaling.py** file that we created in the
+checkpointing section. This will run MCell twenty different times, each time
+incrementing the seed value by one. Save and run this file. You should now have
+sixty files in the **react_data** directory (20 for each molecule). Now we will
+begin the process of averaging these results. Create a python script called
+**avg_seeds.py** with the following text in it::
 
     #!/usr/bin/env python
 
@@ -101,8 +115,8 @@ This file is similar to the **scaling.py** file that we created in the checkpoin
     plt.plot(mol_counts, 'r')             # plot the results as a red line
     plt.show()                            # show the plot
 
-
-This script will load (and plot) each of the twenty **vol1.####.dat** files into a two dimensional array, take the mean of the rows, and plot the results.
+This script will load (and plot) each of the twenty **vol1.####.dat** files
+into a two dimensional array, take the mean of the rows, and plot the results.
 
 Run the first script by typing the following commands::
 
