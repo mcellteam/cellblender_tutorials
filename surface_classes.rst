@@ -80,7 +80,7 @@ Create a file called **sc.viz_output.mdl** and copy this into it::
 
     VIZ_OUTPUT
     {
-        MODE = ASCII
+        MODE = CELLBLENDER
         FILENAME = "./viz_data/viz_output"
         MOLECULES 
         {

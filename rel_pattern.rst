@@ -51,7 +51,7 @@ main tutorial directory. Inside the new directory, create a file called
 
     VIZ_OUTPUT 
     {
-        MODE = ASCII
+        MODE = CELLBLENDER
         FILENAME = "./viz_data/release_pattern"
         MOLECULES 
         {

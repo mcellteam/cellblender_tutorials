@@ -158,7 +158,7 @@ illustrates how to selectively export visualization data.
 
     VIZ_OUTPUT 
     {
-        MODE = ASCII
+        MODE = CELLBLENDER
         FILENAME = "selective"
         MOLECULES 
         {

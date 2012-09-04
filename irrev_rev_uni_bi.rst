@@ -167,7 +167,7 @@ following text::
 
     VIZ_OUTPUT 
     {
-        MODE = ASCII
+        MODE = CELLBLENDER
         FILENAME = "./viz_data/spherical_shells"
         MOLECULES 
         {
@@ -316,7 +316,7 @@ create a file called **sampling_box.viz_output.mdl** with the following text::
 
     VIZ_OUTPUT
     {
-        MODE = ASCII
+        MODE = CELLBLENDER
         FILENAME = "./viz_data/sampling_box"
         MOLECULES
         {
@@ -443,7 +443,7 @@ Lastly, create a file called **irrev_uni_steady.viz_output.mdl** with the
 following text::
 
     VIZ_OUTPUT {
-        MODE = ASCII
+        MODE = CELLBLENDER
         FILENAME = "./viz_data/irrev_uni_steady"
         MOLECULES {
             NAME_LIST {ALL_MOLECULES}
@@ -543,7 +543,7 @@ Lastly, create a file called **irrev_uni_nonsteady.viz_output.mdl** with the
 following text::
 
     VIZ_OUTPUT {
-        MODE = ASCII
+        MODE = CELLBLENDER
         FILENAME = "./viz_data/main"
         MOLECULES {
             NAME_LIST {ALL_MOLECULES}
@@ -666,7 +666,7 @@ Now, create a file called **rev_uni_nonequil.viz_output.mdl** with the
 following text::
 
     VIZ_OUTPUT {
-       MODE = ASCII
+       MODE = CELLBLENDER
        FILENAME = "./viz_data/rev_uni_nonequil"
        MOLECULES {
           NAME_LIST {ALL_MOLECULES}
@@ -759,7 +759,7 @@ Now, create a file called **rev_uni_equil.viz_output.mdl** with the following
 text::
 
     VIZ_OUTPUT {
-       MODE = ASCII
+       MODE = CELLBLENDER
        FILENAME = "./viz_data/rev_uni_nonequil"
        MOLECULES {
           NAME_LIST {ALL_MOLECULES}
@@ -852,7 +852,7 @@ Now, create a file called **irrev_bi_steady.viz_output.mdl** with the
 following text::
 
     VIZ_OUTPUT {
-       MODE = ASCII
+       MODE = CELLBLENDER
        FILENAME = "./viz_data/irrev_bi_steady"
        MOLECULES {
           NAME_LIST {ALL_MOLECULES}
@@ -930,7 +930,7 @@ Now, create a file called **irrev_bi_nonsteady.viz_output.mdl** with the
 following text::
 
     VIZ_OUTPUT {
-       MODE = ASCII
+       MODE = CELLBLENDER
        FILENAME = "./viz_data/irrev_bi_nonsteady"
        MOLECULES {
           NAME_LIST {ALL_MOLECULES}
@@ -1008,7 +1008,7 @@ Now, create a file called **rev_bi_nonequil.viz_output.mdl** with the
 following text::
 
     VIZ_OUTPUT {
-       MODE = ASCII
+       MODE = CELLBLENDER
        FILENAME = "./viz_data/irrev_bi_nonequil"
        MOLECULES {
           NAME_LIST {ALL_MOLECULES}
@@ -1113,7 +1113,7 @@ Now, create a file called **rev_bi_equil.viz_output.mdl** with the
 following text::
 
     VIZ_OUTPUT {
-       MODE = ASCII
+       MODE = CELLBLENDER
        FILENAME = "./viz_data/irrev_bi_nonsteady"
        MOLECULES {
           NAME_LIST {ALL_MOLECULES}

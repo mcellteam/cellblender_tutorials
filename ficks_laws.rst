@@ -277,7 +277,7 @@ visually in CellBlender. Luckily, nothing needs to be added here and you are
 good to go! Create the file **ficks_law.viz_output.mdl** and enter::
 
     VIZ_OUTPUT {
-        MODE = ASCII
+        MODE = CELLBLENDER
         FILENAME = "viz_data/ficksSecondLaw"
         MOLECULES {
           NAME_LIST {ALL_MOLECULES}

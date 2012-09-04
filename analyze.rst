@@ -33,7 +33,7 @@ text into it::
 
     VIZ_OUTPUT 
     {
-        MODE = ASCII
+        MODE = CELLBLENDER
         FILENAME = "./viz_data/hist" 
         MOLECULES 
         { 

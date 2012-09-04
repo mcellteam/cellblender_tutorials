@@ -300,7 +300,7 @@ For these last two sections, we'll actually be hand editing some mdls. First,
 create a file called **intro.viz_output.mdl** with the following text in it::
 
     VIZ_OUTPUT {
-        MODE = ASCII
+        MODE = CELLBLENDER
         FILENAME = "./viz_data/intro"
         MOLECULES 
         {

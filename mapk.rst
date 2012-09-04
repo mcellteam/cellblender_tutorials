@@ -524,7 +524,7 @@ Next open **mapk.viz_output.mdl"** and add the following::
 
     VIZ_OUTPUT
     {
-        MODE = ASCII
+        MODE = CELLBLENDER
         FILENAME = "mapk"
 
         MOLECULES
