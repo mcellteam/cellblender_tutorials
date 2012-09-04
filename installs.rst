@@ -18,7 +18,7 @@ a registered user to download MCell from our `web site`_.
 Installing MCell for Linux/OS X
 ---------------------------------------------
 
-Download the desired binary file for your system (e.g., MCell v. 3.1.965 for
+Download the desired binary file for your system (e.g., MCell v. |release| for
 Linux x86).
 
 The binary file that you download is a gzip’ed file with a name that ends in
@@ -30,7 +30,7 @@ Assuming that your browser hasn't already done so, unzip the file, e.g.,
 
 ::
 
-    gunzip mcell-3.1.965_x86.gz
+    gunzip mcell-3.1.998_x86.gz
 
 If this succeeds, the file will no longer have the .gz suffix. If it fails and
 you get an error message, it's probably already been unzipped by your browser.
@@ -41,7 +41,7 @@ Rename the file to something more convenient and make it executable, e.g.,
 
 ::
 
-    mv mcell-3.1.965_x86.gz mcell
+    mv mcell-3.1.998_x86.gz mcell
 
     chmod a+x mcell
 
@@ -69,18 +69,18 @@ Unpacking CellBlender
 ---------------------------------------------
 
 **Linux:**
-Unpack ``cellblender.tar.gz`` in the addons directory for your installed copy
+Unpack ``cellblender_v51.tar.gz`` in the addons directory for your installed copy
 of blender::
 
-    cd path_to_blender/2.62/scripts/addons
-    tar zxvf cellblender.tar.gz
+    cd path_to_blender/2.63/scripts/addons
+    tar zxvf cellblender_v51.tar.gz
 
 **MacOSX:**
-Unpack ``cellblender.tar.gz`` in the addons directory for your installed copy
+Unpack ``cellblender_v51.tar.gz`` in the addons directory for your installed copy
 of blender::
 
-    cd path_to_blender/blender.app/Contents/MacOS/2.62/scripts/addons
-    tar zxvf cellblender.tar.gz
+    cd path_to_blender/blender.app/Contents/MacOS/2.63/scripts/addons
+    tar zxvf cellblender_v51.tar.gz
 
 Activating CellBlender in Blender
 ---------------------------------------------
@@ -98,3 +98,6 @@ DReAMM and PSC DX are no longer actively developed, but will remain available
 for download. The installation instructions can be found here_.
 
 .. _here: https://www.mcell.psc.edu/tutorials_old/installs.html
+
+
+
