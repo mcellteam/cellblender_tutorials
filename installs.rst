@@ -69,18 +69,18 @@ Unpacking CellBlender
 ---------------------------------------------
 
 **Linux:**
-Unpack ``cellblender_v51.tar.gz`` in the addons directory for your installed copy
+Unpack ``cellblender_v52.tar.gz`` in the addons directory for your installed copy
 of blender::
 
-    cd path_to_blender/2.63/scripts/addons
-    tar zxvf cellblender_v51.tar.gz
+    cd path_to_blender/2.65/scripts/addons
+    tar zxvf cellblender_v52.tar.gz
 
 **MacOSX:**
-Unpack ``cellblender_v51.tar.gz`` in the addons directory for your installed copy
+Unpack ``cellblender_v52.tar.gz`` in the addons directory for your installed copy
 of blender::
 
-    cd path_to_blender/blender.app/Contents/MacOS/2.63/scripts/addons
-    tar zxvf cellblender_v51.tar.gz
+    cd path_to_blender/blender.app/Contents/MacOS/2.65/scripts/addons
+    tar zxvf cellblender_v52.tar.gz
 
 Activating CellBlender in Blender
 ---------------------------------------------
