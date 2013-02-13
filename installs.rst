@@ -41,8 +41,7 @@ Rename the file to something more convenient and make it executable, e.g.,
 
 ::
 
-    mv mcell-3.1.998_x86.gz mcell
-
+    mv mcell-3.1.998_x86 mcell
     chmod a+x mcell
 
 Depending on your preferences, you may want to put the resulting executable
@@ -65,30 +64,21 @@ files are used to design and control MCell simulations (see MCell tutorials).
 CellBlender Installation
 *********************************************
 
-Unpacking CellBlender
+Installing CellBlender
 ---------------------------------------------
 
-**Linux:**
-Unpack ``cellblender_v52.tar.gz`` in the addons directory for your installed copy
-of blender::
-
-    cd path_to_blender/2.65/scripts/addons
-    tar zxvf cellblender_v52.tar.gz
-
-**MacOSX:**
-Unpack ``cellblender_v52.tar.gz`` in the addons directory for your installed copy
-of blender::
-
-    cd path_to_blender/blender.app/Contents/MacOS/2.65/scripts/addons
-    tar zxvf cellblender_v52.tar.gz
+Startup Blender and go to the **File->User Preferences** menu. In the "User
+Preferences" control panel choose the **Addons** tab. Click the **Install from
+File** button at the bottom of the window. Navigate to the unextracted zip file
+that you downloaded (cellblender_v52.zip), select it, and click the **Install
+from File** button near the upper-right hand corner.
 
 Activating CellBlender in Blender
 ---------------------------------------------
 
-Startup Blender and go to the **File>User Preferences** menu. In the **User
-Preferences** control panel, click the **Addons** button. Scroll down until you
-see **Cell Modeling: CellBlender** and select the checkbox to enable it. Then,
-click **Save as Default** to enable the addon permanently in Blender.
+Scroll down until you see **Cell Modeling: CellBlender** and select the
+checkbox to enable it. Then, click **Save as Default** to enable the addon
+permanently in Blender.
 
 *********************************************
 DReAMM and PSC DX Installation
