@@ -57,8 +57,8 @@ that a new surface region was created.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_region.png
 
-To rename the surface region, change the text field which reads **New Region**
-to **top**.
+To rename the surface region, change the text field which reads "**New Region**"
+to "**top**".
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/top.png
 
