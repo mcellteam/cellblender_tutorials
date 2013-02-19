@@ -67,20 +67,23 @@ Assign a Surface Region
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/triangulate.png
 
 Move the cursor to the **3D View Editor**. Hit **Tab** to change into **Edit
-Mode**. Hit **Ctrl-t** to triangulate the faces. 
+Mode** (or enter **Edit Mode** via the "Mode" selection control). Hit **Ctrl-t** to triangulate 
+the faces (or use Mesh/Faces/TriangulateFaces). 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/ctrl_tab.png
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/select_top.png
 
-Then, hit **Ctrl-Tab** and select **Face**. Then while **holding Shift**,
+Hit **a** to deselect everything (or use menu option Select/(De)select All). Then, hit 
+**Ctrl-Tab** and select **Face** (or click on the "Face select" button). Then while **holding Shift**,
 **right click** on the two top faces to select them.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/assign.png
 
 Under the **Define Surface Regions** panel, click **Assign**. These top two
 faces now have the **top** surface region applied to them. With the cursor over
-the **3D View Editor**, hit **Tab** to change back into **Object Mode**.
+the **3D View Editor**, hit **Tab** to change back into **Object Mode** (or enter Object Mode 
+via the "Mode" selection control).
 
 .. _set_parameters:
 
