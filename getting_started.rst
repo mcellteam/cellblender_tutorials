@@ -47,20 +47,20 @@ You should see a cube in the **3D View Editor**.
 Define a Surface Region
 ---------------------------------------------
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/object_button.png
-
 Hit the **Object** button in the **Properties Editor**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_region.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/object_button.png
 
 Scroll to the bottom of the Editor. Expand the **Define Surface Regions** panel.
 Hit the **+** button and **New Region** should appear in the list of regions, indicating
 that a new surface region was created.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/top.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_region.png
 
 To rename the surface region, change the text field which reads **New Region**
 to **top**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/top.png
 
 .. _assign_region:
 
