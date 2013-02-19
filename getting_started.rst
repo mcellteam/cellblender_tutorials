@@ -47,13 +47,13 @@ You should see a cube in the **3D View Editor**.
 Define a Surface Region
 ---------------------------------------------
 
-Hit the **Object** button in the **Properties Editor**.
+Hit the **Object** button in the **Properties Editor** (in the right side panel).
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/object_button.png
 
-Scroll to the bottom of the Editor. Expand the **Define Surface Regions** panel.
-Hit the **+** button and **New Region** should appear in the list of regions, indicating
-that a new surface region was created.
+Scroll to the bottom of the Properties Editor panel. Expand the **Define Surface Regions** 
+panel by clicking the small triangle next to the name. Hit the **+** button and **New Region**
+should appear in the list of regions, indicating that a new surface region was created.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_region.png
 
