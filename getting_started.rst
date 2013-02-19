@@ -74,11 +74,13 @@ the faces (or use Mesh/Faces/TriangulateFaces).
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/triangulate.png
 
 Hit **Ctrl-Tab** and select **Face** (or click on the "Face select" button) to enter face
-selection mode (left picture below).  Then hit **a** (or use menu option Select/(De)select All)
-to deselect everything. Then while **holding Shift**, **right click** on the two top faces to select
-them (right picture below).
+selection mode.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/ctrl_tab.png
+
+Then hit **a** (or use menu option Select/(De)select All) to deselect everything. Select
+just the top two triangular faces by **holding Shift** while **right clicking** on each
+of the two top faces to select them.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/select_top.png
 
