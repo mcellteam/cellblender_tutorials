@@ -12,6 +12,7 @@ data, which will be used in the next section.
 Note that most blender actions can be accomplished with either key commands or
 mouse menu/button clicks. But for speed, it is strongly advised that you learn
 the key commands.
+
 .. _gen_mesh:
 
 Starting Blender
