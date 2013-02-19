@@ -184,22 +184,22 @@ under **Visualization Output Settings**, enable **Include Viz Output**.
 Export MDLs
 ---------------------------------------------
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_project_dir_pt1.png
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_project_dir_pt2.png
-
 Under **CellBlender Project Settings**, select **Export CellBlender Project**.
 Navigate to the directory where we will export the files
 (**/home/user/mcell_tutorial/intro** where **user** is your user name) and hit
 **OK** when it prompts you to make a new directory. Then select **Set Project
 Directory**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/project_base_prefix.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_project_dir_pt1.png
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/export_mcell_mdl.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_project_dir_pt2.png
 
 Set the **Project Base** to **intro**. Then hit **Export CellBlender Project**,
 navigate to same directory as before, and hit **Export MCell MDL**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/project_base_prefix.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/export_mcell_mdl.png
 
 Either leave Blender open or save and quit, as we'll need to modify this model
 later.
