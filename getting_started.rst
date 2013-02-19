@@ -38,9 +38,9 @@ Open up a terminal and enter the command::
 
     blender
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/cube.png
-
 You should see a cube in the **3D View Editor**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/cube.png
 
 .. _define_region:
 
