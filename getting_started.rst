@@ -18,9 +18,13 @@ the key commands.
 Starting Blender
 ---------------------------------------------
 
-The majority of this tutorial can be easily accomplished by following along
-with the text. However, sections that rely heavily on a GUI (like this one),
-might be better understood by watching a video tutorial.
+The majority of this tutorial can be easily accomplished by following the
+Tutorial Instructions below. However, sections that rely heavily on a GUI
+(like this one), might be better understood by watching a video tutorial
+either before following the instructions or instead of them.
+
+Tutorial Video
+---------------------------------------------
 
 .. raw:: html
 
@@ -30,9 +34,12 @@ might be better understood by watching a video tutorial.
       <source src="http://www.mcell.psc.edu/tutorials/videos/main/getting_started.ogg" type='video/ogg'/>
     </video>
 
-You can skip to the :ref:`annotate` section if you have watched the previous
-video tutorial. Otherwise, follow along with the rest of the directions in this
-section. 
+If you've followed along with this video, you can skip to the :ref:`annotate` section.
+If not, or if you'd like to go through it again, the following instructions should give
+you the same result.
+
+Tutorial Instructions
+---------------------------------------------
 
 Open up a terminal and enter the command::
 
