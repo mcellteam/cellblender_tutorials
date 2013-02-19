@@ -91,8 +91,8 @@ of the two top faces to select them.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/select_top.png
 
-Under the **Define Surface Regions** panel, click **Assign**. These top two
-faces now have the **top** surface region applied to them. With the cursor over
+Under the **Define Surface Regions** panel, click **Assign** button. These top two
+faces should now have the "**top**" surface region assigned to them. With the cursor over
 the **3D View Editor**, hit **Tab** to change back into **Object Mode** (or enter Object Mode 
 via the "Mode" selection control).
 
@@ -122,13 +122,11 @@ seconds.
 Define Molecules
 ---------------------------------------------
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_molecules.png
-
 We will now define three new molecule species. Expand the **Define Molecules**
 panel and hit the **+** button three times. This will create three instances of
 **New Molecule** in the list of molecules.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_molecules.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_molecules.png
 
 Left click on the first instance of **New Molecule**. Change the **Molecule
 Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the
@@ -137,10 +135,10 @@ in the list, but call this one **vol2**. Now, change the third entry to
 **surf1**. The **Molecule Type** should be set to **Surface Molecule** and
 change the **Diffusion Constant** to **1e-7**.
 
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_molecules.png
+
 Define Reactions
 ---------------------------------------------
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_reactions.png
 
 In order to have our molecules interact with one another, we first need to
 define some reactions. Expand the **Define Reaction** panel and hit the **+**
@@ -148,6 +146,8 @@ button. Change **Reactants** to **vol1' + surf1,**. Change **Products** to
 **surf1, + vol2,**. Be sure to use the commas and apostrophes shown in these
 examples. The meaning of these symbols will be explained in the :ref:`rxn_dir`
 section. Lastly, change **Forward Rate** to **1e8**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_reactions.png
 
 Create Release Sites
 ---------------------------------------------
