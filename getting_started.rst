@@ -103,24 +103,24 @@ via the "Mode" selection control).
 Set Simulation Parameters
 ---------------------------------------------
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/scene_button.png
-
 Hit the **Scene** button in the **Properties Editor**. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/model_objects.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/scene_button.png
 
 Expand the **Model Objects** panel. With the **Cube** object still selected,
 hit the **+** button. This will add **Cube** to the list of mesh objects to be
 exported and initialized.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/model_init.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/model_objects.png
 
 Expand the **Model Initialization** panel. Change **Simulation Iterations** to
 **1000**. Change **Simulation Time Step** to **5e-6**. The units are in
 seconds.
 
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/model_init.png
+
 Define Molecules
-+++++++++++++++++++++++++++++++++++++++++++++
+---------------------------------------------
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_molecules.png
 
@@ -138,7 +138,7 @@ in the list, but call this one **vol2**. Now, change the third entry to
 change the **Diffusion Constant** to **1e-7**.
 
 Define Reactions
-+++++++++++++++++++++++++++++++++++++++++++++
+---------------------------------------------
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_reactions.png
 
@@ -150,7 +150,7 @@ examples. The meaning of these symbols will be explained in the :ref:`rxn_dir`
 section. Lastly, change **Forward Rate** to **1e8**.
 
 Create Release Sites
-+++++++++++++++++++++++++++++++++++++++++++++
+---------------------------------------------
 
 We have defined molecules and reactions, but we still need to release some
 molecules into our simulation.
