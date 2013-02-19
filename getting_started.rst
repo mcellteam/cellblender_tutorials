@@ -5,8 +5,8 @@ Getting Started
 *********************************************
 
 For this first example, we'll use Blender and the CellBlender plugin to set
-some simulation parameters. We'll export this into the MDL format which MCell
-can parse. Then we will run these MDLs with MCell to generate visualization
+some simulation parameters. We'll export this into the MDL file format which MCell
+can parse. Then we will run these MDL files with MCell to generate visualization
 data, which will be used in the next section.
 
 Note that most blender actions can be accomplished with either key commands or
