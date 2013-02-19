@@ -49,14 +49,13 @@ Define a Surface Region
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/object_button.png
 
-Hit the **Object** button in the **Properties Editor**. Scroll to the bottom of
-the Editor.
+Hit the **Object** button in the **Properties Editor**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_region.png
 
-Expand the **Define Surface Regions** panel. Hit the **+** button and **New
-Region** should appear in the list of regions, indicating that a new surface
-region was created.
+Scroll to the bottom of the Editor. Expand the **Define Surface Regions** panel.
+Hit the **+** button and **New Region** should appear in the list of regions, indicating
+that a new surface region was created.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/top.png
 
