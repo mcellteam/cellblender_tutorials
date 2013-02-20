@@ -174,8 +174,6 @@ molecules into our simulation.
 Expand the **Molecule Release/Placement** panel and hit the **+** button twice,
 which will create two instances of **Release Site**. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/vol1_rel.png
-
 Select the first instance (*you may need to scroll down to see the entire panel*),
 and change **Site Name** to **vol1_rel**. Change
 **Molecule** to **vol1**. Change **Release Shape** to **Object/Region**. Change
@@ -183,7 +181,7 @@ and change **Site Name** to **vol1_rel**. Change
 will release 2000 **vol1** molecules randomly throughout the interior of the
 **Cube** object.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/surf1_rel.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/vol1_rel.png
 
 Now select the second release site. Change **Site Name** to **surf1_rel**.
 Change **Molecule** to **surf1'**. Change **Release Shape** to
@@ -191,10 +189,12 @@ Change **Molecule** to **surf1'**. Change **Release Shape** to
 to Release** to **2000**. This will release **2000** molecules randonmly on the
 **top** surface region.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/rxn_viz_output.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/surf1_rel.png
 
 Under **Reaction Output Settings**, enable **Include Reaction Output**. Then,
 under **Visualization Output Settings**, enable **Include Viz Output**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/rxn_viz_output.png
 
 .. _export_mdls:
 
