@@ -26,16 +26,16 @@ Visualize molecules with CellBlender in this video tutorial.
 Skip to the :ref:`graph_rxn_data` section if you just watched the video
 tutorial.
 
-Begin by opening Blender. Then click the **Scene** button. 
+Begin by opening Blender. Then click the **Scene** button in the **Properties Editor**. Expand 
+the **Visualize Simulation Results** panel, and click the **Set Molecule Viz Directory** button.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_molec_viz_dir.png
 
+Navigate to ``/home/user/mcell_tutorial/intro/viz_data/`` and click **Read Molecule Files**.
+
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/read_molec_files.png
 
-Expand the **Visualize Simulation Results** panel, and click the **Set Molecule
-Viz Directory** button. Navigate to
-``/home/user/mcell_tutorial/intro/viz_data/`` and click **Read Molecule
-Files**. You should now see a number of molecules populating the surface of the
+You should now see a number of molecules populating the surface of the
 **Cube**. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/wireframe.png
