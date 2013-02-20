@@ -62,13 +62,13 @@ Scroll to the bottom of the Properties Editor panel. Expand the **Define Surface
 panel by clicking the small triangle next to the name (*note that you may have to scroll
 further after actions which expand the sizes of panels because new fields may appear beyond
 the currently visible portion of the panel*). Hit the **+** button and new region named "**Region**"
-should appear in the list of regions, indicating that a new surface region was created
-(*again, you may need to scroll the panel to see all of the new fields created by the* **+** *button*).
+should appear in the list of regions, indicating that a new surface region was created.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_region.png
 
 Rename this new surface region to "**top**" by changing the **Region Name** field from "**Region**"
-to "**top**".
+to "**top**" (*again, you may need to scroll the panel to see all of the new fields created by
+the* **+** *button*).
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/top.png
 
