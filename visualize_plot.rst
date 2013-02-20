@@ -37,11 +37,11 @@ Navigate to ``/home/user/mcell_tutorial/intro/viz_data/`` and click **Read Molec
 
 You should now see a number of molecules populating the surface of the **Cube**. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/wireframe.png
-
 Let's change the **Cube** to a wireframe view so we can see inside of it. Click
 the **Object** button on the **Properties Editor**. Under the **Display**
 panel, change **Type** to **Wire**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/wireframe.png
 
 Drag the green bar on the **Timeline Editor** back and forth to scrub through
 the simulation. You can see the molecules diffusion in and on surface of the
