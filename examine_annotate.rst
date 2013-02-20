@@ -296,7 +296,7 @@ randomly on the **top** surface region of **Scene.Cube**. Also, the **TOP** of
 Visualization Data
 ---------------------------------------------
 
-For these last two sections, we'll actually be hand editing some mdls. First,
+For these last two sections, we'll actually be hand editing some MDL files. First,
 create a file called **intro.viz_output.mdl** with the following text in it::
 
     VIZ_OUTPUT {
