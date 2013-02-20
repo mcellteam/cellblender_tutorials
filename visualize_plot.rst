@@ -35,8 +35,7 @@ Navigate to ``/home/user/mcell_tutorial/intro/viz_data/`` and click **Read Molec
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/read_molec_files.png
 
-You should now see a number of molecules populating the surface of the
-**Cube**. 
+You should now see a number of molecules populating the surface of the **Cube**. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/wireframe.png
 
