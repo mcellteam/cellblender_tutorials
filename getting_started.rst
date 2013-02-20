@@ -67,7 +67,7 @@ should appear in the list of regions, indicating that a new surface region was c
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_region.png
 
-To rename the surface region, change the text field which reads "**New Region**"
+Rename this new surface region to "**top**" by changing the **Region Name** field from "**Region**"
 to "**top**".
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/top.png
