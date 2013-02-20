@@ -59,7 +59,9 @@ Hit the **Object** button in the **Properties Editor** (in the right side panel)
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/object_button.png
 
 Scroll to the bottom of the Properties Editor panel. Expand the **Define Surface Regions** 
-panel by clicking the small triangle next to the name. Hit the **+** button and **New Region**
+panel by clicking the small triangle next to the name (*note that you may have to scroll
+further after actions which expand the sizes of panels because new fields may appear beyond
+the currently visible portion of the panel*). Hit the **+** button and **New Region**
 should appear in the list of regions, indicating that a new surface region was created.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_region.png
