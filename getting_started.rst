@@ -172,7 +172,7 @@ We have defined molecules and reactions, but we still need to release some
 molecules into our simulation.
 
 Expand the **Molecule Release/Placement** panel and hit the **+** button twice,
-which will create two instances of **New Release Site**. 
+which will create two instances of **Release Site**. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/vol1_rel.png
 
