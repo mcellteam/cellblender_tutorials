@@ -114,7 +114,7 @@ Hit the **Scene** button in the **Properties Editor**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/scene_button.png
 
-Expand the **Model Objects** panel. With the **Cube** object still selected,
+Find and expand the **Model Objects** panel. With the **Cube** object still selected,
 hit the **+** button. This will add **Cube** to the list of mesh objects to be
 exported and initialized.
 
