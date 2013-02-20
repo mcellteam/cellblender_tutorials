@@ -79,16 +79,16 @@ Assign a Surface Region
 
 Move the cursor to the **3D View Editor**. Hit **Tab** to change into **Edit
 Mode** (or enter **Edit Mode** via the "Mode" selection control). Hit **Ctrl-t** to triangulate 
-the faces (or use Mesh/Faces/TriangulateFaces). 
+the faces (or use **Mesh/Faces/TriangulateFaces**). 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/triangulate.png
 
-Hit **Ctrl-Tab** and select **Face** (or click on the "Face select" button) to enter face
+Hit **Ctrl-Tab** and select **Face** (or click on the "**Face select**" button) to enter face
 selection mode.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/ctrl_tab.png
 
-Then hit **a** (or use menu option Select/(De)select All) to deselect everything. Select
+Then hit **a** (or use menu option **Select/(De)select All**) to deselect everything. Select
 just the top two triangular faces by **holding Shift** while **right clicking** on each
 of the two top faces to select them.
 
