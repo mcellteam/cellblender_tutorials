@@ -142,7 +142,9 @@ warning because we'll be renaming each of these molecules next).
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_molecules.png
 
-Left click on the first instance of **New Molecule**. Change the **Molecule
+NOTE: SOME IMAGES MAY BE FROM OLDER VERSIONS AND NEED TO BE UPDATED!!
+
+Left click on the first instance of **Molecule**. Change the **Molecule
 Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the
 **Diffusion Constant** to **1e-6**. Repeat this process for the next molecule
 in the list, but call this one **vol2**. Now, change the third entry to
