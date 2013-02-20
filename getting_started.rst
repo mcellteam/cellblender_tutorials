@@ -176,7 +176,8 @@ which will create two instances of **Release Site**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/vol1_rel.png
 
-Select the first instance, and change **Site Name** to **vol1_rel**. Change
+Select the first instance (*you may need to scroll down to see the entire panel*),
+and change **Site Name** to **vol1_rel**. Change
 **Molecule** to **vol1**. Change **Release Shape** to **Object/Region**. Change
 **Object/Region** to **Cube**. Change **Quantity to Release** to **2000**. This
 will release 2000 **vol1** molecules randomly throughout the interior of the
