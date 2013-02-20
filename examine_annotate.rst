@@ -347,5 +347,41 @@ the command::
     mcell intro.main.mdl
 
 MCell should output some information to the command line indicating that it ran
-successfully.
+successfully (partial typical output shown below)::
 
+    Creating geometry (this may take some time)
+    MCell: world bounding box in microns =
+             [ -1.00000036 -1.0000006 -1 ] [ 1.00000048 1.00000036 1 ]
+    Creating 125 subvolumes (5,5,5 per axis).
+    Creating 1 memory partitions (1,1,1 per axis).
+    Instantiating objects...
+    Creating walls...
+    Creating edges...
+    Running simulation.
+    Releasing 2000 molecules vol1 ...  Released 2000 vol1 from "Scene.vol1_rel" at iteration 0.
+    Releasing 2000 molecules surf1 ...  Released 2000 surf1 from "Scene.surf_rel" at iteration 0.
+    Iterations: 0 of 1000 
+    Iterations: 100 of 1000  (283.843 iter/sec)
+    Iterations: 200 of 1000  (285.422 iter/sec)
+    Iterations: 300 of 1000  (243.819 iter/sec)
+    Iterations: 400 of 1000  (203.683 iter/sec)
+    Iterations: 500 of 1000  (148.063 iter/sec)
+    Iterations: 600 of 1000  (267.291 iter/sec)
+    Iterations: 700 of 1000  (277.856 iter/sec)
+    Iterations: 800 of 1000  (251.247 iter/sec)
+    Iterations: 900 of 1000  (266.053 iter/sec)
+    Iterations: 1000 of 1000  (290.037 iter/sec)
+    Exiting run loop.
+    iterations = 1000 ; elapsed time = 0.005 seconds
+    Average diffusion jump was 1.00 timesteps
+    
+    Total number of random number use: 8896633
+    Total number of ray-subvolume intersection tests: 2231569
+    Total number of ray-polygon intersection tests: 6341571
+    Total number of ray-polygon intersections: 74555
+    Initialization CPU time = 0.040002 (user) and 0.000000 (system)
+    Simulation CPU time = 1.524095 (user) and 0.160010 (system)
+    Total wall clock time = 4 seconds
+    Done running.
+
+If your simulation produced similar output, then you're ready to move to the next step.
