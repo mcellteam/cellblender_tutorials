@@ -88,8 +88,8 @@ selection mode.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/ctrl_tab.png
 
-You can tell you're in **Face Select** mode (rather than Vertex Select or Edge Select mode)
-when each face has a round dot near its center.
+You can tell you're in **Face Select** mode (rather than **Vertex Select** or **Edge Select**
+modes) when each face has a round dot near its center.
 
 Hit **a** (or use menu option **Select/(De)select All**) to deselect everything. Then select
 just the top two triangular faces by **holding Shift** while **right clicking** on each
