@@ -103,10 +103,10 @@ button, those top two faces will now have the "**top**" surface region assigned 
 They won't look any different, but they're now "tagged" with the name "top" which MCell
 can use to reference them.
 
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/assign.png
+
 With the cursor over the **3D View Editor**, hit **Tab** to change back into **Object Mode**
 (or enter Object Mode via the "Mode" selection control).
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/assign.png
 
 .. _set_parameters:
 
