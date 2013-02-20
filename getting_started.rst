@@ -98,15 +98,17 @@ rather than orange). Then select just the top two triangular faces by **holding 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/select_top.png
 
 Under the **Define Surface Regions** panel, click the **Assign** button (*remember that
-you might need to scroll down to see the new buttons added*). After clicking the **Assign**
-button, those top two faces will now have the "**top**" surface region assigned to them.
-They won't look any different, but they're now "tagged" with the name "top" which MCell
-can use to reference them.
+you might need to scroll down to see the new buttons added*).
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/assign.png
 
-With the cursor over the **3D View Editor**, hit **Tab** to change back into **Object Mode**
-(or enter Object Mode via the "Mode" selection control).
+After clicking the **Assign** button, those top two faces will now have the "**top**" surface
+region assigned to them. They won't look any different, but they're now "tagged" with the name
+"top" which MCell can use to reference them.
+
+We're done editing individual faces, so switch back to object mode by placing the cursor in
+**3D View Editor** and hitting the **Tab** key (or switch back to Object Mode via the "Mode"
+selection control below the 3D View Editor).
 
 .. _set_parameters:
 
