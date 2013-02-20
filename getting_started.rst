@@ -157,7 +157,7 @@ Define Reactions
 ---------------------------------------------
 
 In order to have our molecules interact with one another, we first need to
-define some reactions. Expand the **Define Reaction** panel and hit the **+**
+define some reactions. Expand the **Define Reactions** panel and hit the **+**
 button. Change **Reactants** to **vol1' + surf1,**. Change **Products** to
 **surf1, + vol2,**. Be sure to use the commas and apostrophes shown in these
 examples. The meaning of these symbols will be explained in the :ref:`rxn_dir`
