@@ -284,8 +284,8 @@ Alternatively, one could define a **CONCENTRATION** (for volume molecules) or
 **DENSITY** (for surface molecules).
 
 These two release sites together will release 1000 **vol1** molecules randomly
-throughout the inside of **World.Cube** and also 5000 **surf1** molecules
-randomly on the **top** surface region of **World.Cube**. Also, the **TOP** of
+throughout the inside of **Scene.Cube** and also 5000 **surf1** molecules
+randomly on the **top** surface region of **Scene.Cube**. Also, the **TOP** of
 **surf1** will be aligned with the **FRONT** of the surface.
 
 .. index::
