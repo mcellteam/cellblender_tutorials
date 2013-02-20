@@ -331,7 +331,7 @@ The brackets after the **COUNT** command tell MCell what molecule to count and
 where to count it. For instance the first **COUNT** statement tells it to count
 all of the **vol1** molecules in the **WORLD** (the entire simulation).
 Alternatively, you could specify that it only count those found in/on an
-object/region (e.g. **[vol1,World.Cube]**) 
+object/region (e.g. **[vol1,Scene.Cube]**) 
 
 The file listed after the arrow symbol (**=>**) tells it where to save it. 
 
