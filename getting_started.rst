@@ -91,9 +91,9 @@ selection mode.
 You can tell you're in **Face Select** mode (rather than **Vertex Select** or **Edge Select**
 modes) when each face has a round dot near its center.
 
-Hit **a** (or use menu option **Select/(De)select All**) to deselect everything. Then select
-just the top two triangular faces by **holding Shift** while **right clicking** on each
-of the two top faces to select them.
+Hit **a** (or use menu option **Select/(De)select All**) to deselect everything (edges turn black
+rather than orange). Then select just the top two triangular faces by **holding Shift** while
+**right clicking** on each of the two top faces to select them.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/select_top.png
 
