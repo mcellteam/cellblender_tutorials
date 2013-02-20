@@ -114,15 +114,16 @@ Hit the **Scene** button in the **Properties Editor**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/scene_button.png
 
-Find and expand the **Model Objects** panel. With the **Cube** object still selected,
-hit the **+** button. This will add **Cube** to the list of mesh objects to be
-exported and initialized.
+There may be many Scene panels which are open (triangles pointing downward). In order to
+find things easily, take the time to close all of these panels by clicking the triangles
+to collapse them down to one line each. Then find and expand just the **Model Objects** panel.
+With the **Cube** object still selected, hit the **+** button. This will add **Cube** to the
+list of mesh objects to be exported and initialized.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/model_objects.png
 
-Expand the **Model Initialization** panel. Change **Simulation Iterations** to
-**1000**. Change **Simulation Time Step** to **5e-6**. The units are in
-seconds.
+Now find and expand the **Model Initialization** panel. Change **Simulation Iterations** to
+**1000**. Change **Simulation Time Step** to **5e-6**. The units are in seconds.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/model_init.png
 
@@ -131,7 +132,8 @@ Define Molecules
 
 We will now define three new molecule species. Expand the **Define Molecules**
 panel and hit the **+** button three times. This will create three instances of
-**New Molecule** in the list of molecules.
+**Molecule** in the list of molecules (don't worry about the "Duplicate molecule..."
+warning because we'll be renaming each of these molecules next).
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_molecules.png
 
