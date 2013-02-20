@@ -54,7 +54,7 @@ You should see a cube in the **3D View Editor**.
 Define a Surface Region
 ---------------------------------------------
 
-Hit the **Object** button in the **Properties Editor** (in the right side panel).
+Hit the **Object** button in the **Properties Editor** (little cube in the right side panel).
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/object_button.png
 
