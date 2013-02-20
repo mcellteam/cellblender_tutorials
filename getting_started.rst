@@ -94,10 +94,13 @@ of the two top faces to select them.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/select_top.png
 
-Under the **Define Surface Regions** panel, click **Assign** button. These top two
-faces should now have the "**top**" surface region assigned to them. With the cursor over
-the **3D View Editor**, hit **Tab** to change back into **Object Mode** (or enter Object Mode 
-via the "Mode" selection control).
+Under the **Define Surface Regions** panel, click the **Assign** button. These top two
+faces will now have the "**top**" surface region assigned to them. They won't look any
+different, but they're now "tagged" with the name "top" which MCell can use to reference
+them.
+
+With the cursor over the **3D View Editor**, hit **Tab** to change back into **Object Mode**
+(or enter Object Mode via the "Mode" selection control).
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/assign.png
 
