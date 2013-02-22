@@ -28,9 +28,7 @@ tutorial.
 
 Begin by opening Blender. Then click the **Scene** button. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_molec_viz_dir.png
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/read_molec_files.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/scene_button.png
 
 Expand the **Visualize Simulation Results** panel, and click the **Set Molecule
 Viz Directory** button. Navigate to
@@ -38,11 +36,16 @@ Viz Directory** button. Navigate to
 Files**. You should now see a number of molecules populating the surface of the
 **Cube**. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/wireframe.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_molec_viz_dir.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/read_molec_files.png
 
 Let's change the **Cube** to a wireframe view so we can see inside of it. Click
 the **Object** button on the **Properties Editor**. Under the **Display**
 panel, change **Type** to **Wire**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/wireframe.png
 
 Drag the green bar on the **Timeline Editor** back and forth to scrub through
 the simulation. You can see the molecules diffusion in and on surface of the
