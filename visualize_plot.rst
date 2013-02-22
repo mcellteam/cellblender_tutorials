@@ -45,7 +45,8 @@ the **Object** button on the **Properties Editor**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/object_button.png
 
-Under the **Display** panel, change **Type** to **Wire**.
+Be sure the cube is selected (right click until the edges of the cube are orange), then
+under the **Display** panel, change **Type** to **Wire**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/wireframe.png
 
