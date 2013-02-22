@@ -31,13 +31,12 @@ Begin by opening Blender. Then click the **Scene** button.
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/scene_button.png
 
 Expand the **Visualize Simulation Results** panel, and click the **Set Molecule
-Viz Directory** button. Navigate to
-``/home/user/mcell_tutorial/intro/viz_data/`` and click **Read Molecule
-Files**. You should now see a number of molecules populating the surface of the
-**Cube**. 
-
+Viz Directory** button. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_molec_viz_dir.png
+
+Navigate to ``/home/user/mcell_tutorial/intro/viz_data/`` and click **Read Molecule
+Files**. You should now see a number of molecules populating the surface of the **Cube**. 
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/read_molec_files.png
 
