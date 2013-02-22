@@ -80,13 +80,14 @@ that get mapped onto the molecule locations. Select **mol_surf1_shape** in the
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/outliner2.png
 
-Then click the **Material** button and navigate down to **Molecule Shape**. The
-shape should be set to **Cone** in the **Molecule Shape** drop down box. Click
+Then click the **Material** button and navigate down to **Molecule Shape**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/material.png
+
+The shape should be set to **Cone** in the **Molecule Shape** drop down box. Click
 **Set Molecule Shape** to apply the selection. All of the **surf1** molecule
 glyphs should now be changed to cones. You may want to zoom in to get a better
 view of them.
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/material.png
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_molecule_shape.png
 
