@@ -4,7 +4,7 @@
 Visualize and Plot the Output
 *********************************************
 
-At the end of the last section, we ran MCell on the MDL that we annotated. This
+At the end of the last section, we ran MCell with the MDL file that we annotated. This
 generated visualization and reaction data (i.e. molecule counts), which we will
 now examine using CellBlender and some plotting software. 
 
