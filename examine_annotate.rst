@@ -103,27 +103,28 @@ Let's take a closer look at **intro.geometry.mdl**::
       }
       ELEMENT_CONNECTIONS
       {
-        [ 4, 0, 3 ]
-        [ 4, 3, 7 ]
-        [ 2, 6, 7 ]
-        [ 2, 7, 3 ]
-        [ 1, 5, 2 ]
-        [ 5, 6, 2 ]
-        [ 0, 4, 1 ]
-        [ 4, 5, 1 ]
-        [ 4, 7, 5 ]
-        [ 7, 6, 5 ]
         [ 0, 1, 2 ]
-        [ 0, 2, 3 ]
+        [ 4, 7, 5 ]
+        [ 0, 4, 1 ]
+        [ 1, 5, 2 ]
+        [ 2, 6, 7 ]
+        [ 4, 0, 3 ]
+        [ 3, 0, 2 ]
+        [ 4, 5, 1 ]
+        [ 5, 6, 2 ]
+        [ 3, 2, 7 ]
+        [ 7, 4, 3 ]
+        [ 7, 6, 5 ]
       }
       DEFINE_SURFACE_REGIONS
       {
         top
         {
-          ELEMENT_LIST = [1, 8, 9]
+          ELEMENT_LIST = [1, 11]
         }
       }
     }
+
 
 Mesh objects made in Blender become a **POLYGON_LIST** object in MCell. A
 **POLYGON_LIST** object consists of two to three sections in MCell: a
