@@ -63,32 +63,32 @@ Learn how to use custom glyphs for molecules using CellBlender in this video
 tutorial.
 
 By default, every molecule just shows up as a sphere. This might be fine for
-volume molecules, but you might one to be able to tell the orientation of your
+volume molecules, but you might want to be able to tell the orientation of your
 surface molecules, which we can do by using an asymmetrical glyph.
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/outliner1.png
 
 Expand **molecules** in the **Outliner** by clicking the small **+** sign
 beside it. This expands to reveal **mol_surf1**, **mol_vol1**, and
 **mol_vol2**. These correspond to the molecules we created in our simulation:
 **surf1**, **vol1**, and **vol2**. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/outliner2.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/outliner1.png
 
 If you click the plus beside each of these, you will see **mol_surf1_shape**,
 **mol_vol1_shape**, and **mol_vol2_shape**. These are the actual glyph objects
 that get mapped onto the molecule locations. Select **mol_surf1_shape** in the
 **Outliner**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/material.png
-
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_molecule_shape.png
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/outliner2.png
 
 Then click the **Material** button and navigate down to **Molecule Shape**. The
 shape should be set to **Cone** in the **Molecule Shape** drop down box. Click
 **Set Molecule Shape** to apply the selection. All of the **surf1** molecule
 glyphs should now be changed to cones. You may want to zoom in to get a better
 view of them.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/material.png
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_molecule_shape.png
 
 .. _graph_rxn_data:
 
