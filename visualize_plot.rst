@@ -41,8 +41,11 @@ Files**. You should now see a number of molecules populating the surface of the 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/read_molec_files.png
 
 Let's change the **Cube** to a wireframe view so we can see inside of it. Click
-the **Object** button on the **Properties Editor**. Under the **Display**
-panel, change **Type** to **Wire**.
+the **Object** button on the **Properties Editor**.
+
+.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/object_button.png
+
+Under the **Display** panel, change **Type** to **Wire**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/wireframe.png
 
