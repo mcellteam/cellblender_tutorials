@@ -19,7 +19,7 @@ gedit or kedit if you aren't sure what to use)
     :linenos:
 
     ITERATIONS = 1000
-    TIME_STEP = 1e-06
+    TIME_STEP = 5e-06
 
     INCLUDE_FILE = "intro.molecules.mdl"
 
