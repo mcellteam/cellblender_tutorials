@@ -37,9 +37,9 @@ Navigate to ``/home/user/mcell_tutorial/intro/viz_data/`` and click **Read Molec
 
 You should now see a number of molecules populating the surface of the **Cube**. 
 
-Let's change the **Cube** to a wireframe view so we can see inside of it. Click
-the **Object** button on the **Properties Editor**. Under the **Display**
-panel, change **Type** to **Wire**.
+Let's change the **Cube** to a wireframe view so we can see inside of it. First, be sure that the
+cube is selected (orange outline). Then click the **Object** button on the **Properties Editor**.
+Under the **Display** panel, change **Type** to **Wire**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/wireframe.png
 
