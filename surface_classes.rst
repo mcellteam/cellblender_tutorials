@@ -35,20 +35,20 @@ left off at the end of the :ref:`getting_started` section. Hit **Shift-a** and
 select **Plane**. Hit **g** to "grab" the plane, **z** to constrain the
 movement to the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/above.png
+.. image:: ./images/surf_class_above.png
 
 Hit the **Object** button on the **Properties** Editor. Under the **Surface
 Regions** panel, hit **+**. Change the default name to **above**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/above_quad.png
+.. image:: ./images/surf_class_above_quad.png
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/above_triangulated.png
+.. image:: ./images/surf_class_above_triangulated.png
 
 Change into **Edit Mode** by hitting **Tab** in the **3D View Window**. With
 the face of the plane selected, hit **Ctrl-t** to triangulate it. Then, click
 **Assign** under **Define Surface Regions**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/include_surface_classes.png
+.. image:: ./images/surf_class_include_surface_classes.png
 
 Hit the **Scene** button on the **Properties** Editor. Under the **Model
 Objects** panel, hit **+**. Under **Define Surface Classes**, select **Include
@@ -161,28 +161,28 @@ While still in **Object Mode**, hit **Shift-a**, select **Plane**, and
 **Enter** to confirm. Hit the **Object** button on the **Properties** Editor.
 Under the **Surface Regions** panel, hit **+**. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/inside.png
+.. image:: ./images/surf_class_inside.png
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/inside_triangulated.png
+.. image:: ./images/surf_class_inside_triangulated.png
 
 Change the newly created surface region text field from **New Region** to
 **inside**. Change into **Edit Mode** by hitting **Tab**. With the face of the
 plane selected, hit **Ctrl-t** to triangulate it. Under **Define Surface
 Regions**, click **Assign**. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_surf2.png
+.. image:: ./images/surf_class_define_molec.png
 
 Expand the **Define Molecules** panel and hit the **+** button. Left click
 **New Molecule**. Change the **Molecule Name** to **surf2**, the **Molecule
 Type** to **Surface Molecule**, and the **Diffusion Constant** to **0**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/sc_rxn.png
+.. image:: ./images/surf_class_rxn.png
 
 Expand the **Define Reaction** panel and hit the **+** button. Change
 **Reactants** to **vol1, + surf2' @ empty'**. Change **Products** to **surf2' +
 vol2'**. Change **Forward Rate** to **1e8**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/surf2_rel.png
+.. image:: ./images/surf_class_rel.png
 
 Under the **Molecule Release/Placement** panel and hit the **+** button. Select
 **New Release Site** from the list, and change **Site Name** to **surf2_rel**.

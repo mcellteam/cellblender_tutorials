@@ -18,27 +18,27 @@ Creating the Model with Blender
 ---------------------------------------------
 Start Blender. Hit **z** to switch to wireframe mode.
  
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/clamp/scale_cube.png
+.. image:: ./images/clamp_scale_cube.png
 
 With the **Cube** selected, hit **s**, **z**, **0.1**, and **Enter**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/clamp/triangulate_cube.png
+.. image:: ./images/clamp_triangulate_cube.png
 
 Hit **Tab** to change into **Edit Mode**. Hit **Ctrl-t** to triangulate the
 faces of the **Cube**. Hit **Tab** to switch back into **Object Mode**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/clamp/plane.png
+.. image:: ./images/clamp_plane.png
 
 Hit **Shift-a**, select **Mesh>Plane**. Hit **s**, **0.9**, and **Enter**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/clamp/clamp_sr.png
+.. image:: ./images/clamp_sr.png
 
 Hit the **Object** button in the **Properties Editor**. Scroll to the bottom of
 the Editor. Expand the **Define Surface Regions** panel. Hit the **+** button
 and **New Region** should appear in the list of regions. Change the text field
 which reads **New Region** to **clamp_sr**. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/clamp/triangulate_plane.png
+.. image:: ./images/clamp_triangulate_plane.png
 
 Move the cursor to the **3D View Editor**. Hit **Tab** to change into **Edit
 Mode**. Hit **Ctrl-t** to triangulate the faces.
@@ -47,19 +47,19 @@ Under the **Define Surface Regions** panel, click **Assign**. Hit **Tab** to
 change back into **Object Mode**. Hit the **Scene** button in the **Properties
 Editor**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/clamp/select_both.png
+.. image:: ./images/clamp_select_both.png
 
 The **Plane** should still be selected, but we also want to select the
 **Cube**. Hold **Shift** and **right click** on the **Cube**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/clamp/model_objects_init.png
+.. image:: ./images/clamp_model_objects_init.png
 
 Expand the **Model Objects** panel and hit the **+** button. This will add the
 **Cube** and the **Plane** to the list of mesh objects to be exported and
 initialized. Expand the **Model Initialization** panel. Change **Simulation
 Iterations** to **500**. Change **Simulation Time Step** to **1e-6**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/clamp/define_molec.png
+.. image:: ./images/clamp_define_molec.png
 
 Expand the **Define Molecules** panel and hit the **+** button. Change the
 **Molecule Name** to **vol1**, the **Molecule Type** to **Volume Molecule**,

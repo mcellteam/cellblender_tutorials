@@ -41,44 +41,44 @@ Start Blender. Hit the **Object** button in the **Properties Editor**. Scroll
 to the bottom of the Editor. Hit **+** twice so that you have two new surface
 regions. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/sc_sm/top_bottom_regions.png
+.. image:: ./images/scsm_top_bottom_regions.png
 
 Click on the first one and change its name in the text field to **top**. Next,
 click on the second entry and change its name to **bottom**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/triangulate.png
+.. image:: ./images/gs_triangulate.png
 
 Move your cursor to the **3D View** window and hit **Tab** to switch into
 **Edit Mode**.  Hit **Ctrl-T** to triangulate the faces.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/ctrl_tab.png
+.. image:: ./images/gs_ctrl_tab.png
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/select_top.png
+.. image:: ./images/gs_select_top.png
 
 Then hit **Ctrl-Tab** and select **Face**. Right click on the top faces, select
 the **top** surface region, and click **Assign**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/sc_sm/select_bottom.png
+.. image:: ./images/scsm_select_bottom.png
 
 Next move your mouse back to the **3D View** window and hold the middle mouse
 button down and drag upward so that the bottom face is shown. Right click on
 the bottom faces, select **bottom** from the list of materials, and click
 **Assign**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/sc_sm/model_objects_init.png
+.. image:: ./images/scsm_model_objects_init.png
 
 Expand the **Model Objects** panel. Hit the **+** button and **Cube** will
 appear in the list. Next, expand the **Model Initialization** panel. Change
 **Simulation Iterations** to **1000**. Change **Simulation Time Step** to
 **1e-5**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/sc_sm/define_surf_molec.png
+.. image:: ./images/scsm_define_surf_molec.png
 
 Expand the **Define Molecules** panel and hit the **+** button. Change the
 **Molecule Name** to **surf1**, the **Molecule Type** to **Surface Molecule**,
 and the **Diffusion Constant** to **1e-7**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/sc_sm/molec_release.png
+.. image:: ./images/scsm_molec_release.png
 
 Expand the **Molecule Release/Placement** panel and hit the **+** button.
 Change **Site Name** to **surf1_rel**. Change **Molecule** to **surf1'**.

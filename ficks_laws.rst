@@ -50,7 +50,7 @@ should watch the video or follow along with the instructions after the video.
 Begin by starting Blender. Hit **x** and click **Delete** to delete the default
 Cube. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/big_cylinder.png
+.. image:: ./images/ficks_big_cylinder.png
 
 Then, create a cylinder by hitting **Shift-a**, and selecting
 **Mesh>Cylinder**. Hit **s**, **Shift-z**, **0.2**, and **Enter** to confirm.
@@ -58,14 +58,14 @@ Hit **r**, **x**, **90**, and **Enter** to rotate it 90 degrees around the
 x-axis. This will be the main cylinder through which the molecules diffuse. You
 may want to zoom in to get a better view.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/left_end_right_end.png
+.. image:: ./images/ficks_left_end_right_end.png
 
 Create two surface regions, **Left_end** and **Right_end**. See
 :ref:`define_region` if you need help with this.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/border_select.png
+.. image:: ./images/ficks_border_select.png
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/border_select2.png
+.. image:: ./images/ficks_border_select2.png
 
 Then, enter **Edit Mode** by hitting **Tab**. Hit **Ctrl-t** to triangulate the
 mesh. Hit **z** to enter wireframe mode. Next, select the left end of the
@@ -86,7 +86,7 @@ end of the end of larger cylinder (they don't touch though).
 Rename this smaller cylinder from **Cylinder.001** to **C**. Be sure to
 triangulate this mesh in the same way we did with the larger cylinder.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/array.png
+.. image:: ./images/ficks_array.png
 
 Now, we will use Blender's (very useful) **Array** modifier to replicate this
 sampling cylinder 40 times. To do so, hit the **Object Modifiers** button, and
@@ -94,21 +94,21 @@ from the **Add Modifier** drop-down box, select **Array**. Change **Count** to
 **40**. Deselect **Relative Offset** and select **Constant Offset**. Then
 change the third field under **Constant Offset** to **-2.01005**. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/loose_parts.png
+.. image:: ./images/ficks_loose_parts.png
 
 Now we need to make each cylinder a unique object. To do this, first hit the
 **Apply** button under the **Array** modifier. Then enter **Edit Mode**, hit
 **p**, and select **By loose parts** in the **Separate** menu. This will split
 each discontinuous mesh into a unique object.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/c040.png
+.. image:: ./images/ficks_c040.png
 
 They will be named **C**, **C.001**, **C.002**, etc. The last cylinder in the
 sequence should be named **C**. Rename it to **C.040**. This will make things
 cleaner when we want to count molecules in MCell later. Hit **Tab** to enter
 **Object Mode**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/fill_circle.png
+.. image:: ./images/ficks_fill_circle.png
 
 Finally, we will create a series of circular sampling planes that lie between
 each of these cylinders. Create a circle by hitting **Shift-a**, and selecting
@@ -118,18 +118,18 @@ under **Add Circle**. Hit **s**, **0.199**, and **Enter**. Hit **r**, **x**,
 the right side of our smaller cylinder. Once again, be sure to triangulate this
 mesh.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/circles.png
+.. image:: ./images/ficks_circles.png
 
 Next, we will replicate this plane by using an **Array** modifier similar to
 what we did previously with the cylinders. Set **Count** to **39** and
 **Absolute Offset** to **-0.251255**. Also separate the object **By loose
 parts** in the same way you did with the small cylinder. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/circle039.png
+.. image:: ./images/ficks_circle039.png
 
 Rename the final plane from **Circle** to **Circle.039**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/ficks_laws/ctrl_a.png
+.. image:: ./images/ficks_ctrl_a.png
 
 We need every objects' origin to be centered at the origin. With every mesh
 object still selected, hit **Ctrl-a** and select **Location**. Then hit

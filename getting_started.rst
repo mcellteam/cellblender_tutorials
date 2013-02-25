@@ -47,7 +47,7 @@ Open up a terminal and enter the command::
 
 You should see a cube in the **3D View Editor**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/blender/cube.png
+.. image:: ./images/gs_cube.png
 
 .. _define_region:
 
@@ -56,7 +56,7 @@ Define a Surface Region
 
 Hit the **Object** button in the **Properties Editor** (little cube in the right side panel).
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/object_button.png
+.. image:: ./images/gs_object_button.png
 
 Scroll to the bottom of the Properties Editor panel (if needed). Expand the **Define Surface Regions** 
 panel by clicking the small triangle next to the name (*note that you may have to scroll
@@ -64,13 +64,13 @@ further after actions which expand the sizes of panels because new fields may ap
 the currently visible portion of the panel*). Hit the **+** button and new region named "**Region**"
 should appear in the list of regions, indicating that a new surface region was created.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_region.png
+.. image:: ./images/gs_new_region.png
 
 Rename this new surface region to "**top**" by changing the **Region Name** field from "**Region**"
 to "**top**" (*again, you may need to scroll the panel to see all of the new fields created by
 the* **+** *button*).
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/top.png
+.. image:: ./images/gs_top.png
 
 .. _assign_region:
 
@@ -81,12 +81,13 @@ Move the cursor to the **3D View Editor**. Hit **Tab** to change into **Edit
 Mode** (or enter **Edit Mode** via the "Mode" selection control). Hit **Ctrl-t** to triangulate 
 the faces (or use **Mesh/Faces/TriangulateFaces**). 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/triangulate.png
+.. image:: ./images/gs_triangulate.png
+
 
 Hit **Ctrl-Tab** and select **Face** (or click on the "**Face select**" button) to enter face
 selection mode.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/ctrl_tab.png
+.. image:: ./images/gs_ctrl_tab.png
 
 You can tell you're in **Face Select** mode (rather than **Vertex Select** or **Edge Select**
 modes) when each face has a round dot near its center.
@@ -95,12 +96,12 @@ Hit **a** (or use menu option **Select/(De)select All**) to deselect everything 
 rather than orange). Then select just the top two triangular faces by **holding Shift** while
 **right clicking** on each of the two top faces to select them.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/select_top.png
+.. image:: ./images/gs_select_top.png
 
 Under the **Define Surface Regions** panel, click the **Assign** button (*remember that
 you might need to scroll down to see the new buttons added*).
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/assign.png
+.. image:: ./images/gs_assign.png
 
 After clicking the **Assign** button, those top two faces will now have the "**top**" surface
 region assigned to them. They won't look any different, but they're now "tagged" with the name
@@ -117,7 +118,7 @@ Set Simulation Parameters
 
 Hit the **Scene** button in the **Properties Editor**. 
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/scene_button.png
+.. image:: ./images/gs_scene_button.png
 
 There may be many Scene panels which are open (triangles pointing downward). In order to
 find things easily, take the time to close all of these panels by clicking the triangles
@@ -125,12 +126,12 @@ to collapse them down to one line each. Then find and expand just the **Model Ob
 With the **Cube** object still selected, hit the **+** button. This will add **Cube** to the
 list of mesh objects to be exported and initialized.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/model_objects.png
+.. image:: ./images/gs_model_objects.png
 
 Now find and expand the **Model Initialization** panel. Change **Simulation Iterations** to
 **1000**. Change **Simulation Time Step** to **5e-6**. The units are in seconds.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/model_init.png
+.. image:: ./images/gs_model_init.png
 
 Define Molecules
 ---------------------------------------------
@@ -140,7 +141,7 @@ panel and hit the **+** button three times. This will create three instances of
 **Molecule** in the list of molecules (don't worry about the "Duplicate molecule..."
 warning because we'll be renaming each of these molecules next).
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/new_molecules.png
+.. image:: ./images/gs_new_molecules.png
 
 NOTE: SOME IMAGES MAY BE FROM OLDER VERSIONS AND NEED TO BE UPDATED!!
 
@@ -151,7 +152,7 @@ in the list, but call this one **vol2**. Now, change the third entry to
 **surf1**. The **Molecule Type** should be set to **Surface Molecule** and
 change the **Diffusion Constant** to **1e-7**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_molecules.png
+.. image:: ./images/gs_define_molecules.png
 
 Define Reactions
 ---------------------------------------------
@@ -163,7 +164,7 @@ button. Change **Reactants** to **vol1' + surf1,**. Change **Products** to
 examples. The meaning of these symbols will be explained in the :ref:`rxn_dir`
 section. Lastly, change **Forward Rate** to **1e8**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_reactions.png
+.. image:: ./images/gs_define_reactions.png
 
 Create Release Sites
 ---------------------------------------------
@@ -179,7 +180,7 @@ to **vol1_rel**. Change **Molecule** to **vol1**. Change **Release Shape** to
 to **2000**. This will release 2000 **vol1** molecules randomly throughout the interior 
 of the **Cube** object.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/vol1_rel.png
+.. image:: ./images/gs_vol1_rel.png
 
 Now select the second release site. Change **Site Name** to **surf1_rel**.
 Change **Molecule** to **surf1'**. Change **Release Shape** to
@@ -187,12 +188,12 @@ Change **Molecule** to **surf1'**. Change **Release Shape** to
 to Release** to **2000**. This will release **2000** molecules randonmly on the
 **top** surface region.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/surf1_rel.png
+.. image:: ./images/gs_surf1_rel.png
 
 Under **Reaction Output Settings**, enable **Include Reaction Output**. Then,
 under **Visualization Output Settings**, enable **Include Viz Output**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/rxn_viz_output.png
+.. image:: ./images/gs_rxn_viz_output.png
 
 .. _export_mdls:
 
@@ -205,16 +206,16 @@ Navigate to the directory where we will export the files
 **OK** when it prompts you to make a new directory. Then select **Set Project
 Directory**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_project_dir_pt1.png
+.. image:: ./images/gs_set_project_dir_pt1.png
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/set_project_dir_pt2.png
+.. image:: ./images/gs_set_project_dir_pt2.png
 
 Set the **Project Base** to **intro**. Then hit **Export CellBlender Project**,
 navigate to same directory as before, and hit **Export MCell MDL**.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/project_base_prefix.png
+.. image:: ./images/gs_project_base_prefix.png
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/export_mcell_mdl.png
+.. image:: ./images/gs_export_mcell_mdl.png
 
 Either leave Blender open or save and quit, as we'll need to modify this model
 later.

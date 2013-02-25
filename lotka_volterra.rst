@@ -26,7 +26,7 @@ oscillating species (B and C) as they move through the tube. If you look at the
 reaction data, there are no smooth regular oscillations as seen in the
 physiologic model.
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/lv/diff_lim_sm.png
+.. image:: ./images/lv_diff_lim_sm.png
 
 Physiologic Reaction
 ---------------------------------------------
@@ -39,6 +39,6 @@ back). In the reaction data the oscillations will be smooth and regular (and
 will closely match an ODE model given that this reaction adheres to well mixed
 conditions).
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/lv/red_sm.png
+.. image:: ./images/lv_red_sm.png
 
-.. image:: http://www.mcell.psc.edu/tutorials/tutimg/lv/green_sm.png
+.. image:: ./images/lv_green_sm.png
