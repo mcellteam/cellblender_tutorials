@@ -160,7 +160,12 @@ In order to have our molecules interact with one another, we first need to
 define some reactions. Expand the **Define Reactions** panel and hit the **+**
 button. Change **Reactants** to **vol1' + surf1,**. Change **Products** to
 **surf1, + vol2,**. Be sure to use the commas and apostrophes shown in these
-examples. The meaning of these symbols will be explained in the :ref:`rxn_dir`
+examples. [WARNING: Be especially careful about the apostrophe character since there are
+different "flavors" of single quotes. In particular, if you copy text from a
+web site and paste it into CellBlender (or an MDL file), be sure that you
+get the normal (ASCII 0x27) version. If you get an MCell error about "orientation not specified",
+then you might want to double check (and even retype) the single quotes in your reactions.]
+The meaning of these symbols will be explained in the :ref:`rxn_dir`
 section. Lastly, change **Forward Rate** to **1e8**.
 
 .. image:: http://www.mcell.psc.edu/tutorials/tutimg/main/getting_started/define_reactions.png
