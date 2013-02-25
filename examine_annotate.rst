@@ -120,7 +120,7 @@ Let's take a closer look at **intro.geometry.mdl**::
       {
         top
         {
-          ELEMENT_LIST = [1, 8, 9]
+          ELEMENT_LIST = [8, 9]
         }
       }
     }
