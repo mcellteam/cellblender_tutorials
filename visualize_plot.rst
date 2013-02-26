@@ -26,27 +26,24 @@ Visualize molecules with CellBlender in this video tutorial.
 Skip to the :ref:`graph_rxn_data` section if you just watched the video
 tutorial.
 
-Begin by opening Blender. Then click the **Scene** button. 
-
-.. image:: ./images/vp_scene_button.png
-
-Expand the **Visualize Simulation Results** panel, and click the **Set Molecule
-Viz Directory** button. 
+Begin by opening Blender. Then click the **Scene** button in the **Properties
+Editor**. Expand the **Visualize Simulation Results** panel, and click the
+**Set Molecule Viz Directory** button.
 
 .. image:: ./images/vp_set_molec_viz_dir.png
 
-Navigate to ``/home/user/mcell_tutorial/intro/viz_data/`` and click **Read Molecule
-Files**. You should now see a number of molecules populating the surface of the **Cube**. 
+Navigate to ``/home/user/mcell_tutorial/intro/viz_data/`` and click **Read
+Molecule Files**.
 
 .. image:: ./images/vp_read_molec_files.png
 
-Let's change the **Cube** to a wireframe view so we can see inside of it. Click
-the **Object** button on the **Properties Editor**.
+You should now see a number of molecules populating the surface of the
+**Cube**.
 
-.. image:: ./images/vp_object_button.png
-
-Be sure the cube is selected (right click until the edges of the cube are orange), then
-under the **Display** panel, change **Type** to **Wire**.
+Let's change the **Cube** to a wireframe view so we can see inside of it.
+First, be sure that the cube is selected (orange outline). Then click the
+**Object** button on the **Properties Editor**.  Under the **Display** panel,
+change **Type** to **Wire**.
 
 .. image:: ./images/vp_wireframe.png
 
