@@ -215,7 +215,7 @@ under **Visualization Output Settings**, enable **Include Viz Output**.
 Export MDLs
 ---------------------------------------------
 
-Under **CellBlender Project Settings**, select **Export CellBlender Project**.
+Under **CellBlender Project Settings**, click the **Set CellBlender Project Directory** button.
 Navigate to the directory where we will export the files
 (**/home/user/mcell_tutorial/intro** where **user** is your user name) and hit
 **OK** when it prompts you to make a new directory. Then select **Set Project
