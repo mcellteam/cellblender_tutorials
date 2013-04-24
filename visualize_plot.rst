@@ -132,3 +132,6 @@ increasing as expected. This can be a quick way to verify that our simulation
 is working as expected.
 
 New version coming soon ...
+
+.. image:: ./images/plot_reaction_output_panel.png
+
