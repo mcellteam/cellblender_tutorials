@@ -184,6 +184,8 @@ Note that each plotting plug-in is responsible for interpreting the meaning of
 these modes and options. Some plug-ins may choose to honor a subset or even none
 of these options.
 
+The following examples were made using the MatPlotLib Plotter.
+
 Examples:
 ----------------
 
