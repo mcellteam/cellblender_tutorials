@@ -142,13 +142,86 @@ plug-ins. You can see which plug-ins are currently installed by checking the
 .. image:: ./images/plot_reaction_output_panel.png
 
 In the lower half of that panel you will find buttons for each of the plotting
-plug-ins that CellBlender found. In the panel above, it shows 4 plug-ins:
+plug-ins that CellBlender has found (see "Installing Plotting Plug-Ins" for
+information on installing new plug-ins). In the panel above, it shows 4 plotting
+plug-ins:
 
 * Java Plotter
 * Simple Plotter
 * MatPlotLib Plotter
 * XmGrace Plotter
 
-Your panel may show different options.
+Each of those will attempt to plot all of your reaction output data files according
+to the specification options set above the buttons. In this example, the plot layout
+setting is "One Page, Multiple Plots" so the data files will all be plotted on one
+single page, but each data file will be in its own plot within that page. Because
+the "Combine Seeds" option is checked, all files of the same name but with different
+seeds will be combined on the same plot.
 
+Note that each plotting plug-in may have its own user interface for working with the
+plots after they have been created. Some plug-ins may be able to re-read the files if
+they are changed, and others may require you to push the plotting button to relaunch
+the plug-in when your data changes.
+
+At the bottom of the **CellBlender - Reaction Output Settings** panel, there may be
+an "Execute Custom Plot Command" button along with a text entry field where you may
+enter any command to plot the files using your own software.
+
+Installing Plotting Plug-Ins
+=============================================
+
+CellBlender supports a variety of plotting plug-ins that may be installed in the
+"data_plotters" folder under the cellblender addon folder (typically something like: 
+*~/.config/blender/2.66/scripts/addons/cellblender/data_plotters*). Each plotting
+plug-in will have its own folder in that directory, and within that folder must
+(at least) be a file named **__init__.py**. As an example, the xmgrace plug-in will
+be found at *~/.config/blender/2.66/scripts/addons/cellblender/data_plotters/xmgrace*.
+There may be other files required in that folder. For example, the Java Plotter
+requires the file "PlotData.jar" to be there, and the MatPlotLib plotter requires
+the files mpl_plot.py and mpl_defaults.py.
+
+Installing a new plotting plug-in only requires the creation of a new directory
+in the data_plotters directory (the name can be whatever you feel is appropriate),
+and the installation of the associated files (which must include an "__init__.py" file.
+
+Here's an example of a simple plotting plug-in for xmgrace::
+
+    import os
+    import subprocess
+
+    def find_in_path(program_name):
+        for path in os.environ.get('PATH','').split(os.pathsep):
+            full_name = os.path.join(path,program_name)
+            if os.path.exists(full_name) and not os.path.isdir(full_name):
+                return full_name
+        return None
+
+
+    def get_name():
+        return ( "XmGrace Plotter" )
+
+
+    def requirements_met():
+        path = find_in_path ( "xmgrace" )
+        if path == None:
+            print ( "Required program \"xmgrace\" was not found" )
+            return False
+        else:
+            return True
+
+
+    def plot ( data_path, plot_spec ):
+        program_path = os.path.dirname(__file__)
+        
+        # XmGrace expects plain file names so translate:
+        
+        plot_cmd = find_in_path ( "xmgrace" )
+        
+        for plot_param in plot_spec.split():
+            if plot_param[0:2] == "f=":
+                plot_cmd = plot_cmd + " " + plot_param[2:]
+        
+        pid = subprocess.Popen ( plot_cmd.split(), cwd=data_path )
+
+**NOTE THAT THIS PLOTTING API IS STILL BEING DEVELOPED AND CHANGES ARE EXPECTED!!**
 
