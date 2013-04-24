@@ -131,6 +131,7 @@ You should notice that **vol1.dat** is decreasing and **vol2.dat** is
 increasing as expected. This can be a quick way to verify that our simulation
 is working as expected.
 
+
 Graph the Reaction Data inside Blender
 =============================================
 
@@ -166,6 +167,45 @@ the plug-in when your data changes.
 At the bottom of the **CellBlender - Reaction Output Settings** panel, there may be
 an "Execute Custom Plot Command" button along with a text entry field where you may
 enter any command to plot the files using your own software.
+
+
+Plotting Modes
+=============================================
+
+The CellBlender plotting interface currently supports three modes:
+
+* One Page, One Plot
+* One Page, Multiple Plots
+* Separate Page for each Plot
+
+Additionally, the current interface includes a option to Combine Seeds.
+
+Note that each plotting plug-in is responsible for interpreting the meaning of
+these modes and options. Some plug-ins may choose to honor a subset or even none
+of these options.
+
+Examples:
+----------------
+
+One Page, One Plot mode with Combined Seeds unchecked:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ./images/plots_combined_off_5_seeds_800.png
+
+
+One Page, One Plot mode with Combined Seeds checked:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ./images/plots_combined_on_5_seeds_800.png
+
+
+Separate Page for each Plot mode with Combined Seeds checked:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ./images/plots_combined_on_5_seeds_paged_800.png
+
+
+
 
 Installing Plotting Plug-Ins
 =============================================
