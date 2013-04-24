@@ -90,7 +90,7 @@ view of them.
 
 .. _graph_rxn_data:
 
-Graph the Reaction Data
+Graph the Reaction Data outside Blender
 =============================================
 
 Change into the **react_data** directory by typing::
@@ -131,7 +131,24 @@ You should notice that **vol1.dat** is decreasing and **vol2.dat** is
 increasing as expected. This can be a quick way to verify that our simulation
 is working as expected.
 
-New version coming soon ...
+Graph the Reaction Data inside Blender
+=============================================
+
+Newer versions of CellBlender (beyond April 24th, 2013) have the ability to plot
+files from within Blender itself. This requires the installation of optional
+plug-ins. You can see which plug-ins are currently installed by checking the
+**CellBlender - Reaction Output Settings** panel shown here:
 
 .. image:: ./images/plot_reaction_output_panel.png
+
+In the lower half of that panel you will find buttons for each of the plotting
+plug-ins that CellBlender found. In the panel above, it shows 4 plug-ins:
+
+* Java Plotter
+* Simple Plotter
+* MatPlotLib Plotter
+* XmGrace Plotter
+
+Your panel may show different options.
+
 
