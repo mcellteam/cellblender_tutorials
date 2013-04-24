@@ -21,6 +21,8 @@ gedit or kedit if you aren't sure what to use)
     ITERATIONS = 1000
     TIME_STEP = 5e-06
 
+    INCLUDE_FILE = "intro.initialization.mdl"
+
     INCLUDE_FILE = "intro.molecules.mdl"
 
     INCLUDE_FILE = "intro.reactions.mdl"
