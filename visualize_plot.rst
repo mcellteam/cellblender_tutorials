@@ -337,19 +337,19 @@ This command creates two pages and creates 2 plots on each page:
 
   f=mol1v1.dat plot f=mol1v2.dat **page** f=mol1s1.dat plot f=mol2s1.dat
 
-Finally, here is the current API (**SUBJECT TO CHANGE**)
+Finally, here is the current plotting plug-in API (**SUBJECT TO CHANGE**)
 
-  defs=filename        ... Loads default parameters from a python file
-  page                 ... Starts a new page (figure in MatPlotLib)
-  plot                 ... Starts a new plot (subplot in MatPlotLib)
-  color=#rrggbb        ... Selects a color via Red,Green,Blue values
-  color=color_name     ... Selects a color via standard color names
-  title=title_string   ... Sets the title for each plot
-  pagetitle=string     ... Sets the title for each page
-  xlabel=label_string  ... Sets the label for the x axis
-  ylabel=label_string  ... Sets the label for the y axis
-  legend=code          ... Adds a legend with code = 0..10 (-1=none)
-  n=name               ... Name used to over-ride file name in legend
-  f=filename           ... Plots the file with current settings
+* defs=filename        ... Loads default parameters from a python file
+* page                 ... Starts a new page (figure in MatPlotLib)
+* plot                 ... Starts a new plot (subplot in MatPlotLib)
+* color=#rrggbb        ... Selects a color via Red,Green,Blue values
+* color=color_name     ... Selects a color via standard color names
+* title=title_string   ... Sets the title for each plot
+* pagetitle=string     ... Sets the title for each page
+* xlabel=label_string  ... Sets the label for the x axis
+* ylabel=label_string  ... Sets the label for the y axis
+* legend=code          ... Adds a legend with code = 0..10 (-1=none)
+* n=name               ... Name used to over-ride file name in legend
+* f=filename           ... Plots the file with current settings
 
 
