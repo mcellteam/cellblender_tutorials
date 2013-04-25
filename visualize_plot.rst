@@ -310,7 +310,7 @@ The data_path is fairly self-explanatory, but the plot_spec requires a little
 bit of explanation.
 
 The fundamental plot specification is just a list of file names immediately
-prefixed with "f=" and separated by spaces:
+prefixed with "f=" and separated by spaces::
 
   f=mol1v1.dat f=mol1v2.dat f=mol1s1.dat f=mol2s1.dat
 
@@ -326,16 +326,16 @@ inserted between file names to produce either a new page or a new plot. For
 example, the previous specification could plot the volume and surface molecules
 in two separate plots within the same page using this command::
 
-  f=mol1v1.dat f=mol1v2.dat **plot** f=mol1s1.dat f=mol2s1.dat
+  f=mol1v1.dat f=mol1v2.dat plot f=mol1s1.dat f=mol2s1.dat
   
 Alternatively, the the following command will put each of those plots on their
 own pages::
 
-  f=mol1v1.dat f=mol1v2.dat **page** f=mol1s1.dat f=mol2s1.dat
+  f=mol1v1.dat f=mol1v2.dat page f=mol1s1.dat f=mol2s1.dat
 
 This command creates two pages and creates 2 plots on each page::
 
-  f=mol1v1.dat plot f=mol1v2.dat **page** f=mol1s1.dat plot f=mol2s1.dat
+  f=mol1v1.dat plot f=mol1v2.dat page f=mol1s1.dat plot f=mol2s1.dat
 
 Finally, here is the current plotting plug-in API (**SUBJECT TO CHANGE**)
 
