@@ -324,16 +324,16 @@ At this point, all additional parameters are optional ... but certainly useful!
 Among the optional parameters are the separators "page" and "plot". These are
 inserted between file names to produce either a new page or a new plot. For
 example, the previous specification could plot the volume and surface molecules
-in two separate plots within the same page using this command:
+in two separate plots within the same page using this command::
 
   f=mol1v1.dat f=mol1v2.dat **plot** f=mol1s1.dat f=mol2s1.dat
   
 Alternatively, the the following command will put each of those plots on their
-own pages:
+own pages::
 
   f=mol1v1.dat f=mol1v2.dat **page** f=mol1s1.dat f=mol2s1.dat
 
-This command creates two pages and creates 2 plots on each page:
+This command creates two pages and creates 2 plots on each page::
 
   f=mol1v1.dat plot f=mol1v2.dat **page** f=mol1s1.dat plot f=mol2s1.dat
 
