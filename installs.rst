@@ -1,5 +1,11 @@
 .. _install:
 
++++++++++++++++++++++++++++++++++++++++++++++
+Software Installation
++++++++++++++++++++++++++++++++++++++++++++++
+
+.. _mcell_install:
+
 *********************************************
 MCell Installation
 *********************************************
@@ -59,6 +65,8 @@ If you have put MCell in an appropriate directory included in your path for
 executables, you should see a startup message followed by an error that
 indicates no MDL (Model Description Language) file has been specified. MDL
 files are used to design and control MCell simulations (see MCell tutorials).
+
+.. _cellblender_install:
 
 *********************************************
 CellBlender Installation
