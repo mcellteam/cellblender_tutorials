@@ -13,29 +13,27 @@ now examine using CellBlender and some plotting software.
 Visualize the Molecules
 =============================================
 
-Visualize molecules with CellBlender in this video tutorial.
+..
+  comment the video out
+  Visualize molecules with CellBlender in this video tutorial.
+  
+  .. raw:: html
+  
+      <video id="my_video_1" class="video-js vjs-default-skin" controls
+        preload="metadata" width="960" height="540" 
+        data-setup='{"example_option":true}'>
+        <source src="http://www.mcell.psc.edu/tutorials/videos/main/viz_data.ogg" type='video/ogg'/>
+      </video>
+  
+  Skip to the :ref:`graph_rxn_data` section if you just watched the video
+  tutorial.
 
-.. raw:: html
+If you closed the **intro.blend** file that we generated in
+:ref:`getting_started`, reopen it now (**blender intro.blend**). Then click the
+**Scene** button in the **Properties Editor**. Expand the **Visualize
+Simulation Results** panel and click the **Read Viz Data** button.
 
-    <video id="my_video_1" class="video-js vjs-default-skin" controls
-      preload="metadata" width="960" height="540" 
-      data-setup='{"example_option":true}'>
-      <source src="http://www.mcell.psc.edu/tutorials/videos/main/viz_data.ogg" type='video/ogg'/>
-    </video>
-
-Skip to the :ref:`graph_rxn_data` section if you just watched the video
-tutorial.
-
-Begin by opening Blender. Then click the **Scene** button in the **Properties
-Editor**. Expand the **Visualize Simulation Results** panel, and click the
-**Set Molecule Viz Directory** button.
-
-.. image:: ./images/vp_set_molec_viz_dir.png
-
-Navigate to ``/home/user/mcell_tutorial/intro/viz_data/`` and click **Read
-Molecule Files**.
-
-.. image:: ./images/vp_read_molec_files.png
+.. image:: ./images/vp_read_viz_data.png
 
 You should now see a number of molecules populating the surface of the
 **Cube**.
@@ -56,9 +54,6 @@ cube, and new molecules being created outside the cube.
 Customize Molecule Glyphs
 =============================================
 
-Learn how to use custom glyphs for molecules using CellBlender in this video
-tutorial.
-
 By default, every molecule just shows up as a sphere. This might be fine for
 volume molecules, but you might want to be able to tell the orientation of your
 surface molecules, which we can do by using an asymmetrical glyph.
@@ -77,68 +72,83 @@ that get mapped onto the molecule locations. Select **mol_surf1_shape** in the
 
 .. image:: ./images/vp_outliner2.png
 
-Then click the **Material** button and navigate down to **Molecule Shape**.
+The molecules are probably hard to see, so let's fix this problem. In the **3D
+View Window**, hit **s**, **3**, and **Enter** to increase the size of
+**mol_surf1_shape** three times. Repeat this process for **mol_vol1_shape** and
+**mol_vol2_shape**. Everything should be a little easier to see now.
+Regardless, you may want to zoom in to get an even better view of them (roll
+the middle mouse wheel up in the **3D View Window**).
+
+.. image:: ./images/vp_scaled_glyphs.png
+
+Now let's get back to updating the glyph for **surf1**. Reselect,
+**mol_surf1_shape** in the **Properties Editor**. Then click the **Material**
+button and navigate down to **Molecule Shape**.
 
 .. image:: ./images/vp_material.png
 
 The shape should be set to **Cone** in the **Molecule Shape** drop down box. Click
-**Set Molecule Shape** to apply the selection. All of the **surf1** molecule
-glyphs should now be changed to cones. You may want to zoom in to get a better
-view of them.
+**Set Molecule Shape** to apply the selection.
 
 .. image:: ./images/vp_set_molecule_shape.png
 
+All of the **surf1** molecule glyphs should now be changed to cones.
+
+.. image:: ./images/vp_cones.png
+
 .. _graph_rxn_data:
 
-Graph the Reaction Data outside Blender
-=============================================
-
-Change into the **react_data** directory by typing::
-
-    cd react_data 
-
-and enter the command::
-
-    ls
-
-You should see two files, **vol1.dat**, and **vol2.dat**.
-
-Plot **vol1.dat** and **vol2.dat** with the graphing software of your choice.
-For something as simple as this, xmgrace or gnuplot will suffice. Although we
-don't need all the power (and complexity) of numpy and matplotlib right now,
-we'll introduce it here anyways, since we will be using it for some more
-advanced tasks later. First create a file called **plot.py** and put the
-following text into it::
-
-    #!/usr/bin/env python
-
-    import numpy as np
-    import matplotlib.pyplot as plt 
-
-    x1 = np.genfromtxt("./react_data/vol1.dat", dtype=float)[:, 0]
-    y1 = np.genfromtxt("./react_data/vol1.dat", dtype=float)[:, 1]
-    x2 = np.genfromtxt("./react_data/vol2.dat", dtype=float)[:, 0]
-    y2 = np.genfromtxt("./react_data/vol2.dat", dtype=float)[:, 1]
-    plt.plot(x1,y1)
-    plt.plot(x2,y2)
-    plt.show()
-
-Run the file by entering the command::
-
-    python plot.py
-
-You should notice that **vol1.dat** is decreasing and **vol2.dat** is
-increasing as expected. This can be a quick way to verify that our simulation
-is working as expected.
+..
+  comment out old plotting method
+  Graph the Reaction Data outside Blender
+  =============================================
+  
+  Change into the **react_data** directory by typing::
+  
+      cd react_data 
+  
+  and enter the command::
+  
+      ls
+  
+  You should see two files, **vol1.dat**, and **vol2.dat**.
+  
+  Plot **vol1.dat** and **vol2.dat** with the graphing software of your choice.
+  For something as simple as this, xmgrace or gnuplot will suffice. Although we
+  don't need all the power (and complexity) of numpy and matplotlib right now,
+  we'll introduce it here anyways, since we will be using it for some more
+  advanced tasks later. First create a file called **plot.py** and put the
+  following text into it::
+  
+      #!/usr/bin/env python
+  
+      import numpy as np
+      import matplotlib.pyplot as plt 
+  
+      x1 = np.genfromtxt("./react_data/vol1.dat", dtype=float)[:, 0]
+      y1 = np.genfromtxt("./react_data/vol1.dat", dtype=float)[:, 1]
+      x2 = np.genfromtxt("./react_data/vol2.dat", dtype=float)[:, 0]
+      y2 = np.genfromtxt("./react_data/vol2.dat", dtype=float)[:, 1]
+      plt.plot(x1,y1)
+      plt.plot(x2,y2)
+      plt.show()
+  
+  Run the file by entering the command::
+  
+      python plot.py
+  
+  You should notice that **vol1.dat** is decreasing and **vol2.dat** is
+  increasing as expected. This can be a quick way to verify that our simulation
+  is working as expected.
 
 
 Graph the Reaction Data inside Blender
 =============================================
 
-Newer versions of CellBlender (beyond April 24th, 2013) have the ability to plot
-files from within Blender itself. This requires the installation of optional
-plug-ins. You can see which plug-ins are currently installed by checking the
-**CellBlender - Reaction Output Settings** panel shown here:
+Newer versions of CellBlender (beyond April 24th, 2013) have the ability to
+plot files from within Blender itself. This requires the installation of
+optional plug-ins. You can see which plug-ins are currently installed by
+checking the **Reaction Output Settings** panel shown here:
 
 .. image:: ./images/plot_reaction_output_panel.png
 
@@ -164,9 +174,9 @@ plots after they have been created. Some plug-ins may be able to re-read the fil
 they are changed, and others may require you to push the plotting button to relaunch
 the plug-in when your data changes.
 
-At the bottom of the **CellBlender - Reaction Output Settings** panel, there may be
-an "Execute Custom Plot Command" button along with a text entry field where you may
-enter any command to plot the files using your own software.
+At the bottom of the **Reaction Output Settings** panel, there may be an
+"Execute Custom Plot Command" button along with a text entry field where you
+may enter any command to plot the files using your own software.
 
 
 Plotting Modes

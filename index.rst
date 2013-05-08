@@ -40,7 +40,7 @@ guide (pdf_, html_).
 
    software
    getting_started
-   examine_annotate
+   examine_mdls
    visualize_plot
    surface_classes
    variable_rxn_rates
