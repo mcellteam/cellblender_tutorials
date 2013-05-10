@@ -64,7 +64,7 @@ Set Project Settings
 
 Hit the **Scene** button in the **Properties Editor**. 
 
-.. image:: ./images/gs_scene_button.png
+.. image:: ./images/scene_button.png
 
 There may be many Scene panels which are open (triangles pointing downward). In
 order to find things easily, take the time to collapse all of these panels by
@@ -103,7 +103,7 @@ Define a Surface Region
 Hit the **Object** button in the **Properties Editor** (little cube in the
 right side panel).
 
-.. image:: ./images/gs_object_button.png
+.. image:: ./images/object_button.png
 
 Scroll to the bottom of the Properties Editor panel (if needed). Expand the
 **Define Surface Regions** panel (*note: you may have to scroll further if an
@@ -168,13 +168,12 @@ Set Simulation Parameters
 Return to the Scene context by hitting the **Scene** button in the **Properties
 Editor**. 
 
-.. image:: ./images/gs_scene_button.png
+.. image:: ./images/scene_button.png
 
-Then find and
-expand just the **Model Objects** panel. With the **Cube** object still
-selected, hit the **+** button. This will add **Cube** to the list of mesh
-objects to be exported and initialized. A green check mark will appear by the
-name to indicate that there are no problems with it.
+Then find and expand just the **Model Objects** panel. With the **Cube** object
+still selected, hit the **+** button. This will add **Cube** to the list of
+mesh objects to be exported and initialized. A green check mark will appear by
+the name to indicate that there are no problems with it.
 
 .. image:: ./images/gs_model_objects.png
 
@@ -291,3 +290,9 @@ Under **Run Simulation**, change **End Seed** to **2** and hit **Run
 Simulation**. This will queue up two MCell simulations each with a different
 seed value. A green check mark will appear when the simulations have completed.
 
+Save Your Project
+---------------------------------------------
+
+From the **File** menu, select the **Save** option. This will save any changes
+that you have made to the blend, including the CellBlender specific settings
+(e.g. molecule definitions, release sites, etc).
