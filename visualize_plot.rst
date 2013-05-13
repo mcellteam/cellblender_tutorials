@@ -145,10 +145,10 @@ All of the **surf1** molecule glyphs should now be changed to cones.
 Graph the Reaction Data inside Blender
 =============================================
 
-Newer versions of CellBlender (beyond April 24th, 2013) have the ability to
-plot files from within Blender itself. This requires the installation of
-optional plug-ins. You can see which plug-ins are currently installed by
-checking the **Reaction Output Settings** panel shown here:
+CellBlender 0.1.57 and newer have the ability to plot files from within Blender
+itself. This requires the installation of optional plug-ins. You can see which
+plug-ins are currently installed by checking the **Reaction Output Settings**
+panel shown here:
 
 .. image:: ./images/plot_reaction_output_panel.png
 
