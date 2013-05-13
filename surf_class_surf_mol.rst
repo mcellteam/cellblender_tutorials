@@ -22,24 +22,43 @@ MDL. Then, we will modify the MDL.
 
 .. _surf_class_sm_mesh:
 
+Set Project Directory
+---------------------------------------------
+
+Start Blender. Hit the **Scene** button in the **Properties Editor**. 
+
+.. image:: ./images/scene_button.png
+
+Let's set the project directory by saving the blend file right now by hitting
+**Ctrl-s**, typing **/home/user/mcell_tutorials/scsm** (where **user** is your
+user name) into the directory field, **scsm.blend** into the file name field,
+and hit the **Save As Blender File** button.
+
+.. image:: ./images/scsm_project_dir.png
+
 Creating the Mesh
 ---------------------------------------------
 
-Let's look at an example. First we need to create the model in Blender. To do
-this, either watch the following video tutorial or follow along with the
-instructions below.
+..
+  comment out video until updated. 
+  Let's look at an example. First we need to create the model in Blender. To do
+  this, either watch the following video tutorial or follow along with the
+  instructions below.
+  
+  .. raw:: html
+  
+      <video id="my_video_1" class="video-js vjs-default-skin" controls
+        preload="metadata" width="960" height="540" 
+        data-setup='{"example_option":true}'>
+        <source src="http://www.mcell.psc.edu/tutorials/videos/main/sc_sm.ogg" type='video/ogg'/>
+      </video>
 
-.. raw:: html
+Hit the **Object** button in the **Properties Editor**.
 
-    <video id="my_video_1" class="video-js vjs-default-skin" controls
-      preload="metadata" width="960" height="540" 
-      data-setup='{"example_option":true}'>
-      <source src="http://www.mcell.psc.edu/tutorials/videos/main/sc_sm.ogg" type='video/ogg'/>
-    </video>
+.. image:: ./images/object_button.png
 
-Start Blender. Hit the **Object** button in the **Properties Editor**. Scroll
-to the bottom of the Editor. Hit **+** twice so that you have two new surface
-regions. 
+Scroll to the bottom of the Editor. Hit **+** twice so that you have two new
+surface regions. 
 
 .. image:: ./images/scsm_top_bottom_regions.png
 
@@ -85,40 +104,43 @@ Change **Site Name** to **surf1_rel**. Change **Molecule** to **surf1'**.
 Change **Release Shape** to **Object/Region**. Change **Object/Region** to
 **Cube**. Change **Quantity to Release** to **1000**.
 
-Under **CellBlender Project Settings**, select **Export CellBlender Project**.
-Navigate to the directory where we will export the files
-(``/home/user/mcell_tutorial/sc_sm`` where **user** is your user name) and hit
-**OK** when it prompts you to make a new directory. Then select **Set Project
-Directory**. Set the **Project Base** to **sc_sm**. Then hit **Export
-CellBlender Project**, navigate to same directory as before, and hit **Export
-MCell MDL**.
+.. _scsm_add_surf_class:
 
-.. _surf_class_sm_mdl:
-
-Modifying the MDL
+Add the Surface Class
 ---------------------------------------------
 
-Create a file called **sc_sm.surface_classes.mdl**::
+Expand the **Define Surface Classes** panel. Then, hit the **+** button to
+create a new surface class called **Surface_Class**. Rename it to
+**absorb**.
 
-    DEFINE_SURFACE_CLASSES 
-    {
-        absorb {ABSORPTIVE = surf1}
-        reflect {REFLECTIVE = surf1}
-    }  
+Hit the **+** button beside the empty **absorb_vol2 Properties** list. Select
+**surf1** from the **Molecule Name** field. Leave **Orientation** set to
+**Top/Front** and leave **Type** set to **Absorptive**. 
 
-Create a file called **sc_sm.mod_surf_regions.mdl**::
+.. image:: ./images/scsm_define_absorb.png
 
-    MODIFY_SURFACE_REGIONS 
-    {
-        Cube[top]
-        {
-            SURFACE_CLASS = absorb
-        }   
-        Cube[bottom]
-        {
-            SURFACE_CLASS = reflect
-        }   
-    }
+Repeat this process, except call the surface class **reflect** and change the
+**Type** to **Reflective**.
+
+.. image:: ./images/scsm_define_reflect.png
+
+.. _scsm_mod_surf_reg:
+
+Modify the Surface Regions
+---------------------------------------------
+
+Now that we have created our surface class, we need to assign it to our mesh.
+Expand the **Modify Surface Regions** panel. Hit the **+** to begin modifying a
+surface region. In the **Surface Class Name** field, select **absorb**.
+Under object name, select the newly created **Cube** object. For **Region
+Name**, select **top**.
+
+.. image:: ./images/scsm_assign_absorb.png
+
+Repeat this process, except select **reflect** for the **Surface Class Name**
+and **bottom** for the region. 
+
+.. image:: ./images/scsm_assign_reflect.png
 
 In this example, we have two surface classes, **absorb** and **reflect**.
 **absorb** is applied to **top** and **reflect** is applied to **bottom**. The
@@ -130,7 +152,16 @@ undefined middle section. The effect of the **reflect** class is that molecules
 cannot pass the boundary between the **bottom** region and the undefined middle
 section. Therefore, all the **surf1** molecules that start inside of the
 **bottom** region never escape and the **surf1** molecules starting in the
-middle section and **top** region will ultimately be destroyed. You should run
-the **sc_sm.main.mdl** with MCell and visualize the results with CellBlender to
-confirm this.
+middle section and **top** region will ultimately be destroyed.
 
+.. _scsm_run_vis:
+
+Run the Simulation and Visualize the Results
+---------------------------------------------
+
+Save the Blender file (**Ctrl-s**) and hit the **Run Simulation** button under
+the **Run Simulation** panel.
+
+Once the simulation has finished running, hit **Read Viz Data** under the
+**Visualize Simulation Results** panel. See if you can notice the **surf1**
+molecules being destroyed by the absorptive surface boundary.
