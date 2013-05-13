@@ -8,21 +8,21 @@ Eventually, it will be possible to set up variable reaction rates directly
 within CellBlender. Until that time, you can still do it by manually
 hand-editing some files.
 
-Begin by creating a copy of the **sc_rxns** directory, by typing the following
+Begin by creating a copy of the **sc_rxn** directory, by typing the following
 command at the terminal::
 
-    cp -fr /home/user/mcell_tutorial/sc_rxns /home/user/mcell_tutorial/var_rxn_rate
+    cp -fr /home/user/mcell_tutorial/sc_rxn /home/user/mcell_tutorial/var_rxn_rate
 
 Don't forget to replace **user** with your actual user name. Change into the
 new directory now by entering the following command at the terminal::
 
-    cd /home/user/mcell_tutorial/var_rxn_rate/sc_rxns_files/mcell
+    cd /home/user/mcell_tutorial/var_rxn_rate/sc_rxn_files/mcell
 
 .. note::
 
-   We have copied the entire directory of sc_rxns, so the blend file and the
-   MDL sub-directory still retain the original names (i.e. sc_rxns.blend and
-   sc_rxns_files, not var_rxn_rates.blend and var_rxn_rates_files).
+   We have copied the entire directory of sc_rxn, so the blend file and the
+   MDL sub-directory still retain the original names (i.e. sc_rxn.blend and
+   sc_rxn_files, not var_rxn_rates.blend and var_rxn_rates_files).
 
 In this directory, create a new text file called **rxn_rate.txt**. Add the
 following text in the file::
@@ -45,7 +45,7 @@ once. You could just as well have it change every time step, like this::
 
 Save the file and quit.
 
-Open **sc_rxns.reactions.mdl**, go to the reaction section and change the rate
+Open **Scene.reactions.mdl**, go to the reaction section and change the rate
 to **"rxn_rate.txt"** (with quotations), like in the following:
 
 .. code-block:: none
@@ -61,7 +61,7 @@ Save the file and run it with MCell by entering the command::
 
     mcell Scene.main.mdl
 
-If you did not follow the directions listed in :ref:`installs` and put MCell in
+If you did not follow the directions listed in :ref:`install` and put MCell in
 a directory that is visible to your PATH_, you might see the following
 command::
 
@@ -70,5 +70,5 @@ command::
 .. _PATH: https://en.wikipedia.org/wiki/PATH_%28variable%29
 
 Once MCell successfully runs, you can visualize the data by opening the blend
-(i.e. ``/home/mcell_tutorial/var_rxn_rate/sc_rxns.blend``) and hitting the
+(i.e. ``/home/mcell_tutorial/var_rxn_rate/sc_rxn.blend``) and hitting the
 **Read Viz Data** button under **Visualize Simulation Results**.
