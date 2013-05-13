@@ -137,7 +137,7 @@ to enter face selection mode.
 .. image:: ./images/gs_ctrl_tab.png
 
 You can tell you're in **Face Select** mode (rather than **Vertex Select** or
-**Edge Select** modes) when each face has a round dot near its center.
+**Edge Select** modes) when each face has a square dot near its center.
 
 Hit **a** (or use menu option **Select>(De)select All**) to deselect everything
 (edges turn black rather than orange). Then select just the top two triangular
@@ -178,7 +178,7 @@ the name to indicate that there are no problems with it.
 .. image:: ./images/gs_model_objects.png
 
 Now find and expand the **Model Initialization** panel. Change **Simulation
-Iterations** to **1000**. Change **Simulation Time Step** to **5e-6**. The
+Iterations** to **1000**. Change **Simulation Time Step** to **1e-5**. The
 units are in seconds.
 
 .. image:: ./images/gs_model_init.png
@@ -286,13 +286,19 @@ output data.
 Run Simulation
 ---------------------------------------------
 
-Under **Run Simulation**, change **End Seed** to **2** and hit **Run
-Simulation**. This will queue up two MCell simulations each with a different
-seed value. A green check mark will appear when the simulations have completed.
+Expand the **Run Simulation** panel and change the **End Seed** to **2** and
+hit **Run Simulation**.
+
+.. image:: ./images/gs_run_simulation.png
+
+This will queue up two MCell simulations each with a different seed value. A
+green check mark will appear when the simulations have completed.
+
+.. image:: ./images/gs_run_simulation2.png
 
 Save Your Project
 ---------------------------------------------
 
-From the **File** menu, select the **Save** option. This will save any changes
-that you have made to the blend, including the CellBlender specific settings
-(e.g. molecule definitions, release sites, etc).
+From the **File** menu, select the **Save** option (or hit **Ctrl-s**). This
+will save any changes that you have made to the blend, including the
+CellBlender specific settings (e.g. molecule definitions, release sites, etc).
