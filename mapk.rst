@@ -312,7 +312,7 @@ Select both layers again.
 
 .. image:: ./images/mapk_model_obj_init.png
 
-In the **3D View Window**, hit **a** twice to select everything. Hit the
+In the **3D View Editor**, hit **a** twice to select everything. Hit the
 **Scene** button. Expand the **Model Objects** panel. Hit the **+** button. The
 list should fill with all the objects names. Expand **Model Initialization**.
 Change **Simulation Iterations** to **30000**.

@@ -73,11 +73,11 @@ that get mapped onto the molecule locations. Select **mol_surf1_shape** in the
 .. image:: ./images/vp_outliner2.png
 
 The molecules are probably hard to see, so let's fix this problem. In the **3D
-View Window**, hit **s**, **3**, and **Enter** to increase the size of
+View Editor**, hit **s**, **3**, and **Enter** to increase the size of
 **mol_surf1_shape** three times. Repeat this process for **mol_vol1_shape** and
 **mol_vol2_shape**. Everything should be a little easier to see now.
 Regardless, you may want to zoom in to get an even better view of them (roll
-the middle mouse wheel up in the **3D View Window**).
+the middle mouse wheel up in the **3D View Editor**).
 
 .. image:: ./images/vp_scaled_glyphs.png
 

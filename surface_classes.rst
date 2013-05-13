@@ -59,7 +59,7 @@ Add New Geometry
   
   If you watched the previous video tutorial, you can skip ahead to :ref:`surf_class_vm_mod_mdl`.
 
-Move your cursor to the **3D View Window**, hit **Shift-a**, and select
+Move your cursor to the **3D View Editor**, hit **Shift-a**, and select
 **Plane**. Hit **g** to "grab" the plane, **z** to constrain the movement to
 the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm. You should
 now have a plane above your cube.
@@ -74,7 +74,7 @@ Under the **Surface Regions** panel, hit **+**. Change the default name to
 
 .. image:: ./images/sc_above.png
 
-Change into **Edit Mode** by hitting **Tab** in the **3D View Window**. With
+Change into **Edit Mode** by hitting **Tab** in the **3D View Editor**. With
 the face of the plane selected, hit **Ctrl-t** to triangulate it.
 
 .. image:: ./images/sc_above_quad.png
