@@ -42,7 +42,7 @@ Blender File**.
 
 .. _surf_class_add_geom:
 
-Add New Geometry
+Add a New Mesh and Surface Region
 ---------------------------------------------
 
 ..
@@ -61,7 +61,7 @@ Add New Geometry
 
 Move your cursor to the **3D View Editor**, hit **Shift-a**, and select
 **Plane**. Hit **g** to "grab" the plane, **z** to constrain the movement to
-the z-axis, **1.5** to move it 1.5 units, and **Enter** to confirm. You should
+the z-axis, **1.2** to move it 1.2 units, and **Enter** to confirm. You should
 now have a plane above your cube.
 
 We will now create a surface region for the new plane. Begin by hitting the
@@ -85,11 +85,12 @@ Then, click **Assign** under **Define Surface Regions**.
 
 .. image:: ./images/sc_assign.png
 
-Hit the **Scene** button on the **Properties** Editor.
+Change back into **Object Mode** by hitting **Tab**. Hit the **Scene** button
+on the **Properties** Editor.
 
 .. image:: ./images/scene_button.png
 
-Under the **Model Objects** panel, hit **+**.
+With the **Plane** selected, hit **+** under the **Model Objects** panel.
 
 .. image:: ./images/sc_model_objects.png
 
@@ -226,7 +227,7 @@ Change the directory field to **/home/user/mcell_tutorial/sc_rxn** where
 a new directory. Change the blend file name to **sc_rxn.blend** and click
 **Save As Blender File**.
 
-Add New Geometry
+Add a New Mesh and Surface Region
 ---------------------------------------------
 
 While in **Object Mode**, hit **Shift-a**, select **Plane**, and **Enter** to
@@ -247,6 +248,15 @@ selected, hit **Ctrl-t** to triangulate it. Under **Define Surface Regions**,
 click **Assign**. 
 
 .. image:: ./images/sc_inside_triangulated.png
+
+Change back into **Object Mode** by hitting **Tab**.
+
+With **Plane.001** selected, hit **+** under the **Model Objects** panel.
+
+.. image:: ./images/sc_model_objects2.png
+
+Define a New Molecule
+---------------------------------------------
 
 Expand the **Define Molecules** panel and hit the **+** button. Left click
 **Molecule**. Change the **Molecule Name** to **surf2**, the **Molecule Type**
