@@ -96,7 +96,7 @@ When it is finished running, enter the command::
 
 Notice that a file called **dc_chkpt** was created. This file stores the
 information needed to recommence running the simulation. Let's finish it now by
-entering teh command::
+entering the command::
 
     mcell change_dc2.mdl
 
