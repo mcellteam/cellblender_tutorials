@@ -91,7 +91,7 @@ it the next time Blender starts.
 
 The project directory is set to be wherever the current blend file is saved.
 Let's save the file right now by hitting **Ctrl-s**, typing
-**/home/user/mcell_tutorials/intro** (where **user** is your user name) into
+**/home/user/mcell_tutorial/intro** (where **user** is your user name) into
 the directory field, **intro.blend** into the file name field, and hit the
 **Save As Blender File** button.
 

@@ -30,7 +30,7 @@ Start Blender. Hit the **Scene** button in the **Properties Editor**.
 .. image:: ./images/scene_button.png
 
 Let's set the project directory by saving the blend file right now by hitting
-**Ctrl-s**, typing **/home/user/mcell_tutorials/scsm** (where **user** is your
+**Ctrl-s**, typing **/home/user/mcell_tutorial/scsm** (where **user** is your
 user name) into the directory field, **scsm.blend** into the file name field,
 and hit the **Save As Blender File** button.
 
