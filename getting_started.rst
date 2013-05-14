@@ -58,10 +58,10 @@ Hit the **Object** button in the **Properties Editor** (little cube in the right
 
 .. image:: ./images/gs_object_button.png
 
-Scroll to the bottom of the Properties Editor panel (if needed). Expand the **Define Surface Regions** 
+Scroll to the bottom of the Properties Editor panel (if needed). Expand the **CellBlender - Define Surface Regions** 
 panel by clicking the small triangle next to the name (*note that you may have to scroll
 further after actions which expand the sizes of panels because new fields may appear beyond
-the currently visible portion of the panel*). Hit the **+** button and new region named "**Region**"
+the currently visible portion of the panel*). Hit the **+** button and new region named "**Region_0**"
 should appear in the list of regions, indicating that a new surface region was created.
 
 .. image:: ./images/gs_new_region.png
@@ -98,7 +98,7 @@ rather than orange). Then select just the top two triangular faces by **holding 
 
 .. image:: ./images/gs_select_top.png
 
-Under the **Define Surface Regions** panel, click the **Assign** button (*remember that
+Under the **CellBlender - Define Surface Regions** panel, click the **Assign** button (*remember that
 you might need to scroll down to see the new buttons added*).
 
 .. image:: ./images/gs_assign.png
@@ -122,47 +122,56 @@ Hit the **Scene** button in the **Properties Editor**.
 
 There may be many Scene panels which are open (triangles pointing downward). In order to
 find things easily, take the time to close all of these panels by clicking the triangles
-to collapse them down to one line each. Then find and expand just the **Model Objects** panel.
+to collapse them down to one line each. All of the Scene panels installed by CellBlender
+will start with the name "CellBlender", to make them easier to find. Now find and expand
+just the **CellBlender - Model Objects** panel.
 With the **Cube** object still selected, hit the **+** button. This will add **Cube** to the
 list of mesh objects to be exported and initialized.
 
 .. image:: ./images/gs_model_objects.png
 
-Now find and expand the **Model Initialization** panel. Change **Simulation Iterations** to
-**1000**. Change **Simulation Time Step** to **5e-6**. The units are in seconds.
+Now find and expand the **CellBlender - Model Initialization** panel. Change **Simulation Iterations** to
+**1000**. Change the Simulation **Time Step** to **5e-6**. The units are in seconds.
 
 .. image:: ./images/gs_model_init.png
 
 Define Molecules
 ---------------------------------------------
 
-We will now define three new molecule species. Expand the **Define Molecules**
+We will now define three new molecule species. Expand the **CellBlender - Define Molecules**
 panel and hit the **+** button three times. This will create three instances of
 **Molecule** in the list of molecules (don't worry about the "Duplicate molecule..."
-warning because we'll be renaming each of these molecules next).
+warnings because we'll be renaming each of these molecules next).
 
 .. image:: ./images/gs_new_molecules.png
 
-
-.. warning::
-
-    Some images may be from older versions and need to be updated.
-
 Left click on the first instance of **Molecule**. Change the **Molecule
 Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the
-**Diffusion Constant** to **1e-6**. Repeat this process for the next molecule
-in the list, but call this one **vol2**. Now, change the third entry to
+**Diffusion Constant** to **1e-6**. 
+
+.. image:: ./images/gs_define_molecule_vol1.png
+
+Repeat this process for the next molecule
+in the list, but call this one **vol2**. It will also be a **Volume Molecule** with a **Diffusion Constant** of **1e-6**.
+
+.. image:: ./images/gs_define_molecule_vol2.png
+
+Now, change the third entry to
 **surf1**. The **Molecule Type** should be set to **Surface Molecule** and
 change the **Diffusion Constant** to **1e-7**.
 
-.. image:: ./images/gs_define_molecules.png
+.. image:: ./images/gs_define_molecule_surf1.png
 
 Define Reactions
 ---------------------------------------------
 
 In order to have our molecules interact with one another, we first need to
-define some reactions. Expand the **Define Reactions** panel and hit the **+**
-button. Change **Reactants** to **vol1' + surf1,**. Change **Products** to
+define some reactions. Expand the **CellBlender - Define Reactions** panel and hit the **+**
+button. Initially you may get a "Product error:" because nothing is defined yet:
+
+.. image:: ./images/gs_define_reaction_empty.png
+
+Change **Reactants** to **vol1' + surf1,**. Change **Products** to
 **surf1, + vol2,**. Be sure to use the commas and apostrophes shown in these
 examples.
 
@@ -187,58 +196,198 @@ Create Release Sites
 We have defined molecules and reactions, but we still need to release some
 molecules into our simulation.
 
-Expand the **Molecule Release/Placement** panel and hit the **+** button twice,
-which will create two instances of **Release Site**. Select the first instance
+Expand the **CellBlender - Molecule Release/Placement** panel and hit the **+** button twice.
+This will create two instances of **Release Site** with errors because we haven't defined
+any molecule names yet.
+
+.. image:: ./images/gs_release_empty.png
+
+Select the first instance
 (*you may need to scroll down to see the entire panel*), and change **Site Name** 
-to **vol1_rel**. Change **Molecule** to **vol1**. Change **Release Shape** to 
-**Object/Region**. Change **Object/Region** to **Cube**. Change **Quantity to Release** 
+to **vol1_rel**.
+
+.. image:: ./images/gs_release_add_vol1_rel.png
+
+Change **Molecule** to **vol1**.
+
+.. image:: ./images/gs_release_add_vol1_rel_mol.png
+
+Change **Release Shape** to **Object/Region**.
+
+.. image:: ./images/gs_release_add_vol1_rel_shape.png
+
+Change **Object/Region** to **Cube**.
+
+.. image:: ./images/gs_release_add_vol1_rel_obj.png
+
+Change **Quantity to Release** 
 to **2000**. This will release 2000 **vol1** molecules randomly throughout the interior 
 of the **Cube** object.
 
 .. image:: ./images/gs_vol1_rel.png
 
 Now select the second release site. Change **Site Name** to **surf1_rel**.
-Change **Molecule** to **surf1'**. Change **Release Shape** to
+Change **Molecule** to **surf1**. Change **Release Shape** to
 **Object/Region**. Change **Object/Region** to **Cube[top]**. Change **Quantity
 to Release** to **2000**. This will release **2000** molecules randonmly on the
 **top** surface region.
 
 .. image:: ./images/gs_surf1_rel.png
 
-Under **Reaction Output Settings**, enable **Include Reaction Output**. Then,
-under **Visualization Output Settings**, enable **Include Viz Output**.
+Open the **CellBlender - Reaction Output Settings** panel.
 
-.. image:: ./images/gs_rxn_viz_output.png
+.. image:: ./images/gs_rxn_viz_output_empty.png
 
-.. _export_mdls:
+Click the "plus" sign 3 times to save reaction data for each of 3 different molecule species.
+They will show up as errors because they haven't been chosen yet, and there are no default values.
 
-Export MDLs
+.. image:: ./images/gs_rxn_viz_output_three_new.png
+
+Select and highlight the first of the "Molecule name error" definitions and change its molecule name to "**surf1**" as shown here:
+
+.. image:: ./images/gs_rxn_viz_output_select_surf1.png
+
+After clicking on "**surf1**", the top of that panel should look like this:
+
+.. image:: ./images/gs_rxn_viz_output_surf1_selected.png
+
+The description next to the check box indicates that MCell will be counting and saving the count (number) of surf1 molecules in the "World".
+
+Repeat this process for the other two "Molecule name error" entries assigning them to vol1 and vol2 respectively to get this:
+
+.. image:: ./images/gs_rxn_viz_output_all_selected.png
+
+Open the **CellBlender - Visualization Output Settings** panel (*be sure to scroll down to see the whole panel*):
+
+.. image:: ./images/gs_rxn_viz_output_empty.png
+
+Then click the **Toggle All** button to export all molecules for visualization:
+
+.. image:: ./images/gs_rxn_viz_output_all_selected.png
+
+Prepare to Run the Model
 ---------------------------------------------
 
-Under **CellBlender Project Settings**, select **Set CellBlender Project Directory**.
-Navigate to the directory where we will export the files
-(**/home/user/mcell_tutorial/intro** where **user** is your user name) and hit
-**OK** when it prompts you to make a new directory. Then select **Set Project
-Directory**.
+Open the **CellBlender - Project Settings** panel:
 
-.. image:: ./images/gs_set_project_dir_pt1.png
+.. image:: ./images/gs_project_settings_new.png
 
-.. image:: ./images/gs_set_project_dir_pt2.png
+If you've never run MCell from this version of CellBlender, you will find that the push-pin for the MCell Binary is unset. Click the 
+"**Set Path to MCell Binary**" button and navigate to the location of your MCell binary.
 
-Set the **Project Base** to **intro**. Then hit **Export CellBlender Project**,
-navigate to same directory as before, and hit **Export MCell MDL**.
+.. image:: ./images/gs_project_settings_mcell_binary.png
 
-.. image:: ./images/gs_project_base_prefix.png
+Complete the selection by clicking the "**Set MCell Binary**" button in the upper right corner of the file selection panel:
 
-.. image:: ./images/gs_export_mcell_mdl.png
+.. image:: ./images/gs_project_settings_mcell_binary_set.png
 
-Either leave Blender open or save and quit, as we'll need to modify this model
-later.
+You should now see a check next to the "MCell Binary" followed by the full path you've chosen (you may need to widen the panel to see the full path).
 
-At the command line, type::
+.. image:: ./images/gs_project_settings_mcell_binary_checked.png
 
-    ls
+The last step before running is to save your Blender project file to a folder in your directory structure. Use the "**File / Save As**" menu item:
 
-You should notice that we have created four new files: **intro.main.mdl**,
-**intro.geometry.mdl**, **intro.molecules.mdl**, and **intro.reactions.mdl**.
-We will take a look at all of these in turn.
+.. image:: ./images/gs_project_file_save_as.png
+
+Then type in a project name as the file name ("getting_started.blend" for example):
+
+.. image:: ./images/gs_project_file_save_as_gs.png
+
+Then click the "**Save As Blender File**" button. Afterward, the Project Directory should also be checked:
+
+.. image:: ./images/gs_project_file_saved.png
+
+Now you're ready to run the MCell Simulation.
+
+
+Run the MCell Simulation
+---------------------------------------------
+
+Open the **CellBlender - Run Simulation** panel:
+
+.. image:: ./images/gs_run_defaults.png
+
+Change the **End Seed** to 3 for three trials. If you started Blender from a console, you might also 
+select "**Send to Console**" for the Output Log setting.
+
+.. image:: ./images/gs_run_seed3_out_to_console.png
+
+Finally, click the "**Run Simulation**" button to start the MCell run. CellBlender will display the
+Process ID information for the runs:
+
+.. image:: ./images/gs_run_process_ids.png
+
+The Console will show a lot of information ... hopefully concluding with something like this:
+
+.. image:: ./images/gs_run_console_output.png
+
+
+Visualize the Molecules within the Model
+---------------------------------------------
+
+.. warning::
+
+    For some reason, the viz data is not being loaded automatically.
+    
+To view the molecules over time, open the "**CellBlender - Visualize Simulation Results**" panel
+and click the "**Read Viz Data**" button:
+
+.. image:: ./images/gs_viz_read.png
+
+This will load all of the molecule position information into Blender and it will adjust the time line
+to match the amount of simulation time. So you may need to use a combination of rolling your mouse wheel
+(to zoom the time line) and clicking and dragging with the mouse wheel (to move the timeline) until you
+are able to see the entire simulation time span in the time line (light gray with dark gray on each end):
+
+.. image:: ./images/gs_viz_timeline_scaled.png
+
+Now you can drag the green timeline cursor to show the molecules at different times from 0 to 1000:
+
+.. image:: ./images/gs_viz_timeline_scene_805.png
+
+Because the cube defaults to being opaque, you cannot initially see the molecules inside of it.
+To change this, first right click on the cube itself. This should add an orange highlight to the
+outline of the entire cube as shown below. If your right click happens to land on a molecule, you
+may find that the molecules are highlighted orange rather than the cube. Just try clicking again
+until you can select just the cube as shown here:
+
+.. image:: ./images/gs_viz_cube_selected.png
+
+With the cube selected, move from the Scene panel to the Object panel by clicking the small cube in
+the panel selector menu:
+
+.. image:: ./images/gs_viz_Object_panel.png
+
+In the "Display" panel, you'll find a "Type:" selector which is most likely set to "Textured":
+
+.. image:: ./images/gs_viz_display_textured.png
+
+Change that selector to "Wire":
+
+.. image:: ./images/gs_viz_display_wire.png
+
+You should now be able to see all of your molecules:
+
+.. image:: ./images/gs_viz_display_all.png
+
+This would be a good time to experiment a little bit with scrolling the mouse wheel to zoom in and out,
+and clicking and dragging the mouse wheel to change viewing angle.
+
+
+Review
+---------------------------------------------
+
+This tutorial started with Blender's default cube and divided it up into triangular faces.
+
+The top faces were defined to be a special region that we called "top".
+
+We defined 3 different molecular species: surf1, vol1, and vol2.
+
+We defined reactions with the surface molecules that transformed vol1 molecules inside the box into vol2 molecules outside the box.
+
+We initialized the simulation by releasing specific numbers of molecules in (or on) specific regions of the physical model.
+
+We specified which data to export, we set up our path to MCell, and we ran the simulation.
+
+Finally, we used Blender to view the spatial history of our simulation over time.
+
