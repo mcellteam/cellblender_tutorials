@@ -4,16 +4,24 @@
 Checkpointing Overview
 *********************************************
 
+.. CellBlender Source ID = 55f468aa7b71e044b3b199786f5af1d83bb3cab8
+   Git Repo SHA1 ID: 76c4b2c18c851facefad7398f3f9c86a0abb8cdc
+
+.. note::
+    This tutorial was written using Blender 2.67 and CellBlender 0.1.57. It may
+    or may not work with other versions.
+
 Checkpointing allows you to stop a simulation at a specified iteration and
 resume it at some later point. This can be beneficial for several different
 reasons:
 
-* You are using any sort of multi-user system that you must share time with others
+* You are using any sort of multi-user system that requires you to share time
+  with others
 * The computer you are using crashes or is shutdown unexpectedly
 * There are parameters you want to change partway through a simulation
 
-We'll cover how to set up checkpointing in the next two sections, starting with
-a simple case where we modify a couple parameters.
+We'll cover how to set up checkpointing in the next several sections, starting
+with a simple case where we modify a couple parameters.
 
 .. contents:: :local:
 
@@ -22,45 +30,61 @@ a simple case where we modify a couple parameters.
 Creating the MDL
 ---------------------------------------------
 
-Inside of **/home/user/mcell_tutorial**, create a directory called
-**change_dc**. Then within that directory, create a file called
-**change_dc1.mdl**. Add the following text to that file:
+Eventually, it will be possible to use checkpointing directly within
+CellBlender. Until that time, you can still do it by manually hand-editing some
+files.
+
+Inside of **/home/user/mcell_tutorial**, type the following command::
+
+    mkdir -p change_dc/change_dc_files/mcell
+
+.. note::
+
+   CellBlender expects a certain directory structure for visualization. That is
+   why we are creating these sub-directories in a very specific way.
+
+Then within that directory (i.e.
+**/home/user/mcell_tutorial/change_dc/change_dc_files/mcell**), create a file
+called **change_dc1.mdl**. Add the following text to that file:
 
 .. code-block:: none
     :emphasize-lines: 1-3
 
     CHECKPOINT_INFILE = "dc_chkpt"
     CHECKPOINT_OUTFILE = "dc_chkpt"
-    CHECKPOINT_ITERATIONS = 100 
-    ITERATIONS = 200 
+    CHECKPOINT_ITERATIONS = 100
+    ITERATIONS = 200
     TIME_STEP = 1E-6
 
     DEFINE_MOLECULES
     {
-        vol1 {DIFFUSION_CONSTANT_3D = 1E-7}
-    }   
+      vol1 {DIFFUSION_CONSTANT_3D = 1E-7}
+    }
 
     INSTANTIATE World OBJECT
     {
-        vol1_rel RELEASE_SITE 
-        {
-            SHAPE = SPHERICAL
-            LOCATION = [0,0,0]
-            SITE_DIAMETER = 0.0 
-            MOLECULE = vol1
-            NUMBER_TO_RELEASE = 100 
-        }   
-    }   
+      vol1_rel RELEASE_SITE
+      {
+        SHAPE = SPHERICAL
+        LOCATION = [0,0,0]
+        SITE_DIAMETER = 0.0
+        MOLECULE = vol1
+        NUMBER_TO_RELEASE = 100
+      }
+    }
 
-    VIZ_OUTPUT 
+    sprintf(seed,"%05g",SEED)
+
+    VIZ_OUTPUT
     {
-        FILENAME = "change_dc"
-        MOLECULES 
-        {
-            NAME_LIST {ALL_MOLECULES}
-            ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}
-        }   
-    } 
+      MODE = CELLBLENDER
+      FILENAME = "./viz_data/seed_" & seed & "/Scene"
+      MOLECULES
+      {
+        NAME_LIST {vol1}
+        ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}
+      }
+    }
 
 :index:`\ <single:CHECKPOINT_INFILE>` :index:`\ <single:CHECKPOINT_OUTFILE>`
 :index:`\ <single:CHECKPOINT_ITERATIONS>` There are three new commands in this
@@ -100,10 +124,19 @@ entering the command::
 
     mcell change_dc2.mdl
 
-Visualize the results with CellBlender. When you playback the animation, you
-will notice that the molecules start off moving rather slowly, and then speed
-up halfway through the simulation, coinciding with the change in diffusion
-constant.
+Visualizing the Results
+---------------------------------------------
+
+Start Blender. Save your blend file with the name **change_dc.blend** in
+**/home/user/mcell_tutorial/change_dc**. Be careful to name it correctly, as
+the directory structure we set up earlier depends upon it. Normally, this is
+all handled automatically by CellBlender, but we must be careful when
+hand-editing files. Delete the default **Cube** now (select and hit **x**),
+since it's not actually a part of our simulation. Hit **Read Viz Data** under
+the **Visualize Simulation Results** panel. Hit **Ctrl-a** to begin playing
+back the animation. You will notice that the molecules start off moving rather
+slowly, and then speed up halfway through the simulation, coinciding with the
+change in diffusion constant.
 
 This is just a simple example of one parameter you can change. Here is a
 partial list of some other parameters that you could change:
