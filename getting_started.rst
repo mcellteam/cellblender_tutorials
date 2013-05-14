@@ -282,7 +282,7 @@ Repeat this process for the second and third entries in the list but select
 Create Visualization Output
 ---------------------------------------------
 
-Expand the **Reaction Output Settings** panel and hit the **Toggle All**
+Expand the **Visualization Output Settings** panel and hit the **Toggle All**
 button. This will ensure that every molecule is included in the visualization
 output data.
 
