@@ -4,8 +4,15 @@
 Examining the MDLs
 *********************************************
 
-.. contents:: :local:
+.. CellBlender Source ID = 55f468aa7b71e044b3b199786f5af1d83bb3cab8
+   Git Repo SHA1 ID: 76c4b2c18c851facefad7398f3f9c86a0abb8cdc
 
+.. note::
+    The simulations and visualizations in this tutorial were generated using
+    Blender 2.67 and CellBlender 0.1.57. It may or may not work with other
+    versions.
+
+.. contents:: :local:
 
 .. _examine_mdl:
 

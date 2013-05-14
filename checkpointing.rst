@@ -8,8 +8,9 @@ Checkpointing Overview
    Git Repo SHA1 ID: 76c4b2c18c851facefad7398f3f9c86a0abb8cdc
 
 .. note::
-    This tutorial was written using Blender 2.67 and CellBlender 0.1.57. It may
-    or may not work with other versions.
+    The simulations and visualizations in this tutorial were generated using
+    Blender 2.67 and CellBlender 0.1.57. It may or may not work with other
+    versions.
 
 Checkpointing allows you to stop a simulation at a specified iteration and
 resume it at some later point. This can be beneficial for several different

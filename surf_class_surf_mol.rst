@@ -4,6 +4,14 @@
 Surface Classes and Surface Molecules
 *********************************************
 
+.. CellBlender Source ID = 55f468aa7b71e044b3b199786f5af1d83bb3cab8
+   Git Repo SHA1 ID: 76c4b2c18c851facefad7398f3f9c86a0abb8cdc
+
+.. note::
+    The simulations and visualizations in this tutorial were generated using
+    Blender 2.67 and CellBlender 0.1.57. It may or may not work with other
+    versions.
+
 We have already discussed surface classes at length, but we haven't touched on
 how they can affect the diffusion of surface molecules. Their effects are
 manifested at the boundaries of the surface regions that they are applied to.

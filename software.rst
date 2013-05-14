@@ -8,14 +8,14 @@ To use these tutorials, you'll want to have the following software installed:
 
 * MCell_ (registration required, :ref:`mcell_install`)
 * `CellBlender 0.1.57`_ (:ref:`cellblender_install`)
-* `Blender 2.66a`_
+* `Blender 2.67`_ (Blender 2.66a will work as well)
 * A text editor (gedit_, vim_, emacs_, etc.)
 * Some graphing and analysis software (matplotlib_ (with Python_ and numpy_), Grace_, gnuplot, etc.)
 
 .. _MCell: http://mcell.psc.edu/download.html
 .. _installation instructions: http://www.mcell.psc.edu/tutorials/installs.html
 .. _CellBlender 0.1.57: https://code.google.com/p/cellblender/downloads/list
-.. _Blender 2.66a: http://www.blender.org/download/get-blender/
+.. _Blender 2.67: http://www.blender.org/download/get-blender/
 .. _gedit: http://projects.gnome.org/gedit/
 .. _vim: http://www.vim.org/
 .. _emacs: http://www.gnu.org/software/emacs/

@@ -4,6 +4,14 @@
 Visualize and Plot the Output
 *********************************************
 
+.. CellBlender Source ID = 55f468aa7b71e044b3b199786f5af1d83bb3cab8
+   Git Repo SHA1 ID: 76c4b2c18c851facefad7398f3f9c86a0abb8cdc
+
+.. note::
+    The simulations and visualizations in this tutorial were generated using
+    Blender 2.67 and CellBlender 0.1.57. It may or may not work with other
+    versions.
+
 At the end of the last section, we ran MCell with the MDL file that we annotated. This
 generated visualization and reaction data (i.e. molecule counts), which we will
 now examine using CellBlender and some plotting software. 
@@ -224,10 +232,10 @@ Installing Plotting Plug-Ins
 
 CellBlender supports a variety of plotting plug-ins that may be installed in the
 "data_plotters" folder under the cellblender addon folder (typically something like: 
-*~/.config/blender/2.66/scripts/addons/cellblender/data_plotters*). Each plotting
+*~/.config/blender/2.67/scripts/addons/cellblender/data_plotters*). Each plotting
 plug-in will have its own folder in that directory, and within that folder must
 (at least) be a file named **__init__.py**. As an example, the xmgrace plug-in will
-be found at *~/.config/blender/2.66/scripts/addons/cellblender/data_plotters/xmgrace*.
+be found at *~/.config/blender/2.67/scripts/addons/cellblender/data_plotters/xmgrace*.
 There may be other files required in that folder. For example, the Java Plotter
 requires the file **PlotData.jar** to be there, and the MatPlotLib plotter requires
 the files **mpl_plot.py** and **mpl_defaults.py**. The number and purposes of these
