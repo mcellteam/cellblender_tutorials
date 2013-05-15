@@ -40,8 +40,8 @@ guide (pdf_, html_).
 
    software
    getting_started
-   examine_mdls
    visualize_plot
+   examine_mdls
    surface_classes
    variable_rxn_rates
    surf_class_surf_mol
