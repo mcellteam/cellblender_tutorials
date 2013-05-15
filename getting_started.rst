@@ -196,24 +196,26 @@ Define Molecules
 We will now define three new molecule species. Expand the **Define Molecules**
 panel and hit the **+** button three times. This will create three instances of
 **Molecule** in the list of molecules (don't worry about the "Duplicate
-molecule..." warning because we'll be renaming each of these molecules next).
+molecule..." warnings because we'll be renaming each of these molecules next).
 
 .. image:: ./images/gs_new_molecules.png
 
-..
-  pictures are updated now.
-  .. warning::
-
-      Some images may be from older versions and need to be updated.
-
 Left click on the first instance of **Molecule**. Change the **Molecule
 Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the
-**Diffusion Constant** to **1e-6**. Repeat this process for the next molecule
-in the list, but call this one **vol2**. Now, change the third entry to
+**Diffusion Constant** to **1e-6**. 
+
+.. image:: ./images/gs_define_molecule_vol1.png
+
+Repeat this process for the next molecule
+in the list, but call this one **vol2**. It will also be a **Volume Molecule** with a **Diffusion Constant** of **1e-6**.
+
+.. image:: ./images/gs_define_molecule_vol2.png
+
+Now, change the third entry to
 **surf1**. The **Molecule Type** should be set to **Surface Molecule** and
 change the **Diffusion Constant** to **1e-7**.
 
-.. image:: ./images/gs_define_molecules.png
+.. image:: ./images/gs_define_molecule_surf1.png
 
 Define Reactions
 ---------------------------------------------
@@ -245,48 +247,83 @@ Create Release Sites
 We have defined molecules and reactions, but we still need to release some
 molecules into our simulation.
 
-Expand the **Molecule Release/Placement** panel and hit the **+** button, which
-will create a new release site (*you may need to scroll down to see the entire
-panel*). Change **Site Name** to **vol1_rel**.  Change **Molecule** to
-**vol1**. Change **Release Shape** to **Object/Region**.  Change
-**Object/Region** to **Cube**. Change **Quantity to Release** to **2000**. This
-will release 2000 **vol1** molecules randomly throughout the interior of the
-**Cube** object.
+Expand the **Molecule Release/Placement** panel and hit the **+**
+button twice.  This will create two instances of **Release Site** with errors
+because we haven't defined any molecule names yet.
+
+.. image:: ./images/gs_release_empty.png
+
+Select the first instance
+(*you may need to scroll down to see the entire panel*), and change **Site Name** 
+to **vol1_rel**.
+
+.. image:: ./images/gs_release_add_vol1_rel.png
+
+Change **Molecule** to **vol1**.
+
+.. image:: ./images/gs_release_add_vol1_rel_mol.png
+
+Change **Release Shape** to **Object/Region**.
+
+.. image:: ./images/gs_release_add_vol1_rel_shape.png
+
+Change **Object/Region** to **Cube**.
+
+.. image:: ./images/gs_release_add_vol1_rel_obj.png
+
+Change **Quantity to Release** 
+to **2000**. This will release 2000 **vol1** molecules randomly throughout the interior 
+of the **Cube** object.
 
 .. image:: ./images/gs_vol1_rel.png
 
-Now, hit the **+** button again to create a second release site. Change **Site
-Name** to **surf1_rel**. Change **Molecule** to **surf1'**. Change **Release
-Shape** to **Object/Region**. Change **Object/Region** to **Cube[top]**. Change
-**Quantity to Release** to **2000**. This will release **2000** molecules
-randonmly on the **top** surface region.
+Now select the second release site. Change **Site Name** to **surf1_rel**.
+Change **Molecule** to **surf1**. Change **Release Shape** to
+**Object/Region**. Change **Object/Region** to **Cube[top]**. Change **Quantity
+to Release** to **2000**. This will release **2000** molecules randonmly on the
+**top** surface region.
 
 .. image:: ./images/gs_surf1_rel.png
+
 
 Create Reaction Output
 ---------------------------------------------
 
-Expand the **Reaction Output Settings** panel and hit the **+** button three
-times.
+Open the **Reaction Output Settings** panel.  Click the "plus" sign 3 times to
+save reaction data for each of 3 different molecule species.  They will show up
+as errors because they haven't been chosen yet, and there are no default
+values.
 
-.. image:: ./images/gs_reaction_output1.png
+.. image:: ./images/gs_rxn_viz_output_three_new.png
 
-Select the first entry in the **Reaction Data Output** list and select
-**surf1** in the **Molecule** drop-down search box. This will count every
-**surf1** molecule in the whole simulation (**World**) at every time step.
-Repeat this process for the second and third entries in the list but select
-**vol1** and **vol2** respectively when choosing the molecule.
+Select and highlight the first of the "Molecule name error" definitions and
+change its molecule name to "**surf1**" as shown here:
+
+.. image:: ./images/gs_rxn_viz_output_select_surf1.png
+
+After clicking on "**surf1**", the top of that panel should look like this:
+
+.. image:: ./images/gs_rxn_viz_output_surf1_selected.png
+
+The description next to the check box indicates that MCell will be counting and
+saving the count (number) of surf1 molecules in the "World".
+
+Repeat this process for the other two "Molecule name error" entries assigning
+them to vol1 and vol2 respectively to get this:
 
 .. image:: ./images/gs_reaction_output2.png
 
 Create Visualization Output
 ---------------------------------------------
 
-Expand the **Visualization Output Settings** panel and hit the **Toggle All**
-button. This will ensure that every molecule is included in the visualization
-output data.
+Open the **Visualization Output Settings** panel (*be sure to scroll down to
+see the whole panel*):
 
-.. image:: ./images/gs_visualization_output.png
+.. image:: ./images/gs_rxn_viz_output_empty.png
+
+Then click the **Toggle All** button to export all molecules for visualization:
+
+.. image:: ./images/gs_rxn_viz_output_all_selected.png
 
 .. _export_mdls:
 
@@ -309,3 +346,24 @@ Save Your Project
 From the **File** menu, select the **Save** option (or hit **Ctrl-s**). This
 will save any changes that you have made to the blend, including the
 CellBlender specific settings (e.g. molecule definitions, release sites, etc).
+
+Review
+---------------------------------------------
+
+First, we set up some project settings, including our path to MCell.
+
+We started with Blender's default cube and divided it up into triangular faces.
+
+The top faces were defined to be a special region that we called "top".
+
+We defined 3 different molecular species: surf1, vol1, and vol2.
+
+We defined reactions with the surface molecules that transformed vol1 molecules
+inside the box into vol2 molecules outside the box.
+
+We initialized the simulation by releasing specific numbers of molecules in (or
+on) specific regions of the physical model.
+
+We specified which data to export, and we ran the
+simulation.
+
