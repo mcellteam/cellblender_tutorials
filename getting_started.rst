@@ -4,12 +4,12 @@
 Getting Started
 *********************************************
 
-.. CellBlender Source ID = 55f468aa7b71e044b3b199786f5af1d83bb3cab8
-   Git Repo SHA1 ID: 76c4b2c18c851facefad7398f3f9c86a0abb8cdc
+.. Git Repo SHA1 ID: a1abdd291b75176d6581df41329781ae5d5e1b7d
 
 .. note::
+
     The simulations and visualizations in this tutorial were generated using
-    Blender 2.67 and CellBlender 0.1.57. It may or may not work with other
+    Blender 2.67 and CellBlender 1.0 RC. It may or may not work with other
     versions.
 
 If you haven't already done so, install the required software listed in
@@ -49,7 +49,7 @@ commands.
   section. If not, or if you'd like to go through it again, the following
   instructions should give you the same result.
 
-.. _gen_mesh:
+.. _start_blender:
 
 Starting Blender
 ---------------------------------------------
@@ -64,7 +64,7 @@ modify this object shortly, but first we need to set some project settings.
 
 .. image:: ./images/gs_cube.png
 
-.. _define_region:
+.. _project_settings:
 
 Set Project Settings
 ---------------------------------------------
@@ -104,6 +104,8 @@ the directory field, **intro.blend** into the file name field, and hit the
 
 .. image:: ./images/gs_project_settings2.png
 
+.. _define_region:
+
 Define a Surface Region
 ---------------------------------------------
 
@@ -116,13 +118,13 @@ Scroll to the bottom of the Properties Editor panel (if needed). Expand the
 **Define Surface Regions** panel (*note: you may have to scroll further if an
 action expands the size of a panel, because new fields may appear beyond the
 currently visible portion of the panel*). Hit the **+** button to add a new
-region, which appears in the list with the name "**Region**".
+region, which appears in the list with the name "**Region_0**".
 
 .. image:: ./images/gs_new_region.png
 
 Rename this new surface region to "**top**" by changing the **Region Name**
-field from "**Region**" to "**top**" (*again, you may need to scroll the panel
-to see all of the new fields created by the* **+** *button*).
+field from "**Region_0**" to "**top**" (*again, you may need to scroll the
+panel to see all of the new fields created by the* **+** *button*).
 
 .. image:: ./images/gs_top.png
 
@@ -190,6 +192,8 @@ units are in seconds.
 
 .. image:: ./images/gs_model_init.png
 
+.. _define_molecules:
+
 Define Molecules
 ---------------------------------------------
 
@@ -206,16 +210,18 @@ Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the
 
 .. image:: ./images/gs_define_molecule_vol1.png
 
-Repeat this process for the next molecule
-in the list, but call this one **vol2**. It will also be a **Volume Molecule** with a **Diffusion Constant** of **1e-6**.
+Repeat this process for the next molecule in the list, but call this one
+**vol2**. It will also be a **Volume Molecule** with a **Diffusion Constant**
+of **1e-6**.
 
 .. image:: ./images/gs_define_molecule_vol2.png
 
-Now, change the third entry to
-**surf1**. The **Molecule Type** should be set to **Surface Molecule** and
-change the **Diffusion Constant** to **1e-7**.
+Now, change the third entry to **surf1**. The **Molecule Type** should be set
+to **Surface Molecule** and change the **Diffusion Constant** to **1e-7**.
 
 .. image:: ./images/gs_define_molecule_surf1.png
+
+.. _define_reactions:
 
 Define Reactions
 ---------------------------------------------
@@ -241,21 +247,22 @@ section. Lastly, change **Forward Rate** to **1e8**.
 
 .. image:: ./images/gs_define_reactions.png
 
+.. _define_release_sites:
+
 Create Release Sites
 ---------------------------------------------
 
 We have defined molecules and reactions, but we still need to release some
 molecules into our simulation.
 
-Expand the **Molecule Release/Placement** panel and hit the **+**
-button twice.  This will create two instances of **Release Site** with errors
-because we haven't defined any molecule names yet.
+Expand the **Molecule Release/Placement** panel and hit the **+** button twice.
+This will create two instances of **Release Site** with errors because we
+haven't defined any molecule names yet.
 
 .. image:: ./images/gs_release_empty.png
 
-Select the first instance
-(*you may need to scroll down to see the entire panel*), and change **Site Name** 
-to **vol1_rel**.
+Select the first instance (*you may need to scroll down to see the entire
+panel*), and change **Site Name** to **vol1_rel**.
 
 .. image:: ./images/gs_release_add_vol1_rel.png
 
@@ -271,9 +278,8 @@ Change **Object/Region** to **Cube**.
 
 .. image:: ./images/gs_release_add_vol1_rel_obj.png
 
-Change **Quantity to Release** 
-to **2000**. This will release 2000 **vol1** molecules randomly throughout the interior 
-of the **Cube** object.
+Change **Quantity to Release** to **2000**. This will release 2000 **vol1**
+molecules randomly throughout the interior of the **Cube** object.
 
 .. image:: ./images/gs_vol1_rel.png
 
@@ -285,6 +291,8 @@ to Release** to **2000**. This will release **2000** molecules randonmly on the
 
 .. image:: ./images/gs_surf1_rel.png
 
+
+.. _create_reaction_output:
 
 Create Reaction Output
 ---------------------------------------------
@@ -313,6 +321,8 @@ them to vol1 and vol2 respectively to get this:
 
 .. image:: ./images/gs_reaction_output2.png
 
+.. _create_visualization_output:
+
 Create Visualization Output
 ---------------------------------------------
 
@@ -325,7 +335,7 @@ Then click the **Toggle All** button to export all molecules for visualization:
 
 .. image:: ./images/gs_rxn_viz_output_all_selected.png
 
-.. _export_mdls:
+.. _run_sim:
 
 Run Simulation
 ---------------------------------------------
@@ -340,12 +350,16 @@ green check mark will appear when the simulations have completed.
 
 .. image:: ./images/gs_run_simulation2.png
 
+.. _save_project:
+
 Save Your Project
 ---------------------------------------------
 
 From the **File** menu, select the **Save** option (or hit **Ctrl-s**). This
 will save any changes that you have made to the blend, including the
 CellBlender specific settings (e.g. molecule definitions, release sites, etc).
+
+.. _review:
 
 Review
 ---------------------------------------------
