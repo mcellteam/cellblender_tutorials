@@ -7,7 +7,7 @@ Running Multiple Seed Values
 .. warning::
 
    This tutorial has not yet been updated for CellBlender 1.0 RC. Therefore,
-   Some things might not work exactly as described.
+   some things might not work exactly as described.
 
 In MCell, diffusion (amongst other things) happen stochastically. However, the
 results are replicable as long as one provides the same seed value. Given this
