@@ -4,6 +4,11 @@
 Optimizing Your Simulation
 *********************************************
 
+.. warning::
+
+   This tutorial has not yet been updated for CellBlender 1.0 RC. Therefore,
+   Some things might not work exactly as described.
+
 These simplistic simulations should not be overly taxing on a relatively recent
 desktop machine. However, you may likely want to develop simulations which have
 many more molecules possibly on large dense mesh objects. There are a couple of

@@ -4,6 +4,11 @@
 Analyzing Your Data
 *********************************************
 
+.. warning::
+
+   This tutorial has not yet been updated for CellBlender 1.0 RC. Therefore,
+   Some things might not work exactly as described.
+
 There are many tools available for plotting and analyzing data. We will make
 use of python along with numpy and matplotlib. Using these tools, we will
 generate a histogram of molecule locations relative to the origin, and also

@@ -53,7 +53,6 @@ guide (pdf_, html_).
    seed
    ficks_laws
    irrev_rev_uni_bi
-   mapk
    rat
    lotka_volterra
 
