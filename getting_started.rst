@@ -286,7 +286,7 @@ molecules randomly throughout the interior of the **Cube** object.
 Now select the second release site. Change **Site Name** to **surf1_rel**.
 Change **Molecule** to **surf1**. Change **Release Shape** to
 **Object/Region**. Change **Object/Region** to **Cube[top]**. Change **Quantity
-to Release** to **2000**. This will release **2000** molecules randonmly on the
+to Release** to **2000**. This will release **2000** molecules randomly on the
 **top** surface region.
 
 .. image:: ./images/gs_surf1_rel.png
