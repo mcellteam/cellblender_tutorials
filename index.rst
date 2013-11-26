@@ -55,6 +55,7 @@ guide (pdf_, html_).
    irrev_rev_uni_bi
    rat
    lotka_volterra
+   FAQ
 
 Although no longer actively maintained, the `legacy DReAMM and MCell
 tutorials`_ are still available. 
