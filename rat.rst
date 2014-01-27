@@ -40,6 +40,6 @@ CellBlender where **MCell** is located. Under **Project Settings**, hit **Set
 Path to MCell Binary**, navigate to where you have downloaded MCell, select it,
 and hit the **Set MCell Binary** button. Next, hit the **Run Simulation**
 button. Once the simulation has completed, hit the **Read Viz Data** button.
-Hit **Ctrl-a** to play through the visualization data. 
+Hit **Alt-a** to play through the visualization data. 
 
 .. _ZIP archive: https://www.mcell.psc.edu/tutorials/downloads/rat_nmj.zip

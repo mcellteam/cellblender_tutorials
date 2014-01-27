@@ -134,8 +134,8 @@ the directory structure we set up earlier depends upon it. Normally, this is
 all handled automatically by CellBlender, but we must be careful when
 hand-editing files. Delete the default **Cube** now (select and hit **x**),
 since it's not actually a part of our simulation. Hit **Read Viz Data** under
-the **Visualize Simulation Results** panel. Hit **Ctrl-a** to begin playing
-back the animation. You will notice that the molecules start off moving rather
+the **Visualize Simulation Results** panel. Hit **Alt-a** to begin playing back
+the animation. You will notice that the molecules start off moving rather
 slowly, and then speed up halfway through the simulation, coinciding with the
 change in diffusion constant.
 

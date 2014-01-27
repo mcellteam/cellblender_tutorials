@@ -30,7 +30,7 @@ After opening **LV_diff_lim.blend**, we need to tell CellBlender where MCell is
 located. Under **Project Settings**, hit **Set Path to MCell Binary**, navigate
 to where you have downloaded MCell, select it, and hit the **Set MCell Binary**
 button. Next, hit the **Run Simulation** button. After the simulation has
-completed, hit the **Read Viz Data** button. Hit **Ctrl-a** to play through the
+completed, hit the **Read Viz Data** button. Hit **Alt-a** to play through the
 visualization data. 
 
 A diffusion-limited reaction is a reaction which occurs whenever the species
@@ -54,7 +54,7 @@ located, like we did in the previous example. Under **Project Settings**, hit
 **Set Path to MCell Binary**, navigate to where you have downloaded MCell,
 select it, and hit the **Set MCell Binary** button. Next, hit the **Run
 Simulation** button. After the simulation has completed, hit the **Read Viz
-Data** button. Hit **Ctrl-a** to play through the visualization data. 
+Data** button. Hit **Alt-a** to play through the visualization data. 
 
 This is the same model as the diffusion-limited reaction except that it starts
 from well mixed conditions and the probabilities for the reactions are not

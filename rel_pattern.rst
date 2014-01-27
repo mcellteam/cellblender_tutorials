@@ -102,7 +102,7 @@ is. Plotting the reaction data should help illustrate what's happening for this
 specific release pattern.
 
 Running the Simulation and Visualizing the Results
----------------------------------------------
+--------------------------------------------------
 
 Run the file by typing::
 
@@ -114,7 +114,7 @@ as the directory structure we set up earlier depends upon it. Normally, this is
 all handled automatically by CellBlender, but we must be careful when
 hand-editing files. Delete the default **Cube** now (select and hit **x**),
 since it's not actually a part of our simulation. Hit **Read Viz Data** under
-the **Visualize Simulation Results** panel. Hit **Ctrl-a** to begin playing the
+the **Visualize Simulation Results** panel. Hit **Alt-a** to begin playing the
 animation. At the origin, you should see small bursts of molecules being
 created (due to the actions of the release site and release pattern) and
 quickly decaying (from by the reaction).

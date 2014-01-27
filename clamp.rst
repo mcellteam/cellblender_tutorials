@@ -122,8 +122,6 @@ Name**, select **clamp_sr**.
 
 .. image:: ./images/clamp_mod_sr.png
 
-.. _surf_class_run_vis:
-
 Create Reaction Output
 ---------------------------------------------
 
@@ -208,7 +206,7 @@ Run the mdl by entering the following command::
    you will write over the changes you just made to Scene.reaction_output.mdl
 
 Once the simulation has finished running, hit **Read Viz Data** under the
-**Visualize Simulation Results** panel. Hit **Ctrl-a** to play the animation.
+**Visualize Simulation Results** panel. Hit **Alt-a** to play the animation.
 You may also want to plot the results under the **Reaction Output Settings**
 panel. In this example, we clamp the concentration of **vol1** at a molarity of
 **1E-5** M. When you plot or visualize the results, you'll notice that the
