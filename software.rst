@@ -6,16 +6,16 @@ Software Needed
 
 To use these tutorials, you'll want to have the following software installed:
 
-* MCell_ (registration required, :ref:`mcell_install`)
-* `CellBlender 1.0 RC`_ (:ref:`cellblender_install`)
-* `Blender 2.67`_ (Blender 2.66a will work as well)
+* MCell 3.2 (`MCell Download`_, :ref:`mcell_install`)
+* CellBlender 1.0 RC (`CellBlender Download`_, :ref:`cellblender_install`)
+* `Blender 2.69`_ (Blender 2.66a, 2.67, or 2.68 should work as well)
 * A text editor (gedit_, vim_, emacs_, etc.)
 * Some graphing and analysis software (matplotlib_ (with Python_ and numpy_), Grace_, gnuplot, etc.)
 
-.. _MCell: http://mcell.psc.edu/download.html
-.. _installation instructions: http://www.mcell.psc.edu/tutorials/installs.html
-.. _CellBlender 1.0 RC: https://code.google.com/p/cellblender/downloads/list
-.. _Blender 2.67: http://www.blender.org/download/get-blender/
+.. _MCell Download: http://mmbios.org/index.php/mcell-3-2-download
+.. _installation instructions: http://www.mcell.org/tutorials/installs.html
+.. _CellBlender Download: http://mmbios.org/index.php/cellblender-1-0-download
+.. _Blender 2.69: http://www.blender.org/download/get-blender/
 .. _gedit: http://projects.gnome.org/gedit/
 .. _vim: http://www.vim.org/
 .. _emacs: http://www.gnu.org/software/emacs/
@@ -33,6 +33,6 @@ these topics. There are already many good resources available to learn about
 these subjects (e.g. `Python tutorials`_ and `Blender tutorials`_).
 
 .. _Ubuntu: http://www.ubuntu.com/download
-.. _this one: http://www.tuxfiles.org/linuxhelp/linuxfiles.html
+.. _this one: http://cli.learncodethehardway.org/book/
 .. _Python tutorials: http://docs.python.org/release/3.1.5/tutorial/index.html
 .. _Blender tutorials: http://cgcookie.com/blender/get-started-with-blender/

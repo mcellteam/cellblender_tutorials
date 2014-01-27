@@ -13,13 +13,19 @@ MCell Installation
 MCell Overview
 ---------------------------------------------
 
-MCell is run from the command line, whether you are running \*nix (e.g. UNIX,
-Linux), Windows, or Mac OS X. For many reasons, we strongly recommend that you
-run MCell on \*nix or OS X. MCell does not have a graphical user interface and
-cannot be run by double-clicking an icon (Windows users take note). You must be
-a registered user to download MCell from our `web site`_.
+MCell is available for Linux, OS X, and Windows. You can download it from the
+`MMBioS web site`_. In the past, MCell was run exclusively from the command
+line. With the development of CellBlender, this is no longer necessary
+(although it can still be very useful). MCell, by itself, does not have a
+graphical user interface and cannot be run by double-clicking an icon (Windows
+users take note). 
 
-.. _web site: http://mcell.org/download.html
+.. note::
+
+    Some of the following instructions make use of the command line. These
+    sections will not apply to Windows users.
+
+.. _MMBioS web site: http://mmbios.org/index.php/mcell-3-2-download
 
 Installing MCell for Linux/OS X
 ---------------------------------------------
@@ -30,16 +36,16 @@ Download and Extract MCell
 Download the desired binary file for your system (e.g., MCell v. |release| for
 Linux x86).
 
-The binary file that you download is a gzip’ed file with a name that ends in
-".gz". Your browser may think that it knows more than you do and automatically
-unzip the file without changing its name (this can lead to considerable
-confusion).
+The binary file that you download is a compressed file with a name that ends in
+either ".gz" or ".zip". Your browser may think that it knows more than you do
+and automatically unzip the file without changing its name (this can lead to
+considerable confusion).
 
 Assuming that your browser hasn't already done so, unzip the file, e.g.,
 
 ::
 
-    gunzip mcell-3.1.998_x86.gz
+    gunzip mcell-3.2_x86.gz
 
 If this succeeds, the file will no longer have the .gz suffix. If it fails and
 you get an error message, it's probably already been unzipped by your browser.
@@ -53,7 +59,7 @@ Rename the file to something more convenient and make it executable, e.g.,
 
 ::
 
-    mv mcell-3.1.998_x86 mcell
+    mv mcell-3.2_x86 mcell
     chmod a+x mcell
 
 Put MCell in a PATH Directory
@@ -95,8 +101,14 @@ Installing CellBlender
 Startup Blender and go to the **File->User Preferences** menu. In the **User
 Preferences** control panel choose the **Addons** tab. Click the **Install from
 File** button at the bottom of the window. Navigate to the unextracted zip file
-that you downloaded (cellblender_v57.zip), select it, and click the **Install
-from File** button near the upper-right hand corner.
+that you downloaded (cellblender_v1.0_RC.zip), select it, and click the
+**Install from File** button near the upper-right hand corner.
+
+.. note::
+
+    If you need to install a newer version of CellBlender, the installation
+    process is the same. The new version of CellBlender should cleanly install
+    over the existing version.
 
 Activating CellBlender in Blender
 ---------------------------------------------
