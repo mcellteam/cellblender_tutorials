@@ -48,8 +48,11 @@ You should now see a number of molecules populating the surface of the
 
 Let's change the **Cube** to a wireframe view so we can see inside of it.
 First, be sure that the cube is selected (orange outline). Then click the
-**Object** button on the **Properties Editor**.  Under the **Display** panel,
-change **Type** to **Wire**.
+**Object** button on the **Properties Editor**.
+ 
+.. image:: ./images/object_button.png
+
+Under the **Display** panel, change **Type** to **Wire**.
 
 .. image:: ./images/vp_wireframe.png
 
@@ -208,13 +211,13 @@ Examples:
 ----------------
 
 One Page, One Plot mode with Combined Seeds unchecked:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: ./images/plots_combined_off_5_seeds_800.png
 
 
 One Page, One Plot mode with Combined Seeds checked:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: ./images/plots_combined_on_5_seeds_800.png
 
