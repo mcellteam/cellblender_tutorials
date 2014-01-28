@@ -98,9 +98,10 @@ it the next time Blender starts.
 
 The project directory is set to be wherever the current blend file is saved.
 Let's save the file right now by hitting **Ctrl-s**, typing
-**/home/user/mcell_tutorial/intro** (where **user** is your user name) into
-the directory field, **intro.blend** into the file name field, and hit the
-**Save As Blender File** button.
+**/home/user/mcell_tutorial/intro** (where **user** is your user name) into the
+directory field and click **Create New Directory** when prompted. Type
+**intro.blend** into the file name field and hit the **Save Blender File**
+button.
 
 .. image:: ./images/gs_project_settings2.png
 
@@ -166,8 +167,9 @@ they're now "tagged" with the name "**top**" which MCell can use to reference
 them.
 
 We're done editing individual faces, so switch back to object mode by placing
-the cursor in **3D View Editor** and hitting the **Tab** key (or switch back to
-Object Mode via the **Mode** selection control below the **3D View Editor**).
+the cursor in the **3D View Editor** and hitting the **Tab** key (or switch
+back to Object Mode via the **Mode** selection control below the **3D View
+Editor**).
 
 .. _set_parameters:
 
@@ -204,9 +206,9 @@ molecule..." warnings because we'll be renaming each of these molecules next).
 
 .. image:: ./images/gs_new_molecules.png
 
-Left click on the first instance of **Molecule**. Change the **Molecule
-Name** to **vol1**, the **Molecule Type** to **Volume Molecule**, and the
-**Diffusion Constant** to **1e-6**. 
+Left click on the first instance of **Molecule**. Change the **Molecule Name**
+to **vol1**, the **Molecule Type** to **Volume Molecule**, and the **Diffusion
+Constant** to **1e-6**. The units are cm\ :sup:`2`\ /second.
 
 .. image:: ./images/gs_define_molecule_vol1.png
 
@@ -242,8 +244,9 @@ examples.
     retype) the single quotes in your reactions.
 
 
-The meaning of these symbols will be explained in the :ref:`rxn_dir`
-section. Lastly, change **Forward Rate** to **1e8**.
+The meaning of these symbols will be explained in the :ref:`rxn_dir` section.
+Lastly, change **Forward Rate** to **1e8**. The units are M\ :sup:`-1`\ s\
+:sup:`-1`\ .
 
 .. image:: ./images/gs_define_reactions.png
 
@@ -297,9 +300,9 @@ to Release** to **2000**. This will release **2000** molecules randomly on the
 Create Reaction Output
 ---------------------------------------------
 
-Open the **Reaction Output Settings** panel.  Click the "plus" sign 3 times to
-save reaction data for each of 3 different molecule species.  They will show up
-as errors because they haven't been chosen yet, and there are no default
+Open the **Reaction Output Settings** panel. Click the **+** sign 3 times to
+save reaction data for each of the 3 different molecule species. They will show
+up as errors because they haven't been chosen yet, and there are no default
 values.
 
 .. image:: ./images/gs_rxn_viz_output_three_new.png
@@ -313,11 +316,11 @@ After clicking on "**surf1**", the top of that panel should look like this:
 
 .. image:: ./images/gs_rxn_viz_output_surf1_selected.png
 
-The description next to the check box indicates that MCell will be counting and
-saving the count (number) of surf1 molecules in the "World".
+The description next to the check mark indicates that MCell will be counting
+and saving the count (number) of surf1 molecules in the **World**.
 
 Repeat this process for the other two "Molecule name error" entries assigning
-them to vol1 and vol2 respectively to get this:
+them to **vol1** and **vol2** respectively to get this:
 
 .. image:: ./images/gs_reaction_output2.png
 
@@ -364,20 +367,13 @@ CellBlender specific settings (e.g. molecule definitions, release sites, etc).
 Review
 ---------------------------------------------
 
-First, we set up some project settings, including our path to MCell.
-
-We started with Blender's default cube and divided it up into triangular faces.
-
-The top faces were defined to be a special region that we called "top".
-
-We defined 3 different molecular species: surf1, vol1, and vol2.
-
-We defined reactions with the surface molecules that transformed vol1 molecules
-inside the box into vol2 molecules outside the box.
-
-We initialized the simulation by releasing specific numbers of molecules in (or
-on) specific regions of the physical model.
-
-We specified which data to export, and we ran the
-simulation.
+* We set up some project settings, including our path to MCell.
+* We started with Blender's default cube and divided it up into triangular faces.
+* The top faces were defined to be a special region that we called **top**.
+* We defined 3 different molecular species: **surf1**, **vol1**, and **vol2**.
+* We defined reactions with the surface molecules that transformed **vol1**
+  molecules inside the **Cube** into **vol2** molecules outside the **Cube**.
+* We initialized the simulation by releasing specific numbers of molecules in
+  (or on) specific regions of the physical model.
+* We specified which data to export, and we ran the simulation.
 
