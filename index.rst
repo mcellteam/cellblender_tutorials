@@ -3,9 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-=====================
+=====================================
 Introduction to MCell and CellBlender
-=====================
+=====================================
 
 In order to quickly show what can be done with MCell and CellBlender, we'll
 begin by generating a simple model and gradually add in more features. Our
@@ -39,6 +39,7 @@ guide (pdf_, html_).
    :maxdepth: 4
 
    software
+   installs
    getting_started
    visualize_plot
    examine_mdls
