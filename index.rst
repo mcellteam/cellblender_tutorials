@@ -72,5 +72,3 @@ Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-
-This guide was last updated |today|.
