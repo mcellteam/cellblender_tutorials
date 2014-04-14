@@ -1,0 +1,131 @@
+.. _optimize:
+
+*********************************************
+Optimizing Your Simulation
+*********************************************
+
+These simplistic simulations should not be overly taxing on a relatively recent
+desktop machine. However, you may likely want to develop simulations which have
+many more molecules possibly on large dense mesh objects. There are a couple of
+strategies you can use to speed up your simulation (and/or to save disk space).
+The following three topics will address some of these issues:
+
+.. contents:: :local:
+
+.. _adding_partitions:
+
+Adding Partitions
+---------------------------------------------
+
+A full explanation of partitions is outside of the scope of this tutorial, but,
+essentially, when MCell is checking to see if a reaction occurs, partitions
+lower the number of potential partners it must check. For practical purposes,
+this means partitions can greatly speed up your simulation, but, if used
+improperly, they can actually slow it down.
+
+Download and open the `partitions.blend`_ file. You will see a tilted **Cube** object. If
+you look through the CellBlender settings, you will notice that we are
+releasing two species of molecules (**vol1** and **vol2**) inside of the
+**Cube**, and there are two sets of reactions::
+
+        vol1 + vol2 -> vol1 + vol3
+        vol1 + vol3 -> vol2 + vol3
+
+.. _partitions.blend: https://www.mcell.psc.edu/tutorials/downloads/partitions.blend
+
+You have already learned how to create a model similar to this in
+:ref:`getting_started`, so we won't go over it again. What we are going to
+cover next is new however. Expand the **Define and Visualize Partitions**
+panel. Select **Include Partitions**.  Click **Show Boundaries**, and you will
+see a wireframe of a cube that goes from -1.0 to 1.0 along each axis. These
+represent the boundaries of the partitions. Now, hit **Automatically Generate
+Boundaries** and you should see the partition boundaries grow to encompass the
+entire **Cube** object. Change each **Step** value to **0.05**.
+
+So what is happening here exactly? We are creating planes along each axis
+specified. The intersection of these planes creates subvolumes. The distance of
+these subvolumes should generally not be smaller in length than the mean
+diffusion distance of the fastest molecules in your simulation.
+
+.. note::
+
+    Before running the simulation, set your MCell path under **Project
+    Settings** if necessary. Check :ref:`project_settings` if you need help.
+
+Now, expand the **Run Simulation** panel and hit the **Run Simulation** button.
+A green check mark will appear when the simulations have completed. Look at the
+log files located in **/home/user/mcell_tutorial/partitions/partitions_files/**
+Notice the section near the end, which should say something like this::
+
+    ...
+    Total wall clock time = 14 seconds
+    Done running.
+
+
+Now, disable the partitions and run it again. Check the newly created log file
+and you will likely see the speed decrease like this::
+
+    ...
+    Total wall clock time = 55 seconds
+    Done running.
+
+
+Your results will likely vary, as the speed improvement will depend on the
+machine running the simulation. You may want to experiment with changing the
+**Step** value. For example try decreasing it to **0.025**. If the wall clock
+time increases (i.e. the simulation is running slower), try making the **Step**
+value larger than the original value (e.g. set the **Step** value to **0.10**).
+It may take a few tries to find an optimal value.
+
+.. _target_only:
+
+Target Only
+---------------------------------------------
+
+If you have a reaction between two molecules in which there are many of one
+molecule and very few of another, you might want to consider using the **Target
+Only** option when defining your molecules. Normally, a diffusing molecule will
+check to see if there are any potential molecules to react with. However, a
+molecule that is marked as **Target Only** can only be the target of a
+reaction, and will not search for partners to react with.
+
+Download and open the `target_only.blend`_ file. If you look through the
+CellBlender settings, you will notice that we are releasing two species of
+molecules (**vol1** and **vol2**) inside of the **Cube** and there is one
+reaction::
+
+        vol1 + vol2 -> vol1 + vol3
+
+.. _target_only.blend: https://www.mcell.psc.edu/tutorials/downloads/target_only.blend
+
+This means that **vol1** reacts with **vol2** to create **vol3** and recreate
+**vol1**. Without the **TARGET_ONLY** command, every **vol2** molecule would
+have to check to see if there were **vol1** molecules to react with and vice
+versa. With this command, *only* **vol1** must search for reaction partners.
+Given that there are 100 **vol1** and 10000 **vol2**, this second method is
+much more efficient.
+
+.. note::
+
+    Before running the simulation, set your MCell path under **Project
+    Settings** if necessary. Check :ref:`project_settings` if you need help.
+
+Now, expand the **Run Simulation** panel and hit the **Run Simulation** button.
+A green check mark will appear when the simulations have completed. Try running
+it again without **Target Only** selected for **vol2** and check the log files
+for the two runs.
+
+.. _only_export_needed:
+
+Only Export What You Need
+---------------------------------------------
+
+Visualization data can be great if you are making a figure to accompany a
+paper, or you are trying to troubleshoot a problem in your simulation, but
+there's probably no need to export every molecule at every iteration. You could
+either disable viz data entirely when you don't need it (hit **Toggle All**
+until nothing is selected) or only export the molecules you need. Also, you can
+choose to export viz data for a subset of your entire simulation (e.g. imagine
+your simulation runs for 10000 iterations, but you only need every tenth
+iteration from 9000 to 10000). Both of these solutions can speed up your
+simulation and save you disk space.
