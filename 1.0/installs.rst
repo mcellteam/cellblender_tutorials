@@ -180,12 +180,3 @@ Activating CellBlender in Blender
 Scroll down until you see **Cell Modeling: CellBlender** and select the
 checkbox to enable it. Then, click **Save as Default** to enable the addon
 permanently in Blender.
-
-*********************************************
-DReAMM and PSC DX Installation
-*********************************************
-
-DReAMM and PSC DX are no longer actively developed, but will remain available
-for download. The installation instructions can be found here_.
-
-.. _here: https://www.mcell.psc.edu/tutorials_old/installs.html
