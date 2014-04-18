@@ -228,10 +228,16 @@ Separate Page for each Plot mode with Combined Seeds checked:
 .. image:: ./images/plots_combined_on_5_seeds_paged_800.png
 
 
+Advanced Plotting
+============================================
 
+.. warning::
+
+   The following sections describe advanced features that are not intended for
+   the average user.
 
 Installing Plotting Plug-Ins
-=============================================
+---------------------------------------------
 
 CellBlender supports a variety of plotting plug-ins that may be installed in the
 "data_plotters" folder under the cellblender addon folder (typically something like: 
@@ -291,7 +297,7 @@ Here's an example of a simple plotting plug-in for xmgrace::
 
 
 Writing Plotting Plug-Ins
-=============================================
+---------------------------------------------
 
 CellBlender's plotting plug-in API is still very immature, so drastic changes
 may be anticipated. But for those who need to write their own plotting plug-in,
