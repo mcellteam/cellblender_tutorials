@@ -36,26 +36,15 @@ guide (pdf_, html_).
 
 .. toctree::
    :numbered:
-   :maxdepth: 4
+   :maxdepth: 2
 
    software
    installs
    getting_started
    visualize_plot
-   examine_mdls
-   surface_classes
-   variable_rxn_rates
-   surf_class_surf_mol
-   checkpointing
-   rel_pattern
-   clamp
-   optimize
-   analyze
-   seed
-   ficks_laws
-   irrev_rev_uni_bi
-   rat
-   lotka_volterra
+   advanced_features
+   advanced_models
+   mdl_editing
    FAQ
 
 Although no longer actively maintained, the `legacy DReAMM and MCell
