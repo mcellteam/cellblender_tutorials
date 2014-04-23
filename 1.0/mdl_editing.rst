@@ -1,3 +1,5 @@
+.. _editing_mdls:
+
 Editing MDLs and Analysis with Python
 ---------------------------------------------
 
@@ -18,7 +20,7 @@ using Python and matplotlib.
 
 .. note::
 
-   It is assumed that you have already gone through tutorials 1-5 prior to
+   It is assumed that you have already gone through tutorials 1-4 prior to
    attempting these.
 
 .. toctree::

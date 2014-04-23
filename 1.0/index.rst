@@ -42,10 +42,17 @@ guide (pdf_, html_).
    installs
    getting_started
    visualize_plot
-   advanced_features
-   advanced_models
-   mdl_editing
-   FAQ
+
+Once you are done with the basic tutorials (sections 1-4), you can proceed to
+learn about any of the :ref:`advanced_features` of MCell and CellBlender. If
+you'd like to see some interesting applications of MCell and CellBlender, check
+out the :ref:`advanced_models`. Power users might be interested in checking out
+our section on :ref:`editing_mdls`.
+
+Still have questions? They might be answered in our :ref:`faq`. If not, ask a
+question on the forums_.
+
+.. _forums: http://mmbios.org/index.php/mcell-cellblender-forum
 
 Although no longer actively maintained, the `legacy DReAMM and MCell
 tutorials`_ are still available. 
