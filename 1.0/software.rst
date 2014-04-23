@@ -11,8 +11,8 @@ To use these tutorials, you'll want to have the following software installed:
 * `Blender 2.70a`_ (Blender 2.66a, 2.67, 2.68, 2.69, 2.70 should mostly work as
   well)
 * A text editor (gedit_, vim_, emacs_, etc.)
-* Some graphing and analysis software (matplotlib_ (with Python_ and numpy_),
-  Grace_, gnuplot, etc.)
+* Some graphing and analysis software (matplotlib_ (with Python_ and numpy_) or
+  Grace_ are recommended)
 
 .. _MCell Download: http://mmbios.org/index.php/mcell-3-2-1
 .. _installation instructions: http://www.mcell.org/tutorials/installs.html
