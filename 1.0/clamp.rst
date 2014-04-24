@@ -7,72 +7,72 @@
 Clamp Concentration
 *********************************************
 
-.. Git Repo SHA1 ID: a1abdd291b75176d6581df41329781ae5d5e1b7d
+.. Git Repo SHA1 ID: 3520f8694d61c81424ff15ff9e7a432e42f0623f
 
 .. note::
 
     The simulations and visualizations in this tutorial were generated using
-    Blender 2.67 and CellBlender 1.0 RC. It may or may not work with other
+    Blender 2.70a and CellBlender 1.0. It may or may not work with other
     versions.
 
-Clamp concentration lets you maintain a constant concentration of a molecule at
-a surface. This is done by creating and destroying molecules at the surface.
-**CLAMP_CONC** is created and applied like other surface classes (e.g.
-**ABSORPTIVE**). We'll begin by making two meshes, one which will have the
-**CLAMP_CONC** applied and the other will prevent molecules from diffusing away
-from the surface.
+A concentration clamp lets you maintain a constant concentration of a molecule
+at a surface. This is done by creating and destroying molecules at the surface.
+Clamp concentrations are created and applied like all the other surface classes
+(e.g. absorptive, transparent).
 
-Set Project Settings
+To create this model, we'll begin by making two meshes, one which will have the
+concentration clamp applied (plane) and the other will prevent molecules from
+diffusing away from the surface (thin cube).
+
+Start New Project
 ---------------------------------------------
 
 Start Blender. Hit the **Scene** button in the **Properties Editor**. 
 
 .. image:: ./images/scene_button.png
 
-If you haven't saved the path to the MCell binary in your startup file, you'll
-need to set it under the **Project Settings** panel. For more detailed
-instructions, see :ref:`getting_started`.
-
 The project directory is set to be wherever the current blend file is saved.
 Let's save the file right now by hitting **Ctrl-s**, typing
-**/home/user/mcell_tutorial/clamp** (where **user** is your user name) into the
-directory field, **intro.blend** into the file name field, and hit the **Save
+**~/mcell_tutorial/clamp** (or **C:\\mcell_tutorial\\clamp** on Windows) into the
+directory field, **clamp.blend** into the file name field, and hit the **Save
 As Blender File** button.
 
-Creating the Model with Blender
+Modify Cube and Create Plane
 ---------------------------------------------
 
-Hit **z** to switch to wireframe mode.  With the **Cube** selected, hit **s**,
+Hit **z** to switch to wireframe mode. With the **Cube** selected, hit **s**,
 **z**, **0.1**, and **Enter**.
  
-.. image:: ./images/clamp_scale_cube.png
+.. image:: ./images/clamp/scale_cube.png
 
 Hit **Tab** to change into **Edit Mode**. Hit **Ctrl-t** to triangulate the
 faces of the **Cube**.
 
-.. image:: ./images/clamp_triangulate_cube.png
+.. image:: ./images/clamp/triangulate_cube.png
 
 Hit **Tab** to switch back into **Object Mode**.
 
 Hit **Shift-a**, select **Mesh>Plane**. Hit **s**, **0.9**, and **Enter**.
 
-.. image:: ./images/clamp_plane.png
+.. image:: ./images/clamp/plane.png
+
+Define and Assign a Surface Region
+---------------------------------------------
 
 Hit the **Object** button in the **Properties Editor** (little cube in the
 right side panel).
 
 .. image:: ./images/object_button.png
 
-Expand the **Define Surface Regions** panel. Hit the **+** button and **New
-Region** should appear in the list of regions. Change the text field which
-reads **Region_0** to **clamp_sr**. 
+Expand the **Define Surface Regions** panel. Hit the **+** button to create a
+new region. Change the text field which reads **Region_0** to **clamp_sr**. 
 
-.. image:: ./images/clamp_sr.png
+.. image:: ./images/clamp/clamp_sr.png
 
 Move the cursor to the **3D View Editor**. Hit **Tab** to change into **Edit
 Mode**. Hit **Ctrl-t** to triangulate the faces.
 
-.. image:: ./images/clamp_triangulate_plane.png
+.. image:: ./images/clamp/triangulate_plane.png
 
 Under the **Define Surface Regions** panel, click **Assign**. Hit **Tab** to
 change back into **Object Mode**. Hit the **Scene** button in the **Properties
@@ -80,23 +80,38 @@ Editor**.
 
 .. image:: ./images/scene_button.png
 
+Add Plane and Cube to Model Objects List
+---------------------------------------------
+
 The **Plane** should still be selected, but we also want to select the
 **Cube**. Hold **Shift** and **right click** on the **Cube**.
 
-.. image:: ./images/clamp_select_both.png
+.. image:: ./images/clamp/select_both.png
 
 Expand the **Model Objects** panel and hit the **+** button. This will add the
-**Cube** and the **Plane** to the list of mesh objects to be exported and
-initialized. Expand the **Model Initialization** panel. Change **Simulation
-Iterations** to **500**. Change **Simulation Time Step** to **1e-6**.
+**Cube** and the **Plane** to the list of mesh objects to be included in the
+MCell simulation.
 
-.. image:: ./images/clamp_model_objects_init.png
+.. image:: ./images/clamp/model_objects.png
 
-Expand the **Define Molecules** panel and hit the **+** button. Change the
-**Molecule Name** to **vol1**, the **Molecule Type** to **Volume Molecule**,
-and the **Diffusion Constant** to **1e-6**.
+Set Model Parameters and Define Molecule
+---------------------------------------------
 
-.. image:: ./images/clamp_define_molec.png
+Expand the **Model Initialization** panel.
+
+* Change **Iterations** to **500**.
+* Change **Time Step** to **1e-6**.
+
+.. image:: ./images/clamp/model_init.png
+
+Expand the **Define Molecules** panel, hit the **+** button, and make the
+following changes:
+
+* Change the **Molecule Name** to **vol1**.
+* Change the **Molecule Type** to **Volume Molecule**.
+* Change the **Diffusion Constant** to **1e-6**.
+
+.. image:: ./images/clamp/vol1.png
 
 Add the Surface Class
 ---------------------------------------------
@@ -105,41 +120,46 @@ Expand the **Define Surface Classes** panel. Then, hit the **+** button to
 create a new surface class called **Surface_Class**. Rename it to
 **clamp_sc**.
 
-Hit the **+** button beside the empty **clamp_sc Properties** list. Select
-**vol1** from the **Molecule Name** field.  Change the **Orientation**
-drop-down box to **Ignore**. Leave **Type** set to **Absorptive**. 
+Hit the **+** button beside the empty **clamp_sc Properties** list. Set the
+following properties:
 
-.. image:: ./images/clamp_sc.png
+* Select **vol1** from the **Molecule Name** field.
+* Change the **Orientation** drop-down box to **Ignore**.
+* Set **Type** to **Clamp Concentration**. 
+* Set **Value** to **1e-5**.
+
+.. image:: ./images/clamp/clamp_sc.png
 
 Modify the Surface Regions
 ---------------------------------------------
 
 Now that we have created our surface class, we need to assign it to our mesh.
 Expand the **Modify Surface Regions** panel. Hit the **+** to begin modifying a
-surface region. In the **Surface Class Name** field, select **clamp_sc**.
-Under object name, select the newly created **Plane** object. For **Region
-Name**, select **clamp_sr**.
+surface region.
 
-.. image:: ./images/clamp_mod_sr.png
+* In the **Surface Class Name** field, select **clamp_sc**.
+* Under **Object Name**, select the newly created **Plane** object.
+* For **Region Name**, select **clamp_sr**.
+
+.. image:: ./images/clamp/mod_surf_reg.png
 
 Create Reaction Output
 ---------------------------------------------
 
-Expand the **Reaction Output Settings** panel and hit the **+** button times.
-Select **vol1** in the **Molecule** drop-down search box.
+Expand the **Reaction Output Settings** panel and hit the **+** button.  Select
+**vol1** in the **Molecule** drop-down search box.
 
-.. image:: ./images/clamp_reaction_output.png
+.. image:: ./images/clamp/count_vol1.png
 
 Create Visualization Output
 ---------------------------------------------
 
-Expand the **Visualization Output Settings** panel and hit the **Toggle All**
-button. This will ensure that every molecule is included in the visualization
-output data.
+Expand the **Visualization Output Settings** panel and hit the **Export All**
+button.
 
-.. image:: ./images/clamp_viz.png
+.. image:: ./images/clamp/export_all.png
 
-Examine and Annotate the MDLs
+Examine the MDLs (Optional)
 ---------------------------------------------
 
 Open the file called **Scene.surface_classes.mdl**, and you should see the
@@ -174,6 +194,9 @@ see the following:
 Assigning a concentration clamp to a region works the same as it does for any
 other surface class.
 
+Annotate the MDLs (Optional)
+---------------------------------------------
+
 Finally, open the file called **Scene.rxn_output.mdl** and *add* the
 highlighted line that contains the **ESTIMATE_CONC** command:
 
@@ -186,31 +209,46 @@ highlighted line that contains the **ESTIMATE_CONC** command:
         {COUNT[vol1,World.Plane,ESTIMATE_CONC]}=> "./react_data/vol1.dat"
     }
 
-The only new commands here are **CLAMP_CONC** and **ESTIMATE_CONC**.
-**CLAMP_CONC** is applied like any other surface class, except that the
-molarity of a certain molecule is specified. **ESTIMATE_CONC** is used in a
-count statement after an object or region, and (unsurprisingly) estimates the
-concentration at that location. *Note:* The units for these two commands are
-different; **CLAMP_CONC** is M and **ESTIMATE_CONC** is uM.
+The only new commands used in this section and the last are **CLAMP_CONC** and
+**ESTIMATE_CONC**.  **CLAMP_CONC** is applied like any other surface class,
+except that the molarity of a certain molecule is specified. **ESTIMATE_CONC**
+is used in a count statement after an object or region, and (unsurprisingly)
+estimates the concentration at that location. 
 
-Run the Simulation and Visualize the Results
+.. note::
+
+    The units for these two commands are different; CLAMP_CONC is M and
+    ESTIMATE_CONC is uM.
+
+Run the Simulation
 ---------------------------------------------
 
-Run the mdl by entering the following command::
+If you didn't annotate the MDLs, then you can run the simulation as you
+normally would from within CellBlender.
+
+Otherwise, run the simulation at the command line by typing::
 
     mcell Scene.main.mdl
 
 .. note::
-   You can run this from within Blender, but you have to decouple exporting and
-   running the simulation under the CellBlender Preferences panel. Otherwise,
-   you will write over the changes you just made to Scene.reaction_output.mdl
+
+   You can also run this from within Blender, but you have to decouple
+   exporting and running the simulation under the CellBlender Preferences
+   panel. Otherwise, you will write over the changes you just made to
+   Scene.reaction_output.mdl
+
+Visualize the Results
+---------------------------------------------
 
 Once the simulation has finished running, hit **Read Viz Data** under the
 **Visualize Simulation Results** panel. Hit **Alt-a** to play the animation.
 You may also want to plot the results under the **Reaction Output Settings**
-panel. In this example, we clamp the concentration of **vol1** at a molarity of
-**1E-5** M. When you plot or visualize the results, you'll notice that the
-concentration of molecules increases for a period of time and then reaches a
-steady state near 10 uM, which is what we would expect given what we asked for
-in the **CLAMP_CONC** command. 
+panel.
+
+In this example, we clamped the concentration of **vol1** at a molarity of
+**1E-5** M. If you annotated the MDL in the previous example, then when you
+plot or visualize the results, you'll notice that the concentration of
+molecules increases for a period of time and then reaches a steady state near
+10 uM, which is what we would expect given what we asked for in the
+**CLAMP_CONC** command. 
 
