@@ -161,13 +161,13 @@ Move the cursor to the **3D View Editor**. Hit **Tab** to change into **Edit
 Mode** (or enter **Edit Mode** via the **Mode** selection control). Hit
 **Ctrl-t** to triangulate the faces (or use **Mesh>Faces>Triangulate Faces**). 
 
-.. image:: ./images/gs_triangulate.png
+.. image:: ./images/triangulate.png
 
 
 Hit **Ctrl-Tab** and select **Face** (or click on the "**Face select**" button)
 to enter face selection mode.
 
-.. image:: ./images/gs_ctrl_tab.png
+.. image:: ./images/ctrl_tab.png
 
 You can tell you're in **Face Select** mode (rather than **Vertex Select** or
 **Edge Select** modes) when each face has a square dot near its center.
@@ -177,7 +177,7 @@ Hit **a** (or use menu option **Select>(De)select All**) to deselect everything
 faces by **holding Shift** while **right clicking** on each of the two top
 faces to select them.
 
-.. image:: ./images/gs_select_top.png
+.. image:: ./images/select_top.png
 
 Under the **Define Surface Regions** panel, click the **Assign** button
 (*remember that you might need to scroll down to see the new buttons added*).
@@ -415,6 +415,12 @@ This will queue up two MCell simulations each with a different seed value. A
 green check mark will appear when the simulations have completed.
 
 .. image:: ./images/getting_started/run_simulation2.png
+
+.. note::
+
+   If you encounter any errors, you may need to check the command line for
+   error messages. Windows users will have to select "Window>Toggle System
+   Console".
 
 .. _save_project:
 
