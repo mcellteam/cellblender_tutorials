@@ -4,117 +4,105 @@
 Release Patterns
 *********************************************
 
-.. Git Repo SHA1 ID: a1abdd291b75176d6581df41329781ae5d5e1b7d
+.. Git Repo SHA1 ID: 3520f8694d61c81424ff15ff9e7a432e42f0623f
 
 .. note::
 
     The simulations and visualizations in this tutorial were generated using
-    Blender 2.67 and CellBlender 1.0 RC. It may or may not work with other
+    Blender 2.70a and CellBlender 1.0C. It may or may not work with other
     versions.
 
 Release patterns allow you to release molecules at specified time intervals.
 One thing this can be useful for is simulating a synaptic vesicle releasing
 neurotransmitter.
 
-Eventually, it will be possible to create release patterns directly within
-CellBlender. Until that time, you can still do it by manually hand-editing some
-files.
+Start New Project
+---------------------------------------------
 
-First, type the following command in the main tutorial directory::
+Now start Blender. Hit the **Scene** button in the **Properties Editor**. 
 
-   mkdir -p release_pattern/release_pattern_files/mcell
+.. image:: ./images/scene_button.png
 
-.. note::
+The project directory is set to be wherever the current blend file is saved.
+Let's save the file right now by hitting **Ctrl-s**, typing
+**~/mcell_tutorial/rel_pattern** (or **C:\\mcell_tutorial\\rel_pattern** on
+Windows) into the directory field, **rel_pattern.blend** into the file name
+field, and hit the **Save As Blender File** button.
 
-   CellBlender expects a certain directory structure for visualization. That is
-   why we are creating these sub-directories in a very specific way.
+Let's begin by deleting the default **Cube** object.
 
-Then within that directory (i.e.
-**/home/user/mcell_tutorial/release_pattern/release_pattern_files/mcell**),
-create a file called **release_pattern.mdl**. Add the following text to that
-file:
+Set Project Parameters
+---------------------------------------------
 
-.. code-block:: none
-    :emphasize-lines: 6-13, 28
+Set the following parameters:
 
-    time_step = 1E-6
-    iterations = 1000
-    ITERATIONS = iterations
-    TIME_STEP = time_step
+* Set the **Iterations** to **1000**.
+* Set the **Time Step** to **1e-6**.
+* Create a volume molecule called **vol1** with a diffusion constant of
+  **1e-6**.
+* Create a reaction with the following properties:
 
-    DEFINE_RELEASE_PATTERN rel_pat1
-    {
-        DELAY = 50E-6
-        RELEASE_INTERVAL = 50E-6
-        TRAIN_DURATION = 200E-6
-        TRAIN_INTERVAL = 300E-6
-        NUMBER_OF_TRAINS = 3
-    }
+  * Set **Reactants** to **vol1**.
+  * Set **Products** to **NULL**.
+  * Set **Forward Rate** to **1e5**.
 
-    DEFINE_MOLECULES
-    {
-        vol1 {DIFFUSION_CONSTANT_3D = 1E-6}
-    }
+* Set **Export All** under **Visualization Output Settings**.
+* Count all the **vol1** molecules in the **World**.
 
-    DEFINE_REACTIONS {
-        vol1 -> NULL [1E5]
-    }
+Create Release Pattern
+---------------------------------------------
 
-    INSTANTIATE World OBJECT
-    {
-        vol1_rel RELEASE_SITE
-        {
-            SHAPE = SPHERICAL
-            LOCATION = [0,0,0]
-            SITE_DIAMETER = 0.0
-            MOLECULE = vol1
-            NUMBER_TO_RELEASE = 100
-            RELEASE_PATTERN = rel_pat1
-        }
-    }
+Under the **Release Pattern** panel, hit the **+** button to create a new
+release pattern. Set the following properties:
 
-    sprintf(seed,"%05g",SEED)
+* Set the **Site Name** to **rel_pat1**.
+* Set the **Release Pattern Delay** to **50e-6**.
+* Set the **Release Interval** to **50e-6**.
+* Set the **Train Duration** to **200e-6**.
+* Set the **Train Interval** to **300e-6**
+* Set the **Number of Trains** to **3**
 
-    VIZ_OUTPUT
-    {
-      MODE = CELLBLENDER
-      FILENAME = "./viz_data/seed_" & seed & "/Scene"
-      MOLECULES
-      {
-        NAME_LIST {vol1}
-        ITERATION_NUMBERS {ALL_DATA @ ALL_ITERATIONS}
-      }
-    }
-
-    REACTION_DATA_OUTPUT
-    {
-      STEP=1e-05
-      {COUNT[vol1,WORLD]}=> "./react_data/seed_" & seed & "/vol1.World.dat"
-    }
-
+.. image:: ./images/rel_pattern/rel_pat.png
 
 A release pattern consists of one or more "trains." Each train can last for a
-certain period of time (**TRAIN_DURATION**), and an interval between trains can
-be set(**TRAIN_INTERVAL**). Within a given train, you can release molecules at
-specific intervals (**RELEASE_INTERVALS**). And lastly, the **DELAY** indicates
+certain period of time (**Train Duration**), and an interval between trains can
+be set (**Train Interval**). Within a given train, you can release molecules at
+specific intervals (**Release Interval**). And lastly, the **Delay** indicates
 when the first train will start. This may sound more confusing than it really
 is. Plotting the reaction data should help illustrate what's happening for this
 specific release pattern.
 
+Create Release Site
+---------------------------------------------
+
+Create a release site with the following properties:
+
+  * Set the **Site Name** to **vol1_rel**.
+  * Set the **Molecule** to **vol1**.
+  * Set the **Release/Shape** to **Cubic**.
+  * Set the **Quantity to Release** to **100**.
+  * Set the **Release Pattern** to **rel_pat1**.
+
+.. image:: ./images/rel_pattern/vol1_rel.png
+
 Running the Simulation and Visualizing the Results
 --------------------------------------------------
 
-Run the file by typing::
+* Under the **Run Simulation** panel, hit the **Run Simulation** button.
+* Then hit the **Read Viz Data** button under the **Visualize Simulation
+  Results** button.
+* Hit **Alt-a** to begin playing the animation.
 
-    mcell release_pattern.mdl
+At the origin, you should see small bursts of molecules being created (due to
+the actions of the release site and release pattern) and quickly decaying (from
+the reaction). You may want to zoom in to get a better look.
 
-Start Blender. Save your blend file with the name **release_pattern.blend** in
-**/home/user/mcell_tutorial/release_pattern**. Be careful to name it correctly,
-as the directory structure we set up earlier depends upon it. Normally, this is
-all handled automatically by CellBlender, but we must be careful when
-hand-editing files. Delete the default **Cube** now (select and hit **x**),
-since it's not actually a part of our simulation. Hit **Read Viz Data** under
-the **Visualize Simulation Results** panel. Hit **Alt-a** to begin playing the
-animation. At the origin, you should see small bursts of molecules being
-created (due to the actions of the release site and release pattern) and
-quickly decaying (from by the reaction).
+Additionally, let's plot the reaction data using the plotting tool of your
+choice.
+
+.. image:: ./images/rel_pattern/plot.png
+
+As you can see, there are three distinct trains and within each train a release
+event happens every 50 microseconds. Overlays have been added to point out the
+effects that all the release pattern properties had on the creation of
+**vol1**.
