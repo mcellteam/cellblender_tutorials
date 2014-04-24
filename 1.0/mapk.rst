@@ -35,9 +35,9 @@ immediately after the video.
 
 After starting up Blender, we need to enable an addon that we'll use later.
 
-.. image:: ./images/mapk_user_preferences.png
+.. image:: ./images/mapk/mapk_user_preferences.png
 
-.. image:: ./images/mapk_copy_attributes.png
+.. image:: ./images/mapk/mapk_copy_attributes.png
 
 Click **File>User Preferences**, select **Addons** near the top middle, and
 then click **3D View** under the list of **Categories**. Select **3D View: Copy
@@ -45,7 +45,7 @@ Attributes Menu**. This will allow us to copy properties (like **Modifiers**)
 from one object to another. Optional: Hit **Save As Default** if you would like
 to use this Addon every time Blender is started.
 
-.. image:: ./images/mapk_delete_defaults.png
+.. image:: ./images/mapk/mapk_delete_defaults.png
 
 Hit **a** twice so that everything (**Cube**, **Camera**, **Lamp**) in the
 **Scene** is selected. Hit **x** and click **Delete** to delete these objects.
@@ -55,35 +55,35 @@ Hit **a** twice so that everything (**Cube**, **Camera**, **Lamp**) in the
 Creating the Cell
 +++++++++++++++++++++++++++++++++++++++++++++
 
-.. image:: ./images/mapk_add_icosphere.png
+.. image:: ./images/mapk/mapk_add_icosphere.png
 
-.. image:: ./images/mapk_cell_subd_size.png
+.. image:: ./images/mapk/mapk_cell_subd_size.png
 
 Next add a sphere by hitting **Shift-a** and selecting **Mesh>Icosphere**.
 Change **Subdivisions** to **5** and **Size** to **5.0**. This will be the cell
 membrane.
 
-.. image:: ./images/mapk_add_tex.png
+.. image:: ./images/mapk/mapk_add_tex.png
 
-.. image:: ./images/mapk_displace_strength.png
+.. image:: ./images/mapk/mapk_displace_strength.png
 
 Select the **Modifiers** button in the **Properties** window. Select
 **Displace** from the **Add Modifier** drop-down menu. Hit the **New** button
 by the **Texture** drop-down menu. Change **Strength** to **10**. This will add
 some procedural randomness to our model, so it is not perfectly round. 
 
-.. image:: ./images/mapk_smooth_factor_repeat.png
+.. image:: ./images/mapk/mapk_smooth_factor_repeat.png
 
 Next, select **Smooth** from the **Add Modifier** drop-down menu. Change
 **Factor** to **1** and **Repeat** to **10**. This will smooth out the rough
 edges that we introduced with the **Displace** modifier.
 
-.. image:: ./images/mapk_cell_name.png
+.. image:: ./images/mapk/mapk_cell_name.png
 
 We should give our mesh a name. Hit the **Object** button and change
 **IcoSphere** to **Cell**.
 
-.. image:: ./images/mapk_cell_wireframe.png
+.. image:: ./images/mapk/mapk_cell_wireframe.png
 
 Hit **z** to switch to a wireframe view of our model so that we can see inside
 of it.
@@ -93,15 +93,15 @@ of it.
 Creating the Nucleus
 +++++++++++++++++++++++++++++++++++++++++++++
 
-.. image:: ./images/mapk_add_icosphere.png
+.. image:: ./images/mapk/mapk_add_icosphere.png
 
-.. image:: ./images/mapk_cell_subd_size2.png
+.. image:: ./images/mapk/mapk_cell_subd_size2.png
 
 We will now add the **Nucleus** which will be very similar to our **Cell** but
 smaller. Hit **Shift-a** and select **Mesh>Icosphere**. Change **Subdivisions**
 to **3** and **Size** to **2.0**.
 
-.. image:: ./images/mapk_copy_mods.png
+.. image:: ./images/mapk/mapk_copy_mods.png
 
 We want to add in the randomness like we did before, but let's save ourselves
 some steps by using the **Copy Attributes** addon that we enabled earlier.
@@ -109,7 +109,7 @@ Select the inner sphere first by left clicking on it. Then while holding
 **Shift**, select the outer sphere. Hit **Ctrl-c** and select **Copy
 Modifiers**.
 
-.. image:: ./images/mapk_nucleus_name.png
+.. image:: ./images/mapk/mapk_nucleus_name.png
 
 Once again, let's rename our mesh. Right click on the nucleus, so only it is
 selected. Hit the **Object** button and change **IcoSphere** to **Nucleus**.
@@ -123,18 +123,18 @@ Now, we are going to create some mitochondria. But, first, we have to create a
 template version which we will then duplicate many times using the **Array
 Modifier**.
 
-.. image:: ./images/mapk_add_uvsphere.png
+.. image:: ./images/mapk/mapk_add_uvsphere.png
 
-.. image:: ./images/mapk_uvsphere_seg_ring_size.png
+.. image:: ./images/mapk/mapk_uvsphere_seg_ring_size.png
 
 Hit **Shift-a** and select **Mesh>UV Sphere**. Change **Segments** to **12**,
 **Rings** to **12**, and **Size** to **0.5**. Hit **Tab** to change into **Edit
 Mode** and **a** to deselect everything. Hit **o** to change into
 **Proportional Editing** mode. 
 
-.. image:: ./images/mapk_edge_select.png
+.. image:: ./images/mapk/mapk_edge_select.png
 
-.. image:: ./images/mapk_xy_scale.png
+.. image:: ./images/mapk/mapk_xy_scale.png
 
 Hold **Shift-Alt** and **right click** on the ring around the middle of the
 circle to select the entire ring. This is what is called a **Edge/Vertex Loop
@@ -143,7 +143,7 @@ xy-plane. Roll the mouse wheel down until the **Proportional size** is listed
 as **1.46**. Type **0.4** and hit **Enter**. Hit **Tab** to switch back into
 **Object Mode**.
 
-.. image:: ./images/mapk_mito_location.png
+.. image:: ./images/mapk/mapk_mito_location.png
 
 Hit **n** to open up the **Properties** panel display. Under the **Transform**
 section, change **X**, **Y**, and **Z** to **-5.0**.
@@ -151,7 +151,7 @@ section, change **X**, **Y**, and **Z** to **-5.0**.
 Adding Modifiers
 _____________________________________________
 
-.. image:: ./images/mapk_array.png
+.. image:: ./images/mapk/mapk_array.png
 
 Now we are going to begin duplicating the mitochondria. Hit the **Modifier**
 button. Select **Array** from the drop-down menu. Change **Count** to 5.
@@ -160,9 +160,9 @@ Deselect **Relative Offset** and select **Constant Offset**. Change **X** to
 **Y** set to **2.5** and the other has **Z** set to **2.5**. You should now
 have a cuboidal array of mitochondria extending through the cell. 
 
-.. image:: ./images/mapk_copy_select_modifiers.png
+.. image:: ./images/mapk/mapk_copy_select_modifiers.png
 
-.. image:: ./images/mapk_mito_displace_smooth.png
+.. image:: ./images/mapk/mapk_mito_displace_smooth.png
 
 We want to add the same variability to the meshes that we did for the cell and
 the nucleus. With the mitochondria selected, hold **Shift** and **right click**
@@ -171,29 +171,29 @@ on the cell. Hit **Ctrl-c** and pick **Copy Select Modifiers**. Select
 only they are selected. Change the **Strength** of **Displace** to **0.5**.
 Change the **Factor** of **Smooth** to **0.5**.
 
-.. image:: ./images/mapk_mitochondrion_name.png
+.. image:: ./images/mapk/mapk_mitochondrion_name.png
 
 Like we did before, let's name our mesh. Hit the **Object** button and change
 **Sphere** to **Mitochondrion**.
 
-.. image:: ./images/mapk_move_layer.png
+.. image:: ./images/mapk/mapk_move_layer.png
 
 Move the mitochondria to the second layer by hitting **m** and **2**. Then hit
 **2** again to switch to layer 2. 
 
-.. image:: ./images/mapk_apply_mod.png
+.. image:: ./images/mapk/mapk_apply_mod.png
 
 Now, we want to add some randomness to their positions and rotations. First,
 apply all of the modifiers by hitting the **Apply** underneath each modifier's
 name. Hit **Tab** to change into **Edit Mode**. 
 
-.. image:: ./images/mapk_by_loose_parts.png
+.. image:: ./images/mapk/mapk_by_loose_parts.png
 
 Hit **p** and select **By loose parts** to separate each discontinuous section
 of the mesh into a unique object. Hit **Tab** to change into **Object Mode**.
 Select all of them by hitting **a** twice. 
 
-.. image:: ./images/mapk_orig_to_geom.png
+.. image:: ./images/mapk/mapk_orig_to_geom.png
 
 Under **Object Tools**, hit the **Origin** button and select **Origin to
 Geometry**. 
@@ -201,9 +201,9 @@ Geometry**.
 Randomizing Mitochondria Placement
 _____________________________________________
 
-.. image:: ./images/mapk_scripting.png
+.. image:: ./images/mapk/mapk_scripting.png
 
-.. image:: ./images/mapk_new_script.png
+.. image:: ./images/mapk/mapk_new_script.png
 
 In the Screen layout drop-down menu, which should currently say **Default**,
 select **Scripting**. This should change the types and positioning of the
@@ -256,7 +256,7 @@ paste the following text into the editor:
 Note: This is merely the **Operator Simple Template** with several new lines
 added, which have been highlighted for emphasis.
 
-.. image:: ./images/mapk_run_script.png
+.. image:: ./images/mapk/mapk_run_script.png
 
 Hit the **Run Script** button and all the mitochondrion should be randomly
 rotated and shifted around. You should now switch back to the **Default**
@@ -269,7 +269,7 @@ wireframe mode.
 Remove Extra Mitochondria
 _____________________________________________
 
-.. image:: ./images/mapk_delete_extra_mitos.png
+.. image:: ./images/mapk/mapk_delete_extra_mitos.png
 
 We cannot give exact instructions for this next section, because the
 positioning of your mitochondria will be different. Nevertheless, it shouldn't
@@ -282,7 +282,7 @@ method of selecting **right click**. Once you have a group of them selected,
 hit **x** and click **Delete**.  Don't forget to check all sides of the cell by
 holding down the middle mouse button and dragging around. 
 
-.. image:: ./images/mapk_delete_nucleus_mitos.png
+.. image:: ./images/mapk/mapk_delete_nucleus_mitos.png
 
 Next you will want to delete any mitochondria that might be inside the nucleus.
 The best way to do this is by selecting and hiding everything outside of it
@@ -310,14 +310,14 @@ Setting CellBlender Parameters and Exporting
 
 Select both layers again.
 
-.. image:: ./images/mapk_model_obj_init.png
+.. image:: ./images/mapk/mapk_model_obj_init.png
 
 In the **3D View Editor**, hit **a** twice to select everything. Hit the
 **Scene** button. Expand the **Model Objects** panel. Hit the **+** button. The
 list should fill with all the objects names. Expand **Model Initialization**.
 Change **Simulation Iterations** to **30000**.
 
-.. image:: ./images/mapk_viz_rxn.png
+.. image:: ./images/mapk/mapk_viz_rxn.png
 
 Under **Reaction Output Settings**, enable **Include Reaction Output**. Next,
 enable **Include Viz Output** under **Visualization Output Settings**.
