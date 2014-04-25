@@ -8,12 +8,10 @@ Introduction to MCell and CellBlender
 =====================================
 
 In order to quickly show what can be done with MCell and CellBlender, we'll
-begin by generating a simple model and gradually add in more features. Our
-initial model will contain a cube that has diffusing surface and volume
-molecules that react with each other to create new molecules. Later, we'll add
-more complex reactions and surface properties. At that point, we'll begin to
-move on to some more advanced topics, like optimizing a simulation and
-analyzing data.
+create a simple model with a cube that has diffusing surface and volume
+molecules that react with each other to create new molecules. Afterwards, we
+will visualize the molecules and plot the reaction data all from within
+CellBlender. All of this will be accomplished in sections 1-4.
 
 Much of the theory will be skipped over, as it's available elsewhere_. For a
 more detailed explanation of any given topic, please see the quick reference

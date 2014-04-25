@@ -12,6 +12,7 @@ CellBlender.
    attempting these.
 
 .. toctree::
+   :maxdepth: 2
 
    optimize
    surface_classes

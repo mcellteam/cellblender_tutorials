@@ -16,6 +16,8 @@ the basis of such projects.
    attempting these.
 
 .. toctree::
+   :maxdepth: 2
+
    ficks_laws
    irrev_rev_uni_bi
    rat
