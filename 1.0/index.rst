@@ -10,27 +10,18 @@ Introduction to MCell and CellBlender
 In order to quickly show what can be done with MCell and CellBlender, we'll
 create a simple model with a cube that has diffusing surface and volume
 molecules that react with each other to create new molecules. Afterwards, we
-will visualize the molecules and plot the reaction data all from within
+will visualize the molecules and plot the reaction data from within
 CellBlender. All of this will be accomplished in sections 1-4.
 
 Much of the theory will be skipped over, as it's available elsewhere_. For a
 more detailed explanation of any given topic, please see the quick reference
 guide (pdf_, html_). 
 
-..
-  Leave this commented out until we update the project files.
-
-  The completed project files for sections 1-13 can be downloaded here_. You
-  will generate these same files simply by following along with these
-  tutorials, but they are provided here in case you need them for any reason.
-
 .. _elsewhere: https://www.mcell.psc.edu/publications.html
 
 .. _pdf: http://mcell.org/documentation/mcell3_qrg.pdf
 
 .. _html: http://mcell.org/documentation/mcell3_qrg.xhtml
-
-.. _here: https://www.mcell.org/tutorials/downloads/tutorials1-13.tgz
 
 .. toctree::
    :numbered:
@@ -52,14 +43,15 @@ question on the forums_.
 
 .. _forums: http://mmbios.org/index.php/mcell-cellblender-forum
 
+Please send any feedback concerning these tutorials to `jczech@psc.edu`_.
+
+.. _jczech@psc.edu: jczech@psc.edu
+
 Although no longer actively maintained, the `legacy DReAMM and MCell
 tutorials`_ are still available. 
 
 .. _legacy DReAMM and MCell tutorials: http://mcell.org/tutorials_old/tlist.htm
 
-Please send any feedback concerning these tutorials to `jczech@psc.edu`_.
-
-.. _jczech@psc.edu: jczech@psc.edu
 
 Indices and tables
 ==================
