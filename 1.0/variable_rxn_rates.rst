@@ -1,46 +1,32 @@
 .. _variable_rxn_rates:
 
 *********************************************
-Variable Reaction Rates
+Variable Rate Constants
 *********************************************
 
-.. Git Repo SHA1 ID: a1abdd291b75176d6581df41329781ae5d5e1b7d
+.. Git Repo SHA1 ID: 3520f8694d61c81424ff15ff9e7a432e42f0623f
 
 .. note::
 
     The simulations and visualizations in this tutorial were generated using
-    Blender 2.67 and CellBlender 1.0 RC. It may or may not work with other
+    Blender 2.70a and CellBlender 1.0. It may or may not work with other
     versions.
 
-Eventually, it will be possible to set up variable reaction rates directly
-within CellBlender. Until that time, you can still do it by manually
-hand-editing some files.
+In this tutorial, you will learn how to use a rate constant that varies with
+respect to time.
 
-Begin by creating a copy of the **sc_rxn** directory, by typing the following
-command at the terminal::
+Create Variable Rate Constant Text File
+---------------------------------------------
 
-    cp -fr /home/user/mcell_tutorial/sc_rxn /home/user/mcell_tutorial/var_rxn_rate
-
-Don't forget to replace **user** with your actual user name. Change into the
-new directory now by entering the following command at the terminal::
-
-    cd /home/user/mcell_tutorial/var_rxn_rate/sc_rxn_files/mcell
-
-.. note::
-
-   We have copied the entire directory of sc_rxn, so the blend file and the
-   MDL sub-directory still retain the original names (i.e. sc_rxn.blend and
-   sc_rxn_files, not var_rxn_rates.blend and var_rxn_rates_files).
-
-In this directory, create a new text file called **rxn_rate.txt**. Add the
+Using any text editor, create a new file called **rate_constant.txt**. Add the
 following text in the file::
 
     0      0
-    5E-4   1E8
+    5E-4   1E4
 
-The first column is the time (seconds), and the second column is the reaction
-rate at that time. The units for the reaction rate are the same as used earlier
-in the :ref:`reactions` section. 
+The first column is the time (seconds), and the second column is the rate
+constant at that time. The units for the reaction rate are the same as used
+earlier in the :ref:`reactions` section. 
 
 The example shown above is a very simple case where the reaction only changes
 once. You could just as well have it change every time step, like this::
@@ -53,30 +39,63 @@ once. You could just as well have it change every time step, like this::
 
 Save the file and quit.
 
-Open **Scene.reactions.mdl**, go to the reaction section and change the rate
-to **"rxn_rate.txt"** (with quotations), like in the following:
+Set Project Directory
+---------------------------------------------
 
-.. code-block:: none
-    :emphasize-lines: 3,4
+Now start Blender. Hit the **Scene** button in the **Properties Editor**. 
 
-    DEFINE_REACTIONS
-    {
-        vol1, + surf1' -> surf1' + vol2' ["rxn_rate.txt"]
-        vol1, + surf2' @ empty' -> surf2' + vol2' ["rxn_rate.txt"]
-    }   
+.. image:: ./images/scene_button.png
 
-Save the file and run it with MCell by entering the command:: 
+Let's save the file (and set the project directory) right now by hitting
+**Ctrl-s**, typing **~/mcell_tutorial/var_rate_constant** (or
+**C:\\mcell_tutorial\\var_rate_constant** on Windows) into the directory field,
+**var_rate_constant.blend** into the file name field, and hit the **Save As
+Blender File** button.
 
-    mcell Scene.main.mdl
+Set Project Parameters
+---------------------------------------------
 
-If you did not follow the directions listed in :ref:`install` and put MCell in
-a directory that is visible to your PATH_, you might see the following
-command::
+Set the following parameters:
 
-    mcell: command not found
+* Set the **Iterations** to **1000**.
+* Set the **Time Step** to **1e-6**.
+* Add the default **Cube** to the **Model Objects** list.
+* Create a volume molecule called **vol1** with a diffusion constant of
+  **1e-6**.
+* Create a release site with the following properties:
 
-.. _PATH: https://en.wikipedia.org/wiki/PATH_%28variable%29
+  * Set the **Site Name** to **vol1_rel**.
+  * Set the **Molecule** to **vol1**.
+  * Set the **Release/Shape** to **Object/Region**.
+  * Set the **Object/Region** to **Cube**.
+  * Set the **Quantity to Release** to **1000**.
 
-Once MCell successfully runs, you can visualize the data by opening the blend
-(i.e. ``/home/mcell_tutorial/var_rxn_rate/sc_rxn.blend``) and hitting the
-**Read Viz Data** button under **Visualize Simulation Results**.
+* Set **Export All** under **Visualization Output Settings**.
+
+Create Reaction with Variable Rate Constant
+---------------------------------------------
+
+Under the **Define Reactions**, hit the **+** button. Then set the following
+parameters:
+
+* Set **Reactants** to **vol1**.
+* Set **Products** to **NULL**.
+* Click the **Enable Variable Rate Constant** check box.
+* Hit the **Add Variable Rate Constant** button.
+* Navigate to the **rate_constant.txt** file and select it.
+
+A green check mark should appear next to the file name if everything worked
+correctly.
+
+.. image:: ./images/var_rate_constant/var_rate_constant.png
+
+Run and Visualize the Simulation
+---------------------------------------------
+
+Under the **Run Simulation** panel, hit the **Run Simulation** button. Then hit
+the **Read Viz Data** button under the **Visualize Simulation Results** button.
+Hit **Alt-a** to begin playing the animation.
+
+For the first 500 iterations of the simulation, the molecules will diffuse
+around in the box undisturbed. After that point, they will begin to disappear.
+By the end of the simulation, almost all of them will be gone.
