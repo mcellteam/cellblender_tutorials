@@ -64,9 +64,9 @@ this:
 .. image:: ./images/getting_started/scene_panels.png
 
 We will also be working in the **Object** Context, so you may also want to
-follow the same procedure for it (collapsing default panels and moving CellBlender
-panels to the top). To navigate there, hit the cube button at the top of
-**Properties Editor**.
+follow the same procedure for it (collapsing default panels and moving
+CellBlender panels to the top). To navigate there, hit the cube button at the
+top of **Properties Editor**.
 
 .. image:: ./images/getting_started/object_panels.png
 
@@ -416,11 +416,13 @@ green check mark will appear when the simulations have completed.
 
 .. image:: ./images/getting_started/run_simulation2.png
 
-.. note::
+.. warning::
 
    If you encounter any errors, you may need to check the command line for
    error messages. Windows users will have to select "Window>Toggle System
    Console".
+
+.. image:: ./images/getting_started/toggle_system_console.png
 
 .. _save_project:
 
