@@ -15,6 +15,7 @@ CellBlender.
    :maxdepth: 2
 
    optimize
+   mesh_repair
    surface_classes
    surf_class_surf_mol
    variable_rxn_rates
