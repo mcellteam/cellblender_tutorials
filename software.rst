@@ -7,7 +7,7 @@ Software Needed
 To use these tutorials, you'll want to have the following software installed:
 
 * MCell 3.2.1 (`MCell Download`_, :ref:`mcell_install`)
-* CellBlender 1.0 RC (`CellBlender Download`_, :ref:`cellblender_install`)
+* CellBlender 1.0 RC3 (`CellBlender Download`_, :ref:`cellblender_install`)
 * `Blender 2.70a`_ (Blender 2.66a, 2.67, 2.68, 2.69, 2.70 should mostly work as
   well)
 * A text editor (gedit_, vim_, emacs_, etc.)
@@ -16,7 +16,7 @@ To use these tutorials, you'll want to have the following software installed:
 
 .. _MCell Download: http://mmbios.org/index.php/mcell-3-2-1
 .. _installation instructions: http://www.mcell.org/tutorials/installs.html
-.. _CellBlender Download: http://mmbios.org/index.php/cellblender-1-0-download
+.. _CellBlender Download: http://mmbios.org/index.php/cellblender-all/cellblender-cellblender-1-0_rc3
 .. _Blender 2.70a: http://www.blender.org/download/get-blender/
 .. _gedit: http://projects.gnome.org/gedit/
 .. _vim: http://www.vim.org/
