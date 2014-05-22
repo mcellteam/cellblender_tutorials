@@ -18,6 +18,7 @@ the basis of such projects.
 .. toctree::
    :maxdepth: 2
 
+   cell_regulatory_processes
    ficks_laws
    irrev_rev_uni_bi
    rat
