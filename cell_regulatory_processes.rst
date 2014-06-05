@@ -1,4 +1,4 @@
-*********************************************************
+s*********************************************************
 A Spatially Realistic Model of Cell Regulatory Processes
 *********************************************************
 
@@ -83,7 +83,7 @@ in the options on the right panel particularly in the "Scene" tab.
 Model Description
 -----------------
 
-Harris et al. [#f1]_ present in a model of receptor-mediated signaling
+Harris et al.  present in [#f1]_ a model of receptor-mediated signaling
 coupled with nuclear transport and transcriptional gene regulation. The full
 model is shown in :num:`Fig. #cbngfull`
 
@@ -179,8 +179,9 @@ the simulation!
 Final Thoughts for Part 1
 -------------------------
 
+The reaction network we have implemented is a highly minimilastic version when compared to the full reaction network.  
 In this exercise we have attempted to show you the difficulty of simulating
-highly complex biological systems. We have developed tool that we will present
+highly complex biological systems. We have developed a tool that we will present
 to you in the following sections detailing a procedure for defining complex
 reaction networks and using realistic geometries in a structured way.
 
@@ -264,7 +265,7 @@ syntax is the following:
 
 Note that it is possible to define parameters using expressions involving
 previously defined parameters. This is convenient for documenting how unit
-conversions were performed to define parameters.
+conversions were performed.
 
 The next step is to establish the set of molecules we will use in our system.
 In this case, it is sufficient to define a ligand molecule (L) and a receptor
@@ -289,7 +290,7 @@ block:
     end species
 
 Here, the two species initially present are *free ligand*, an L molecule with
-its r and d sites unbound, and *free receptor*, an R molecules with is l site
+its ``r`` and ``d`` sites unbound, and *free receptor*, an R molecules with its *l* site
 unbound. Their initial concentrations are set to ``R0`` and ``L0``
 respectively.
 
@@ -382,7 +383,7 @@ which we specify using
 This generates a single trajectory by solving the ODEs defined by the rate
 equations for the generated reaction network on the time interval [0,5],
 sampled at 120 points (not including the starting point). :num:`Fig. #plot1`
-shows this trajectory. We can see how Lig\_Bound initially increases until the
+shows this trajectory. We can see how ``Lig\_Bound`` initially increases until the
 system reaches equilibrium between the forward and backward reactions.
 
 .. _plot1:
@@ -427,13 +428,13 @@ To model a phosphorylation reaction, we add the rule
 
 In this rule component ``T`` transitions from state ``0`` to state ``P``. We
 are also introducing some new concepts with component ``R(l!+)``. Fist, the
-texttt+ symbol is used to indicate that we are requiring component ``R(l)`` to
+``!+`` symbol is used to indicate that we are requiring component ``R(l)`` to
 be bound to some molecule without specifying which. Separately, in this rule
 the pattern ``R(l!+)`` is being used as *context* for the rule (a
 precondition). In other words, for molecule ``R`` to become phosporylated it is
 necessary for its component ``R(l)`` to be bound to something.
 
-The phosporylation rule was unidirectional, so we need to also define a
+The phosporylation rule was unidirectional, so we also need to define a
 dephosphorylation reaction. We will assume that dephosphorylation doesn’t have
 a contextual requirement - here it doesn’t require binding of the ligand
 molecule, so we have
@@ -456,8 +457,9 @@ tyrosine residues we use the following pattern syntax.
     end observables
 
 The ``R(Y~P)!?`` syntax is used to indicate that we wish to count all
-molecules. In contrast, the R(Y P) is used to indicate that we strictly wish to
-count the cases were Y is unbound. In this particular example it bears no
+``R`` molecules with a phoporylated ``Y`` component regardless of its bound state. 
+In contrast, the ``R(Y~P)`` is used to indicate that we strictly wish to
+count the cases were ``Y`` is unbound. In this particular example it bears no
 difference since we have not specified any rule that defines Y to also be a
 binding site.
 
@@ -530,10 +532,10 @@ information imply that they can take place in any compartment where two ligands
 can be found (following BioNetGen’s don’t show-don’t care principle).
 
 The second rule specifies that whenever it finds two receptors in the plasma
-mebrane, bound together in some non-specified way, they will be transported to
+membrane, bound together in some non-specified way, they will be transported to
 the endosomal membrane at a ``k_r_endo`` rate. Likewise, we specify a
 reciclying reaction whereas any kind of receptors can go back to the plasma
-membrane. Observables are defined in a similar manner.
+membrane. Observables are defined in a similar fashion.
 
 ::
 
@@ -566,7 +568,8 @@ Required Material
 -----------------
 
 -  A pre-generated spatial geometry and reaction networks encoded in the
-   SBML format
+   SBML format. It is possible to generate SBML files from BNGL models using
+   the writeSBML() action at the end of your model.
 
 -  CellBlender
 
@@ -646,7 +649,7 @@ Plotting Reaction Data
 
 It is possible to use any plotting software to visualize the time series
 generated by MCell/CellBlender, including CellBlender own plugins if you so
-desire. We have provided a small Python scripts that satisfies our needs.
+desire. We have provided a small Python script that satisfies our needs.
 Running it in the directory where your react\_data is located will generate an
 image for each file found in the directory.
 
