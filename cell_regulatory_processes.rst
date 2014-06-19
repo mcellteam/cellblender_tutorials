@@ -1,4 +1,4 @@
-s*********************************************************
+*********************************************************
 A Spatially Realistic Model of Cell Regulatory Processes
 *********************************************************
 
@@ -179,11 +179,12 @@ the simulation!
 Final Thoughts for Part 1
 -------------------------
 
-The reaction network we have implemented is a highly minimilastic version when compared to the full reaction network.  
-In this exercise we have attempted to show you the difficulty of simulating
-highly complex biological systems. We have developed a tool that we will present
-to you in the following sections detailing a procedure for defining complex
-reaction networks and using realistic geometries in a structured way.
+The reaction network we have implemented is a highly minimalistic version when
+compared to the full reaction network.  In this exercise we have attempted to
+show you the difficulty of simulating highly complex biological systems. We
+have developed a tool that we will present to you in the following sections
+detailing a procedure for defining complex reaction networks and using
+realistic geometries in a structured way.
 
 Introduction to Compartmental Rule-Based Modeling with BioNetGen and RuleBender
 ===============================================================================
