@@ -56,10 +56,14 @@ hovering over them.
     clicks. But for speed, it is strongly advised that you learn the key
     commands.
 
-Additionally, click and drag all of the default Blender panels (**Scene**,
-**Units**, **Keying Sets**, etc.) down below the CellBlender panels. This will
-make finding everything much easier. When you're done, it should look like
-this:
+A panel can also be moved around by clicking on the upper-right most portion of
+a panel (three diagonal lines) and dragging it around.
+
+.. image:: ./images/getting_started/move_panels.png
+
+Let's move all the default Blender panels (**Scene**, **Units**, **Keying
+Sets**, etc.) down below the CellBlender panels. This will make finding
+everything much easier. When you're done, it should look like this:
 
 .. image:: ./images/getting_started/scene_panels.png
 
