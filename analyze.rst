@@ -4,11 +4,6 @@
 Analyzing Your Data
 *********************************************
 
-.. warning::
-
-   This tutorial has not yet been updated for CellBlender 1.0 RC. Therefore,
-   some things might not work exactly as described.
-
 There are many tools available for plotting and analyzing data. We will make
 use of python along with numpy and matplotlib. Using these tools, we will
 generate a histogram of molecule locations relative to the origin, and also
@@ -38,7 +33,7 @@ text into it::
 
     VIZ_OUTPUT 
     {
-        MODE = CELLBLENDER
+        MODE = ASCII
         FILENAME = "./viz_data/hist" 
         MOLECULES 
         { 
@@ -51,7 +46,7 @@ Run this mdl by entering the command::
 
     mcell hist.mdl
 
-It will create a visualization directory called **hist_viz_data**.
+It will create a visualization directory called **viz_data**.
 
 Create a file called **hist.py** and copy the following text into it::
 
@@ -75,17 +70,17 @@ Create a file called **hist.py** and copy the following text into it::
 Although the comments explain what is happening, let's break it down as simply
 as possible. The file **hist.ascii.1000.dat** contains the positions of each
 vol1 molecule at an iteration specified by the directory (e.g.
-**iteration_1000**). Every line of the file contains the molecule name and six
-numbers each separated by a space. The first three numbers represent the x, y,
-and z locations. The final three numbers are irrelevant for our example here,
-but would represent a vertex normal if this was a surface molecule  Here are
-what the first few lines of **hist.ascii.1000.dat** in the **iteration_1000**
-directory look like::
+**iteration_1000**). Every line of the file contains the molecule name and
+seven numbers each separated by a space. The first number is an ID. The second,
+third, and fourth numbers represent the x, y, and z locations. The final three
+numbers are irrelevant for our example here but would represent a vertex normal
+if this was a surface molecule. Here are what the first few lines of
+**hist.ascii.1000.dat** in the **iteration_1000** directory look like::
 
-    vol1 -0.258572021 0.158270489 -0.0314231251 0 0 0
-    vol1 0.0452288224 -0.0677351003 0.0376879626 0 0 0
-    vol1 -0.057210324 0.0192047082 -0.0370933238 0 0 0
-    vol1 0.0644877278 0.230797784 -0.0415339173 0 0 0
+    vol1 0 -0.238189256 -0.0302122369 -0.0249790538 0 0 0
+    vol1 1 -0.360854863 -0.185503773 0.0169416791 0 0 0
+    vol1 2 0.0545683757 0.100612229 0.164147866 0 0 0
+    vol1 3 0.0456457024 0.196103069 0.34263021 0 0 0
 
 We are loading **hist.ascii.1000.dat** into a two dimensional array called
 **data**. We then "slice" the second column which contains all the X locations.
