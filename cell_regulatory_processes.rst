@@ -80,6 +80,14 @@ before exiting this window. You should now see several "CellBlender-" sections
 in the options on the right panel particularly in the "Scene" tab.
 
 
+Related Files
+^^^^^^^^^^^^^
+
+simpleGeometry.mdl_
+
+.. _simpleGeometry.mdl: http://www.mcell.org/tutorials/project_files/simpleGeometry.mdl
+
+
 Model Description
 -----------------
 
@@ -105,6 +113,7 @@ and TF-receptor binding.
 
    Reduced Model
 
+
 Defining our System
 -------------------
 
@@ -112,7 +121,8 @@ Our basic system is composed of an extracellular matrix a cytoplasm and its
 membrane. For this example model we will use a basic geometry composed of an
 icosphere enveloped by a cube in CellBlender (:num:`Fig. #simple`) Name the
 sphere **CP** (for cytoplasm) and the bounding box **EC** (for extracellular
-matrix).
+matrix). Alternatively you can use the MDL import feature and use a premade geometry
+(simpleGeometry.mdl_).
 
 .. _simple:
 
@@ -158,17 +168,17 @@ And the following release sites:
     Molecule: L
     Object: EC[ALL] - CP[ALL] 
     Quantity type: Concentration/Density
-    Quantity: 1000 / (NaV * 20)
+    Quantity: 1000 / (NaV * 27)
 
     Molecule: R
     Object: CP[ALL]
     Quantity type: Concentration/Density
-    Quantity: 200/ 1.6
+    Quantity: 200/ 24
     
-    Molecule: R
+    Molecule: TF
     Object: CP[ALL]
     Quantity type: Concentration/Density
-    Quantity: 200/ (NaV *16)
+    Quantity: 200/ (NaV *8)
 
 Simulating your System
 ----------------------
@@ -484,14 +494,14 @@ hierarchy inside our model as such:
       sa_PM           0.4
       sa_EM           0.05
      
-
+      width           1
     end parameters
     begin compartments
       EC  3  vol_EC 
-      PM  2  sa_PM    EC
-      CP  3  vol_CP   PM
-      EM  2  sa_EM    CP
-      EN  3  vol_EN   EM
+      PM  2  sa_PM*width    EC
+      CP  3  vol_CP         PM
+      EM  2  sa_EM*width    CP
+      EN  3  vol_EN         EM
     end compartments
 
 Where a compartment definition syntax is composed of name, dimensions, size and
@@ -570,11 +580,15 @@ Required Material
 
 -  A pre-generated spatial geometry and reaction networks encoded in the
    SBML format. It is possible to generate SBML files from BNGL models using
-   the writeSBML() action at the end of your model.
+   the writeSBML() action at the end of your model. If you add this command after
+   a simulate action the resulting SBML model's initial conditions will correspond to the 
+   state of your model after the simulation finishes.
 
 -  CellBlender
 
 -  Plotting software
+
+-  libSBML (MacOSX,Win) or lr\_full.blend 
 
 -  full\_lr.bngl (Linux) lr\_full.blend (MacOSX, Win) (within bngFiles.zip_)
 
@@ -597,10 +611,9 @@ To export an SBML from a BioNetGen file, it is sufficient to add the
 Importing SBML
 --------------
 
-To import an SBML and SBML-spatial files created open Blender and click File,
-Import, Import External Model. Navigate to the
-"Motivating_example_cBNGL2_sbml.xml" file or your personal .xml SBML or
-SBML-spatial file and select Import External Model.  Depending on the size of
+To import an SBML and SBML-spatial files open Blender and click File,
+Import, Import External Model. For the purposes of this tutorial you can also use one
+of the two geometries provided in bngFiles.zip_. (icogeometry.mdl and cubicgeometry.mdl) Depending on the size of
 your model this may take a minute to load. Once loaded you will see imported
 geometries. The "CellBlender-" sections in the Scene tab on the right Blender
 panel have also been automatically filled in. As of the time of this tutorial
