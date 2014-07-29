@@ -20,10 +20,9 @@ This tutorial requires `BioNetGen 2.2.5`_, RuleBender_, MATLAB2013a_,
 .. _MCell 3.2.1: http://mmbios.org/index.php/mcell-3-2-1
 .. _Python 2.7: https://www.python.org/downloads/
 .. _LibSBML 5.10: http://sbml.org/Software/libSBML/Downloading_libSBML
+.. _Repository CellBlender: http://code.google.com/p/cellblender/source/checkout
 
-.. note:: The CellOrganizer section of this tutorial is not supported on the Windows operating system.
-
-Windows and MacOSX users only: `Python 2.7`_, `LibSBML 5.10`_.
+.. note:: The CellOrganizer section of this tutorial is not supported on the Windows operating system. If you wish to use the Import SBML functionality in MacOSX or Windows you need to use the `Repository Cellblender`_ version, `Python 2.7`_ and `LibSBML 5.10`_.
 
 
 Tutorial overview
@@ -593,11 +592,13 @@ Required Material
 
 -  CellBlender
 
--  Plotting software
-
--  libSBML (MacOSX,Win) or lr\_full.blend 
+-  `Plotting software`_
 
 -  full\_lr.bngl (Linux) lr\_full.blend (MacOSX, Win) (within bngFiles.zip_)
+
+
+.. _Plotting software: https://dl.dropboxusercontent.com/u/7096948/blenderPlotter.py 
+
 
 Systems Biology Markup Language (SBML)
 --------------------------------------
