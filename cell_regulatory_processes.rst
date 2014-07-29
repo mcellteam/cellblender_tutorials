@@ -9,6 +9,8 @@ This tutorial requires `BioNetGen 2.2.5`_, RuleBender_, MATLAB2013a_,
 `CellOrganizer 2.1`_, `Blender 2.70a`_, `CellBlender 1.0 RC3`_, and `MCell
 3.2.1`_.
 
+
+
 .. _BioNetGen 2.2.5: http://bionetgen.org/index.php/BioNetGen_Distributions 
 .. _RuleBender: https://code.google.com/p/rulebender/downloads/list
 .. _MATLAB2013a: http://www.mathworks.com
@@ -16,8 +18,13 @@ This tutorial requires `BioNetGen 2.2.5`_, RuleBender_, MATLAB2013a_,
 .. _Blender 2.70a: http://www.blender.org/download/
 .. _CellBlender 1.0 RC3: http://mmbios.org/index.php/cellblender-all/cellblender-cellblender-1-0_rc3
 .. _MCell 3.2.1: http://mmbios.org/index.php/mcell-3-2-1
+.. _Python 2.7: https://www.python.org/downloads/
+.. _LibSBML 5.10: http://sbml.org/Software/libSBML/Downloading_libSBML
 
-.. note:: This tutorial is not supported on the Windows operating system.
+.. note:: The CellOrganizer section of this tutorial is not supported on the Windows operating system.
+
+Windows and MacOSX users only: `Python 2.7`_, `LibSBML 5.10`_.
+
 
 Tutorial overview
 =================
