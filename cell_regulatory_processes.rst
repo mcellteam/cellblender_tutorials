@@ -92,7 +92,7 @@ Related Files
 
 simpleGeometry.mdl_
 
-.. _simpleGeometry.mdl: http://www.mcell.org/tutorials/project_files/simpleGeometry.mdl
+.. _simpleGeometry.mdl: https://dl.dropboxusercontent.com/u/7096948/simpleGeometry.mdl
 
 
 Model Description
