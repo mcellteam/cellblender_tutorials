@@ -12,13 +12,24 @@ Getting Started
     Blender 2.70a and CellBlender 1.0. It may or may not work with other
     versions.
 
+In order to quickly show what can be done with MCell and CellBlender, we'll
+create a simple model with a cube that has diffusing surface and volume
+molecules that react with each other to create new molecules. In the next
+section, we will visualize the molecules and plot the reaction data from within
+CellBlender.
+
+Much of the theory will be skipped over, as it's available elsewhere_. For a
+more detailed explanation of any given topic, please see the quick reference
+guide (pdf_, html_). 
+
+.. _elsewhere: https://www.mcell.psc.edu/publications.html
+
+.. _pdf: http://mcell.org/documentation/mcell3_qrg.pdf
+
+.. _html: http://mcell.org/documentation/mcell3_qrg.xhtml
+
 If you haven't already done so, install the required software listed in
 :ref:`software`.
-
-In this tutorial, we'll use Blender and the CellBlender addon to set some
-parameters and run a simple MCell simulation. By running the simulation, we
-will generate visualization and reaction data that we will view and analyze in
-the next section.
 
 .. _start_blender:
 

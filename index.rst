@@ -7,39 +7,35 @@
 Introduction to MCell and CellBlender
 =====================================
 
-In order to quickly show what can be done with MCell and CellBlender, we'll
-create a simple model with a cube that has diffusing surface and volume
-molecules that react with each other to create new molecules. Afterwards, we
-will visualize the molecules and plot the reaction data from within
-CellBlender. All of this will be accomplished in sections 1-4.
 
-Much of the theory will be skipped over, as it's available elsewhere_. For a
-more detailed explanation of any given topic, please see the quick reference
-guide (pdf_, html_). 
-
-.. _elsewhere: https://www.mcell.psc.edu/publications.html
-
-.. _pdf: http://mcell.org/documentation/mcell3_qrg.pdf
-
-.. _html: http://mcell.org/documentation/mcell3_qrg.xhtml
+Users new to MCell and CellBlender should start here:
 
 .. toctree::
    :numbered:
-   :maxdepth: 2
+   :maxdepth: 1
 
    software
    installs
    getting_started
    visualize_plot
 
-Once you are done with the basic tutorials (sections 1-4), you can proceed to
-learn about any of the :ref:`advanced_features` of MCell and CellBlender. If
-you'd like to see some interesting applications of MCell and CellBlender, check
-out the :ref:`advanced_models`. Power users might be interested in checking out
-our section on :ref:`editing_mdls`.
+Users who have completed the basic tutorials (sections 1-4 above) may be
+interested in learning how to optimize their simulations, repair meshes, or use
+advanced features from the links below:
 
-Still have questions? They might be answered in our :ref:`faq`. If not, ask a
-question on the forums_.
+.. toctree::
+   :maxdepth: 1
+   :titlesonly:
+
+   advanced_features
+   advanced_models
+   optimize
+   mesh_repair
+   mdl_editing
+   FAQ
+
+
+Still have questions? They might be answered on our forums_.
 
 .. _forums: http://mmbios.org/index.php/mcell-cellblender-forum
 
