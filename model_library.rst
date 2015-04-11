@@ -14,7 +14,4 @@ This is a collection of models from simple to complex.
    :maxdepth: 1
 
    single_molecule_diffusion
-   ficks_laws
-   irrev_rev_uni_bi
-   rat
-   lotka_volterra
+
