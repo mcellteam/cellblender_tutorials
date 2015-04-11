@@ -27,6 +27,7 @@ advanced features from the links below:
    :maxdepth: 1
    :titlesonly:
 
+   model_library
    advanced_features
    advanced_models
    optimize
