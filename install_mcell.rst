@@ -1,14 +1,10 @@
-.. _install:
-
-+++++++++++++++++++++++++++++++++++++++++++++
-Installing MCell and CellBlender
-+++++++++++++++++++++++++++++++++++++++++++++
-
 .. _mcell_install:
 
 *********************************************
 MCell Installation
 *********************************************
+
+.. contents:: :local:
 
 MCell Overview
 ---------------------------------------------
@@ -25,7 +21,7 @@ Download MCell (All Platforms)
 Download the desired binary file for your system (e.g., MCell v. |release| for
 Linux x86) from the `MMBioS web site`_.
 
-.. _MMBioS web site: http://mmbios.org/index.php/mcell-3-2-1-download
+.. _MMBioS web site: http://mmbios.org/index.php/mcell-3-3-download
 
 .. _mcell_install_windows:
 
@@ -111,7 +107,7 @@ manager like Nautilus in Ubuntu, but we won't show that here.
 
 Now, unzip the file by typing the following at the command line::
 
-    gunzip mcell-3.2.1_x86.gz
+    gunzip mcell-3.3_x86_64.gz
 
 If this succeeds, the file will no longer have the ".gz" suffix.
 
@@ -122,7 +118,7 @@ Rename the file to something more convenient and make it executable, e.g.,
 
 ::
 
-    mv mcell-3.2.1_x86 mcell
+    mv mcell-3.3_x86_64 mcell
     chmod a+x mcell
 
 Put MCell in a PATH Directory (Linux/OS X)
@@ -152,47 +148,3 @@ Verify that MCell is working by typing the following at the terminal::
 If you have successfully put MCell in your PATH, you should see a startup
 message followed by an error that indicates no MDL (Model Description Language)
 file has been specified.
-
-.. _cellblender_install:
-
-*********************************************
-CellBlender Installation (All Platforms)
-*********************************************
-
-Installing CellBlender
----------------------------------------------
-
-Startup Blender and go to the **File->User Preferences** menu.
-
-.. image:: ./images/install/user_prefs.png
-
-In the **User Preferences** control panel choose the **Addons** tab.
-
-.. image:: ./images/install/addons_tab.png
-
-Click the **Install from File** button at the bottom of the window.
-
-.. image:: ./images/install/install_from_file.png
-
-Navigate to the unextracted zip file that you downloaded
-(cellblender_v1.0_RC.zip), select it, and click the **Install from File**
-button near the upper-right hand corner.
-
-.. image:: ./images/install/install_from_file2.png
-
-.. note::
-
-    If you need to install a newer version of CellBlender, the installation
-    process is the same. The new version of CellBlender should cleanly install
-    over the existing version.
-
-Activating CellBlender in Blender
----------------------------------------------
-
-Scroll down until you see **Cell Modeling: CellBlender** and select the
-checkbox to enable it.
-
-.. image:: ./images/install/enable_cellblender.png
-
-Then, click **Save User Settings** to enable the addon permanently in Blender.
-
