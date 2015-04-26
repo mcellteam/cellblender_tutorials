@@ -7,21 +7,22 @@ CellBlender Installation (All Platforms)
 Installing CellBlender
 ---------------------------------------------
 
-Startup Blender and go to the **File->User Preferences** menu.
+* Start Blender
+* Select **File->User Preferences**
 
 .. image:: ./images/install/user_prefs.png
 
-In the **User Preferences** control panel choose the **Addons** tab.
+* In the **User Preferences** control panel choose the **Addons** tab
 
 .. image:: ./images/install/addons_tab.png
 
-Click the **Install from File** button at the bottom of the window.
+* Click the **Install from File** button at the bottom of the window.
 
 .. image:: ./images/install/install_from_file.png
 
-Navigate to the unextracted zip file that you downloaded
-(cellblender_v1.0.zip), select it, and click the **Install from File** button
-near the upper-right hand corner.
+* Navigate to the unextracted zip file that you downloaded
+  (cellblender_v1.0.zip) and select it
+* Click the **Install from File** button near the upper-right hand corner.
 
 .. image:: ./images/install/install_from_file2.png
 
@@ -34,9 +35,17 @@ near the upper-right hand corner.
 Activating CellBlender in Blender
 ---------------------------------------------
 
-Scroll down until you see **Cell Modeling: CellBlender** and select the
-checkbox to enable it.
+* Select the **Cell Modeling** category button on left side of window
+* Check the box for **Cell Modeling: CellBlender** (may take a few seconds)
 
 .. image:: ./images/install/enable_cellblender.png
 
-Then, click **Save User Settings** to enable the addon permanently in Blender.
+* Click **Save User Settings** to enable the addon permanently in Blender.
+* Close the **User Preferences**
+* Click **CellBlender** tab on left edge of window
+
+.. image:: ./images/clean_slate/cellblender_tab.png
+
+* Click **Initialize CellBlender** button
+
+.. image:: ./images/clean_slate/init_cb.png
