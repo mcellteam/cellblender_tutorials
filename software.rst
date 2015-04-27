@@ -16,9 +16,6 @@ on:
 * Some graphing and analysis software (matplotlib_ (with Python_ and numpy_) or
   Grace_ are recommended)
 
-.. _MCell Download: http://mmbios.org/index.php/mcell-3-3
-.. _installation instructions: http://www.mcell.org/tutorials/installs.html
-.. _CellBlender Download: http://mmbios.org/index.php/cellblender-all/cellblender-cellblender-1-0_rc3
 .. _Blender 2.74: http://www.blender.org/download/get-blender/
 .. _gedit: http://projects.gnome.org/gedit/
 .. _vim: http://www.vim.org/

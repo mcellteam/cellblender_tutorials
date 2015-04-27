@@ -7,9 +7,9 @@ CellBlender Installation
 Download CellBlender
 ---------------------------------------------
 
-Download CellBlender 1.0 from the `MMBioS web site`_.
+Download `CellBlender 1.0`_.
 
-.. _MMBioS web site: http://mmbios.org/index.php/cellblender-all/cellblender-cellblender-1-0_rc3
+.. _CellBlender 1.0: http://mcell.org/workshop2015/cellblender.zip
 
 Installing CellBlender
 ---------------------------------------------
