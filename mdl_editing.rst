@@ -3,6 +3,11 @@
 Editing MDLs and Analysis with Python
 ---------------------------------------------
 
+.. warning::
+
+   This tutorial has not yet been updated for CellBlender 1.0. Therefore,
+   some things might not work exactly as described.
+
 MCell can be thought of as a simulation engine for CellBlender. In other words,
 after you design your model in CellBlender, it is MCell which actually carries
 out the simulation itself (i.e. the diffusion and reaction of molecules). And

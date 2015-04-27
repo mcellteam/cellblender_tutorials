@@ -3,6 +3,11 @@
 Advanced Features
 ---------------------------------------------
 
+.. warning::
+
+   These tutorials have not yet been updated for CellBlender 1.0. Therefore,
+   some things might not work exactly as described.
+
 The following tutorials illustrate some advanced features of MCell and
 CellBlender.
 

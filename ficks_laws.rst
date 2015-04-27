@@ -6,7 +6,7 @@ Fick's 1st and 2nd Laws
 
 .. warning::
 
-   This tutorial has not yet been updated for CellBlender 1.0 RC. Therefore,
+   This tutorial has not yet been updated for CellBlender 1.0. Therefore,
    some things might not work exactly as described.
 
 Our goal in this tutorial is to evaluate Fick’s 1st and 2nd Laws using 

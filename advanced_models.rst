@@ -3,6 +3,11 @@
 Advanced Models
 ---------------------------------------------
 
+.. warning::
+
+   These tutorials have not yet been updated for CellBlender 1.0. Therefore,
+   some things might not work exactly as described.
+
 What follows is a series of advanced MCell and CellBlender models each of which
 serves a unique purpose. Some examples (e.g. :ref:`fick`) teach fundamentals
 which are critical for understanding both the physical and chemical laws upon
