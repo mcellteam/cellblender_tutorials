@@ -15,11 +15,12 @@ Users new to MCell and CellBlender should start here:
    :maxdepth: 1
 
    software
-   installs
-   getting_started
-   visualize_plot
+   single_molecule_diffusion
+   unimol_reactions
+   add_meshgeom
+   bimol_reactions
 
-Users who have completed the basic tutorials (sections 1-4 above) may be
+Users who have completed the basic tutorials (sections 1-5 above) may be
 interested in learning how to optimize their simulations, repair meshes, or use
 advanced features from the links below:
 
@@ -27,7 +28,6 @@ advanced features from the links below:
    :maxdepth: 1
    :titlesonly:
 
-   model_library
    advanced_features
    advanced_models
    optimize

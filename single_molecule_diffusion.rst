@@ -1,3 +1,5 @@
+.. _single_molecule_diffusion: 
+
 *********************************************************
 Single Molecule Diffusion
 *********************************************************
@@ -5,12 +7,14 @@ Single Molecule Diffusion
 Required software
 =================
 
-This tutorial is designed for `Blender 2.74`_, `CellBlender 1.0 RC3`_, and `MCell
-3.2.1`_.
+This tutorial is designed for `Blender 2.74`_, `CellBlender 1.0`_, and `MCell
+3.3`_.
+
+.. need to update these links
 
 .. _Blender 2.74: http://www.blender.org/download/
-.. _CellBlender 1.0 RC3: http://mmbios.org/index.php/cellblender-all/cellblender-cellblender-1-0_rc3
-.. _MCell 3.2.1: http://mmbios.org/index.php/mcell-3-2-1
+.. _CellBlender 1.0: http://mmbios.org/index.php/cellblender-all/cellblender-cellblender-1-0_rc3
+.. _MCell 3.3: http://mmbios.org/index.php/mcell-3-3
 
 .. note:: Other versions may work as well.
 
@@ -20,74 +24,117 @@ Tutorial Overview
 
 This tutorial will define a single molecule and show its diffusion.
 
-
 Initial Configuration
 =====================
 
-Start with a "clean slate" by following the `Start with a Clean Slate Tutorial`_ then return here.
+Install MCell, Blender, and CellBlender if you haven't already done so. Then
+complete the :ref:`first_time` tutorial and return here.
 
-.. _`Start with a Clean Slate Tutorial`: start_with_clean_slate.html
+.. note::
 
-Step 1: Save the file with a new name in your working directory
+   Alternatively, if you have used CellBlender and Blender before, but you want
+   to start with a "clean slate", try the :ref:`clean_slate` tutorial.
+
+Save the File with a New Name in Your Working Directory
 ---------------------------------------------------------------
 
-* File / Save As...
-* Change "untitled.blend" to "single_molecule.blend"
-* Click "Save As Blender File" button
+* Start Blender
+* Select **File** > **Save As...**
+* Change **untitled.blend** to **single_molecule.blend**
+* Click **Save As Blender File** button
 
-
-Step 2: Define a Molecule "species"
+Define a Molecule "species"
 -----------------------------------
 
-* Click the "Molecules" button
-* Click the "plus" sign (+) to the right of the "Defined Molecules" box
-* Click in the Molecule Name field, type the letter 'a' and press the Enter key
-* The new molecule "a" should have a green check mark in the "Defined Molecules" box
-* Click in the "Diffusion Constant" box, type "1e-6" and press the Enter key
+* Click the **Molecules** button
 
-Step 3: Release a Single Molecule into the Simulation
+.. image:: ./images/single_molecule/molecules.png
+
+* Click the "plus" sign (**+**) to the right of the **Defined Molecules** box
+
+.. image:: ./images/single_molecule/define_molecule.png
+
+* Click in the **Molecule Name** field, type the letter **a** and press the Enter key
+* The new molecule **a** should have a green check mark in the **Defined Molecules** box
+* Click in the **Diffusion Constant** box, type **1e-6** and press the Enter key
+
+.. image:: ./images/single_molecule/define_molecule2.png
+
+Release a Single Molecule into the Simulation
 -----------------------------------------------------
 
-* Click the "Molecule Placement" button
-* Click the "plus" sign (+) to the right of the "Release/Placement Sites" box
-* Click in the Molecule field and select the "a" molecules
-* Click in the "Quantity to Release" field and change set it to 1
+* Click the **Molecule Placement** button
 
-Step 4: Simulate the Model
+.. image:: ./images/single_molecule/molecule_placement.png
+
+* Click the "plus" sign (**+**) to the right of the **Release/Placement Sites** box
+* Click in the **Molecule** field and select the **a** molecules
+* Click in the **Quantity to Release** field and set it to **1**
+
+.. image:: ./images/single_molecule/release_one.png
+
+Simulate the Model
 --------------------------
 
-* Click the "Run Simulation" button
-* Optionally change the "Command Line" to "Java Control" or another simulation runner
-* Click the "Export & Run" button
-* Wait for the simulation to complete and close any simulation runner window that popped up
-* Press the "Reload Visualization Data" button to load the results of the simulation.
+* Click the **Run Simulation** button
 
-Step 5: Change settings to see results
+.. image:: ./images/single_molecule/run_sim_button.png
+
+* Click the **Run** button
+
+.. image:: ./images/single_molecule/run_sim.png
+
+* A green check mark will appear in the list of **MCell Processes** when the
+  simulation is complete
+* Press the **Reload Visualization Data** button to load the results of the
+  simulation
+
+.. image:: ./images/single_molecule/reload_viz_data.png
+
+Change Settings to See Results
 --------------------------------------
 
-* Hide the "Manipulator"
-* Click the Molecules button
-* Open the "Display Options" subpanel
-* Change the "Cone" to "Torus"
-* Change the Scale to 10
+* Hide the "Manipulator" near the bottom middle of the screen
+
+.. image:: ./images/single_molecule/hide_manipulator.png
+
+* Click the **Molecules** button
+
+.. image:: ./images/single_molecule/molecules.png
+
+* Open the **Display Options** subpanel
+* Change the **Cone** to **Torus**
+* Change the **Scale** to **5**
 * Change the color to a bright yellow
-* Press the "Play" button below the time line
+
+.. image:: ./images/single_molecule/display_options.png
+
+.. note:: You'll notice that there are actually two torus objects. One of them
+   should be moving as the simulation is played, and the other should be
+   stationary at the origin.  The torus at the origin is really a "template"
+   molecule used by Blender. There will always be a template molecule at the
+   origin for every molecule species you define.
+
+Use the Time Line
+-------------------------
+
+.. image:: ./images/single_molecule/timeline.png
+
+* Press the "Play" (|play|) button below the time line
 * Use the scroll wheel to zoom in until you can see the moving torus
 
-.. note:: You'll notice that there are actually 2 torus objects. One of them should be
-  moving as the simulation is played, and the other should be stationary at the origin.
-  The torus at the origin is really a "template" molecule used by Blender. There will
-  generally be a template molecule at the origin for every molecule species you define.
+.. image:: ./images/single_molecule/single_diffusing_molec.png
 
-Step 6: Use the Time Line
--------------------------
-
-* Stop the simulation by clicking the "Pause" button below the time line
-* Click at various locations on the time line to see the molecule state at that time
+* Stop the simulation by clicking the "Pause" (|pause|) button below the time
+  line
+* Click at various locations on the time line to see the molecule state at that
+  time
 * Click and drag in the time line to "scrub" the simulation through time
 
-Step 7: Save your File
+.. |pause| image:: ./images/single_molecule/pause.png
+.. |play| image:: ./images/single_molecule/play.png
+
+Save Your File
 -------------------------
 
-* File / Save
-
+* **File** > **Save**
