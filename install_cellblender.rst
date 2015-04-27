@@ -1,8 +1,15 @@
 .. _cellblender_install:
 
 *********************************************
-CellBlender Installation (All Platforms)
+CellBlender Installation
 *********************************************
+
+Download CellBlender
+---------------------------------------------
+
+Download CellBlender 1.0 from the `MMBioS web site`_.
+
+.. _MMBioS web site: http://mmbios.org/index.php/cellblender-all/cellblender-cellblender-1-0_rc3
 
 Installing CellBlender
 ---------------------------------------------
@@ -41,7 +48,7 @@ Activating CellBlender in Blender
 .. image:: ./images/install/enable_cellblender.png
 
 * Click **Save User Settings** to enable the addon permanently in Blender.
-* Close the **User Preferences**
+* Close the **Blender User Preferences** window
 * Click **CellBlender** tab on left edge of window
 
 .. image:: ./images/clean_slate/cellblender_tab.png
