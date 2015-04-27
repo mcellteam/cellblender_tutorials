@@ -15,7 +15,7 @@ Initial Configuration
 This tutorial builds upon what was done in :ref:`add_meshgeom`. Either complete
 that tutorial yourself or use the `add_meshgeom.blend`_ file to get started.
 
-.. _add_meshgeom.blend: http://www.mcell.org/tutorials/add_meshgeom.blend
+.. _add_meshgeom.blend: ./blends/add_meshgeom.blend
 
 Save the File with a New Name in Your Working Directory
 ---------------------------------------------------------------

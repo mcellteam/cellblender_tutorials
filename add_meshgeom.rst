@@ -17,7 +17,7 @@ This tutorial builds upon what was done in :ref:`unimol_reactions`. Either
 complete that tutorial yourself or use the `unimol_reactions.blend`_ file to
 get started.
 
-.. _unimol_reactions.blend: http://www.mcell.org/tutorials/unimol_reactions.blend
+.. _unimol_reactions.blend: ./blends/unimol_reactions.blend
 
 Save the File with a New Name in Your Working Directory
 ---------------------------------------------------------------

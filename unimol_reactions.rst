@@ -16,7 +16,7 @@ This tutorial builds upon what was done in :ref:`single_molecule_diffusion`.
 Either complete that tutorial yourself or use the `single_molecule.blend`_ file
 to get started.
 
-.. _single_molecule.blend: http://www.mcell.org/tutorials/single_molecule.blend
+.. _single_molecule.blend: ./blends/single_molecule.blend
 
 Save the File with a New Name in Your Working Directory
 ---------------------------------------------------------------
