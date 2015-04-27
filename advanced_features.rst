@@ -8,7 +8,7 @@ CellBlender.
 
 .. note::
 
-   It is assumed that you have already gone through tutorials 1-4 prior to
+   It is assumed that you have already gone through tutorials 1-5 prior to
    attempting these.
 
 .. toctree::
