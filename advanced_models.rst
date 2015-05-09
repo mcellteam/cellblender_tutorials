@@ -5,8 +5,8 @@ Advanced Models
 
 .. warning::
 
-   These tutorials have not yet been updated for CellBlender 1.0. Therefore,
-   some things might not work exactly as described.
+   Some of these tutorials have not yet been updated for CellBlender 1.0.
+   Therefore, some things might not work exactly as described.
 
 What follows is a series of advanced MCell and CellBlender models each of which
 serves a unique purpose. Some examples (e.g. :ref:`fick`) teach fundamentals
@@ -27,5 +27,6 @@ the basis of such projects.
    ficks_laws
    irrev_rev_uni_bi
    rat
-   lotka_volterra
    lotka_volterra_torus
+   lotka_volterra
+   
