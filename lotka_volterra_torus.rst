@@ -96,7 +96,7 @@ For those familiar with building CellBlender models, here's the short-hand versi
  | *Reactions:*
 
   +-------------------------+--------------------------+-------------------------+
-  | **Reactants**           | **Products**             | **Reaction Rate**       |
+  | **Reactants**           | **Products**             | **Forward Rate**        |
   +=========================+==========================+=========================+
   | prey                    | prey + prey              | 129e3                   |
   +-------------------------+--------------------------+-------------------------+
@@ -287,7 +287,7 @@ Define the Reactions for the Lotka-Volterra Predator/Prey model:
 .....................................................................................................................................................
 
  +------------------------------------------+---------------------------------------------------------------+
- | Reactants -> Products                    |  Description and Reaction Rate                                |
+ | Reactants -> Products                    |  Description and Forward Reaction Rate                        |
  +==========================================+===============================================================+
  | prey -> prey + prey                      |  Simulates breeding of prey at rate = 129,000 or 129e3        |
  +------------------------------------------+---------------------------------------------------------------+
@@ -385,10 +385,12 @@ Try experimenting with the system by changing these values:
   | Time Step (Run)                   | 1e-6                     | 1e-8                    |
   +-----------------------------------+--------------------------+-------------------------+
 
-Predator / Prey Populations Over Time
+Predator / Prey Populations over time with different System Parameters
 .....................................................................................................................................................
 
-.. image:: ./images/lv_in_torus_graph.png
+.. image:: ./images/lv_in_torus_graph_1.png
+
+.. image:: ./images/lv_in_torus_graph_2.png
 
 
 
