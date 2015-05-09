@@ -28,3 +28,4 @@ the basis of such projects.
    irrev_rev_uni_bi
    rat
    lotka_volterra
+   lotka_volterra_torus
