@@ -52,7 +52,9 @@ These commands will allow us to count the molecules as they pass through the
 spherical shells. Since in this case we would also like to output the molecular
 concentrations in addition to raw counts we first compute the volume (in cubic
 microns) of each shell. Add the following variables to the beginning of your
-**spherical_shells.main.mdl**::
+**spherical_shells.main.mdl**:
+
+.. code-block:: mdl
 
     vol_1 = 0.00415274 /* cubic microns */
     vol_2 = 0.0140155
@@ -84,7 +86,9 @@ Analysis** panel in CellBlender
 Since meshes (including our concentric shells) are by default reflective to
 all diffusion molecules we need to make them transparent via a surface
 class. Thus, create a file called **spherical_shells.surface_classes.mdl** 
-with the following content::
+with the following content:
+
+.. code-block:: mdl
 
     DEFINE_SURFACE_CLASS transp
     {
@@ -95,7 +99,9 @@ Next, we can apply this surface class to all concentric shells in the
 **MODIFY_SURFACE_REGIONS** section. This method allows you to modify surface
 meshes without ever needing to touch the (often large) mesh files themselves.
 Create a file called **spherical_shells.mod_surf_regions.mdl** with the
-following text::
+following text:
+
+.. code-block:: mdl
 
     MODIFY_SURFACE_REGIONS
     {
@@ -139,7 +145,9 @@ following text::
 
 Finally, we need to define a **REACTION_DATA_OUTPUT** block to measure the
 molecular concentration in each shell. To do so, create a file called 
-**spherical_shells.rxn_output.mdl** and enter the following text into it::
+**spherical_shells.rxn_output.mdl** and enter the following text into it:
+
+.. code-block:: mdl
 
     sprintf(seed,"%03g", SEED)
 
@@ -168,7 +176,9 @@ molecular concentration in each shell. To do so, create a file called
     }
 
 Lastly, create a file called **spherical_shells.viz_output.mdl** with the
-following text::
+following text:
+
+.. code-block:: mdl
 
     VIZ_OUTPUT 
     {
@@ -272,7 +282,9 @@ navigate to same directory as before, and hit **Export MCell MDL**.
 Annotating the MDL
 -----------------------------------------------------
 
-Add the following to the beginning of **sampling_box.main.mdl**::
+Add the following to the beginning of **sampling_box.main.mdl**:
+
+.. code-block:: mdl
 
     box_volume = 0.05 // cubic microns, volume of the large box 
                       // used to contain the A molecules 
@@ -285,7 +297,9 @@ Add the following to the beginning of **sampling_box.main.mdl**::
 
 Next, we create a surface class that will be used to render the inner
 box transparent to *vol1* molecules. Create a file called 
-**sampling_box.surface_classes.mdl** and paste the following text into it::
+**sampling_box.surface_classes.mdl** and paste the following text into it:
+
+.. code-block:: mdl
 
     DEFINE_SURFACE_CLASS transp
     {
@@ -294,7 +308,9 @@ box transparent to *vol1* molecules. Create a file called
 
 We can apply this surface class to the sampling box via a 
 **MODIFY_SURFACE_REGIONS** block. Create a file called 
-**sampling_box.mod_surf_regions.mdl** with the following text::
+**sampling_box.mod_surf_regions.mdl** with the following text:
+
+.. code-block:: mdl
 
     MODIFY_SURFACE_REGIONS
     {
@@ -306,7 +322,9 @@ We can apply this surface class to the sampling box via a
 
 Next, let's output the counts of volume molecules in the large and
 sampling boxes. To do so create a file called 
-**sampling_box.rxn_output.mdl** like this::
+**sampling_box.rxn_output.mdl** like this:
+
+.. code-block:: mdl
 
     REACTION_DATA_OUTPUT
     {
@@ -317,7 +335,9 @@ sampling boxes. To do so create a file called
     }
 
 Lastly, we output visualization data for display in CellBlender. Thus,
-create a file called **sampling_box.viz_output.mdl** with the following text::
+create a file called **sampling_box.viz_output.mdl** with the following text:
+
+.. code-block:: mdl
 
     VIZ_OUTPUT
     {
@@ -418,7 +438,9 @@ Since we have defined molecules and reactions in CellBlender (take a look)
 there will be corresponding MDL files. Take a look at them and understand
 what is happening.
 
-Add the following text to the beginning of **irrev_uni_steady.main.mdl**::
+Add the following text to the beginning of **irrev_uni_steady.main.mdl**:
+
+.. code-block:: mdl
 
     box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and B molecules */
     box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
@@ -434,7 +456,9 @@ Add the following text to the beginning of **irrev_uni_steady.main.mdl**::
 
 Again we need to define reaction and visualization output statement blocks
 as MDL. Thus, create a file callled **irrev_uni_steady.rxn_output.mdl** and 
-copy this text into it::
+copy this text into it:
+
+.. code-block:: mdl
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
@@ -445,7 +469,9 @@ copy this text into it::
     }
 
 Lastly, create a file called **irrev_uni_steady.viz_output.mdl** with the
-following text::
+following text:
+
+.. code-block:: mdl
 
     VIZ_OUTPUT {
         MODE = CELLBLENDER
@@ -517,7 +543,9 @@ Navigate to **irrev_uni/nonsteady_state** and select
 to same directory as before, and hit **Export MCell MDL**.
 
 Open **irrev_uni_nonsteady.main.mdl** and add in the following text at the top
-of the mdl::
+of the mdl:
+
+.. code-block:: mdl
 
     box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and B molecules */
     box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
@@ -533,7 +561,9 @@ of the mdl::
     PARTITION_Z = [-partition, partition]
 
 Next create a file callled **irrev_uni_nonsteady.rxn_output.mdl** and copy this
-text into it::
+text into it:
+
+.. code-block:: mdl
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
@@ -545,7 +575,9 @@ text into it::
     }
 
 Lastly, create a file called **irrev_uni_nonsteady.viz_output.mdl** with the
-following text::
+following text:
+
+.. code-block:: mdl
 
     VIZ_OUTPUT {
         MODE = CELLBLENDER
@@ -631,7 +663,9 @@ Base** to **rev_uni_nonequil**. Then hit **Export CellBlender Project**,
 navigate to same directory as before, and hit **Export MCell MDL**.
 
 Open **rev_uni_nonequil.main.mdl** and add in the following text at the top of
-the mdl::
+the mdl:
+
+.. code-block:: mdl
 
     fractional_concentration_of_A = 0.1
     fractional_concentration_of_B = 1.0 - fractional_concentration_of_A
@@ -655,12 +689,16 @@ the mdl::
 
 Please make sure you understand what is happening here, especially the
 calculations at the top of the file. Then, in the *A_rel* release site, replace
-the numerical value for the concentration with::
+the numerical value for the concentration with:
+
+.. code-block:: mdl
 
     CONCENTRATION = concentration_of_A
 
 
-Modify **rev_uni_nonequil.reactions.mdl** like this::
+Modify **rev_uni_nonequil.reactions.mdl** like this:
+
+.. code-block:: mdl
 
     DEFINE_REACTIONS {
        A -> B [k1]
@@ -668,7 +706,9 @@ Modify **rev_uni_nonequil.reactions.mdl** like this::
     }
 
 Now, create a file called **rev_uni_nonequil.viz_output.mdl** with the
-following text::
+following text:
+
+.. code-block:: mdl
 
     VIZ_OUTPUT {
        MODE = CELLBLENDER
@@ -680,7 +720,9 @@ following text::
     }
 
 Next, create a file callled **rev_uni_nonequil.rxn_output.mdl** and copy this
-text into it::
+text into it:
+
+.. code-block:: mdl
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
@@ -718,7 +760,9 @@ CellBlender Project**, navigate to same directory as before, and hit **Export
 MCell MDL**.
 
 Open **rev_uni_equil.main.mdl** and add in the following text at the top of 
-the mdl (note that this is the same we added in the non-equilibrium case)::
+the mdl (note that this is the same we added in the non-equilibrium case):
+
+.. code-block:: mdl
 
     fractional_concentration_of_A = 0.1
     fractional_concentration_of_B = 1.0 - fractional_concentration_of_A
@@ -741,18 +785,24 @@ the mdl (note that this is the same we added in the non-equilibrium case)::
 
 Again, please make sure you understand what is happening here, especially the
 calculations at the top of the file. Then, in the *A_rel* release site, 
-replace the numerical value for the concentration with::
+replace the numerical value for the concentration with:
+
+.. code-block:: mdl
 
     CONCENTRATION = concentration_of_A
 
 
 Similarly, in the *B_rel* release site replace the numerical concentration
-value with::
+value with:
+
+.. code-block:: mdl
 
     CONCENTRATION = concentration_of_B
 
 
-Modify **rev_uni_equil.reactions.mdl** like this::
+Modify **rev_uni_equil.reactions.mdl** like this:
+
+.. code-block:: mdl
 
     DEFINE_REACTIONS {
        A -> B [k1]
@@ -761,7 +811,9 @@ Modify **rev_uni_equil.reactions.mdl** like this::
 
 
 Now, create a file called **rev_uni_equil.viz_output.mdl** with the following
-text::
+text:
+
+.. code-block:: mdl
 
     VIZ_OUTPUT {
        MODE = CELLBLENDER
@@ -773,7 +825,9 @@ text::
     }
 
 Next, create a file callled **rev_uni_equil.rxn_output.mdl** and copy this text
-into it::
+into it:
+
+.. code-block:: mdl
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
@@ -838,8 +892,10 @@ Then hit **Export CellBlender Project**, navigate to same directory as
 before, and hit **Export MCell MDL**.
 
 Open **irrev_bi_steady.main.mdl** and add in the following text at the top of
-the mdl::
+the mdl:
     
+.. code-block:: mdl
+
     box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and B molecules */
     diffusion_coefficient = 1e-6 /* cm^2 per second, diffusion coefficient used for molecules of A and R */
     box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
@@ -854,7 +910,9 @@ the mdl::
 
 Again, take a few minutes to understand the meaning of the above MDL.
 Now, create a file called **irrev_bi_steady.viz_output.mdl** with the 
-following text::
+following text:
+
+.. code-block:: mdl
 
     VIZ_OUTPUT {
        MODE = CELLBLENDER
@@ -867,7 +925,9 @@ following text::
 
 Next, create a file called **irrev_bi_steady.rxn_output.mdl** that
 describes the kind of reaction data output we'd like to output
-and copy this text into it::
+and copy this text into it:
+
+.. code-block:: mdl
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
@@ -917,8 +977,10 @@ select **Set Project Directory**. Set the **Project Base** to
 to same directory as before, and hit **Export MCell MDL**.
 
 Open **irrev_bi_nonsteady.main.mdl** and add in the following text at the top
-of the mdl::
+of the mdl:
     
+.. code-block:: mdl
+
     box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and B molecules */
     diffusion_coefficient = 1e-6 /* cm^2 per second, diffusion coefficient used for molecules of A and R */
     box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
@@ -932,7 +994,9 @@ of the mdl::
     PARTITION_Z = [-partition, partition]
 
 Now, create a file called **irrev_bi_nonsteady.viz_output.mdl** with the 
-following text::
+following text:
+
+.. code-block:: mdl
 
     VIZ_OUTPUT {
        MODE = CELLBLENDER
@@ -944,7 +1008,9 @@ following text::
     }
 
 Next, create a file callled **irrev_bi_nonsteady.rxn_output.mdl** and copy this
-text into it::
+text into it:
+
+.. code-block:: mdl
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
@@ -995,7 +1061,9 @@ select **Set Project Directory**. Set the **Project Base** to
 same directory as before, and hit **Export MCell MDL**.
 
 Open **rev_bi_nonequil.main.mdl** and add in the following text at the 
-top of the mdl::
+top of the mdl:
+
+.. code-block:: mdl
 
     box_volume = 0.05 /* cubic microns, volume of the box used to contain the A and R molecules */
     box_volume_liters = box_volume * 1e-15 /* convert from cubic microns to liters */
@@ -1010,7 +1078,9 @@ top of the mdl::
 
 Make sure you examine the above MDL and understand what it means.
 Now, create a file called **rev_bi_nonequil.viz_output.mdl** with the 
-following text::
+following text:
+
+.. code-block:: mdl
 
     VIZ_OUTPUT {
        MODE = CELLBLENDER
@@ -1022,7 +1092,9 @@ following text::
     }
 
 Next, create a file callled **rev_bi_nonequil.rxn_output.mdl** and copy this
-text into it::
+text into it:
+
+.. code-block:: mdl
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  
@@ -1066,7 +1138,9 @@ the **Project Base** to **rev_bi_nonequil**. Then hit
 and hit **Export MCell MDL**.
 
 Next, open **rev_bi_equil.main.mdl** and add in the following text at the 
-top of the mdl::
+top of the mdl:
+
+.. code-block:: mdl
 
     k1 = 1e8 /* liters per mole per second, rate constant for binding of A to R */
     k2 = 1e4 /* per second, rate constant for unbinding */
@@ -1092,7 +1166,9 @@ top of the mdl::
 
 Carefully study the above MDL and make sure you understand what it
 does. Then, modify the **INSTANTIATE** section, so that it looks like 
-this::
+this:
+
+.. code-block:: mdl
 
     INSTANTIATE Scene OBJECT {
        box OBJECT box {}
@@ -1115,7 +1191,9 @@ this::
 
 
 Now, create a file called **rev_bi_equil.viz_output.mdl** with the 
-following text::
+following text:
+
+.. code-block:: mdl
 
     VIZ_OUTPUT {
        MODE = CELLBLENDER
@@ -1127,7 +1205,9 @@ following text::
     }
 
 Then, create a file callled **rev_bi_equil.rxn_output.mdl** for our 
-reaction data output and copy this text into it::
+reaction data output and copy this text into it:
+
+.. code-block:: mdl
 
     REACTION_DATA_OUTPUT {
        OUTPUT_BUFFER_SIZE = 1000  

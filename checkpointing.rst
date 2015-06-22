@@ -48,7 +48,7 @@ Then within that directory (i.e.
 **/home/user/mcell_tutorial/change_dc/change_dc_files/mcell**), create a file
 called **change_dc1.mdl**. Add the following text to that file:
 
-.. code-block:: none
+.. code-block:: mdl
     :emphasize-lines: 1-3
 
     CHECKPOINT_INFILE = "dc_chkpt"

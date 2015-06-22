@@ -19,7 +19,7 @@ value, and then averaging the results of all the simulations.
 We'll begin by creating a directory called **seed**. Inside it, create an MDL
 called **seed.mdl** with this text:
 
-.. code-block:: none
+.. code-block:: mdl
     :emphasize-lines: 31,35-37
 
     iterations = 1000 

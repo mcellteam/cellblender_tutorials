@@ -10,7 +10,9 @@ generate a histogram of molecule locations relative to the origin, and also
 find such things as the mean, min, and max. First, however, we need the mdl. In
 the main tutorial directory, create a new directory called **hist**. Inside
 that directory, create an mdl called **hist.mdl**, and insert the following
-text into it::
+text into it:
+
+.. code-block:: mdl
 
     TIME_STEP = 1.0e-6
     ITERATIONS = 1000

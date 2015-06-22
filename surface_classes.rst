@@ -187,7 +187,9 @@ Examine the Surface Class MDL (Optional)
 
 This next section isn't necessary, but you can follow along with it if you want
 to learn more about MDL syntax. Open the file called **sc.surface_classes.mdl**
-and you should see the following text::
+and you should see the following text:
+
+.. code-block:: mdl
 
     DEFINE_SURFACE_CLASSES
     {
@@ -203,7 +205,9 @@ class called **absorb_vol1**. Since **vol1** is the value set to the
 **FRONT** of a surface that has the **absorb_vol1** surface class will be
 destroyed.
 
-Now open the file named **sc.mod_surf_regions.mdl**::
+Now open the file named **sc.mod_surf_regions.mdl**:
+
+.. code-block:: mdl
 
     MODIFY_SURFACE_REGIONS
     {

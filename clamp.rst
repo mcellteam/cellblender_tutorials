@@ -165,7 +165,7 @@ Examine the MDLs (Optional)
 Open the file called **Scene.surface_classes.mdl**, and you should see the
 following:
 
-.. code-block:: none
+.. code-block:: mdl
     :emphasize-lines: 3
 
     DEFINE_SURFACE_CLASSES 
@@ -180,7 +180,7 @@ molecule species.
 Now, open the filed called **Scene.mod_surf_regions.mdl**, and you should
 see the following:
 
-.. code-block:: none
+.. code-block:: mdl
     :emphasize-lines: 5
 
     MODIFY_SURFACE_REGIONS 
@@ -200,7 +200,7 @@ Annotate the MDLs (Optional)
 Finally, open the file called **Scene.rxn_output.mdl** and *add* the
 highlighted line that contains the **ESTIMATE_CONC** command:
 
-.. code-block:: none
+.. code-block:: mdl
     :emphasize-lines: 4
 
     REACTION_DATA_OUTPUT 

@@ -37,7 +37,7 @@ intro_files/mcell/**.
 Let's take a look at **Scene.main.mdl** with your favorite text editor (try
 gedit or kedit if you aren't sure what to use).
 
-.. code-block:: none
+.. code-block:: mdl
     :linenos:
 
     ITERATIONS = 1000
@@ -117,7 +117,9 @@ This means that the simulation will run for 1000 iterations at a time step of
 Geometry Files
 ---------------------------------------------
 
-Let's take a closer look at **Scene.geometry.mdl**::
+Let's take a closer look at **Scene.geometry.mdl**:
+
+.. code-block:: mdl
 
     Cube POLYGON_LIST
     {
@@ -177,7 +179,9 @@ reaction) in the MDL.
 
 :index:`\ <single:DEFINE_MOLECULES>`
 
-Open the **Scene.molecules.mdl** file, and you'll see the following::
+Open the **Scene.molecules.mdl** file, and you'll see the following:
+
+.. code-block:: mdl
 
     DEFINE_MOLECULES
     {
@@ -238,7 +242,9 @@ Surface molecules have a :index:`\ <single:TOP>` **TOP** and a :index:`\
 reactions that happen on one side versus the other. Commas (**,**), ticks
 (**'**), and semi-colons (**;**) serve this purpose. For detailed information
 on this reaction syntax, please refer to this pdf_. Let's look at the
-relatively simple example we have created in **Scene.reactions.mdl**::
+relatively simple example we have created in **Scene.reactions.mdl**:
+
+.. code-block:: mdl
 
     DEFINE_REACTIONS
     {
@@ -262,8 +268,10 @@ reacts with **surf1**. Conversely, **surf1** is on both the **reactant** and
 **product** side, so it will not be destroyed from the reaction.
 
 The directionality of these ticks and commas are relative, which means that we
-could flip the signs and get the same result, like this::
+could flip the signs and get the same result, like this:
     
+.. code-block:: mdl
+
     DEFINE_REACTIONS
     {
       vol1, + surf1' -> surf1' + vol2' [1e+08]
@@ -277,7 +285,9 @@ could flip the signs and get the same result, like this::
 Release Sites
 ---------------------------------------------
 
-Let's examine the **INSTANTIATE** section of **Scene.main.mdl** more closely::
+Let's examine the **INSTANTIATE** section of **Scene.main.mdl** more closely:
+
+.. code-block:: mdl
 
     INSTANTIATE Scene OBJECT
     {
@@ -328,7 +338,9 @@ randomly on the **top** surface region of **Scene.Cube**. Also, the **TOP** of
 Visualization Data
 ---------------------------------------------
 
-Open the file called **Scene.viz_output.mdl** with the following text in it::
+Open the file called **Scene.viz_output.mdl** with the following text in it:
+
+.. code-block:: mdl
 
     VIZ_OUTPUT
     {
@@ -348,7 +360,9 @@ export everything at all iterations.
 Reaction Data
 ---------------------------------------------
 
-Now, create a file called **Scene.rxn_output.mdl**::
+Now, create a file called **Scene.rxn_output.mdl**:
+
+.. code-block:: mdl
 
     REACTION_DATA_OUTPUT
     {

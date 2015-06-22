@@ -176,7 +176,9 @@ Annotating the MDL
 We will now edit several of the exported MDL files and also add new ones to set
 up our simulations. First at the top of **ficks_law.main.mdl** add the
 following MDL commands (you will have to change the existing **ITERATION** and
-**TIME_STEP** statements)::
+**TIME_STEP** statements):
+
+.. code-block:: mdl
 
     iterations = 1 
     dt = 1e-06
@@ -199,7 +201,9 @@ Can you guess why we introduce separate **iterations** and **dt** variables?
 Also, since we do not have any reactions in our model comment out the line
 which includes the reactions (**ficks_law.reactions.mdl**).  Next, open the
 file **ficks_law.molecules.mdl** and change the diffusion coefficient of our
-**vm** molecule to **dc**::
+**vm** molecule to **dc**:
+
+.. code-block:: mdl
 
     DEFINE_MOLECULES {
             vm {DIFFUSION_CONSTANT_3D = dc} 
@@ -213,7 +217,9 @@ above, we can use MCell's surface clamp to clamp the left end of the cylinder
 at a certain value and make sure molecules get absorbed at the right end
 (why?). To this end, create the file **ficks_law.surface_classes.mdl** and
 enter a **DEFINE_SURFACE_CLASSES** block. You will have to complete the
-template given below yourself::
+template given below yourself:
+
+.. code-block:: mdl
 
     DEFINE_SURFACE_CLASSES {
         transp {TRANSPARENT = vm }
@@ -230,7 +236,9 @@ the sampling cylinders and sampling planes need to be made transparent to
 the big cylinder and make sure molecules are absorbed at the right. Below is a
 template for a **MODIFY_SURFACE_REGIONS** block that you will have to complete
 yourself (possibly with a script or a macro). Create the file
-**ficks_law.mod_surf_regions.mdl** and start editing::
+**ficks_law.mod_surf_regions.mdl** and start editing:
+
+.. code-block:: mdl
 
     MODIFY_SURFACE_REGIONS {
         
@@ -264,7 +272,9 @@ yourself (possibly with a script or a macro). Create the file
 
 Next, we will add a reaction data output block. Again, you will need to add
 additional statements to output the data needed to work on the problems below.
-Create a file **ficks_law.rxn_output.mdl** and enter::
+Create a file **ficks_law.rxn_output.mdl** and enter:
+
+.. code-block:: mdl
 
     sprintf(seed,"%03g", SEED)
 
@@ -279,7 +289,9 @@ Create a file **ficks_law.rxn_output.mdl** and enter::
 
 Finally, we add a visualization data block so we can check our simulation
 visually in CellBlender. Luckily, nothing needs to be added here and you are
-good to go! Create the file **ficks_law.viz_output.mdl** and enter::
+good to go! Create the file **ficks_law.viz_output.mdl** and enter:
+
+.. code-block:: mdl
 
     VIZ_OUTPUT {
         MODE = CELLBLENDER
