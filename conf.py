@@ -251,6 +251,10 @@ texinfo_documents = [
 #texinfo_show_urls = 'footnote'
 
 def setup(sphinx):
-    sys.path.insert(0, os.path.abspath('./util'))
-    from mdl import MdlLexer
-    sphinx.add_lexer("mdl", MdlLexer())
+    try:
+        sys.path.insert(0, os.path.abspath('./util'))
+        from mdl import MdlLexer
+        sphinx.add_lexer("mdl", MdlLexer())
+    except ImportError:
+        print("Syntax highlighting is unavailable. Try 'pip install "
+              "Pygments==2.0.2'")
