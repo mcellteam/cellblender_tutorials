@@ -1,5 +1,12 @@
 ..  _lotka_volterra_torus:
 
+.. 
+    Comment:
+    This version contains "check marks" because they show up properly in HTML.
+    However, they cause problems generating LaTeX / PDF output.
+    Note that these "check marks" are actually square roots:  unicode e2889a.
+    Unicode does have an actual "check mark" as e29c93, but it hasn't been tested.
+
 *********************************************
 Lotka-Volterra in a Torus
 *********************************************
@@ -149,7 +156,7 @@ Reset Blender and initialize CellBlender.
 
 
 #. :menu:`File / User Preferences...`  :button:`Add-ons`  :button:`Cell Modeling`
-#. Cell Modeling: CellBlender :button:`x` (Check the box to enable CellBlender)
+#. Cell Modeling: CellBlender :button:`√` (Check the box to enable CellBlender)
 #. :button:`Save User Settings`  :button:`x` to close window
 #. Click :button:`CellBlender` Tab (on left side of window)
 #. :button:`Initialize CellBlender` (should show CellBlender Panel and Buttons)
@@ -179,10 +186,10 @@ This section constructs a semi-transparent torus named "arena" to contain our mo
 #. Double-Click the word :button:`Torus` in the Outliner to select it for editing (upper right panel).
 #. Type the new name for the torus to be :key:`arena` followed by :key:`Enter`.
 #. Open the :button:`Object Properties` panel by clicking the small orange cube (upper right).
-#. Check :button:`x` the "Transparency" box to enable the transparency feature for the arena object
+#. Check :button:`√` the "Transparency" box to enable the transparency feature for the arena object
 #. Open the :button:`Material Properties` panel by clicking the small round icon button (to right of triangle mesh).
 #. Click the :button:`New` button to create a new material for the arena.
-#. Check :button:`x` the "Transparency" box to enable transparency for this material 
+#. Check :button:`√` the "Transparency" box to enable transparency for this material
 #. Click the :button:`Alpha` button and type :key:`0.3` followed by :key:`Enter` to make the "arena" semi-transparent.
 #. Drag the divider below the CellBlender panel down toward the bottom to make more room for the CellBlender panels we'll use to define the rest of the model.
 #. :menu:`File / Save`
@@ -351,7 +358,7 @@ Plot the Predator/Prey populations over time:
 .....................................................................................................................................................
 120. CellBlender Panel: :button:`Plot Output Settings`
 #. Set the Page/Plot selector to: :button:`One Page, One Plot`
-#. Check :button:`x` the "Molecule Colors" box to use the molecule colors for the plot.
+#. Check :button:`√` the "Molecule Colors" box to use the molecule colors for the plot.
 #. Click one of the :button:`plotter buttons` available on your machine.
 #. Expand the plot window to determine which population "leads" the other.
 #. :menu:`File / Save`
