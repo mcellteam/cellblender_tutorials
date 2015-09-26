@@ -8,7 +8,7 @@ Before starting these tutorials, you *need* to install the following software:
 
 * MCell 3.3 (:ref:`mcell_install`)
 * `Blender 2.74`_ (older versions may or may not work)
-* CellBlender 1.0 (:ref:`cellblender_install`, *note: install Blender first*)
+* CellBlender 1.0.1 (:ref:`cellblender_install`, *note: install Blender first*)
 You don't need these immediately, but you will likely find them necessary later
 on:
 
