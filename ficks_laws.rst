@@ -4,11 +4,6 @@
 Fick's 1st and 2nd Laws
 *********************************************
 
-.. warning::
-
-   This tutorial has not yet been updated for CellBlender 1.0. Therefore,
-   some things might not work exactly as described.
-
 Our goal in this tutorial is to evaluate Fick’s 1st and 2nd Laws using 
 simulations of discrete diffusing particles. To do so, we design the 
 simulation geometry and input conditions so that we obtain a concentration 
@@ -21,26 +16,304 @@ Laws, in particular Fick’s 2nd Law:
 where D is the diffusion coefficient used for the particles in the simulation.
 We begin by designing the 3-D geometry as illustrated below:
 
-Using the above geometry, we wish to introduce diffusing particles such that:
+Using a cylindrical geometry, we wish to introduce diffusing particles such that:
 
 #. There will be a concentration gradient along the x-axis only.
 #. After some elapsed time, the system will reach a steady state with an 
    unchanging concentration gradient along the x-axis (e.g., a 10-fold 
    difference along the length of the cylinder).
 
-How can we do this with MCell? Hint: Consider the concentration clamp
+How can we do this with MCell and CellBlender? Hint: Consider the concentration clamp
 command introduced previously. 
 
-But first let's create the mesh for the system.
+We will conduct this tutorial in 2 sections. The first section will build
+and run the entire simulation. It turns out this will be the easy part.
+
+The second part of the tutorial will involve building the "instrumentation"
+required to measure the concentration along the cylinder. This will be much
+more tedious.
+
+
+.. warning::
+
+
+   Note that the second portion of this tutorial is not completed yet.
+
 
 .. _fick_create_mesh: 
 
-Creating the Mesh
+Create the Cylinder Geometry
 ---------------------------------------------
+
+Begin by starting Blender with CellBlender enabled.
+
+Delete everything in your scene by first selecting everything with the **a** ("all")
+key until all objects - Cube, lamp, camera - are highlighted (orange outline).
+Then hit the **x** key and click **Delete** to delete the default Cube, lamp, 
+camera, and anything else in your scene.
+
+Next, create a cylinder by hitting **Shift-a**, and selecting
+**Mesh>Cylinder**. Hit **s**, **Shift-z**, **0.2**, and **Enter** to confirm.
+Hit **r**, **y**, **90**, and **Enter** to rotate it 90 degrees around the
+y-axis (aligns cylinder along the x axis). This will be the main cylinder through
+which the molecules diffuse. You may want to rotate and zoom to get a better
+view. It should looks something like this:
+
+.. image:: ./images/ficks_big_cylinder.png
+
+Be sure that the red arrow (x axis) is facing generally to the right so our
+definitions of "left" and "right" will be consistent with your view.
+
+In the CellBlender panel, open the "Model Objects" subpanel. With your new
+cylinder selected, click the "**+**" button to add the Cylinder to the list
+of objects in your CellBlender model.
+
+.. image:: ./images/CellBlender_model_objects_panel_cyl.png
+.. image:: ./images/CellBlender_model_objects_panel_cyl_added.png
+
+The name "Cylinder" should appear in the box with a green check mark beside it.
+Below that box is another box titled "Cylinder Display Options". Click the
+small triangle which expands the features in that box. You should see a drop down
+control with the label "Maximum Draw Type" and it is likely showing "Solid" or
+"Textured". Click on the control and change it to "Wire" so you can see through the Cylinder.
+
+.. image:: ./images/Ficks_cylinder_wire.png
+
+Then click the triangle again to close the "Cylinder Display Options" box.
+
+Create two surface regions (below the Cylinder Display Options box) by clicking 
+the **+** button twice and name them **left_end** and **right_end**. 
+See :ref:`define_region` if you need help with this.
+
+.. image:: ./images/CellBlender_model_objects_panel_add_reg.png
+.. image:: ./images/CellBlender_model_objects_panel_regions_added.png
+
+Then, enter **Edit Mode** by hitting **Tab**.
+
+In order to select all vertices on both sides of an object (what we want),
+you should disable the "Limit selection to visible" button by clicking
+it into the "lighter gray" state as shown here:
+
+.. image:: ./images/Ficks_selection_limit_unchecked.png
+
+Hit **a** once or twice (or more) until everything is unselected (black).
+
+Hit **b** to start the Border Select mode.
+
+Select the left end of the cylinder by clicking with the left mouse button and 
+dragging around it.
+
+.. image:: ./images/ficks_border_select.png
+
+.. image:: ./images/ficks_border_select2.png
+
+Go back to the Model Objects subpanel and select the "**left_end**" region that you
+created earlier. Then click the "**Assign**" button to tag those faces as the "left_end"
+of your Cylinder.
+
+Hit **a** to deselect everything in the mesh. Then repeat the process for the
+right end of your cylinder (assign the faces on the right end to the "right_end"
+region).
+
+Deselect everything with the "**a**" key and switch back to **Object Mode** by hitting **Tab**.
+
+For objective viewing, switch to the top view with either the "**7**" key on your keypad
+(not the top row number keys) or by choosing "**View**" and "**Top**" from the view menu 
+below the 3D viewport. Similarly, select orthographic mode with keypad "**5**" or by choosing
+"**View**" and "**View Persp/Ortho**" so that the words "Top Ortho" appear in the
+upper left corner of the 3D viewport.
+
+Finally, hit the "**a**" key one (or more) times until the object is unselected (black).
+This will make it easier to see our molecules as they're added. Your view should look
+about like this:
+
+.. image:: ./images/Ficks_ortho_view_cyl.png
+
+
+Define Constants for the Simulation
+---------------------------------------------
+
+Click the "**Parameters**" button to open the "Model Parameters" subpanel.
+
+Click the "**+**" button to define a new parameter. By default it will be "P1" with a value of 0.
+
+Change the name to "**iters**" and give it a value of **5000** as shown in the table below. Repeat
+this process of adding and editing to define all of the model parameters in this table (note that
+the Units and Description are optional and not needed for the simulation):
+
+
+ | *Model Parameters:*
+
+  +------------------------+-----------------+-------------+--------------------------------------+
+  | **Parameter Name**     | **Expression**  |  **Units**  | **Description**                      |
+  +========================+=================+=============+======================================+
+  | iters                  |      5000       |             |  Number of iterations to run         |
+  +------------------------+-----------------+-------------+--------------------------------------+
+  | dt                     |        1e-6     |  seconds    |  Time step for each iteration        |
+  +------------------------+-----------------+-------------+--------------------------------------+
+  | Na                     |   6.0221415e23  |             |    Avogardros Number                 |
+  +------------------------+-----------------+-------------+--------------------------------------+
+  | area                   |   1.2441e-11    |   cm^2      | Cross-sectional area of cylinder     |
+  +------------------------+-----------------+-------------+--------------------------------------+
+  | dx                     |       5e-7      |    cm       | Width of sampling volumes 20 plus 21 |
+  +------------------------+-----------------+-------------+--------------------------------------+
+  | dc                     |       5e-6      | cm^2 / sec  | Diffusion Constant                   |
+  +------------------------+-----------------+-------------+--------------------------------------+
+  | cl                     |       2e-5      |  Molar      | Concentration on left end            |
+  +------------------------+-----------------+-------------+--------------------------------------+
+
+
+Define a Molecule Species
+---------------------------------------------
+
+Click on the "**Molecules**" panel button to show the Defined Molecules subpanel.
+
+Click the "**+**" button to define a new molecule species.
+
+Change the **Name** to "**vm**" (representing a "volume molecule").
+
+Leave the **Molecule Type** as "**VolumeMolecule**".
+
+Set the **Diffusion Constant** to "**dc**" (the diffusion constant
+we defined in the parameters panel eariler).
+
+When you're finished, it should look like this:
+
+.. image:: ./images/Ficks_defined_vm.png
+
+
+Define a Clamp Concentration Surface Class
+---------------------------------------------
+
+Click on the "**Surface Classes**" panel button to show the Defined Surface Classes subpanel.
+
+Click the "**+**" button to define a new surface class.
+
+Change the **Surface Class Name** to "**clamp**".
+
+Click the "**+**" button beside the "clamp Properties" box (below the Surface Class Name)
+to define a new property for the "clamp" surface class.
+
+Set the **Molecule Name** to "**vm**".
+
+Set the **Orientation** to "**Bottom/Back**".
+
+Set the **Type** to "**Clamp Concentration**".
+
+Set the **Value** to "**cl**" (the concentration we defined in the parameters panel eariler).
+
+When you're finished, it should look like this:
+
+.. image:: ./images/Ficks_surf_clamp_vm.png
+
+
+Assign the Clamp Concentration Surface Class to the Left end of the Cylinder
+------------------------------------------------------------------------------------
+
+Click on the "**Assign Surface Classes**" panel button to show the Assigned Surface Classes subpanel.
+
+Click the "**+**" button to define a new surface class (it will show an "Undefined surface class" error).
+
+Change the **Surface Class Name** to "**clamp**".
+
+Change the **Object Name** to "**Cylinder**".
+
+Uncheck the **All Faces** checkbox.
+
+Change the **Region Name** to "**left_end**".
+
+When you're finished, it should look like this:
+
+.. image:: ./images/Ficks_left_class.png
+
+
+Define an Absorptive Surface Class
+---------------------------------------------
+
+Click on the "**Surface Classes**" panel button to show the Defined Surface Classes subpanel.
+
+Click the "**+**" button to define a new surface class.
+
+Change the **Surface Class Name** to "**absorb**".
+
+Click the "**+**" button beside the "absorb Properties" box (below the Surface Class Name)
+to define a new property for the "absorb" surface class.
+
+Set the **Molecule Name** to "**vm**".
+
+Set the **Orientation** to "**Ignore**".
+
+Set the **Type** to "**Absorptive**".
+
+When you're finished, it should look like this:
+
+.. image:: ./images/Ficks_surf_absorb_vm.png
+
+
+Assign the Absorptive Surface Class to the Right end of the Cylinder
+------------------------------------------------------------------------------------
+
+Click on the "**Assign Surface Classes**" panel button to show the Assigned Surface Classes subpanel.
+
+Click the "**+**" button to define a new surface class (it will show an "Undefined surface class" error).
+
+Change the **Surface Class Name** to "**absorb**".
+
+Change the **Object Name** to "**Cylinder**".
+
+Uncheck the **All Faces** checkbox.
+
+Change the **Region Name** to "**right_end**".
+
+.. image:: ./images/Ficks_right_class.png
+
+
+First Simulation
+---------------------------------------------
+
+
+Click on the "**Run Simulation**" panel button to show the Run Simulation subpanel.
+
+Change the **Iterations** to "**iters / 10**" ("iters" was defined as 5000, but we don't need
+to run that long while we're testing).
+
+Change the **Time Step** to "**dt**" (defined in the parameters panel earlier).
+
+This is a good time to save with "**File / Save**" in the top menu bar.
+
+Click the **Run** button to start the simulation.
+
+The simulation should run quickly (only 500 iterations), and you should see a green
+check mark beside the completed run (you may have to hover your cursor over it to
+get it to update):
+
+.. image:: ./images/Ficks_first_run.png
+
+  
+Next click the "**Reload Visualization Data**" button to load all of the molecules.
+You can click and drag in the time line window to watch the molecules diffusing
+from the left side (source) to the right side over time.
+
+.. image:: ./images/Ficks_time_line_1.png
+
+
+
+SECOND PORTION OF TUTORIAL (not finished yet)
+---------------------------------------------
+
+
 
 If you would rather skip the mesh creation part, you can simply download the
 `blend file`_ and advance to the :ref:`fick_annotate` section. Otherwise you
 should watch the video or follow along with the instructions after the video.
+
+
+.. warning::
+
+   This video was made with older versions of both Blender and CellBlender.
+   Much of the mesh manipulation is the same but the interface may look different.
+   Additionally, as noted above, the cylinder is built along the "x" axis in the
+   newer version.
 
 .. raw:: html
 
@@ -52,33 +325,7 @@ should watch the video or follow along with the instructions after the video.
 
 .. _blend file: https://www.mcell.org/tutorials/downloads/ficks_law.blend
 
-Begin by starting Blender. Hit **x** and click **Delete** to delete the default
-Cube. 
 
-.. image:: ./images/ficks_big_cylinder.png
-
-Then, create a cylinder by hitting **Shift-a**, and selecting
-**Mesh>Cylinder**. Hit **s**, **Shift-z**, **0.2**, and **Enter** to confirm.
-Hit **r**, **x**, **90**, and **Enter** to rotate it 90 degrees around the
-x-axis. This will be the main cylinder through which the molecules diffuse. You
-may want to zoom in to get a better view.
-
-.. image:: ./images/ficks_left_end_right_end.png
-
-Create two surface regions, **Left_end** and **Right_end**. See
-:ref:`define_region` if you need help with this.
-
-.. image:: ./images/ficks_border_select.png
-
-.. image:: ./images/ficks_border_select2.png
-
-Then, enter **Edit Mode** by hitting **Tab**. Hit **Ctrl-t** to triangulate the
-mesh. Hit **z** to enter wireframe mode. Next, select the left end of the
-cylinder by hitting **b**, **left click and drag** around the left end of the
-cylinder. Select **Left_end** from the list of surface regions and select
-**Assign**. Hit **a** to deselect the mesh. Now, do the same with the right end
-of the cylinder, except select and assign the **Right_end** surface region.
-Switch back to **Object Mode** by hitting **Tab**.
 
 We now need to create a series of shorter sampling cylinders inside the long
 one. To do so, hit **Shift-a** and once again select **Mesh>Cylinder**. We will
