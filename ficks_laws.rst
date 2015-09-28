@@ -103,9 +103,9 @@ Hit **b** to start the Border Select mode.
 Select the left end of the cylinder by clicking with the left mouse button and 
 dragging around it.
 
-.. image:: ./images/ficks_border_select.png
+.. image:: ./images/Ficks_Box_Select_Left.png
 
-.. image:: ./images/ficks_border_select2.png
+.. image:: ./images/Ficks_Box_Selected_Left.png
 
 Go back to the Model Objects subpanel and select the "**left_end**" region that you
 created earlier. Then click the "**Assign**" button to tag those faces as the "left_end"
