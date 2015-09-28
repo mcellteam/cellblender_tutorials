@@ -162,6 +162,10 @@ the Units and Description are optional and not needed for the simulation):
   | cl                     |       2e-5      |  Molar      | Concentration on left end            |
   +------------------------+-----------------+-------------+--------------------------------------+
 
+When you're done, your Parameters panel should look like this:
+
+.. image:: ./images/Ficks_Parameters_Panel.png
+
 
 Define a Molecule Species
 ---------------------------------------------
@@ -295,6 +299,34 @@ You can click and drag in the time line window to watch the molecules diffusing
 from the left side (source) to the right side over time.
 
 .. image:: ./images/Ficks_time_line_1.png
+
+If this is not working properly, now is the time to go back and correct any problems.
+
+
+Full Length Simulation
+---------------------------------------------
+
+If everything has gone as expected, try running for the entire length of 5000 iterations.
+
+Change the **Iterations** from to "**iters / 10**" back to "**iters**" and run again.
+
+
+.. image:: ./images/Ficks_run_iters.png
+
+  
+That may take some time to run, but when it's done you can click the "**Reload Visualization Data**"
+button and then press Blender's play button. 
+
+.. image:: ./images/Ficks_Reload_Viz_Data.png
+.. image:: ./images/Ficks_Blender_Play_Button.png
+
+
+You should see something like the
+following animation (although this one is sampled in non-linear time):
+
+.. image:: ./images/Ficks_animation.gif
+
+
 
 
 
