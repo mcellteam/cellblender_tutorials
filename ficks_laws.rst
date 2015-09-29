@@ -1,8 +1,8 @@
 .. _fick:
 
-*********************************************
++++++++++++++++++++++++++++++++++++++++++++++++
 Fick's 1st and 2nd Laws
-*********************************************
++++++++++++++++++++++++++++++++++++++++++++++++
 
 Our goal in this tutorial is to evaluate Fick’s 1st and 2nd Laws using 
 simulations of discrete diffusing particles. To do so, we design the 
@@ -33,17 +33,38 @@ The second part of the tutorial will involve building the "instrumentation"
 required to measure the concentration along the cylinder. This will be much
 more tedious.
 
+Before getting started, you might find it helpful to watch the following video.
+This video walks you through the entire process of building, instrumenting, and
+running the simulation. However, the video was made with an earlier version of
+CellBlender and is not completely accurate when used with the current CellBlender.
+However, it does provide a good overview of the entire process. Additionally most
+of the Blender geometry manipulation hasn't changed much, so you might be able to
+follow those sections directly.
 
 .. warning::
 
+   This video was made with older versions of both Blender and CellBlender.
+   Much of the mesh manipulation is the same but the interface may look different.
+   Additionally, as noted above, the cylinder is built along the "x" axis in the
+   current verion of this tutorial while it was built along the "y" axis in the video.
 
-   Note that the second portion of this tutorial is not completed yet.
+.. raw:: html
+
+    <video id="my_video_1" class="video-js vjs-default-skin" controls
+      preload="metadata" width="960" height="540" 
+      data-setup='{"example_option":true}'>
+      <source src="http://www.mcell.psc.edu/tutorials/videos/main/ficks_laws.ogg" type='video/ogg'/>
+    </video>
+
+.. _blend file: https://www.mcell.org/tutorials/downloads/ficks_law.blend
 
 
-.. _fick_create_mesh: 
 
-Create the Cylinder Geometry
----------------------------------------------
+
+
+*****************************************************
+Part 1: Building the Model and Running the Simulation
+*****************************************************
 
 Begin by starting Blender with CellBlender enabled.
 
@@ -52,7 +73,14 @@ key until all objects - Cube, lamp, camera - are highlighted (orange outline).
 Then hit the **x** key and click **Delete** to delete the default Cube, lamp, 
 camera, and anything else in your scene.
 
-Next, create a cylinder by hitting **Shift-a**, and selecting
+
+
+.. _fick_create_mesh: 
+
+Create the Cylinder Geometry
+---------------------------------------------
+
+Create a cylinder by hitting **Shift-a**, and selecting
 **Mesh>Cylinder**. Hit **s**, **Shift-z**, **0.2**, and **Enter** to confirm.
 Hit **r**, **y**, **90**, and **Enter** to rotate it 90 degrees around the
 y-axis (aligns cylinder along the x axis). This will be the main cylinder through
@@ -88,7 +116,7 @@ See :ref:`define_region` if you need help with this.
 .. image:: ./images/CellBlender_model_objects_panel_add_reg.png
 .. image:: ./images/CellBlender_model_objects_panel_regions_added.png
 
-Then, enter **Edit Mode** by hitting **Tab**.
+Then, enter **Edit Mode** by hitting **Tab** (with mouse cursor in 3D window).
 
 In order to select all vertices on both sides of an object (what we want),
 you should disable the "Limit selection to visible" button by clicking
@@ -108,8 +136,10 @@ dragging around it.
 .. image:: ./images/Ficks_Box_Selected_Left.png
 
 Go back to the Model Objects subpanel and select the "**left_end**" region that you
-created earlier. Then click the "**Assign**" button to tag those faces as the "left_end"
-of your Cylinder.
+created earlier. Then click the "**Assign**" button to tag those selected faces to the
+"left_end" surface region of your Cylinder.
+
+.. image:: ./images/Ficks_Assign_Button.png
 
 Hit **a** to deselect everything in the mesh. Then repeat the process for the
 right end of your cylinder (assign the faces on the right end to the "right_end"
@@ -306,7 +336,7 @@ If this is not working properly, now is the time to go back and correct any prob
 Full Length Simulation
 ---------------------------------------------
 
-If everything has gone as expected, try running for the entire length of 5000 iterations.
+If everything has gone as expected, try running for the entire time length of 5000 iterations.
 
 Change the **Iterations** from to "**iters / 10**" back to "**iters**" and run again.
 
@@ -327,113 +357,162 @@ following animation (although this one is sampled in non-linear time):
 .. image:: ./images/Ficks_animation.gif
 
 
+*****************************************************
+Part 2: Instrumentation and Measurements
+*****************************************************
 
+The model built and run in the previous section is complete, and we will not
+be modifying it in this section. We will, however, add some "instrumentation"
+which will help us make measurements so we can quantify the results obtained
+from that simulation.
 
+Our "instrumentation" will consist of a series of disks and very short cylinder
+volumes which divide the cylinder along its length to facilitate counting of the
+molecules by MCell. In this tutorial we will divide the cylinder into 40 segments.
+This can be done manually (segment by segment) or it can be automated. We will show
+some aspects of each approach.
 
-SECOND PORTION OF TUTORIAL (not finished yet)
----------------------------------------------
+To create the geometry, we will demonstrate Blender's built-in array capability.
 
-
-
-If you would rather skip the mesh creation part, you can simply download the
-`blend file`_ and advance to the :ref:`fick_annotate` section. Otherwise you
-should watch the video or follow along with the instructions after the video.
-
+To create the MCell model will use a text editor to duplicate MDL sections repeatedly.
+While this process is somewhat tedious, it does suggest the possibility of using
+a simple program for the repetition. These are all valid approaches that might be
+helpful in certain circumstances.
 
 .. warning::
 
-   This video was made with older versions of both Blender and CellBlender.
-   Much of the mesh manipulation is the same but the interface may look different.
-   Additionally, as noted above, the cylinder is built along the "x" axis in the
-   newer version.
+   Note that any MDL modified by hand cannot currently be imported back into
+   CellBlender. This might influence your decision on which approach to use.
 
-.. raw:: html
+Before getting started, let's hide the molecules that we've been simulating
+so they don't get in the way of our mesh building operations. In the upper
+right corner of the standard Blender screen layout you will find a panel known
+as the "Outliner" (shown below). The outliner can be used to show and explore
+all of the objects in the Blender scene (and more). For our purposes here, we
+just want to be able to show and hide the molecule that have been created by
+the simulation. These are all contained under the "molecules" object, so click
+the small plus sign next to the name "molecules" and that will display one line
+for each type of molecule ("species") that's been created in our simulation.
 
-    <video id="my_video_1" class="video-js vjs-default-skin" controls
-      preload="metadata" width="960" height="540" 
-      data-setup='{"example_option":true}'>
-      <source src="http://www.mcell.psc.edu/tutorials/videos/main/ficks_laws.ogg" type='video/ogg'/>
-    </video>
+.. image:: ./images/Ficks_outliner_panel.png
 
-.. _blend file: https://www.mcell.org/tutorials/downloads/ficks_law.blend
+In this case, we've only defined one molecule type that we've called "vm",
+so we only see the entry "mol_vm" in the list. If you click on the "eye" symbol
+on that line it will toggle the display of the molecules. Click it a few
+times to hide and show the molecules. You'll notice that you can do the same
+for the Cylinder (or any other object in the scene). For this next step, we
+want to show the Cylinder but hide the molecules. Be sure to leave the outliner
+in that state before proceding. The next step also assumes that your 3D cursor
+is at the origin. You can ensure this with "**Shift-S**" and then clicking on
+"**Cursor to Center**".
+
+.. note:: Blender uses the right mouse button for most selection, but this runs
+   counter to the common "left click" used by common software. In Blender, the
+   left click moves the 3D cursor - which is where new objects are placed. For
+   this reason, it's handy to remember that the 3D cursor can be reset back to
+   the origin with the "**Shift-S**" / "**Cursor to Center**" sequence.
 
 
+Building Sampling Cylinders
+---------------------------------------------
 
-We now need to create a series of shorter sampling cylinders inside the long
-one. To do so, hit **Shift-a** and once again select **Mesh>Cylinder**. We will
-make these sampling cylinders slightly smaller than the main cylinder to avoid
+We begin our "instrumentaion" by creating a series of short sampling cylinders
+inside the long one. To do so, hit **Shift-a** and once again select **Mesh>Cylinder**.
+We will make these sampling cylinders slightly smaller than the main cylinder to avoid
 coincident meshes: Hit **s**, **Shift-z**, **0.199**, and **Enter**. Hit **r**,
-**x**, **90**, and **Enter**. Next, hit **s**, **y**, **0.024875**, and
-**Enter**. Hit **g**, **y**, and **-0.975** to move it very close to the left
-end of the end of larger cylinder (they don't touch though). 
+**y**, **90**, and **Enter**. Next, hit **s**, **x**, **0.024875**, and
+**Enter**. Hit **g**, **x**, and **-0.975** followed by **Enter** to move it very
+close to the left end of the end of larger cylinder (they don't touch though).
 
-Rename this smaller cylinder from **Cylinder.001** to **C**. Be sure to
-triangulate this mesh in the same way we did with the larger cylinder.
+Triangulate this small cylinder by entering Edit mode with **Tab**, then pressing
+**Control-T**, then exiting Edit mode with **Tab**.
+
+Using the outliner, rename this smaller cylinder from **Cylinder.001** to **C**
+by double clicking on the **Cylinder.001** and typing **C** followed by the
+**Enter** key.
+
+Now, we will use Blender's (very useful) **Array** modifier to replicate this
+sampling cylinder 40 times. To do so, hit the **Object Modifiers** button (small
+wrench), and from the **Add Modifier** drop-down box, select **Array**. Change 
+**Count** to **40**. Deselect **Relative Offset** and select **Constant Offset**.
+Then change the third field under **Constant Offset** (Z axis of the cylinder)
+to **2.01005**. 
 
 .. image:: ./images/ficks_array.png
 
-Now, we will use Blender's (very useful) **Array** modifier to replicate this
-sampling cylinder 40 times. To do so, hit the **Object Modifiers** button, and
-from the **Add Modifier** drop-down box, select **Array**. Change **Count** to
-**40**. Deselect **Relative Offset** and select **Constant Offset**. Then
-change the third field under **Constant Offset** to **-2.01005**. 
+Now we need to make each cylinder a unique object. To do this, first hit the
+**Apply** button under the **Array** modifier. Then enter **Edit Mode** (with
+**Tab** key), hit **p**, and select **By loose parts** in the **Separate** menu.
+This will split each discontinuous mesh into a unique object.
 
 .. image:: ./images/ficks_loose_parts.png
 
-Now we need to make each cylinder a unique object. To do this, first hit the
-**Apply** button under the **Array** modifier. Then enter **Edit Mode**, hit
-**p**, and select **By loose parts** in the **Separate** menu. This will split
-each discontinuous mesh into a unique object.
+They will be named **C**, **C.001**, **C.002**, etc. The last cylinder in the
+sequence will be named **C**. Rename it to **C.040**. This will make things
+cleaner when we want to count molecules in MCell later. Hit **Tab** to enter
+**Object Mode** and hit **a** until nothing is selected (nothing outlined in
+orange).
 
 .. image:: ./images/ficks_c040.png
 
-They will be named **C**, **C.001**, **C.002**, etc. The last cylinder in the
-sequence should be named **C**. Rename it to **C.040**. This will make things
-cleaner when we want to count molecules in MCell later. Hit **Tab** to enter
-**Object Mode**.
-
-.. image:: ./images/ficks_fill_circle.png
-
 Finally, we will create a series of circular sampling planes that lie between
-each of these cylinders. Create a circle by hitting **Shift-a**, and selecting
-**Mesh>Circle**. In the **Tool Shelf** (hit **t** to toggle it), hit **Fill**
-under **Add Circle**. Hit **s**, **0.199**, and **Enter**. Hit **r**, **x**,
-**90**, and **Enter**. Hit **g**, **y**, and **-0.95** to move it very close to
-the right side of our smaller cylinder. Once again, be sure to triangulate this
-mesh.
+each of these cylinders. Toggle the wire frame visibility with the "**z**" key
+to see through the mesh. Create a circle by hitting **Shift-a**, and selecting
+**Mesh>Circle**. Open the **Tool Shelf** if needed (hit **t** to toggle it), and
+click the "**Tools**" tab. You may need to scroll down to find the "Add Circle" panel in
+the Tools tab. Change the "Fill Type" to "Triangle Fan". Hit **s**, **0.199**, and
+**Enter**. Hit **r**, **y**, **90**, and **Enter**. Hit **g**, **x**, and **-0.95**
+and **Enter** to move it very close to the right side of our smaller cylinder (which
+is on the left side of our larger cylinder).
+
+Triangulate this small circle by entering Edit mode with **Tab**, then pressing
+**Control-T**, then exiting Edit mode with **Tab**.
+
+.. image:: ./images/Ficks_fill_circle.png
+
+Next, we will replicate this plane by adding an **Array** modifier similar to
+what we did previously with the cylinders. Click the **Add Modifier** button and
+select **Array**. Set **Count** to **39**, disable **Relative Offset**, enable 
+**Constant Offset** and set the **Z** value of the **Constant Offset** to be 
+**0.251255**.
+
+.. image:: ./images/Ficks_disk_array_modifier.png
+
+
+Then click **Apply** to apply the modifier.
 
 .. image:: ./images/ficks_circles.png
 
-Next, we will replicate this plane by using an **Array** modifier similar to
-what we did previously with the cylinders. Set **Count** to **39** and
-**Absolute Offset** to **-0.251255**. Also separate the object **By loose
-parts** in the same way you did with the small cylinder. 
+As before, separate the disks by entering edit mode (**Tab**) and use the "**p**"
+key to separate the object **By loose parts** in the same way you did with the small
+cylinder.
 
-.. image:: ./images/ficks_circle039.png
+.. image:: ./images/Ficks_after_sep_circles.png
 
-Rename the final plane from **Circle** to **Circle.039**.
+Exit edit mode with the **Tab** key, and then rename the final plane from **Circle** to **Circle.039**.
+
+We need every objects' origin to be centered at the origin. Select every mesh
+object by pressing the **a** key until everything is highlighted orange. Then hit 
+**Ctrl-a** and select **Location**. Then hit **Ctrl-a** again and select **Rotation**.
 
 .. image:: ./images/ficks_ctrl_a.png
 
-We need every objects' origin to be centered at the origin. With every mesh
-object still selected, hit **Ctrl-a** and select **Location**. Then hit
-**Ctrl-a** again and select **Rotation**.
+At this point we have a total of 80 non-molecule objects in our model:
 
-.. _fick_add_params: 
+* 1 long cylinder named **Cylinder**
+* 40 short cylinders named **C.001** to **C.040**
+* 39 circular disks named **Circle.001** to **Circle.039**
 
-Adding the Other Model Parameters
----------------------------------
+You should be in "Object" mode, and you should be able to click on each object's
+name in the Outliner panel and see the object be selected in the 3D view. When
+you're done verifying this, deselect everything by pressing the **a** key until
+everything is unselected (black).
 
-First, add a single volume molecule called **vm** via CellBlender's **Define
-Molecules** panel and set it to be a **Volume Molecule**. Then, in the **Define
-Surface Classes** panel, check **Include Surface Classes** and **Include Modify
-Surface Regions** since we will use surface classes and modify surface regions;
-in the **Reaction Output Settings** panel check **Include Reaction Output** and
-in **Visualization Output Settings** check **Include Viz Output**. Next, we
-need to tell CellBlender to export our model geometry. To do so hit the **+**
-sign in the **Model Objects** panel, making sure that everything except the
-**Camera** and **Lamp** is selected.
- 
+
++++++++++++++++++++++++++++++++++++++++++++++++
+More work to be done ...
++++++++++++++++++++++++++++++++++++++++++++++++
+
 .. _fick_export: 
 
 Exporting the Project
