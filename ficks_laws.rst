@@ -315,7 +315,7 @@ Change the **Time Step** to "**dt**" (defined in the parameters panel earlier).
 
 This is a good time to save with "**File / Save**" in the top menu bar.
 
-Click the **Run** button to start the simulation.
+Click the **Export & Run** button to start the simulation.
 
 The simulation should run quickly (only 500 iterations), and you should see a green
 check mark beside the completed run (you may have to hover your cursor over it to
@@ -325,12 +325,33 @@ get it to update):
 
   
 Next click the "**Reload Visualization Data**" button to load all of the molecules.
+
+.. image:: ./images/Ficks_Reload_Viz_Button.png
+
+
 You can click and drag in the time line window to watch the molecules diffusing
 from the left side (source) to the right side over time.
 
 .. image:: ./images/Ficks_time_line_1.png
 
 If this is not working properly, now is the time to go back and correct any problems.
+
+
+Specify Plotting Data
+---------------------------------------------
+
+Now let's define some data for MCell to collect from the simulation for us to plot.
+
+Click on the "**Plot Output Settings**" button to begin specifying what to collect.
+You should see an initially empty panel with the title of "Reaction Data Output".
+Click the small plus sign one time to add the first output specification. You may
+see a "Name error" warning letting you know that you haven't selected a molecule
+or reaction to count yet. Click on the "Molecule" selector and select the "**vm**"
+molecule that we have in this simulation. That should clear the error and show a
+green check mark next to the specification of "Count vm in World". That's exactly
+what we want. Your Plot Output Settings panel should look like this:
+
+.. image:: ./images/Ficks_First_Plot_Settings.png
 
 
 Full Length Simulation
@@ -357,6 +378,57 @@ following animation (although this one is sampled in non-linear time):
 .. image:: ./images/Ficks_animation.gif
 
 
+Plotting the Results
+---------------------------------------------
+
+CellBlender can work with a number of different plotting packages and these are
+automatically detected every time CellBlender is restarted. These packages include
+xmGrace and Python's MatPlotLib. The system requirements for each plotting package
+are also detected when CellBlender is restarted, and CellBlender will only display
+buttons for the packages that are supported by the software on your system. For that
+reason, you may have different buttons than the ones shown in the following pictures.
+For this tutorial, you may use whichever plotting packages are available, and you're
+encouraged to try them all to explore the different advantages and limitations of
+each.
+
+Again click on the "**Plot Output Settings**" button to see the different plotting
+packages available on your system.
+
+.. image:: ./images/Ficks_Plotting_Buttons.png
+
+The following pictures show the output produced by each of the buttons shown above.
+
+**Simple Plotter Output**
+
+.. image:: ./images/Ficks_Plot_1_Simple.png
+
+**MatPlotLib Plotter Output**
+
+.. image:: ./images/Ficks_Plot_1_MPL.png
+
+**XmGrace Plotter Output**
+
+.. image:: ./images/Ficks_Plot_1_xmgrace.png
+
+**Java Plotter Output**
+
+.. image:: ./images/Ficks_Plot_1_Java.png
+
+.. note::
+
+  Since plotting requirements vary (along with individual tastes), the CellBlender
+  plotting system may be extended fairly easily to work with many other plotting
+  packages. This is done by adding your own "interface" files to the CellBlender
+  addon folder to communicate with your favorite plotting software. The "Simple"
+  plotter, for example, only contains about 100 lines of Python code and is a good
+  starting template for anyone wishing to write code for their own favorite software.
+
+Regardless of which plotter you use, you'll notice that the total number of **vm** 
+molecules starts at zero and grows rapidly during the early part of the simulation. 
+But as time goes on, the total count of **vm** molecules appears to stabilize at an 
+equilibrium. This might be verified and quantified with additional runs and averaging 
+of the data over many runs and over longer periods of time.
+
 *****************************************************
 Part 2: Instrumentation and Measurements
 *****************************************************
@@ -367,29 +439,42 @@ which will help us make measurements so we can quantify the results obtained
 from that simulation.
 
 Our "instrumentation" will consist of a series of disks and very short cylinder
-volumes which divide the cylinder along its length to facilitate counting of the
-molecules by MCell. In this tutorial we will divide the cylinder into 40 segments.
-This can be done manually (segment by segment) or it can be automated. We will show
-some aspects of each approach.
+volumes which divide the test cylinder along its length to facilitate counting of
+the molecules by MCell. In this tutorial we will divide the cylinder into 40 segments.
+That will require 40 small cylinders and 39 small circular disks between those 40
+cylinders. This can be done manually (segment by segment) or it can be automated.
+We will show some aspects of each approach.
 
-To create the geometry, we will demonstrate Blender's built-in array capability.
+ - To create the raw geometry, we will demonstrate Blender's built-in array capability.
 
-To create the MCell model will use a text editor to duplicate MDL sections repeatedly.
-While this process is somewhat tedious, it does suggest the possibility of using
-a simple program for the repetition. These are all valid approaches that might be
-helpful in certain circumstances.
+ - To add the MCell features we will generate some of it within CellBlender and then
+   show how to use the CellBlender-generated MDL as a template for automating the
+   process through a text editor or any number of programming languages.
+
+As with plotting, it's often a matter of preference as to which approach is best.
+Clearly for very small models, it's easy to do everything manually within CellBlender.
+Larger models, on the other hand, benefit much more from automation of any kind.
+The model we're using here is somewhere in between. It's managable to do it all
+by hand, but it can also benefit from automation if you have the skills to do so.
 
 .. warning::
 
    Note that any MDL modified by hand cannot currently be imported back into
    CellBlender. This might influence your decision on which approach to use.
+   Be sure to back up any MDL that you edit by hand since CellBlender will
+   overwrite those files when exporting for a new run.
+
+
+
+Preparation
+---------------------------------------------
 
 Before getting started, let's hide the molecules that we've been simulating
 so they don't get in the way of our mesh building operations. In the upper
 right corner of the standard Blender screen layout you will find a panel known
 as the "Outliner" (shown below). The outliner can be used to show and explore
 all of the objects in the Blender scene (and more). For our purposes here, we
-just want to be able to show and hide the molecule that have been created by
+just want to be able to show and hide the molecules that have been created by
 the simulation. These are all contained under the "molecules" object, so click
 the small plus sign next to the name "molecules" and that will display one line
 for each type of molecule ("species") that's been created in our simulation.
@@ -413,16 +498,40 @@ is at the origin. You can ensure this with "**Shift-S**" and then clicking on
    the origin with the "**Shift-S**" / "**Cursor to Center**" sequence.
 
 
+Strategy and Blender's Layers
+---------------------------------------------
+
+Because we're dealing with 80 objects, we don't want to have to do a lot of
+individual selecting. That's both tedious and error prone. It's even worse
+in this case because many of the objects will be occupying the same space.
+So we will use Blender's concept of "Layers" to isolate each group of objects
+as we create them. So far, our main Cylinder and all of our molecules are
+(by default) on Layer 1. We'll leave them there and we'll create the small
+measuring cylinders on Layer 2 and the small disks on Layer 3. For this to
+work, be sure that you select the proper layer before each of these steps.
+
+
 Building Sampling Cylinders
 ---------------------------------------------
 
-We begin our "instrumentaion" by creating a series of short sampling cylinders
-inside the long one. To do so, hit **Shift-a** and once again select **Mesh>Cylinder**.
-We will make these sampling cylinders slightly smaller than the main cylinder to avoid
-coincident meshes: Hit **s**, **Shift-z**, **0.199**, and **Enter**. Hit **r**,
-**y**, **90**, and **Enter**. Next, hit **s**, **x**, **0.024875**, and
-**Enter**. Hit **g**, **x**, and **-0.975** followed by **Enter** to move it very
-close to the left end of the end of larger cylinder (they don't touch though).
+We begin our "instrumentation" by creating a series of short sampling cylinders
+inside the long one ... but on **Layer 2**. Switch to Layer 2 by clicking the
+second small box in the layer panel as shown here:
+
+.. image:: ./images/Layer_2_Selected.png
+
+When you click that box, everything will "disappear" because you're now looking
+at a new and empty layer. Your cylinder and molecules are still on Layer 1, but
+now they won't interfere with building the smaller sampling cylinders and disks.
+
+
+To begin building the small sampling cylinders, hit **Shift-a** and once again
+select **Mesh>Cylinder**. We will make these sampling cylinders slightly smaller 
+than the main cylinder to avoid coincident meshes: Hit **s**, **Shift-z**, **0.199**, 
+and **Enter**. Hit **r**, **y**, **90**, and **Enter**. Next, hit **s**, **x**, 
+**0.024875**, and **Enter**. Hit **g**, **x**, and **-0.975** followed by **Enter** 
+to move it very close to the left end of the end of larger cylinder back on Layer 1
+(they don't touch though).
 
 Triangulate this small cylinder by entering Edit mode with **Tab**, then pressing
 **Control-T**, then exiting Edit mode with **Tab**.
@@ -455,12 +564,22 @@ orange).
 
 .. image:: ./images/ficks_c040.png
 
+
+Building Sampling Disks
+---------------------------------------------
+
 Finally, we will create a series of circular sampling planes that lie between
-each of these cylinders. Toggle the wire frame visibility with the "**z**" key
-to see through the mesh. Create a circle by hitting **Shift-a**, and selecting
+each of these cylinders. We will put them on **Layer 3**, so click on the third
+small "layer" box:
+
+.. image:: ./images/Layer_3_Selected.png
+
+As before, you will see a blank screen because you're looking at a new layer.
+
+Create a circle by hitting **Shift-a**, and selecting
 **Mesh>Circle**. Open the **Tool Shelf** if needed (hit **t** to toggle it), and
-click the "**Tools**" tab. You may need to scroll down to find the "Add Circle" panel in
-the Tools tab. Change the "Fill Type" to "Triangle Fan". Hit **s**, **0.199**, and
+look for the "Add Circle" panel. You may need to scroll down to find it below the
+CellBlender panels. Change the "Fill Type" to "Triangle Fan". Hit **s**, **0.199**, and
 **Enter**. Hit **r**, **y**, **90**, and **Enter**. Hit **g**, **x**, and **-0.95**
 and **Enter** to move it very close to the right side of our smaller cylinder (which
 is on the left side of our larger cylinder).
@@ -478,14 +597,13 @@ select **Array**. Set **Count** to **39**, disable **Relative Offset**, enable
 
 .. image:: ./images/Ficks_disk_array_modifier.png
 
-
 Then click **Apply** to apply the modifier.
 
 .. image:: ./images/ficks_circles.png
 
 As before, separate the disks by entering edit mode (**Tab**) and use the "**p**"
 key to separate the object **By loose parts** in the same way you did with the small
-cylinder.
+cylinders.
 
 .. image:: ./images/Ficks_after_sep_circles.png
 
@@ -509,6 +627,62 @@ you're done verifying this, deselect everything by pressing the **a** key until
 everything is unselected (black).
 
 
+Add Cylinders and Circles as Model Objects
+---------------------------------------------
+
+In order for MCell to use the small cylinders and circles they need to be added
+to our CellBlender model. A CellBlender scene can contain all kinds of objects
+(cameras, lights, text, backplanes, etc). Many of these are helpful in creating
+a visual image or movie, but they're not really part of the simulation itself.
+We let CellBlender know which objects are actually part of the simulation by
+selecting them and adding them to the model objects list. In our case, we've
+made things easy by deleting the camera, lights and everything else. So everything
+in our simulation is intended to be part of our model objects list, and we can
+just add it all.
+
+Click on the "Model Objects" button to show the Model Objects panel. Then use
+the "**a**" key to select "all". Toggle it until everything turns orange. Then
+click the small "**+**" button to the right of the model objects list to add all
+of those objects to our CellBlender model. You should see a long list of objects
+named C.xxx and Circle.xxx in the model objects window.
+
+We could run the simulation now, but we'd find a problem. We'd find that there
+were very few molecules this time because all of our cylinders and disks are
+acting as "plugs" along the longer cylinder. With nowhere to go, the molecule
+density near the clamp will be very high since the molecules can't diffuse away.
+
+Making Sampling Cylinders Transparent to vm Molecules
+-------------------------------------------------------
+
+In order for molecules to "flow" through all of these smaller cylinders and
+circles, we will need to make them transparent to any molecules that we want to
+flow through them. In our case, the only molecule we have is "vm" so we'll need
+to create a transparent surface class to apply to all of those objects.
+
+Click on the "Surface Classes" button to show the Surface Classes panel. You
+should see the two classes ("clamp" and "absorb") that we defined earlier.
+Click the "**+**" button beside those two classes to add a third and name it
+"transp". Then click the "**+**" beside the "transp Properties" box one time
+to specify which molecule can pass through the "transparent" surface. Select
+the "**vm**" molecule for the "Molecule Name" field, set the Orientation to
+"**Ignore**", and set the "Type" to "**Transparent**".
+
+The previous step has created a new "class" or "type" of surface which is
+transparent to vm molecules in both directions. But we haven't assigned that
+class to any of our surfaces yet. In order for our molecules to flow through
+all of those 40 cylinders and 39 disks, we need to assign our new "transp"
+class to each one of them. We will start by assigning the new "transp" class
+to the first 3 small cylinders and the first 3 small disks. After doing that
+for 6 of our 79 objects, you can decide if you'd like to continue doing that
+one by one for the remaining 73 objects or if you'd prefer to use a more
+automated method. There are tradeoffs in both cases.
+
+
+'d rathWe will start by assigning it to the firsta
+
+In order for molecules to "flow" through all of these smaller cylinders
+
+
 +++++++++++++++++++++++++++++++++++++++++++++++
 More work to be done ...
 +++++++++++++++++++++++++++++++++++++++++++++++
@@ -516,7 +690,7 @@ More work to be done ...
 .. _fick_export: 
 
 Exporting the Project
----------------------
+-----------------------
 
 We will now export these mdls. Under **CellBlender Project Settings**, set the
 **Project Base Name** to **ficks_law**. Then hit **Export CellBlender
