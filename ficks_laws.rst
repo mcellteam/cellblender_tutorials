@@ -359,7 +359,8 @@ Full Length Simulation
 
 If everything has gone as expected, try running for the entire time length of 5000 iterations.
 
-Change the **Iterations** from to "**iters / 10**" back to "**iters**" and run again.
+Open the "**Run Simulation**" panel again and change the **Iterations** from to "**iters / 10**"
+back to "**iters**" and run again.
 
 
 .. image:: ./images/Ficks_run_iters.png
@@ -392,7 +393,8 @@ encouraged to try them all to explore the different advantages and limitations o
 each.
 
 Again click on the "**Plot Output Settings**" button to see the different plotting
-packages available on your system.
+packages available on your system. Click one (or more) to see the time history of
+the number of **vm** molecules in your simulation.
 
 .. image:: ./images/Ficks_Plotting_Buttons.png
 
@@ -510,6 +512,11 @@ as we create them. So far, our main Cylinder and all of our molecules are
 measuring cylinders on Layer 2 and the small disks on Layer 3. For this to
 work, be sure that you select the proper layer before each of these steps.
 
+.. note:: There are other mechanisms for dealing with large numbers of objects.
+   For example, the CellBlender addon contains a built-in Object Selector which
+   allows selection by regular expressions. This particular tutorial uses Blender's
+   "Layers" feature, but there are other tools that could have been used as well.
+
 
 Building Sampling Cylinders
 ---------------------------------------------
@@ -523,9 +530,13 @@ second small box in the layer panel as shown here:
 When you click that box, everything will "disappear" because you're now looking
 at a new and empty layer. Your cylinder and molecules are still on Layer 1, but
 now they won't interfere with building the smaller sampling cylinders and disks.
+You can switch back and forth between layers by just clicking the little buttons
+shown above (try it). You can also view multiple layers simultaneously by 
+shift-clicking them. For now we just want to work on Layer 2, so be sure that's
+the one selected (showing an empty window).
 
 
-To begin building the small sampling cylinders, hit **Shift-a** and once again
+To begin building the small sampling cylinders, hit **Shift-a** (Add) and once again
 select **Mesh>Cylinder**. We will make these sampling cylinders slightly smaller 
 than the main cylinder to avoid coincident meshes: Hit **s**, **Shift-z**, **0.199**, 
 and **Enter**. Hit **r**, **y**, **90**, and **Enter**. Next, hit **s**, **x**, 
@@ -556,13 +567,18 @@ This will split each discontinuous mesh into a unique object.
 
 .. image:: ./images/ficks_loose_parts.png
 
-They will be named **C**, **C.001**, **C.002**, etc. The last cylinder in the
-sequence will be named **C**. Rename it to **C.040**. This will make things
+They will be named **C**, **C.001**, **C.002**, etc. The first cylinder in the
+list will be named **C**. Rename it to **C.040**. This will make things
 cleaner when we want to count molecules in MCell later. Hit **Tab** to enter
 **Object Mode** and hit **a** until nothing is selected (nothing outlined in
 orange).
 
 .. image:: ./images/ficks_c040.png
+
+At this point, you can switch between the two layers (1 and 2) to see the original
+cylinder (wire outline with molecules) and the new measuring cylinders (solid).
+They should appear to be in the same exact place. If not, then retrace the steps
+to fix it.
 
 
 Building Sampling Disks
@@ -575,14 +591,17 @@ small "layer" box:
 .. image:: ./images/Layer_3_Selected.png
 
 As before, you will see a blank screen because you're looking at a new layer.
+You may notice that the first two layer boxes have a small 'dot' in them. That's
+a quick way of letting you know that there are objects in those layers. All the
+other layers should be solid (without that dot).
 
-Create a circle by hitting **Shift-a**, and selecting
+With layer 3 selected, create a circle by hitting **Shift-a**, and selecting
 **Mesh>Circle**. Open the **Tool Shelf** if needed (hit **t** to toggle it), and
 look for the "Add Circle" panel. You may need to scroll down to find it below the
 CellBlender panels. Change the "Fill Type" to "Triangle Fan". Hit **s**, **0.199**, and
 **Enter**. Hit **r**, **y**, **90**, and **Enter**. Hit **g**, **x**, and **-0.95**
-and **Enter** to move it very close to the right side of our smaller cylinder (which
-is on the left side of our larger cylinder).
+and **Enter** to move it to the left of our window but very close to the right side
+of our smaller cylinder (which is on the left side of our larger cylinder).
 
 Triangulate this small circle by entering Edit mode with **Tab**, then pressing
 **Control-T**, then exiting Edit mode with **Tab**.
@@ -609,7 +628,10 @@ cylinders.
 
 Exit edit mode with the **Tab** key, and then rename the final plane from **Circle** to **Circle.039**.
 
-We need every objects' origin to be centered at the origin. Select every mesh
+We need every objects' origin to be centered at the global origin. Even though our objects
+are on 3  different layers, we can easily view them all by shift clicking on the
+additional layers until they are all dark (selected). Do that now so that the first 3
+layer boxes are selected (dark gray). Then select every mesh
 object by pressing the **a** key until everything is highlighted orange. Then hit 
 **Ctrl-a** and select **Location**. Then hit **Ctrl-a** again and select **Rotation**.
 
