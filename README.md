@@ -28,9 +28,9 @@ Then install virtualenv:
 
     sudo pip3 install virtualenv
 
-Create a new virtual environment in the cloned mcell_qrg directory:
+Create a new virtual environment in the cloned cellblender_tutorials directory:
 
-    cd mcell_qrg
+    cd cellblender_tutorials
     virutalenv .
 
 Activate it:
