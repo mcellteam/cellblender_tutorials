@@ -54,6 +54,16 @@ latexpdf`` will fail.
 
 Open ``_build/html/index.html`` from the browser of your choice.
 
+## Other Notes on Virtualenv
+
+The virtual environment can be disabled like this:
+
+    deactivate
+
+It can later be reactivated by using the activate command as was done earlier:
+
+    source bin/activate
+
 ## Learn More about Sphinx
 
 Here are some instructions for new developers who want to contribute
