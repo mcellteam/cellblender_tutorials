@@ -598,7 +598,7 @@ other layers should be solid (without that dot).
 With layer 3 selected, create a circle by hitting **Shift-a**, and selecting
 **Mesh>Circle**. Open the **Tool Shelf** if needed (hit **t** to toggle it), and
 look for the "Add Circle" panel. You may need to scroll down to find it below the
-CellBlender panels. Change the "Fill Type" to "Triangle Fan". Hit **s**, **0.199**, and
+CellBlender panels. Change the "**Fill Type**" to "**Triangle Fan**". Hit **s**, **0.199**, and
 **Enter**. Hit **r**, **y**, **90**, and **Enter**. Hit **g**, **x**, and **-0.95**
 and **Enter** to move it to the left of our window but very close to the right side
 of our smaller cylinder (which is on the left side of our larger cylinder).
