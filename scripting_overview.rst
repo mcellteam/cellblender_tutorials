@@ -130,28 +130,33 @@ of the CellBlender panels as shown in the following diagram:
 
 .. image:: ./images/CellBlender_Data_Model_Scripting.png
 
-This example shows a simple script that adds a molecule type named "vm"
+This example shows an actual script that adds a molecule type named "vm"
 according to this program:
 
 ::
 
+    import cellblender as cb
+
+    dm = cb.get_data_model()
+
     mcell = dm['mcell']
-    mols = mcell['molecules']
+    mols = mcell['define_molecules']
     mlist = mols['molecule_list']
     new_mol = {
       'mol_name':"vm",
       'mol_type':"3D",
       'diffusion_constant':"1e-8" }
-    new_mol['display'] = {
-      'color':[0.0,1.0,0.0],
-      'emit':1.0,
-      'glyph':"Cube",
-      'scale':1.5 }
+      'display':{
+        'color':[0.0,1.0,0.0],
+        'emit':1.0,
+        'glyph':"Cube",
+        'scale':1.5 }
     mlist.append ( new_mol )
 
+    cb.replace_data_model ( dm )
 
 While Export Scripts are run every time the simulation is exported, Data
-Model Scripts are only run when the "Execute Script on Current Data Model"
+Model Scripts are only run when the "Run Script"
 button is pressed. This makes sense because the script is actually changing
 the data model, and those changes would be cumulative if run again and again
 every time the model was exported. For example, if the previous script were
@@ -170,7 +175,8 @@ It could analyze the geometry and add surface regions to portions that
 meet a desired metric. It could even read data from a file to generate
 new geometry or add geometrical objects to an existing model.
 
-
+Follow the :ref:`data_model_scripting` tutorial for more information
+on using Data Model Scripting.
 
 
 
