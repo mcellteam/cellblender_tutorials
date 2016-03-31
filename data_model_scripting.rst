@@ -15,7 +15,7 @@ Data Model Scripting
 This tutorial guides you through building a simple script to create
 a grid of molecules with different diffusion constants and released at
 different locations in the x-y plane. This tutorial assumes that you are
-already familiar with building a model using MCell, and that you have
+already familiar with building a model using CellBlender, and that you have
 some (minimal) Python programming experience. It also assumes some
 familiarity with using Blender (resizing window panels, creating new
 window panels, and using the Blender text editor).
