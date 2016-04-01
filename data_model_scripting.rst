@@ -999,16 +999,6 @@ Fick's Law Construction Script
     dm['mcell']['initialization']['time_step'] = "dt"
 
 
-    # Save the data model as a Python "pickle" file if needed as a log or to interface to other software
-
-    """
-    import pickle
-
-    f = open ( "ficks_model.txt", 'w' )
-    f.write ( pickle.dumps(dm,protocol=0).decode('latin1') )
-    f.close()
-    """
-
     # Return to the previous directory and replace the existing data model with this modified version
 
     cb.cd_to_location ( old_location )
