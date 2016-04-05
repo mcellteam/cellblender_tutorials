@@ -603,6 +603,7 @@ Fick's Law Construction Script
 
 ::
 
+
     # Import cellblender to get the data model and project directory functions
 
     import cellblender as cb
@@ -828,7 +829,7 @@ Fick's Law Construction Script
                   'stddev' : "0",
                   'data_model_version' : "DM_2015_11_11_1717"
                }
-                  
+
     dm['mcell']['release_sites'] = { 'release_site_list':[ rel_site ], 'data_model_version':"DM_2014_10_24_1638" }
 
     # Define surface classes
@@ -860,7 +861,7 @@ Fick's Law Construction Script
                  }
 
       dm['mcell']['define_surface_classes']['surface_class_list'].append ( sc_entry )
-      
+
 
     # Assign the surface classes with the "modify_surface_regions" key
 
@@ -894,11 +895,11 @@ Fick's Law Construction Script
 
     dm['mcell']['modify_surface_regions']['modify_surface_regions_list'].append (
       {
-        'name':"transp rel", 
-        'object_name':"rel", 
-        'region_name':"", 
-        'surf_class_name':"transp", 
-        'region_selection':"ALL", 
+        'name':"transp rel",
+        'object_name':"rel",
+        'region_name':"",
+        'surf_class_name':"transp",
+        'region_selection':"ALL",
         'data_model_version':"DM_2015_11_06_1732"
       } )
 
@@ -908,11 +909,11 @@ Fick's Law Construction Script
           name = 'vol_%03d' % i
           dm['mcell']['modify_surface_regions']['modify_surface_regions_list'].append (
             {
-              'name':"transp "+name, 
-              'object_name':name, 
-              'region_name':"", 
-              'surf_class_name':"transp", 
-              'region_selection':"ALL", 
+              'name':"transp "+name,
+              'object_name':name,
+              'region_name':"",
+              'surf_class_name':"transp",
+              'region_selection':"ALL",
               'data_model_version':"DM_2015_11_06_1732"
             } )
 
@@ -920,11 +921,11 @@ Fick's Law Construction Script
           name = 'plane_%03d' % i
           dm['mcell']['modify_surface_regions']['modify_surface_regions_list'].append (
             {
-              'name':"transp "+name, 
-              'object_name':name, 
-              'region_name':"", 
-              'surf_class_name':"transp", 
-              'region_selection':"ALL", 
+              'name':"transp "+name,
+              'object_name':name,
+              'region_name':"",
+              'surf_class_name':"transp",
+              'region_selection':"ALL",
               'data_model_version':"DM_2015_11_06_1732"
             } )
 
@@ -932,13 +933,13 @@ Fick's Law Construction Script
     # Define the counting output
 
     dm['mcell']['reaction_data_output'] = {
-        'data_model_version':"DM_2014_10_24_1638", 
-        'reaction_output_list':[], 
-        'rxn_step':"10*dt", 
-        'combine_seeds':False, 
-        'mol_colors':True, 
-        'plot_layout':" plot ", 
-        'plot_legend':"x", 
+        'data_model_version':"DM_2014_10_24_1638",
+        'reaction_output_list':[],
+        'rxn_step':"10*dt",
+        'combine_seeds':False,
+        'mol_colors':True,
+        'plot_layout':" plot ",
+        'plot_legend':"x",
         'mol_colors':False
         }
 
@@ -964,15 +965,15 @@ Fick's Law Construction Script
             if plot_segment_counts != 0:
               dm['mcell']['reaction_data_output']['reaction_output_list'].append (
                 {
-                  'data_model_version':"DM_2015_10_07_1500", 
-                  'name':"vm in "+name,  
-                  'rxn_or_mol':"Molecule", 
-                  'mdl_string':"", 
-                  'mdl_file_prefix':"", 
-                  'count_location':"Object", 
-                  'object_name':name, 
-                  'region_name':"", 
-                  'reaction_name':"", 
+                  'data_model_version':"DM_2015_10_07_1500",
+                  'name':"vm in "+name,
+                  'rxn_or_mol':"Molecule",
+                  'mdl_string':"",
+                  'mdl_file_prefix':"",
+                  'count_location':"Object",
+                  'object_name':name,
+                  'region_name':"",
+                  'reaction_name':"",
                   'molecule_name':"vm"
                 } )
         if (plot_front_crossings != 0) and (i > 0):
@@ -980,15 +981,15 @@ Fick's Law Construction Script
           mdl_string = "COUNT[vm,Scene."+name+",FRONT_CROSSINGS]"
           dm['mcell']['reaction_data_output']['reaction_output_list'].append (
             {
-              'data_model_version':"DM_2015_10_07_1500", 
-              'name':"MDL: "+mdl_string,  
-              'rxn_or_mol':"MDLString", 
-              'mdl_file_prefix':name+"_front_cross", 
-              'mdl_string':mdl_string, 
-              'count_location':"World", 
-              'object_name':"", 
-              'region_name':"", 
-              'reaction_name':"", 
+              'data_model_version':"DM_2015_10_07_1500",
+              'name':"MDL: "+mdl_string,
+              'rxn_or_mol':"MDLString",
+              'mdl_file_prefix':name+"_front_cross",
+              'mdl_string':mdl_string,
+              'count_location':"World",
+              'object_name':"",
+              'region_name':"",
+              'reaction_name':"",
               'molecule_name':""
             } )
 
@@ -1065,7 +1066,7 @@ Fick's Law Plotting Script
     start_seed = 1
     end_seed = 50
     start_vol = 0
-    end_vol = 39
+    end_vol = n - 1
     num_vols = 1 + end_vol - start_vol
 
     # Note: Neither 'iterations' nor 'time_step' can use CellBlender parameters!!
@@ -1126,7 +1127,7 @@ Fick's Law Plotting Script
               y = data[1::2]
               count = count + y[plot_iter]
           averaged_count = count/(1+end_seed-start_seed)
-          conc = averaged_count / (ly*lz*(lx*tol/n))         # This should be molecules per cubic micron
+          conc = averaged_count / ((lx*tol/n))         # This should be molecules per micron (length)
 
           f.write ( str(vx+(lx/(2.0*n))) + "  " + str(conc) + "\n" )
       f.close()
@@ -1147,7 +1148,7 @@ Fick's Law Plotting Script
           sx0 = (1+end_vol-start_vol)/2
           sx = (vol - sx0)
           x = sx * lx / n
-          N = nrel * math.exp(-(x*x/(4*dc*1e8*t))) / (area * 2 * math.sqrt(math.pi*dc*1e8*t))
+          N = nrel * math.exp(-(x*x/(4*dc*1e8*t))) / (2 * math.sqrt(math.pi*dc*1e8*t))
           f.write ( str(x) + "  " + str(N) + "\n" )
       f.close()
 
