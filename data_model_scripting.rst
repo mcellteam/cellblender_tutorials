@@ -588,8 +588,8 @@ the flux. Molecules are released at the center of the box at t=0 and diffuse dur
 
 .. image:: ./images/scripting/ficks/ficks_scripted.gif
 
-The following plot series (animation) compares the average of 50 MCell runs (Start Seed=1, End Seed=50)
-to a plot of the expected theoretical result.
+The following plot series (animation) compares the average of 50 MCell runs (Start Seed=1, End Seed=50,
+10,000 molecules released) to a plot of the expected theoretical result.
 
 .. image:: ./images/scripting/ficks/plot_ideal_mcell_both_crop.gif
 
