@@ -248,7 +248,7 @@ For our purposes in this tutorial, we want to create a script that will
 generate a grid of molecules with different diffusion constants in the
 x-y plane. For simplicity, we'll set the diffusion constant proportional
 to the sum of the x and y coordinates. We'll name each molecule according
-by its x and y locations. Assuming an 8x8 grid the outline of our code
+to its x and y locations. Assuming an 8x8 grid the outline of our code
 would look like this:
 
 ::
@@ -489,6 +489,7 @@ Now we can go back to our script and change the scale to 10:
 
 .. image:: ./images/scripting/data_model_script_scale_to_10.png
 
+Clear the Project, then re-run the script (no need to re-reun the simulation). 
 Refresh the molecules and it should look something like this:
 
 .. image:: ./images/scripting/data_model_grid_large_gray_mols.png
@@ -587,8 +588,8 @@ the flux. Molecules are released at the center of the box at t=0 and diffuse dur
 
 .. image:: ./images/scripting/ficks/ficks_scripted.gif
 
-The following plot series (animation) compares the average of 50 MCell runs to a plot of the
-expected theoretical result.
+The following plot series (animation) compares the average of 50 MCell runs (Start Seed=1, End Seed=50)
+to a plot of the expected theoretical result.
 
 .. image:: ./images/scripting/ficks/plot_ideal_mcell_both_crop.gif
 
@@ -1076,8 +1077,6 @@ Fick's Law Plotting Script
 
     print ( "files: " + str(react_files_seeds) )
 
-    area = ly * lz
-
     parent_dir = os.getcwd().split(os.sep)[-1]
 
     # Remove all plots from the data model so they're not cumulative when this script is re-run
@@ -1100,24 +1099,25 @@ Fick's Law Plotting Script
       reaction_out['data_file_name'] = blender_relative_name
       reaction_out['name'] = "FILE:" + blender_relative_name
       return reaction_out
-       
+
+
+    area = ly * lz
 
     # Generate the MCell plots
 
     for plot_iter in plot_iters:
       print ( "Generating concentration curve for " + str(plot_iter) )
-      
+
       fname = "concentration_%d.txt" % plot_iter
       f = open ( fname, "w" )
       dm['mcell']['reaction_data_output']['reaction_output_list'].append ( make_file_plot(fname) )
 
       points = []
       for vol in range(start_vol,1+end_vol):
-          
+
           count = 0.0
           sx0 = (1+end_vol-start_vol)/2
           sx = (vol - sx0)
-          # vx = sx * 1
           vx = sx * lx / n
           for seed in range(start_seed,1+end_seed):
               file_name = react_files_dir + os.sep + ("seed_%05d" % seed) + os.sep + ("vm.vol_%03d.dat" % vol)
@@ -1126,12 +1126,9 @@ Fick's Law Plotting Script
               y = data[1::2]
               count = count + y[plot_iter]
           averaged_count = count/(1+end_seed-start_seed)
-          fudge_y = 0.080
-          conc = fudge_y * averaged_count / (ly*lz*(lx*tol/n))
-          
-          f.write ( str(vx+(lx/(2.0*n))) + "  " + str(conc/area) + "\n" )
-          #points.append ( (vx,count/(1+end_seed-start_seed)) )
-      #print ( str(points) )
+          conc = averaged_count / (ly*lz*(lx*tol/n))         # This should be molecules per cubic micron
+
+          f.write ( str(vx+(lx/(2.0*n))) + "  " + str(conc) + "\n" )
       f.close()
 
 
@@ -1144,11 +1141,13 @@ Fick's Law Plotting Script
       f = open ( fname, "w" )
       dm['mcell']['reaction_data_output']['reaction_output_list'].append ( make_file_plot(fname) )
 
+      t = plot_iter * dt
+
       for vol in range(start_vol,1+end_vol):
           sx0 = (1+end_vol-start_vol)/2
           sx = (vol - sx0)
           x = sx * lx / n
-          N = nrel * math.exp(-(x*x/(4*dc*1e8*plot_iter*dt))) / (area * math.sqrt(math.pi*dc*1e8*plot_iter*dt))
+          N = nrel * math.exp(-(x*x/(4*dc*1e8*t))) / (area * 2 * math.sqrt(math.pi*dc*1e8*t))
           f.write ( str(x) + "  " + str(N) + "\n" )
       f.close()
 
