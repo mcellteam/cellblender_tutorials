@@ -1127,7 +1127,7 @@ Fick's Law Plotting Script
               y = data[1::2]
               count = count + y[plot_iter]
           averaged_count = count/(1+end_seed-start_seed)
-          conc = averaged_count / ((lx*tol/n))         # This should be molecules per micron (length)
+          conc = averaged_count / (tol*lx/n)                    # This should be molecules per micron (length)
 
           f.write ( str(vx+(lx/(2.0*n))) + "  " + str(conc) + "\n" )
       f.close()
