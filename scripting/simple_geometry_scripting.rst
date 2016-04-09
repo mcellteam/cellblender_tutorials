@@ -14,7 +14,8 @@ CellBlender's geometry (model objects) can be created a number of ways:
     * Using Blender's native geometry commands in a script
     * Using CellBlender's data model in a script
 
-This tutorial demonstrates the last of these options to construct a variable sized box.
+This tutorial demonstrates the last of these options to construct a variable sized box, and
+eventually rows and grids of variable sized boxes.
 
 Start with an empty scene (no objects, cameras, or lamps), and with CellBlender initialized.
 Also open a text editor window and create a new text file named "box.py".
@@ -325,10 +326,10 @@ Then we can create any kind of loop to add new boxes to that list. Let's try thi
 
 ::
 
-    for i in range(40):
-      x = (i-20) / 10.0
+    for i in range(20):
+      x = (i-10) / 5.0
       sz = x * x / 4
-      objlist.append ( make_box ( "Cube"+str(i), x, 0.0, 0.0, 0.02, 0.1, sz ) )
+      objlist.append ( make_box ( "Cube"+str(i), x, 0.0, 0.0, 0.05, 0.1, sz ) )
 
 The full script should look like this:
 
@@ -374,10 +375,10 @@ The full script should look like this:
 
     objlist = dm['mcell']['geometrical_objects']['object_list']
 
-    for i in range(40):
-      x = (i-20) / 10.0
+    for i in range(20):
+      x = (i-10) / 5.0
       sz = x * x / 4
-      objlist.append ( make_box ( "Cube"+str(i), x, 0.0, 0.0, 0.02, 0.1, sz ) )
+      objlist.append ( make_box ( "Cube"+str(i), x, 0.0, 0.0, 0.05, 0.1, sz ) )
 
     cb.replace_data_model ( dm )
 
@@ -385,17 +386,17 @@ That should produce a geometry that looks like this:
 
 .. image:: ./images/parabolic_bars.png
 
-With just a few more lines of code we can include variation in both x and y:
+With just a few more lines of code inside the "for loop" we can include variation in both x and y:
 
 ::
 
-    for i in range(40):
-      x = (i-20) / 10.0
-      for j in range(40):
-        y = (j-20) / 10.0
+    for i in range(20):
+      x = (i-10) / 5.0
+      for j in range(20):
+        y = (j-10) / 5.0
         sz = (x * x / 4) + (y * y * y / 10.0)
         name = "Cube_"+str(i)+"_"+str(j)
-        objlist.append ( make_box ( name, x, y, 0.0, 0.02, 0.02, sz ) )
+        objlist.append ( make_box ( name, x, y, 0.0, 0.05, 0.05, sz ) )
 
 That should produce a geometry that looks like this:
 
