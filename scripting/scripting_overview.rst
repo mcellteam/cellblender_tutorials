@@ -178,8 +178,15 @@ It could analyze the geometry and add surface regions to portions that
 meet a desired metric. It could even read data from a file to generate
 new geometry or add geometrical objects to an existing model.
 
-Follow the :ref:`data_model_scripting` tutorial for more information
-on using Data Model Scripting.
 
+Scripting Examples
+---------------------------------------------
+
+.. toctree::
+   :maxdepth: 2
+
+   data_model_scripting
+   simple_geometry_scripting
+   ficks_law_scripting
 
 
