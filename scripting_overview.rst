@@ -2,7 +2,7 @@
 
 
 *********************************************
-Scripting Overview
+Scripting
 *********************************************
 
 .. Git Repo SHA1 ID: 3520f8694d61c81424ff15ff9e7a432e42f0623f
@@ -11,6 +11,9 @@ Scripting Overview
 
    The scripting interface is very new and subject to change.
 
+
+Scripting Overview
+---------------------------------------------
 
 The scripting interface allows CellBlender users to do the following:
 
