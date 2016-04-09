@@ -25,7 +25,7 @@ nothing defined (no molecules, reactions, objects, etc). Your screen
 should look something like this:
 
 
-.. image:: ./images/scripting/standard_startup_screen.png
+.. image:: ./images/standard_startup_screen.png
 
 
 The first thing you should do is reconfigure the Blender windows to
@@ -34,7 +34,7 @@ give yourself a good sized text editor. In this example, the normal
 a text editor containing a new file named "mols.py" (use the "+" button
 to add the new file, then rename it to "mols.py" as shown below):
 
-.. image:: ./images/scripting/blank_text_editor.png
+.. image:: ./images/blank_text_editor.png
 
 It's a good idea to name your scripting files to end with ".py" so they
 can be found in the scripting window for running.
@@ -59,7 +59,7 @@ window:
 
 It should look something like this:
 
-.. image:: ./images/scripting/simple_one_mol_script.png
+.. image:: ./images/simple_one_mol_script.png
 
 
 The first line in that script imports "cellblender" using the local
@@ -123,29 +123,29 @@ text editing window. This can be used to run a data model script, but we
 will use the "Run Script" button in the scripting panel. Start by opening
 the Scripting Panel as shown here:
 
-.. image:: ./images/scripting/show_scripting_panel_closed.png
+.. image:: ./images/show_scripting_panel_closed.png
 
 Then expand (open) the "Data Model Scripting" and "Run Script" subpanels,
 and click on the "refresh" button (to reload the File selector):
 
-.. image:: ./images/scripting/show_scripting_panel_dm_open.png
+.. image:: ./images/show_scripting_panel_dm_open.png
 
 Then click on the "File" selector and choose the "mols.py" file:
 
-.. image:: ./images/scripting/selecting_mols_py_file.png
+.. image:: ./images/selecting_mols_py_file.png
 
 Before running the script, let's show both the molecules panel AND the
 scripting panel at the same time. You can do this by clicking the
 "Show All/Multiple" push pin button and then selecting both the Scripting
 and Molecules buttons:
 
-.. image:: ./images/scripting/single_mol_before_running_first.png
+.. image:: ./images/single_mol_before_running_first.png
 
 You'll notice that the "Defined Molecules" section is empty (No Molecules)
 before you run the script. Then when you click the "Run Script" button, the
 new molecule ("vm") should be added with all the settings you've given it:
 
-.. image:: ./images/scripting/single_mol_after_running_first.png
+.. image:: ./images/single_mol_after_running_first.png
 
 Congratulations, you've just written and executed your first data model script!
 
@@ -169,7 +169,7 @@ to build our script.
 Start by pressing the "Clear Project" button. This button will completely
 remove all parts of your model (molecules, reactions, surface classes, etc):
 
-.. image:: ./images/scripting/single_mol_clear_project.png
+.. image:: ./images/single_mol_clear_project.png
 
 Now let's build a simple model that we can explore through the data model.
 Our simple model will have one molecule type (named "A") with a diffusion
@@ -177,36 +177,36 @@ constant of 1e-7 and we will release 10 of them at the origin. Your panel
 should look like this (with the "Molecules" panel and "Molecule Placement"
 panel showing the settings):
 
-.. image:: ./images/scripting/simple_model_definition.png
+.. image:: ./images/simple_model_definition.png
 
 Then close the "Molecule Placement" panel and reopen the "Scripting" panel.
 Open the "Make Script" subpanel (inside "Data Model Scripting") and click the 
 "Regenerate Data Model" button:
 
-.. image:: ./images/scripting/data_model_copy_before_regenerate.png
+.. image:: ./images/data_model_copy_before_regenerate.png
 
 That panel should then be showing a few new controls including a data model
 section selector (typically defaults to showing "Molecules"):
 
-.. image:: ./images/scripting/data_model_copy_after_regenerate.png
+.. image:: ./images/data_model_copy_after_regenerate.png
 
 If you click on the "Molecules" control, you'll see a pop up menu of all the
 different data model sections in your current model.
 
-.. image:: ./images/scripting/data_model_section_selector.png
+.. image:: ./images/data_model_section_selector.png
 
 Select the "Molecules" section because that's what we'd like to explore. Then
 click the "Copy" button. This will copy the entire "Molecules" section of the
 data model onto the clipboard.
 
-.. image:: ./images/scripting/data_model_copy_molecules.png
+.. image:: ./images/data_model_copy_molecules.png
 
 Now go back to the text editing window and position your cursor at the end
 (bottom) of the file (you might add a few carriage returns for spacing). Then
 paste (Control-V or Edit/Paste) the clipboard data into the text editor.
 You should see new text added (shown highlighted) in the text window:
 
-.. image:: ./images/scripting/data_model_molecules_added.png
+.. image:: ./images/data_model_molecules_added.png
 
 Here's the new code that was added:
 
@@ -325,7 +325,7 @@ it belongs). This gives us the general flow from top to bottom:
 
 Now we can clear the project, and run the script:
 
-.. image:: ./images/scripting/data_model_grid_mols_created.png
+.. image:: ./images/data_model_grid_mols_created.png
 
 As shown, you should see a bunch of molecules that have been created
 with names ranging from "Grid_0_0" to "Grid_7_7". If you browse
@@ -353,24 +353,24 @@ Our panels are getting a little crowded, so release the "Show All / Multiple"
 push pin and open just the "Molecule Placement" panel. Then click the "+"
 button to add a new molecule release site:
 
-.. image:: ./images/scripting/data_model_empty_molecule_placement.png
+.. image:: ./images/data_model_empty_molecule_placement.png
 
 Change it to release molecule "Grid_0_0" and set the Quantity to 10:
 
-.. image:: ./images/scripting/data_model_molecule_release_settings.png
+.. image:: ./images/data_model_molecule_release_settings.png
 
 Now let's copy the data model definitions from our new release site to
 the clipboard by opening the Scripting panel and choosing the "Release Sites"
 selection. Then click the copy button to make a copy on the clipboard:
 
-.. image:: ./images/scripting/data_model_copy_release_sites.png
+.. image:: ./images/data_model_copy_release_sites.png
 
 Then we can go to the bottom of our script and paste these release
 site definitions into our code (it's good to add a few blank lines
 to separate the new section of text). Here's what that looks like in
 the text editor with the new code highlighted:
 
-.. image:: ./images/scripting/data_model_release_sites_selected.png
+.. image:: ./images/data_model_release_sites_selected.png
 
 Here's the new code that was just pasted:
 
@@ -473,26 +473,26 @@ integrate it into the existing loop. Here's the code:
 As before, we can clear the project and run the script. We can also run the simulation
 and refresh the molecule display. Here's what that looks like so far:
 
-.. image:: ./images/scripting/data_model_8x8_grid_small.png
+.. image:: ./images/data_model_8x8_grid_small.png
 
 At this scale, the molecules are very small and virtually invisible. Let's make them
 larger by going to the "Molecules" panel, and opening the "Display Options" for
 molecule "Grid_7_7", and changing its Scale Factor from 1.0 to 10.0:
 
-.. image:: ./images/scripting/data_model_resize_new_mols.png
+.. image:: ./images/data_model_resize_new_mols.png
 
 That makes them nice and visible:
 
-.. image:: ./images/scripting/data_model_larger_Grid_7_7.png
+.. image:: ./images/data_model_larger_Grid_7_7.png
 
 Now we can go back to our script and change the scale to 10:
 
-.. image:: ./images/scripting/data_model_script_scale_to_10.png
+.. image:: ./images/data_model_script_scale_to_10.png
 
 Clear the Project, then re-run the script (no need to re-reun the simulation). 
 Refresh the molecules and it should look something like this:
 
-.. image:: ./images/scripting/data_model_grid_large_gray_mols.png
+.. image:: ./images/data_model_grid_large_gray_mols.png
 
 For a "finishing touch" experiment with color by increasing the emit value, and
 changing the molecule color line to something like this:
@@ -503,7 +503,7 @@ changing the molecule color line to something like this:
     'emit'  : 1.0,
 
 
-.. image:: ./images/scripting/data_model_color_mols.png
+.. image:: ./images/data_model_color_mols.png
 
 Here's the final script:
 
@@ -586,12 +586,12 @@ contain the molecules in the simulation. It then constructs a series of tan coun
 length to count the molecules. It also constructs a series of light blue counting planes to measure
 the flux. Molecules are released at the center of the box at t=0 and diffuse during the simulation.
 
-.. image:: ./images/scripting/ficks/ficks_scripted.gif
+.. image:: ./images/ficks/ficks_scripted.gif
 
 The following plot series (animation) compares the average of 50 MCell runs (Start Seed=1, End Seed=50,
 10,000 molecules released) to a plot of the expected theoretical result.
 
-.. image:: ./images/scripting/ficks/plot_ideal_mcell_both_crop.gif
+.. image:: ./images/ficks/plot_ideal_mcell_both_crop.gif
 
 Finally, these are the scripts used. The first script builds the simulation, and the second
 script generates the plots show above. Both were run with the development branch of CellBlender

@@ -31,7 +31,7 @@ conditions, etc. These are presented to the user through a series of Blender
 panels. The top level CellBlender panel provides a number of subpanels and
 it looks like this:
 
-.. image:: ./images/CellBlender_top_level_panel.png
+.. image:: ../images/CellBlender_top_level_panel.png
 
 This panel (and each of the subpanels) are used to define the various aspects
 of a CellBlender model. The CellBlender model appears as data values in these

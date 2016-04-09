@@ -24,5 +24,5 @@ CellBlender.
    variable_rxn_rates
    rel_pattern
    clamp
-   scripting_overview
+   scripting/scripting_overview
 
