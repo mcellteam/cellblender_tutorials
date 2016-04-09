@@ -1,4 +1,4 @@
-.. _data_model_scripting:
+.. _ficks_law_scripting:
 
 
 *********************************************
