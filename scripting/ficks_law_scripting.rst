@@ -63,11 +63,10 @@ The following script builds the CellBlender model from scratch.
       ['rtol', "0.001", 'um',   'Release plane tolerance - smaller is closer to ideal (0.001 works well)'],
       # These control the instrumentation of the model
       ['plot_segment_counts',   "1",  '',   'Plot count of vm molecules in each segment when non-zero'],
-      ['plot_front_crossings',  "1",  '',   'Plot front crossings of vm molecules when non-zero'],
+      ['plot_front_crossings',  "0",  '',   'Plot front crossings of vm molecules when non-zero'],
       # These describe the behavior of the model
       ['dc',    "5e-6",   'cm^2/sec',    'Diffusion Constant of Molecules'],
       ['nrel',  "1000",   'Count',       'Number of molecules to release'],
-      ['cl',    "2e-5",   'Molar',       'Clamp concentration value'],
       # These control the simulation itself
       ['iters', "600",   '',      'Number of iterations to run'],
       ['dt',    "1e-6",  'sec',   'Time step for each iteration of the simulation'],
@@ -195,7 +194,7 @@ The following script builds the CellBlender model from scratch.
     rel['name'] = 'rel'
     rel['material_names'] = [ 'rel_color' ]
 
-    # Make the surface regions for the two ends (left will be a clamp, right will absorb)
+    # Make the surface regions for the two absorptive ends to keep them from accumulating
     box['define_surface_regions'] = []
     box['define_surface_regions'].append ( { 'name':"left_end", 'include_elements':[ 4, 10 ] } )
     box['define_surface_regions'].append ( { 'name':"right_end", 'include_elements':[ 2, 8 ] } )
@@ -265,8 +264,7 @@ The following script builds the CellBlender model from scratch.
 
     surf_classes = [
       [ 'transp', 'vm_transp', ';', "TRANSPARENT",         "0" ],
-      [ 'absorb', 'vm_absorb', ';', "ABSORPTIVE",          "0" ],
-      [ 'clamp',  'vm_clamp',  ',', "CLAMP_CONCENTRATION", "cl" ] ]
+      [ 'absorb', 'vm_absorb', ';', "ABSORPTIVE",          "0" ] ]
 
     # Loop through the table and add each class to the data model
 
@@ -476,7 +474,6 @@ the simulation parameters are varied.
       # These describe the behavior of the model
       ['dc',    "5e-6",   'cm^2/sec',    'Diffusion Constant of Molecules'],
       ['nrel',  "1000",   'Count',       'Number of molecules to release'],
-      ['cl',    "2e-5",   'Molar',       'Clamp concentration value'],
       # These control the simulation itself
       ['iters', "500",   '',      'Number of iterations to run'],
       ['dt',    "1e-6",  'sec',   'Time step for each iteration of the simulation'],
