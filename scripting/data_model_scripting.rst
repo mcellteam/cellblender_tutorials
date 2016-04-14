@@ -69,17 +69,17 @@ functions will be available as "cb._______" as shown below:
 
  | *Handy Functions for Data Model Scripting:*
 
-  +---------------------------+--------------------------------------------------------------------------------------+
-  | **Function**              | **Description**                                                                      |
-  +===========================+======================================================================================+
-  | cb.get_data_model()       | Returns a copy of the current CellBlender Data Model                                 |
-  +---------------------------+--------------------------------------------------------------------------------------+
-  | cb.replace_data_model(dm) | Replaces the current CellBlender Data Model with dm                                  |
-  +---------------------------+--------------------------------------------------------------------------------------+
-  | cb.cd_to_project()        | Changes process directory path to project location (returns previous directory path) |
-  +---------------------------+--------------------------------------------------------------------------------------+
-  | cb.cd_to_location(loc)    | Changes process directory path to location passed in by "loc"                        |
-  +---------------------------+--------------------------------------------------------------------------------------+
+  +-----------------------------------------+--------------------------------------------------------------------------------------+
+  | **Function**                            | **Description**                                                                      |
+  +=========================================+======================================================================================+
+  | cb.get_data_model(geometry=True)        | Returns a copy of the current CellBlender Data Model                                 |
+  +-----------------------------------------+--------------------------------------------------------------------------------------+
+  | cb.replace_data_model(dm,geometry=True) | Replaces the current CellBlender Data Model with dm                                  |
+  +-----------------------------------------+--------------------------------------------------------------------------------------+
+  | cb.cd_to_project()                      | Changes process directory path to project location (returns previous directory path) |
+  +-----------------------------------------+--------------------------------------------------------------------------------------+
+  | cb.cd_to_location(loc)                  | Changes process directory path to location passed in by "loc"                        |
+  +-----------------------------------------+--------------------------------------------------------------------------------------+
 
 The second line of the script uses the "get_data_model" function to
 get a copy of the current data model from CellBlender. This will be
