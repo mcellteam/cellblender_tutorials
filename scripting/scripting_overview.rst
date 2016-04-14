@@ -168,6 +168,49 @@ an error. If it's desired that the script be run multiple times, then it should
 address the problem of a "vm" molecule already existing in the molecule list
 prior to adding a new one.
 
+The Data Model is somewhat self-descriptive because it's mostly based on
+dictionaries. So it's easy to introspect it from either the Python shell or
+a small script. Here's a simple example script that prints all of the top level
+keys within the MCell portion of the data model:
+
+
+::
+
+    import cellblender as cb
+
+    dm = cb.get_data_model(geometry=True)
+
+    for k in sorted(dm['mcell'].keys()):
+      print ( str(k) + " is a " + str(type(dm['mcell'][k]) ) )
+
+That script should produce an output similar to this:
+
+::
+
+    api_version is a <class 'int'>
+    blender_version is a <class 'list'>
+    cellblender_source_sha1 is a <class 'str'>
+    cellblender_version is a <class 'str'>
+    data_model_version is a <class 'str'>
+    define_molecules is a <class 'dict'>
+    define_reactions is a <class 'dict'>
+    define_release_patterns is a <class 'dict'>
+    define_surface_classes is a <class 'dict'>
+    geometrical_objects is a <class 'dict'>
+    initialization is a <class 'dict'>
+    materials is a <class 'dict'>
+    model_objects is a <class 'dict'>
+    modify_surface_regions is a <class 'dict'>
+    mol_viz is a <class 'dict'>
+    parameter_system is a <class 'dict'>
+    reaction_data_output is a <class 'dict'>
+    release_sites is a <class 'dict'>
+    scripting is a <class 'dict'>
+    simulation_control is a <class 'dict'>
+    viz_output is a <class 'dict'>
+
+This makes it relatively easy to find out what's inside of a data model.
+
 Data Model Scripting is extremely powerful, and it can use anything it needs
 from the existing data model to control its operation. For example, a data
 model script could look for certain parameter names in the data model and
