@@ -35,7 +35,7 @@ The following script builds the CellBlender model from scratch.
 
     # Get a copy of the data model and change directories to the project directory for any file I/O
 
-    dm = cb.get_data_model()
+    dm = cb.get_data_model(geometry=True)
     old_location = cb.cd_to_project()
 
     # Print some information about the data model
@@ -69,6 +69,7 @@ The following script builds the CellBlender model from scratch.
       ['nrel',  "1000",   'Count',       'Number of molecules to release'],
       # These control the simulation itself
       ['iters', "600",   '',      'Number of iterations to run'],
+      ['seeds', "10",    '',      'Number of seeds to run'],
       ['dt',    "1e-6",  'sec',   'Time step for each iteration of the simulation'],
      ]
 
@@ -423,11 +424,15 @@ The following script builds the CellBlender model from scratch.
     dm['mcell']['initialization']['iterations'] = "iters"
     dm['mcell']['initialization']['time_step'] = "dt"
 
+    dm['mcell']['simulation_control'] = { 'data_model_version': 'DM_2016_04_15_1430' }
+    dm['mcell']['simulation_control']['start_seed'] = '1'
+    dm['mcell']['simulation_control']['end_seed'] = 'seeds'
+
 
     # Return to the previous directory and replace the existing data model with this modified version
 
     cb.cd_to_location ( old_location )
-    cb.replace_data_model ( dm )
+    cb.replace_data_model ( dm, geometry=True )
 
 
 
@@ -476,6 +481,7 @@ the simulation parameters are varied.
       ['nrel',  "1000",   'Count',       'Number of molecules to release'],
       # These control the simulation itself
       ['iters', "500",   '',      'Number of iterations to run'],
+      ['seeds', "10",    '',      'Number of seeds to run'],
       ['dt',    "1e-6",  'sec',   'Time step for each iteration of the simulation'],
      ]
 
@@ -498,7 +504,7 @@ the simulation parameters are varied.
 
     plot_iters = [ 10, 25, 50, 100, 200, 300, 400, 600 ]
     start_seed = 1
-    end_seed = 50
+    end_seed = seeds
     start_vol = 0
     end_vol = n - 1
     num_vols = 1 + end_vol - start_vol
