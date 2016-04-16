@@ -592,6 +592,10 @@ the simulation parameters are varied.
           f.write ( str(x) + "  " + str(N) + "\n" )
       f.close()
 
+    # Configure the plotter for one page / one plot (uses a single space):
+
+    dm['mcell']['reaction_data_output']['plot_layout'] = ' '
+
     cb.cd_to_location ( old_location )
     cb.replace_data_model ( dm )
 
