@@ -12,13 +12,12 @@ Rat Neuromuscular Junction
     Blender 2.67 and CellBlender 1.0 RC. It may or may not work with other
     versions.
 
-This tutorial is simply a follow-up to "Section 4.5, Example Model:
-Acetylcholine exocytosis and miniature endplate current generation at a
-realistic neuromuscular junction" of Computational Neuroscience: Realistic
-Modeling for Experimentalists, ed. Dr. Erik Schutter. Examples and more
-information are available here_.
-
-.. _here: http://www.compneuro.org/CDROM/docs/chapter4.html
+This tutorial is simply a follow-up to `Section 4.5, Example Model:
+Acetylcholine Exocytosis and Miniature Endplate Current Generation at a
+realistic Neuromuscular Junction
+<http://papers.cnl.salk.edu/PDFs/Monte%20Carlo%20Methods%20for%20Simulating%20Realistic%20Synaptic%20Microphysiology%20Using%20MCell%202001-3290.pdf>`_
+of Computational Neuroscience: Realistic Modeling for Experimentalists, ed. Dr.
+Erik Schutter.
 
 The MCell MDLs and Blend file for this model are available here as a `ZIP
 archive`_. The MDLs in this project required some hand-editing, because release
