@@ -230,6 +230,7 @@ Scripting Examples
 
    data_model_scripting
    simple_geometry_scripting
+   unbounded_3d_scripting
    ficks_law_scripting
 
 
