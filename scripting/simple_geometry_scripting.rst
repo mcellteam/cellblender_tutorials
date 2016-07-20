@@ -87,7 +87,7 @@ and also add the following single line to the bottom of the script:
 
 ::
 
-    cb.replace_data_model ( dm )
+    cb.replace_data_model ( dm, geometry=True )
 
 Your script should look like this:
 
@@ -129,7 +129,7 @@ Your script should look like this:
       ]
     }
 
-    cb.replace_data_model ( dm )
+    cb.replace_data_model ( dm, geometry=True )
 
 Now you can run the script using either the "Run Script" button under the text editor or using
 the "Run Script" button in the "Run Script" subpanel of CellBlender's Scripting panel.
@@ -231,7 +231,7 @@ Your full script should look something like this:
       ]
     }
 
-    cb.replace_data_model ( dm )
+    cb.replace_data_model ( dm, geometry=True )
 
 Now run it, and you should see a "shoebox" sized object created that's 2x4x1 units. This
 is twice each of the dimensions in the script because each dimension uses the "size" value
@@ -295,7 +295,7 @@ the script:
       ]
     }
 
-    cb.replace_data_model ( dm )
+    cb.replace_data_model ( dm, geometry=True )
 
 If you run that script, you won't see any difference because it's creating the same
 sized box as before. To verify that it's really working, try changing the make_box
@@ -380,7 +380,7 @@ The full script should look like this:
       sz = x * x / 4
       objlist.append ( make_box ( "Cube"+str(i), x, 0.0, 0.0, 0.05, 0.1, sz ) )
 
-    cb.replace_data_model ( dm )
+    cb.replace_data_model ( dm, geometry=True )
 
 That should produce a geometry that looks like this:
 
