@@ -395,6 +395,7 @@ With just a few more lines of code inside the "for loop" we can include variatio
       for j in range(20):
         y = (j-10) / 5.0
         sz = (x * x / 4) + (y * y * y / 10.0)
+        if sz < 0: sz = -sz  # Keeps boxes from being inverted in z direction
         name = "Cube_"+str(i)+"_"+str(j)
         objlist.append ( make_box ( name, x, y, 0.0, 0.05, 0.05, sz ) )
 
