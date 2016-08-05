@@ -25,4 +25,5 @@ CellBlender.
    rel_pattern
    clamp
    scripting/scripting_overview
+   dynamic_geometry/dynamic_geometry_overview
 
