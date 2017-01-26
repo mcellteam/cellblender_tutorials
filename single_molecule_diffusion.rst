@@ -7,14 +7,9 @@ Single Molecule Diffusion
 Required software
 =================
 
-This tutorial is designed for `Blender 2.74`_, `CellBlender 1.0`_, and `MCell
-3.3`_.
+This tutorial is designed to be used with the `CellBlender 1.1 bundle`_.
 
-.. need to update these links
-
-.. _Blender 2.74: http://www.blender.org/download/
-.. _CellBlender 1.0: http://mmbios.org/index.php/cellblender-all/cellblender-cellblender-1-0_rc3
-.. _MCell 3.3: http://mmbios.org/index.php/mcell-3-3
+.. _CellBlender 1.1 bundle: http://www.mcell.org/download.html
 
 .. note:: Other versions may work as well.
 
@@ -27,13 +22,7 @@ This tutorial will define a single molecule and show its diffusion.
 Initial Configuration
 =====================
 
-Install MCell, Blender, and CellBlender if you haven't already done so. Then
-complete the :ref:`first_time` tutorial and return here.
-
-.. note::
-
-   Alternatively, if you have used CellBlender and Blender before, but you want
-   to start with a "clean slate", try the :ref:`clean_slate` tutorial.
+Install the CellBlender 1.1 bundle if you haven't already done so.
 
 Save the File with a New Name in Your Working Directory
 ---------------------------------------------------------------
