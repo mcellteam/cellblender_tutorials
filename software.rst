@@ -4,11 +4,21 @@
 Required Software
 ************************
 
-Before starting these tutorials, you *need* to install the following software:
+Before starting these tutorials, you *need* to download the `CellBlender 1.1
+bundle`_. Unlike previous versions of CellBlender, this should include
+everything you need to create, run, and visualize your simulations. Simply
+download, extract the zip file, and start Blender.
 
-* MCell 3.3 (:ref:`mcell_install`)
-* `Blender 2.74`_ (older versions may or may not work)
-* CellBlender 1.0.1 (:ref:`cellblender_install`, *note: install Blender first*)
+.. note::
+
+    The vast majority of users will want to use the `CellBlender 1.1 bundle`_,
+    but advanced users may want to install CellBlender from scratch. They will
+    need to manually install the following pieces:
+
+    * MCell 3.4 (:ref:`mcell_install`)
+    * `Blender 2.78`_ (older versions may or may not work)
+    * CellBlender 1.1 (:ref:`cellblender_install`, *note: install Blender first*)
+
 You don't need these immediately, but you will likely find them necessary later
 on:
 
@@ -16,7 +26,8 @@ on:
 * Some graphing and analysis software (matplotlib_ (with Python_ and numpy_) or
   Grace_ are recommended)
 
-.. _Blender 2.74: http://www.blender.org/download/get-blender/
+.. _CellBlender 1.1 bundle: http://www.mcell.org/download.html
+.. _Blender 2.78: http://www.blender.org/download/get-blender/
 .. _gedit: http://projects.gnome.org/gedit/
 .. _vim: http://www.vim.org/
 .. _emacs: http://www.gnu.org/software/emacs/
@@ -25,11 +36,6 @@ on:
 .. _numpy: http://numpy.scipy.org/
 .. _Grace: http://plasma-gate.weizmann.ac.il/Grace/
 
-
-.. note::
-   
-   Although Windows is now a supported platform, some of the more advanced
-   tutorials are still geared towards users of linux (e.g. Ubuntu_) or OS X.
 
 Prerequisites
 --------------------------------
@@ -43,7 +49,7 @@ Prerequisites
   and `Blender tutorials`_).
 
 .. _Ubuntu: http://www.ubuntu.com/download
-.. _The Command Line Crash Course: http://cli.learncodethehardway.org/book/
+.. _The Command Line Crash Course: https://learnpythonthehardway.org/book/appendixa.html
 .. _Python tutorials: http://docs.python.org/release/3.1.5/tutorial/index.html
 .. _Blender tutorials: http://cgcookie.com/blender/get-started-with-blender/
 
@@ -51,5 +57,5 @@ Prerequisites
 The Next Step
 --------------------------------
 
-After you have installed MCell, Blender, and CellBlender, you should continue
-with the :ref:`single_molecule_diffusion` tutorial.
+After you have downloaded, extracted, and started the CellBlender bundle, you
+should continue with the :ref:`single_molecule_diffusion` tutorial.
