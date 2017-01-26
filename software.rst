@@ -4,16 +4,17 @@
 Required Software
 ************************
 
-Before starting these tutorials, you *need* to download the `CellBlender 1.1
-bundle`_. Unlike previous versions of CellBlender, this should include
-everything you need to create, run, and visualize your simulations. Simply
-download, extract the zip file, and start Blender.
+Before starting these tutorials, you *need* to download the CellBlender 1.1
+bundle (linux_, osx_, windows_). Unlike previous versions of CellBlender, this
+should include everything you need to create, run, and visualize your
+simulations. Simply download, extract the zip file, and start Blender.
 
 .. note::
 
-    The vast majority of users will want to use the `CellBlender 1.1 bundle`_,
-    but advanced users may want to install CellBlender from scratch. They will
-    need to manually install the following pieces:
+    The vast majority of users will want to use the CellBlender 1.1 bundle
+    (linux_, osx_, windows_), but advanced users may want to install
+    CellBlender from scratch. They will need to manually install the following
+    pieces:
 
     * MCell 3.4 (:ref:`mcell_install`)
     * `Blender 2.78`_ (older versions may or may not work)
@@ -26,7 +27,9 @@ on:
 * Some graphing and analysis software (matplotlib_ (with Python_ and numpy_) or
   Grace_ are recommended)
 
-.. _CellBlender 1.1 bundle: http://www.mcell.org/download.html
+.. _linux: http://mcell.org/download/files/cellblender1.1_bundle_linux.zip
+.. _osx: http://mcell.org/download/files/cellblender1.1_bundle_osx.zip
+.. _windows: http://mcell.org/download/files/cellblender1.1_bundle_windows.zip
 .. _Blender 2.78: http://www.blender.org/download/get-blender/
 .. _gedit: http://projects.gnome.org/gedit/
 .. _vim: http://www.vim.org/

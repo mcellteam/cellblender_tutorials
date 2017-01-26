@@ -6,11 +6,14 @@ CellBlender Installation
 
 .. note::
 
-    The vast majority of users will want to use the `CellBlender 1.1 bundle`_,
-    but advanced users or developers may want to install CellBlender from
-    scratch. The instructions on this page will show you how.
+    The vast majority of users will want to use the CellBlender 1.1 bundle
+    (linux_, osx_, windows_), but advanced users or developers may want to
+    install CellBlender from scratch. The instructions on this page will show
+    you how.
 
-.. _CellBlender 1.1 bundle: http://www.mcell.org/download.html
+.. _linux: http://mcell.org/download/files/cellblender1.1_bundle_linux.zip
+.. _osx: http://mcell.org/download/files/cellblender1.1_bundle_osx.zip
+.. _windows: http://mcell.org/download/files/cellblender1.1_bundle_windows.zip
 
 Download CellBlender
 ---------------------------------------------
