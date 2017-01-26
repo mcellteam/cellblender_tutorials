@@ -4,12 +4,22 @@
 CellBlender Installation
 *********************************************
 
+.. note::
+
+    The vast majority of users will want to use the `CellBlender 1.1 bundle`_,
+    but advanced users or developers may want to install CellBlender from
+    scratch. The instructions on this page will show you how.
+
+.. _CellBlender 1.1 bundle: http://www.mcell.org/download.html
+
 Download CellBlender
 ---------------------------------------------
 
-Download `CellBlender 1.0.1`_.
+.. we need to tag a 1.1 release.
 
-.. _CellBlender 1.0.1: http://mmbios.org/index.php/cellblender-1-0-1
+Download `CellBlender 1.1`_.
+
+.. _CellBlender 1.1: https://github.com/mcellteam/cellblender/archive/master.zip
 
 Installing CellBlender
 ---------------------------------------------
@@ -28,7 +38,7 @@ Installing CellBlender
 .. image:: ./images/install/install_from_file.png
 
 * Navigate to the unextracted zip file that you downloaded
-  (cellblender_v1.0.1.zip) and select it
+  (cellblender_v1.1.zip) and select it
 * Click the **Install from File** button near the upper-right hand corner.
 
 .. image:: ./images/install/install_from_file2.png
