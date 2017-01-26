@@ -31,7 +31,7 @@ Then install virtualenv:
 Create a new virtual environment in the cloned cellblender_tutorials directory:
 
     cd cellblender_tutorials
-    virutalenv .
+    virtualenv .
 
 Activate it:
 
