@@ -5,7 +5,7 @@ Advanced Models
 
 .. warning::
 
-   Some of these tutorials have not yet been updated for CellBlender 1.0.
+   Some of these tutorials have not yet been updated for CellBlender 1.1.
    Therefore, some things might not work exactly as described.
 
 What follows is a series of advanced MCell and CellBlender models each of which
