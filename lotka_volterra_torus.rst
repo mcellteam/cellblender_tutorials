@@ -126,7 +126,7 @@ For those familiar with building CellBlender models, here's the short-hand versi
 
 
 Step by step instructions for building the model
----------------------------------------------
+-------------------------------------------------------------------------------
 
 .. note::
 

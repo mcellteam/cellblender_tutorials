@@ -721,7 +721,7 @@ data model compatible dictionary named "obj" that it returns.
 
 
 Creating Materials, Containers, and a Transparent Surface Class
----------------------------------------------
+-------------------------------------------------------------------------------
 
 Building a data model is mostly making dictionaries and lists with CellBlender's expected keys.
 In this next section of code, new dictionaries are made for materials, geometrical objects, and
@@ -769,7 +769,7 @@ up empty lists that will be filled in later.
 
 
 Building Containers for Surface Regions and Counting
----------------------------------------------
+-------------------------------------------------------------------------------
 
 The model will also need to modify surface regions to make them transparent and it will
 need to generate count statements. Again, the empty list structures are created to be
@@ -798,7 +798,7 @@ filled in later.
 
 
 Looping to build Geometrical Objects, assign Surface Classes, and make Count Statements
----------------------------------------------
+---------------------------------------------------------------------------------------
 
 Now that all of the empty "containers" have been set up, this section of code
 can loop through the requested number of measuring shells and do the following
@@ -895,7 +895,7 @@ Since this model only has one molecule and one release site, these can be create
 
 
 Defining Simulation Run Parameters and Replacing the Data Model
----------------------------------------------
+-------------------------------------------------------------------------------
 
 The final step is setting up the initialization and run control sections. Note that the
 parameters "iters" and "dt" and "seeds" are given as string expressions. These refer to
