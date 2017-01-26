@@ -122,7 +122,7 @@ new blend file or opening an existing one, it will already be set. You
 shouldn't have to change it again (unless you need to use a new version of
 MCell or Blender).
 
-.. _set_project_dir::
+.. _set_project_dir:
 
 Set Project Directory
 ---------------------------------------------
@@ -209,7 +209,7 @@ the cursor in the **3D View Editor** and hitting the **Tab** key (or switch
 back to Object Mode via the **Mode** selection control below the **3D View
 Editor**).
 
-.. _add_cube
+.. _add_cube:
 
 Adding to Model Objects List
 ---------------------------------------------
