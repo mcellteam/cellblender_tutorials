@@ -705,9 +705,9 @@ automated method. There are tradeoffs in both cases.
 In order for molecules to "flow" through all of these smaller cylinders
 
 
-+++++++++++++++++++++++++++++++++++++++++++++++
+***********************************************
 More work to be done ...
-+++++++++++++++++++++++++++++++++++++++++++++++
+***********************************************
 
 .. _fick_export: 
 

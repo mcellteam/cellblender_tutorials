@@ -1,9 +1,9 @@
-*********************************************************
+#########################################################
 A Spatially Realistic Model of Cell Regulatory Processes
-*********************************************************
+#########################################################
 
 Required software
-=================
+*****************
 
 This tutorial requires `BioNetGen 2.2.5`_, RuleBender_, MATLAB2013a_,
 `CellOrganizer 2.1`_, `Blender 2.70a`_, `CellBlender 1.0 RC3`_, and `MCell
@@ -26,10 +26,10 @@ This tutorial requires `BioNetGen 2.2.5`_, RuleBender_, MATLAB2013a_,
 
 
 Tutorial overview
-=================
+*****************
 
 Part 1: Spatial Modeling with CellBlender
-------------------------------------------------------
+======================================================
 
 In part one, you will receive an introduction to working with spatial modeling.
 Using CellBlender 1.0 RC3 and MCell 3.2.1, you will create and run a simple
@@ -38,7 +38,7 @@ geometries from SBML-spatial and check that these meshes are manifold and
 watertight. You will be using these complex geometries later.
 
 Part 2: Reaction Network Modeling with RuleBender
-------------------------------------------------------
+======================================================
 
 Using BioNetGen 2.2.5 (BNG), you will learn to model biochemical systems using
 rule based modeling. You will use powerful modeling paradigm to create and
@@ -48,7 +48,7 @@ import it into CellBlender to create a simulation using the complex geometries
 you worked on in the previous section.
 
 Part 3: Defining Complex Geometries with CellOrganizer
-------------------------------------------------------
+======================================================
 
 Using CellOrganizer 2.1 you will learn to train generative models of cellular
 organization from fluorescence microscopy images. Next you will learn to sample
@@ -63,15 +63,15 @@ the results of these spatially realistic simulations and the impact of spatial
 organization on these simulations.
 
 A Brief Introduction to CellBlender
-===================================
+***********************************
 
 Required Software
------------------
+=================
 
 Blender 2.70a, CellBlender, MCell
 
 Installation
-------------
+============
 
 .. note:: You may have already done this next step if you've followed along with
    earlier tutorials.
@@ -87,7 +87,7 @@ in the options on the right panel particularly in the "Scene" tab.
 
 
 Related Files
-^^^^^^^^^^^^^
+-------------
 
 simpleGeometry.mdl_
 
@@ -95,7 +95,7 @@ simpleGeometry.mdl_
 
 
 Model Description
------------------
+=================
 
 Harris et al.  present in [#f1]_ a model of receptor-mediated signaling
 coupled with nuclear transport and transcriptional gene regulation. The full
@@ -121,7 +121,7 @@ and TF-receptor binding.
 
 
 Defining our System
--------------------
+===================
 
 Our basic system is composed of an extracellular matrix a cytoplasm and its
 membrane. For this example model we will use a basic geometry composed of an
@@ -187,13 +187,13 @@ And the following release sites:
     Quantity: 200/ (NaV *8)
 
 Simulating your System
-----------------------
+======================
 
 Under model initialization select 1000 iterations. Save your project and run
 the simulation!
 
 Final Thoughts for Part 1
--------------------------
+=========================
 
 The reaction network we have implemented is a highly minimalistic version when
 compared to the full reaction network.  In this exercise we have attempted to
@@ -203,15 +203,15 @@ detailing a procedure for defining complex reaction networks and using
 realistic geometries in a structured way.
 
 Introduction to Compartmental Rule-Based Modeling with BioNetGen and RuleBender
-===============================================================================
+*******************************************************************************
 
 Required Software
------------------
+=================
 
 BioNetGen 2.2.5, RuleBender 2.0, JavaSE 6.
 
 Installation
-------------
+============
 
 RuleBender is a graphical user interface for BioNetGen. It includes several
 features like an integrated development, analysis and simulation environment
@@ -220,10 +220,10 @@ of RuleBender (which includes a copy of BioNetGen) from
 http://www.rulebender.org.
 
 A Basic Model: Ligand Receptor Binding
---------------------------------------
+======================================
 
 Glossary
-~~~~~~~~
+--------
 
 This section introduces the following concepts:
 
@@ -238,7 +238,7 @@ This section introduces the following concepts:
    biological contexts.
 
 Procedure
-~~~~~~~~~
+---------
 
 Related Files
 ^^^^^^^^^^^^^
@@ -410,7 +410,7 @@ system reaches equilibrium between the forward and backward reactions.
    Time Trajectory of a Ligand-Receptor Model
 
 Component States
-----------------
+================
 
 A second way to make use of components in BNG is through the use of internal
 states. A modeler can use these, for example, to represent post-translational
@@ -481,7 +481,7 @@ difference since we have not specified any rule that defines Y to also be a
 binding site.
 
 Comparmental BioNetGen
-----------------------
+======================
 
 Compartments in BioNetGen (cBNGL) allow us to explicitly model the
 compartmental organization of a cell. Consider our example model we referred to
@@ -579,10 +579,10 @@ and equilibrated (the most downstream element, endosomal receptor, reaches
 equilibrum at about 8 seconds).
 
 Importing External Models into CellBlender
-==========================================
+******************************************
 
 Required Material
------------------
+=================
 
 -  A pre-generated spatial geometry and reaction networks encoded in the
    SBML format. It is possible to generate SBML files from BNGL models using
@@ -601,7 +601,7 @@ Required Material
 
 
 Systems Biology Markup Language (SBML)
---------------------------------------
+======================================
 
 SBML is a modeling exchange standard used to encode modeling information in an
 XML-compliant format. Multiple modeling applications support exporting
@@ -617,7 +617,7 @@ To export an SBML from a BioNetGen file, it is sufficient to add the
 ``writeSBML()`` action to the bottom of your BioNetGen file.
 
 Importing SBML
---------------
+==============
 
 To import an SBML and SBML-spatial files open Blender and click File,
 Import, Import External Model. For the purposes of this tutorial you can also use one
@@ -628,7 +628,7 @@ panel have also been automatically filled in. As of the time of this tutorial
 this capability is only supported in Linux.
 
 Checking your meshes
---------------------
+====================
 
 Before you can simulate the biochemical system you must check that your
 geometries have consistent normals, are manifold and watertight. Refer to `this
@@ -636,14 +636,14 @@ tutorial <http://www.mcell.org/tutorials/mesh_repair.html>`__ for more
 information on how to make sure your geometry is MCell compliant
 
 Utilizing partitioning
-----------------------
+======================
 
 Although it is now possible to run your biochemical spatial simulation, you
 probably want to first set up partitions. These can increase simulation speed
 by greater than a thousand times! Set your partitions to be 0.1 wide.
 
 Running CellBlender
--------------------
+===================
 
 The last step before running our simulation is to define the number of
 iterations our simulation will run for. In the Model Initialization panel
@@ -657,7 +657,7 @@ Now we are ready to simulate our file. Click on the run simulation panel and
 start the simulation.
 
 Visualizing and Plotting Data
------------------------------
+=============================
 
 In order to visualize your data from inside Blender it is sufficient to check
 the ’Visualize all’ option in the corresponding CellBlender panel.  However,
@@ -667,7 +667,7 @@ analyze the behavior of the time series produced by the system; we will explain
 how to do this in the following section.
 
 Plotting Reaction Data
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 It is possible to use any plotting software to visualize the time series
 generated by MCell/CellBlender, including CellBlender own plugins if you so
@@ -676,18 +676,18 @@ Running it in the directory where your react\_data is located will generate an
 image for each file found in the directory.
 
 Modeling Cellular Organization (CellOrganizer/SBML-spatial)
-===========================================================
+***********************************************************
 
 **Goal:** Be able to generate synthetic geometries and SBML-spatial files from
 using models learned from fluorescence microscopy images.
 
 Required Software
------------------
+=================
 
 MATLAB2013a, CellOrganizer 2.1
 
 Installation
-------------
+============
 
 Download MATLAB2013a_ or later and activate it using the installation wizard.
 
@@ -707,7 +707,7 @@ Subfolders".
 .. _SampleData: http://www.mcell.org/tutorials/project_files/SampleData.zip
 
 Training generative models
---------------------------
+==========================
 
 **Related CellOrganizer demos:** Train, demo2D01, demo3D11, demo3D12, demo3D18,
 demo3D20
@@ -811,7 +811,7 @@ If you are using the data provided the training should take about an hour.
    running on a cluster is recommended.**
 
 Additonal training options
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------
 
 Once you have started training your model, you may want to explore some of the
 other training options available in CellOrganizer. Below are a few of the more
@@ -838,7 +838,7 @@ model.
    CellOrganizer dependency structure
 
 Synthesizing From Generative Models
------------------------------------
+===================================
 
 **Related CellOrganizer demos:** Synthesis, demo2D00, demo3D01, demo3D05,
 demo3D15, demo3DMultiresSynth, demo3DObjectAvoidance, demo3DDiffeoSynth\_gmm,
@@ -888,7 +888,7 @@ that resemble the slice in figure :num:`Fig. #slice` below.
    Single slice from generated LAMP2 pattern
 
 Synthesizing multiple models
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 
 To create an instance containing multiple protein patterns we will simply
 assign multiple models to the modelpath. For example:
@@ -901,7 +901,7 @@ assign multiple models to the modelpath. For example:
    in the first model in the model list.**
 
 Synthesizing from diffeomorphic models
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------------
 
 By default, instances from diffeomorphic models are sampled according to the
 approximate probability density of the cells and can be synthesized with the
@@ -939,7 +939,7 @@ allows the user to select a points to be synthesized.
 Selects a point uniformly at random from the complete shape space.
 
 Additional synthesis options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 
 Once you have started synthesizing your model, you may want to explore some of
 the other synthesis options available in CellOrganizer. Below are a few of the
@@ -955,7 +955,7 @@ vesicular model.\ **output** - This is a structure that contains several flags
 for different types of outputs including ’SBML’,’tifimages’,and ’indexedimage’.
 
 Reading SBML and creating SBML-spatial models
----------------------------------------------
+=============================================
 
 **Related CellOrganizer demos:** demo3DSBML, demo3DPrimitives, demo3D13,
 
@@ -1010,7 +1010,7 @@ Enter:
    synthesizes high resolution 3D images with no object overlapping allowed.
 
 Creating SBML-spatial files from previously synthesized geometries
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------------------------------
 
 Sometimes it is very useful to create an SBML-spatial file of just a
 pre-synthesized geometry. For example, you may want to use the synthesized
@@ -1020,14 +1020,14 @@ images you wish to create SBML-spatial meshes for. It also takes a resolution
 at which the images were synthesized at.
 
 Analyzing spatially realistic simulations
------------------------------------------
+=========================================
 
 **Objectives** Now that you’ve become familier with all the tools used to
 create your simulations run during Part 2, we will analyze the results of these
 data.
 
 Plotting time series reactions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 
 To plot the results of your MCell simulations we will use the ``{plotMCell}``
 function. This function takes only one argument ``{datapath}`` which is a
@@ -1044,7 +1044,7 @@ plots will look like :num:`Fig. #lboundem` below.
    (s)
 
 Analyzing cellular organization
--------------------------------
+===============================
 
 To compare multiple MCell simulations for a specific species, assuming that the simulations have the same outputs (as in the case of this tutorial) use the ``plotMCellCompare`` function. This function takes three arguments. The first ``datapath`` is similar to the plotMCell function but is a cell array of strings pointing to the paths you wish to compare. For example here we may wish to specify ``\{datapath = 'cell1/react\_data/seed0001\/','cell2/react\_data/seed0001\/'\}``. The second argument here is the species you wish to compare as a number in the file list. For example, in this tutorial Phos_TF would be file number ``19``. The resulting figure is a plot of the requested species for all the cells requested as seen in :num: `Fig. #phosTFcomp` below.
 
