@@ -7,9 +7,12 @@ Single Molecule Diffusion
 Required software
 =================
 
-This tutorial is designed to be used with the `CellBlender 1.1 bundle`_.
+This tutorial is designed to be used with the CellBlender 1.1 bundle (linux_,
+osx_, windows_).
 
-.. _CellBlender 1.1 bundle: http://www.mcell.org/download.html
+.. _linux: http://mcell.org/download/files/cellblender1.1_bundle_linux.zip
+.. _osx: http://mcell.org/download/files/cellblender1.1_bundle_osx.zip
+.. _windows: http://mcell.org/download/files/cellblender1.1_bundle_windows.zip
 
 .. note:: Other versions may work as well.
 
