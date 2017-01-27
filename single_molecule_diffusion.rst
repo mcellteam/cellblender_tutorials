@@ -46,7 +46,7 @@ Define a Molecule "species"
 
 .. image:: ./images/single_molecule/define_molecule.png
 
-* Click in the **Molecule Name** field, type the letter **a** and press the Enter key
+* Click in the **Name** field, type the letter **a** and press the Enter key
 * The new molecule **a** should have a green check mark in the **Defined Molecules** box
 * Click in the **Diffusion Constant** box, type **1e-6** and press the Enter key
 
@@ -95,7 +95,7 @@ Change Settings to See Results
 .. image:: ./images/single_molecule/molecules.png
 
 * Open the **Display Options** subpanel
-* Change the **Cone** to **Torus**
+* Change the **Sphere_1** to **Torus**
 * Change the **Scale** to **5**
 * Change the color to a bright yellow
 
