@@ -16,7 +16,7 @@ simulations. Simply download, extract the zip file, and start Blender.
     CellBlender from scratch. They will need to manually install the following
     pieces:
 
-    * MCell 3.4 (:ref:`mcell_install`)
+    * MCell |version| (:ref:`mcell_install`)
     * `Blender 2.78`_ (older versions may or may not work)
     * CellBlender 1.1 (:ref:`cellblender_install`, *note: install Blender first*)
 

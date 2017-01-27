@@ -16,10 +16,10 @@ an icon. Also, there is no installer unlike many Windows applications.
 Download MCell
 ---------------------------------------------
 
-Download the desired binary file for your system (e.g., MCell v. |release| for
+Download the desired binary file for your system (e.g., MCell v. |version| for
 Linux x86) from the `MMBioS web site`_.
 
-.. _MMBioS web site: http://mmbios.org/index.php/mcell-3-3
+.. _MMBioS web site: http://mmbios.org/index.php/mcell-3-4
 
 Installing MCell
 ---------------------------------------------
