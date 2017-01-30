@@ -95,7 +95,9 @@ Plot the Reaction Data
 -------------------------
 
 * Click the **Plot Output Settings** button
-* Click the **MatPlotLib Plotter** button if it's available.
+* Select **MatPlotLib Plotter** from the plotter drop-down list if it's
+  available.
+* Hit the **Plot** button.
 
 .. image:: ./images/unimol_reactions/plot2.png
 
