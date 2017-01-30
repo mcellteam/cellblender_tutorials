@@ -16,16 +16,8 @@ reactants. One `blender unit`_ in CellBlender is equivalent to one micron.
 
 **Can I simulate moving meshes in MCell?**
 
-Currently, dynamic meshes in MCell can only be accomplished, in a very limited
-way, via checkpointing (:ref:`checkpointing`). With checkpointing, surface
-molecules will attempt to snap to the nearest possible location. To be safe, it
-is best if the mesh moves in small steps. Using dynamic meshes with volume
-molecules raises additional problems. Since the volume molecules have no real
-concept of being inside or outside of compartments, checkpointing only works if
-the mesh is expanding relative to the volume molecules inside of it. Otherwise,
-volume molecules that were once inside a mesh can end up outside of the mesh,
-and vice versa. We are planning on adding more robust support for dynamic
-meshes in the future.
+There is experimental support for dynamic meshes. Please see the
+:ref:`dynamic_geometry_overview` tutorial for more information.
 
 **Can I change the default molecule size?**
 

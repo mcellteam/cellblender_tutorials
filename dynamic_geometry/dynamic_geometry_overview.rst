@@ -1,4 +1,4 @@
-.. _dynamic_geomeotry_overview:
+.. _dynamic_geometry_overview:
 
 
 *********************************************
@@ -7,11 +7,15 @@ Dynamic Geometry
 
 .. warning::
 
-   The dynamic geometry interface is very new and subject to change.
+   The dynamic geometry interface is very new and subject to change. It is
+   currently only available in an `experimental branch`_ of the MCell code.
+
+   .. _experimental branch: https://github.com/mcellteam/mcell/tree/dynamic_meshes
 
 
 Dynamic Geometry Overview
 ---------------------------------------------
+
 
 The dynamic geometry additions to CellBlender support generation of MCell-compatible
 dynamic geometry MDL. These additions allow CellBlender users to do the following:
