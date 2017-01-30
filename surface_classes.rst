@@ -45,11 +45,6 @@ Blender File** button.
 Set Model Initialization Settings
 ---------------------------------------------
 
-.. note:: 
-   
-   See the :ref:`getting_started` tutorial if you have forgotten how to do the
-   instructions in the next several steps.
-
 Under **Model Initialization**, set the **Iterations** to **1000** and the
 **Time Step** to **1e-6**. Normally, we would set these under **General
 Parameters**, but we will skip that step to save time.

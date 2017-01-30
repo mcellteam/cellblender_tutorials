@@ -34,14 +34,12 @@ are releasing two species of molecules (**vol1** and **vol2**) inside of the
 
 .. _partitions.blend: https://www.mcell.psc.edu/tutorials/downloads/partitions.blend
 
-You have already learned how to create a model similar to this in
-:ref:`getting_started`, so we won't go over it again. What we are going to
-cover next is new however. Expand the **Define and Visualize Partitions**
-panel. Select **Include Partitions**. Click **Show Boundaries**, and you will
-see a wireframe of a cube that goes from -1.0 to 1.0 along each axis. These
-represent the boundaries of the partitions. Now, hit **Automatically Generate
-Boundaries** and you should see the partition boundaries grow to encompass the
-entire **Cube** object. Change each **Step** value to **0.15**.
+Expand the **Define and Visualize Partitions** panel. Select **Include
+Partitions**. Click **Show Boundaries**, and you will see a wireframe of a cube
+that goes from -1.0 to 1.0 along each axis. These represent the boundaries of
+the partitions. Now, hit **Automatically Generate Boundaries** and you should
+see the partition boundaries grow to encompass the entire **Cube** object.
+Change each **Step** value to **0.15**.
 
 .. image:: ./images/optimize/partitions.png
 
