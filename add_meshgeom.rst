@@ -52,7 +52,7 @@ Add Sphere to Model Objects
 
 * Click the "plus" sign (**+**) to the right of the **Model Objects** box
 * Expand the **Icosphere Display Options** panel
-* Change **Maximum Draw Type** to **Wire**
+* Select **Wire** from the drop-down menu.
 
 .. image:: ./images/add_meshgeom/model_objects.png
 
