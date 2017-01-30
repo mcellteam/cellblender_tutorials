@@ -6,12 +6,6 @@ Introduction to Surface Classes
 
 .. Git Repo SHA1 ID: 3520f8694d61c81424ff15ff9e7a432e42f0623f
 
-.. note::
-
-    The simulations and visualizations in this tutorial were generated using
-    Blender 2.70a and CellBlender 1.0. It may or may not work with other
-    versions.
-
 Surface classes allow various properties (e.g. **Absorptive**, **Transparent**)
 to be applied to surfaces, which can affect specified molecules. Later, in the
 :ref:`surf_class_rxns` section, we will also see how surface classes can also
@@ -54,15 +48,13 @@ Parameters**, but we will skip that step to save time.
 Add Cube to Model Objects list
 ---------------------------------------------
 
-With the default **Cube** selected, change into **Edit Mode** by hitting
-**Tab** in the **3D View Editor**. Make sure all the faces of the **Cube** are
-selected and hit **Ctrl-t** to triangulate it. Change back into **Object
-Mode**.
+* Hit the **Model Objects** button.
+* Hit the Cube button and then hit the **+** button to add it to the 
+  **Model Objects** list.
+* Under the **Cube Object Options** panel, select **Wire** from the drop-down
+  menu.
 
-In the **Object** Context, under the **Display** panel, set the **Maximum Draw
-Type** to **Wire**.
-
-Then add the **Cube** to the **Model Objects** list.
+.. image:: ./images/surf_class/add_cube.png
 
 .. _surf_class_add_vol_mol:
 
@@ -82,60 +74,42 @@ Add a Volume Molecule and Release Site.
 Add a Plane and Surface Region
 ---------------------------------------------
 
-Move your cursor to the **3D View Editor**, hit **Shift-a**, and select
-**Plane**. Hit **s** to scale the plane, **1.1** to specify the scaling factor,
-and **Enter** to confirm. You should now have a plane going through the middle
-of  your cube.
+* Hit the **Model Objects** button and then the Plane button. You should now
+  have a plane going through the middle of your cube.
+* With the cursor in the 3D View Window, hit **s**, then **1.1** to specify the
+  scaling factor, and **Enter** to confirm.
+* Hit the **+** button to actually add it to the Model Objects list.
 
+.. image:: ./images/surf_class/add_plane.png
 .. image:: ./images/surf_class/plane_in_cube.png
 
-We will now create a surface region for the new plane. Begin by hitting the
-**Object** button on the **Properties** Editor.
+We will now create a surface region for the new plane.
 
-.. image:: ./images/object_button.png
+* Under the **Defined Surface Regions for Plane** panel, hit **+**.
+* Change the default name to **inside**.
+* Change into **Edit Mode** by hitting **Tab** in the **3D View Editor**.
+* Click **Assign**.
 
-Under the **Surface Regions** panel, hit **+**. Change the default name to
-**inside**.
+.. image:: ./images/surf_class/add_inside.png
 
-.. image:: ./images/surf_class/inside_surf_reg.png
-
-Change into **Edit Mode** by hitting **Tab** in the **3D View Editor**.
- 
-.. image:: ./images/surf_class/plane_in_cube_edit.png
-
-With the face of the plane selected, hit **Ctrl-t** to triangulate it.
-
-.. image:: ./images/surf_class/plane_in_cube_tri.png
-
-Then, click **Assign** under **Define Surface Regions**.
-
-.. image:: ./images/surf_class/assign_inside.png
-
-Change back into **Object Mode** by hitting **Tab**. Hit the **Scene** button
-on the **Properties** Editor.
-
-.. image:: ./images/scene_button.png
-
-With the **Plane** selected, hit **+** under the **Model Objects** panel.
-
-.. image:: ./images/surf_class/model_objects.png
+.. note:: the Assign button will only appear if you are in Edit mode.
 
 .. _surf_class_add_sc:
 
 Add the Surface Class
 ---------------------------------------------
 
-Expand the **Define Surface Classes** panel. Then, hit the **+** button to
-create a new surface class called **Surface_Class**. Rename it to
-**absorb_vol1**.
+Hit the **Surface Classes** button. Then, hit the **+** button to create a new
+surface class called **Surface_Class**. Rename it to **absorb_vol1**.
 
 .. image:: ./images/surf_class/default_surface_class.png
 
 Hit the **+** button beside the empty **absorb_vol1 Properties** list.
 
+* Select **Single Molecule** from the **Molecules** field.
 * Select **vol1** from the **Molecule Name** field.
-* Leave the **Orientation** set to **Top/Front**.
-* Leave **Type** set to **Absorptive**. 
+* Set the **Orientation** to **Top/Front**.
+* Set the **Type** to **Absorptive**. 
 
 .. image:: ./images/surf_class/absorb_vol1.png
 
@@ -144,11 +118,11 @@ the **absorb_vol1** surface class to be destroyed.
 
 .. _surf_class_mod_surf_reg:
 
-Modify the Surface Regions
+Assign the Surface Class
 ---------------------------------------------
 
 Now that we have created our surface class, we need to assign it to our mesh.
-Expand the **Modify Surface Regions** panel. Hit the **+** to begin modifying a
+Expand the **Assign Surface Classes** panel. Hit the **+** to begin modifying a
 surface region.
 
 * In the **Surface Class Name** field, select **absorb_vol1**.
