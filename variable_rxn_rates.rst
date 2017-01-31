@@ -4,14 +4,6 @@
 Variable Rate Constants
 *********************************************
 
-.. Git Repo SHA1 ID: 3520f8694d61c81424ff15ff9e7a432e42f0623f
-
-.. note::
-
-    The simulations and visualizations in this tutorial were generated using
-    Blender 2.70a and CellBlender 1.0. It may or may not work with other
-    versions.
-
 In this tutorial, you will learn how to use a rate constant that varies with
 respect to time.
 
@@ -42,12 +34,8 @@ Save the file and quit.
 Set Project Directory
 ---------------------------------------------
 
-Now start Blender. Hit the **Scene** button in the **Properties Editor**. 
-
-.. image:: ./images/scene_button.png
-
-Let's save the file (and set the project directory) right now by hitting
-**Ctrl-s**, typing **~/mcell_tutorial/var_rate_constant** (or
+After you start Blender, save the file (and set the project directory) by
+hitting **Ctrl-s**, typing **~/mcell_tutorial/var_rate_constant** (or
 **C:\\mcell_tutorial\\var_rate_constant** on Windows) into the directory field,
 **var_rate_constant.blend** into the file name field, and hit the **Save As
 Blender File** button.
@@ -59,7 +47,7 @@ Set the following parameters:
 
 * Set the **Iterations** to **1000**.
 * Set the **Time Step** to **1e-6**.
-* Add the default **Cube** to the **Model Objects** list.
+* Create a Cube and add it to the **Model Objects** list.
 * Create a volume molecule called **vol1** with a diffusion constant of
   **1e-6**.
 * Create a release site with the following properties:
@@ -70,14 +58,11 @@ Set the following parameters:
   * Set the **Object/Region** to **Cube**.
   * Set the **Quantity to Release** to **1000**.
 
-* Set **Export All** under **Visualization Output Settings**.
-
 Create Reaction with Variable Rate Constant
 ---------------------------------------------
 
-Under the **Define Reactions**, hit the **+** button. Then set the following
-parameters:
-
+* Hit the **Reactions** button.
+* Hit the **+** button.
 * Set **Reactants** to **vol1**.
 * Set **Products** to **NULL**.
 * Click the **Enable Variable Rate Constant** check box.
@@ -92,9 +77,12 @@ correctly.
 Run and Visualize the Simulation
 ---------------------------------------------
 
-Under the **Run Simulation** panel, hit the **Run Simulation** button. Then hit
-the **Read Viz Data** button under the **Visualize Simulation Results** button.
-Hit **Alt-a** to begin playing the animation.
+* Save the Blender file (**Ctrl-s**).
+* Hit the **Run Simulation** button.
+* Lastly, hit the **Export & Run** button.
+
+Once the simulation has finished running, hit **Reload Visualization Data**.
+Hit **Alt-a** to play back the animation.
 
 For the first 500 iterations of the simulation, the molecules will diffuse
 around in the box undisturbed. After that point, they will begin to disappear.
