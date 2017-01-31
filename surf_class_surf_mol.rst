@@ -4,14 +4,6 @@
 Surface Classes and Surface Molecules
 *********************************************
 
-.. Git Repo SHA1 ID: 3520f8694d61c81424ff15ff9e7a432e42f0623f
-
-.. note::
-
-    The simulations and visualizations in this tutorial were generated using
-    Blender 2.70a and CellBlender 1.0. It may or may not work with other
-    versions.
-
 We have already discussed surface classes at length, but we haven't touched on
 how they can affect the diffusion of surface molecules. Their effects are
 manifested at the boundaries of the surface regions that they are applied to.
@@ -29,25 +21,20 @@ classes don't affect surface molecules, so we can ignore them in this context.
 Set Project Directory
 ---------------------------------------------
 
-Start Blender. Hit the **Scene** button in the **Properties Editor**. 
-
-.. image:: ./images/scene_button.png
-
-Let's save the file (and set the project directory) right now by hitting
-**Ctrl-s**, typing **~/mcell_tutorial/sc_sm** (or **C:\\mcell_tutorial\\sc_sm**
-on Windows) into the directory field, **sc_sm.blend** into the file name field,
-and hit the **Save As Blender File** button.
+After you start Blender, save the file (and set the project directory) by
+hitting **Ctrl-s**, typing **~/mcell_tutorial/sc_sm** (or
+**C:\\mcell_tutorial\\sc_sm** on Windows) into the directory field,
+**sc_sm.blend** into the file name field, and hit the **Save As Blender File**
+button.
 
 Creating and Assigning Surface Regions
 ---------------------------------------------
 
-With the default **Cube** selected, hit the **Object** button in the
-**Properties Editor**.
-
-.. image:: ./images/object_button.png
-
-Expand the **Define Surface Regions** panel. Hit **+** twice so that you have
-two new surface regions.
+* Hit the **Model Objects** button.
+* Hit the Cube button.
+* Hit the **+** button to add the cube to the **Model Objects** list.
+* Under the **Defined Surface Regions for Cube** panel, hit the **+** twice so
+  that you have two new surface regions.
 
 .. image:: ./images/surf_class_surf_mol/region_0_1.png
 
@@ -57,7 +44,7 @@ click on the second entry and change its name to **bottom**.
 .. image:: ./images/surf_class_surf_mol/bottom_top.png
 
 Move your cursor to the **3D View** window and hit **Tab** to switch into
-**Edit Mode**.  Hit **Ctrl-t** to triangulate the faces.
+**Edit Mode**.
 
 .. image:: ./images/triangulate.png
 
@@ -79,35 +66,12 @@ everything is deselected (Hit **a** until all the faces are gray). Then hold
 **Shift** and **right click** on the bottom faces, select **bottom** from the
 list of regions, and click **Assign**.
 
-
-Add Cube to Model Objects List
----------------------------------------------
-
-Hit the **Scene** button on the **Properties** Editor.
-
-.. image:: ./images/scene_button.png
-
-Expand the **Model Objects** panel. Hit the **+** button and **Cube** will
-appear in the list.
- 
-.. image:: ./images/surf_class_surf_mol/model_objects.png
-
-Set Simulation Parameters
----------------------------------------------
-
-Next, expand the **Model Initialization** panel. Make the following changes:
-
-* Change **Iterations** to **1000**.
-* Change **Time Step** to **1e-4**.
-
-.. image:: ./images/surf_class_surf_mol/model_init.png
-
 Define a Surface Molecule
 ---------------------------------------------
 
-Expand the **Define Molecules** panel and hit the **+** button.
-
-* Change the **Molecule Name** to **surf1**.
+* Hit the **Molecules** button.
+* Hit the **+** button.
+* Change the **Name** to **surf1**.
 * Change the **Molecule Type** to **Surface Molecule**.
 * Change the **Diffusion Constant** to **1e-6**.
 
@@ -116,8 +80,8 @@ Expand the **Define Molecules** panel and hit the **+** button.
 Define a Release Site
 ---------------------------------------------
 
-Expand the **Molecule Release/Placement** panel and hit the **+** button.
-
+* Hit the **Molecule Placement** button.
+* Hit the **+** button.
 * Change **Site Name** to **surf1_rel**.
 * Change **Molecule** to **surf1**.
 * Leave **Initial Orientation** set to **Top Front**.
@@ -132,15 +96,14 @@ Expand the **Molecule Release/Placement** panel and hit the **+** button.
 Add the Surface Class
 ---------------------------------------------
 
-Expand the **Define Surface Classes** panel. Then, hit the **+** button to
-create a new surface class called **Surface_Class**. Rename it to
-**absorb**.
-
-Hit the **+** button beside the empty **absorb Properties** list.
-
+* Hit the **Surface Classes** button.
+* Hit the **+** button to create a new surface class called **Surface_Class**.
+* Rename it to **absorb**.
+* Hit the **+** button beside the empty **absorb Properties** list.
+* Leave **Molecules** set to **All Molecules**.
 * Select **surf1** from the **Molecule Name** field.
-* Leave **Orientation** set to **Top/Front**.
-* Leave **Type** set to **Absorptive**.
+* Set **Orientation** set to **Top/Front**.
+* Set **Type** set to **Absorptive**.
 
 .. image:: ./images/surf_class_surf_mol/absorb.png
 
@@ -151,15 +114,16 @@ Repeat this process, except call the surface class **reflect** and change the
 
 .. _scsm_mod_surf_reg:
 
-Modify the Surface Regions
+Assign the Surface Classes
 ---------------------------------------------
 
 Now that we have created our surface class, we need to assign it to our mesh.
-Expand the **Modify Surface Regions** panel. Hit the **+** to begin modifying a
-surface region.
 
+* Hit the **Assign Surface Classes** button.
+* Hit the **+** to begin assigning a surface class.
 * In the **Surface Class Name** field, select **absorb**.
 * Under **Object Name**, select the newly created **Cube** object.
+* Change **Region Selection** to **Specified Region**.
 * For **Region Name**, select **top**.
 
 .. image:: ./images/surf_class_surf_mol/assign_absorb.png
@@ -187,12 +151,11 @@ middle section and **top** region will ultimately be destroyed.
 Run the Simulation and Visualize the Results
 ---------------------------------------------
 
-Select **Export All** under **Visualization Output Settings**.
+* Save the Blender file (**Ctrl-s**).
+* Hit the **Run Simulation** button*
+* Change the **Time Step** to **1e-4**
+* Lastly, hit the **Export & Run** button.
 
-Save the Blender file (**Ctrl-s**) and hit the **Run Simulation** button under
-the **Run Simulation** panel.
-
-Once the simulation has finished running, hit **Read Viz Data** under the
-**Visualize Simulation Results** panel. Hit **Alt-a** to play back the
-animation. You should notice the **surf1** molecules being destroyed by the
-absorptive surface boundary.
+Once the simulation has finished running, hit **Reload Visualization Data**.
+Hit **Alt-a** to play back the animation. You should notice the **surf1**
+molecules being destroyed by the absorptive surface boundary.
