@@ -34,15 +34,6 @@ Blender File** button.
 
 .. image:: ./images/surf_class/save_blend.png
 
-.. _surf_class_model_init:
-
-Set Model Initialization Settings
----------------------------------------------
-
-Under **Model Initialization**, set the **Iterations** to **1000** and the
-**Time Step** to **1e-6**. Normally, we would set these under **General
-Parameters**, but we will skip that step to save time.
-
 .. _surf_class_add_cube:
 
 Add Cube to Model Objects list
@@ -64,14 +55,14 @@ Add a Volume Molecule and Release Site.
 * Add a volume molecule named **vol1** with a diffusion constant of **1e-5**.
 * Create a release site with the following properties:
 
-  * Set the name to **vol1_rel**.
-  * Set the **Shape** to **Object/Region**.
+  * Set the **Site Name** to **vol1_rel**.
+  * Set the **Release Shape** to **Object/Region**.
   * Set the **Object/Region** to **Cube**.
-  * Set the number to release to **2000**.
+  * Set the **Quantity to Release** to **2000**.
 
 .. _surf_class_add_geom:
 
-Add a Plane and Surface Region
+Add a Plane
 ---------------------------------------------
 
 * Hit the **Model Objects** button and then the Plane button. You should now
@@ -83,29 +74,18 @@ Add a Plane and Surface Region
 .. image:: ./images/surf_class/add_plane.png
 .. image:: ./images/surf_class/plane_in_cube.png
 
-We will now create a surface region for the new plane.
-
-* Under the **Defined Surface Regions for Plane** panel, hit **+**.
-* Change the default name to **inside**.
-* Change into **Edit Mode** by hitting **Tab** in the **3D View Editor**.
-* Click **Assign**.
-
-.. image:: ./images/surf_class/add_inside.png
-
-.. note:: the Assign button will only appear if you are in Edit mode.
-
 .. _surf_class_add_sc:
 
 Add the Surface Class
 ---------------------------------------------
 
-Hit the **Surface Classes** button. Then, hit the **+** button to create a new
-surface class called **Surface_Class**. Rename it to **absorb_vol1**.
+* Hit the **Surface Classes** button. 
+* Hit the **+** button to create a new surface class called **Surface_Class**.
 
 .. image:: ./images/surf_class/default_surface_class.png
 
-Hit the **+** button beside the empty **absorb_vol1 Properties** list.
-
+* Rename **Surface_Class** to **absorb_vol1**.
+* Hit the **+** button beside the empty **absorb_vol1 Properties** list.
 * Select **Single Molecule** from the **Molecules** field.
 * Select **vol1** from the **Molecule Name** field.
 * Set the **Orientation** to **Top/Front**.
@@ -122,32 +102,30 @@ Assign the Surface Class
 ---------------------------------------------
 
 Now that we have created our surface class, we need to assign it to our mesh.
-Expand the **Assign Surface Classes** panel. Hit the **+** to begin modifying a
-surface region.
 
+* Hit the **Assign Surface Classes** button.
+* Hit the **+** to begin modifying a surface region.
 * In the **Surface Class Name** field, select **absorb_vol1**.
 * Under **Object Name**, select the newly created **Plane** object.
-* For **Region Name**, select **inside**.
+* Leave **Region Selection** set to **All Surfaces**.
 
 .. image:: ./images/surf_class/mod_surf_reg.png
 
-**absorb_vol1** is now assigned to the surface region called **inside** on the
-**Plane** object. In this example, **inside** happens to include every face of
-**Plane**, but that is not always the case.
+**absorb_vol1** is now assigned to all of the **Plane** object. In this
+example, we are assigning the surface class to every face of **Plane**, but
+that is not always the case.
 
 .. _surf_class_run_vis:
 
 Run the Simulation and Visualize the Results
 ---------------------------------------------
 
-Under **Visualization Output Settings**, select **Export All**.
+Save the Blender file (**Ctrl-s**). Hit the **Run Simulation** button and then
+the **Export & Run** button.
 
-Save the Blender file (**Ctrl-s**) and hit the **Run Simulation** button under
-the **Run Simulation** panel.
-
-Once the simulation has finished running, hit **Read Viz Data** under the
-**Visualize Simulation Results** panel. See if you can notice the **vol1**
-molecules being destroyed by the absorptive surface.
+Once the simulation has finished running, hit **Reload Visualization Data**
+button. See if you can notice the **vol1** molecules being destroyed by the
+absorptive surface.
 
 .. _surf_class_examine_mdl:
 
@@ -155,8 +133,8 @@ Examine the Surface Class MDL (Optional)
 ---------------------------------------------
 
 This next section isn't necessary, but you can follow along with it if you want
-to learn more about MDL syntax. Open the file called **sc.surface_classes.mdl**
-and you should see the following text:
+to learn more about MDL syntax. Open the file called
+**Scene.surface_classes.mdl** and you should see the following text:
 
 .. code-block:: mdl
 
@@ -174,20 +152,19 @@ class called **absorb_vol1**. Since **vol1** is the value set to the
 **FRONT** of a surface that has the **absorb_vol1** surface class will be
 destroyed.
 
-Now open the file named **sc.mod_surf_regions.mdl**:
+Now open the file named **Scene.mod_surf_regions.mdl**:
 
 .. code-block:: mdl
 
     MODIFY_SURFACE_REGIONS
     {
-      Plane[inside]
+      Plane[ALL]
       {
         SURFACE_CLASS = absorb_vol1
       }
     }
 
-Once again, to reiterate, this assigns **absorb_vol1** to the **inside** region
-of **Plane**.
+Once again, to reiterate, this assigns **absorb_vol1** to all of the **Plane**.
 
 That's all there is to it. The other two surface class commands are
 **REFLECTIVE** (the default state for surfaces) and **TRANSPARENT** (allows
@@ -199,8 +176,8 @@ Surface Classes and Reactions
 =============================================
 
 In the :ref:`surf_class_vol_mol` section, we learned that surface classes can
-be used to give regions of meshes special properties. Surface classes can also
-be used to provide extra specificity over how reactions occur.
+be used to give meshes special properties. Surface classes can also be used to
+provide extra specificity over how reactions occur.
 
 .. _surf_class_rxns_mesh:
 
@@ -224,20 +201,24 @@ a new directory. Change the blend file name to **sc_rxn.blend** and click
 Define a New Molecule
 ---------------------------------------------
 
-Expand the **Define Molecules** panel and hit the **+** button. Left click
-**Molecule**. Change the **Molecule Name** to **vol2**, the **Molecule Type**
-to **Volume Molecule**, and the **Diffusion Constant** to **1e-6**.
+* Hit the **Molecules** button. 
+* Hit the **+** button.
+* Change the **Name** to **vol2**.
+* Change the **Molecule Type** to **Volume Molecule**
+* Change the **Diffusion Constant** to **1e-6**.
 
 .. image:: ./images/surf_class/vol2.png
 
 Modify the Existing Surface Class
 ---------------------------------------------
 
-Expand the **Define Surface Classes** panel. Then, hit the **-** button under
-**absorb_vol1 Properties** to remove the existing properties. Then rename
-**absorb_vol** to **empty**. This modified surface class, **empty**, is the
-simplest case you can have for a surface class. By itself, it's not very
-useful, but we can use it in reactions to specify absolute directionality.
+* Hit the **Surface Classes** button.
+* Hit the **-** button under **absorb_vol1 Properties** to remove the existing properties. 
+* Rename **absorb_vol** to **empty**.
+
+This modified surface class, **empty**, is the simplest case you can have for a
+surface class. By itself, it's not very useful, but we can use it in reactions
+to specify absolute directionality.
 
 .. image:: ./images/surf_class/empty.png
 
@@ -245,17 +226,23 @@ Modify the Surface Regions
 ---------------------------------------------
 
 Now that we have modified our surface class, we need to reassign it to our
-mesh. Under the **Modify Surface Regions** panel, in the **Surface Class Name**
-field, select **empty**. You should be able to leave everything else as is.
+mesh.
+
+* Hit the **Assign Surface Classes** button.
+* Under the **Name** field, select **empty**.
+
+You should be able to leave everything else as is.
 
 .. image:: ./images/surf_class/assign_empty.png
 
 Define the Reaction
 ---------------------------------------------
 
-Expand the **Define Reactions** panel and hit the **+** button. Change
-**Reactants** to **vol1, @ empty'**. Change **Products** to **vol2'**. Change
-**Forward Rate** to **1e7**.
+* Hit the **Reactions** button.
+* Hit the **+** button.
+* Change **Reactants** to **vol1, @ empty'**.
+* Change **Products** to **vol2'**.
+* Change **Forward Rate** to **1e7**.
 
 .. image:: ./images/surf_class/reaction.png
 
@@ -264,13 +251,12 @@ Expand the **Define Reactions** panel and hit the **+** button. Change
 Run the Simulation and Visualize the Results
 ---------------------------------------------
 
-Save the Blender file (**Ctrl-s**) and hit the **Run Simulation** button under
-the **Run Simulation** panel.
+Save the Blender file (**Ctrl-s**). Hit the **Run Simulation** button and then
+the **Export & Run** button.
 
-Once the simulation has finished running, hit **Read Viz Data** under the
-**Visualize Simulation Results** panel. Hit **Alt-a** to begin playing back the
-animation. You may need to change the color of **vol2**, so you can tell it
-apart from **vol1**.
+Once the simulation has finished running, hit the **Reload Visualization
+Data**. Hit **Alt-a** to begin playing back the animation. You may need to
+change the color of **vol2**, so you can tell it apart from **vol1**.
 
 Once you have done that, you should notice that there are **vol2** molecules
 being created inside the box, but only in the upper portion of it, despite the
