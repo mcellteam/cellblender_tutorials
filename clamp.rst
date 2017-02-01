@@ -87,7 +87,9 @@ Create Reaction Output
 ---------------------------------------------
 
 * Hit the **Plot Output Settings** button.
-* Hit the **+** button with a circle around it.
+* Hit the **+** button with a circle around it. This button will add a count
+  statement for every molecule defined, which is just **vol1** in this
+  instance.
 
 .. image:: ./images/clamp/count_vol1.png
 
@@ -132,11 +134,8 @@ see the following:
 Assigning a concentration clamp to a region works the same as it does for any
 other surface class.
 
-Annotate the MDLs (Optional)
----------------------------------------------
-
-Finally, open the file called **Scene.rxn_output.mdl** and *add* the
-highlighted line that contains the **ESTIMATE_CONC** command:
+Finally, open the file called **Scene.rxn_output.mdl** and note the highlighted
+line that contains the **ESTIMATE_CONC** command:
 
 .. code-block:: mdl
     :emphasize-lines: 5
