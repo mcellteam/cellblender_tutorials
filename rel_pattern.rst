@@ -61,7 +61,6 @@ Create a release site with the following properties:
 
   * Set the **Site Name** to **vol1_rel**.
   * Set the **Molecule** to **vol1**.
-  * Set the **Release/Shape** to **Cubic**.
   * Set the **Quantity to Release** to **100**.
   * Set the **Release Pattern** to **rel_pat1**.
 
