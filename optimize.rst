@@ -13,6 +13,43 @@ address some of these issues:
 
 .. contents:: :local:
 
+.. _increase_time_step:
+
+Increase Time Step
+---------------------------------------------
+
+One of the easiest things you can do to speed up your simulations is to
+increase your time step. Generally, you'll want to increase it as much as
+possible while keeping the reaction probabilities below one. If any of the
+reaction probabilities exceed one, you'll see the following message:
+
+.. image:: ./images/optimize/rxn_probs/high_prob1.png
+
+If you do, you should take a closer look at the logs. You can enable logs by
+checking the **Save Text Logs** under the **Output/Control Options** panel:
+
+.. image:: ./images/optimize/rxn_probs/save_logs.png
+
+When you re-run the simulation, you'll need to switch to the **Scripting**
+layout:
+
+.. image:: ./images/optimize/rxn_probs/high_prob2.png
+
+Notice that it refers to the specific reaction or reactions at fault.
+
+For this particular model, we can decrease the time step by an order of
+magnitude (from **1e-6** to **1e-7**) to prevent the missed reactions:
+
+.. image:: ./images/optimize/rxn_probs/lower_prob1.png
+
+Here's the new log:
+
+.. image:: ./images/optimize/rxn_probs/lower_prob2.png
+
+There's still a warning about the lifetime being short relative to the time
+step, but we are no longer missing any reactions. The simulation now has a time
+step that is about as large as it can reasonably be.
+
 .. _adding_partitions:
 
 Adding Partitions
