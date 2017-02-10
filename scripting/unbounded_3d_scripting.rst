@@ -102,9 +102,6 @@ to run it. Each section will be discussed further below this script.
     ##################################
 
     class point:
-      x=0;
-      y=0;
-      z=0;
 
       def __init__ ( self, x, y, z ):
         self.x = x;
@@ -113,7 +110,6 @@ to run it. Each section will be discussed further below this script.
 
 
     class face:
-      verts = [];
       
       def __init__ ( self, v1, v2, v3 ):
         self.verts = [];
@@ -125,8 +121,6 @@ to run it. Each section will be discussed further below this script.
     class IcoSphere:
 
       # Builds an icosphere with recursion
-      points = []
-      faces = []
       
       def __init__ ( self ):
         self.points = []
@@ -541,9 +535,6 @@ data model compatible dictionary named "obj" that it returns.
     ##################################
 
     class point:
-      x=0;
-      y=0;
-      z=0;
 
       def __init__ ( self, x, y, z ):
         self.x = x;
@@ -552,7 +543,6 @@ data model compatible dictionary named "obj" that it returns.
 
 
     class face:
-      verts = [];
       
       def __init__ ( self, v1, v2, v3 ):
         self.verts = [];
@@ -564,8 +554,6 @@ data model compatible dictionary named "obj" that it returns.
     class IcoSphere:
 
       # Builds an icosphere with recursion
-      points = []
-      faces = []
       
       def __init__ ( self ):
         self.points = []
