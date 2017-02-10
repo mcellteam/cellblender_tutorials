@@ -24,10 +24,8 @@ You can get the segmentation from the Cell Centered Database (CCDB), a
 collection of 2D, 3D, and 4D cellular and subcellular data derived from light
 and electron microscopy. The data we will be using today is from entry 3603.
 For the purposes of this tutorial, we have selected a nicely segmented section
-for model building. The segmentation can be found in file tt-sr-mit.mod. The
-segmentation has been created and visualized in IMOD and shown in Fig. 1. The
-hand-segmented contours can be used to generate a preliminary surface mesh of
-the extracted features in IMOD.
+for model building. IMOD was used to generate a preliminary surface mesh in obj
+format.
 
 .. _gamer_tutorial:
 
@@ -42,11 +40,9 @@ distribution. Quantitatively, mesh quality is measured by mesh topology and
 proportion of high aspect triangles (triangles with extremely large and small
 angles).
 
-- In order to load the mesh from IMOD into Blender, we first need to convert
-  from IMOD’s .mod contour format to Wavefront .obj surface mesh format. 
-  ``imod2obj tt-sr-mit.mod tt-sr-mit.obj``
+- Download the obj file.
 
-- Now we can open up the new .obj file in blender.
+- Now we can open up the new ".obj" file in blender.
 
   - Start Blender by typing ``blender`` at the command line.
 
@@ -81,8 +77,9 @@ angles).
 
   - **Object > Transform > Geometry to Origin**.
 
-  - Rearrange the view using the following options: View > Selected **.**
-    (numpad), View > Front **1** (numpad) , View > Selected **.** (numpad.)
+  - Rearrange the view using the following options: **View > Selected** [**.**
+    on the numpad], **View > Front** [**.** on the numpad], **View > Selected**
+    [**.** on the numpad]
 
 - Let’s now align the model so that the long axis is horizontal.
 
@@ -90,7 +87,7 @@ angles).
     hitting **r**, **y**, and **45**.
 
   - Save this state as the object’s default rotation and scale. **Object >
-    Apply > Rotation and Scale** [Ctrl + A, Rotation and Scale]
+    Apply > Rotation and Scale** [**Ctrl+a** and select **Rotation and Scale**]
 
 - CHECKPOINT: Let’s save our work now as: tt-sr-mit.imp_obj.blend. Note that if
   you get behind or if something goes awry, you can always close Blender and
@@ -110,11 +107,11 @@ angles).
 
 - Let’s start by cleaning up regions of non-manifold topology.
 
-  - First engage **Edit Mode** **Tab** and Unselect All **A** .
+  - First engage **Edit Mode** [**Tab**] and Unselect All **A**.
   - Using your mouse pick the Vertex-Select Mode option.
   - Highlight regions of non-manifold topology **Select > Select All By Trait >
-    Non Manifold** [**Shift + Ctrl + Alt + M**]. This highlights all the
-    regions of non-manifold topologies.
+    Non Manifold** [**Shift+Ctrl+Alt+M**]. This highlights all the regions of
+    non-manifold topologies.
 
 - Conveniently non-manifoldness is a problem in the animation industry (it
   tends to cause problems with raytracing among other things). Thus, Blender
@@ -127,11 +124,11 @@ angles).
   - This will leave some holes in the mesh. We can automatically fill the holes
     using: **Mesh > Clean up > Fill Holes**.
   - Let’s now check how many issues we have resolved. Unselect everything **A**
-    then **Select > Select All By Trait > Non Manifold** [**Shift + Ctrl + Alt
-    + M**]. We see that the mesh has been substantially improved but is not
-    perfect yet.
+    then **Select > Select All By Trait > Non Manifold**
+    [**Shift+Ctrl+Alt+M**]. We see that the mesh has been substantially
+    improved but is not perfect yet.
 
-- We can zoom in on the selected region by performing **View > Selected** [num .] .
+- We can zoom in on the selected region by performing **View > Selected** [num .].
 
   - Let’s delete the dangling vertex. First Unselect All [**a**] then select the
     culprit vertex [**RMB click**] (Note, be sure to align the view such that
@@ -139,12 +136,12 @@ angles).
     something behind) and delete [**x**] and choose Vertices.
 
 - Once again let’s take a look to see if there are any residual problems. In
-  **Edit Mode**, **Select > Select All By Trait > Non Manifold** [**Shift + Ctrl +
-  Alt + M**]. At this point your mesh should have no more issues.
+  **Edit Mode**, **Select > Select All By Trait > Non Manifold** [**Shift+Ctrl+
+  Alt+M**]. At this point your mesh should have no more issues.
 - Recall that the degenerate dissolve function deleted some vertices and edges.
   In some of these cases, when the holes are filled, the polygons may no longer
   be triangular. In **Edit Mode**, to re-triangulate, Select All [**a**] then choose
-  **Mesh > Faces > Triangulate** [**Ctrl + T**]
+  **Mesh > Faces > Triangulate** [**Ctrl+t**]
 - Our mesh is starting to look pretty good! Let’s re-run mesh analyzer
 
   - Return to **Object Mode** **Tab**
@@ -155,39 +152,39 @@ angles).
 - To reset the orientation of the faces, we need to recalculate the normals.
 
   - Return to **Edit Mode** **Tab**
-  - **Mesh > Normals > Recalculate Outside** [Ctrl + N]
+  - **Mesh > Normals > Recalculate Outside** [**Ctrl+n**]
   - Return to to **Object Mode** **Tab**, run mesh analyzer again. We now we have
     good geometry to start with. Be sure to note the surface area and volume.
     See fig 10.
 
 - CHECKPOINT: Save your progress to: tt-sr-mit.clean.blend 
 
-- We are now ready to begin surface mesh refinement with GAMer .
+- We are now ready to begin surface mesh refinement with GAMer.
 
-  - Go to the GAMer tab on the left side of Blender .
-  - Click on the Surface Mesh Improvement button to show this subpanel. The
+  - Go to the GAMer tab on the left side of Blender.
+  - Click on the **Surface Mesh Improvement** button to show this subpanel. The
     subpanel provides several functions as follows:
 
-    - Coarse Dense Tris: reduces the number of triangles in densely
+    - **Coarse Dense Tris**: reduces the number of triangles in densely
       triangulated portions of the mesh.
-    - Coarse Flat Tris: reduces the number of triangles in flat regions of the
-      mesh.
-    - Smooth Tris: improves the aspect ratio of triangles by maximizing angles.
-      It does so by flipping edges moving vertices based on angle and the local
-      structure tensor.
-    - Normal Smooth Surf: smooths surface roughness using a feature-preserving
-      normal averaging algorithm.
+    - **Coarse Flat Tris**: reduces the number of triangles in flat regions of
+      the mesh.
+    - **Smooth Tris**: improves the aspect ratio of triangles by maximizing
+      angles. It does so by flipping edges moving vertices based on angle and
+      the local structure tensor.
+    - **Normal Smooth Surf**: smooths surface roughness using a
+      feature-preserving normal averaging algorithm.
 
   - In **Object Mode** [**Tab**] with the model selected, perform the following
     operations in order. After each step the approximate number of vertices
     remaining is given.
 
-    - Smooth Tris: Max_Min = 15, S_Iter = 10 (~73K vertices)
-    - Coarse Dense Tris: CD_R, 1; CD_Iter, 5 (~37K vertices)
-    - Smooth Tris: Max_Min, 15; S_Iter, 10
-    - Coarse Dense Tris: CD_R, 0.5; CD_Iter, 5 (~28K vertices)
-    - Smooth Tris: Max_Min, 20; S_Iter, 20
-    - 2x Normal Smooth Surf
+    - **Smooth Tris**: Max_Min = 15, S_Iter = 10 (~73K vertices)
+    - **Coarse Dense Tris**: CD_R, 1; CD_Iter, 5 (~37K vertices)
+    - **Smooth Tris**: Max_Min, 15; S_Iter, 10
+    - **Coarse Dense Tris**: CD_R, 0.5; CD_Iter, 5 (~28K vertices)
+    - **Smooth Tris**: Max_Min, 20; S_Iter, 20
+    - 2x **Normal Smooth Surf**
 
   - In **Object Mode** [**Tab**], run Mesh Analyzer. Note the slightly smaller
     surface area but similar volume.
@@ -200,9 +197,9 @@ angles).
     position of the 3D cursor. In **Object Mode** **Tab** , Object > Snap >
     Cursor to Center [**Shift + S** and select **Cursor to Center**]
   - We will next add a cube at the position of the 3D cursor. Add a cube mesh
-    object, **Add > Mesh > Cube** [**Shift + A** and select **Mesh > Cube**]
+    object, **Add > Mesh > Cube** [**Shift+a** and select **Mesh > Cube**]
   - Let’s scale and translate the bounding box to where we want it. Recall that
-    the Numerics Panel can be summoned with [**n**] .
+    the Numerics Panel can be summoned with [**n**].
 
     - Location (-40, 15, 30)
     - Scale (275, 130, 220)
@@ -210,10 +207,10 @@ angles).
 - The cube is currently a quadrilateral mesh. We need to convert to a
   triangular mesh for later tetrahedralization.
 
-  - Return to **Edit Mode** **Tab** and Select All [**a**] . Then triangulate by going to
-    **Mesh > Faces > Triangulate** [**Ctrl + T**]
+  - Return to **Edit Mode** **Tab** and Select All [**a**]. Then triangulate
+    by going to **Mesh > Faces > Triangulate** [**Ctrl+t**]
   - To capture detailed features we will need additional triangles. With the
-    cube selected, **Mesh > Edges > Subdivide** a total of six times [**W** and
+    cube selected, **Mesh > Edges > Subdivide** a total of six times [**w** and
     select **Subdivide**].
   - Return to **Object Mode** [**Tab**].
 
@@ -226,7 +223,8 @@ angles).
     and apply the modifier.
   - In the **Outliner** click on the eye to hide **obj1_T-tub_1**.
   - With the cube selected, apply the current rotation and scale transform.
-    **Object > Apply > Rotation** and **Scale** [**Ctrl + A, Rotation and Scale**]
+    **Object > Apply > Rotation** and **Scale** [**Ctrl+a** and select
+    **Rotation and Scale**]
   - Apply the current location transform. **Object > Apply > Location** [**Ctrl
     + A, Location**]
   - If you would like to show the edges, go to the **Object Properties** and
@@ -236,7 +234,7 @@ angles).
 - Once again, we have a surface mesh to refine.
 
   - First in **Edit Mode** **Tab** we can **Select > Select All By Trait > Non
-    Manifold** [**Shift + Ctrl + Alt + M**]. Nothing should be selected. If
+    Manifold** [**Shift+Ctrl+Alt+M**]. Nothing should be selected. If
     there are some issues, try performing **Degenerate Dissolve** followed by
     **Fill Holes**.
   - Return to **Object Mode** **Tab** , run Mesh Analyzer. We find that the
@@ -244,8 +242,8 @@ angles).
 
 - We can triangulate as before:
 
-  - In **Edit Mode** **Tab**, Select All [**a**] , Mesh > Faces > Triangulate
-    [**Ctrl + t**]
+  - In **Edit Mode** **Tab**, Select All [**a**] , **Mesh > Faces >
+    Triangulate** [**Ctrl+t**]
   - Return to **Object Mode** **Tab** , and run Mesh Analyzer. We have a good
     geometry to start refining.
 
@@ -256,13 +254,13 @@ angles).
     operations in order. After each step the approximate number of vertices
     remaining is given.
 
-    - Smooth Tris: Max_Min = 15, S_Iter = 10 (~70K vertices)
-    - Coarse Dense Tris: CD_R = 0.75, CD_Iter = 10 (~57K vertices)
-    - Coarse Flat Tris: CF_Rate = 0.016 (~44K vertices)
-    - Smooth Tris: Max_Min = 15; S_Iter = 10
-    - Coarse Dense Tris: CD_R = 0.1, CD_Iter = 10 (~42K vertices)
-    - Smooth Tris: Max_Min = 20; S_Iter = 20
-    - 2x Normal Smooth Surf
+    - **Smooth Tris**: Max_Min = 15, S_Iter = 10 (~70K vertices)
+    - **Coarse Dense Tris**: CD_R = 0.75, CD_Iter = 10 (~57K vertices)
+    - **Coarse Flat Tris**: CF_Rate = 0.016 (~44K vertices)
+    - **Smooth Tris**: Max_Min = 15; S_Iter = 10
+    - **Coarse Dense Tris**: CD_R = 0.1, CD_Iter = 10 (~42K vertices)
+    - **Smooth Tris**: Max_Min = 20; S_Iter = 20
+    - 2x **Normal Smooth Surf**
 
   - In **Object Mode** [**Tab**], run **Mesh Analyzer**. Note the slightly
     smaller surface area but similar volume.
@@ -275,31 +273,32 @@ angles).
     select the color you wish to represent the Cytosol. The color only serves
     as a visual aid to help you mark. Set the color to green.
   - Change the name of the boundary to 'Cytosol'
-  - Enter **Edit Mode** **Tab** and choose Face Select Mode and begin selecting all
-    faces of the cytosol. Clicking each face is very arduous! For larger
-    surfaces, you may elect to select using the “Circle Select” tool [**c**] or the
-    “Border Select” tool [**b**] . Use "Assign" to assign selected faces to
+  - Enter **Edit Mode** **Tab** and choose Face Select Mode and begin selecting
+    all faces of the cytosol. Clicking each face is very arduous! For larger
+    surfaces, you may elect to select using the “Circle Select” tool [**c**] or
+    the “Border Select” tool [**b**]. Use "Assign" to assign selected faces to
     boundary. You can assign as you go or all together at the end. Note, it can
-    sometimes be very helpful to hide all selected faces using [**h**], or hide all
-    unselected faces using [Shift + H] . You can unhide everything using [Alt +
-    H] . In the next steps we’ll be using the the “Border Select”  tool [**b**].
+    sometimes be very helpful to hide all selected faces using [**h**], or hide
+    all unselected faces using [**Shift+h**]. You can unhide everything using
+    [**Alt+h**]. In the next steps we’ll be using the the “Border Select” tool
+    [**b**].
   - Turn off option: “Limit selection to visible”.
-  - View > Front [numpad 1] .
+  - **View > Front** [numpad 1].
   - Select faces of Cytosol. Use “Border Select” tool [**b**] to select the profile
     of each side (see Fig. 19).
-  - View > Top [numpad 7] .
+  - View > Top [numpad 7].
   - Select additional faces of Cytosol. Use “Border Select” tool [**b**] to select
     the profile of remaining sides.
-  - Hide All Unselected [Shift + H] . You may notice that some triangles from
+  - Hide All Unselected [**Shift+h**]. You may notice that some triangles from
     internal features may have been selected. We will fix this next by
     selecting linked triangles.
   - Unselect All [**a**]
-  - Select one triangle, click [RMB] .
-  - Select Linked [Ctrl + L]
-  - Hide All Unselected [Shift + H]
+  - Select one triangle, click [**RMB**].
+  - Select Linked [**Ctrl+l**]
+  - Hide All Unselected [**Shift+h**]
   - Use "Assign" to assign selected faces to boundary.
   - Turn on option: “Limit selection to visible”.
-  - Unhide All [Alt + H]
+  - Unhide All [**Alt+h**]
   - Unselect All [**a**]
 
 - CHECKPOINT: Save your progress to: tt-sr-mit.cytosol.blend
@@ -307,8 +306,8 @@ angles).
 
   - Select and hide the Cytosol [**h**]
   - Add a new boundary named “Mitochondria”, set color to magenta.
-  - Select one face on each mitochondria [Shift + RMB] and Select Linked [Ctrl
-    + L]
+  - Select one face on each mitochondria [**Shift+RMB**] and Select Linked
+    [**Ctrl+l**]
   - Use “Assign” to assign the selected faces to be in the mitochondria.
   - When finished, hide the mitochondria [**h**] and proceed with marking the
     t-tubule (“TT”, set color to blue) and sarcoplasmic reticulum (“SR”, set
