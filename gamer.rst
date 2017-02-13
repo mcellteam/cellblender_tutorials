@@ -32,7 +32,9 @@ distribution. Quantitatively, mesh quality is measured by mesh topology and
 proportion of high aspect triangles (triangles with extremely large and small
 angles).
 
-- Download the obj file.
+- Download the `obj file`_.
+
+.. _obj file: http://www.mcell.org/tutorials/project_files/tt-sr-mit.obj
 
 - Now we can open up this ".obj" file in blender.
 
@@ -224,6 +226,8 @@ angles).
     - **Location** (-40, 15, 30)
     - **Scale** (275, 130, 220)
 
+  .. image:: ./images/gamer/add_cube.png
+
 - The cube is currently a quadrilateral mesh. We need to convert to a
   triangular mesh.
 
@@ -233,6 +237,8 @@ angles).
     select **Subdivide**].
   - Triangulate by going to **Mesh > Faces > Triangulate** [**Ctrl+t**]
   - Return to **Object Mode** [**Tab**].
+
+  .. image:: ./images/gamer/subdivide_cube.png
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.with_cube.blend**
 - To get the surface representation of the cytosolic volume, we must subtract
@@ -250,6 +256,8 @@ angles).
     [**Ctrl+a, Location**]
   - If you would like to show the edges, go to the **Object Properties** and
     select **Wire** and **Draw all Edges**.
+
+  .. image:: ./images/gamer/add_boolean.png
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.boolean.blend**
 - Once again, we have a surface mesh to refine.
@@ -292,8 +300,8 @@ angles).
 - Return to the GAMer tab and choose the **Boundary Marker** tool
 
   - Add a new boundary (**+** button). By clicking on the color swatch, you can
-    select the color you wish to represent the Cytosol. The color only serves
-    as a visual aid to help you mark. Set the color to green.
+    select the color you wish to represent the **Cytosol**. The color only
+    serves as a visual aid to help you mark. Set the color to green.
   - Change the name of the boundary to **Cytosol**.
   - Enter **Edit Mode** [**Tab**] and choose **Face** select mode and begin
     selecting all faces of the cytosol. Clicking each face is very arduous! For
@@ -306,8 +314,8 @@ angles).
     the **Border Select** tool [**b**].
   - Turn off the option: **Limit selection to visible**.
   - **View > Front** [numpad 1].
-  - Select faces of Cytosol. Use **Border Select** tool [**b**] to select the
-    profile of each side.
+  - Select faces of **Cytosol**. Use **Border Select** tool [**b**] to select
+    the profile of each side.
   - **View > Top** [**numpad 7**].
   - Select additional faces of **Cytosol**. Use **Border Select** tool [**b**]
     to select the profile of remaining sides.
@@ -326,30 +334,15 @@ angles).
 - CHECKPOINT: Save your progress to: **tt-sr-mit.cytosol.blend**
 - When you are finished marking the cytosol,
 
-  - Select and hide the Cytosol [**h**]
-  - Add a new boundary named “Mitochondria”, set color to magenta.
+  - Select and hide the **Cytosol** [**h**].
+  - Add a new boundary named **Mitochondria** and set the color to magenta.
   - Select one face on each mitochondria [**Shift+RMB**] and Select Linked
     [**Ctrl+l**]
-  - Use “Assign” to assign the selected faces to be in the mitochondria.
+  - Use **Assign** to assign the selected faces to be in the mitochondria.
   - When finished, hide the mitochondria [**h**] and proceed with marking the
-    t-tubule (“TT”, set color to blue) and sarcoplasmic reticulum (“SR”, set
-    color to yellow). We chose the two letter abbreviations because boundary
-    names cannot contain special characters or spaces (underscores are OK).
+    t-tubule (**TT**. Set color to blue) and sarcoplasmic reticulum (**SR**.
+    Set color to yellow). We chose the two letter abbreviations because
+    boundary names cannot contain special characters or spaces (underscores are
+    OK).
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.all_marked.blend** 
-- Now we finally have a Surface Mesh ready for tetrahedralization! Choose
-  Tetrahedralization Tool and select the model in the Outliner. Make sure all
-  faces of the model are selected.
-
-  - Enter **Edit Mode** **Tab**
-  - Select All [**a**]
-  - Return to **Object Mode** **Tab**
-  - Add domain to model (+ button)
-  - Use Volume Constraint and set to 5000
-
-- Choose tetrahedralization options:
-
-  - Set mesh file base name to **tt-sr-mit.tet_mesh**
-  - Set Min dihedral angle of 20
-  - Choose DOLFIN mesh format
-  - Hit Tetrahedralize button!
