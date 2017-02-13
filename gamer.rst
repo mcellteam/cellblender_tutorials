@@ -44,6 +44,8 @@ angles).
   - Import the data file with **File > Import > Wavefront (.obj)** and select
     **tt-sr-mit.obj**
 
+  .. image:: ./images/gamer/import_obj.png
+
 - The object is not centered around the origin. To bring it into view, do the
   following: **View > Selected** [**numpad .**].
 - You may notice that parts of the model are getting truncated by the clipping
@@ -54,6 +56,8 @@ angles).
     - Open the **Properties** panel by hitting **n**
     - Navigate to the **View** subpanel
     - Under **Clip**, change **End** to **2000**.
+
+    .. image:: ./images/gamer/end_2000.png
 
   - For geometric models, it’s often useful to change to the orthographic view
     [**numpad 5**].
@@ -67,6 +71,8 @@ angles).
   of nodes and edges. To show the edges in the Viewport, go to the **Object
   Properties** tab and select **Wire** and **Draw all Edges** in the
   **Display** subpanel.
+
+  .. image:: ./images/gamer/wire_draw_all_edges.png
 
 - To simplify future manipulation let’s center the model about the origin.
 
@@ -99,13 +105,20 @@ angles).
     examples of non-manifold geometry please consult the following
     stackexchange.
 
+    .. image:: ./images/gamer/analyze_mesh.png
+
 - Let’s start by cleaning up regions of non-manifold topology.
 
   - First engage **Edit Mode** [**Tab**] and deselect everything **a**.
-  - Using your mouse pick the Vertex-Select Mode option.
+  - Hit **Ctrl-Tab** and select **Vertex** select mode.
+
+    .. image:: ./images/gamer/vertex_select.png
+
   - Highlight regions of non-manifold topology **Select > Select All By Trait >
     Non Manifold** [**Shift+Ctrl+Alt+m**]. This highlights all the regions of
     non-manifold topologies.
+
+    .. image:: ./images/gamer/non_manifold.png
 
 - Conveniently non-manifoldness is a problem in the animation industry (it
   tends to cause problems with raytracing among other things). Thus, Blender
@@ -115,12 +128,20 @@ angles).
     Dissolve**. This function will take care of several cases of bad geometry:
     edges with no length, faces with no area, or face corners with no area. It
     does so by deleting vertices and edges it thinks don’t make sense.
+
+    .. image:: ./images/gamer/degenerate_dissolve.png
+
   - This will leave some holes in the mesh. We can automatically fill the holes
     using: **Mesh > Clean up > Fill Holes**.
+
+    .. image:: ./images/gamer/fill_holes.png
+
   - Let’s now check how many issues we have resolved. Deselect everything **a**
     and then **Select > Select All By Trait > Non Manifold**
     [**Shift+Ctrl+Alt+m**]. We see that the mesh has been substantially
     improved but is not perfect yet.
+
+    .. image:: ./images/gamer/almost_manifold.png
 
 - We can zoom in on the selected region by performing **View > Selected**
   [**numpad .**].
@@ -129,6 +150,8 @@ angles).
     select the culprit vertex [**RMB click**] (Note, be sure to align the view
     such that the vertex has nothing behind it. You don’t want to accidentally
     delete something behind) and delete [**x**] and choose Vertices.
+
+    .. image:: ./images/gamer/remove_dangling.png
 
 - Once again let’s take a look to see if there are any residual problems. In
   **Edit Mode**, **Select > Select All By Trait > Non Manifold** [**Shift+Ctrl+
@@ -146,8 +169,8 @@ angles).
 
 - To reset the orientation of the faces, we need to recalculate the normals.
 
-  - Return to **Edit Mode** **Tab**
-  - **Mesh > Normals > Recalculate Outside** [**Ctrl+n**]
+  - Return to **Edit Mode** **Tab**.
+  - **Mesh > Normals > Recalculate Outside** [**Ctrl+n**].
   - Return to to **Object Mode** **Tab**, run mesh analyzer again. We now we have
     good geometry to start with. Be sure to note the surface area and volume.
 
@@ -155,9 +178,12 @@ angles).
 
 - We are now ready to begin surface mesh refinement with GAMer.
 
-  - Go to the GAMer tab on the left side of Blender.
-  - Click on the **Surface Mesh Improvement** button to show this subpanel. The
-    subpanel provides several functions as follows:
+  - Go to the **GAMer** tab on the left side of Blender.
+  - Click on the **Surface Mesh Improvement** button to show this subpanel.
+
+    .. image:: ./images/gamer/surface_mesh_improve.png
+
+  - The subpanel provides several functions as follows:
 
     - **Coarse Dense Tris**: reduces the number of triangles in densely
       triangulated portions of the mesh.
@@ -195,13 +221,13 @@ angles).
   - Let’s scale and translate the bounding box to where we want it. Recall that
     the **Properties** panel can be summoned with [**n**].
 
-    - Location (-40, 15, 30)
-    - Scale (275, 130, 220)
+    - **Location** (-40, 15, 30)
+    - **Scale** (275, 130, 220)
 
 - The cube is currently a quadrilateral mesh. We need to convert to a
-  triangular mesh for later tetrahedralization.
+  triangular mesh.
 
-  - Return to **Edit Mode** **Tab** and Select All [**a**].
+  - Switch to **Edit Mode** [**Tab**].
   - To capture detailed features we will need additional triangles. With the
     cube selected, **Mesh > Edges > Subdivide** a total of six times [**w** and
     select **Subdivide**].
@@ -228,7 +254,7 @@ angles).
 - CHECKPOINT: Save your progress to: **tt-sr-mit.boolean.blend**
 - Once again, we have a surface mesh to refine.
 
-  - First, in **Edit Mode** [**Tab**], swith to **Vertex** select mode.
+  - First, in **Edit Mode** [**Tab**], switch to **Vertex** select mode.
   - Deselect everything [**a**].
   - Next, we can **Select > Select All By Trait > Non Manifold**
     [**Shift+Ctrl+Alt+m**]. Nothing should be selected. If there are some
@@ -240,7 +266,7 @@ angles).
 
   - In **Edit Mode** **Tab**, Select All [**a**] , **Mesh > Faces >
     Triangulate** [**Ctrl+t**]
-  - Return to **Object Mode** **Tab** , and run **Mesh Analyzer**. We have a
+  - Return to **Object Mode** [**Tab**], and run **Mesh Analyzer**. We have a
     good geometry to start refining.
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.boolean_clean.blend**
@@ -278,13 +304,13 @@ angles).
     using [**h**], or hide all unselected faces using [**Shift+h**]. You can
     unhide everything using [**Alt+h**]. In the next steps, we'll be using the
     the **Border Select** tool [**b**].
-  - Turn off option: “Limit selection to visible”.
+  - Turn off the option: **Limit selection to visible**.
   - **View > Front** [numpad 1].
   - Select faces of Cytosol. Use **Border Select** tool [**b**] to select the
     profile of each side.
   - **View > Top** [**numpad 7**].
-  - Select additional faces of Cytosol. Use **Border Select** tool [**b**] to
-    select the profile of remaining sides.
+  - Select additional faces of **Cytosol**. Use **Border Select** tool [**b**]
+    to select the profile of remaining sides.
   - Hide all unselected [**Shift+h**]. You may notice that some triangles from
     internal features may have been selected. We will fix this next by
     selecting linked triangles.
