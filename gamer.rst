@@ -9,15 +9,7 @@ Using GAMer to Refine a Mesh
 Introduction
 ---------------------------------------------
 
-In this tutorial you will go through the step-by-step procedure to generate a
-Constrained Delaunay Tetrahedral Mesh suitable for Finite Element computation.
-You will learn how to:
-
-- Import segmented geometries into Blender  
-- Use GAMer to improve the quality of the surface mesh
-- Generate a bounding mesh
-- Further improve the mesh and define boundary markers
-- Generate a tetrahedral mesh with marked domains and boundaries
+In this tutorial, we will use GAMer to improve the quality of a surface mesh.
 
 Our model of interest today is the murine cardiac myocyte calcium release unit.
 You can get the segmentation from the Cell Centered Database (CCDB), a
@@ -42,7 +34,7 @@ angles).
 
 - Download the obj file.
 
-- Now we can open up the new ".obj" file in blender.
+- Now we can open up this ".obj" file in blender.
 
   - Start Blender by typing ``blender`` at the command line.
 
@@ -52,6 +44,8 @@ angles).
   - Import the data file with **File > Import > Wavefront (.obj)** and select
     **tt-sr-mit.obj**
 
+- The object is not centered around the origin. To bring it into view, do the
+  following: **View > Selected** [**numpad .**].
 - You may notice that parts of the model are getting truncated by the clipping
   plane. To remove the visual artifacts, we perform the following:
 
@@ -59,13 +53,14 @@ angles).
 
     - Open the **Properties** panel by hitting **n**
     - Navigate to the **View** subpanel
-    - Under **Clip:**, change **End:** to **2000**.
+    - Under **Clip**, change **End** to **2000**.
 
-  - For geometric models, it’s often useful to change to the orthographic view.
+  - For geometric models, it’s often useful to change to the orthographic view
+    [**numpad 5**].
 
 - We need the model to be in one volumetric domain so let’s join it. In the
   **Outliner** hold **shift-LMB** (i.e. left-mouse-button) click each object
-  with obj1_T-Tub_1 selected last, and then join them (**ctrl+J**).
+  with **obj1_T-Tub_1** selected last, and then join them (**Ctrl+j**).
 
 - The mesh is currently rendered as a solid material. While this is great for
   the purposes of animation and visualization, we care about the distribution
@@ -77,9 +72,8 @@ angles).
 
   - **Object > Transform > Geometry to Origin**.
 
-  - Rearrange the view using the following options: **View > Selected** [**.**
-    on the numpad], **View > Front** [**.** on the numpad], **View > Selected**
-    [**.** on the numpad]
+  - Rearrange the view using the following options: **View > Selected**
+    [**numpad .**] and **View > Front** [**numpad 1**].
 
 - Let’s now align the model so that the long axis is horizontal.
 
@@ -89,9 +83,9 @@ angles).
   - Save this state as the object’s default rotation and scale. **Object >
     Apply > Rotation and Scale** [**Ctrl+a** and select **Rotation and Scale**]
 
-- CHECKPOINT: Let’s save our work now as: tt-sr-mit.imp_obj.blend. Note that if
-  you get behind or if something goes awry, you can always close Blender and
-  reopen at this checkpoint!
+- CHECKPOINT: Let’s save our work now as: **tt-sr-mit.imp_obj.blend**. Note
+  that if you get behind or if something goes awry, you can always close
+  Blender and reopen at this checkpoint!
 
 - We can use the mesh analyzer function of CellBlender to inspect the mesh for
   suitability for computational analysis. I.e., that there are no unexpected
@@ -107,10 +101,10 @@ angles).
 
 - Let’s start by cleaning up regions of non-manifold topology.
 
-  - First engage **Edit Mode** [**Tab**] and Unselect All **A**.
+  - First engage **Edit Mode** [**Tab**] and deselect everything **a**.
   - Using your mouse pick the Vertex-Select Mode option.
   - Highlight regions of non-manifold topology **Select > Select All By Trait >
-    Non Manifold** [**Shift+Ctrl+Alt+M**]. This highlights all the regions of
+    Non Manifold** [**Shift+Ctrl+Alt+m**]. This highlights all the regions of
     non-manifold topologies.
 
 - Conveniently non-manifoldness is a problem in the animation industry (it
@@ -118,30 +112,31 @@ angles).
   has some built-in tools to help resolve non-manifoldness.
 
   - First, Select All **a** then go to **Mesh > Clean up > Degenerate
-    Dissolve**.  This function will take care of several cases of bad geometry:
+    Dissolve**. This function will take care of several cases of bad geometry:
     edges with no length, faces with no area, or face corners with no area. It
     does so by deleting vertices and edges it thinks don’t make sense.
   - This will leave some holes in the mesh. We can automatically fill the holes
     using: **Mesh > Clean up > Fill Holes**.
-  - Let’s now check how many issues we have resolved. Unselect everything **A**
-    then **Select > Select All By Trait > Non Manifold**
-    [**Shift+Ctrl+Alt+M**]. We see that the mesh has been substantially
+  - Let’s now check how many issues we have resolved. Deselect everything **a**
+    and then **Select > Select All By Trait > Non Manifold**
+    [**Shift+Ctrl+Alt+m**]. We see that the mesh has been substantially
     improved but is not perfect yet.
 
-- We can zoom in on the selected region by performing **View > Selected** [num .].
+- We can zoom in on the selected region by performing **View > Selected**
+  [**numpad .**].
 
-  - Let’s delete the dangling vertex. First Unselect All [**a**] then select the
-    culprit vertex [**RMB click**] (Note, be sure to align the view such that
-    the vertex has nothing behind it. You don’t want to accidentally delete
-    something behind) and delete [**x**] and choose Vertices.
+  - Let’s delete the dangling vertex. First Deselect everything [**a**] then
+    select the culprit vertex [**RMB click**] (Note, be sure to align the view
+    such that the vertex has nothing behind it. You don’t want to accidentally
+    delete something behind) and delete [**x**] and choose Vertices.
 
 - Once again let’s take a look to see if there are any residual problems. In
   **Edit Mode**, **Select > Select All By Trait > Non Manifold** [**Shift+Ctrl+
-  Alt+M**]. At this point your mesh should have no more issues.
+  Alt+m**]. At this point your mesh should have no more issues.
 - Recall that the degenerate dissolve function deleted some vertices and edges.
-  In some of these cases, when the holes are filled, the polygons may no longer
-  be triangular. In **Edit Mode**, to re-triangulate, Select All [**a**] then choose
-  **Mesh > Faces > Triangulate** [**Ctrl+t**]
+  In some cases, when the holes are filled, the polygons may no longer be
+  triangular. To re-triangulate, select everything [**a**] and choose **Mesh
+  > Faces > Triangulate** [**Ctrl+t**]
 - Our mesh is starting to look pretty good! Let’s re-run mesh analyzer
 
   - Return to **Object Mode** **Tab**
@@ -155,9 +150,8 @@ angles).
   - **Mesh > Normals > Recalculate Outside** [**Ctrl+n**]
   - Return to to **Object Mode** **Tab**, run mesh analyzer again. We now we have
     good geometry to start with. Be sure to note the surface area and volume.
-    See fig 10.
 
-- CHECKPOINT: Save your progress to: tt-sr-mit.clean.blend 
+- CHECKPOINT: Save your progress to: **tt-sr-mit.clean.blend**.
 
 - We are now ready to begin surface mesh refinement with GAMer.
 
@@ -189,17 +183,17 @@ angles).
   - In **Object Mode** [**Tab**], run Mesh Analyzer. Note the slightly smaller
     surface area but similar volume.
 
-- CHECKPOINT: Save your progress to: tt-sr-mit.gamer_proc_1.blend
+- CHECKPOINT: Save your progress to: **tt-sr-mit.gamer_proc_1.blend**
 - Now that we have a reasonable surface mesh of our features, we want to place
   a boundary box around the features to represent the cytosol.
 
   - First we center the 3D cursor to the center. We will next add a cube at the
-    position of the 3D cursor. In **Object Mode** **Tab** , Object > Snap >
-    Cursor to Center [**Shift + S** and select **Cursor to Center**]
+    position of the 3D cursor. In **Object Mode** hit **Tab** , **Object > Snap
+    > Cursor to Center** [**Shift+s** and select **Cursor to Center**]
   - We will next add a cube at the position of the 3D cursor. Add a cube mesh
     object, **Add > Mesh > Cube** [**Shift+a** and select **Mesh > Cube**]
   - Let’s scale and translate the bounding box to where we want it. Recall that
-    the Numerics Panel can be summoned with [**n**].
+    the **Properties** panel can be summoned with [**n**].
 
     - Location (-40, 15, 30)
     - Scale (275, 130, 220)
@@ -207,47 +201,49 @@ angles).
 - The cube is currently a quadrilateral mesh. We need to convert to a
   triangular mesh for later tetrahedralization.
 
-  - Return to **Edit Mode** **Tab** and Select All [**a**]. Then triangulate
-    by going to **Mesh > Faces > Triangulate** [**Ctrl+t**]
+  - Return to **Edit Mode** **Tab** and Select All [**a**].
   - To capture detailed features we will need additional triangles. With the
     cube selected, **Mesh > Edges > Subdivide** a total of six times [**w** and
     select **Subdivide**].
+  - Triangulate by going to **Mesh > Faces > Triangulate** [**Ctrl+t**]
   - Return to **Object Mode** [**Tab**].
 
-- CHECKPOINT: Save your progress to: tt-sr-mit.with_cube.blend
+- CHECKPOINT: Save your progress to: **tt-sr-mit.with_cube.blend**
 - To get the surface representation of the cytosolic volume, we must subtract
   our features from our cube mesh.
 
-  - In **Object Mode** **Tab** , in the Modifier tab of the Properties Panel Add
-    Modifier, Generate: Boolean, Operation: Difference, Object: obj1_T-Tub_1
-    and apply the modifier.
+  - While in **Object Mode** [**Tab**], go to the **Modifier** tab of the
+    **Properties Panel** and hit **Add Modifier**, **Generate: Boolean**,
+    **Operation: Difference**, Object: **obj1_T-Tub_1** and **Apply** the
+    modifier.
   - In the **Outliner** click on the eye to hide **obj1_T-tub_1**.
   - With the cube selected, apply the current rotation and scale transform.
     **Object > Apply > Rotation** and **Scale** [**Ctrl+a** and select
     **Rotation and Scale**]
-  - Apply the current location transform. **Object > Apply > Location** [**Ctrl
-    + A, Location**]
+  - Apply the current location transform. **Object > Apply > Location**
+    [**Ctrl+a, Location**]
   - If you would like to show the edges, go to the **Object Properties** and
     select **Wire** and **Draw all Edges**.
 
-- CHECKPOINT: Save your progress to: tt-sr-mit.boolean.blend
+- CHECKPOINT: Save your progress to: **tt-sr-mit.boolean.blend**
 - Once again, we have a surface mesh to refine.
 
-  - First in **Edit Mode** **Tab** we can **Select > Select All By Trait > Non
-    Manifold** [**Shift+Ctrl+Alt+M**]. Nothing should be selected. If
-    there are some issues, try performing **Degenerate Dissolve** followed by
-    **Fill Holes**.
-  - Return to **Object Mode** **Tab** , run Mesh Analyzer. We find that the
-    Mesh is not triangulated.
+  - First, in **Edit Mode** [**Tab**], swith to **Vertex** select mode.
+  - Deselect everything [**a**].
+  - Next, we can **Select > Select All By Trait > Non Manifold**
+    [**Shift+Ctrl+Alt+m**]. Nothing should be selected. If there are some
+    issues, try performing **Degenerate Dissolve** followed by **Fill Holes**.
+  - Return to **Object Mode** [**Tab**], and run **Mesh Analyzer**. We find
+    that the mesh is not triangulated.
 
 - We can triangulate as before:
 
   - In **Edit Mode** **Tab**, Select All [**a**] , **Mesh > Faces >
     Triangulate** [**Ctrl+t**]
-  - Return to **Object Mode** **Tab** , and run Mesh Analyzer. We have a good
-    geometry to start refining.
+  - Return to **Object Mode** **Tab** , and run **Mesh Analyzer**. We have a
+    good geometry to start refining.
 
-- CHECKPOINT: Save your progress to: tt-sr-mit.boolean_clean.blend
+- CHECKPOINT: Save your progress to: **tt-sr-mit.boolean_clean.blend**
 - Let’s begin surface refinement using GAMer
 
   - In **Object Mode** [**Tab**] with the cube selected, perform the following
@@ -265,43 +261,43 @@ angles).
   - In **Object Mode** [**Tab**], run **Mesh Analyzer**. Note the slightly
     smaller surface area but similar volume.
 
-- CHECKPOINT: Save your progress to: tt-sr-mit.gamer_proc_2.blend Now we're
+- CHECKPOINT: Save your progress to: **tt-sr-mit.gamer_proc_2.blend** Now we're
   ready to add boundaries and associated boundary markers to the mesh!
 - Return to the GAMer tab and choose the **Boundary Marker** tool
 
-  - Add a new boundary (+ button). By clicking on the color swatch, you can
+  - Add a new boundary (**+** button). By clicking on the color swatch, you can
     select the color you wish to represent the Cytosol. The color only serves
     as a visual aid to help you mark. Set the color to green.
-  - Change the name of the boundary to 'Cytosol'
-  - Enter **Edit Mode** **Tab** and choose Face Select Mode and begin selecting
-    all faces of the cytosol. Clicking each face is very arduous! For larger
-    surfaces, you may elect to select using the “Circle Select” tool [**c**] or
-    the “Border Select” tool [**b**]. Use "Assign" to assign selected faces to
-    boundary. You can assign as you go or all together at the end. Note, it can
-    sometimes be very helpful to hide all selected faces using [**h**], or hide
-    all unselected faces using [**Shift+h**]. You can unhide everything using
-    [**Alt+h**]. In the next steps we’ll be using the the “Border Select” tool
-    [**b**].
+  - Change the name of the boundary to **Cytosol**.
+  - Enter **Edit Mode** [**Tab**] and choose **Face** select mode and begin
+    selecting all faces of the cytosol. Clicking each face is very arduous! For
+    larger surfaces, you may elect to select using the **Circle Select** tool
+    [**c**] or the **Border Select** tool [**b**]. Use "Assign" to assign
+    selected faces to boundary. You can assign as you go or all together at the
+    end. Note, it can sometimes be very helpful to hide all selected faces
+    using [**h**], or hide all unselected faces using [**Shift+h**]. You can
+    unhide everything using [**Alt+h**]. In the next steps, we'll be using the
+    the **Border Select** tool [**b**].
   - Turn off option: “Limit selection to visible”.
   - **View > Front** [numpad 1].
-  - Select faces of Cytosol. Use “Border Select” tool [**b**] to select the profile
-    of each side (see Fig. 19).
-  - View > Top [numpad 7].
-  - Select additional faces of Cytosol. Use “Border Select” tool [**b**] to select
-    the profile of remaining sides.
-  - Hide All Unselected [**Shift+h**]. You may notice that some triangles from
+  - Select faces of Cytosol. Use **Border Select** tool [**b**] to select the
+    profile of each side.
+  - **View > Top** [**numpad 7**].
+  - Select additional faces of Cytosol. Use **Border Select** tool [**b**] to
+    select the profile of remaining sides.
+  - Hide all unselected [**Shift+h**]. You may notice that some triangles from
     internal features may have been selected. We will fix this next by
     selecting linked triangles.
-  - Unselect All [**a**]
+  - Deselect all [**a**]
   - Select one triangle, click [**RMB**].
   - Select Linked [**Ctrl+l**]
-  - Hide All Unselected [**Shift+h**]
+  - Hide All Deselected [**Shift+h**]
   - Use "Assign" to assign selected faces to boundary.
   - Turn on option: “Limit selection to visible”.
   - Unhide All [**Alt+h**]
-  - Unselect All [**a**]
+  - Deselect all [**a**]
 
-- CHECKPOINT: Save your progress to: tt-sr-mit.cytosol.blend
+- CHECKPOINT: Save your progress to: **tt-sr-mit.cytosol.blend**
 - When you are finished marking the cytosol,
 
   - Select and hide the Cytosol [**h**]
@@ -314,7 +310,7 @@ angles).
     color to yellow). We chose the two letter abbreviations because boundary
     names cannot contain special characters or spaces (underscores are OK).
 
-- CHECKPOINT: Save your progress to: tt-sr-mit.all_marked.blend 
+- CHECKPOINT: Save your progress to: **tt-sr-mit.all_marked.blend** 
 - Now we finally have a Surface Mesh ready for tetrahedralization! Choose
   Tetrahedralization Tool and select the model in the Outliner. Make sure all
   faces of the model are selected.
@@ -327,7 +323,7 @@ angles).
 
 - Choose tetrahedralization options:
 
-  - Set mesh file base name to “tt-sr-mit.tet_mesh”
+  - Set mesh file base name to **tt-sr-mit.tet_mesh**
   - Set Min dihedral angle of 20
   - Choose DOLFIN mesh format
   - Hit Tetrahedralize button!
