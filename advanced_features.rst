@@ -3,11 +3,6 @@
 Advanced Features
 ---------------------------------------------
 
-.. warning::
-
-   Some of these tutorials have not yet been updated for CellBlender 1.1.
-   Therefore, some things might not work exactly as described.
-
 The following tutorials illustrate some advanced features of MCell and
 CellBlender.
 
@@ -26,4 +21,4 @@ CellBlender.
    clamp
    scripting/scripting_overview
    dynamic_geometry/dynamic_geometry_overview
-
+   gamer
