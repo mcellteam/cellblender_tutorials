@@ -33,6 +33,8 @@ Create a new virtual environment in the cloned cellblender_tutorials directory:
     cd cellblender_tutorials
     virtualenv .
 
+Alternatively, you might need to do ``pyvenv .`` on newer versions of Python.
+
 Activate it:
 
     source bin/activate
@@ -66,8 +68,8 @@ It can later be reactivated by using the activate command as was done earlier:
 
 ## Learn More about Sphinx
 
-Here are some instructions for new developers who want to contribute
-to the QRG but are unfamiliar with ReST and Sphinx:
+Here are some instructions for new developers who want to contribute to the
+CellBlender and MCell tutorials but are unfamiliar with ReST and Sphinx:
 
 * Read this page to develop a basic understanding of ReST syntax:
   http://sphinx-doc.org/rest.html
