@@ -23,7 +23,7 @@ simulations. Simply download, extract the zip file, and start Blender.
 You don't need these immediately, but you will likely find them necessary later
 on:
 
-* A text editor (gedit_, vim_, emacs_, etc.)
+* A text editor (e.g. sublime_)
 * Some graphing and analysis software (matplotlib_ (with Python_ and numpy_) or
   Grace_ are recommended)
 
@@ -31,9 +31,7 @@ on:
 .. _osx: http://mcell.org/download/files/cellblender1.1_bundle_osx.zip
 .. _windows: http://mcell.org/download/files/cellblender1.1_bundle_windows.zip
 .. _Blender 2.78: http://www.blender.org/download/get-blender/
-.. _gedit: http://projects.gnome.org/gedit/
-.. _vim: http://www.vim.org/
-.. _emacs: http://www.gnu.org/software/emacs/
+.. _sublime: http://www.sublimetext.com/
 .. _matplotlib: http://matplotlib.sourceforge.net/
 .. _Python: http://www.python.org
 .. _numpy: http://numpy.scipy.org/
