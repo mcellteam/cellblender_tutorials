@@ -87,7 +87,7 @@ y-axis (aligns cylinder along the x axis). This will be the main cylinder throug
 which the molecules diffuse. You may want to rotate and zoom to get a better
 view. It should looks something like this:
 
-.. image:: ./images/ficks_big_cylinder.png
+.. image:: ./images/ficks_law/ficks_big_cylinder.png
 
 Be sure that the red arrow (x axis) is facing generally to the right so our
 definitions of "left" and "right" will be consistent with your view.
@@ -96,8 +96,8 @@ In the CellBlender panel, open the "Model Objects" subpanel. With your new
 cylinder selected, click the "**+**" button to add the Cylinder to the list
 of objects in your CellBlender model.
 
-.. image:: ./images/CellBlender_model_objects_panel_cyl.png
-.. image:: ./images/CellBlender_model_objects_panel_cyl_added.png
+.. image:: ./images/ficks_law/CellBlender_model_objects_panel_cyl.png
+.. image:: ./images/ficks_law/CellBlender_model_objects_panel_cyl_added.png
 
 The name "Cylinder" should appear in the box with a green check mark beside it.
 Below that box is another box titled "Cylinder Display Options". Click the
@@ -105,15 +105,15 @@ small triangle which expands the features in that box. You should see a drop dow
 control with the label "Maximum Draw Type" and it is likely showing "Solid" or
 "Textured". Click on the control and change it to "Wire" so you can see through the Cylinder.
 
-.. image:: ./images/Ficks_cylinder_wire.png
+.. image:: ./images/ficks_law/Ficks_cylinder_wire.png
 
 Then click the triangle again to close the "Cylinder Display Options" box.
 
 Create two surface regions (below the Cylinder Display Options box) by clicking 
 the **+** button twice and name them **left_end** and **right_end**. 
 
-.. image:: ./images/CellBlender_model_objects_panel_add_reg.png
-.. image:: ./images/CellBlender_model_objects_panel_regions_added.png
+.. image:: ./images/ficks_law/CellBlender_model_objects_panel_add_reg.png
+.. image:: ./images/ficks_law/CellBlender_model_objects_panel_regions_added.png
 
 Then, enter **Edit Mode** by hitting **Tab** (with mouse cursor in 3D window).
 
@@ -121,7 +121,7 @@ In order to select all vertices on both sides of an object (what we want),
 you should disable the "Limit selection to visible" button by clicking
 it into the "lighter gray" state as shown here:
 
-.. image:: ./images/Ficks_selection_limit_unchecked.png
+.. image:: ./images/ficks_law/Ficks_selection_limit_unchecked.png
 
 Hit **a** once or twice (or more) until everything is unselected (black).
 
@@ -130,15 +130,15 @@ Hit **b** to start the Border Select mode.
 Select the left end of the cylinder by clicking with the left mouse button and 
 dragging around it.
 
-.. image:: ./images/Ficks_Box_Select_Left.png
+.. image:: ./images/ficks_law/Ficks_Box_Select_Left.png
 
-.. image:: ./images/Ficks_Box_Selected_Left.png
+.. image:: ./images/ficks_law/Ficks_Box_Selected_Left.png
 
 Go back to the Model Objects subpanel and select the "**left_end**" region that you
 created earlier. Then click the "**Assign**" button to tag those selected faces to the
 "left_end" surface region of your Cylinder.
 
-.. image:: ./images/Ficks_Assign_Button.png
+.. image:: ./images/ficks_law/Ficks_Assign_Button.png
 
 Hit **a** to deselect everything in the mesh. Then repeat the process for the
 right end of your cylinder (assign the faces on the right end to the "right_end"
@@ -156,7 +156,7 @@ Finally, hit the "**a**" key one (or more) times until the object is unselected 
 This will make it easier to see our molecules as they're added. Your view should look
 about like this:
 
-.. image:: ./images/Ficks_ortho_view_cyl.png
+.. image:: ./images/ficks_law/Ficks_ortho_view_cyl.png
 
 
 Define Constants for the Simulation
@@ -193,7 +193,7 @@ the Units and Description are optional and not needed for the simulation):
 
 When you're done, your Parameters panel should look like this:
 
-.. image:: ./images/Ficks_Parameters_Panel.png
+.. image:: ./images/ficks_law/Ficks_Parameters_Panel.png
 
 
 Define a Molecule Species
@@ -212,7 +212,7 @@ we defined in the parameters panel eariler).
 
 When you're finished, it should look like this:
 
-.. image:: ./images/Ficks_defined_vm.png
+.. image:: ./images/ficks_law/Ficks_defined_vm.png
 
 
 Define a Clamp Concentration Surface Class
@@ -237,7 +237,7 @@ Set the **Value** to "**cl**" (the concentration we defined in the parameters pa
 
 When you're finished, it should look like this:
 
-.. image:: ./images/Ficks_surf_clamp_vm.png
+.. image:: ./images/ficks_law/Ficks_surf_clamp_vm.png
 
 
 Assign the Clamp Concentration Surface Class to the Left end of the Cylinder
@@ -257,7 +257,7 @@ Change the **Region Name** to "**left_end**".
 
 When you're finished, it should look like this:
 
-.. image:: ./images/Ficks_left_class.png
+.. image:: ./images/ficks_law/Ficks_left_class.png
 
 
 Define an Absorptive Surface Class
@@ -280,7 +280,7 @@ Set the **Type** to "**Absorptive**".
 
 When you're finished, it should look like this:
 
-.. image:: ./images/Ficks_surf_absorb_vm.png
+.. image:: ./images/ficks_law/Ficks_surf_absorb_vm.png
 
 
 Assign the Absorptive Surface Class to the Right end of the Cylinder
@@ -298,7 +298,7 @@ Uncheck the **All Faces** checkbox.
 
 Change the **Region Name** to "**right_end**".
 
-.. image:: ./images/Ficks_right_class.png
+.. image:: ./images/ficks_law/Ficks_right_class.png
 
 
 First Simulation
@@ -320,18 +320,18 @@ The simulation should run quickly (only 500 iterations), and you should see a gr
 check mark beside the completed run (you may have to hover your cursor over it to
 get it to update):
 
-.. image:: ./images/Ficks_first_run.png
+.. image:: ./images/ficks_law/Ficks_first_run.png
 
   
 Next click the "**Reload Visualization Data**" button to load all of the molecules.
 
-.. image:: ./images/Ficks_Reload_Viz_Button.png
+.. image:: ./images/ficks_law/Ficks_Reload_Viz_Button.png
 
 
 You can click and drag in the time line window to watch the molecules diffusing
 from the left side (source) to the right side over time.
 
-.. image:: ./images/Ficks_time_line_1.png
+.. image:: ./images/ficks_law/Ficks_time_line_1.png
 
 If this is not working properly, now is the time to go back and correct any problems.
 
@@ -350,7 +350,7 @@ molecule that we have in this simulation. That should clear the error and show a
 green check mark next to the specification of "Count vm in World". That's exactly
 what we want. Your Plot Output Settings panel should look like this:
 
-.. image:: ./images/Ficks_First_Plot_Settings.png
+.. image:: ./images/ficks_law/Ficks_First_Plot_Settings.png
 
 
 Full Length Simulation
@@ -362,20 +362,20 @@ Open the "**Run Simulation**" panel again and change the **Iterations** from to 
 back to "**iters**" and run again.
 
 
-.. image:: ./images/Ficks_run_iters.png
+.. image:: ./images/ficks_law/Ficks_run_iters.png
 
   
 That may take some time to run, but when it's done you can click the "**Reload Visualization Data**"
 button and then press Blender's play button. 
 
-.. image:: ./images/Ficks_Reload_Viz_Data.png
-.. image:: ./images/Ficks_Blender_Play_Button.png
+.. image:: ./images/ficks_law/Ficks_Reload_Viz_Data.png
+.. image:: ./images/ficks_law/Ficks_Blender_Play_Button.png
 
 
 You should see something like the
 following animation (although this one is sampled in non-linear time):
 
-.. image:: ./images/Ficks_animation.gif
+.. image:: ./images/ficks_law/Ficks_animation.gif
 
 
 Plotting the Results
@@ -395,25 +395,25 @@ Again click on the "**Plot Output Settings**" button to see the different plotti
 packages available on your system. Click one (or more) to see the time history of
 the number of **vm** molecules in your simulation.
 
-.. image:: ./images/Ficks_Plotting_Buttons.png
+.. image:: ./images/ficks_law/Ficks_Plotting_Buttons.png
 
 The following pictures show the output produced by each of the buttons shown above.
 
 **Simple Plotter Output**
 
-.. image:: ./images/Ficks_Plot_1_Simple.png
+.. image:: ./images/ficks_law/Ficks_Plot_1_Simple.png
 
 **MatPlotLib Plotter Output**
 
-.. image:: ./images/Ficks_Plot_1_MPL.png
+.. image:: ./images/ficks_law/Ficks_Plot_1_MPL.png
 
 **XmGrace Plotter Output**
 
-.. image:: ./images/Ficks_Plot_1_xmgrace.png
+.. image:: ./images/ficks_law/Ficks_Plot_1_xmgrace.png
 
 **Java Plotter Output**
 
-.. image:: ./images/Ficks_Plot_1_Java.png
+.. image:: ./images/ficks_law/Ficks_Plot_1_Java.png
 
 .. note::
 
@@ -480,7 +480,7 @@ the simulation. These are all contained under the "molecules" object, so click
 the small plus sign next to the name "molecules" and that will display one line
 for each type of molecule ("species") that's been created in our simulation.
 
-.. image:: ./images/Ficks_outliner_panel.png
+.. image:: ./images/ficks_law/Ficks_outliner_panel.png
 
 In this case, we've only defined one molecule type that we've called "vm",
 so we only see the entry "mol_vm" in the list. If you click on the "eye" symbol
@@ -524,7 +524,7 @@ We begin our "instrumentation" by creating a series of short sampling cylinders
 inside the long one ... but on **Layer 2**. Switch to Layer 2 by clicking the
 second small box in the layer panel as shown here:
 
-.. image:: ./images/Layer_2_Selected.png
+.. image:: ./images/ficks_law/Layer_2_Selected.png
 
 When you click that box, everything will "disappear" because you're now looking
 at a new and empty layer. Your cylinder and molecules are still on Layer 1, but
@@ -557,14 +557,14 @@ wrench), and from the **Add Modifier** drop-down box, select **Array**. Change
 Then change the third field under **Constant Offset** (Z axis of the cylinder)
 to **2.01005**. 
 
-.. image:: ./images/ficks_array.png
+.. image:: ./images/ficks_law/ficks_array.png
 
 Now we need to make each cylinder a unique object. To do this, first hit the
 **Apply** button under the **Array** modifier. Then enter **Edit Mode** (with
 **Tab** key), hit **p**, and select **By loose parts** in the **Separate** menu.
 This will split each discontinuous mesh into a unique object.
 
-.. image:: ./images/ficks_loose_parts.png
+.. image:: ./images/ficks_law/ficks_loose_parts.png
 
 They will be named **C**, **C.001**, **C.002**, etc. The first cylinder in the
 list will be named **C**. Rename it to **C.040**. This will make things
@@ -572,7 +572,7 @@ cleaner when we want to count molecules in MCell later. Hit **Tab** to enter
 **Object Mode** and hit **a** until nothing is selected (nothing outlined in
 orange).
 
-.. image:: ./images/ficks_c040.png
+.. image:: ./images/ficks_law/ficks_c040.png
 
 At this point, you can switch between the two layers (1 and 2) to see the original
 cylinder (wire outline with molecules) and the new measuring cylinders (solid).
@@ -587,7 +587,7 @@ Finally, we will create a series of circular sampling planes that lie between
 each of these cylinders. We will put them on **Layer 3**, so click on the third
 small "layer" box:
 
-.. image:: ./images/Layer_3_Selected.png
+.. image:: ./images/ficks_law/Layer_3_Selected.png
 
 As before, you will see a blank screen because you're looking at a new layer.
 You may notice that the first two layer boxes have a small 'dot' in them. That's
@@ -605,7 +605,7 @@ of our smaller cylinder (which is on the left side of our larger cylinder).
 Triangulate this small circle by entering Edit mode with **Tab**, then pressing
 **Control-T**, then exiting Edit mode with **Tab**.
 
-.. image:: ./images/Ficks_fill_circle.png
+.. image:: ./images/ficks_law/Ficks_fill_circle.png
 
 Next, we will replicate this plane by adding an **Array** modifier similar to
 what we did previously with the cylinders. Click the **Add Modifier** button and
@@ -613,17 +613,17 @@ select **Array**. Set **Count** to **39**, disable **Relative Offset**, enable
 **Constant Offset** and set the **Z** value of the **Constant Offset** to be 
 **0.251255**.
 
-.. image:: ./images/Ficks_disk_array_modifier.png
+.. image:: ./images/ficks_law/Ficks_disk_array_modifier.png
 
 Then click **Apply** to apply the modifier.
 
-.. image:: ./images/ficks_circles.png
+.. image:: ./images/ficks_law/ficks_circles.png
 
 As before, separate the disks by entering edit mode (**Tab**) and use the "**p**"
 key to separate the object **By loose parts** in the same way you did with the small
 cylinders.
 
-.. image:: ./images/Ficks_after_sep_circles.png
+.. image:: ./images/ficks_law/Ficks_after_sep_circles.png
 
 Exit edit mode with the **Tab** key, and then rename the final plane from **Circle** to **Circle.039**.
 
@@ -634,7 +634,7 @@ layer boxes are selected (dark gray). Then select every mesh
 object by pressing the **a** key until everything is highlighted orange. Then hit 
 **Ctrl-a** and select **Location**. Then hit **Ctrl-a** again and select **Rotation**.
 
-.. image:: ./images/ficks_ctrl_a.png
+.. image:: ./images/ficks_law/ficks_ctrl_a.png
 
 At this point we have a total of 80 non-molecule objects in our model:
 
