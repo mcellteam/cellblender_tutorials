@@ -52,7 +52,7 @@ Install and Initialize CellBlender
 
 Follow the :ref:`cellblender_install` instructions and then return here.
 
-.. _delete_all:
+.. _delete_all_clean_slate:
 
 Delete All Objects to Start Clean
 -----------------------------------------

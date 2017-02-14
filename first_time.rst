@@ -16,7 +16,7 @@ First Time Running CellBlender
 If you have just installed Blender and CellBlender, you should perform the
 following steps. If you do it correctly, you should only need to do it once.
 
-.. _delete_all:
+.. _delete_all_first_time:
 
 Delete All Objects to Start Clean
 -----------------------------------------
