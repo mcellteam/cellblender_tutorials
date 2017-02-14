@@ -22,3 +22,4 @@ CellBlender.
    scripting/scripting_overview
    dynamic_geometry/dynamic_geometry_overview
    gamer
+   advanced_plotting
