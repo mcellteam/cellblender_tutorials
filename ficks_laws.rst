@@ -111,7 +111,6 @@ Then click the triangle again to close the "Cylinder Display Options" box.
 
 Create two surface regions (below the Cylinder Display Options box) by clicking 
 the **+** button twice and name them **left_end** and **right_end**. 
-See :ref:`define_region` if you need help with this.
 
 .. image:: ./images/CellBlender_model_objects_panel_add_reg.png
 .. image:: ./images/CellBlender_model_objects_panel_regions_added.png
