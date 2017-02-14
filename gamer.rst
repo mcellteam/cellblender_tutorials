@@ -19,11 +19,6 @@ For the purposes of this tutorial, we have selected a nicely segmented section
 for model building. IMOD was used to generate a preliminary surface mesh in obj
 format.
 
-.. _gamer_tutorial:
-
-Tutorial
----------------------------------------------
-
 Preliminary surface meshes from segmentations are typically of poor quality for
 computation. A poor quality mesh is defined as one which will lead to large
 errors in computation or inefficiency. For triangle surface meshes, the quality
@@ -31,6 +26,11 @@ of the mesh can be qualitatively judged by evenness of the edge and node
 distribution. Quantitatively, mesh quality is measured by mesh topology and
 proportion of high aspect triangles (triangles with extremely large and small
 angles).
+
+.. _import_obj:
+
+Import OBJ File into Blender
+---------------------------------------------
 
 - Download the `obj file`_.
 
@@ -47,6 +47,11 @@ angles).
     **tt-sr-mit.obj**
 
   .. image:: ./images/gamer/import_obj.png
+
+.. _preliminary_gamer:
+
+Preliminary Work on Imported Mesh
+---------------------------------------------
 
 - The object is not centered around the origin. To bring it into view, do the
   following: **View > Selected** [**numpad .**].
@@ -94,6 +99,11 @@ angles).
 - CHECKPOINT: Let’s save our work now as: **tt-sr-mit.imp_obj.blend**. Note
   that if something goes awry, you can always close Blender and reopen at this
   checkpoint!
+
+.. _analyze_cleanup:
+
+Analyze Mesh, Clean-up, and Repeat
+---------------------------------------------
 
 - We can use the mesh analyzer function of CellBlender to inspect the mesh for
   suitability for computational analysis. I.e., that there are no unexpected
@@ -178,6 +188,11 @@ angles).
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.clean.blend**.
 
+.. _using_gamer:
+
+Using GAMer
+---------------------------------------------
+
 - We are now ready to begin surface mesh refinement with GAMer.
 
   - Go to the **GAMer** tab on the left side of Blender.
@@ -212,6 +227,12 @@ angles).
     surface area but similar volume.
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.gamer_proc_1.blend**
+
+.. _add_boundary_box:
+
+Add Boundary Box
+---------------------------------------------
+
 - Now that we have a reasonable surface mesh of our features, we want to place
   a boundary box around the features to represent the cytosol.
 
@@ -241,6 +262,12 @@ angles).
   .. image:: ./images/gamer/subdivide_cube.png
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.with_cube.blend**
+
+.. _using_boolean_mod:
+
+Using Boolean Modifier
+---------------------------------------------
+
 - To get the surface representation of the cytosolic volume, we must subtract
   our features from our cube mesh.
 
@@ -260,6 +287,12 @@ angles).
   .. image:: ./images/gamer/add_boolean.png
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.boolean.blend**
+
+.. _refine_cube:
+
+Refine Cube with GAMer
+---------------------------------------------
+
 - Once again, we have a surface mesh to refine.
 
   - First, in **Edit Mode** [**Tab**], switch to **Vertex** select mode.
@@ -297,7 +330,13 @@ angles).
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.gamer_proc_2.blend** Now we're
   ready to add boundaries and associated boundary markers to the mesh!
-- Return to the **GAMer** tab and choose the **Boundary Marker** tool
+
+.. _add_cyto_boundary:
+
+Adding Cytolsolic Boundary
+---------------------------------------------
+
+- Return to the **GAMer** tab and choose the **Boundary Marking** tool
 
   - Add a new boundary (**+** button). By clicking on the color swatch, you can
     select the color you wish to represent the **Cytosol**. The color only
@@ -335,7 +374,13 @@ angles).
   - Deselect all [**a**]
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.cytosol.blend**
-- When you are finished marking the cytosol,
+
+.. _add_other_boundaries:
+
+Adding Other Boundaries
+---------------------------------------------
+
+- When you are finished marking the cytosol, make the following changes
 
   - Select and hide the **Cytosol** [**h**].
   - Add a new boundary named **Mitochondria** and set the color to magenta.
