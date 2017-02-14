@@ -48,14 +48,11 @@ Prerequisites
   Command Line Crash Course`_.
 * No previous knowledge of Blender or Python is required; however, the goal of
   these tutorials is not to teach these topics. There are already many good
-  resources available to learn about these subjects (e.g. `Python tutorials`_
-  and `Blender tutorials`_).
+  resources available to learn about these subjects (e.g. `Python tutorials`_).
 
 .. _Ubuntu: http://www.ubuntu.com/download
 .. _The Command Line Crash Course: https://learnpythonthehardway.org/book/appendixa.html
 .. _Python tutorials: http://docs.python.org/release/3.1.5/tutorial/index.html
-.. _Blender tutorials: http://cgcookie.com/blender/get-started-with-blender/
-
 
 The Next Step
 --------------------------------
