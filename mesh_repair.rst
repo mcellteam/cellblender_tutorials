@@ -66,3 +66,15 @@ increase the number of triangles considerably.
 
 Be sure to **Apply** the modifer. After the modifier is applied, triangulate
 your mesh (**Ctrl-t**).
+
+The GAMer Addon
+----------------------------------------------
+
+Although slightly more complicated, you might want to consider using the GAMer
+addon.  :ref:`gamer`
+
+.. note::
+
+    GAMer is currently only included in the Linux CellBlender 1.1 bundle.
+    However, it will also be added to the OSX and Windows bundles in the
+    future.

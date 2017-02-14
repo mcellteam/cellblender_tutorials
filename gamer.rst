@@ -9,6 +9,12 @@ Using GAMer to Refine a Mesh
 Introduction
 ---------------------------------------------
 
+.. note::
+
+    GAMer is currently only included in the Linux CellBlender 1.1 bundle.
+    However, it will also be added to the OSX and Windows bundles in the
+    future.
+
 In this tutorial, we will use GAMer to improve the quality of a surface mesh.
 
 Our model of interest today is the murine cardiac myocyte calcium release unit.
