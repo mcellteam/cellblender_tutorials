@@ -92,8 +92,8 @@ angles).
     Apply > Rotation and Scale** [**Ctrl+a** and select **Rotation and Scale**]
 
 - CHECKPOINT: Let’s save our work now as: **tt-sr-mit.imp_obj.blend**. Note
-  that if you get behind or if something goes awry, you can always close
-  Blender and reopen at this checkpoint!
+  that if something goes awry, you can always close Blender and reopen at this
+  checkpoint!
 
 - We can use the mesh analyzer function of CellBlender to inspect the mesh for
   suitability for computational analysis. I.e., that there are no unexpected
@@ -297,12 +297,15 @@ angles).
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.gamer_proc_2.blend** Now we're
   ready to add boundaries and associated boundary markers to the mesh!
-- Return to the GAMer tab and choose the **Boundary Marker** tool
+- Return to the **GAMer** tab and choose the **Boundary Marker** tool
 
   - Add a new boundary (**+** button). By clicking on the color swatch, you can
     select the color you wish to represent the **Cytosol**. The color only
     serves as a visual aid to help you mark. Set the color to green.
   - Change the name of the boundary to **Cytosol**.
+
+    .. image:: ./images/gamer/boundary_marking_cyto.png
+
   - Enter **Edit Mode** [**Tab**] and choose **Face** select mode and begin
     selecting all faces of the cytosol. Clicking each face is very arduous! For
     larger surfaces, you may elect to select using the **Circle Select** tool
@@ -344,5 +347,7 @@ angles).
     Set color to yellow). We chose the two letter abbreviations because
     boundary names cannot contain special characters or spaces (underscores are
     OK).
+
+  .. image:: ./images/gamer/all_marked.png
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.all_marked.blend** 
