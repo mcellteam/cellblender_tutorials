@@ -69,3 +69,9 @@ Activating CellBlender in Blender
 * Click **Initialize CellBlender** button
 
 .. image:: ./images/clean_slate/init_cb.png
+
+Setting up CellBlender
+---------------------------------------------
+
+You can finish setting up CellBlender by checking out the :ref:`first_time`
+tutorial.
