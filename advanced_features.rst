@@ -12,7 +12,7 @@ CellBlender.
    attempting these.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    surface_classes
    surf_class_surf_mol
@@ -23,3 +23,4 @@ CellBlender.
    dynamic_geometry/dynamic_geometry_overview
    gamer
    advanced_plotting
+   pbc
