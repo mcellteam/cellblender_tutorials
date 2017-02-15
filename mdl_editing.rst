@@ -23,6 +23,7 @@ using Python and matplotlib.
 
 .. toctree::
 
+   examine_mdls
    checkpointing
    seed
    analyze
