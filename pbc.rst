@@ -17,9 +17,13 @@ diffusing from there.
 
 With the mirrored geometry form, the geometry is mirrored in adjacent boxes and
 molecules do not wrap around. When a molecule hits a boundary, it will continue
-diffusing in the mirrored adjacent geometry. _Note: this mirrored geometry does
-not actually exist, but is made possible by keeping careful bookkeeping of all
-the molecules and the location of the virtual box that they are in._
+diffusing in the mirrored adjacent geometry. 
+
+.. note::
+
+    The mirrored geometry does not actually exist but is made possible by
+    keeping careful bookkeeping of all the molecules and the location of the
+    virtual box that they are in.
 
 Usage
 =============================================
