@@ -29,7 +29,7 @@ Delete All Objects to Start Clean
 
 .. image:: ./images/clean_slate/delete_all.png
 
-.. _set_mcell_path:
+.. _set_mcell_path_first_time:
 
 Set the Path to the MCell Executable File
 -------------------------------------------------
