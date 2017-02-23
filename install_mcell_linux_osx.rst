@@ -1,6 +1,6 @@
 .. _mcell_install_linux_osx:
 
-Installing MCell
+Installing MCell (Linux and OSX)
 ---------------------------------------------
 
 .. note::

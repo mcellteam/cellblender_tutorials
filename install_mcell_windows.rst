@@ -1,7 +1,7 @@
 .. _mcell_install_windows:
 
 *********************************************
-Installing MCell
+Installing MCell (Windows)
 *********************************************
 
 .. note::
