@@ -8,7 +8,8 @@ Required software
 =================
 
 This tutorial is designed to be used with the CellBlender 1.1 bundle (linux_,
-osx_, windows_).
+windows_). If using OSX, please install CellBlender from scratch
+(:ref:`cellblender_install`, *note: install Blender first*).
 
 .. _linux: http://mcell.org/download/files/cellblender1.1_bundle_linux.zip
 .. _osx: http://mcell.org/download/files/cellblender1.1_bundle_osx.zip

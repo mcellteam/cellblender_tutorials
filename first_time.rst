@@ -5,9 +5,9 @@ First Time Running CellBlender
 
 .. note::
 
-    If you are using the CellBlender bundle (linux_, osx_, windows_), you do
-    not need to follow this tutorial. It only applies to people installing
-    CellBlender from scratch
+    If you are using the CellBlender bundle (linux_, windows_), you do not need
+    to follow this tutorial. It only applies to people installing CellBlender
+    from scratch
 
 .. _linux: http://mcell.org/download/files/cellblender1.1_bundle_linux.zip
 .. _osx: http://mcell.org/download/files/cellblender1.1_bundle_osx.zip

@@ -5,16 +5,16 @@ Required Software
 ************************
 
 Before starting these tutorials, you *need* to download the CellBlender 1.1
-bundle (linux_, osx_, windows_). Unlike previous versions of CellBlender, this
+bundle (linux_, windows_). Unlike previous versions of CellBlender, this
 should include everything you need to create, run, and visualize your
 simulations. Simply download, extract the zip file, and start Blender.
 
 .. note::
 
-    The vast majority of users will want to use the CellBlender 1.1 bundle
-    (linux_, osx_, windows_), but advanced users may want to install
-    CellBlender from scratch. They will need to manually install the following
-    pieces:
+    Most Windows and Linux users should use the CellBlender 1.1 bundle (linux_,
+    windows_). OSX users will need to install CellBlender from scratch.
+    Additionally, some advanced users may want to regardless of their platform.
+    They will need to manually install the following pieces:
 
     * MCell |version| (:ref:`mcell_install`)
     * `Blender 2.78`_ (older versions may or may not work)

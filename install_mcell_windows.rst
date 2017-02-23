@@ -6,9 +6,9 @@ Installing MCell (Windows)
 
 .. note::
 
-    MCell is included in the CellBlender 1.1 bundle (linux_, osx_, windows_).
-    You only need to install MCell separately if you would like to run it
-    outside of CellBlender.
+    MCell is included in the CellBlender 1.1 bundle (linux_, windows_). You
+    only need to install MCell separately if you would like to run it outside
+    of CellBlender or if you are setting up CellBlender from scratch.
 
 .. _linux: http://mcell.org/download/files/cellblender1.1_bundle_linux.zip
 .. _osx: http://mcell.org/download/files/cellblender1.1_bundle_osx.zip
