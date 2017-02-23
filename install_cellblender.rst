@@ -22,7 +22,7 @@ Download CellBlender
 
 Download `CellBlender 1.1`_.
 
-.. _CellBlender 1.1: https://github.com/mcellteam/cellblender/archive/master.zip
+.. _CellBlender 1.1: http://mcell.org/download/files/cellblender1.1.zip
 
 Installing CellBlender
 ---------------------------------------------
