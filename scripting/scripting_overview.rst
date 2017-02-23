@@ -148,12 +148,12 @@ according to this program:
     new_mol = {
       'mol_name':"vm",
       'mol_type':"3D",
-      'diffusion_constant':"1e-8" }
+      'diffusion_constant':"1e-8",
       'display':{
         'color':[0.0,1.0,0.0],
         'emit':1.0,
         'glyph':"Cube",
-        'scale':1.5 }
+        'scale':1.5 }}
     mlist.append ( new_mol )
 
     cb.replace_data_model ( dm )
