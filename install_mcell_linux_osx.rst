@@ -1,6 +1,6 @@
 .. _mcell_install_linux_osx:
 
-Installing MCell (Linux/OS X)
+Installing MCell
 ---------------------------------------------
 
 .. note::
@@ -14,7 +14,7 @@ Installing MCell (Linux/OS X)
 .. _osx: http://mcell.org/download/files/cellblender1.1_bundle_osx.zip
 .. _windows: http://mcell.org/download/files/cellblender1.1_bundle_windows.zip
 
-Extract MCell (Linux/OS X)
+Extract MCell
 =============================================
 
 The binary file that you download is a compressed file with a name that ends in
@@ -28,7 +28,7 @@ Now, unzip the file by typing the following at the command line::
 
 If this succeeds, the file will no longer have the ".gz" suffix.
 
-Rename and Make Executable (Linux/OS X)
+Rename and Make Executable
 =============================================
 
 Rename the file to something more convenient and make it executable, e.g.,
@@ -38,7 +38,7 @@ Rename the file to something more convenient and make it executable, e.g.,
     mv mcell_3.4_linux mcell
     chmod a+x mcell
 
-Put MCell in a PATH Directory (Linux/OS X)
+Put MCell in a PATH Directory
 =============================================
 
 Depending on your preferences, you may want to put the resulting executable
@@ -55,7 +55,7 @@ not exist, create it and add the line.
 
 .. _PATH: https://en.wikipedia.org/wiki/PATH_%28variable%29
 
-Test MCell (Linux/OS X)
+Test MCell
 =============================================
 
 Verify that MCell is working by typing the following at the terminal::

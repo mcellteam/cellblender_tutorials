@@ -1,7 +1,7 @@
 .. _mcell_install_windows:
 
 *********************************************
-Installing MCell (Windows)
+Installing MCell
 *********************************************
 
 .. note::
@@ -14,7 +14,7 @@ Installing MCell (Windows)
 .. _osx: http://mcell.org/download/files/cellblender1.1_bundle_osx.zip
 .. _windows: http://mcell.org/download/files/cellblender1.1_bundle_windows.zip
 
-Extract MCell (Windows)
+Extract MCell
 ---------------------------------------------
 
 Open the zipped Windows binary through the browser (shown here with Google
@@ -36,7 +36,7 @@ new directory, right click on the background in File Explorer, select
 
 .. image:: ./images/install/new_folder.png
 
-Put MCell in a PATH Directory (Windows)
+Put MCell in a PATH Directory
 ---------------------------------------------
 
 This step is optional but is highly recommended if you will be running MCell
@@ -58,7 +58,7 @@ initial semicolon and the trailing backslash.
 
 .. image:: ./images/install/edit_path.png
 
-Test MCell (Windows)
+Test MCell
 ---------------------------------------------
 
 To run MCell in Windows without CellBlender, we are going to use `PowerShell`_,
