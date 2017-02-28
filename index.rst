@@ -31,6 +31,7 @@ advanced features from the links below:
    advanced_features
    advanced_models
    optimize
+   mesh_analysis   
    mesh_repair
    mdl_editing
    FAQ
