@@ -15,10 +15,16 @@ CellBlender Installation (for Developers and Advanced Users)
 .. _osx: http://mcell.org/download/files/cellblender1.1_bundle_osx.zip
 .. _windows: http://mcell.org/download/files/cellblender1.1_bundle_windows.zip
 
-Download CellBlender
+Download and Install Blender
 ---------------------------------------------
 
-.. we need to tag a 1.1 release.
+CellBlender is an addon for Blender, so be sure to download and install
+`Blender 2.78`_ now if you haven't already.
+
+.. _Blender 2.78: http://www.blender.org/download/get-blender/
+
+Download CellBlender
+---------------------------------------------
 
 Download `CellBlender 1.1`_.
 
