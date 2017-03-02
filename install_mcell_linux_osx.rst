@@ -53,6 +53,10 @@ should be your user name). To make this change permanent, add this command to
 the **.bash_profile** file located in your home directory. If this file does
 not exist, create it and add the line.
 
+.. note:: The .bash_profile is usually only updated when you login to the
+    computer, so you may need to restart your computer or type ``source
+    ~/.bash_profile``.
+
 .. _PATH: https://en.wikipedia.org/wiki/PATH_%28variable%29
 
 Test MCell
