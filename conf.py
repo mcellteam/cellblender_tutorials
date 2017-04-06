@@ -14,7 +14,7 @@
 
 import sys
 import os
-#import sphinx_rtd_theme
+import sphinx_rtd_theme
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -31,7 +31,7 @@ import os
 
 sys.path.append(os.path.abspath('exts'))
 
-#extensions = ['sphinx.ext.mathjax', 'numfig']
+extensions = ['sphinx.ext.mathjax', 'numfig']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -98,8 +98,8 @@ pygments_style = 'default'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-#html_theme = "sphinx_rtd_theme"
-html_theme = 'default'
+html_theme = "sphinx_rtd_theme"
+#html_theme = 'default'
 #html_theme = 'nature'
 
 # Theme options are theme-specific and customize the look and feel of a theme
@@ -111,8 +111,8 @@ html_theme_options = {}
 #}
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = []
-#html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+#html_theme_path = []
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
