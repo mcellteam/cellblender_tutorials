@@ -29,6 +29,95 @@ Dynamic Geometry with Blender Shape Keys
 
 .. image:: ./images/dynamic_geometry_shape_keys.gif
 
+Blender has a number of built-in features that support motion. The basic idea is that any
+object contains parameters (location, rotation, scale, vertex positions, colors, etc), and those
+parameters can be set to specified values at specified frames (times). Blender can then interpolate
+those parameters to "fill in" the frames between those that were specified. The frames where parameters
+are specified explicitly are called "key frames". When the key frames specify vertex positions, the keys
+are called "**shape keys**" because they modify the object's shape (as opposed to it's location, rotation,
+scale, color, etc).
+
+We will build a simple model that uses shape keys to stretch a cube in the z direction as shown in the animation (above).
+
+
+* Start with CellBlender initialized and with an empty scene.
+
+* Open the "**Model Objects**" panel and add a cube object. Click the "plus" button to add it to your model.
+
+* Open the "**Cube Object Options**" panel (directly below the list of model objects) and click "**Add a Material**".
+
+* Select both "**Object Transparent**" and "**Material Transparent**", and then set the "**Alpha**" value to **0.2**. Zoom in so it nearly fills the window.
+
+* Open the "**Molecules**" panel and add a *volume molecule* named "**v**" with a high diffusion constant (maybe **1e-3**). Give it a nice bright color if you like (red in this example), and increase the "Scale" Factor (in "Display Options") to about **5**.
+
+* Open the "**Molecule Placement**" panel and add a new Release Site ("plus" button). Release **500** of your "**v**" molecules into the **Object/Region** named "**Cube**".
+
+* Use the "**File/Save As...**" menu to save this Blender (.blend) file to a folder for this project.
+
+* Open the "**Run Simulation**" panel and set the Iterations to **200** and leave the Time Step at **1e-6**. Export and run the model.
+
+* After the run completes, refresh the display with "**Reload Visualization Data**". You should see a cube full of molecules. You can play the simulation to see them moving around.
+
+Now it's time to vary the size of the cube using Blender's **shape keys**.
+
+* Open the "**Molecules**" panel and and click the "eye" icon to hide the molecules so they don't distract from the cube.
+
+* Open the "**Mesh**" panel within Blender's "**Property**" panel, and close all subpanels except "**Shape Keys**".
+
+* With the Cube selected, click the plus button in the Shape Keys panel to add a first key. It will be named "Basis".
+
+* Click the plus button again in the Shape Keys panel to add a second key. It should be named "Key 1".
+
+* With "Key 1" selected, enter "Edit mode" for the Cube object (Tab key when mouse cursor is in 3D view).
+
+* Switch to Vertex Select mode (if not already selected) and use the "a" key to unselect all vertices (black).
+
+* Hold the "shift" key and use the right mouse button to select the TOP 4 vertices of the cube.
+
+* Open the Transform panel with the "n" key (or click the + sign to open that panel).
+
+* Change the "z" value of the median (of all selected points) to 4. The cube should immediately stretch vertically.
+
+* Zoom out and adjust the view as needed to see the entire cube.
+
+* Return to object mode and the cube will return to it's previous (unstretched) shape.
+
+* Drag the "**Value**" field in the Shape Key panel for **Key 1** to see the cube stretch and shrink.
+
+* Set the current frame in the time line to 0 and set the Shape Key "**Value**" to 0.
+
+* Right click on the "**Value**" field of the Shape Key and select "Insert Keyframe" from the pop up menu.
+
+* The value field will become yellow indicating that it has a key frame set for that time.
+
+* Set the current frame (in the time line) to 50 and change the Shape Key "**Value**" from 0 to 1.0.
+
+* Again, right click on the "**Value**" field of the Shape Key and select "Insert Keyframe" from the pop up menu.
+
+* Verify that dragging along the time line (from 0 to 50) will stretch the cube in the z direction.
+
+* Set the current frame in the time line to 100 and set the Shape Key "**Value**" back to 0.
+
+* Again, right click on the "**Value**" field of the Shape Key and select "Insert Keyframe" from the pop up menu.
+
+* Verify that dragging the time from 0 to 50 stretches the cube, and dragging from 50 to 100 shrinks the cube.
+
+* Change the property panel to a "Graph Editor" panel, and be sure that the Cube is selected.
+
+* From the menu below the Graph Editor, select **Key** / **Add F-Curve Modifier** / **Cycles** to repeat the effect of these key frame assignments.
+
+* Verify that dragging along the time line continuously varies the size of the cube from 0 to 200. It should repeat 2 full cycles.
+
+* Return to the "**Model Objects**" panel in CellBlender and check the "**Dynamic**" box for the Cube object.
+
+* Open the "**Molecules**" panel and and click the "eye" icon to show the molecules again.
+
+* Open the "**Run Simulation**" panel in CellBlender and click the "**Export & Run**" button to start the simulation.
+
+* After the run completes, refresh the display with "**Reload Visualization Data**". You can play the simulation to see the molecules diffusing within the dynamic geometry.
+
+
+
 
 Dynamic Geometry with Python Scripting
 ---------------------------------------------
@@ -42,7 +131,34 @@ either use that MDL for display or it may optionally call your script for the di
 these reasons, your script should be as efficient as you can make it to speed up both runs
 and display.
 
-The following script was used to generate the dynamic tapered cube / pyramid shown above:
+We will start with the same a simple model used in the shape key example above:
+
+
+* Start with CellBlender initialized and with an empty scene.
+
+* Open the "**Model Objects**" panel and add a cube object. Click the "plus" button to add it to your model.
+
+* Open the "**Cube Object Options**" panel (directly below the list of model objects) and click "**Add a Material**".
+
+* Select both "**Object Transparent**" and "**Material Transparent**", and then set the "**Alpha**" value to **0.2**. Zoom in so it nearly fills the window.
+
+* Open the "**Molecules**" panel and add a *volume molecule* named "**v**" with a high diffusion constant (maybe **1e-3**). Give it a nice bright color if you like (red in this example), and increase the "Scale" Factor (in "Display Options") to about **5**.
+
+* Open the "**Molecule Placement**" panel and add a new Release Site ("plus" button). Release **500** of your "**v**" molecules into the **Object/Region** named "**Cube**".
+
+* Use the "**File/Save As...**" menu to save this Blender (.blend) file to a folder for this project.
+
+* Open the "**Run Simulation**" panel and set the Iterations to **200** and leave the Time Step at **1e-6**. Export and run the model.
+
+* After the run completes, refresh the display with "**Reload Visualization Data**". You should see a cube full of molecules. You can play the simulation to see them moving around.
+
+Now we'll define the dynamic geometry. But rather than using Blender's shape keys, we'll write a script that modifies the geometry of our object directly.
+
+* Change the "**Property**" panel into a "**Text Editor**" panel.
+
+* Create a new text file in the "**Text Editor**" panel (with the "**+**" button) and name it "**dg.py**".
+
+* Copy the following script and paste it into the "**Text Editor**" panel for "**dg.py**".
 
 ::
 
@@ -62,8 +178,8 @@ The following script was used to generate the dynamic tapered cube / pyramid sho
     faces.clear()
 
     min_length = 0.5
-    max_length = 2.0
-    period_frames = 200
+    max_length = 1.0
+    period_frames = 100
 
     sx = min_length + ( (max_length-min_length) * ( (1 - math.cos ( 2 * math.pi * frame_number / period_frames )) / 2 ) )
     sy = min_length + ( (max_length-min_length) * ( (1 - math.cos ( 2 * math.pi * frame_number / period_frames )) / 2 ) )
@@ -105,9 +221,19 @@ The following script was used to generate the dynamic tapered cube / pyramid sho
             points[i][0] = points[i][0] * 2
             points[i][1] = points[i][1] * 2
 
-This preliminary version gets frame_number, time_step, points[], and faces[] from the local environment.
-This is likely to change in the near future.
+The preliminary version of CellBlender gets frame_number, time_step, points[], and faces[] from the local environment.
+Note that this may change in the near future.
 
+
+* Return to the "**Model Objects**" panel in CellBlender and check the "**Dynamic**" box for the Cube object.
+
+* Set the Display to "**Files**" and select the **Script** name given above ("**dg.py**").
+
+* Open the "**Run Simulation**" panel in CellBlender and click the "**Export & Run**" button to start the simulation.
+
+* After the run completes, refresh the display with "**Reload Visualization Data**". You can play the simulation to see the molecules diffusing within the dynamic geometry.
+
+* As before, the geometry should go through 2 complete cycles over the 200 frames of the simulation. You can choose to display the object as a wire frame to get a better view of the changing geometry.
 
 
 Plotting Dynamic Geometry Volume via Clamp Concentration
