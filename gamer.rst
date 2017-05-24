@@ -166,9 +166,13 @@ Analyze Mesh, Clean-up, and Repeat
 
     .. image:: ./images/gamer/vertex_select.png
 
-  - Highlight regions of non-manifold topology **Select > Select All By Trait >
-    Non Manifold** [**Shift+Ctrl+Alt+m**]. This highlights all the regions of
-    non-manifold topologies.
+  - Click **Select** near the bottom left of the window, then click **Select All By Trait**, 
+    then click **Non Manifold**.
+
+    .. image:: ./images/gamer/select_selectbytrait_nonmanifold.png
+  - Or you could press [**Shift+Ctrl+Alt+m**] as a shortcut.
+
+  - This highlights all the regions of **non-manifold topologies**.
 
     .. image:: ./images/gamer/non_manifold.png
 
