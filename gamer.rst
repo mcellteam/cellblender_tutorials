@@ -60,7 +60,12 @@ Preliminary Work on Imported Mesh
 ---------------------------------------------
 
 - The object is not centered around the origin. To bring it into view, do the
-  following: **View > Selected** [**numpad .**].
+  following.
+    -**Make sure you have all four objects selected, selected objects will have a
+     orange circle around their respective triangle**
+
+  .. image:: ./images/gamer/wire_draw_all_edges.png
+
 - You may notice that parts of the model are getting truncated by the clipping
   plane. To remove the visual artifacts, we perform the following:
 
