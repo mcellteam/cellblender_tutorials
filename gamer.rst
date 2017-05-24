@@ -61,17 +61,21 @@ Preliminary Work on Imported Mesh
 
 - The object is not centered around the origin. To bring it into view, do the
   following.
-    -**Make sure you have all four objects selected, selected objects will have a
-     orange circle around their respective triangle**
+    - Make sure you have **all four objects selected** , selected objects will have a
+      orange circle around their respective triangle.
+    - Have the cursor be inside of the **3D view window** and press the **Period** on 
+      the **Numpad**.
 
-  .. image:: ./images/gamer/wire_draw_all_edges.png
+
+  .. image:: ./images/gamer/3dview_object_selected.png
 
 - You may notice that parts of the model are getting truncated by the clipping
   plane. To remove the visual artifacts, we perform the following:
 
   - Increase the distance of the far clipping plane
 
-    - Open the **Properties** panel by hitting **n**
+    - Open the **Properties** panel by  having the cursor in the **3D view window** and
+      then hit  **n**
     - Navigate to the **View** subpanel
     - Under **Clip**, change **End** to **2000**.
 
@@ -81,8 +85,15 @@ Preliminary Work on Imported Mesh
     [**numpad 5**].
 
 - We need the model to be in one volumetric domain so let’s join it. In the
-  **Outliner** hold **shift-LMB** (i.e. left-mouse-button) click each object
-  with **obj1_T-Tub_1** selected last, and then join them (**Ctrl+j**).
+  **Outliner** hold **shift-LMB** and **click** (i.e. left-mouse-button)  each object
+  with **obj1_T-Tub_1** selected last which will appear white.
+
+  .. image:: ./images/gamer/objects_selected.png
+
+- Then to join them  have the cursor in the **3D view window** and press (**Ctrl+j**), if 
+  done correctly then the four objects should combine into **obj1_T-Tub_1**.
+
+  .. image:: ./images/gamer/combined_object_selected.png
 
 - The mesh is currently rendered as a solid material. While this is great for
   the purposes of animation and visualization, we care about the distribution
