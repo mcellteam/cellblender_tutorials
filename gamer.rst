@@ -105,18 +105,34 @@ Preliminary Work on Imported Mesh
 
 - To simplify future manipulation let’s center the model about the origin.
 
-  - **Object > Transform > Geometry to Origin**.
+  - select **Object** near the bottom left of the window, then select **transform**, 
+    then select **Geometry to Origin**.
 
-  - Rearrange the view using the following options: **View > Selected**
-    [**numpad .**] and **View > Front** [**numpad 1**].
+  .. image:: ./images/gamer/object_origin.png
+
+  - Set the origin again just as before with the **Period** on the **Numpad** then to set 
+    the focus to the front of the object press **1** on the **Numpad**. Your **3D View window** 
+    should now look something like the following.
+
+    .. image:: ./images/gamer/front_face_object.png
 
 - Let’s now align the model so that the long axis is horizontal.
 
   - Rotate about the y-axis by 45 degrees to line up the model horizontally, by
     hitting **r**, **y**, and **45**.
 
-  - Save this state as the object’s default rotation and scale. **Object >
-    Apply > Rotation and Scale** [**Ctrl+a** and select **Rotation and Scale**]
+    .. image:: ./images/gamer/front_face_object_horiz.png
+
+  - Save this state as the object’s default rotation and scale via one of two ways.
+
+    - Select **Object** near the bottom left of the window, then select **Apply**, 
+      then select **Rotation and Scale**.
+
+      .. image:: ./images/gamer/object_apply_rotationscale.png
+
+    - Or you can press **Ctrl+a** and then select **Rotation and Scale**.
+
+      .. image:: ./images/gamer/ctrl_rotationscale.png
 
 - CHECKPOINT: Let’s save our work now as: **tt-sr-mit.imp_obj.blend**. Note
   that if something goes awry, you can always close Blender and reopen at this
@@ -131,9 +147,10 @@ Analyze Mesh, Clean-up, and Repeat
   suitability for computational analysis. I.e., that there are no unexpected
   holes or bizarre topologies.
 
-  - **CellBlender > Mesh Analysis > Analyze Mesh**! You should see that it is
-    not watertight and non-manifold. Now we know that there is a hole in the
-    mesh somewhere, rendering it non-watertight.  Similarly there are some
+  - Click on the **CellBlender-Mesh Analysis** drop down located just above the 
+    **CellBlender** dropdown, then press the **Analyze Mesh** button.You should 
+    see that it is **not watertight and non-manifold**. Now we know that there is 
+    a hole in the mesh somewhere, rendering it non-watertight. Similarly there are some
     topological issues indicated by non-manifold topology. Manifold geometry is
     essentially geometry which can exist in the real world. For some pragmatic
     examples of non-manifold geometry please consult the following
@@ -143,7 +160,8 @@ Analyze Mesh, Clean-up, and Repeat
 
 - Let’s start by cleaning up regions of non-manifold topology.
 
-  - First engage **Edit Mode** [**Tab**] and deselect everything **a**.
+  - First engage **Edit Mode** [**Tab**] and while having the cursor in the **3D view window**
+    deselect everything by pressing **a**.
   - Hit **Ctrl-Tab** and select **Vertex** select mode.
 
     .. image:: ./images/gamer/vertex_select.png
