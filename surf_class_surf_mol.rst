@@ -38,8 +38,8 @@ Creating and Assigning Surface Regions
 
 .. image:: ./images/surf_class_surf_mol/region_0_1.png
 
-Click on the first one and change its name in the text field to **top**. Next,
-click on the second entry and change its name to **bottom**.
+Click on **Region_1** and change its name in the text field to **top**. Next,
+click on **Region_0** and change its name to **bottom**.
 
 .. image:: ./images/surf_class_surf_mol/bottom_top.png
 

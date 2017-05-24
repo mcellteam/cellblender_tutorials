@@ -45,8 +45,6 @@ Set Project Parameters
 
 Set the following parameters:
 
-* Set the **Iterations** to **1000**.
-* Set the **Time Step** to **1e-6**.
 * Create a Cube and add it to the **Model Objects** list.
 * Create a volume molecule called **vol1** with a diffusion constant of
   **1e-6**.
