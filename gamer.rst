@@ -322,11 +322,18 @@ Add Boundary Box
   a boundary box around the features to represent the cytosol.
 
   - First we center the 3D cursor to the center. We will next add a cube at the
-    position of the 3D cursor. In **Object Mode** hit **Tab** , **Object > Snap
-    > Cursor to Center** [**Shift+s** and select **Cursor to Center**]
+    position of the 3D cursor. In **Object Mode**, select **Object**, then **Snap**, 
+    then **Cursor to Center** or you could use [**Shift+s** and select **Cursor to Center**] as a shortcut.
+
+    .. image:: ./images/gamer/object_snap_cursorcenter.png
+
   - We will next add a cube at the position of the 3D cursor. Add a cube mesh
-    object, **Add > Mesh > Cube** [**Shift+a** and select **Mesh > Cube**]
-  - Let’s scale and translate the bounding box to where we want it. Recall that
+    object, select **Add**, then **Mesh**, then **Cube**. Or you could use [**Shift+a** and select **Mesh**, then **Cube**]
+    as a shortcut.
+
+    .. image:: ./images/gamer/add_mesh_cube.png
+
+  - Switch to **Edit mode** [**Tab**], let’s scale and translate the bounding box to where we want it. Recall that
     the **Properties** panel can be summoned with [**n**].
 
     - **Location** (-40, 15, 30)
@@ -339,9 +346,12 @@ Add Boundary Box
 
   - Switch to **Edit Mode** [**Tab**].
   - To capture detailed features we will need additional triangles. With the
-    cube selected, **Mesh > Edges > Subdivide** a total of six times [**w** and
-    select **Subdivide**].
-  - Triangulate by going to **Mesh > Faces > Triangulate** [**Ctrl+t**]
+    cube selected, select **Mesh**, then **Edges**, then **Subdivide** a total of six times. Or you could use [**w** and
+    select **Subdivide**] as a shortcut.
+
+  .. image:: ./images/gamer/mesh_edges_subdivide.png
+
+  - Triangulate by selecting **Mesh**, then **Faces**, then **Triangulate Faces**. Or you could use [**Ctrl+t**] as a shortcut.
   - Return to **Object Mode** [**Tab**].
 
   .. image:: ./images/gamer/subdivide_cube.png
@@ -362,10 +372,10 @@ Using Boolean Modifier
     modifier.
   - In the **Outliner** click on the eye to hide **obj1_T-tub_1**.
   - With the cube selected, apply the current rotation and scale transform.
-    **Object > Apply > Rotation** and **Scale** [**Ctrl+a** and select
+    Select **Object**, then **Apply**, **Rotation and Scale**, or use [**Ctrl+a** and select
     **Rotation and Scale**]
-  - Apply the current location transform. **Object > Apply > Location**
-    [**Ctrl+a, Location**]
+  - Apply the current location transform. Select **Object**, then **Apply**, then **Location** or use 
+    [**Ctrl+a, Location**].
   - If you would like to show the edges, go to the **Object Properties** and
     select **Wire** and **Draw all Edges**.
 
@@ -382,7 +392,7 @@ Refine Cube with GAMer
 
   - First, in **Edit Mode** [**Tab**], switch to **Vertex** select mode.
   - Deselect everything [**a**].
-  - Next, we can **Select > Select All By Trait > Non Manifold**
+  - Next, we can click **Select**, then **Select All By Trait**, then **Non Manifold**, or 
     [**Shift+Ctrl+Alt+m**]. Nothing should be selected. If there are some
     issues, try performing **Degenerate Dissolve** followed by **Fill Holes**.
   - Return to **Object Mode** [**Tab**], and run **Mesh Analyzer**. We find
@@ -390,10 +400,8 @@ Refine Cube with GAMer
 
 - We can triangulate as before:
 
-  - In **Edit Mode** **Tab**, Select All [**a**] , **Mesh > Faces >
-    Triangulate** [**Ctrl+t**]
-  - Return to **Object Mode** [**Tab**], and run **Mesh Analyzer**. We have a
-    good geometry to start refining.
+  - In **Edit Mode** **Tab**, Select All [**a**] , then select **Mesh**, then **Faces**, then **Triangulate Faces** or [**Ctrl+t**]
+  - Return to **Object Mode** [**Tab**], and run **Mesh Analyzer**. We have a good geometry to start refining.
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.boolean_clean.blend**
 - Let’s begin surface refinement using GAMer
@@ -408,7 +416,7 @@ Refine Cube with GAMer
     - **Smooth Tris**: Max_Min = 15; S_Iter = 10
     - **Coarse Dense Tris**: CD_R = 0.1, CD_Iter = 10 (~42K vertices)
     - **Smooth Tris**: Max_Min = 20; S_Iter = 20
-    - 2x **Normal Smooth Surf**
+    - **Normal Smooth Surf** twice
 
   - In **Object Mode** [**Tab**], run **Mesh Analyzer**. Note the slightly
     smaller surface area but similar volume.
@@ -440,10 +448,10 @@ Adding Cytolsolic Boundary
     unhide everything using [**Alt+h**]. In the next steps, we'll be using the
     the **Border Select** tool [**b**].
   - Turn off the option: **Limit selection to visible**.
-  - **View > Front** [numpad 1].
+  - **Front-View** [**numpad 1**].
   - Select faces of **Cytosol**. Use **Border Select** tool [**b**] to select
     the profile of each side.
-  - **View > Top** [**numpad 7**].
+  - **Top-View** [**numpad 7**].
   - Select additional faces of **Cytosol**. Use **Border Select** tool [**b**]
     to select the profile of remaining sides.
   - Hide all unselected [**Shift+h**]. You may notice that some triangles from
