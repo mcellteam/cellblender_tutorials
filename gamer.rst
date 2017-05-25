@@ -61,7 +61,8 @@ Preliminary Work on Imported Mesh
 
 - The object is not centered around the origin. To bring it into view, do the
   following.
-    - Make sure you have **all four objects selected** , selected objects will have a
+    - Make sure you have **all four objects selected** by holding **shift-LMB** and **clicking** 
+      (i.e. left-mouse-button) each object, selected objects will have a
       orange circle around their respective triangle.
     - Have the cursor be inside of the **3D view window** and press the **Period** on 
       the **Numpad**.
