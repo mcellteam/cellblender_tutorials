@@ -105,7 +105,7 @@ Preliminary Work on Imported Mesh
 
 - To simplify future manipulation let’s center the model about the origin.
 
-  - select **Object** near the bottom left of the window, then select **transform**, 
+  - select **Object** near the bottom left of the 3D window, then select **transform**, 
     then select **Geometry to Origin**.
 
   .. image:: ./images/gamer/object_origin.png
@@ -161,7 +161,7 @@ Analyze Mesh, Clean-up, and Repeat
 - Let’s start by cleaning up regions of non-manifold topology.
 
   - First engage **Edit Mode** [**Tab**] and while having the cursor in the **3D view window**
-    deselect everything by pressing **a**.
+    deselect everything by pressing [**a**].
   - Hit **Ctrl-Tab** and select **Vertex** select mode.
 
     .. image:: ./images/gamer/vertex_select.png
@@ -180,55 +180,77 @@ Analyze Mesh, Clean-up, and Repeat
   tends to cause problems with raytracing among other things). Thus, Blender
   has some built-in tools to help resolve non-manifoldness.
 
-  - First, Select All **a** then go to **Mesh > Clean up > Degenerate
-    Dissolve**. This function will take care of several cases of bad geometry:
-    edges with no length, faces with no area, or face corners with no area. It
-    does so by deleting vertices and edges it thinks don’t make sense.
+  - First, Select All by pressing [**a**] with the cursor in the **3D view window**, then near the botttom left of the 3D window
+    select **Mesh**, then **Clean up**, then **Degenerate** and finally **Dissolve**. This function will take care 
+    of several cases of bad geometry: edges with no length, faces with no area, or face corners with no area. It does 
+    so by deleting vertices and edges it thinks don’t make sense.
 
     .. image:: ./images/gamer/degenerate_dissolve.png
 
   - This will leave some holes in the mesh. We can automatically fill the holes
-    using: **Mesh > Clean up > Fill Holes**.
+    by again selecting **Mesh** near the botttom left of the 3D window, then **Clean up**, then **Fill Holes**.
 
     .. image:: ./images/gamer/fill_holes.png
 
-  - Let’s now check how many issues we have resolved. Deselect everything **a**
-    and then **Select > Select All By Trait > Non Manifold**
-    [**Shift+Ctrl+Alt+m**]. We see that the mesh has been substantially
-    improved but is not perfect yet.
+  - Let’s now check how many issues we have resolved. Deselect everything by pressing [**a**] with the cursor in the 
+    **3D window** again and then near the botttom left of the 3D window  click **Select**, then **Select All By Trait**,
+    then **Non Manifold**. Or we could use [**Shift+Ctrl+Alt+m**] as a shortcut. 
+
+  - We see that the mesh has been substantially improved but is not perfect yet.
 
     .. image:: ./images/gamer/almost_manifold.png
 
-- We can zoom in on the selected region by performing **View > Selected**
-  [**numpad .**].
+- We can zoom in on the selected region by again having the cursor in the 3D window and then on the **Numpad** select the
+  **Period**.
 
   - Let’s delete the dangling vertex. First Deselect everything [**a**] then
-    select the culprit vertex [**RMB click**] (Note, be sure to align the view
-    such that the vertex has nothing behind it. You don’t want to accidentally
-    delete something behind) and delete [**x**] and choose Vertices.
+    select the culprit vertex [**RMB click**] (**Note** this can be difficult to find so make sure you have the view **outside** the 
+    object and **not inside**) and delete [**x**] and choose Vertices.
 
-    .. image:: ./images/gamer/remove_dangling.png
+    - Normal view of the culprit vertx 
 
-- Once again let’s take a look to see if there are any residual problems. In
-  **Edit Mode**, **Select > Select All By Trait > Non Manifold** [**Shift+Ctrl+
-  Alt+m**]. At this point your mesh should have no more issues.
+      .. image:: ./images/gamer/culprit_vertex.png
+
+    - Close up of the culprit vertex
+
+      .. image:: ./images/gamer/culprit_vertex_zoom.png
+
+- Once again let’s take a look to see if there are any residual problems. In **Edit Mode** [**Tab**], click **Select**, 
+  then **Select All By Trait**, then **Non Manifold**. Or we could use [**Shift+Ctrl+Alt+m**] as a shortcut. At this 
+  point your mesh should have no more issues.
 - Recall that the degenerate dissolve function deleted some vertices and edges.
   In some cases, when the holes are filled, the polygons may no longer be
-  triangular. To re-triangulate, select everything [**a**] and choose **Mesh
-  > Faces > Triangulate** [**Ctrl+t**]
+  triangular. 
+
+  - To re-triangulate, select everything [**a**] and choose **Mesh**, then **Faces**, then **Triangulate**. Or [**Ctrl+t**] 
+    as a shortcut.
+
+    .. image:: ./images/gamer/mesh_faces_triangle.png
+
 - Our mesh is starting to look pretty good! Let’s re-run mesh analyzer
 
-  - Return to **Object Mode** **Tab**
-  - Rerun mesh analysis: **CellBlender > Mesh Analysis > Analyze Mesh**. We now
-    have a watertight and manifold mesh but we have inward facing normals. This
-    means that everything is good except the mesh is inside out!
+  - Return to **Object Mode** [**Tab**] or by pressing the list by the bottom of the 3d window.
+
+    .. image:: ./images/gamer/tabbutton.png 
+    .. image:: ./images/gamer/tabbutton_objectmode.png
+
+  - Rerun mesh analysis: click the drop down **CellBlender-Mesh Analysis**, then **Analyze Mesh**. We now
+    have a **Watertight** and **Manifold** mesh but we have **Inward Facing normals**. This
+    means that everything is good except the mesh is **inside out**!
+
+    .. image:: ./images/gamer/analyze_mesh_fixed.png
 
 - To reset the orientation of the faces, we need to recalculate the normals.
 
-  - Return to **Edit Mode** **Tab**.
-  - **Mesh > Normals > Recalculate Outside** [**Ctrl+n**].
-  - Return to to **Object Mode** **Tab**, run mesh analyzer again. We now we have
-    good geometry to start with. Be sure to note the surface area and volume.
+  - Return to **Edit Mode** [**Tab**].
+  - Select **Mesh**, then **Normals**, then **Recalculate Outside** or you could use [**Ctrl+n**] as a shortcut.
+
+    .. image:: ./images/gamer/mesh_normals_recalculate_outside.png
+
+  - Return to to **Object Mode** [**Tab**], run mesh analyzer again. We now we have
+    good geometry to start with. Be sure to note the **surface area** and **volume**.
+
+    .. image:: ./images/gamer/analyze_mesh_area_volume.png
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.clean.blend**.
 
@@ -261,14 +283,33 @@ Using GAMer
     remaining is given.
 
     - **Smooth Tris**: Max_Min = 15, S_Iter = 10 (~73K vertices)
-    - **Coarse Dense Tris**: CD_R, 1; CD_Iter, 5 (~37K vertices)
-    - **Smooth Tris**: Max_Min, 15; S_Iter, 10
-    - **Coarse Dense Tris**: CD_R, 0.5; CD_Iter, 5 (~28K vertices)
-    - **Smooth Tris**: Max_Min, 20; S_Iter, 20
-    - 2x **Normal Smooth Surf**
 
-  - In **Object Mode** [**Tab**], run Mesh Analyzer. Note the slightly smaller
-    surface area but similar volume.
+      .. image:: ./images/gamer/smooth_tris_changes.png
+
+    - **Coarse Dense Tris**: CD_R, 1; CD_Iter, 5 (~37K vertices)
+
+      .. image:: ./images/gamer/coarse_dense_tris_changes.png
+
+    - **Smooth Tris**: Max_Min, 15; S_Iter, 10
+
+      .. image:: ./images/gamer/smooth_tris_changes.png
+
+    - **Coarse Dense Tris**: CD_R, 0.5; CD_Iter, 5 (~28K vertices)
+
+      .. image:: ./images/gamer/coarse_dense_tris_decrement.png
+
+    - **Smooth Tris**: Max_Min, 20; S_Iter, 20
+
+      .. image:: ./images/gamer/smooth_tris_increment.png
+
+    - Click **Normal Smooth Surf** twice 
+
+      .. image:: ./images/gamer/normal_smooth_surf_twice.png
+
+  - While in **Object Mode** [**Tab**], click **CellBlender**, then **CellBlender-Mesh Analyzer**, then **Mesh Analyzer**. 
+    Note the slightly smaller **surface area** but similar **volume**.
+
+      .. image:: ./images/gamer/analyze_mesh_area_volume_change.png
 
 - CHECKPOINT: Save your progress to: **tt-sr-mit.gamer_proc_1.blend**
 
