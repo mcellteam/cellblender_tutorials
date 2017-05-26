@@ -48,19 +48,29 @@ We will build a simple model that uses shape keys to stretch a cube in the z dir
 
 * Select both "**Object Transparent**" and "**Material Transparent**", and then set the "**Alpha**" value to **0.2**. Zoom in so it nearly fills the window.
 
-* Open the "**Molecules**" panel and add a *volume molecule* named "**v**" with a high diffusion constant (maybe **1e-3**). Give it a nice bright color if you like (red in this example), and increase the "Scale" Factor (in "Display Options") to about **5**.
+    .. image:: ./images/cube_object_options_alpha_objectandmaterial_transparent.png
+
+* Open the "**Molecules**" panel and add a **volume molecule** named "**v**" with a high diffusion constant (maybe **1e-3**). Give it a nice bright color if you like (red in this example), and increase the "Scale" Factor (in "Display Options") to about **5**.
+
+    .. image:: ./images/add_molecule.png
 
 * Open the "**Molecule Placement**" panel and add a new Release Site ("plus" button). Release **500** of your "**v**" molecules into the **Object/Region** named "**Cube**".
 
 * Use the "**File/Save As...**" menu to save this Blender (.blend) file to a folder for this project.
 
-* Open the "**Run Simulation**" panel and set the Iterations to **200** and leave the Time Step at **1e-6**. Export and run the model.
+* Open the "**Run Simulation**" panel and set the **Iterations** to **200** and leave the **Time Step** at **1e-6**. Export and run the model.
+
+    .. image:: ./images/run_simulation_iterations.png
 
 * After the run completes, refresh the display with "**Reload Visualization Data**". You should see a cube full of molecules. You can play the simulation to see them moving around.
+
+    .. image:: ./images/cube_filled.png
 
 Now it's time to vary the size of the cube using Blender's **shape keys**.
 
 * Open the "**Molecules**" panel and and click the "eye" icon to hide the molecules so they don't distract from the cube.
+
+    .. image:: ./images/hidden_molecule.png
 
 * Open the "**Mesh**" panel within Blender's "**Property**" panel, and close all subpanels except "**Shape Keys**".
 
