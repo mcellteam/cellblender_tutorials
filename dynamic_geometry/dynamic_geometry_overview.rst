@@ -130,11 +130,15 @@ Now it's time to vary the size of the cube using Blender's **shape keys**.
 
     .. image:: ./images/graph_editor.png
 
-* From the menu below the Graph Editor, select **Key** / **Add F-Curve Modifier** / **Cycles** to repeat the effect of these key frame assignments.
+* From the menu below the Graph Editor, select **Key**, then **Add F-Curve Modifier**, then **Cycles** to repeat the effect of these key frame assignments.
+
+    .. image:: ./images/key_addfcurve_cycles.png
 
 * Verify that dragging along the time line continuously varies the size of the cube from 0 to 200. It should repeat 2 full cycles.
 
 * Return to the "**Model Objects**" panel in CellBlender and check the "**Dynamic**" box for the Cube object.
+
+    .. image:: ./images/model_objects_dynamic.png
 
 * Open the "**Molecules**" panel and and click the "eye" icon to show the molecules again.
 
