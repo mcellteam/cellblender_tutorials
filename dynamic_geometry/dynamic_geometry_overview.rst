@@ -72,7 +72,9 @@ Now it's time to vary the size of the cube using Blender's **shape keys**.
 
     .. image:: ./images/hidden_molecule.png
 
-* Open the "**Mesh**" panel within Blender's "**Property**" panel, and close all subpanels except "**Shape Keys**".
+* In the bottom right corner of blender open the "**Mesh**" panel within Blender's "**Property**" panel, and close all subpanels except "**Shape Keys**".
+
+    .. image:: ./images/mesh_property_panel.png
 
 * With the Cube selected, click the plus button in the Shape Keys panel to add a first key. It will be named "Basis".
 
@@ -80,15 +82,17 @@ Now it's time to vary the size of the cube using Blender's **shape keys**.
 
 * With "Key 1" selected, enter "Edit mode" for the Cube object (Tab key when mouse cursor is in 3D view).
 
-* Switch to Vertex Select mode (if not already selected) and use the "a" key to unselect all vertices (black).
+* Switch to Vertex Select mode (if not already selected) and use the [**a**] key to unselect all vertices (black).
+
+    .. image:: ./images/vertex_select.png
 
 * Hold the "shift" key and use the right mouse button to select the TOP 4 vertices of the cube.
 
-* Open the Transform panel with the "n" key (or click the + sign to open that panel).
+    .. image:: ./images/top_four_vertex.png
 
-* Change the "z" value of the median (of all selected points) to 4. The cube should immediately stretch vertically.
+* Open the **Transform** panel with the [**n**] key (or click the + sign to open that panel). Change the "**z**" value of the median (of all selected points) to **4**. The cube should immediately stretch vertically. Zoom out and adjust the view as needed to see the entire cube.
 
-* Zoom out and adjust the view as needed to see the entire cube.
+    .. image:: ./images/transform_panel.png
 
 * Return to object mode and the cube will return to it's previous (unstretched) shape.
 
@@ -96,13 +100,21 @@ Now it's time to vary the size of the cube using Blender's **shape keys**.
 
 * Set the current frame in the time line to 0 and set the Shape Key "**Value**" to 0.
 
+    .. image:: ./images/shape_key_initial.png
+
 * Right click on the "**Value**" field of the Shape Key and select "Insert Keyframe" from the pop up menu.
 
+    .. image:: ./images/keyframe_zero.png
+
 * The value field will become yellow indicating that it has a key frame set for that time.
+
+    .. image:: ./images/keyframe_zero_yellow.png
 
 * Set the current frame (in the time line) to 50 and change the Shape Key "**Value**" from 0 to 1.0.
 
 * Again, right click on the "**Value**" field of the Shape Key and select "Insert Keyframe" from the pop up menu.
+
+    .. image:: ./images/keyframe_fifty.png
 
 * Verify that dragging along the time line (from 0 to 50) will stretch the cube in the z direction.
 
@@ -110,9 +122,13 @@ Now it's time to vary the size of the cube using Blender's **shape keys**.
 
 * Again, right click on the "**Value**" field of the Shape Key and select "Insert Keyframe" from the pop up menu.
 
+    .. image:: ./images/keyframe_onehundred.png
+
 * Verify that dragging the time from 0 to 50 stretches the cube, and dragging from 50 to 100 shrinks the cube.
 
 * Change the property panel to a "Graph Editor" panel, and be sure that the Cube is selected.
+
+    .. image:: ./images/graph_editor.png
 
 * From the menu below the Graph Editor, select **Key** / **Add F-Curve Modifier** / **Cycles** to repeat the effect of these key frame assignments.
 
