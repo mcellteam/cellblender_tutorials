@@ -56,6 +56,8 @@ We will build a simple model that uses shape keys to stretch a cube in the z dir
 
 * Open the "**Molecule Placement**" panel and add a new Release Site ("plus" button). Release **500** of your "**v**" molecules into the **Object/Region** named "**Cube**".
 
+    .. image:: ./images/molecule_release.png
+
 * Use the "**File/Save As...**" menu to save this Blender (.blend) file to a folder for this project.
 
 * Open the "**Run Simulation**" panel and set the **Iterations** to **200** and leave the **Time Step** at **1e-6**. Export and run the model.
@@ -82,11 +84,11 @@ Now it's time to vary the size of the cube using Blender's **shape keys**.
 
 * With "Key 1" selected, enter "Edit mode" for the Cube object (Tab key when mouse cursor is in 3D view).
 
-* Switch to Vertex Select mode (if not already selected) and use the [**a**] key to unselect all vertices (black).
+* Switch to Vertex Select mode (**Ctrl-tab**) and use the [**a**] key to unselect all vertices (black).
 
     .. image:: ./images/vertex_select.png
 
-* Hold the "shift" key and use the right mouse button to select the TOP 4 vertices of the cube.
+* Hold the **shift** key and use the right mouse button to select the TOP 4 vertices of the cube.
 
     .. image:: ./images/top_four_vertex.png
 
@@ -172,9 +174,15 @@ We will start with the same a simple model used in the shape key example above:
 
 * Select both "**Object Transparent**" and "**Material Transparent**", and then set the "**Alpha**" value to **0.2**. Zoom in so it nearly fills the window.
 
+    .. image:: ./images/cube_object_options_alpha_objectandmaterial_transparent.png
+
 * Open the "**Molecules**" panel and add a *volume molecule* named "**v**" with a high diffusion constant (maybe **1e-3**). Give it a nice bright color if you like (red in this example), and increase the "Scale" Factor (in "Display Options") to about **5**.
 
+    .. image:: ./images/add_molecule.png
+
 * Open the "**Molecule Placement**" panel and add a new Release Site ("plus" button). Release **500** of your "**v**" molecules into the **Object/Region** named "**Cube**".
+
+    .. image:: ./images/molecule_release.png
 
 * Use the "**File/Save As...**" menu to save this Blender (.blend) file to a folder for this project.
 
