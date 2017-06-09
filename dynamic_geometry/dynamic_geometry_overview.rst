@@ -265,7 +265,9 @@ Note that this may change in the near future.
 
 * Return to the "**Model Objects**" panel in CellBlender and check the "**Dynamic**" box for the Cube object.
 
-* Set the Display to "**Files**" and select the **Script** name given above ("**dg.py**").
+* Check the box "**Show Dynamic MDL**" and select the **Script** name given above ("**dg.py**").
+
+    .. image:: ./images/show_dynamic_mdl.png
 
 * Open the "**Run Simulation**" panel in CellBlender and click the "**Export & Run**" button to start the simulation.
 
@@ -287,31 +289,61 @@ volume. Follow the steps below to construct the model (this tutorial assumes som
 
 * Open the "**Model Objects**" panel and add a cube object. Click the "plus" button to add it to your model.
 
-* Open the "**Cube Object Options**" panel (directly below the list of model objects) and set it's display type to "**Bounds**" (it is probably defaulted to "Solid"). Zoom in so it nearly fills the window.
+* Open the "**Cube Object Options**" panel (directly below the list of model objects) and set it's display type to "**Bounds**" (it is probably defaulted to "Solid"). Zoom in so it nearly fills the **window**.
+
+    .. image:: ./images/cube_object_bounds.png
 
 * Open the "**Molecules**" panel and add a *volume molecule* named "**v**" with a high diffusion constant (maybe **1e-3**). Give it a nice bright color if you like (light blue in this example), and increase the "Scale" Factor (in "Display Options") to about **5**.
 
+    .. image:: ./images/add_molecule_blue.png
+
 * Open the "**Molecule Placement**" panel and add a new Release Site ("plus" button). Release **5000** of your "**v**" molecules into the **Object/Region** named "**Cube**".
 
+    .. image:: ./images/molecule_release_blue.png
+
 * Open the "**Plot Output Settings**" panel and add a new Count with the "plus" button. Select the "**v**" molecule and count the number in the World (default). Check the "*Molecule Colors*" box if you like.
+
+    .. image:: ./images/new_count_molecule_blue.png
 
 * Use the "**File/Save As...**" menu to save this Blender (.blend) file to a folder for this project.
 
 * Open the "**Run Simulation**" panel and set the Iterations to **500** and leave the Time Step at **1e-6**. **Export and run the model**.
 
+    .. image:: ./images/run_simulation_iterations_blue.png
+
 * After the run completes, refresh the display with "**Reload Visualization Data**". You should see a cube full of molecules. You can play the simulation to see them moving around.
 
-* Open the "**Plot Output Settings**" panel again and plot the results with your favorite plotter. It should be relatively uninteresting (a straight line showing 5000 molecules).
+* Open the "**Plot Output Settings**" panel again and plot the results with your favorite plotter. 
 
-* Open the "**Surface Classes**" panel to add a concentration clamp. Click the "plus" button to add a new surface class. That will open up the "**Surface Class Properties**" list below the class name. Click "plus" there as well to add a new Surface Class property. Select "**Single Molecule**", and choose your "**v**" molecule. Set the **Orientation** to "**Bottom/Back**", and change the "**Type**" from the default of "Transparent" to "**Clamp Concentration**". Set the value of the clamp to **1e-6**.
+    .. image:: ./images/plot_output_blue.png 
+
+* It should be relatively uninteresting (a straight line showing 5000 molecules).
+
+    .. image:: ./images/plot_graph_blue.png      
+
+* Open the "**Surface Classes**" panel to add a concentration clamp. Click the "plus" button to add a new surface class. That will open up the "**Surface Class Properties**" list below the class name. Click "plus" there as well to add a new Surface Class property. 
+
+    .. image:: ./images/surface_class_properties.png
+
+* Select "**Single Molecule**", and choose your "**v**" molecule. Set the **Orientation** to "**Bottom/Back**", and change the "**Type**" from the default of "Transparent" to "**Clamp Concentration**". Set the value of the clamp to **1e-6**.
+
+    .. image:: ./images/select_single_molecule.png
+    .. image:: ./images/molecules_orientation_clamp.png
 
 * Open the "**Assign Surface Classes**" panel, and click the "plus" button to begin assigning your new surface class to the Cube. Set the "**Surface Class Name**" to be the surface class created above (most likely "**Surface Class**"). Set the object to get the class to "**Cube**", and leave the Region Selection set to "**All Surfaces**".
+
+    .. image:: ./images/assign_surface_class.png
 
 * Open the "**Run Simulation**" panel and again **export and run** the model.
 
 * **Reload the Visualization**. It should look pretty much the same as before.
 
-* Open the "**Plot Output Settings**" panel and plot the count again. It should be roughly around 5000 but varying as MCell works to keep the concentration at the requested value.
+* Open the "**Plot Output Settings**" panel and plot the count again. 
+* It should be roughly around 5000 but varying as MCell works to keep the concentration at the requested value.
+
+
+    .. image:: ./images/plot_graph_blue_change.png
+
 
 Now it's time to vary the size of the cube and watch MCell add and remove molecules to maintain the requested concentration. We will do this with a **Python script** that will change our Cube object for each frame of the simulation.
 
@@ -380,6 +412,8 @@ This code will be explained in greater detail below. Note that clicking the "Syn
 button will add syntax highlighting to your Python code (as shown in the animation).
 
 * Open the "**Model Objects** " panel. The "Cube" should be selected. Open the "**Cube Object Options**" panel (if it isn't open already) and check the "**Dynamic**" box. This is the check box that lets CellBlender know that it must generate dynamic geometry for this object. When you click "**Dynamic**", the "**Script**" option will appear directly to its right. If the script is left empty, then CellBlender assumes that your Dynamic Geometry will be generated using Blender's built-in keying system. But we want to use our script, so click the **refresh button** beside the "Script" box to reload the available scripts. Then click in the "**Script**" box and select "**dyn_geo.py**" (or whatever you named your script). This tells CellBlender to use that script to generate geometry for this object. There may also be another check box near the top of the "**Model Objects**" panel named "**Show Dynamic MDL**". That button can enable or disable the reading and displaying of dynamic data. It's there because very large models can be slow to load. This Cube model is small, so check that box to see the dynamic geometry in Blender's 3D view window.
+
+    .. image:: ./images/cube_dynamic_blue.png
 
 * Open the "**Run Simulation**" panel and again **export and run the model**.
 
