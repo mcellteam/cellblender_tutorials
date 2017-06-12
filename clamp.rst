@@ -103,13 +103,13 @@ Create Reaction Output
   statement for every molecule defined, which is just **vol1** in this
   instance.
 
-.. image:: ./images/clamp/count_vol1.png
-
 * Hit the regular **+** button.
 * Select **MDLString**.
 * In the **MDL String** field, put the following:
   **COUNT[vol1,Scene.Plane,ESTIMATE_CONC]**
 * In the **MDL File Prefix** field, type **vol1_conc**.
+
+.. image:: ./images/clamp/count_vol1.png
 
 Examine the MDLs (Optional)
 ---------------------------------------------

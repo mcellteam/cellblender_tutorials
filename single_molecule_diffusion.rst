@@ -89,6 +89,8 @@ Change Settings to See Results
 
 * Hide the "Manipulator" near the bottom middle of the screen
 
+.. image:: ./images/single_molecule/manipulater_location.png
+
 .. image:: ./images/single_molecule/hide_manipulator.png
 
 * Click the **Molecules** button
