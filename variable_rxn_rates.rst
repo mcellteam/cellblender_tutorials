@@ -48,6 +48,9 @@ Set the following parameters:
 * Create a Cube and add it to the **Model Objects** list.
 * Create a volume molecule called **vol1** with a diffusion constant of
   **1e-6**.
+
+  .. image:: ./images/var_rate_constant/defined_molecules.png
+
 * Create a release site with the following properties:
 
   * Set the **Site Name** to **vol1_rel**.
@@ -55,6 +58,8 @@ Set the following parameters:
   * Set the **Release/Shape** to **Object/Region**.
   * Set the **Object/Region** to **Cube**.
   * Set the **Quantity to Release** to **1000**.
+
+  .. image:: ./images/var_rate_constant/molecule_placement.png
 
 Create Reaction with Variable Rate Constant
 ---------------------------------------------

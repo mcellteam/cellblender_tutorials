@@ -156,6 +156,8 @@ Run the Simulation and Visualize the Results
 * Change the **Time Step** to **1e-4**
 * Lastly, hit the **Export & Run** button.
 
+.. image:: ./images/surf_class_surf_mol/run_sim.png	
+
 Once the simulation has finished running, hit **Reload Visualization Data**.
 Hit **Alt-a** to play back the animation. You should notice the **surf1**
 molecules being destroyed by the absorptive surface boundary.
