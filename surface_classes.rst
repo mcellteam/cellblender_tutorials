@@ -53,12 +53,17 @@ Add a Volume Molecule and Release Site.
 ---------------------------------------------
 
 * Add a volume molecule named **vol1** with a diffusion constant of **1e-5**.
-* Create a release site with the following properties:
 
+.. image:: ./images/surf_class/defined_molecule.png
+
+* Create a release site with the following properties:
+  
   * Set the **Site Name** to **vol1_rel**.
   * Set the **Release Shape** to **Object/Region**.
   * Set the **Object/Region** to **Cube**.
   * Set the **Quantity to Release** to **2000**.
+
+.. image:: ./images/surf_class/molecule_rel.png
 
 .. _surf_class_add_geom:
 
