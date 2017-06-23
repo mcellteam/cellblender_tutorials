@@ -30,9 +30,6 @@ Usage
 
 Getting started
 ---------------------------------------------
-  * First we want to create the molecule to be used in the simulation.
-
-
         * Define the molecule
 
             * Create a molecule by pressing the **Plus** button and name it **vm**.
@@ -179,7 +176,7 @@ Periodic boundary conditions in *MCell* are used by defining a periodic box:
       PERIODIC_Z = TRUE
     }
 
-* Make the python script
+* Make the python script.
 
     * Create a new text file and name it **pbc.mdl**.
     * Paste the above python code into the file.
@@ -189,7 +186,7 @@ Periodic boundary conditions in *MCell* are used by defining a periodic box:
 
     * Export the script. 
 
-      * Create a new export by pressing the **Plus** button
+      * Create a new export by pressing the **Plus** button.
       * Select **MDL**.
       * Name it **pbc.mdl**.
 

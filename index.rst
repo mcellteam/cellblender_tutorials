@@ -14,6 +14,7 @@ Users new to MCell and CellBlender should start here:
    :numbered:
    :maxdepth: 1
 
+   blender_information 
    software
    single_molecule_diffusion
    unimol_reactions
