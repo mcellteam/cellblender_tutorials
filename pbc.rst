@@ -192,17 +192,3 @@ set to be periodic or not via the **PERIODIC_X/Y/Z** keywords.
 There can only be one periodic box and you do **not** need to instantiate it.
 
 **Export and run the simulation, then reload the visualization.**
-
-..Counting in Virtual Boxes
-..---------------------------------------------
-
-..Counting works very similarly to normal counting in MCell. However, if using
-..mirrored geometry, then you need to specify which "virtual" box that you're
-..counting in like this:
-
-
-..Notice the section with the **[1,-2,3]**. The numbers refer to the X, Y, and Z
-..coordinates of the virtual box respectively. In this example, we are counting
-..all the vm molecules in Scene.cell that is one virtual box over in the positive
-..X direction, two virtual boxes over in the negative Y direction, and three
-..virtual boxes over in the positive Z direction.
