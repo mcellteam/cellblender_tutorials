@@ -165,32 +165,24 @@ Defining the Boundaries
 
 Periodic boundary conditions in *MCell* are used by defining a periodic box:
 
-.. code-block:: mdl
+* First select the **Periodic boundary conditions** Button
 
-    PERIODIC_BOX
-    {
-      CORNERS = [-0.5, -0.1, -0.1],[0.5, 0.1, 0.1]
-      PERIODIC_TRADITIONAL = TRUE
-      PERIODIC_X = TRUE
-      PERIODIC_Y = TRUE
-      PERIODIC_Z = TRUE
-    }
+   .. image:: ./images/pbc/pbc_sel.png
 
-* Make the python script.
+* Select the include checkbox
 
-    * Create a new text file and name it **pbc.mdl**.
-    * Paste the above python code into the file.
-    * Make sure that **Periodic_traditional** is set to **True**.
+   .. image:: ./images/pbc/pbc_include.png
 
-        .. image:: ./images/pbc/python_script.png
+* Make sure that these boxes are checked
 
-    * Export the script. 
+   .. image:: ./images/pbc/checked_true.png
 
-      * Create a new export by pressing the **Plus** button.
-      * Select **MDL**.
-      * Name it **pbc.mdl**.
+* Set the Bounds of the condition:
 
-        .. image:: ./images/pbc/export_scripting.png
+  * **X-Start** = -0.5, **Y-Start** = -0.1, **Z-Start** = -0.1 
+  * **X-End**   = 0.5,  **Y-End**   = 0.1,  **Z-End**   = 0.1 
+
+   .. image:: ./images/pbc/pbc_values.png   
 
 Like a normal *MCell* **BOX** object, the **CORNERS** define the lower left and
 upper right points of the box. Setting **PERIODIC_TRADITIONAL** to **FALSE**
@@ -201,19 +193,16 @@ There can only be one periodic box and you do **not** need to instantiate it.
 
 **Export and run the simulation, then reload the visualization.**
 
-Counting in Virtual Boxes
----------------------------------------------
+..Counting in Virtual Boxes
+..---------------------------------------------
 
-Counting works very similarly to normal counting in MCell. However, if using
-mirrored geometry, then you need to specify which "virtual" box that you're
-counting in like this:
+..Counting works very similarly to normal counting in MCell. However, if using
+..mirrored geometry, then you need to specify which "virtual" box that you're
+..counting in like this:
 
-.. code-block:: mdl
 
-    {COUNT[vm,Scene.cell,[1,-2,3]]}=> "./vm.000.dat"
-
-Notice the section with the **[1,-2,3]**. The numbers refer to the X, Y, and Z
-coordinates of the virtual box respectively. In this example, we are counting
-all the vm molecules in Scene.cell that is one virtual box over in the positive
-X direction, two virtual boxes over in the negative Y direction, and three
-virtual boxes over in the positive Z direction.
+..Notice the section with the **[1,-2,3]**. The numbers refer to the X, Y, and Z
+..coordinates of the virtual box respectively. In this example, we are counting
+..all the vm molecules in Scene.cell that is one virtual box over in the positive
+..X direction, two virtual boxes over in the negative Y direction, and three
+..virtual boxes over in the positive Z direction.
