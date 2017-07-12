@@ -23,4 +23,5 @@ CellBlender.
    dynamic_geometry/dynamic_geometry_overview
    gamer
    advanced_plotting
+   parameters
    pbc
