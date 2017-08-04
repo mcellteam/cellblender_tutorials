@@ -46,6 +46,22 @@ html:
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
+htmldefault:
+	@echo
+	@echo "Moving conf.py to conf_temp.py"
+	rm -f conf_temp.py
+	mv conf.py conf_temp.py
+	@echo "Copying conf_default_style.py to conf.py"
+	cp conf_default_style.py conf.py
+	@echo
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	@echo
+	@echo "Moving conf_temp.py to conf.py"
+	rm -f conf.py
+	mv conf_temp.py conf.py
+	@echo
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
 	@echo
