@@ -14,29 +14,30 @@ ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
-.PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext
+.PHONY: help clean html htmldefault dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
-	@echo "  html       to make standalone HTML files"
-	@echo "  dirhtml    to make HTML files named index.html in directories"
-	@echo "  singlehtml to make a single large HTML file"
-	@echo "  pickle     to make pickle files"
-	@echo "  json       to make JSON files"
-	@echo "  htmlhelp   to make HTML files and a HTML help project"
-	@echo "  qthelp     to make HTML files and a qthelp project"
-	@echo "  devhelp    to make HTML files and a Devhelp project"
-	@echo "  epub       to make an epub"
-	@echo "  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
-	@echo "  latexpdf   to make LaTeX files and run them through pdflatex"
-	@echo "  text       to make text files"
-	@echo "  man        to make manual pages"
-	@echo "  texinfo    to make Texinfo files"
-	@echo "  info       to make Texinfo files and run them through makeinfo"
-	@echo "  gettext    to make PO message catalogs"
-	@echo "  changes    to make an overview of all changed/added/deprecated items"
-	@echo "  linkcheck  to check all external links for integrity"
-	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
+	@echo "  html         to make standalone HTML files"
+	@echo "  htmldefault  to make standalone HTML files using default theme"
+	@echo "  dirhtml      to make HTML files named index.html in directories"
+	@echo "  singlehtml   to make a single large HTML file"
+	@echo "  pickle       to make pickle files"
+	@echo "  json         to make JSON files"
+	@echo "  htmlhelp     to make HTML files and a HTML help project"
+	@echo "  qthelp       to make HTML files and a qthelp project"
+	@echo "  devhelp      to make HTML files and a Devhelp project"
+	@echo "  epub         to make an epub"
+	@echo "  latex        to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
+	@echo "  latexpdf     to make LaTeX files and run them through pdflatex"
+	@echo "  text         to make text files"
+	@echo "  man          to make manual pages"
+	@echo "  texinfo      to make Texinfo files"
+	@echo "  info         to make Texinfo files and run them through makeinfo"
+	@echo "  gettext      to make PO message catalogs"
+	@echo "  changes      to make an overview of all changed/added/deprecated items"
+	@echo "  linkcheck    to check all external links for integrity"
+	@echo "  doctest      to run all doctests embedded in the documentation (if enabled)"
 
 clean:
 	-rm -rf $(BUILDDIR)/*
@@ -47,18 +48,7 @@ html:
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
 htmldefault:
-	@echo
-	@echo "Moving conf.py to conf_temp.py"
-	rm -f conf_temp.py
-	mv conf.py conf_temp.py
-	@echo "Copying conf_default_style.py to conf.py"
-	cp conf_default_style.py conf.py
-	@echo
-	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-	@echo
-	@echo "Moving conf_temp.py to conf.py"
-	rm -f conf.py
-	mv conf_temp.py conf.py
+	$(SPHINXBUILD) -b html -D special_style=default $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
