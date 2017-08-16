@@ -25,3 +25,4 @@ CellBlender.
    advanced_plotting
    parameters
    pbc
+   def_viz
