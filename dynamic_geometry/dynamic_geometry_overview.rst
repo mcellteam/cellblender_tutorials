@@ -190,7 +190,7 @@ We will start with the same a simple model used in the shape key example above:
 
 * After the run completes, refresh the display with "**Reload Visualization Data**". You should see a cube full of molecules. You can play the simulation to see them moving around.
 
-Now we'll define the dynamic geometry. But rather than using Blender's shape keys, we'll write a script that modifies the geometry of our object directly.
+Now we'll define the dynamic geometry. But rather than using Blender's shape keys (as we did in the previous example), we'll write a script that modifies the geometry of our object directly.
 
 * Change the "**Property**" panel into a "**Text Editor**" panel.
 
@@ -267,7 +267,7 @@ Note that this may change in the near future.
 
 * Choose the **Script** option in the "**Display From**" control.
 
-* Click the "**Refresh**" button beside the Script file name box. Choose the file name given above ("**dg.py**").
+* Click the "**Refresh**" button beside the Script file name box. Choose the file name given above ("**dg.py**"). Note that you may need to refresh the list with the "Refresh..." button to show newly added files.
 
     .. image:: ./images/show_dynamic_mdl.png
 
