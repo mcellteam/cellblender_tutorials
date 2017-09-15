@@ -9,7 +9,7 @@ Scripting
 
 .. warning::
 
-   The scripting interface is very new and subject to change.
+   The scripting interface is relatively new and subject to change.
 
 
 Scripting Overview
@@ -222,12 +222,13 @@ meet a desired metric. It could even read data from a file to generate
 new geometry or add geometrical objects to an existing model.
 
 
-Scripting Examples
+Scripting Tutorials and Examples
 ---------------------------------------------
 
 .. toctree::
    :maxdepth: 2
 
+   export_scripting
    data_model_scripting
    simple_geometry_scripting
    unbounded_3d_scripting

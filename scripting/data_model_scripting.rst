@@ -17,7 +17,7 @@ window panels, and using the Blender text editor).
 
 .. note::
 
-   The scripting interface is very new and subject to change.
+   The scripting interface is relatively new and subject to change.
 
 
 You should start out with a newly initialized CellBlender model with
