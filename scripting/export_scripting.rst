@@ -183,7 +183,7 @@ The full list of MDL sections where Scripts can be inserted is available in this
 In addition to the documented MDL sections, there's also an "Everything" section allowing code to be inserted
 either before everything or after everything.
 
-This interface supports the inclusion of multiple scripts and/or MDL snippets at multiple locations during the export process.
+This interface supports the inclusion of multiple scripts (either MDL or Python) at multiple locations during the export process.
 
 Example 1: Adding a Single Comment
 ---------------------------------------------
@@ -297,24 +297,25 @@ This is legal MDL. It won't do anything, but it will show up in your Scene.main.
 to insert it. Let's do that next.
 
 Open the "**Scripting**" panel and open the "**Export Scripting**" subpanel. Click the "**+**" button to add a new
-script insertion point. The default will be set to:
+**script insertion definition** line. The default will be set to:
 
 ..
 
     **Include internal mdl "" before initialization**
 
-This is because the "**Internal**" and "**MDL**" options are already selected, and the selectors are set to "**Include Before**"
+This is because the "**Internal**" and "**MDL**" options are already selected (by default), and the selectors are set
+(also by default) to "**Include Before**"
 and "**Initialization**". The only thing missing is the file to insert (the "**File**" field is blank). If you click in
 the "File" field, it will bring up a list of options. The list may be empty and can be refreshed with the "Refresh" button
 immediately to the right. After refreshing, you should be able to click on the "**File**" field and select the file named
-"**my_comments.mdl**". This should complete the specification in the list to show:
+"**my_comments.mdl**". This should complete the **script insertion definition** in the list to show:
 
 ..
 
     **Include internal mdl "my_comments.mdl" before initialization**
 
 Now we can go back to the "**Run Simulation**" panel and run it again. It should run the same as before, but now the MDL
-file will start like this:
+file will start with some inserted comments like this:
 
 .. code-block:: mdl
     :linenos:
@@ -474,8 +475,8 @@ located between the "INSTANTIATE Scene OBJECT" section and the "sprintf(seed..."
 You can continue to change the location (Before/After/Section) to see where the comment is inserted in the MDL.
 
 You can also insert the same MDL into multiple locations of a file (although this is not normally useful). Just
-click the "**+**" button to add a new script. Then select its location (Before/After/Section) and select the
-same comment file we've been using.
+click the "**+**" button to add a new **script insertion definition**. Then select its location (Before/After/Section) 
+and select the same comment file we've been using.
 
 As an exercise, insert this comment file both before and after every single section in the file. Note that you
 should also insert both before and after "**Everything**". The MDL file will contain lots of copies of that comment.
@@ -488,7 +489,7 @@ Adding comments (as shown in the previous sections) is a good way to get started
 shouldn't break anything. But we typically want to do more with scripting than just add comments. In this section
 we'll add some MDL to create an additional release site.
 
-Start with the previous example and save it as "export_script_ex3.blend". Then remove all of the scripting entries
+Start with the previous example and save it as "export_script_ex3.blend". Then remove all of the script definition entries
 from the Scripting panel using the "**-**" button. The list should start off empty. Now let's include our same comment
 block **after** **Release Sites**. Run the simulation (results should be the same), and look at the resulting MDL file
 (Scene.main.mdl). The "INSTANTIATE Scene OBJECT" section should look like this:
@@ -541,9 +542,9 @@ to "Release_More", and we'll change the location from [0,0,0] to [1,1,1]. This i
     }
 
 Now we need to tell CellBlender where to insert that MDL in the export process. Go back to the Export Scripting
-panel and be sure all the old scripts are gone (use **-** button to delete them). Then add a new script with the
-**+** button. Refresh the file list, and then select the file just created (Release_More.mdl). Then set it to 
-"**Include After**" "**Release Sites**".
+panel and be sure all the old **script insertion definitions** are gone (use **-** button to delete them). Then add
+a new **script insertion definition** with the **+** button. Refresh the file list, and then select the file just 
+created (**Release_More.mdl**). Then set this insertion definition to "**Include After**" "**Release Sites**".
 
 Run the simulation and reload the visualization data to verify that molecules have been released at two different
 sites (one at the origin and the other at 1,1,1). It should look something like this:
@@ -583,8 +584,8 @@ going to write a comment.
 Create a new text file within Blender's text editor, and name it "my_comments.py". Be sure to end your Python scripts
 with ".py" and your MDL scripts with ".mdl" so CellBlender can make them available in the appropriate contexts. Also
 copy the previous code from above (mdl_file.write...) into the file. Then go back to the Scripting panel and delete any
-existing scripts from the list (use the **-** button). Then add a new script entry with the **+** button. Leave 
-"**Internal**" selected, and change "**MDL**" to "**Python**". Select your new file ("my_comments.py") and remember that
+existing script definitions from the list (use the **-** button). Then add a new script definition entry with the **+** button.
+Leave  "**Internal**" selected, and change "**MDL**" to "**Python**". Select your new file ("my_comments.py") and remember that
 you might need to refresh the list if it's not there. Then include it before everything. Save it, run it, and reload the
 visualization to be sure it all worked. Then check the Scene.main.mdl file that was generated. This time the file should
 start with:
@@ -610,7 +611,7 @@ As before, CellBlender has added comments showing that it is including and execu
 line was produced by the python script itself.
 
 Before we move on from the safety of writing comments, let's exercise a little bit of Python's scripting power to write
-a "multiplication table" inside of our comments. Replace the code in your "my_comments.py" text file (in Blender) with this:
+a "multiplication table" inside our comments. Replace the code in your "my_comments.py" text file (in Blender) with this:
 
 .. code-block:: python
     :linenos:
@@ -738,8 +739,8 @@ values that change as we go through the loop. Here's the final script (named "re
             s = rel_site_text % (  (i*10)+j,  0.2*i,  0.2*j,  1+(i*j)  )
             mdl_file.write ( s )
 
-As before, we just need to remove all other scripts and include that new Python script **after** "**Release Sites**",
-and run it. It will generate an MDL file containing a long list of release sites that look like this:
+As before, we just need to remove all other script definitions from the list and include that new Python script 
+**after** "**Release Sites**", and run it. It will generate an MDL file containing a long list of release sites that look like this:
 
 
 .. code-block:: mdl
