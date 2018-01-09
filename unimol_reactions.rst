@@ -33,9 +33,10 @@ Define a Reaction
 .. image:: ./images/unimol_reactions/reactions_button.png
 
 * Click the "plus" sign (**+**) to the right of the **Defined Reactions** box
+* Ignore the error (indicates that you haven't fully defined a reaction yet)
 * Type **a** in the **Reactants** text field
-* Type **NULL** in the **Products** text field
-* Type **5e3** in the **Forward Rates** text field
+* Type **NULL** (all upper case) in the **Products** text field
+* Type **5e3** in the **Forward Rate** text field
 
 .. image:: ./images/unimol_reactions/define_reactions1.png
 
@@ -47,7 +48,7 @@ Release More Molecules
 
 .. image:: ./images/unimol_reactions/release_1000.png
 
-Create Reaction Data
+Define Reaction Data to be Saved for Plotting
 -----------------------------------
 
 * Click the **Plot Output Settings** button
@@ -59,19 +60,21 @@ Create Reaction Data
 
 .. image:: ./images/unimol_reactions/plot1.png
 
+* Note the descriptive item "**Count a in World**" in the list
+
 Simulate the Model
 --------------------------
 
-* Click the **Run Simulation** button
+* Click the **Run Simulation** button to return to the Run Simulation panel
 
 .. image:: ./images/single_molecule/run_sim_button.png
 
-* Click the **Run** button
+* Click the **Export & Run** button
 
 .. image:: ./images/single_molecule/run_sim.png
 
 * Wait for the simulation to complete
-* Press the "Reload Visualization Data" button to load the results of the
+* Press the "**Reload Visualization Data**" button to load the results of the
   simulation.
 
 .. image:: ./images/single_molecule/reload_viz_data.png
@@ -79,7 +82,7 @@ Simulate the Model
 Use the Time Line
 -------------------------
 
-* Press the "Play" (|play|) button below the time line
+* Press the "**Play**" (|play|) button below the time line
 
 .. |play| image:: ./images/single_molecule/play.png
 
@@ -90,6 +93,8 @@ Use the Time Line
 * Stop the simulation by clicking the "Pause" (|pause|) button below the time line
 
 .. |pause| image:: ./images/single_molecule/pause.png
+
+* Click or Click-and-Drag in the time line to view the simulation at different points in time
 
 Plot the Reaction Data
 -------------------------

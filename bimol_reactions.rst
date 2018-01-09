@@ -46,8 +46,7 @@ Release "b" Molecules into the Simulation
 .. image:: ./images/single_molecule/molecule_placement.png
 
 * Click the "plus" sign (**+**) to the right of the **Release/Placement Sites** box
-* Change the **Site Name** to **Release_Site2**
-* Click in the **Molecule** field and select the **b** molecules
+* Click in the **Molecule** field and select the **b** molecule type
 * Change **Release Shape** to **Object/Region**
 * Type **Icosphere** in the **Object/Region** field
 * Click in the **Quantity to Release** field and set it to **1000**

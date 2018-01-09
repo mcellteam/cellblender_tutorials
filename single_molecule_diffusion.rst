@@ -32,6 +32,8 @@ Save the File with a New Name in Your Working Directory
 ---------------------------------------------------------------
 
 * Start Blender
+* Select all objects (press the **a** key until all objects are orange)
+* Delete all objects (press the **x** key and click the "**Delete**" pop up button)
 * Select **File** > **Save As...**
 * Change **untitled.blend** to **single_molecule.blend**
 * Click **Save As Blender File** button
@@ -84,6 +86,7 @@ Simulate the Model
 
 .. image:: ./images/single_molecule/reload_viz_data.png
 
+* Zoom in (mouse scroll wheel) to see molecule(s) at the origin
 Change Settings to See Results
 --------------------------------------
 
@@ -116,7 +119,7 @@ Use the Time Line
 .. image:: ./images/single_molecule/timeline.png
 
 * Press the "Play" (|play|) button below the time line
-* Use the scroll wheel to zoom in until you can see the moving torus
+* Use the mouse scroll wheel to zoom in or out until you can see the moving torus
 
 .. image:: ./images/single_molecule/single_diffusing_molec.png
 
