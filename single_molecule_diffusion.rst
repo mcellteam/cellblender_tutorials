@@ -43,7 +43,7 @@ Define a Molecule "species"
 
 * Click the **Molecules** button
 
-.. image:: ./images/single_molecule/molecules.png
+.. image:: ./images/shared/button_panels/molecules_panel_h.png
 
 * Click the "plus" sign (**+**) to the right of the **Defined Molecules** box
 
@@ -60,10 +60,10 @@ Release a Single Molecule into the Simulation
 
 * Click the **Molecule Placement** button
 
-.. image:: ./images/single_molecule/molecule_placement.png
+.. image:: ./images/shared/button_panels/release_placement_panel_h.png
 
 * Click the "plus" sign (**+**) to the right of the **Release/Placement Sites** box
-* Click in the **Molecule** field and select the **a** molecules
+* Click in the **Molecule** field and select the **a** molecule type
 * Click in the **Quantity to Release** field and set it to **1**
 
 .. image:: ./images/single_molecule/release_one.png
@@ -73,7 +73,7 @@ Simulate the Model
 
 * Click the **Run Simulation** button
 
-.. image:: ./images/single_molecule/run_sim_button.png
+.. image:: ./images/shared/button_panels/run_panel_h.png
 
 * Click the **Export & Run** button
 
@@ -84,7 +84,7 @@ Simulate the Model
 * Press the **Reload Visualization Data** button to load the results of the
   simulation
 
-.. image:: ./images/single_molecule/reload_viz_data.png
+.. image:: ./images/shared/button_panels/reload_viz_h.png
 
 * Zoom in (mouse scroll wheel) to see molecule(s) at the origin
 Change Settings to See Results
@@ -98,7 +98,7 @@ Change Settings to See Results
 
 * Click the **Molecules** button
 
-.. image:: ./images/single_molecule/molecules.png
+.. image:: ./images/shared/button_panels/molecules_panel_h.png
 
 * Open the **Display Options** subpanel
 * Change the **Sphere_1** to **Torus**
@@ -127,7 +127,7 @@ Use the Time Line
   line
 * Click at various locations on the time line to see the molecule state at that
   time
-* Click and drag in the time line to "scrub" the simulation through time
+* Click and drag in the time line to "scrub" the simulation results through time
 
 .. |pause| image:: ./images/single_molecule/pause.png
 .. |play| image:: ./images/single_molecule/play.png

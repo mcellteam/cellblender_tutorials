@@ -91,7 +91,7 @@ Change the Shape of "b"
 .. image:: ./images/single_molecule/molecules.png
 
 * Open the **Display Options** subpanel if it isn't already
-* Change the **Cone** to **Sphere_2**
+* Change the **Sphere_1** to **Cube**
 * Change the **Scale** to **2.5**
 * Change the color to a bright red
 

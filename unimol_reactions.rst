@@ -30,7 +30,7 @@ Define a Reaction
 
 * Click the **Reactions** button.
 
-.. image:: ./images/unimol_reactions/reactions_button.png
+.. image:: ./images/shared/button_panels/reactions_panel_h.png
 
 * Click the "plus" sign (**+**) to the right of the **Defined Reactions** box
 * Ignore the error (indicates that you haven't fully defined a reaction yet)
@@ -53,10 +53,11 @@ Define Reaction Data to be Saved for Plotting
 
 * Click the **Plot Output Settings** button
 
-.. image:: ./images/unimol_reactions/plot_button.png
+.. image:: ./images/shared/button_panels/plot_panel_h.png
 
 * Click the "plus" sign (**+**) to the right of the **Reaction Data Output** box
-* Select **a** from the **Molecule** selector.
+* Again, ignore the error which indicates an incomplete definition at this time
+* Select **a** from the **Molecule** selector (should clear the error)
 
 .. image:: ./images/unimol_reactions/plot1.png
 
@@ -67,7 +68,7 @@ Simulate the Model
 
 * Click the **Run Simulation** button to return to the Run Simulation panel
 
-.. image:: ./images/single_molecule/run_sim_button.png
+.. image:: ./images/shared/button_panels/run_panel_h.png
 
 * Click the **Export & Run** button
 
@@ -77,7 +78,7 @@ Simulate the Model
 * Press the "**Reload Visualization Data**" button to load the results of the
   simulation.
 
-.. image:: ./images/single_molecule/reload_viz_data.png
+.. image:: ./images/shared/button_panels/reload_viz_h.png
 
 Use the Time Line
 -------------------------
@@ -94,7 +95,7 @@ Use the Time Line
 
 .. |pause| image:: ./images/single_molecule/pause.png
 
-* Click or Click-and-Drag in the time line to view the simulation at different points in time
+* Click (or Click-and-Drag) in the time line to view the simulation at different points in time
 
 Plot the Reaction Data
 -------------------------
@@ -102,7 +103,7 @@ Plot the Reaction Data
 * Click the **Plot Output Settings** button
 * Select **MatPlotLib Plotter** from the plotter drop-down list if it's
   available.
-* Hit the **Plot** button.
+* Click the **Plot** button.
 
 .. image:: ./images/unimol_reactions/plot2.png
 
