@@ -61,7 +61,7 @@ Define a Bimolecular Reaction
 .. image:: ./images/unimol_reactions/reactions_button.png
 
 * Change the **Reactants** text field from **a** to **a + b**
-* Type **5e3** in the **Forward Rates** text field
+* Type **1e8** in the **Forward Rates** text field
 
 .. image:: ./images/bimol_reactions/change_reaction.png
 
