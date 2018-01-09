@@ -30,8 +30,8 @@ Create Cube and Plane
 
 * Hit the **Model Objects** button.
 
-  .. image:: ./images/clamp/model_objects_button.png
-    
+  .. image:: ./images/shared/button_panels/objects_panel_h.png
+
 * Hit the cube button
 * Hit the **+** button to add the cube to the **Model Objects** list.
 * Expand the **Cube Object Options** sub-panel.
@@ -50,7 +50,7 @@ Create Cube and Plane
 
 * Hit the **Molecules** button.
 
-.. image:: ./images/clamp/molecule_button.png
+.. image:: ./images/shared/button_panels/molecules_panel_h.png
 
 * Hit the **+** button to create a new molecule.
 * Change the **Molecule Name** to **vol1**.
@@ -64,7 +64,7 @@ Add the Surface Class
 
 * Hit the **Surface Classes** button.
 
-.. image:: ./images/clamp/surface_class_button.png
+.. image:: ./images/shared/button_panels/surf_class_panel_h.png
 
 * Hit the **+** button to create a new surface class called **Surface_Class**.
 * Rename it to **clamp_sc**.
@@ -86,7 +86,7 @@ Now that we have created our surface class, we need to assign it to our mesh.
 
 * Hit the **Assign Surface Classes** button.
 
-.. image:: ./images/clamp/assign_surface_class_button.png
+.. image:: ./images/shared/button_panels/assign_surf_panel_h.png
 
 * Hit the **+** to begin adding a new surface class.
 * In the **Surface Class Name** field, select **clamp_sc**.
