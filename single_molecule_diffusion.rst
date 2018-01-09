@@ -73,7 +73,7 @@ Simulate the Model
 
 .. image:: ./images/single_molecule/run_sim_button.png
 
-* Click the **Run** button
+* Click the **Export & Run** button
 
 .. image:: ./images/single_molecule/run_sim.png
 
