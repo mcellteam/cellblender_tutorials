@@ -15,7 +15,7 @@ Overview
 
     * Select the **Parameter button**.
 
-         .. image:: ./images/parameters/parameters_sel.png
+         .. image:: ./images/shared/button_panels/parameters_panel_h.png
 
     * Create a new **parameter**, and press the **Enable Sweep** button.
 
@@ -55,4 +55,5 @@ Overview
 
     	* The final product should look something like the following, with the simulation going through the different **Diffusion Constants** in the same run.
 
-    	    .. image:: ./images/parameters/parameter_molecule_clump.png
+        .. image:: ./images/parameters/parameter_molecule_clump.png
+

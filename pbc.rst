@@ -167,7 +167,7 @@ Periodic boundary conditions in *MCell* are used by defining a periodic box:
 
 * First select the **Periodic boundary conditions** Button
 
-   .. image:: ./images/pbc/pbc_sel.png
+   .. image:: ./images/shared/button_panels/periodic_panel_h.png
 
 * Select the include checkbox
 
