@@ -205,17 +205,19 @@ img {
 
 <script>
 var slideIndex = 1;
-showSlides(slideIndex);
+showSlides(slideIndex,true);
 
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+  // plusSlides is called without clicking an icon directly. Scroll to show active.
+  showSlides(slideIndex+=n,true);
 }
 
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+  // currentSlide is called when an icon is clicked directly. Don't move it in this case.
+  showSlides(slideIndex=n,false);
 }
 
-function showSlides(n) {
+function showSlides(n,scroll) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var icons = document.getElementsByClassName("icon");
@@ -237,9 +239,10 @@ function showSlides(n) {
   if (slideIndex-1 < icons.length ) {
     icons[slideIndex-1].className += " active";
   }
-  sb = document.getElementById("icon_bar");
-  console.log ( "Icon Bar = " + sb.scrollWidth + " " + sb.scrollLeft )
-  sb.scrollLeft = sb.scrollLeftMax * (slideIndex-1) / (icons.length);
+  if (scroll) {
+    sb = document.getElementById("icon_bar");
+    sb.scrollLeft = sb.scrollLeftMax * (slideIndex-1) / (icons.length);
+  }
   if (slideIndex <= icons.length) {
     captionText.innerHTML = icons[slideIndex-1].alt;
   } else {
