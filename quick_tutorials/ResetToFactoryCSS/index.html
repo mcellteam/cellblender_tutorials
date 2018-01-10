@@ -192,7 +192,7 @@ img {
   </div>
   -->
 
-  <div class="scrollmenu">
+  <div class="scrollmenu" id="icon_bar">
     <img class="icon demo" src="icons/Frame_01_Any_State.png"             onclick="currentSlide(1)" alt="Start: &nbsp; Any State">
     <img class="icon demo" src="icons/Frame_02_File.png"                  onclick="currentSlide(2)" alt="Click: &nbsp; File Menu">
     <img class="icon demo" src="icons/Frame_03_Load_Factory_Settings.png" onclick="currentSlide(3)" alt="Click: &nbsp; Load Factory Settings">
@@ -237,6 +237,9 @@ function showSlides(n) {
   if (slideIndex-1 < icons.length ) {
     icons[slideIndex-1].className += " active";
   }
+  sb = document.getElementById("icon_bar");
+  console.log ( "Icon Bar = " + sb.scrollWidth + " " + sb.scrollLeft )
+  sb.scrollLeft = sb.scrollLeftMax * (slideIndex-1) / (icons.length);
   if (slideIndex <= icons.length) {
     captionText.innerHTML = icons[slideIndex-1].alt;
   } else {
