@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+
+<head>
+<style>
+
+/* CSS from the menu example */
+
+div.scrollmenu {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 4px;
+    text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+    background-color: #777;
+}
+
+/* CSS from the slideshow example */
+
+body {
+  font-family: Arial;
+  background-color: #000;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 0%;
+  width: 50%;
+  height: 80%;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 200px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff8;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* N columns side by side */
+.column {
+  float: left;
+  width: 20.0%;  /* This must be 100/#ActualSlides */
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<h1 style="text-align:center;color:#fff;">Demonstration Model</h1>
+
+<div class="container">
+
+  <a class="prev" onclick="plusSlides(-1)"><img src="single_pixel.png"></a>
+  <a class="next" onclick="plusSlides(1)"><img src="single_pixel.png"></a>
+
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Start_with_fresh_install_of_cellblender.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_Molecules_button.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_plus_to_create_a_molecule_type.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Type_the_molecule_name_red.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Type_diffusion_constant_1e-6_for_red.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_Molecule_Placement.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_plus_to_release_red_molecules.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_Molecule_and_select_red.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Type_1_in_Site_Diameter_Field.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Type_1000_in_Quantity_to_Release_Field.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_Run_Simulation_Panel_button.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_File_Save_As_to_save.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Type_file_name_my_model.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_Save_As_Blender_File.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_Export_and_Run_button.png" style="width:100%"> </div>
+  <!--div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Special_Use_Scroll_Wheel_to_Zoom_In.png" style="width:100%"> </div-->
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Special_Use_mouse_scroll_wheel_to_adjust_size.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Special_Drag_time_line_0.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Special_Drag_time_line_50.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Special_Drag_time_line_200.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Special_Drag_time_line_700.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_Molecules_button_2.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_Display_Options.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Type_Scale_Factor_to_3.0.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_plus_to_add_a_second_molecule_type.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Type_Change_molecule_name_to_green.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Type_Change_Diffusion_Constant_to_1e-5.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Change_Scale_Factor_to_3.0.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_Molecule_Placement_button.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_Plus_to_add_second_release_site.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Change_Molecule_to_green.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Type_Change_Y_Location_to_0.5.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Type_Quantity_to_Release_900.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_Run_Simulation_button.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_Export_and_Run_button_again.png" style="width:100%"> </div>
+  <div class="mySlides"> <div class="numbertext">&nbsp; </div> <img src="images/Click_Reload_Viz_Data_for_green.png" style="width:100%"> </div>
+
+  <div class="caption-container">
+    <h2><p id="caption"></p></h2>
+  </div>
+
+  <div class="scrollmenu" id="icon_bar">
+    <img class="icon demo" src="images/Start_with_fresh_install_of_cellblender.png" width="300" onclick="currentSlide(1)" alt="Start: &nbsp; Empty Model">
+    <img class="icon demo" src="images/Click_Molecules_button.png" width="300" onclick="currentSlide(2)" alt="Click: &nbsp; Open Molecules Panel">
+    <img class="icon demo" src="images/Click_plus_to_create_a_molecule_type.png" width="300" onclick="currentSlide(3)" alt="Click: &nbsp; Plus button to create a molecule">
+    <img class="icon demo" src="images/Type_the_molecule_name_red.png" width="300" onclick="currentSlide(4)" alt="Type: &nbsp; 'red' to name the molecule">
+    <img class="icon demo" src="images/Type_diffusion_constant_1e-6_for_red.png" width="300" onclick="currentSlide(5)" alt="Type: &nbsp; Diffusion constant: 1e-6">
+    <img class="icon demo" src="images/Click_Molecule_Placement.png" width="300" onclick="currentSlide(6)" alt="Click: &nbsp; Open Molecule Placement Panel">
+    <img class="icon demo" src="images/Click_plus_to_release_red_molecules.png" width="300" onclick="currentSlide(7)" alt="Click: &nbsp; Plus button to add a release site">
+    <img class="icon demo" src="images/Click_Molecule_and_select_red.png" width="300" onclick="currentSlide(8)" alt="Click: &nbsp; Select 'red' molecule to release">
+    <img class="icon demo" src="images/Type_1_in_Site_Diameter_Field.png" width="300" onclick="currentSlide(9)" alt="Type: &nbsp; Site Diameter of 1">
+    <img class="icon demo" src="images/Type_1000_in_Quantity_to_Release_Field.png" width="300" onclick="currentSlide(10)" alt="Type: &nbsp; Quantity to Release of 1000">
+    <img class="icon demo" src="images/Click_Run_Simulation_Panel_button.png" width="300" onclick="currentSlide(11)" alt="Click: &nbsp; Run Simulation button">
+    <img class="icon demo" src="images/Click_File_Save_As_to_save.png" width="300" onclick="currentSlide(12)" alt="Menu: &nbsp; File / Save As...">
+    <img class="icon demo" src="images/Type_file_name_my_model.png" width="300" onclick="currentSlide(13)" alt="Type: &nbsp; File name of 'my_model.blend'">
+    <img class="icon demo" src="images/Click_Save_As_Blender_File.png" width="300" onclick="currentSlide(14)" alt="Click: &nbsp; Save As Blender File">
+    <img class="icon demo" src="images/Click_Export_and_Run_button.png" width="300" onclick="currentSlide(15)" alt="Click: &nbsp; Export & Run">
+    <!--img class="icon demo" src="images/Special_Use_Scroll_Wheel_to_Zoom_In.png" width="300" onclick="currentSlide(16)" alt="Click: &nbsp; "-->
+    <img class="icon demo" src="images/Special_Use_mouse_scroll_wheel_to_adjust_size.png" width="300" onclick="currentSlide(17)" alt="Click: &nbsp; Reload Visualization Data">
+    <img class="icon demo" src="images/Special_Drag_time_line_0.png" width="300" onclick="currentSlide(18)" alt="Special: &nbsp; Zoom in with mouse wheel">
+    <img class="icon demo" src="images/Special_Drag_time_line_50.png" width="300" onclick="currentSlide(19)" alt="Click: &nbsp; Click on time line around 50">
+    <img class="icon demo" src="images/Special_Drag_time_line_200.png" width="300" onclick="currentSlide(20)" alt="Click: &nbsp; Click on time line around 200">
+    <img class="icon demo" src="images/Special_Drag_time_line_700.png" width="300" onclick="currentSlide(21)" alt="Click: &nbsp; Click on time line around 700">
+    <img class="icon demo" src="images/Click_Molecules_button_2.png" width="300" onclick="currentSlide(22)" alt="Click: &nbsp; Open Molecules Panel">
+    <img class="icon demo" src="images/Click_Display_Options.png" width="300" onclick="currentSlide(23)" alt="Click: &nbsp; Open Display Options">
+    <img class="icon demo" src="images/Type_Scale_Factor_to_3.0.png" width="300" onclick="currentSlide(24)" alt="Type: &nbsp; Change Scale Factor to 3">
+    <img class="icon demo" src="images/Click_plus_to_add_a_second_molecule_type.png" width="300" onclick="currentSlide(25)" alt="Click: &nbsp; Plus button to add another molecule">
+    <img class="icon demo" src="images/Type_Change_molecule_name_to_green.png" width="300" onclick="currentSlide(26)" alt="Type: &nbsp; Change new molecule name to 'green'">
+    <img class="icon demo" src="images/Type_Change_Diffusion_Constant_to_1e-5.png" width="300" onclick="currentSlide(27)" alt="Type: &nbsp; Diffusion constant: 1e-5">
+    <img class="icon demo" src="images/Change_Scale_Factor_to_3.0.png" width="300" onclick="currentSlide(28)" alt="Type: &nbsp; Scale Factor 3.0">
+    <img class="icon demo" src="images/Click_Molecule_Placement_button.png" width="300" onclick="currentSlide(29)" alt="Click: &nbsp; Molecule Placement button">
+    <img class="icon demo" src="images/Click_Plus_to_add_second_release_site.png" width="300" onclick="currentSlide(30)" alt="Click: &nbsp; Plus button to add a release site">
+    <img class="icon demo" src="images/Change_Molecule_to_green.png" width="300" onclick="currentSlide(31)" alt="Click: &nbsp; Select the 'green' to release">
+    <img class="icon demo" src="images/Type_Change_Y_Location_to_0.5.png" width="300" onclick="currentSlide(32)" alt="Type: &nbsp; 0.5 to release at y=0.5">
+    <img class="icon demo" src="images/Type_Quantity_to_Release_900.png" width="300" onclick="currentSlide(33)" alt="Type: &nbsp; 900 to release 900 molecules">
+    <img class="icon demo" src="images/Click_Run_Simulation_button.png" width="300" onclick="currentSlide(34)" alt="Click: &nbsp; Run Simulation button to open panel">
+    <img class="icon demo" src="images/Click_Export_and_Run_button_again.png" width="300" onclick="currentSlide(35)" alt="Click: &nbsp; 'Export & Run' to run another simulation">
+    <img class="icon demo" src="images/Click_Reload_Viz_Data_for_green.png" width="300" onclick="currentSlide(36)" alt="Click: &nbsp; Reload Visualization Data">
+
+  </div>
+
+</div>
+
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex,true);
+
+function plusSlides(n) {
+  // plusSlides is called without clicking an icon directly. Scroll to show active.
+  showSlides(slideIndex+=n,true);
+}
+
+function currentSlide(n) {
+  // currentSlide is called when an icon is clicked directly. Don't move it in this case.
+  showSlides(slideIndex=n,false);
+}
+
+function showSlides(n,scroll) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var icons = document.getElementsByClassName("icon");
+  var captionText = document.getElementById("caption");
+
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < icons.length; i++) {
+    icons[i].className = icons[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  if (slideIndex-1 < icons.length ) {
+    icons[slideIndex-1].className += " active";
+  }
+  if (scroll) {
+    sb = document.getElementById("icon_bar");
+    sb.scrollLeft = sb.scrollLeftMax * (slideIndex-1) / (icons.length);
+  }
+  if (slideIndex <= icons.length) {
+    captionText.innerHTML = icons[slideIndex-1].alt;
+  } else {
+    captionText.innerHTML = " &nbsp; ";
+  }
+}
+</script>
+    
+
+
+</body>
+</html>
+
