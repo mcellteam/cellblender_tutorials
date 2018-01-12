@@ -58,7 +58,6 @@ img {
 /* Next & previous buttons */
 .prev,
 .next {
-  cursor: pointer;
   position: absolute;
   top: 0%;
   width: 50%;
@@ -71,6 +70,13 @@ img {
   border-radius: 0 3px 3px 0;
   user-select: none;
   -webkit-user-select: none;
+}
+
+.prev {
+  cursor: w-resize;
+}
+.next {
+  cursor: e-resize;
 }
 
 /* Position the "next button" to the right */
@@ -119,11 +125,13 @@ img {
 /* Add a transparency effect for thumnbail images */
 .demo {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 .active,
 .demo:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 
@@ -219,7 +227,6 @@ img {
     <img class="icon demo" src="images/Click_Export_and_Run_button_again.png" width="300" onclick="currentSlide(35)" alt="Click: &nbsp; 'Export & Run' to run another simulation">
     <img class="icon demo" src="images/Click_Reload_Viz_Data_for_green.png" width="300" onclick="currentSlide(36)" alt="Click: &nbsp; Reload Visualization Data">
     <img class="icon demo" src="images/Conclusion.png" width="300" onclick="currentSlide(37)" alt="Conclusion">
-
   </div>
 
 </div>
