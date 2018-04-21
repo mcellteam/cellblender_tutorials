@@ -5,12 +5,12 @@
 Dynamic Geometry
 *********************************************
 
+.. image:: ./images/capsule_x_600.gif
+
+
 .. warning::
 
-   The dynamic geometry interface is very new and subject to change. It is
-   currently only available in an `experimental branch`_ of the MCell code.
-
-   .. _experimental branch: https://github.com/mcellteam/mcell/tree/dynamic_meshes
+   The dynamic geometry interface is very new and subject to change.
 
 
 Dynamic Geometry Overview
@@ -531,5 +531,10 @@ This example is very simple, but the power of the Python language can be used to
 
 Note that this preliminary version gets frame_number, time_step, points[], faces[], and origin from the local environment.
 This is likely to change in the near future.
+
+Dynamic Geometry Advanced Example
+---------------------------------------------
+
+.. image:: ./images/capsule.gif
 
 
