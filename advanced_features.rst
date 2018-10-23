@@ -26,3 +26,5 @@ CellBlender.
    parameters
    pbc
    def_viz
+   structured_mols/intro
+
