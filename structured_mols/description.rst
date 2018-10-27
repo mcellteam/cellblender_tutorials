@@ -2,7 +2,7 @@
 
 
 *********************************************
-Spatially Structured Molecules
+Spatially Structured Molecule Description
 *********************************************
 
 .. Git Repo SHA1 ID: 3520f8694d61c81424ff15ff9e7a432e42f0623f
