@@ -21,6 +21,9 @@ structured complexes. This tutorial assumes that you're fairly
 familiar with Blender and CellBlender. It will use fairly brief
 instructions based on that assumption.
 
+.. image:: ./images/CABA_Animation.gif
+
+
 Start with Blender open. Enable CellBlender and Initialize CellBlender.
 Start a new project and save it to a ".blend" file. Then remove all
 objects from the scene.
@@ -195,6 +198,8 @@ of clicking the "chevron" to fill out the panel, the "chain" to bind them togeth
 finally, the "Build Structure from CellBlender" to build the actual complex. As expected,
 you should see a similar spiral with just a few more parts.
 
+.. image:: ./images/Tutorial_Spiral.png
+
 Now we're going to disconnect part of this chain and re-attach it at a different location.
 Let's start by breaking the molecule in the middle. The two halves are joined by the bonds
 at 18 and 21 which reference each other. Change them both to -1 to indicate that they are
@@ -235,6 +240,9 @@ turn it off. Then build the molecule again ("Build Structure from CellBlender").
 build the same molecule, but without axial rotation, all of the bonds will be flat. That's
 a side effect of the fact that our 3 component molecules are already flat (in a plane). With
 planar molecules and no axial rotations, the result will also be in a plane.
+
+.. image:: ./images/Tutorial_3D_and_2D.png
+
 
 Conclusion
 ---------------------------------------------
