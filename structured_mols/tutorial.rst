@@ -357,12 +357,21 @@ stage of development, the direct CellBlender method was easier and is presented 
 
 To use this code, open a blender "Text" window and create a new file. Name the file
 "Double_Helix.py", and copy the following code into it. Be sure that all of the
-requirements are satisfied (A,C,G,T,S molecules as specified in the comments), and
-then click the "Run Script" button in the "Text" window. That should populate the
-"Molecule Structure Tool" with all the values needed for this model. Then, in the
-"Molecule Structure Tool" panel, click the "Build Structure from CellBlender" button.
-It may take a few seconds to do all the calculations. Eventually, the double helix
-molecule should appear in the 3D view window.
+requirements are satisfied (BioNetGen Language Mode on, and A,C,G,T,S molecules as
+specified in the comments). Be sure to check everything carefully. Any mistakes are
+likely to cause difficulty. Then click the "Run Script" button in the "Text" window.
+That should populate the "Molecule Structure Tool" with all the molecules. Once that's
+done, you can choose whether you want to see key planes or not and then click the
+"Build Structure from CellBlender" button in the "Molecule Structure Tool" panel.
+It may take a few seconds to do all the calculations.
+
+Eventually, the double helix molecule should appear in the 3D view window similar to
+what's shown above. It will be fairly small, so you may have to zoom in to the origin
+to see it. The molecule colors may be different, but you can change those using the
+normal Blender molecule material properties or in CellBlender's Molecule / Display
+Options panel. For the animation shown here, "G" was assigned Green, and "C" was
+assigned Cyan (as easy mnemonics). The "A" was assigned red, and the "T" was assigned
+magenta.
 
 ::
 
@@ -376,16 +385,28 @@ molecule should appear in the 3D view window.
     #
     # Molecules and Components:
     #
-    #  Molecules "A", "C", "G", and "T" are all defined with:
-    #    c0:  x=r  y=0 z=0       Ref=2
-    #    c1:  x=-r y=0 z=0       Ref=2
-    #    c2:  x=0  y=0 z=0.008   (Reference Key)
+    #  Molecules "A", "C", "G", and "T" are all defined with components:
+    #    Ac1:  x=r  y=0 z=0       Ref=2
+    #    Ac2:  x=-r y=0 z=0       Ref=2
+    #    Ak:   x=0  y=0 z=0.008   (Reference Key)
     #
-    #  Molecule "S" is defined with:
-    #    c0:  x=-0.02  y=0.0084 z=0       Ref=3
-    #    c1:  x=0      y=0.01   z=0       Ref=3
-    #    c2:  x=0.02   y=0.0084 z=0       Ref=3
-    #    c3:  x=-0.001 y=0      z=0.008   (Reference Key)
+    #    Cc1:  x=r  y=0 z=0       Ref=2
+    #    Cc2:  x=-r y=0 z=0       Ref=2
+    #    Ck:   x=0  y=0 z=0.008   (Reference Key)
+    #
+    #    Gc1:  x=r  y=0 z=0       Ref=2
+    #    Gc2:  x=-r y=0 z=0       Ref=2
+    #    Gk:   x=0  y=0 z=0.008   (Reference Key)
+    #
+    #    Tc1:  x=r  y=0 z=0       Ref=2
+    #    Tc2:  x=-r y=0 z=0       Ref=2
+    #    Tk:   x=0  y=0 z=0.008   (Reference Key)
+    #
+    #  Molecule "S" is defined with components:
+    #    Sc1:  x=-0.02  y=0.0084 z=0       Ref=3
+    #    Sc2:  x=0      y=0.01   z=0       Ref=3
+    #    Sc3:  x=0.02   y=0.0084 z=0       Ref=3
+    #    Sk:   x=-0.001 y=0      z=0.008   (Reference Key)
     #
     # This script can be run with the "Run Script" button in the editor.
     # It will overwrite the values in the "Molecule Structure Tool".
@@ -394,7 +415,6 @@ molecule should appear in the 3D view window.
 
     # The half strand of the sequence can be changed arbitrarily:
     half_strand = 'CATTGACGA'
-    half_strand = 'AAAAATTTTTCCCCCGGGGG'
 
     # This angle is specified in radians
     end_cap_angle = 0.3
