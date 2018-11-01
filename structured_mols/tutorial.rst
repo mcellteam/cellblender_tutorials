@@ -303,6 +303,33 @@ planar molecules and no axial rotations, the result will also be in a plane.
 
 .. image:: ./images/Tutorial_3D_and_2D.png
 
+Another handy option is the "Average Coincident" switch. The current binding model specifies
+that when two components bind, they occupy the same point in space. In other words, component
+locations are the joining points for molecules. This model works naturally when there are no
+loops, and all molecules and components end up wherever their geometry dictates. However, when
+there are loops, there is normally no guarantee that the closing points of a loop are actually
+coincident in space. For example, if a molecule were designed as a square (four molecules each
+binding to each other with components at 90 degrees), then the geometry would dictate that
+the closing points would be coincident. But if the angles were specified (incorrectly) as 91
+degrees rather than 90, then the "closing" components would not actually join. This could be
+considered as either a fundamental error in the model or as a minor round off error. While that
+decision is up to the designer, the current tool does provide a simple method to "fix" any such
+"round off" errors using the "Average Coincident" option. The "Average Coincident" option performs
+one final step after building the molecule. It sets the location of each partner of a binding pair
+to be the average location of the two binding partners. For small rounding errors, this simply
+brings the points into exact coincidence. However, for gross errors (such as forming an equilateral
+triangle with right angles), it will drastically change the geometry. The decision to use
+this feature (or not) is up to the model's designer. This effect can be seen in the following
+image where the geometry was intentionally distorted to misalign the closing bond:
+
+.. image:: ./images/Average_Coincident.png
+
+As seen in this example, the "Average Coincident" option forces the two components to be at
+the same point in space. Note that this does not correct any other deficiencies of the model
+(such as the misalignment across the bond). Note also that this is a purely spatial effect.
+The actual binding of a molecule is specified in the structure of its BNGL definition. That
+definition is inherently non-spatial. So even though the components may not "close" properly,
+if the componets are bonded, then they will behave as such.
 
 Conclusion
 ---------------------------------------------
@@ -316,6 +343,7 @@ to note that while rudimentary complexes may be built by hand (as in this tutori
 power behind spatially structured molecules arises from rule based simulations which can build
 these emergent structures automatically.
 
-
 .. image:: ./images/Tutorial_Spiral.png
+
+.. image:: ./images/Double_Helix_Example.gif
 
