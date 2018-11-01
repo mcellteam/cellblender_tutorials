@@ -347,3 +347,342 @@ these emergent structures automatically.
 
 .. image:: ./images/Double_Helix_Example.gif
 
+Appendix - Source code for Double Helix model
+---------------------------------------------
+
+The Double Helix model shown above was constructed from a Python script that modifies
+CellBlender's internal properties directly. This is not generally a good practice, and
+the preferred scripting method is to modify a CellBlender data model. However, at this
+stage of development, the direct CellBlender method was easier and is presented here.
+
+To use this code, open a blender "Text" window and create a new file. Name the file
+"Double_Helix.py", and copy the following code into it. Be sure that all of the
+requirements are satisfied (A,C,G,T,S molecules as specified in the comments), and
+then click the "Run Script" button in the "Text" window. That should populate the
+"Molecule Structure Tool" with all the values needed for this model. Then, in the
+"Molecule Structure Tool" panel, click the "Build Structure from CellBlender" button.
+It may take a few seconds to do all the calculations. Eventually, the double helix
+molecule should appear in the 3D view window.
+
+::
+
+    # Double Helix Construction Script
+
+    # This script works directly with CellBlender's internal data
+    # structures to build a double helix molecule similar to DNA.
+    # This script relies on the following CellBlender Definitions:
+    #
+    # Parameter "r" = 0.0225
+    #
+    # Molecules and Components:
+    #
+    #  Molecules "A", "C", "G", and "T" are all defined with:
+    #    c0:  x=r  y=0 z=0       Ref=2
+    #    c1:  x=-r y=0 z=0       Ref=2
+    #    c2:  x=0  y=0 z=0.008   (Reference Key)
+    #
+    #  Molecule "S" is defined with:
+    #    c0:  x=-0.02  y=0.0084 z=0       Ref=3
+    #    c1:  x=0      y=0.01   z=0       Ref=3
+    #    c2:  x=0.02   y=0.0084 z=0       Ref=3
+    #    c3:  x=-0.001 y=0      z=0.008   (Reference Key)
+    #
+    # This script can be run with the "Run Script" button in the editor.
+    # It will overwrite the values in the "Molecule Structure Tool".
+    # After running this script, press the "Build Structure from CellBlender" button.
+    #
+
+    # The half strand of the sequence can be changed arbitrarily:
+    half_strand = 'CATTGACGA'
+    half_strand = 'AAAAATTTTTCCCCCGGGGG'
+
+    # This angle is specified in radians
+    end_cap_angle = 0.3
+
+    # This is the number of segments between base pairs (use 1 for now)
+    back_bone_segments_per_base_pair = 1
+
+    # These are used to look up partners (don't normally change)
+    nucleotide_partner = {'G':'C', 'C':'G', 'A':'T', 'T':'A'}
+
+    import bpy
+
+    # Import and assign the Blender and CellBlender data
+    mcell = bpy.context.scene.mcell
+    molmaker = mcell.molmaker
+    molcomp_list = mcell.molmaker.molcomp_items
+
+    # Create a "dotted" specification that includes both base pairs for the molecule definition
+    molmaker.molecule_definition = '.'.join ( [ c + '.' + nucleotide_partner[c] + '.S.S' for c in half_strand ] )
+
+    # Clear out the old molcomp_list
+    while(len(molcomp_list) > 0):
+        molcomp_list.remove(0)
+
+    # Build the Double Helix base pairs from the half strand data
+    cur_mol_index = 0
+
+    # Start with just the first pair (treating it as the base)
+
+    for i in range(1):
+        print ( "Building first base pair for " + half_strand[0] )
+
+        # Make a pair of Nucleotides
+        for n in range(2):
+            nucleotide_name = half_strand[i]
+            if n > 0:
+                nucleotide_name = nucleotide_partner[nucleotide_name]
+            # Make this Double Helix Nucleotide
+            new_mol = molcomp_list.add()
+            new_mol.name = nucleotide_name
+            new_mol.field_type = 'm'
+            new_mol.alert_string = ''
+            new_mol.peer_list = ''
+            new_mol.peer_list = str(cur_mol_index+1)+','+str(cur_mol_index+2)+','+str(cur_mol_index+3)
+
+            # Add Binding Components
+            for j in range(2):
+                new_comp = molcomp_list.add()
+                new_comp.name = nucleotide_name + 'c' + str(j+1)
+                new_comp.field_type = 'c'
+                new_comp.alert_string = ''
+                new_comp.peer_list = str(cur_mol_index)
+
+            # Add an Alignment Key
+            new_key = molcomp_list.add()
+            new_key.name = nucleotide_name + 'k'
+            new_key.field_type = 'k'
+            new_key.alert_string = ''
+            new_key.peer_list = str(cur_mol_index)
+
+            cur_mol_index += 1 + 2 + 1
+            
+        # Join the two together
+        molcomp_list[cur_mol_index-3].bond_index = cur_mol_index-6
+        molcomp_list[cur_mol_index-6].bond_index = cur_mol_index-3
+
+        # Make the first end cap
+        new_mol = molcomp_list.add()
+        new_mol.name = 'S'
+        new_mol.field_type = 'm'
+        new_mol.alert_string = ''
+        new_mol.peer_list = ''
+        new_mol.peer_list = str(cur_mol_index+1)+','+str(cur_mol_index+2)+','+str(cur_mol_index+3)+','+str(cur_mol_index+4)
+
+        # Add Binding Components
+        for j in range(3):
+            new_comp = molcomp_list.add()
+            new_comp.name = 'Sc' + str(j+1)
+            new_comp.field_type = 'c'
+            new_comp.alert_string = ''
+            new_comp.peer_list = str(cur_mol_index)
+
+        # Add an Alignment Key
+        new_key = molcomp_list.add()
+        new_key.name = 'Sk'
+        new_key.field_type = 'k'
+        new_key.alert_string = ''
+        new_key.peer_list = str(cur_mol_index)
+
+        cur_mol_index += 1 + 3 + 1
+
+        # Make the second end cap
+        new_mol = molcomp_list.add()
+        new_mol.name = 'S'
+        new_mol.field_type = 'm'
+        new_mol.alert_string = ''
+        new_mol.peer_list = ''
+        new_mol.peer_list = str(cur_mol_index+1)+','+str(cur_mol_index+2)+','+str(cur_mol_index+3)+','+str(cur_mol_index+4)
+
+        # Add Binding Components
+        for j in range(3):
+            new_comp = molcomp_list.add()
+            new_comp.name = 'Sc' + str(j+1)
+            new_comp.field_type = 'c'
+            new_comp.alert_string = ''
+            new_comp.peer_list = str(cur_mol_index)
+
+        # Add an Alignment Key
+        new_key = molcomp_list.add()
+        new_key.name = 'Sk'
+        new_key.field_type = 'k'
+        new_key.alert_string = ''
+        new_key.peer_list = str(cur_mol_index)
+
+        cur_mol_index += 1 + 3 + 1
+
+        # Join the first end cap to first nucleotide
+        molcomp_list[cur_mol_index-17].bond_index = cur_mol_index-8
+        molcomp_list[cur_mol_index-8].bond_index = cur_mol_index-17
+        molcomp_list[cur_mol_index-8].angle = end_cap_angle
+
+        # Join the second end cap to second nucleotide
+        molcomp_list[cur_mol_index-3].bond_index = cur_mol_index-12
+        molcomp_list[cur_mol_index-12].bond_index = cur_mol_index-3
+        molcomp_list[cur_mol_index-12].angle = end_cap_angle
+
+    # Now build the rest as separate strands (not joined)
+
+    next_base_pair_index = 1
+    last_backbone_1_index = 11
+    last_backbone_2_index = 16
+    i = 0
+    while next_base_pair_index < len(half_strand):
+        print ( "Building next base pair for " + half_strand[next_base_pair_index] )
+        
+        # Add to the backbone
+
+        for back_bone in range(back_bone_segments_per_base_pair):
+            # Make the first end cap
+            new_mol = molcomp_list.add()
+            new_mol.name = 'S'
+            new_mol.field_type = 'm'
+            new_mol.alert_string = ''
+            new_mol.peer_list = ''
+            new_mol.peer_list = str(cur_mol_index+1)+','+str(cur_mol_index+2)+','+str(cur_mol_index+3)+','+str(cur_mol_index+4)
+
+            # Add Binding Components
+            for j in range(3):
+                new_comp = molcomp_list.add()
+                new_comp.name = 'Sc' + str(j+1)
+                new_comp.field_type = 'c'
+                new_comp.alert_string = ''
+                new_comp.peer_list = str(cur_mol_index)
+
+            # Add an Alignment Key
+            new_key = molcomp_list.add()
+            new_key.name = 'Sk'
+            new_key.field_type = 'k'
+            new_key.alert_string = ''
+            new_key.peer_list = str(cur_mol_index)
+
+            cur_mol_index += 1 + 3 + 1
+
+            # Make the second end cap
+            new_mol = molcomp_list.add()
+            new_mol.name = 'S'
+            new_mol.field_type = 'm'
+            new_mol.alert_string = ''
+            new_mol.peer_list = ''
+            new_mol.peer_list = str(cur_mol_index+1)+','+str(cur_mol_index+2)+','+str(cur_mol_index+3)+','+str(cur_mol_index+4)
+
+            # Add Binding Components
+            for j in range(3):
+                new_comp = molcomp_list.add()
+                new_comp.name = 'Sc' + str(j+1)
+                new_comp.field_type = 'c'
+                new_comp.alert_string = ''
+                new_comp.peer_list = str(cur_mol_index)
+
+            # Add an Alignment Key
+            new_key = molcomp_list.add()
+            new_key.name = 'Sk'
+            new_key.field_type = 'k'
+            new_key.alert_string = ''
+            new_key.peer_list = str(cur_mol_index)
+
+            cur_mol_index += 1 + 3 + 1
+            
+            print ( "Ready to join backbone with cur_mol_index = " + str(cur_mol_index) )
+            print ( "  Last BB1 = " + str(last_backbone_1_index) )
+            print ( "  Last BB2 = " + str(last_backbone_2_index) )
+            print ( "    Should connect " + str(last_backbone_1_index) + " and " + str(cur_mol_index-9) )
+            print ( "    Should connect " + str(last_backbone_2_index) + " and " + str(cur_mol_index-4) )
+
+            # Join the first end cap to the previous first nucleotide
+            molcomp_list[last_backbone_1_index].bond_index = cur_mol_index-9
+            molcomp_list[cur_mol_index-9].bond_index = last_backbone_1_index
+            molcomp_list[cur_mol_index-9].angle = end_cap_angle
+            last_backbone_1_index = cur_mol_index-7
+
+            # Join the second end cap to second nucleotide
+            molcomp_list[cur_mol_index-4].bond_index = last_backbone_2_index
+            molcomp_list[last_backbone_2_index].bond_index = cur_mol_index-4
+            molcomp_list[cur_mol_index-4].angle = end_cap_angle
+            last_backbone_2_index = cur_mol_index-2
+
+        # Add another pair of Nucleotides
+
+        for n in range(2):
+
+            nucleotide_name = half_strand[next_base_pair_index]
+            if n > 0:
+                nucleotide_name = nucleotide_partner[nucleotide_name]
+            # Make this Double Helix Nucleotide
+            new_mol = molcomp_list.add()
+            new_mol.name = nucleotide_name
+            new_mol.field_type = 'm'
+            new_mol.alert_string = ''
+            new_mol.peer_list = ''
+            new_mol.peer_list = str(cur_mol_index+1)+','+str(cur_mol_index+2)+','+str(cur_mol_index+3)
+
+            # Add Binding Components
+            for j in range(2):
+                new_comp = molcomp_list.add()
+                new_comp.name = nucleotide_name + 'c' + str(j+1)
+                new_comp.field_type = 'c'
+                new_comp.alert_string = ''
+                new_comp.peer_list = str(cur_mol_index)
+
+            # Add an Alignment Key
+            new_key = molcomp_list.add()
+            new_key.name = nucleotide_name + 'k'
+            new_key.field_type = 'k'
+            new_key.alert_string = ''
+            new_key.peer_list = str(cur_mol_index)
+
+            cur_mol_index += 1 + 2 + 1
+            
+        print ( "Ready to join base pair with cur_mol_index = " + str(cur_mol_index) )
+
+        # Join the two to the backbone
+        molcomp_list[cur_mol_index-7].bond_index = cur_mol_index-16
+        molcomp_list[cur_mol_index-16].bond_index = cur_mol_index-7
+
+        molcomp_list[cur_mol_index-3].bond_index = cur_mol_index-11
+        molcomp_list[cur_mol_index-11].bond_index = cur_mol_index-3
+
+        # Join the two together
+        #molcomp_list[cur_mol_index-3].bond_index = cur_mol_index-6
+        #molcomp_list[cur_mol_index-6].bond_index = cur_mol_index-3
+
+
+        next_base_pair_index += 1
+
+        i += 1
+
+
+    # At this point, all of the locations shoud be determined.
+    # However, the cross-linking between the base pairs (across
+    # the center of the molecule) has not been done.
+    #
+    # This last step searches for base pairs (2 component molecules)
+    # and links them according to a known pattern of +4 and -4 from
+    # the bound end. This pattern was found just by examining the
+    # structure built up to this point, so any changes to the building
+    # up to this point should prompt a re-examination of the following
+    # code.
+
+    # Join the base pairs across the middle
+
+    first_broken = True
+    for i in range ( len(molcomp_list) ):
+        m = molcomp_list[i]
+        if m.field_type == 'm':
+            pl = [ int(p) for p in m.peer_list.split(',') ]
+            print ( "Peer list = " + str(pl) )
+            if len(pl) == 3:
+                # This is potentially one of the half-linked base pairs
+                if molcomp_list[i+2].bond_index < 0:
+                    broken_index = i+2
+                    print ( "Found a broken bond for index " + str(broken_index) )
+                    if first_broken:
+                        print ( "  First broken: add 5" )
+                        molcomp_list[broken_index].bond_index = broken_index + 4
+                        first_broken = False
+                    else:
+                        print ( "  Second broken: add 14" )
+                        molcomp_list[broken_index].bond_index = broken_index - 4
+                        first_broken = True
+
+
