@@ -656,34 +656,39 @@ magenta.
         print ( "Ready to join base pair with cur_mol_index = " + str(cur_mol_index) )
 
         # Join the two to the backbone
+
         molcomp_list[cur_mol_index-7].bond_index = cur_mol_index-16
         molcomp_list[cur_mol_index-16].bond_index = cur_mol_index-7
 
         molcomp_list[cur_mol_index-3].bond_index = cur_mol_index-11
         molcomp_list[cur_mol_index-11].bond_index = cur_mol_index-3
 
-        # Join the two together
-        #molcomp_list[cur_mol_index-3].bond_index = cur_mol_index-6
-        #molcomp_list[cur_mol_index-6].bond_index = cur_mol_index-3
+        # The base pairs could be joined together here, but then their
+        # bonds would be evaluated earlier than the bonds of the outer
+        # structure. Since that outer structure is intended to dominate,
+        # these inner bonds will be added last (below).
 
+        # The "Average Coincident" switch will force these to be
+        # coincident anyway regardless of any misalignment. That
+        # will give a better overall result than binding them here.
 
         next_base_pair_index += 1
 
         i += 1
 
 
-    # At this point, all of the locations shoud be determined.
+    # At this point, all of the locations should be determined.
     # However, the cross-linking between the base pairs (across
-    # the center of the molecule) has not been done.
+    # the center of the molecule) has not been done yet.
     #
-    # This last step searches for base pairs (2 component molecules)
+    # This last step searches for base pairs (2 components + 1 key)
     # and links them according to a known pattern of +4 and -4 from
     # the bound end. This pattern was found just by examining the
     # structure built up to this point, so any changes to the building
     # up to this point should prompt a re-examination of the following
     # code.
 
-    # Join the base pairs across the middle
+    # Join the base pairs across the middle by looking for broken bonds
 
     first_broken = True
     for i in range ( len(molcomp_list) ):
@@ -692,16 +697,18 @@ magenta.
             pl = [ int(p) for p in m.peer_list.split(',') ]
             print ( "Peer list = " + str(pl) )
             if len(pl) == 3:
+                # This is a base pair molecule with 2 components and a key
                 # This is potentially one of the half-linked base pairs
                 if molcomp_list[i+2].bond_index < 0:
+                    # The negative bond index means it's unbound, so bind it
                     broken_index = i+2
                     print ( "Found a broken bond for index " + str(broken_index) )
                     if first_broken:
-                        print ( "  First broken: add 5" )
+                        print ( "  First broken: add 4" )
                         molcomp_list[broken_index].bond_index = broken_index + 4
                         first_broken = False
                     else:
-                        print ( "  Second broken: add 14" )
+                        print ( "  Second broken: add -4" )
                         molcomp_list[broken_index].bond_index = broken_index - 4
                         first_broken = True
 
