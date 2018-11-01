@@ -381,7 +381,7 @@ magenta.
     # structures to build a double helix molecule similar to DNA.
     # This script relies on the following CellBlender Definitions:
     #
-    # Parameter "r" = 0.0225
+    # Parameter "r" = 0.0175
     #
     # Molecules and Components:
     #
