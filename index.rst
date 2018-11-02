@@ -42,7 +42,7 @@ Still have questions? They might be answered on our forums_.
 
 .. _forums: http://mmbios.org/index.php/mcell-cellblender-forum
 
-Please send any feedback concerning these tutorials to `info@mcell.edu`_.
+Please send any feedback concerning these tutorials to info@mcell.org.
 
 .. _info@mcell.org: info@mcell.org
 
