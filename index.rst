@@ -42,14 +42,14 @@ Still have questions? They might be answered on our forums_.
 
 .. _forums: http://mmbios.org/index.php/mcell-cellblender-forum
 
-Please send any feedback concerning these tutorials to `jczech@psc.edu`_.
+Please send any feedback concerning these tutorials to `info@mcell.edu`_.
 
-.. _jczech@psc.edu: jczech@psc.edu
+.. _info@mcell.org: info@mcell.org
 
 Although no longer actively maintained, the `legacy DReAMM and MCell
 tutorials`_ are still available. 
 
-.. _legacy DReAMM and MCell tutorials: http://mcell.org/tutorials_old/tlist.htm
+.. _legacy DReAMM and MCell tutorials: http://mcell.org/tutorials_old_2012/tlist.htm
 
 
 Indices and tables
