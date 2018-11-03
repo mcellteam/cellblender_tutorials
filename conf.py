@@ -53,7 +53,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'MCell and CellBlender'
-copyright = ('2006 - 2017, MMBioS, Salk Institute for Biological Studies, '
+copyright = ('2006 - 2018, MMBioS, Salk Institute for Biological Studies, '
              'Pittsburgh Supercomputing Center')
 
 # The version info for the project you're documenting, acts as replacement for
