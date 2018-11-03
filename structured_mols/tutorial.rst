@@ -36,22 +36,24 @@ structured complexes.
 Then open the CellBlender "Molecules" panel and add a molecule named "A".
 Then open the BNGL subpanel within the Molecules panel. Ensure that the
 panel is wide enough to see the Geometry drop down options. Then select
-the "XYZ,AngleRef" Geometry option to begin building 3D Molecules.
+the "XYZ,RotRef" Geometry option to begin building 3D Molecules.
 
 We will start with a few single molecules with components and then work
 our way up to some interesting complexes.
 
-Start by clicking the "+" button 4 times to add 4 components. The new components
-will each typically have default names like "C#". These will be fine for now.
-Each component will also have an index number associated with it (in the "Index"
-column on the far left). In this tutorial, we will generally refer to each
-component using this index number.
+Start by clicking the "+" button (in the BNGL panel) 4 times to add 4 components.
+The new components will each typically have default names like "C#". These will be
+fine for now. Each component will also have an index number associated with it (in
+the "Index" column on the far left). In this tutorial, we will generally refer to
+each component using this index number.
 
 Click the checkbox to the left of the last component (index number 3). This
 will change its type from being a "Component" to being a "Rotation Key". We
 will want each of our other 3 components to use this as its rotation key, so enter
 the number "3" in the "Rot Ref" column for each of the other components (the
-column to the far right).
+column to the far right). Since there is only one rotation reference key in this
+molecule, you can also set this key for all components by clicking the "key" button
+that appears to the right.
 
 .. image:: ./images/Molecule_Component_Panel.png
 
@@ -89,11 +91,11 @@ experimenting.
 
 Click the "+" button in the component section again to add another component.
 It will appear below the rotation key, and will have its "Rot Ref" column set
-to the default of -1. Change that rotation reference to "3" just like the other
-actual components. Again click the "2D" button to assign location to all of the
-components, and again click the "eye" button in the components subpanel to show
-the new arrangement. It should show four "stick" lines in the x-y plane and one
-rotation reference "stick" along the "z" axis.
+to the default of -1. Change that rotation reference to "3" (or use the "key"
+button) just like the other actual components. Again click the "2D" button to
+assign location to all of the components, and again click the "eye" button in
+the components subpanel to show the new arrangement. It should show four "stick"
+lines in the x-y plane and one rotation reference "stick" along the "z" axis.
 
 Now click the "3D" button to assign 3D locations to the components. You will
 see non-zero values in every row of the "Loc: z" column. Click the "eye" button
@@ -115,9 +117,9 @@ off the "z" axis. Then click the "eye" to show the new configuration.
 .. image:: ./images/Stick_View_3.png
 
 Let's add 5 more components (click the "+" button 5 times). Change each of the new
-"Rot Ref" fields to "3" as we did with the other components. Click the "3D" button
-to assign them values, and then click the "eye" button to see the result. You should
-see 10 component lines and one rotation reference line.
+"Rot Ref" fields to "3" (or use the "key" button) as we did with the other components.
+Click the "3D" button to assign them values, and then click the "eye" button to see
+the result. You should see 10 component lines and one rotation reference line.
 
 .. image:: ./images/Stick_View_4.png
 
@@ -125,9 +127,10 @@ You can change the radius of
 these component locations with the "R" field at the top of the box. It's normally
 defaulted to 0.01, but you can change it and click the "3D" button to assign the
 new values, and then click the "eye" button to see the result. Change it back to
-0.01 when you're done. Also hide the "sticks" with the "grayed eye" button.
+0.01 and again click the "3D" button when you're done. Also hide the "sticks" with
+the "grayed eye" button.
 
-So far, we've just been using the "quick preview" feature of the molecule panel.
+So far, we've just been using the "quick preview" feature of the structured molecule panel.
 To see a more proper 3D version of our molecule, open the "Molecule Structure Tool"
 panel. The top row will show an empty "MolDef" field. That's where you can type in
 a single molecule name or a complex. Start with just the molecule name of "A". Then
@@ -161,7 +164,7 @@ disassembling it to convince yourself that there are two of everything in that m
 To get the molecules to form a structure, we'll have to create bonds between some
 of the components.
 
-Start by deleting everything from the scene. Then go to the Molecule Structure Tool
+Start by deleting everything from the scene again. Then go to the Molecule Structure Tool
 and click the "chain" button at the right of the top row. 
 
 .. image:: ./images/MolStructTool_0p0.png
@@ -229,7 +232,7 @@ the slight tilt (x=0.01) that we gave to our Rotation Reference Key when we defi
 "A" molecule. If we had placed that Rotation Reference Key on the "z" axis, then the
 partial ring of molecules would be flat.
 
-Let's add 3 more "A" molecules to our complex with "A.A.A.A.A.A.A.A" for a total of 8.
+Let's add 3 more "A" molecules to our complex to get "A.A.A.A.A.A.A.A" for a total of 8.
 Remember to delete the current molecule(s) from the 3D view and then repeat the process
 of clicking the "chevron" to fill out the panel, the "chain" to bind them together, and
 finally, the "Build Structure from CellBlender" to build the actual complex. As expected,
@@ -361,9 +364,10 @@ requirements are satisfied (BioNetGen Language Mode on, and A,C,G,T,S molecules 
 specified in the comments). Be sure to check everything carefully. Any mistakes are
 likely to cause difficulty. Then click the "Run Script" button in the "Text" window.
 That should populate the "Molecule Structure Tool" with all the molecules. Once that's
-done, you can choose whether you want to see key planes or not and then click the
-"Build Structure from CellBlender" button in the "Molecule Structure Tool" panel.
-It may take a few seconds to do all the calculations.
+done, you can choose whether you want to see key planes or not and whether you want
+to average coincident points or not. Then click the "Build Structure from CellBlender"
+button in the "Molecule Structure Tool" panel. It may take a few seconds to do all the
+calculations.
 
 Eventually, the double helix molecule should appear in the 3D view window similar to
 what's shown above. It will be fairly small, so you may have to zoom in to the origin
