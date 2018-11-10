@@ -20,7 +20,8 @@ print ( "Running conf.py with sys.argv = " + str(sys.argv) )
 print ( 150*"*" )
 
 if not 'special_style=default' in sys.argv:
-    import sphinx_rtd_theme
+    if not 'special_style=other' in sys.argv:
+        import sphinx_rtd_theme
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -107,6 +108,21 @@ pygments_style = 'default'
 html_theme = "sphinx_rtd_theme"
 if 'special_style=default' in sys.argv:
     html_theme = 'default'
+if 'special_style=other' in sys.argv:
+    html_theme = 'pyramid'
+
+# Tested (some needed to be built twice):
+#   basic (variable width, minimal)
+#   nature (variable width, very nice, but "green" top bar is difficult to see)
+#   sphinxdoc (variable width + fixed padding)
+#   traditional (variable width, prev&next)
+#   scrolls (fixed width)
+#   agogo (fixed width)
+#   pyramid (variable width)
+#   haiku (fixed width)
+#   epub (variable width, minimal)
+# Best: pyramid, nature, sphinxdoc
+
 #html_theme = 'nature'
 
 # Theme options are theme-specific and customize the look and feel of a theme
@@ -120,7 +136,8 @@ html_theme_options = {}
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = []
 if not 'special_style=default' in sys.argv:
-    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+    if not 'special_style=other' in sys.argv:
+        html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
