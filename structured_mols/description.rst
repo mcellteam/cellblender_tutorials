@@ -118,6 +118,22 @@ references another component as its binding key. Here's an example built from tw
 .. image:: ./images/Component_Binding_Tet_to_Tet_Ref0.png
 
 
+MCellR Simulations
+---------------------------------------------
+
+Once the spatial structures have been defined for all molecules, the model can be simulated
+in an appropriate spatial simulator such as MCellR. The following image shows a simple LR model
+built and run in CellBlender with MCellR:
+  
+.. image:: ./images/lr_sim_frames.gif
+
+The next picture shows just one of the molecules that emerged from the simulation in the
+previous picture:
+
+.. image:: ./images/lr_mol_frames.gif
+
+
+
 Other Features
 ---------------------------------------------
 
