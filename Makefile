@@ -18,9 +18,9 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
+	@echo "  htmlmcell      to make standalone HTML files using the default MCell theme"
 	@echo "  html           to make standalone HTML files"
 	@echo "  htmldefault    to make standalone HTML files using default theme"
-	@echo "  htmlother      to make standalone HTML files using an other theme"
 	@echo "  dirhtml        to make HTML files named index.html in directories"
 	@echo "  singlehtml     to make a single large HTML file"
 	@echo "  pickle         to make pickle files"
@@ -48,7 +48,7 @@ html:
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
-htmlother:
+htmlmcell:
 	$(SPHINXBUILD) -b html -D special_style=other $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	# Force the copying of the dialog-note.png file:
 	cp lib/python3.4/site-packages/sphinx/themes/pyramid/static/dialog-note.png _build/html/_static/dialog-note.png
