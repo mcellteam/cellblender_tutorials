@@ -50,6 +50,8 @@ html:
 
 htmlother:
 	$(SPHINXBUILD) -b html -D special_style=other $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	# Force the copying of the dialog-note.png file:
+	cp lib/python3.4/site-packages/sphinx/themes/pyramid/static/dialog-note.png _build/html/_static/dialog-note.png
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
