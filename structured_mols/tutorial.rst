@@ -245,6 +245,11 @@ example with 32 "A" molecules (don't do this now):
 
 .. image:: ./images/A32_Spiral.png
 
+For example, one of CellBlender's built-in Examples uses this same molecule/component
+configuration to build arbitrarily long molecules within an MCell-R simulation:
+
+.. image:: ./images/coil_sim_frames.gif
+
 Now we're going to disconnect part of our 8 molecule chain and re-attach it at a different
 location. Let's start by breaking the molecule in the middle. The two halves are joined by
 the bonds at 18 and 21 which reference each other. Here's what they look like before breaking:
