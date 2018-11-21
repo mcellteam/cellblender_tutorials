@@ -2,7 +2,7 @@
 
 
 *********************************************
-Spatially Structured Tutorial
+Spatially Structured Tutorial (Construction)
 *********************************************
 
 .. Git Repo SHA1 ID: 3520f8694d61c81424ff15ff9e7a432e42f0623f
@@ -12,13 +12,10 @@ Spatially Structured Tutorial
    The spatially structured molecule interface is relatively new and subject to change.
 
 
-Spatially Structured Molecule Tutorial
----------------------------------------------
-
 This tutorial will walk you through the steps of creating spatially
-structured molecules and binding them together to form spatially
+structured molecules and manually binding them together to form spatially
 structured complexes. This tutorial assumes that you're fairly
-familiar with Blender and CellBlender. It will use fairly brief
+familiar with Blender and CellBlender. It will use relatively brief
 instructions based on that assumption.
 
 .. image:: ./images/CABA_Animation.gif
@@ -241,14 +238,9 @@ you should see a similar spiral with just a few more parts.
 .. image:: ./images/A8_Spiral.png
 
 If you continued to add "A" molecules, the structure could grow indefinitely. Here's an
-example with 32 "A" molecules (don't do this now):
+example with 32 "A" molecules:
 
 .. image:: ./images/A32_Spiral.png
-
-For example, one of CellBlender's built-in Examples uses this same molecule/component
-configuration to build arbitrarily long molecules within an MCell-R simulation:
-
-.. image:: ./images/coil_sim_frames.gif
 
 Now we're going to disconnect part of our 8 molecule chain and re-attach it at a different
 location. Let's start by breaking the molecule in the middle. The two halves are joined by

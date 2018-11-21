@@ -11,15 +11,11 @@ Spatially Structured Molecule Description
 
    The spatially structured molecule interface is relatively new and subject to change.
 
-
-Spatially Structured Molecule Overview
----------------------------------------------
-
 Spatially Structured Molecules can be:
 
     * Defined in CellBlender
-    * Combined as examples in CellBlender
-    * Exported for use by various versions of MCell
+    * Combined as complexes in CellBlender
+    * Exported for simulation in MCell
 
 .. image:: ./images/MoleculesComponentsKeyPlanes.png
 
@@ -90,7 +86,7 @@ Binding Angles and Rotation Reference Keys
 ---------------------------------------------
 
 While every component that is intended for binding should have a reference plane, the following
-picture shows the earlier A(a!1).A(a!1) complex with only the bound reference planes showing:
+picture shows the earlier A(a!1).A(a!1) complex with only the bound reference planes visible:
 
 .. image:: ./images/SimpleBindingA_A_Ref0.png
 
@@ -106,14 +102,14 @@ no need to specify a special "rotation angle key" because one or more of the oth
 components can easily fill that role. In that case, each component can simply
 reference another existing component to use as its rotation reference key. That's
 shown in the following CellBlender panel where the "Rot Ref" column specifies other
-existing BNGL components:
+existing BNGL components and no special reference "key" is defined:
 
 .. image:: ./images/SingleStructuredMoleculePanelNotKeyed.png
 
 This panel still shows 4 items, but all 4 are real components. In this case, all of the
 components have been arranged as the vertices of a tetrahedron, and each component simply
-references another component as its binding key. Here's an example built from two of those
-"A" molecules:
+references another component as its binding angle key. Here's an example built from two of
+those "A" molecules:
 
 .. image:: ./images/Component_Binding_Tet_to_Tet_Ref0.png
 
@@ -144,13 +140,13 @@ either a 2D or 3D distribution around a molecule:
 .. image:: ./images/Automated_2D_3D.png
 
 There are other tools to quickly visualize the locations of components on either single
-molecules or bonded molecules in a complex. The following CellBlender Molecule subpanel
-was used to construct all of the examples in this tutorial:
+molecules or bonded molecules in a complex. For example, the following CellBlender Molecule
+subpanel was used to construct all of the examples in this tutorial:
 
 .. image:: ./images/Molecule_Structure_Tool.png
 
 
-Conclusion
+Summary
 ---------------------------------------------
 
 CellBlender's Spatially Structured Molecule tools support flexible spatial structuring

@@ -12,21 +12,21 @@ Spatially Structured Molecules
    The spatially structured molecule interface is relatively new and subject to change.
 
 
-Spatially Structured Molecule Overview
----------------------------------------------
-
 .. image:: ./images/MoleculesComponentsKeyPlanes.png
 
 
-CellBlender's Spatially Structured Molecules allow prototyping of both
-individual molecules and molecule complexes. CellBlender contains a
-number of tools to make building and viewing these complexes relatively
-easy.
+CellBlender's Spatially Structured Molecules support prototyping of both
+individual molecules and molecule complexes. These spatially defined molecules
+can also be simulated in MCellR to produce emergent structures. CellBlender contains
+a number of tools to make building and viewing these complexes relatively easy.
 
+Subsections
+---------------------------------------------
 
 .. toctree::
    :maxdepth: 1
 
    description
    tutorial
+   example_spiral
 
