@@ -248,9 +248,9 @@ the bonds at 18 and 21 which reference each other. Here's what they look like be
 
 .. image:: ./images/Before_breaking_bonds_18_and_21.png
 
-Change them both to -1 to indicate that they are
-not bound. You'll notice that a component with a broken bond shows up as red. This is very
-helpful when trying to reconfigure bonds in this tool.
+Change them both to -1 to indicate that they are not bound. You'll notice that a component
+with an inconsistent bond (referencing another that doesn't reference back) shows up as red.
+This is very helpful when manually reconfiguring bonds in this tool.
 
 .. image:: ./images/breaking_bonds.gif
 
