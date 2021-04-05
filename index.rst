@@ -35,6 +35,7 @@ advanced features from the links below:
    mesh_analysis   
    mesh_repair
    mdl_editing
+   cellblender_examples/cellblender_examples
    FAQ
 
 
