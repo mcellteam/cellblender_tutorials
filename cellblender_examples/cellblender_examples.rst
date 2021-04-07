@@ -15,3 +15,7 @@ A number of built-in examples can be found in CellBlender, here we briefly descr
    lipid_raft
    var_rate_cte
    lotka_volterra_rl
+   direct_t
+   delayed_t
+   direct_t_cmp
+   fceri_mcell
