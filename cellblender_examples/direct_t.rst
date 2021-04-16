@@ -9,10 +9,11 @@ Description
 
 With this example we illustrate the usage of reactions with absolute orientation. Volume molecules **v**
 in the interior of a cube react with surface molecules **s**, producing volume molecules **r** in the
-exterior of the cube (reaction **v@IN** + **s** -> **s** + **r@OUT**).
+exterior of the cube (reaction **v@IN** + **s** -> **s** + **r@OUT**, this way to write the reactions is equivalent to **v,** + **s'** -> **s'** **r'**).
 
 
 Demonstrated features
 =====================
 
 - Reactions with absolute orientation.
+- Usage of BioNetGen compartments.

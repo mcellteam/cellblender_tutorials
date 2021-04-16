@@ -1,4 +1,4 @@
-.. _ficks_1d:
+.. _fickslaw_1d:
 
 ===============
 Fick's Law 1D Model

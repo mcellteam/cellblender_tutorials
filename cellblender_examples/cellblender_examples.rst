@@ -19,3 +19,4 @@ A number of built-in examples can be found in CellBlender, here we briefly descr
    delayed_t
    direct_t_cmp
    fceri_mcell
+   lr_cbngl_mcell
