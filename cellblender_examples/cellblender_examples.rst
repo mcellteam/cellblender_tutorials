@@ -2,7 +2,7 @@
 CellBlender Examples
 ====================
 
-A number of built-in examples can be found in CellBlender, here we briefly describe them and highlight the  the features used in them.
+A number of built-in examples can be found in the latest version of CellBlender. Here we briefly describe them and highlight the main features used in them. Go to the panel Examples in CellBlender to find all the examples described here.
 
 .. toctree::
    :numbered:
@@ -20,3 +20,4 @@ A number of built-in examples can be found in CellBlender, here we briefly descr
    direct_t_cmp
    fceri_mcell
    lr_cbngl_mcell
+   mind_mine
