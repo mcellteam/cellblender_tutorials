@@ -15,7 +15,7 @@ This example illustrates the implementation of a BioNetGen model in MCell (detai
 Demonstrated features
 =====================
 
- - Definition of molecules with components and states.
+- Definition of molecules with components and states as in BioNetGen.
 - Reactions with absolute orientation.
 - Usage of BioNetGen compartments.
 - Complexes are formed.

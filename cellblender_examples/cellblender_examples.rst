@@ -8,16 +8,16 @@ A number of built-in examples can be found in the latest version of CellBlender.
    :numbered:
    :maxdepth: 1
 
-   organelle
    fickslaw_1d
    fickslaw_3d
-   rat_nmj
-   lipid_raft
    var_rate_cte
-   lotka_volterra_rl
    direct_t
    delayed_t
    direct_t_cmp
+   lotka_volterra_rl
+   organelle
+   mind_mine
+   lipid_raft
    fceri_mcell
    lr_cbngl_mcell
-   mind_mine
+   rat_nmj
