@@ -316,12 +316,12 @@ Ok, the printout works correctly, so let's try the check for the
 count 0. We will change a reaction rate to achieve this.   
 Open the **Reactions** panel, select the *predator -> NULL*
 reaction and set the **Forward rate** from 5e6 to 3e7.
-This means that the *predators* will faster starve-out.
+This means that the *predators* will starve-out faster.
 Run the simulation again. 
 It will fail now (if not, increate the forward rate even more)
 and the simulation will end with this message:
  
-.. image:: ./images/customization_bngl_mode.png
+.. image:: ./images/customization_predator_count_0.png
  
 You can also check the printouts on the terminal. 
 (note: the error message may not be at the end because we are using 
@@ -330,5 +330,5 @@ error output for the error message and standard output for the counts).
 Congratulations, you just customized your first model! 
 
 We used just a small part of the MCell4 Python API offers, 
-if you will be interested the MCell4 API Reference describes the whole 
+More details can be found in the MCell4 API Reference that describes the whole 
 Python API and there is also a tutorial for this API. (TODO: links) 
