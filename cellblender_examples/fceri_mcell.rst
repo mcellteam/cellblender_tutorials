@@ -1,8 +1,8 @@
 .. _fceri_mcell:
 
-===============
-FCERI MCell rule Model
-===============
+======================
+FceRI MCell rule Model
+======================
 
 Description
 ===========
