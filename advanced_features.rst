@@ -8,7 +8,7 @@ CellBlender.
 
 .. note::
 
-   It is assumed that you have already gone through tutorials 1-5 prior to
+   It is assumed that you have already gone through tutorials 3-6 prior to
    attempting these.
 
 .. toctree::
@@ -19,12 +19,7 @@ CellBlender.
    variable_rxn_rates
    rel_pattern
    clamp
-   scripting/scripting_overview
-   dynamic_geometry/dynamic_geometry_overview
    gamer
    advanced_plotting
-   parameters
-   pbc
    def_viz
-   structured_mols/overview
 

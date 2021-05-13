@@ -12,11 +12,11 @@ This tutorial will define a single unimolecular reaction.
 Initial Configuration
 =====================
 
-This tutorial builds upon what was done in :ref:`single_molecule_diffusion`.
-Either complete that tutorial yourself or use the `single_molecule.blend`_ file
+This tutorial builds upon what was done in :ref:`add_meshgeom`.
+Either complete that tutorial yourself or use the `add_meshgeom.blend`_ file
 to get started.
 
-.. _single_molecule.blend: ./blends/single_molecule.blend
+.. _add_meshgeom.blend: ../../blends/add_meshgeom.blend
 
 Save the File with a New Name in Your Working Directory
 ---------------------------------------------------------------
@@ -33,7 +33,6 @@ Define a Reaction
 .. image:: ./images/shared/button_panels/reactions_panel_h.png
 
 * Click the "plus" sign (**+**) to the right of the **Defined Reactions** box
-* Ignore the error (indicates that you haven't fully defined a reaction yet)
 * Type **a** in the **Reactants** text field
 * Type **NULL** (all upper case) in the **Products** text field
 * Type **5e3** in the **Forward Rate** text field
@@ -49,14 +48,14 @@ Release More Molecules
 .. image:: ./images/unimol_reactions/release_1000.png
 
 Define Reaction Data to be Saved for Plotting
------------------------------------
+------------------------------------------------
 
 * Click the **Plot Output Settings** button
 
 .. image:: ./images/shared/button_panels/plot_panel_h.png
 
 * Click the "plus" sign (**+**) to the right of the **Reaction Data Output** box
-* Again, ignore the error which indicates an incomplete definition at this time
+* Ignore the error which indicates an incomplete definition at this time
 * Select **a** from the **Molecule** selector (should clear the error)
 
 .. image:: ./images/unimol_reactions/plot1.png

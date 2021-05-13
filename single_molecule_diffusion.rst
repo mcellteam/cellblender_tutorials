@@ -7,16 +7,17 @@ Single Molecule Diffusion
 Required software
 =================
 
-This tutorial is designed to be used with the CellBlender 1.1 bundle (linux_,
-windows_). If using OSX, please install CellBlender from scratch
-(:ref:`cellblender_install`, *note: install Blender first*).
+This tutorial is designed to be used with the CellBlender 3.5 bundle. Please download it from `here`_ if you haven't done so yet.
 
-.. _linux: http://mcell.org/download/files/cellblender1.1_bundle_linux.zip
-.. _osx: http://mcell.org/download/files/cellblender1.1_bundle_osx.zip
-.. _windows: http://mcell.org/download/files/cellblender1.1_bundle_windows.zip
+.. _here: https://mcell.org/download.html
 
-.. note:: Other versions may work as well.
 
+..
+    .. _linux: https://mcell.org/downloads/Blender-2.79-CellBlender-3.5.1-1-debian-10.1-20200601.tar.gz
+    .. _osx: https://mcell.org/downloads/Blender-2.79-CellBlender-3.5.1-6-Darwin-20200611.zip
+    .. _windows: https://mcell.org/downloads/Blender-2.79-CellBlender-3.5.1-1-Windows-20200601.zip
+    note:: Other versions may work as well.
+..
 
 Tutorial Overview
 =================
@@ -26,17 +27,43 @@ This tutorial will define a single molecule and show its diffusion.
 Initial Configuration
 =====================
 
-Install the CellBlender 1.1 bundle if you haven't already done so.
+Install the CellBlender 3.5 bundle if you haven't already done so.
+
+
+* Start Blender
+
+.. note:: On MacOS you will have to open Blender from the command line unless you have built CellBlender from scratch.
+
+
+* Select all objects (press the **a** key until all objects are orange)
+* Delete all objects (press the **x** key and click the "**Delete**" pop up button)
+
+Save the Startup File
+-------------------------------------------------
+
+* **File** > **Save Startup File**
+* Confirm **Save Startup File**
+
+You will only have to do this once.
+After this, every time you start Blender you will get a clean slate.
+
 
 Save the File with a New Name in Your Working Directory
 ---------------------------------------------------------------
 
-* Start Blender
-* Select all objects (press the **a** key until all objects are orange)
-* Delete all objects (press the **x** key and click the "**Delete**" pop up button)
 * Select **File** > **Save As...**
 * Change **untitled.blend** to **single_molecule.blend**
 * Click **Save As Blender File** button
+
+Open CellBlender Panel
+-----------------------------------
+
+* From the **Tool shelf** on the left hand side open click on the **CellBlender** tab
+
+.. image:: ./images/clean_slate/cellblender_tab.png
+
+* If prompted click **Initialize CellBlender**
+
 
 Define a Molecule "species"
 -----------------------------------
@@ -60,10 +87,15 @@ Release a Single Molecule into the Simulation
 
 * Click the **Molecule Placement** button
 
+..
 .. image:: ./images/shared/button_panels/release_placement_panel_h.png
+..
 
 * Click the "plus" sign (**+**) to the right of the **Release/Placement Sites** box
-* Click in the **Molecule** field and select the **a** molecule type
+* Click in the **Molecule** field and type **a** then hit enter
+
+.. note:: CellBlender will allow you to type in a name of a molecule you have not defined, however this will result in an error when running the simulation.
+
 * Click in the **Quantity to Release** field and set it to **1**
 
 .. image:: ./images/single_molecule/release_one.png
@@ -87,6 +119,7 @@ Simulate the Model
 .. image:: ./images/shared/button_panels/reload_viz_h.png
 
 * Zoom in (mouse scroll wheel) to see molecule(s) at the origin
+
 Change Settings to See Results
 --------------------------------------
 

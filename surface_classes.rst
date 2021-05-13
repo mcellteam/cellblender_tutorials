@@ -32,9 +32,16 @@ Let's save the file right now by hitting **Ctrl-s**, typing
 directory field, **sc.blend** into the file name field, and hit the **Save As
 Blender File** button.
 
+
+
+
 .. image:: ./images/surf_class/save_blend.png
 
 .. _surf_class_add_cube:
+
+
+Delete everything by first hitting **a** until everything is selected, then hitting **x**
+followed by the **enter** key.
 
 Add Cube to Model Objects list
 ---------------------------------------------
@@ -133,49 +140,50 @@ button. See if you can notice the **vol1** molecules being destroyed by the
 absorptive surface.
 
 .. _surf_class_examine_mdl:
+.. commented out
+    Examine the Surface Class MDL (Optional)
+    ---------------------------------------------
 
-Examine the Surface Class MDL (Optional)
----------------------------------------------
+    This next section isn't necessary, but you can follow along with it if you want
+    to learn more about MDL syntax. Open the file called
+    **Scene.surface_classes.mdl** and you should see the following text:
 
-This next section isn't necessary, but you can follow along with it if you want
-to learn more about MDL syntax. Open the file called
-**Scene.surface_classes.mdl** and you should see the following text:
+    .. code-block:: mdl
 
-.. code-block:: mdl
+        DEFINE_SURFACE_CLASSES
+        {
+          absorb_vol1
+          {
+            ABSORPTIVE = vol1'
+          }
+        }
 
-    DEFINE_SURFACE_CLASSES
-    {
-      absorb_vol1
-      {
-        ABSORPTIVE = vol1'
-      }
-    }
+    To reiterate what was said previously, the command above creates a surface
+    class called **absorb_vol1**. Since **vol1** is the value set to the
+    **ABSORPTIVE** command, this means that any **vol1** molecules that touch the
+    **FRONT** of a surface that has the **absorb_vol1** surface class will be
+    destroyed.
 
-To reiterate what was said previously, the command above creates a surface
-class called **absorb_vol1**. Since **vol1** is the value set to the
-**ABSORPTIVE** command, this means that any **vol1** molecules that touch the
-**FRONT** of a surface that has the **absorb_vol1** surface class will be
-destroyed.
+    Now open the file named **Scene.mod_surf_regions.mdl**:
 
-Now open the file named **Scene.mod_surf_regions.mdl**:
+    .. code-block:: mdl
 
-.. code-block:: mdl
+        MODIFY_SURFACE_REGIONS
+        {
+          Plane[ALL]
+          {
+            SURFACE_CLASS = absorb_vol1
+          }
+        }
 
-    MODIFY_SURFACE_REGIONS
-    {
-      Plane[ALL]
-      {
-        SURFACE_CLASS = absorb_vol1
-      }
-    }
+    Once again, to reiterate, this assigns **absorb_vol1** to all of the **Plane**.
 
-Once again, to reiterate, this assigns **absorb_vol1** to all of the **Plane**.
+    That's all there is to it. The other two surface class commands are
+    **REFLECTIVE** (the default state for surfaces) and **TRANSPARENT** (allows
+    molecules to freely pass through). Feel free to try these out on your own.
 
-That's all there is to it. The other two surface class commands are
-**REFLECTIVE** (the default state for surfaces) and **TRANSPARENT** (allows
-molecules to freely pass through). Feel free to try these out on your own.
-
-.. _surf_class_rxns:
+    .. _surf_class_rxns:
+..
 
 Surface Classes and Reactions
 =============================================
@@ -245,7 +253,7 @@ Define the Reaction
 
 * Hit the **Reactions** button.
 * Hit the **+** button.
-* Change **Reactants** to **vol1, @ empty'**.
+* Change **Reactants** to **vol1, + empty'**.
 * Change **Products** to **vol2'**.
 * Change **Forward Rate** to **1e7**.
 

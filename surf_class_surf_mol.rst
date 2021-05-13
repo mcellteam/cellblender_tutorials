@@ -14,14 +14,22 @@ acts somewhat like a fence, but, instead of molecules harmlessly "bouncing" off
 of it, they are destroyed whenever they touch it. **Transparent** surface
 classes don't affect surface molecules, so we can ignore them in this context.
 
-.. contents:: :local:
+.. note::
+    This part of the tutorial assumes that you are using a three button mouse.
+    If you are not, please follow `these`_ instructions first.
 
+
+
+..
+    comment
+    .. contents:: :local:
+..
 .. _surf_class_sm_mesh:
-
+.. _these: http://www.blenderhut.com/use-blender-without-middle-mouse-button-or-scroll-wheel/
 Set Project Directory
 ---------------------------------------------
 
-After you start Blender, save the file (and set the project directory) by
+After you start Blender, first delete any existing objects as before. Then save the file (and set the project directory) by
 hitting **Ctrl-s**, typing **~/mcell_tutorial/sc_sm** (or
 **C:\\mcell_tutorial\\sc_sm** on Windows) into the directory field,
 **sc_sm.blend** into the file name field, and hit the **Save As Blender File**
@@ -43,7 +51,7 @@ click on **Region_0** and change its name to **bottom**.
 
 .. image:: ./images/surf_class_surf_mol/bottom_top.png
 
-Move your cursor to the **3D View** window and hit **Tab** to switch into
+Move your cursor to the **3D View** window and hit **tab** to switch into
 **Edit Mode**.
 
 .. image:: ./images/triangulate.png
@@ -52,7 +60,7 @@ Then hit **Ctrl-Tab** and select **Face**.
 
 .. image:: ./images/ctrl_tab.png
 
-Hold **Shift** and **right click** on the top faces
+Hit a to deselect all the faces, then hold **Shift** and **right click** on the top faces
 
 .. image:: ./images/select_top.png
 
@@ -69,6 +77,7 @@ list of regions, and click **Assign**.
 Define a Surface Molecule
 ---------------------------------------------
 
+* Hit **tab** to get out of the **Edit Mode**.
 * Hit the **Molecules** button.
 * Hit the **+** button.
 * Change the **Name** to **surf1**.
@@ -100,7 +109,7 @@ Add the Surface Class
 * Hit the **+** button to create a new surface class called **Surface_Class**.
 * Rename it to **absorb**.
 * Hit the **+** button beside the empty **absorb Properties** list.
-* Leave **Molecules** set to **All Molecules**.
+* Set **Molecules** to **Single Molecule**.
 * Select **surf1** from the **Molecule Name** field.
 * Set **Orientation** set to **Top/Front**.
 * Set **Type** set to **Absorptive**.

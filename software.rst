@@ -1,24 +1,18 @@
-.. _software:
+MCell webpage.. _software:
 
 ************************
 Required Software
 ************************
 
-Before starting these tutorials, you *need* to download the CellBlender 1.1
-bundle (linux_, windows_). Unlike previous versions of CellBlender, this
+Before starting these tutorials, you *need* to download the CellBlender 3.5
+bundle (available on `MCell webpage`_). Unlike previous versions of CellBlender, this
 should include everything you need to create, run, and visualize your
 simulations. Simply download, extract the zip file, and start Blender.
 
 .. note::
 
-    Most Windows and Linux users should use the CellBlender 1.1 bundle (linux_,
-    windows_). OSX users will need to install CellBlender from scratch.
-    Additionally, some advanced users may want to regardless of their platform.
-    They will need to manually install the following pieces:
-
-    * MCell |version| (:ref:`mcell_install`)
-    * `Blender 2.78`_ (older versions may or may not work)
-    * CellBlender 1.1 (:ref:`cellblender_install`, *note: install Blender first*)
+    On MacOS you will have to start Blender from the command line.
+    Please follow the instructions on `MCell Webpage`_.
 
 You don't need these immediately, but you will likely find them necessary later
 on:
@@ -27,16 +21,16 @@ on:
 * Some graphing and analysis software (matplotlib_ (with Python_ and numpy_) or
   Grace_ are recommended)
 
-.. _linux: http://mcell.org/download/files/cellblender1.1_bundle_linux.zip
-.. _osx: http://mcell.org/download/files/cellblender1.1_bundle_osx.zip
-.. _windows: http://mcell.org/download/files/cellblender1.1_bundle_windows.zip
+.. _linux: https://mcell.org/downloads/Blender-2.79-CellBlender-3.5.1-1-debian-10.1-20200601.tar.gz
+.. _osx: https://mcell.org/downloads/Blender-2.79-CellBlender-3.5.1-6-Darwin-20200611.zip
+.. _windows: https://mcell.org/downloads/Blender-2.79-CellBlender-3.5.1-1-Windows-20200601.zip
 .. _Blender 2.78: http://www.blender.org/download/get-blender/
 .. _sublime: http://www.sublimetext.com/
 .. _matplotlib: http://matplotlib.sourceforge.net/
 .. _Python: http://www.python.org
 .. _numpy: http://numpy.scipy.org/
 .. _Grace: http://plasma-gate.weizmann.ac.il/Grace/
-
+.. _MCell webpage: https://mcell.org/download_previous.html
 
 Prerequisites
 --------------------------------
