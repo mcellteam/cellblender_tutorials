@@ -102,73 +102,57 @@ Create Reaction Output
 * Hit the **+** button with a circle around it. This button will add a count
   statement for every molecule defined, which is just **vol1** in this
   instance.
-
-* Hit the regular **+** button.
-* Select **MDLString**.
-* In the **MDL String** field, put the following:
-  **COUNT[vol1,Scene.Plane,ESTIMATE_CONC]**
-* In the **MDL File Prefix** field, type **vol1_conc**.
-
-.. image:: ./images/clamp/count_vol1.png
-
-Examine the MDLs (Optional)
----------------------------------------------
-
-Open the file called **Scene.surface_classes.mdl**, and you should see the
-following:
-
-.. code-block:: mdl
-    :emphasize-lines: 3
-
-    DEFINE_SURFACE_CLASSES 
-    {
-        clamp_sc {CLAMP_CONC vol1 = 1E-5}
-    }
-
-Notice, this is similar to how we defined surface classes previously, except we
-are also specifiying a concentration in addition to a surface class type and
-molecule species.
-
-Now, open the filed called **Scene.mod_surf_regions.mdl**, and you should
-see the following:
-
-.. code-block:: mdl
-    :emphasize-lines: 5
-
-    MODIFY_SURFACE_REGIONS 
-    {
-        Plane[clamp_sr] 
+.. comment this all out
+    * Hit the regular **+** button.
+    * Select **MDLString**.
+    * In the **MDL String** field, put the following:
+      **COUNT[vol1,Scene.Plane,ESTIMATE_CONC]**
+    * In the **MDL File Prefix** field, type **vol1_conc**.
+    .. image:: ./images/clamp/count_vol1.png
+    Examine the MDLs (Optional)
+    ---------------------------------------------
+    Open the file called **Scene.surface_classes.mdl**, and you should see the
+    following:
+    .. code-block:: mdl
+        :emphasize-lines: 3
+        DEFINE_SURFACE_CLASSES
         {
-            SURFACE_CLASS = clamp_sc
+            clamp_sc {CLAMP_CONC vol1 = 1E-5}
         }
-    }
-
-Assigning a concentration clamp to a region works the same as it does for any
-other surface class.
-
-Finally, open the file called **Scene.rxn_output.mdl** and note the highlighted
-line that contains the **ESTIMATE_CONC** command:
-
-.. code-block:: mdl
-    :emphasize-lines: 5
-
-    REACTION_DATA_OUTPUT
-    {
-      STEP=1e-6
-      {COUNT[vol1,WORLD]}=> "./react_data/seed_" & seed & "/vol1.World.dat"
-      {COUNT[vol1,Scene.Plane,ESTIMATE_CONC]} =>  "./react_data/seed_" & seed & "/vol1_conc_MDLString.dat"
-    }
-
-The only new commands used in this section and the last are **CLAMP_CONC** and
-**ESTIMATE_CONC**. **CLAMP_CONC** is applied like any other surface class,
-except that the molarity of a certain molecule is specified. **ESTIMATE_CONC**
-is used in a count statement after an object or region, and (unsurprisingly)
-estimates the concentration at that location. 
-
-.. note::
-
-    The units for these two commands are different; CLAMP_CONC is M and
-    ESTIMATE_CONC is uM.
+    Notice, this is similar to how we defined surface classes previously, except we
+    are also specifiying a concentration in addition to a surface class type and
+    molecule species.
+    Now, open the filed called **Scene.mod_surf_regions.mdl**, and you should
+    see the following:
+    .. code-block:: mdl
+        :emphasize-lines: 5
+        MODIFY_SURFACE_REGIONS
+        {
+            Plane[clamp_sr]
+            {
+                SURFACE_CLASS = clamp_sc
+            }
+        }
+    Assigning a concentration clamp to a region works the same as it does for any
+    other surface class.
+    Finally, open the file called **Scene.rxn_output.mdl** and note the highlighted
+    line that contains the **ESTIMATE_CONC** command:
+    .. code-block:: mdl
+        :emphasize-lines: 5
+        REACTION_DATA_OUTPUT
+        {
+          STEP=1e-6
+          {COUNT[vol1,WORLD]}=> "./react_data/seed_" & seed & "/vol1.World.dat"
+          {COUNT[vol1,Scene.Plane,ESTIMATE_CONC]} =>  "./react_data/seed_" & seed & "/vol1_conc_MDLString.dat"
+        }
+    The only new commands used in this section and the last are **CLAMP_CONC** and
+    **ESTIMATE_CONC**. **CLAMP_CONC** is applied like any other surface class,
+    except that the molarity of a certain molecule is specified. **ESTIMATE_CONC**
+    is used in a count statement after an object or region, and (unsurprisingly)
+    estimates the concentration at that location.
+    .. note::
+        The units for these two commands are different; CLAMP_CONC is M and
+        ESTIMATE_CONC is uM.
 
 Run the Simulation
 ---------------------------------------------

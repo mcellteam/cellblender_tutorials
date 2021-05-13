@@ -7,36 +7,29 @@
 Introduction to MCell and CellBlender
 =====================================
 
+Section 1 is an introduction to Blender, sections 2-6 show how to build simple CellBlender models.
+Sections 7-11 introduce more advanced features and optimizations.
+Tutorials in section 13 are outdated and will gradually lose support with newer versions of MCell.
 
-Users new to MCell and CellBlender should start here:
 
 .. toctree::
    :numbered:
    :maxdepth: 1
 
-   blender_information 
+   blender_information
    software
    single_molecule_diffusion
-   unimol_reactions
    add_meshgeom
+   unimol_reactions
    bimol_reactions
-
-Users who have completed the basic tutorials (sections 1-5 above) may be
-interested in learning how to optimize their simulations, repair meshes, or use
-advanced features from the links below:
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-
    advanced_features
    advanced_models
    optimize
-   mesh_analysis   
+   mesh_analysis
    mesh_repair
-   mdl_editing
    cellblender_examples/cellblender_examples
    FAQ
+   MCell_3_features
 
 
 Still have questions? They might be answered on our forums_.

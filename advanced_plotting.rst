@@ -13,13 +13,11 @@ Installing Plotting Plug-Ins
 ---------------------------------------------
 
 CellBlender supports a variety of plotting plug-ins that may be installed in
-the "data_plotters" folder under the cellblender addon folder (typically
-something like:
-*~/.config/blender/2.70/scripts/addons/cellblender/data_plotters*). Each
+the "data_plotters" folder under the cellblender addon folder (for example on a Mac it would be something like: /Applications/Blender-2.79-CellBlender/blender.app/Contents/Resources/2.79/scripts/addons/cellblender/data_plotters). Each
 plotting plug-in will have its own folder in that directory, and within that
 folder must (at least) be a file named **__init__.py**. As an example, the
 xmgrace plug-in will be found at
-*~/.config/blender/2.70/scripts/addons/cellblender/data_plotters/xmgrace*.
+/Applications/Blender-2.79-CellBlender/blender.app/Contents/Resources/2.79/scripts/addons/cellblender/data_plotters/xmgrace*.
 There may be other files required in that folder. For example, the Java Plotter
 requires the file **PlotData.jar** to be there, and the matplotlib plotter
 requires the files **mpl_plot.py** and **mpl_defaults.py**. The number and
