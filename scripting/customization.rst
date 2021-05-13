@@ -1,9 +1,9 @@
 .. _customization:
 
 
-***********************
-Customization in MCell4
-***********************
+********************************
+Model Customization using Python
+********************************
 
 Overview
 --------

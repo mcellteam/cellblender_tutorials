@@ -1,7 +1,7 @@
 .. _advanced_features:
 
 Advanced Features
----------------------------------------------
+-----------------
 
 The following tutorials illustrate some advanced features of MCell and
 CellBlender.
@@ -19,6 +19,7 @@ CellBlender.
    variable_rxn_rates
    rel_pattern
    clamp
+   scripting/customization
    gamer
    advanced_plotting
    def_viz
