@@ -1,8 +1,8 @@
 .. _lotka_volterra:
 
-===============
-Lotka Volterra Model
-===============
+=====================
+Lotka Volterra Models
+=====================
 
 Description
 ===========

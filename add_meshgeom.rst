@@ -13,11 +13,11 @@ molecules.
 Initial Configuration
 =====================
 
-This tutorial builds upon what was done in :ref:`unimol_reactions`. Either
-complete that tutorial yourself or use the `unimol_reactions.blend`_ file to
+This tutorial builds upon what was done in :ref:`single_molecule_diffusion`. Either
+complete that tutorial yourself or use the `single_molecule.blend`_ file to
 get started.
 
-.. _unimol_reactions.blend: ./blends/unimol_reactions.blend
+.. _single_molecule.blend: ../../blends/single_molecule.blend
 
 Save the File with a New Name in Your Working Directory
 ---------------------------------------------------------------
@@ -58,7 +58,7 @@ Add the new Sphere to the Model Objects
 ---------------------------------------------------------------
 
 * Click the "plus" sign (**+**) to the right of the **Model Objects** box
-* Expand the **Icosphere Display Options** panel
+* Expand the **Icosphere Object Options** panel
 * Select **Wire** from the drop-down menu (may originally show "Solid").
 
 .. image:: ./images/add_meshgeom/model_objects.png
@@ -70,7 +70,7 @@ Release Molecules inside Sphere
 * Select **Release_Site_1** (should already be selected)
 * Change **Release Shape** to **Object/Region**
 * Type "**Icosphere**" in the **Object/Region** field
-* Change **Quantity to Release** to **1000**
+* Change **Quantity to Release** to **100**
 
 .. image:: ./images/add_meshgeom/sphere_release.png
 
@@ -79,7 +79,7 @@ Simulate the Model
 
 * Click the **Run Simulation** button
 
-.. image:: ./images/single_molecule/run_sim_button.png
+.. image:: ./images/shared/button_panels/run_panel_h.png
 
 * Click the **Export & Run** button
 
@@ -89,7 +89,7 @@ Simulate the Model
 * Press the "Reload Visualization Data" button to load the results of the
   simulation.
 
-.. image:: ./images/single_molecule/reload_viz_data.png
+.. image:: ./images/shared/button_panels/reload_viz_h.png
 
 View the Results
 -------------------------
