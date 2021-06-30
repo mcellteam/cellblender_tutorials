@@ -3,9 +3,9 @@
 .. index::
    single: CLAMP_CONC
 
-*********************************************
+*******************
 Clamp Concentration
-*********************************************
+*******************
 
 A concentration clamp lets you maintain a constant concentration of a molecule
 at a surface. This is done by creating and destroying molecules at the surface.
@@ -17,7 +17,7 @@ concentration clamp applied (plane) and the other will prevent molecules from
 diffusing away from the surface (thin cube).
 
 Start New Project
----------------------------------------------
+-----------------
 
 After you start Blender, save the file (and set the project directory) by
 hitting **Ctrl-s**, typing **~/mcell_tutorial/clamp** (or
@@ -26,7 +26,7 @@ hitting **Ctrl-s**, typing **~/mcell_tutorial/clamp** (or
 button.
 
 Create Cube and Plane
----------------------------------------------
+---------------------
 
 * Hit the **Model Objects** button.
 
@@ -60,7 +60,7 @@ Create Cube and Plane
 .. image:: ./images/clamp/vol1.png
 
 Add the Surface Class
----------------------------------------------
+---------------------
 
 * Hit the **Surface Classes** button.
 
@@ -80,7 +80,7 @@ Add the Surface Class
 .. image:: ./images/clamp/clamp_sc.png
 
 Assign the Surface Class
----------------------------------------------
+------------------------
 
 Now that we have created our surface class, we need to assign it to our mesh.
 
@@ -96,12 +96,13 @@ Now that we have created our surface class, we need to assign it to our mesh.
 .. image:: ./images/clamp/mod_surf_reg.png
 
 Create Reaction Output
----------------------------------------------
+----------------------
 
 * Hit the **Plot Output Settings** button.
 * Hit the **+** button with a circle around it. This button will add a count
   statement for every molecule defined, which is just **vol1** in this
   instance.
+  
 .. comment this all out
     * Hit the regular **+** button.
     * Select **MDLString**.
@@ -155,7 +156,7 @@ Create Reaction Output
         ESTIMATE_CONC is uM.
 
 Run the Simulation
----------------------------------------------
+------------------
 
 * Save the Blender file (**Ctrl-s**).
 * Hit the **Run Simulation** button.
@@ -163,7 +164,7 @@ Run the Simulation
 * Lastly, hit the **Export & Run** button.
 
 Visualize the Results
----------------------------------------------
+---------------------
 
 Once the simulation has finished running, hit **Reload Visualization Data**.
 Hit **Alt-a** to play back the animation.

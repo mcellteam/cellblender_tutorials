@@ -3,9 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-=====================================
-Introduction to MCell and CellBlender
-=====================================
+==================================
+CellBlender Tutorials and Examples
+==================================
 
 Section 1 is an introduction to Blender, sections 2-6 show how to build simple CellBlender models.
 Sections 7-11 introduce more advanced features and optimizations.
@@ -34,16 +34,11 @@ Tutorials in section 13 are outdated and will gradually lose support with newer 
 
 Still have questions? They might be answered on our forums_.
 
-.. _forums: http://mmbios.org/index.php/mcell-cellblender-forum
+.. _forums: https://mcell.freeforums.net/
 
 Please send any feedback concerning these tutorials to info@mcell.org.
 
 .. _info@mcell.org: info@mcell.org
-
-Although no longer actively maintained, the `legacy DReAMM and MCell
-tutorials`_ are still available. 
-
-.. _legacy DReAMM and MCell tutorials: http://mcell.org/tutorials_old_2012/tlist.htm
 
 
 Indices and tables

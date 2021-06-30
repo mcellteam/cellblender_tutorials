@@ -1,8 +1,8 @@
 .. _surf_class_surf_mol:
 
-*********************************************
+*************************************
 Surface Classes and Surface Molecules
-*********************************************
+*************************************
 
 We have already discussed surface classes at length, but we haven't touched on
 how they can affect the diffusion of surface molecules. Their effects are
@@ -20,14 +20,15 @@ classes don't affect surface molecules, so we can ignore them in this context.
 
 
 
-..
-    comment
+..    comment
     .. contents:: :local:
+    
 ..
 .. _surf_class_sm_mesh:
 .. _these: http://www.blenderhut.com/use-blender-without-middle-mouse-button-or-scroll-wheel/
+
 Set Project Directory
----------------------------------------------
+---------------------
 
 After you start Blender, first delete any existing objects as before. Then save the file (and set the project directory) by
 hitting **Ctrl-s**, typing **~/mcell_tutorial/sc_sm** (or
@@ -36,7 +37,7 @@ hitting **Ctrl-s**, typing **~/mcell_tutorial/sc_sm** (or
 button.
 
 Creating and Assigning Surface Regions
----------------------------------------------
+--------------------------------------
 
 * Hit the **Model Objects** button.
 * Hit the Cube button.
@@ -75,7 +76,7 @@ everything is deselected (Hit **a** until all the faces are gray). Then hold
 list of regions, and click **Assign**.
 
 Define a Surface Molecule
----------------------------------------------
+-------------------------
 
 * Hit **tab** to get out of the **Edit Mode**.
 * Hit the **Molecules** button.
@@ -87,7 +88,7 @@ Define a Surface Molecule
 .. image:: ./images/surf_class_surf_mol/surf1.png
 
 Define a Release Site
----------------------------------------------
+---------------------
 
 * Hit the **Molecule Placement** button.
 * Hit the **+** button.
@@ -103,7 +104,7 @@ Define a Release Site
 .. _scsm_add_surf_class:
 
 Add the Surface Class
----------------------------------------------
+---------------------
 
 * Hit the **Surface Classes** button.
 * Hit the **+** button to create a new surface class called **Surface_Class**.
@@ -124,7 +125,7 @@ Repeat this process, except call the surface class **reflect** and change the
 .. _scsm_mod_surf_reg:
 
 Assign the Surface Classes
----------------------------------------------
+--------------------------
 
 Now that we have created our surface class, we need to assign it to our mesh.
 
@@ -158,7 +159,7 @@ middle section and **top** region will ultimately be destroyed.
 .. _scsm_run_vis:
 
 Run the Simulation and Visualize the Results
----------------------------------------------
+--------------------------------------------
 
 * Save the Blender file (**Ctrl-s**).
 * Hit the **Run Simulation** button*

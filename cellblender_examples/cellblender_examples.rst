@@ -7,7 +7,6 @@ Here we briefly describe them and highlight the main features used in them.
 Go to the panel Examples in CellBlender to find all the examples described here.
 
 .. toctree::
-   :numbered:
    :maxdepth: 1
 
    fickslaw_1d

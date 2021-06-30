@@ -1,7 +1,7 @@
 .. _faq:
 
 FAQ
----------------------------------------------
+---
 
 **What are the units in MCell and CellBlender?**
 
@@ -16,8 +16,11 @@ reactants. One `blender unit`_ in CellBlender is equivalent to one micron.
 
 **Can I simulate moving meshes in MCell?**
 
-There is experimental support for dynamic meshes. Please see the
-:ref:`dynamic_geometry_overview` tutorial for more information.
+To use dynamic geometry in MCell4, Python code needs to be written.
+For more details see *Model.add_vertex_move* and *Model.apply_vertex_moves*.
+
+There was also an experimental support for dynamic meshes in MCell3 that is described here
+:ref:`dynamic_geometry_overview`.
 
 **Can I change the default molecule size?**
 

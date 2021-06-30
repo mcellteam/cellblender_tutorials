@@ -7,7 +7,8 @@ Fick's Law 1D Model
 Description
 ===========
 
-In this example we assess Fick's laws in 1D, using discrete diffusing particles and an elongated rectangle (an extended tutorial on how to build the model can be found here: :ref:`fick`).
+In this example we assess Fick's laws in 1D, using discrete diffusing particles and an 
+elongated rectangle (an extended tutorial on how to build the model can be found here: :ref:`fick`).
 
 Demonstrated features
 =====================

@@ -5,7 +5,7 @@ Fick's Law 3D Model
 Description
 ===========
 
-This example is similar to :ref:`ficks_1d` but we now assess Fick's laws in 3D, using discrete diffusing particles and spheres.
+This example is similar to :ref:`fickslaw_1d` but we now assess Fick's laws in 3D, using discrete diffusing particles and spheres.
 
 Demonstrated features
 =====================

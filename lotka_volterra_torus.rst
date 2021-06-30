@@ -1,5 +1,3 @@
-..  _lotka_volterra_torus:
-
 .. 
     Comment:
     This version contains "check marks" because they show up properly in HTML.
@@ -7,9 +5,11 @@
     Note that these "check marks" are actually square roots:  unicode e2889a.
     Unicode does have an actual "check mark" as e29c93, but it hasn't been tested.
 
-*********************************************
+..  _lotka_volterra_torus:
+
+*************************
 Lotka-Volterra in a Torus
-*********************************************
+*************************
 
 .. Git Repo SHA1 ID: a1abdd291b75176d6581df41329781ae5d5e1b7d
 
@@ -29,7 +29,7 @@ Lotka-Volterra in a Torus
 
 
 Lotka Volterra System Description
----------------------------------------------
+---------------------------------
 
 This tutorial uses the `Lotka-Volterra`_ oscillating system to demonstrate a
 simple but dynamic CellBlender model. This model can also be used to show the
@@ -66,7 +66,7 @@ The rest of this tutorial will guide you through the process of:
 
 
 Specifications of the Model
----------------------------------------------
+---------------------------
 
 For those familiar with building CellBlender models, here's the short-hand version:
 
@@ -126,7 +126,7 @@ For those familiar with building CellBlender models, here's the short-hand versi
 
 
 Step by step instructions for building the model
--------------------------------------------------------------------------------
+------------------------------------------------
 
 .. note::
 
@@ -147,7 +147,7 @@ Step by step instructions for building the model
 
 
 Reset Blender and initialize CellBlender.
-...........................................................................................
+.........................................
 1. :menu:`File / Load Factory Settings` :button:`Load Factory Settings`
 #. Select All Objects (camera, light, cube) with :key:`a` :key:`a` (until everything is highlighted)
 #. Delete All Selected Objects (camera, light, cube) with: :key:`x`  :button:`Delete`
@@ -171,7 +171,7 @@ Reset Blender and initialize CellBlender.
 
 
 This section constructs a semi-transparent torus named "arena" to contain our model.
-.....................................................................................................................................................
+....................................................................................
 18. Drag the divider below the CellBlender panel to about 1/2 the window height to make room for other tools below it.
 #. Drag the divider on the right side of the 3D view to the left a bit to make room for all of the Property Buttons.
 #. In 3D View menu: :menu:`Object / Snap / Cursor to Center`  (ensures that objects are placed at the origin)
@@ -196,7 +196,7 @@ This section constructs a semi-transparent torus named "arena" to contain our mo
  
 
 Blender objects must be "Model Objects" to be seen by MCell. Add the "arena" to MCell's Model Objects.
-.....................................................................................................................................................
+......................................................................................................
 39. CellBlender Panel: :button:`Model Objects`
 #. Be sure the newly created "arena" is selected (should show "arena" near coordinate axis in lower left). Right-click the arena itself or left-click its name in the Outliner as needed.
 #. Click the :button:`+` button next to "Model Objects".
@@ -205,7 +205,7 @@ Blender objects must be "Model Objects" to be seen by MCell. Add the "arena" to 
 
 
 This section defines the molecule types (or "species") we'll need for our model.
-.....................................................................................................................................................
+................................................................................
 
  +----------+-------------------------------------------------+
  | Species  | Type of Molecule and Diffusion Constant         |
@@ -231,7 +231,7 @@ This section defines the molecule types (or "species") we'll need for our model.
 
  
 This section creates sites to release actual molecules into the model.
-.....................................................................................................................................................
+......................................................................
 
  +---------------+-----------------------------------------------------------+
  | Release Site  | Number of each Molecule Species to release in Location    |
@@ -258,7 +258,7 @@ This section creates sites to release actual molecules into the model.
 
  
 This model may run slow, so we'll only run it for 100 iterations while building our model.
-.....................................................................................................................................................
+..........................................................................................
 68. CellBlender Panel: :button:`Run Simulation`
 #. Set the "Iterations" to :key:`100`
 #. Start the simulation: :button:`Run`
@@ -270,7 +270,7 @@ This model may run slow, so we'll only run it for 100 iterations while building 
 
  
 The default molecules are too large for this model. Let's change their size, color, and glyph.
-.....................................................................................................................................................
+..............................................................................................
 
 76. CellBlender Panel: :button:`Molecules`
 
@@ -291,7 +291,7 @@ The default molecules are too large for this model. Let's change their size, col
  
 
 Define the Reactions for the Lotka-Volterra Predator/Prey model:
-.....................................................................................................................................................
+................................................................
 
  +------------------------------------------+---------------------------------------------------------------+
  | Reactants -> Products                    |  Description and Forward Reaction Rate                        |
@@ -324,7 +324,7 @@ Define the Reactions for the Lotka-Volterra Predator/Prey model:
 
 
 Test the system with another short run:
-.....................................................................................................................................................
+.......................................
 102. CellBlender Panel: :button:`Run Simulation`
 #. Start the simulation: :button:`Run`
 #. Wait for the simulation to complete running.
@@ -334,7 +334,7 @@ Test the system with another short run:
 
  
 Set up the items to be plotted in the final run:
-.....................................................................................................................................................
+................................................
 108. CellBlender Panel: :button:`Plot Output Settings`
 #. Define two Molecules to track by pressing “+” 2 times: :button:`+` :button:`+`
 #. Click on the first “Name error:” and change the Molecule to :button:`prey`
@@ -343,7 +343,7 @@ Set up the items to be plotted in the final run:
  
 
 Make the final run:
-.....................................................................................................................................................
+...................
 113. CellBlender Panel: :button:`Run Simulation`
 #. Set the "Iterations" to :key:`1200` followed by :key:`Enter`
 #. Start the simulation: :button:`Run`
@@ -355,7 +355,7 @@ Make the final run:
  
 
 Plot the Predator/Prey populations over time:
-.....................................................................................................................................................
+.............................................
 120. CellBlender Panel: :button:`Plot Output Settings`
 #. Set the Page/Plot selector to: :button:`One Page, One Plot`
 #. Check :button:`√` the "Molecule Colors" box to use the molecule colors for the plot.
@@ -372,7 +372,7 @@ Plot the Predator/Prey populations over time:
 
 
 Diffusion-Limited / Physiologic Reactions
----------------------------------------------
+-----------------------------------------
 
 Try experimenting with the system by changing these values:
 
@@ -393,7 +393,7 @@ Try experimenting with the system by changing these values:
   +-----------------------------------+--------------------------+-------------------------+
 
 Predator / Prey Populations over time with different System Parameters
-.....................................................................................................................................................
+......................................................................
 
 .. image:: ./images/lv_in_torus_graph_1.png
 

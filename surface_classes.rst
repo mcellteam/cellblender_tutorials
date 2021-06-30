@@ -1,8 +1,8 @@
 .. _surface_classes:
 
-*********************************************
+*******************************
 Introduction to Surface Classes
-*********************************************
+*******************************
 
 .. Git Repo SHA1 ID: 3520f8694d61c81424ff15ff9e7a432e42f0623f
 
@@ -14,7 +14,7 @@ be used to specify absolute orientation in reactions.
 .. _surf_class_vol_mol:
 
 Surface Classes and Volume Molecules
-=============================================
+====================================
 
 In this section, we will create a **Plane** object that sits inside a **Cube**
 object. The **Cube** object will be filled with **vol1** molecules. The
@@ -24,7 +24,7 @@ molecules.
 .. _surf_class_new_proj:
 
 Create a New Project
----------------------------------------------
+--------------------
 
 The project directory is set to be wherever the current blend file is saved.
 Let's save the file right now by hitting **Ctrl-s**, typing
@@ -44,7 +44,7 @@ Delete everything by first hitting **a** until everything is selected, then hitt
 followed by the **enter** key.
 
 Add Cube to Model Objects list
----------------------------------------------
+------------------------------
 
 * Hit the **Model Objects** button.
 * Hit the Cube button and then hit the **+** button to add it to the 
@@ -57,7 +57,7 @@ Add Cube to Model Objects list
 .. _surf_class_add_vol_mol:
 
 Add a Volume Molecule and Release Site.
----------------------------------------------
+---------------------------------------
 
 * Add a volume molecule named **vol1** with a diffusion constant of **1e-5**.
 
@@ -75,7 +75,7 @@ Add a Volume Molecule and Release Site.
 .. _surf_class_add_geom:
 
 Add a Plane
----------------------------------------------
+-----------
 
 * Hit the **Model Objects** button and then the Plane button. You should now
   have a plane going through the middle of your cube.
@@ -89,7 +89,7 @@ Add a Plane
 .. _surf_class_add_sc:
 
 Add the Surface Class
----------------------------------------------
+---------------------
 
 * Hit the **Surface Classes** button. 
 * Hit the **+** button to create a new surface class called **Surface_Class**.
@@ -111,7 +111,7 @@ the **absorb_vol1** surface class to be destroyed.
 .. _surf_class_mod_surf_reg:
 
 Assign the Surface Class
----------------------------------------------
+------------------------
 
 Now that we have created our surface class, we need to assign it to our mesh.
 
@@ -130,7 +130,7 @@ that is not always the case.
 .. _surf_class_run_vis:
 
 Run the Simulation and Visualize the Results
----------------------------------------------
+--------------------------------------------
 
 Save the Blender file (**Ctrl-s**). Hit the **Run Simulation** button and then
 the **Export & Run** button.
@@ -185,8 +185,10 @@ absorptive surface.
     .. _surf_class_rxns:
 ..
 
+.. _surf_class_rxns:
+
 Surface Classes and Reactions
-=============================================
+=============================
 
 In the :ref:`surf_class_vol_mol` section, we learned that surface classes can
 be used to give meshes special properties. Surface classes can also be used to
@@ -195,7 +197,7 @@ provide extra specificity over how reactions occur.
 .. _surf_class_rxns_mesh:
 
 Create a New Project
----------------------------------------------
+--------------------
 
 We'll pick up right where we left off at the end of
 :ref:`surf_class_mod_surf_reg`. In fact, the instructions will be very similar,
@@ -212,7 +214,7 @@ a new directory. Change the blend file name to **sc_rxn.blend** and click
 **Save As Blender File**.
 
 Define a New Molecule
----------------------------------------------
+---------------------
 
 * Hit the **Molecules** button. 
 * Hit the **+** button.
@@ -223,7 +225,7 @@ Define a New Molecule
 .. image:: ./images/surf_class/vol2.png
 
 Modify the Existing Surface Class
----------------------------------------------
+---------------------------------
 
 * Hit the **Surface Classes** button.
 * Hit the **-** button under **absorb_vol1 Properties** to remove the existing properties. 
@@ -236,7 +238,7 @@ to specify absolute directionality.
 .. image:: ./images/surf_class/empty.png
 
 Modify the Surface Regions
----------------------------------------------
+--------------------------
 
 Now that we have modified our surface class, we need to reassign it to our
 mesh.
@@ -249,7 +251,7 @@ You should be able to leave everything else as is.
 .. image:: ./images/surf_class/assign_empty.png
 
 Define the Reaction
----------------------------------------------
+-------------------
 
 * Hit the **Reactions** button.
 * Hit the **+** button.
@@ -262,7 +264,7 @@ Define the Reaction
 .. _surf_class_rxns_mdl:
 
 Run the Simulation and Visualize the Results
----------------------------------------------
+--------------------------------------------
 
 Save the Blender file (**Ctrl-s**). Hit the **Run Simulation** button and then
 the **Export & Run** button.
