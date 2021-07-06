@@ -7,6 +7,10 @@
 CellBlender Tutorials and Examples
 ==================================
 
+DISCLAIMER: Screenshots in this tutorial are for Blender version 2.79. 
+CellBlender releases 4.x use Blender version 2.93 and this tutorial was not updated yet.
+Some hints on how to use CellBlender with Blender version 2.93 are described in :ref:`using_cb_293`.  
+
 Section 1 is an introduction to Blender, sections 2-6 show how to build simple CellBlender models.
 Sections 7-11 introduce more advanced features and optimizations.
 Tutorials in section 13 are outdated and will gradually lose support with newer versions of MCell.

@@ -1,13 +1,11 @@
 import re
 
-from pygments.lexer import inherit, words
+from pygments.lexer import inherit, words, CythonLexer
 from pygments.token import Operator, Keyword
-
-from pygments.lexers.c_cpp import CLexer
 
 __all__ = ['MdlLexer']
 
-class MdlLexer(CLexer):
+class MdlLexer(CythonLexer):
     name = 'Mdl'
     aliases = ['mdl']
     filenames = ['*.mdl']
