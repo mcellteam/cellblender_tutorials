@@ -15,6 +15,8 @@ Section 1 is an introduction to Blender, sections 2-6 show how to build simple C
 Sections 7-11 introduce more advanced features and optimizations.
 Tutorials in section 13 are outdated and will gradually lose support with newer versions of MCell.
 
+Documentation and tutorial on MCell4 Python API can be found `here <https://mcell.org/mcell4_documentation/index.html>`_.   
+
 
 .. toctree::
    :numbered:
@@ -49,4 +51,3 @@ Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`search`

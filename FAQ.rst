@@ -8,9 +8,21 @@ FAQ
 In MCell, the units of space are microns, the units of time are seconds,
 diffusion constants are :math:`cm^2/s`, unimolecular reactions are
 :math:`s^{-1}`, volume-volume/volume-surface bimolecular reactions are
-:math:`M^{-1}s^{-1}` , and surface-surface bimolecular reactions are
+:math:`M^{-1}s^{-1}`, and surface-surface bimolecular reactions are
 :math:`{\mu}m^2N^{-1}s^{-1}`. M refers to molarity, and N is the number of
 reactants. One `blender unit`_ in CellBlender is equivalent to one micron.
+
+MCell also provides option to use units compatible with BioNetGen ODE, SSA, and PLA 
+solvers (not with NFSim that uses different units).
+This option can be enabled on the *Settings & Preferences* panel 
+by selecting *BioNetGen Units Mode* or in Python by setting *Model.config.use_bng_units*
+to *True*.
+When enabled, unimolecular reactions use the same unit 
+:math:`s^{-1}`, and all bimolecular reactions use :math:`{\mu}m^3N^{-1}s^{-1}`.
+For surface-surface reactions, it is assumed that the thickness of the mmembrane is 10 :math:`nm`
+and conversion from :math:`{\mu}m^3N^{-1}s^{-1}` to :math:`{\mu}m^2N^{-1}s^{-1}` is made by 
+simply dividing the provided BioNetGen unit by 0.01 :math:`{\mu}m`.
+
 
 .. _blender unit: http://wiki.blender.org/index.php/User:Rayek/Doc:2.6/Manual/Interface/Units
 

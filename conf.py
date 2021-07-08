@@ -53,7 +53,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'MCell and CellBlender'
+project = 'CellBlender and MCell'
 copyright = ('2006 - 2021, MMBioS, Salk Institute for Biological Studies, '
              'Pittsburgh Supercomputing Center')
 
