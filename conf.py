@@ -41,7 +41,7 @@ sys.path.append(os.path.abspath('exts'))
 extensions = ['sphinx.ext.mathjax', 'numfig']
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ['templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
